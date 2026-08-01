@@ -1,0 +1,204 @@
+import fetchMock from 'fetch-mock';
+import {
+  screen,
+  render,
+  waitForElementToBeRemoved,
+  waitFor,
+} from 'spec/helpers/testing-library';
+import { ChartMetadata, ChartPlugin, VizType } from '@zobi-ui/core';
+import { setupAGGridModules } from '@zobi-ui/core/components/ThemedAgGridReact';
+import { ResultsPaneOnDashboard } from '../components';
+import { createResultsPaneOnDashboardProps } from './fixture';
+
+beforeAll(() => {
+  setupAGGridModules();
+});
+
+// eslint-disable-next-line no-restricted-globals -- TODO: Migrate from describe blocks
+describe('ResultsPaneOnDashboard', () => {
+  // render and render errorMessage
+  fetchMock.post(
+    'end:/api/v1/chart/data?form_data=%7B%22slice_id%22%3A121%7D',
+    {
+      result: [],
+    },
+  );
+
+  // force query, render and search
+  fetchMock.post(
+    'end:/api/v1/chart/data?form_data=%7B%22slice_id%22%3A144%7D&force=true',
+    {
+      result: [
+        {
+          data: [
+            { __timestamp: 1230768000000, genre: 'Action' },
+            { __timestamp: 1230768000010, genre: 'Horror' },
+          ],
+          colnames: ['__timestamp', 'genre'],
+          coltypes: [2, 1],
+          rowcount: 2,
+          sql_rowcount: 2,
+        },
+      ],
+    },
+  );
+
+  // error response
+  fetchMock.post(
+    'end:/api/v1/chart/data?form_data=%7B%22slice_id%22%3A169%7D',
+    400,
+  );
+
+  // multiple results pane
+  fetchMock.post(
+    'end:/api/v1/chart/data?form_data=%7B%22slice_id%22%3A196%7D',
+    {
+      result: [
+        {
+          data: [
+            { __timestamp: 1230768000000 },
+            { __timestamp: 1230768000010 },
+          ],
+          colnames: ['__timestamp'],
+          coltypes: [2],
+        },
+        {
+          data: [{ genre: 'Action' }, { genre: 'Horror' }],
+          colnames: ['genre'],
+          coltypes: [1],
+          rowcount: 2,
+          sql_rowcount: 2,
+        },
+      ],
+    },
+  );
+
+  const setForceQuery = jest.fn();
+
+  afterAll(() => {
+    fetchMock.clearHistory().removeRoutes();
+    jest.resetAllMocks();
+  });
+
+  test('render', async () => {
+    const props = createResultsPaneOnDashboardProps({ sliceId: 121 });
+    const { findByText } = render(<ResultsPaneOnDashboard {...props} />, {
+      useRedux: true,
+    });
+    expect(
+      await findByText('No results were returned for this query'),
+    ).toBeVisible();
+  });
+
+  test('render errorMessage', async () => {
+    const props = createResultsPaneOnDashboardProps({
+      sliceId: 121,
+      errorMessage: <p>error</p>,
+    });
+    const { findByText } = render(<ResultsPaneOnDashboard {...props} />, {
+      useRedux: true,
+    });
+    expect(await findByText('Run a query to display results')).toBeVisible();
+  });
+
+  test('error response', async () => {
+    const props = createResultsPaneOnDashboardProps({
+      sliceId: 169,
+    });
+    const { findByText } = render(<ResultsPaneOnDashboard {...props} />, {
+      useRedux: true,
+    });
+    expect(await findByText('0 rows')).toBeVisible();
+    expect(await findByText('Bad request')).toBeVisible();
+  });
+
+  test('force query, render', async () => {
+    const props = createResultsPaneOnDashboardProps({
+      sliceId: 144,
+      queryForce: true,
+    });
+    const { queryByText } = render(
+      <ResultsPaneOnDashboard {...props} setForceQuery={setForceQuery} />,
+      {
+        useRedux: true,
+      },
+    );
+
+    await waitFor(() => {
+      expect(setForceQuery).toHaveBeenCalledTimes(1);
+    });
+    expect(queryByText('2 rows')).toBeVisible();
+    expect(queryByText('Action')).toBeVisible();
+    expect(queryByText('Horror')).toBeVisible();
+  });
+
+  test('multiple results pane', async () => {
+    const FakeChart = () => <span>test</span>;
+    const metadata = new ChartMetadata({
+      name: 'test-chart',
+      thumbnail: '',
+      queryObjectCount: 2,
+    });
+
+    const plugin = new ChartPlugin({
+      metadata,
+      Chart: FakeChart,
+    });
+    plugin.configure({ key: VizType.MixedTimeseries }).register();
+
+    const props = createResultsPaneOnDashboardProps({
+      sliceId: 196,
+      vizType: VizType.MixedTimeseries,
+    });
+
+    render(<ResultsPaneOnDashboard {...props} />, {
+      useRedux: true,
+    });
+
+    await waitForElementToBeRemoved(() =>
+      screen.queryByRole('status', { name: 'Loading' }),
+    );
+
+    const tab1 = document.querySelector('[data-node-key="results"]');
+    const tab2 = document.querySelector('[data-node-key="results 2"]');
+
+    expect(tab1).toBeVisible();
+    expect(tab2).toBeVisible();
+  });
+
+  test('dynamic number of results pane', async () => {
+    const FakeChart = () => <span>test</span>;
+    const metadata = new ChartMetadata({
+      name: 'test-chart',
+      thumbnail: '',
+      dynamicQueryObjectCount: true,
+    });
+
+    const plugin = new ChartPlugin({
+      metadata,
+      Chart: FakeChart,
+    });
+    plugin.configure({ key: VizType.MixedTimeseries }).register();
+
+    const props = createResultsPaneOnDashboardProps({
+      sliceId: 196,
+      vizType: VizType.MixedTimeseries,
+    });
+
+    render(<ResultsPaneOnDashboard {...props} />, {
+      useRedux: true,
+    });
+
+    await waitForElementToBeRemoved(() =>
+      screen.queryByRole('status', { name: 'Loading' }),
+    );
+
+    const tab1 = document.querySelector('[data-node-key="results"]');
+    const tab2 = document.querySelector('[data-node-key="results 2"]');
+    const tab3 = document.querySelector('[data-node-key="results 3"]');
+
+    expect(tab1).toBeVisible();
+    expect(tab2).toBeVisible();
+    expect(tab3).toBeNull();
+  });
+});

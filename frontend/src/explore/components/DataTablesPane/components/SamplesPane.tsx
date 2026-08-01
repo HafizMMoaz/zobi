@@ -1,0 +1,182 @@
+import { useState, useEffect, useMemo, useCallback } from 'react';
+import { t } from '@zobi/core/translation';
+import { ensureIsArray } from '@zobi-ui/core';
+import { datasetLabelLower } from 'src/features/semanticLayers/label';
+import { styled } from '@zobi/core/theme';
+import { EmptyState, Loading } from '@zobi-ui/core/components';
+import { GenericDataType } from '@zobi/core/common';
+import { GridTable } from 'src/components/GridTable';
+import { GridSize } from 'src/components/GridTable/constants';
+import { getDatasourceSamples } from 'src/components/Chart/chartAction';
+import { getDrillPayload } from 'src/components/Chart/DrillDetail/utils';
+import {
+  useGridColumns,
+  useKeywordFilter,
+  useGridHeight,
+} from './useGridResultTable';
+import { TableControls, ROW_LIMIT_OPTIONS } from './DataTableControls';
+import { SamplesPaneProps } from '../types';
+
+const Error = styled.pre`
+  margin-top: ${({ theme }) => `${theme.sizeUnit * 4}px`};
+`;
+
+const GridContainer = styled.div`
+  flex: 1;
+  min-height: 0;
+  position: relative;
+`;
+
+const GridSizer = styled.div`
+  position: absolute;
+  inset: 0;
+`;
+
+const cache = new WeakMap();
+
+const DEFAULT_ROW_LIMIT = 100;
+
+export const SamplesPane = ({
+  isRequest,
+  datasource,
+  queryFormData,
+  queryForce,
+  setForceQuery,
+  isVisible,
+  canDownload,
+}: SamplesPaneProps) => {
+  const [filterText, setFilterText] = useState('');
+  const [rowLimit, setRowLimit] = useState(DEFAULT_ROW_LIMIT);
+  const [data, setData] = useState<Record<string, any>[][]>([]);
+  const [colnames, setColnames] = useState<string[]>([]);
+  const [coltypes, setColtypes] = useState<GenericDataType[]>([]);
+  const [isLoading, setIsLoading] = useState<boolean>(false);
+  const [rowcount, setRowCount] = useState<number>(0);
+  const [responseError, setResponseError] = useState<string>('');
+  const { gridHeight, measuredRef } = useGridHeight();
+  const datasourceId = useMemo(
+    () => `${datasource.id}__${datasource.type}`,
+    [datasource],
+  );
+
+  const handleRowLimitChange = useCallback(
+    (limit: number) => {
+      setRowLimit(limit);
+      cache.delete(queryFormData);
+    },
+    [queryFormData],
+  );
+
+  useEffect(() => {
+    if (isRequest && queryForce) {
+      cache.delete(queryFormData);
+    }
+
+    if (isRequest && !cache.has(queryFormData)) {
+      setIsLoading(true);
+      const payload =
+        getDrillPayload(
+          queryFormData as Parameters<typeof getDrillPayload>[0],
+        ) ?? {};
+      getDatasourceSamples(
+        datasource.type,
+        datasource.id,
+        queryForce,
+        payload,
+        rowLimit,
+        1,
+      )
+        .then(response => {
+          setData(ensureIsArray(response.data));
+          setColnames(ensureIsArray(response.colnames));
+          setColtypes(ensureIsArray(response.coltypes));
+          setRowCount(response.rowcount);
+          setResponseError('');
+          cache.set(queryFormData, true);
+          if (queryForce) {
+            setForceQuery?.(false);
+          }
+        })
+        .catch(error => {
+          setData([]);
+          setColnames([]);
+          setColtypes([]);
+          setResponseError(`${error.name}: ${error.message}`);
+        })
+        .finally(() => {
+          setIsLoading(false);
+        });
+    }
+  }, [datasource, queryFormData, isRequest, queryForce, rowLimit]);
+
+  const columns = useGridColumns(colnames, coltypes, data);
+  const keywordFilter = useKeywordFilter(filterText);
+
+  const handleInputChange = useCallback(
+    (input: string) => setFilterText(input),
+    [],
+  );
+
+  if (isLoading) {
+    return <Loading />;
+  }
+
+  if (responseError) {
+    return (
+      <>
+        <TableControls
+          data={data}
+          columnNames={colnames}
+          columnTypes={coltypes}
+          rowcount={rowcount}
+          datasourceId={datasourceId}
+          onInputChange={handleInputChange}
+          isLoading={isLoading}
+          canDownload={canDownload}
+          rowLimit={rowLimit}
+          rowLimitOptions={ROW_LIMIT_OPTIONS}
+          onRowLimitChange={handleRowLimitChange}
+        />
+        <Error>{responseError}</Error>
+      </>
+    );
+  }
+
+  if (data.length === 0) {
+    const title = t(
+      'No samples were returned for this %s',
+      datasetLabelLower(),
+    );
+    return <EmptyState image="document.svg" title={title} />;
+  }
+
+  return (
+    <>
+      <TableControls
+        data={data}
+        columnNames={colnames}
+        columnTypes={coltypes}
+        rowcount={rowcount}
+        datasourceId={datasourceId}
+        onInputChange={handleInputChange}
+        isLoading={isLoading}
+        canDownload={canDownload}
+        rowLimit={rowLimit}
+        rowLimitOptions={ROW_LIMIT_OPTIONS}
+        onRowLimitChange={handleRowLimitChange}
+      />
+      <GridContainer>
+        <GridSizer ref={measuredRef}>
+          <GridTable
+            data={data}
+            columns={columns}
+            height={gridHeight}
+            size={GridSize.Small}
+            externalFilter={keywordFilter}
+            showRowNumber
+          />
+        </GridSizer>
+      </GridContainer>
+    </>
+  );
+};

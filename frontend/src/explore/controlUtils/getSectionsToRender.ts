@@ -1,0 +1,98 @@
+import memoizeOne from 'memoize-one';
+import {
+  DatasourceType,
+  getChartControlPanelRegistry,
+} from '@zobi-ui/core';
+import {
+  ControlPanelConfig,
+  ControlPanelSectionConfig,
+  expandControlConfig,
+  isControlPanelSectionConfig,
+} from '@zobi-ui/chart-controls';
+
+import * as SECTIONS from 'src/explore/controlPanels/sections';
+
+const getMemoizedSectionsToRender = memoizeOne(
+  (datasourceType: DatasourceType, controlPanelConfig: ControlPanelConfig) => {
+    const {
+      sectionOverrides = {},
+      controlOverrides,
+      controlPanelSections = [],
+    } = controlPanelConfig;
+
+    // default control panel sections
+    const sections: Record<
+      string,
+      | ControlPanelSectionConfig
+      | ControlPanelSectionConfig[]
+      | Partial<ControlPanelSectionConfig>
+    > = { ...SECTIONS };
+
+    // apply section overrides
+    Object.entries(sectionOverrides).forEach(([section, overrides]) => {
+      if (typeof overrides === 'object' && overrides.constructor === Object) {
+        sections[section] = {
+          ...sections[section],
+          ...overrides,
+        };
+      } else {
+        sections[section] = overrides;
+      }
+    });
+
+    const {
+      datasourceAndVizType,
+      matrixifyRows = null,
+      matrixifyColumns = null,
+      matrixifyCells = null,
+      matrixifyEnableSection = null,
+    } = sections;
+
+    // list of datasource-specific controls that should be removed if the datasource is a specific type
+    const filterControlsForTypes = [DatasourceType.Query, DatasourceType.Table];
+    const invalidControls = filterControlsForTypes.includes(datasourceType)
+      ? ['granularity']
+      : ['granularity_sqla', 'time_grain_sqla'];
+
+    return [
+      datasourceAndVizType as ControlPanelSectionConfig,
+      matrixifyEnableSection as ControlPanelSectionConfig,
+      matrixifyColumns as ControlPanelSectionConfig,
+      matrixifyRows as ControlPanelSectionConfig,
+      matrixifyCells as ControlPanelSectionConfig,
+    ]
+      .filter(Boolean) // Filter out null/undefined sections
+      .concat(controlPanelSections.filter(isControlPanelSectionConfig))
+      .map(section => {
+        if (!section) return null;
+        const { controlSetRows } = section;
+        return {
+          ...section,
+          controlSetRows:
+            controlSetRows?.map(row =>
+              row
+                .filter(
+                  control =>
+                    typeof control !== 'string' ||
+                    !invalidControls.includes(control),
+                )
+                .map(item => expandControlConfig(item, controlOverrides)),
+            ) || [],
+        };
+      })
+      .filter(Boolean); // Filter out any null results
+  },
+);
+
+/**
+ * Get the clean and processed control panel sections
+ */
+export function getSectionsToRender(
+  vizType: string,
+  datasourceType: DatasourceType,
+) {
+  const controlPanelConfig =
+    // TODO: update `chartControlPanelRegistry` type to use ControlPanelConfig
+    (getChartControlPanelRegistry().get(vizType) as ControlPanelConfig) || {};
+  return getMemoizedSectionsToRender(datasourceType, controlPanelConfig);
+}

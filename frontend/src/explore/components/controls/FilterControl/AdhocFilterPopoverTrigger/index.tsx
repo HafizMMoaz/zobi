@@ -1,0 +1,103 @@
+import { PureComponent, ReactNode } from 'react';
+import { OptionSortType } from 'src/explore/types';
+import AdhocFilterEditPopover from 'src/explore/components/controls/FilterControl/AdhocFilterEditPopover';
+import AdhocFilter from 'src/explore/components/controls/FilterControl/AdhocFilter';
+import { ExplorePopoverContent } from 'src/explore/components/ExploreContentPopover';
+import { Operators } from 'src/explore/constants';
+import ControlPopover from '../../ControlPopover/ControlPopover';
+
+interface AdhocFilterPopoverTriggerProps {
+  sections?: string[];
+  operators?: Operators[];
+  adhocFilter: AdhocFilter;
+  options: OptionSortType[];
+  datasource: Record<string, any>;
+  onFilterEdit: (editedFilter: AdhocFilter) => void;
+  partitionColumn?: string;
+  isControlledComponent?: boolean;
+  visible?: boolean;
+  togglePopover?: (visible: boolean) => void;
+  closePopover?: () => void;
+  requireSave?: boolean;
+  children?: ReactNode;
+}
+
+interface AdhocFilterPopoverTriggerState {
+  popoverVisible: boolean;
+}
+
+class AdhocFilterPopoverTrigger extends PureComponent<
+  AdhocFilterPopoverTriggerProps,
+  AdhocFilterPopoverTriggerState
+> {
+  constructor(props: AdhocFilterPopoverTriggerProps) {
+    super(props);
+    this.onPopoverResize = this.onPopoverResize.bind(this);
+    this.closePopover = this.closePopover.bind(this);
+    this.togglePopover = this.togglePopover.bind(this);
+    this.state = {
+      popoverVisible: false,
+    };
+  }
+
+  onPopoverResize() {
+    this.forceUpdate();
+  }
+
+  closePopover() {
+    this.togglePopover(false);
+  }
+
+  togglePopover(visible: boolean) {
+    this.setState({
+      popoverVisible: visible,
+    });
+  }
+
+  render() {
+    const { adhocFilter, isControlledComponent } = this.props;
+
+    const { visible, togglePopover, closePopover } = isControlledComponent
+      ? {
+          visible: this.props.visible,
+          togglePopover: this.props.togglePopover,
+          closePopover: this.props.closePopover,
+        }
+      : {
+          visible: this.state.popoverVisible,
+          togglePopover: this.togglePopover,
+          closePopover: this.closePopover,
+        };
+    const overlayContent = (
+      <ExplorePopoverContent>
+        <AdhocFilterEditPopover
+          adhocFilter={adhocFilter}
+          options={this.props.options}
+          datasource={this.props.datasource}
+          partitionColumn={this.props.partitionColumn}
+          onResize={this.onPopoverResize}
+          onClose={closePopover ?? (() => {})}
+          sections={this.props.sections}
+          operators={this.props.operators}
+          onChange={this.props.onFilterEdit}
+          requireSave={this.props.requireSave}
+        />
+      </ExplorePopoverContent>
+    );
+
+    return (
+      <ControlPopover
+        trigger="click"
+        content={overlayContent}
+        defaultOpen={visible}
+        open={visible}
+        onOpenChange={togglePopover}
+        destroyOnHidden
+      >
+        {this.props.children}
+      </ControlPopover>
+    );
+  }
+}
+
+export default AdhocFilterPopoverTrigger;

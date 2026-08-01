@@ -1,0 +1,96 @@
+import { useEffect, useRef, useState } from 'react';
+import { InputNumber } from '@zobi-ui/core/components';
+import { t } from '@zobi/core/translation';
+import { styled } from '@zobi/core/theme';
+import { debounce } from 'lodash';
+import ControlHeader from 'src/explore/components/ControlHeader';
+
+type ValueType = (number | null)[];
+
+export type BoundsControlProps = {
+  onChange?: (value: ValueType) => void;
+  value?: ValueType;
+};
+
+const StyledDiv = styled.div`
+  display: flex;
+`;
+
+const MinInput = styled(InputNumber)`
+  flex: 1;
+  margin-right: ${({ theme }) => theme.sizeUnit}px;
+`;
+
+const MaxInput = styled(InputNumber)`
+  flex: 1;
+  margin-left: ${({ theme }) => theme.sizeUnit}px;
+`;
+
+const parseNumber = (value: undefined | number | string | null) => {
+  if (
+    value === null ||
+    value === undefined ||
+    (typeof value === 'string' && Number.isNaN(Number.parseInt(value, 10)))
+  ) {
+    return null;
+  }
+  return Number(value);
+};
+
+export default function BoundsControl({
+  onChange = () => {},
+  value = [null, null],
+  ...props
+}: BoundsControlProps) {
+  const [minMax, setMinMax] = useState<ValueType>([
+    parseNumber(value[0]),
+    parseNumber(value[1]),
+  ]);
+  const min = value[0];
+  const max = value[1];
+  const debouncedOnChange = useRef(debounce(onChange, 300)).current;
+
+  const update = (mm: ValueType) => {
+    setMinMax(mm);
+    debouncedOnChange([
+      mm[0] === undefined ? null : mm[0],
+      mm[1] === undefined ? null : mm[1],
+    ]);
+  };
+
+  useEffect(() => {
+    setMinMax([parseNumber(min), parseNumber(max)]);
+  }, [min, max]);
+
+  const onMinChange = (value: number | string | undefined | null) => {
+    update([parseNumber(value), minMax[1]]);
+  };
+
+  const onMaxChange = (value: number | string | undefined | null) => {
+    update([minMax[0], parseNumber(value)]);
+  };
+
+  return (
+    <div>
+      <ControlHeader {...props} />
+      <StyledDiv>
+        <MinInput
+          data-test="min-bound"
+          placeholder={t('Min')}
+          // emit (string | number | undefined | null)
+          onChange={onMinChange}
+          // accept (number | undefined)
+          value={minMax[0] === null ? undefined : minMax[0]}
+        />
+        <MaxInput
+          data-test="max-bound"
+          placeholder={t('Max')}
+          // emit (number | string | undefined | null)
+          onChange={onMaxChange}
+          // accept (number | undefined)
+          value={minMax[1] === null ? undefined : minMax[1]}
+        />
+      </StyledDiv>
+    </div>
+  );
+}

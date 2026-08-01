@@ -1,0 +1,162 @@
+import { useMemo } from 'react';
+import { t } from '@zobi/core/translation';
+import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
+import { AsyncSelect } from '@zobi-ui/core/components';
+import { type TagType } from 'src/components';
+import { loadTags } from 'src/components/Tag/utils';
+import getOwnerName from 'src/utils/getOwnerName';
+import Owner from 'src/types/Owner';
+import { ModalFormField } from 'src/components/Modal';
+import {
+  OwnerSelectLabel,
+  OWNER_TEXT_LABEL_PROP,
+  OWNER_EMAIL_PROP,
+  OWNER_OPTION_FILTER_PROPS,
+} from 'src/features/owners/OwnerSelectLabel';
+import { useAccessOptions } from '../hooks/useAccessOptions';
+
+type Roles = { id: number; name: string }[];
+type Owners = {
+  id: number;
+  full_name?: string;
+  first_name?: string;
+  last_name?: string;
+  email?: string;
+}[];
+
+interface AccessSectionProps {
+  isLoading: boolean;
+  owners: Owners;
+  roles: Roles;
+  tags: TagType[];
+  onChangeOwners: (
+    owners: { value: number; label: string }[],
+    options: Record<string, unknown>[],
+  ) => void;
+  onChangeRoles: (roles: { value: number; label: string }[]) => void;
+  onChangeTags: (tags: { label: string; value: number }[]) => void;
+  onClearTags: () => void;
+}
+
+const AccessSection = ({
+  isLoading,
+  owners,
+  roles,
+  tags,
+  onChangeOwners,
+  onChangeRoles,
+  onChangeTags,
+  onClearTags,
+}: AccessSectionProps) => {
+  const { loadAccessOptions } = useAccessOptions();
+
+  const ownersSelectValue = useMemo(
+    () =>
+      (owners || []).map((owner: Owner & { email?: string }) => ({
+        value: owner.id,
+        label: OwnerSelectLabel({
+          name: getOwnerName(owner),
+          email: owner.email,
+        }),
+        [OWNER_TEXT_LABEL_PROP]: getOwnerName(owner),
+        [OWNER_EMAIL_PROP]: owner.email ?? '',
+      })),
+    [owners],
+  );
+
+  const rolesSelectValue = useMemo(
+    () =>
+      (roles || []).map((role: { id: number; name: string }) => ({
+        value: role.id,
+        label: `${role.name}`,
+      })),
+    [roles],
+  );
+
+  const tagsAsSelectValues = useMemo(
+    () =>
+      tags.map((tag: { id: number; name: string }) => ({
+        value: tag.id,
+        label: tag.name,
+      })),
+    [tags],
+  );
+
+  return (
+    <>
+      <ModalFormField
+        label={t('Owners')}
+        testId="dashboard-owners-field"
+        helperText={t(
+          'Owners is a list of users who can alter the dashboard. Searchable by name or username.',
+        )}
+      >
+        <AsyncSelect
+          data-test="dashboard-owners-select"
+          allowClear
+          ariaLabel={t('Owners')}
+          disabled={isLoading}
+          mode="multiple"
+          onChange={onChangeOwners}
+          options={(input, page, pageSize) =>
+            loadAccessOptions('owners', input, page, pageSize)
+          }
+          value={ownersSelectValue}
+          showSearch
+          placeholder={t('Search owners')}
+          optionFilterProps={OWNER_OPTION_FILTER_PROPS}
+        />
+      </ModalFormField>
+      {isFeatureEnabled(FeatureFlag.DashboardRbac) && (
+        <ModalFormField
+          label={t('Roles')}
+          testId="dashboard-roles-field"
+          helperText={t(
+            'Roles is a list which defines access to the dashboard. Granting a role access to a dashboard will bypass dataset level checks. If no roles are defined, regular access permissions apply.',
+          )}
+          bottomSpacing={!isFeatureEnabled(FeatureFlag.TaggingSystem)}
+        >
+          <AsyncSelect
+            data-test="dashboard-roles-select"
+            allowClear
+            ariaLabel={t('Roles')}
+            disabled={isLoading}
+            mode="multiple"
+            onChange={onChangeRoles}
+            options={(input, page, pageSize) =>
+              loadAccessOptions('roles', input, page, pageSize)
+            }
+            value={rolesSelectValue}
+            showSearch
+            placeholder={t('Search roles')}
+          />
+        </ModalFormField>
+      )}
+      {isFeatureEnabled(FeatureFlag.TaggingSystem) && (
+        <ModalFormField
+          label={t('Tags')}
+          testId="dashboard-tags-field"
+          helperText={t(
+            'A list of tags that have been applied to this dashboard.',
+          )}
+          bottomSpacing={false}
+        >
+          <AsyncSelect
+            data-test="dashboard-tags-select"
+            ariaLabel="Tags"
+            mode="multiple"
+            value={tagsAsSelectValues}
+            options={loadTags}
+            onChange={onChangeTags}
+            onClear={onClearTags}
+            allowClear
+            showSearch
+            placeholder={t('Search tags')}
+          />
+        </ModalFormField>
+      )}
+    </>
+  );
+};
+
+export default AccessSection;

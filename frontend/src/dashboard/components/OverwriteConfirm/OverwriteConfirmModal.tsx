@@ -1,0 +1,193 @@
+import { Fragment, useMemo, useCallback, RefObject, createRef } from 'react';
+import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { useDispatch } from 'react-redux';
+import ReactDiffViewer from 'react-diff-viewer-continued';
+import { useInView } from 'react-intersection-observer';
+import { Button, Modal } from '@zobi-ui/core/components';
+import { DashboardState } from 'src/dashboard/types';
+import {
+  saveDashboardRequest,
+  setOverrideConfirm,
+} from 'src/dashboard/actions/dashboardState';
+import { t } from '@zobi/core/translation';
+import { styled } from '@zobi/core/theme';
+import { SAVE_TYPE_OVERWRITE_CONFIRMED } from 'src/dashboard/util/constants';
+
+const STICKY_HEADER_TOP = 16;
+const STICKY_HEADER_HEIGHT = 32;
+
+const StyledTitle = styled.h2`
+  ${({ theme }) => `
+     color:  ${theme.colorText}
+   `}
+`;
+
+const StyledEditor = styled.div`
+  ${({ theme }) => `
+     table {
+       border: 1px ${theme.colorBorder} solid;
+     }
+     pre {
+       font-size: 11px;
+       padding: 0px;
+       background-color: transparent;
+       border: 0px;
+       line-height: 110%;
+     }
+   `}
+`;
+
+const StackableHeader = styled(Button)<{ top: number }>`
+  ${({ theme, top }) => `
+     position: sticky;
+     top: ${top}px;
+     background-color: ${theme.colorBgContainer};
+     margin: 0px;
+     padding: 8px 4px;
+     z-index: 1;
+     border: 0px;
+     border-radius: 0px;
+     width: 100%;
+     justify-content: flex-start;
+     border-bottom: 1px ${theme.colorSplit} solid;
+     &::before {
+       display: inline-block;
+       position: relative;
+       opacity: 1;
+       content: "\\00BB";
+     }
+   `}
+`;
+
+const StyledBottom = styled.div<{ inView: boolean }>`
+  ${({ inView }) => `
+     margin: 8px auto;
+     text-align: center;
+     opacity: ${inView ? 0 : 1};
+  `}
+`;
+
+type Props = {
+  overwriteConfirmMetadata: DashboardState['overwriteConfirmMetadata'];
+};
+
+const OverrideConfirmModal = ({ overwriteConfirmMetadata }: Props) => {
+  const [bottomRef, hasReviewed] = useInView({ triggerOnce: true });
+  const dispatch = useDispatch();
+  const onHide = useCallback(
+    () => dispatch(setOverrideConfirm(undefined)),
+    [dispatch],
+  );
+  const anchors = useMemo<RefObject<HTMLDivElement>[]>(
+    () =>
+      overwriteConfirmMetadata
+        ? overwriteConfirmMetadata.overwriteConfirmItems.map(() =>
+            createRef<HTMLDivElement>(),
+          )
+        : [],
+    [overwriteConfirmMetadata],
+  );
+  const onAnchorClicked = useCallback(
+    (index: number) => {
+      anchors[index]?.current?.scrollIntoView({ behavior: 'smooth' });
+    },
+    [anchors],
+  );
+  const onConfirmOverwrite = useCallback(() => {
+    if (overwriteConfirmMetadata) {
+      dispatch(
+        saveDashboardRequest(
+          overwriteConfirmMetadata.data,
+          overwriteConfirmMetadata.dashboardId,
+          SAVE_TYPE_OVERWRITE_CONFIRMED,
+        ),
+      );
+    }
+  }, [dispatch, overwriteConfirmMetadata]);
+
+  return (
+    <Modal
+      responsive
+      maxWidth="1024px"
+      height="50vh"
+      show={Boolean(overwriteConfirmMetadata)}
+      title={t('Confirm overwrite')}
+      footer={
+        <>
+          {t('Scroll down to the bottom to enable overwriting changes. ')}
+          <Button
+            htmlType="button"
+            buttonSize="small"
+            onClick={onHide}
+            data-test="override-confirm-modal-cancel-button"
+            cta
+          >
+            {t('No')}
+          </Button>
+          <Button
+            data-test="overwrite-confirm-save-button"
+            htmlType="button"
+            buttonSize="small"
+            cta
+            buttonStyle="primary"
+            onClick={onConfirmOverwrite}
+            disabled={!hasReviewed}
+          >
+            {t('Yes, overwrite changes')}
+          </Button>
+        </>
+      }
+      onHide={onHide}
+    >
+      {overwriteConfirmMetadata && (
+        <>
+          <StyledTitle>
+            {t('Are you sure you intend to overwrite the following values?')}
+          </StyledTitle>
+          <StyledEditor>
+            {overwriteConfirmMetadata.overwriteConfirmItems.map(
+              ({ keyPath, oldValue, newValue }, index) => (
+                <Fragment key={keyPath}>
+                  <div ref={anchors[index]} />
+                  <StackableHeader
+                    top={index * STICKY_HEADER_HEIGHT - STICKY_HEADER_TOP}
+                    buttonStyle="secondary"
+                    onClick={() => onAnchorClicked(index)}
+                  >
+                    {keyPath}
+                  </StackableHeader>
+                  <ReactDiffViewer
+                    oldValue={oldValue}
+                    newValue={newValue}
+                    leftTitle={t(
+                      'Last Updated %s by %s',
+                      extendedDayjs
+                        .utc(overwriteConfirmMetadata.updatedAt)
+                        .calendar(),
+                      overwriteConfirmMetadata.updatedBy,
+                    )}
+                    rightTitle="new value"
+                  />
+                </Fragment>
+              ),
+            )}
+            <StyledBottom ref={bottomRef} inView={hasReviewed}>
+              {/* Add submit button at the bottom in case of intersection-observer fallback */}
+              <Button
+                htmlType="button"
+                buttonSize="small"
+                cta
+                buttonStyle="primary"
+                onClick={onConfirmOverwrite}
+              >
+                {t('Yes, overwrite changes')}
+              </Button>
+            </StyledBottom>
+          </StyledEditor>
+        </>
+      )}
+    </Modal>
+  );
+};
+
+export default OverrideConfirmModal;
