@@ -81,10 +81,11 @@ jobs:
         working-directory: frontend
         # Populates zobi/static/assets, which MANIFEST.in ships with the sdist
         # and wheel.
-        run: |
-          npm run prune
-          npm run plugins:build
-          npm run build
+        #
+        # Only the webpack bundle is needed here. `plugins:build` emits lib/ and
+        # esm/ inside frontend/packages for npm consumers, none of which ships in
+        # the Python distribution.
+        run: npm run build
 
       - name: Build distributions
         run: |
