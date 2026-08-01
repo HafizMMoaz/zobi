@@ -1,0 +1,13 @@
+# Netlify configuration for Zobi Storybook
+# Deployed at: zobi-storybook.netlify.app
+
+[build]
+  base = "frontend"
+  command = "npm install && npm run build-storybook"
+  publish = "storybook-static"
+  # Skip builds when no relevant frontend changes
+  # Rebuilds on: component files, storybook config, dependencies
+  ignore = "git diff --quiet $CACHED_COMMIT_REF $COMMIT_REF -- src/ packages/ plugins/ .storybook/ package.json yarn.lock"
+
+[build.environment]
+  NODE_VERSION = "20"
