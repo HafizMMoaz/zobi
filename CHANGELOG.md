@@ -22,12 +22,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `frontend-tests.yml` runs jest across four shards alongside the package and
   webpack builds. The lint workflows mirror the hooks in
   `.pre-commit-config.yaml`, so local and CI results agree.
-- Publish workflows for the Python distributions: `zobi`, `zobi-core` and
-  `extensions-cli`. Each verifies that the tag and the package manifest declare
-  the same version before uploading, defaults to a dry run when triggered
-  manually, and can target TestPyPI for a rehearsal. The `zobi` workflow builds
-  the frontend first and asserts the compiled assets are present in the wheel,
-  since `zobi/static/assets` is generated rather than committed.
+- Publish workflows for the Python packages extension authors install,
+  `zobi-core` and `extensions-cli`. Each verifies that the tag and the package
+  manifest declare the same version before uploading, defaults to a dry run when
+  triggered manually, and can target TestPyPI for a rehearsal.
 - A publish workflow for `@zobi.dev/embedded-sdk`, which had none. It lives
   outside the frontend npm workspace, so it is installed and built on its own.
 - `release.yml`, which creates the GitHub release for a version tag using the

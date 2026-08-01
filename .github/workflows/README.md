@@ -113,9 +113,14 @@ stage.
 
 | Distribution | Directory | Version source | Workflow |
 | --- | --- | --- | --- |
-| `zobi` | repo root | `frontend/package.json` | `publish-pypi-zobi.yml` |
 | `zobi-core` | `core` | `core/pyproject.toml` | `publish-pypi-zobi-core.yml` |
 | `extensions-cli` | `extensions-cli` | `extensions-cli/pyproject.toml` | `publish-pypi-extensions-cli.yml` |
+
+These are the two packages extension authors install. The Zobi application
+itself is not published to PyPI — it ships as a Docker image and a git tag.
+
+`extensions-cli` depends on `zobi-core`, so release `zobi-core` first when both
+have changed.
 
 Versions are static and committed, so bump the manifest first, then tag. Each
 workflow refuses to publish when the tag and the manifest disagree.
@@ -130,18 +135,9 @@ TestPyPI.
 **By tag:**
 
 ```bash
-# zobi-core and extensions-cli use a package-scoped prefix
 git tag zobi-core-v0.2.0
 git tag extensions-cli-v0.2.0
-
-# the root zobi distribution uses the bare project version
-git tag 0.2.0
 ```
-
-`publish-pypi-zobi.yml` builds the frontend before packaging. `zobi/static/assets`
-is gitignored and only populated by webpack, so the wheel has no usable UI
-without that step. The workflow asserts the compiled assets are present in the
-wheel before publishing.
 
 ### Prerequisites
 
@@ -166,10 +162,10 @@ A full release:
 
 1. Bump the version in `frontend/package.json` and add the release section to
    `CHANGELOG.md`, then merge that.
-2. Push the tag: `git tag 0.2.0 && git push origin 0.2.0`.
-3. `release.yml` creates the GitHub release and `publish-pypi-zobi.yml` publishes
-   the distribution. Both trigger off the same tag.
-4. Release any npm packages that changed, using their own workflows.
+2. Push the tag: `git tag 0.2.0 && git push origin 0.2.0`, which creates the
+   GitHub release.
+3. Release any packages that changed, using their own workflows. Package
+   versions are independent of the application version.
 
 To create a release for a tag that already exists, run `release.yml` from the
 Actions tab with the tag name. It creates a draft by default and never

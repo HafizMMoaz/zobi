@@ -3,8 +3,11 @@ name: Release
 # Creates a GitHub release for a top-level version tag (e.g. 0.2.0), using the
 # matching section of CHANGELOG.md as the release body.
 #
-# This workflow only creates the release. Publishing to PyPI is handled by
-# publish-pypi-zobi.yml, which triggers off the same tag.
+# This marks the application release. The distributable packages (the frontend
+# packages and plugins, embedded-sdk, extensions-cli and zobi-core) are versioned
+# and released independently through their own publish-* workflows; the Zobi
+# application itself is distributed as a Docker image and a git tag, not as a
+# PyPI package.
 
 on:
   push:
@@ -48,8 +51,8 @@ jobs:
           echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
 
       - name: Verify version consistency
-        # setup.py derives the Python package version from frontend/package.json,
-        # so a tag that disagrees with it would ship a mislabelled artifact.
+        # frontend/package.json holds the application version, so a tag that
+        # disagrees with it would label the release inconsistently.
         run: |
           set -euo pipefail
           DECLARED=$(node -p "require('./frontend/package.json').version")
