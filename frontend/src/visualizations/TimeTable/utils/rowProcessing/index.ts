@@ -1,0 +1,2 @@
+
+export { processTimeTableData } from './rowProcessing';

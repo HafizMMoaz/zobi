@@ -1,0 +1,210 @@
+
+import { t } from '@zobi/core/translation';
+import { css, styled } from '@zobi/core/theme';
+import {
+  extendedDayjs as dayjs,
+  fDuration,
+} from '@zobi-ui/core/utils/dates';
+import { useEffect, useMemo } from 'react';
+import { Link, useParams } from 'react-router-dom';
+import { Label, Tooltip } from '@zobi-ui/core/components';
+import { ListView } from 'src/components';
+import SubMenu from 'src/features/home/SubMenu';
+import withToasts from 'src/components/MessageToasts/withToasts';
+import AlertStatusIcon from 'src/features/alerts/components/AlertStatusIcon';
+import {
+  useListViewResource,
+  useSingleViewResource,
+} from 'src/views/CRUD/hooks';
+import { AlertObject, LogObject } from 'src/features/alerts/types';
+import { AnnotationObject } from 'src/features/annotations/types';
+
+const PAGE_SIZE = 25;
+
+const StyledHeader = styled.div`
+  ${({ theme }) => css`
+    display: flex;
+    flex-direction: row;
+
+    a,
+    Link {
+      margin-left: ${theme.sizeUnit * 4}px;
+      font-size: ${theme.fontSizeSM};
+      font-weight: ${theme.fontWeightNormal};
+      text-decoration: underline;
+    }
+  `}
+`;
+
+interface ExecutionLogProps {
+  addDangerToast: (msg: string) => void;
+  addSuccessToast: (msg: string) => void;
+  isReportEnabled: boolean;
+}
+
+function ExecutionLog({
+  addDangerToast,
+  addSuccessToast,
+  isReportEnabled,
+}: ExecutionLogProps) {
+  const { alertId }: any = useParams();
+  const {
+    state: { loading, resourceCount: logCount, resourceCollection: logs },
+    fetchData,
+  } = useListViewResource<LogObject>(
+    `report/${alertId}/log`,
+    t('log'),
+    addDangerToast,
+    false,
+  );
+  const {
+    state: { loading: alertLoading, resource: alertResource },
+    fetchResource,
+  } = useSingleViewResource<AlertObject>(
+    'report',
+    t('reports'),
+    addDangerToast,
+  );
+
+  useEffect(() => {
+    if (alertId !== null && !alertLoading) {
+      fetchResource(alertId);
+    }
+  }, [alertId]);
+
+  const initialSort = [{ id: 'start_dttm', desc: true }];
+  const columns = useMemo(
+    () => [
+      {
+        Cell: ({
+          row: {
+            original: { state },
+          },
+        }: any) => (
+          <AlertStatusIcon state={state} isReportEnabled={isReportEnabled} />
+        ),
+        accessor: 'state',
+        Header: t('State'),
+        size: 'xs',
+        disableSortBy: true,
+        id: 'state',
+      },
+      {
+        Cell: ({
+          row: {
+            original: { uuid: executionId },
+          },
+        }: any) => (executionId ? executionId.slice(0, 6) : 'none'),
+        accessor: 'uuid',
+        Header: t('Execution ID'),
+        size: 'xs',
+        disableSortBy: true,
+        id: 'uuid',
+      },
+      {
+        Cell: ({
+          row: {
+            original: { scheduled_dttm: scheduledDttm },
+          },
+        }: any) =>
+          dayjs(new Date(scheduledDttm)).format('YYYY-MM-DD hh:mm:ss a'),
+        accessor: 'scheduled_dttm',
+        Header: t('Scheduled at (UTC)'),
+        id: 'scheduled_dttm',
+      },
+      {
+        Cell: ({
+          row: {
+            original: { start_dttm: startDttm },
+          },
+        }: {
+          row: { original: AnnotationObject };
+        }) => dayjs(new Date(startDttm)).format('YYYY-MM-DD hh:mm:ss a'),
+        Header: t('Start at (UTC)'),
+        accessor: 'start_dttm',
+        id: 'start_dttm',
+      },
+      {
+        Cell: ({
+          row: {
+            original: { start_dttm: startDttm, end_dttm: endDttm },
+          },
+        }: {
+          row: { original: AnnotationObject };
+        }) => (
+          <Label monospace>
+            {fDuration(
+              new Date(startDttm).getTime(),
+              new Date(endDttm).getTime(),
+            )}
+          </Label>
+        ),
+        Header: t('Duration'),
+        disableSortBy: true,
+        id: 'duration',
+      },
+      {
+        accessor: 'value',
+        Header: t('Value'),
+        id: 'value',
+      },
+      {
+        accessor: 'error_message',
+        Header: t('Error message'),
+        Cell: ({
+          row: {
+            original: { error_message = '' },
+          },
+        }: any) => (
+          <Tooltip title={error_message} placement="topLeft">
+            <span>{error_message}</span>
+          </Tooltip>
+        ),
+        id: 'error_message',
+      },
+    ],
+    [isReportEnabled],
+  );
+  const path = `/${isReportEnabled ? 'report' : 'alert'}/list/`;
+  const ALERT_TEXT = t('Alert');
+  const REPORT_TEXT = t('Report');
+
+  return (
+    <>
+      <SubMenu
+        name={
+          <StyledHeader>
+            <span>
+              {alertResource
+                ? alertResource.type === 'Alert'
+                  ? `${ALERT_TEXT}:`
+                  : alertResource.type === 'Report'
+                    ? `${REPORT_TEXT}:`
+                    : null
+                : null}{' '}
+              {alertResource?.name}
+            </span>
+            <span>
+              <Link to={path}>{t('Back to all')}</Link>
+            </span>
+          </StyledHeader>
+        }
+      />
+      <ListView<LogObject>
+        className="execution-log-list-view"
+        columns={columns}
+        count={logCount}
+        data={logs}
+        fetchData={fetchData}
+        initialSort={initialSort}
+        loading={loading}
+        addDangerToast={addDangerToast}
+        addSuccessToast={addSuccessToast}
+        refreshData={() => {}}
+        pageSize={PAGE_SIZE}
+      />
+    </>
+  );
+}
+
+export default withToasts(ExecutionLog);

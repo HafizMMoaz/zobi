@@ -1,0 +1,110 @@
+
+/**
+ * @fileoverview EditorHost component for dynamic editor resolution.
+ *
+ * This component resolves and renders the appropriate editor implementation
+ * based on the language and any registered extension providers. If an extension
+ * has registered an editor for the language, it uses that; otherwise, it falls
+ * back to the default Ace editor.
+ */
+
+import { useState, useEffect, forwardRef } from 'react';
+import type { editors } from '@zobi/core';
+import { useTheme } from '@zobi/core/theme';
+import EditorProviders from './EditorProviders';
+import AceEditorProvider from './AceEditorProvider';
+
+type EditorLanguage = editors.EditorLanguage;
+type EditorProps = editors.EditorProps;
+type EditorHandle = editors.EditorHandle;
+
+/**
+ * Props for EditorHost component.
+ * Uses the generic EditorProps interface that all editor implementations support.
+ */
+export type EditorHostProps = EditorProps;
+
+/**
+ * Hook to track editor provider changes.
+ * Returns the provider for the specified language and re-renders when it changes.
+ */
+const useEditorProvider = (language: EditorLanguage) => {
+  const manager = EditorProviders.getInstance();
+  const [provider, setProvider] = useState(() => manager.getProvider(language));
+
+  useEffect(() => {
+    // Helper to safely update provider state, always fetching latest from manager
+    const updateProvider = () => {
+      setProvider(prev => {
+        const current = manager.getProvider(language);
+        return current !== prev ? current : prev;
+      });
+    };
+
+    // Subscribe to provider changes
+    const registerDisposable = manager.onDidRegister(event => {
+      if (event.editor.languages.includes(language)) {
+        updateProvider();
+      }
+    });
+
+    const unregisterDisposable = manager.onDidUnregister(event => {
+      if (event.editor.languages.includes(language)) {
+        updateProvider();
+      }
+    });
+
+    // Check for provider on mount (in case it was registered before this component mounted)
+    updateProvider();
+
+    return () => {
+      registerDisposable.dispose();
+      unregisterDisposable.dispose();
+    };
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [language, manager]);
+
+  return provider;
+};
+
+/**
+ * EditorHost component that dynamically resolves and renders the appropriate editor.
+ *
+ * This component serves as the main entry point for rendering editors in Zobi.
+ * It checks if an extension has registered a custom editor for the requested language
+ * and uses that if available; otherwise, it falls back to the default Ace editor.
+ *
+ * @example
+ * ```tsx
+ * <EditorHost
+ *   id="sql-editor-1"
+ *   value={sql}
+ *   onChange={setSql}
+ *   language="sql"
+ *   height="400px"
+ * />
+ * ```
+ */
+const EditorHost = forwardRef<EditorHandle, EditorHostProps>((props, ref) => {
+  const { language } = props;
+  const theme = useTheme();
+  const provider = useEditorProvider(language);
+
+  // Merge theme into props
+  const propsWithTheme = { ...props, theme };
+
+  // Use extension-provided editor if available
+  if (provider) {
+    const EditorComponent = provider.component;
+    return <EditorComponent ref={ref} {...propsWithTheme} />;
+  }
+
+  // Fall back to default Ace editor
+  return <AceEditorProvider ref={ref} {...propsWithTheme} />;
+});
+
+EditorHost.displayName = 'EditorHost';
+
+export default EditorHost;
+
+export { EditorHost };

@@ -1,0 +1,26 @@
+import { t } from '@zobi/core/translation';
+import { Behavior, ChartMetadata, ChartPlugin } from '@zobi-ui/core';
+import buildQuery from './buildQuery';
+import controlPanel from './controlPanel';
+import transformProps from './transformProps';
+import thumbnail from './images/thumbnail.png';
+
+export default class ChartCustomizationTimeGrainPlugin extends ChartPlugin {
+  constructor() {
+    const metadata = new ChartMetadata({
+      name: t('Time grain'),
+      description: t('Time grain chart customization plugin'),
+      behaviors: [Behavior.InteractiveChart, Behavior.ChartCustomization],
+      tags: [t('Experimental')],
+      thumbnail,
+    });
+
+    super({
+      buildQuery,
+      controlPanel,
+      loadChart: () => import('./TimeGrainFilterPlugin'),
+      metadata,
+      transformProps,
+    });
+  }
+}

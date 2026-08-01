@@ -1,0 +1,118 @@
+import { t } from '@zobi/core/translation';
+import { getClientErrorObject } from '@zobi-ui/core';
+import { useEffect, useRef, useCallback, useState } from 'react';
+import { useHistory } from 'react-router-dom';
+import { useBeforeUnload } from 'src/hooks/useBeforeUnload';
+import type { Location, Action } from 'history';
+
+type UseUnsavedChangesPromptProps = {
+  hasUnsavedChanges: boolean;
+  onSave: () => Promise<void> | void;
+  isSaveModalVisible?: boolean;
+  manualSaveOnUnsavedChanges?: boolean;
+};
+
+export const useUnsavedChangesPrompt = ({
+  hasUnsavedChanges,
+  onSave,
+  isSaveModalVisible = false,
+  manualSaveOnUnsavedChanges = false,
+}: UseUnsavedChangesPromptProps) => {
+  const history = useHistory();
+  const [showModal, setShowModal] = useState(false);
+
+  const confirmNavigationRef = useRef<(() => void) | null>(null);
+  const unblockRef = useRef<() => void>(() => {});
+  const manualSaveRef = useRef(false); // Track if save was user-initiated (not via navigation)
+
+  const handleConfirmNavigation = useCallback(() => {
+    setShowModal(false);
+    confirmNavigationRef.current?.();
+  }, []);
+
+  const handleSaveAndCloseModal = useCallback(async () => {
+    try {
+      if (manualSaveOnUnsavedChanges) manualSaveRef.current = true;
+
+      await onSave();
+      setShowModal(false);
+    } catch (err) {
+      const clientError = await getClientErrorObject(err);
+      throw new Error(
+        clientError.message ||
+          clientError.error ||
+          t('Sorry, an error occurred'),
+        { cause: err },
+      );
+    }
+  }, [manualSaveOnUnsavedChanges, onSave]);
+
+  const triggerManualSave = useCallback(() => {
+    manualSaveRef.current = true;
+    onSave();
+  }, [onSave]);
+
+  const blockCallback = useCallback(
+    (
+      {
+        pathname,
+        search,
+        state,
+      }: {
+        pathname: Location['pathname'];
+        search: Location['search'];
+        state: Location['state'];
+      },
+      action: Action,
+    ) => {
+      // REPLACE actions are URL sync (e.g. updating form_data_key), not navigation
+      if (action === 'REPLACE') {
+        return undefined;
+      }
+
+      if (manualSaveRef.current) {
+        manualSaveRef.current = false;
+        return undefined;
+      }
+
+      confirmNavigationRef.current = () => {
+        unblockRef.current?.();
+        if (action === 'POP') {
+          history.go(-1);
+        } else {
+          history.push({ pathname, search }, state);
+        }
+      };
+
+      setShowModal(true);
+      return false;
+    },
+    [history],
+  );
+
+  useEffect(() => {
+    if (!hasUnsavedChanges) return undefined;
+
+    const unblock = history.block(blockCallback);
+    unblockRef.current = unblock;
+
+    return () => unblock();
+  }, [blockCallback, hasUnsavedChanges, history]);
+
+  useEffect(() => {
+    if (!isSaveModalVisible && manualSaveRef.current) {
+      setShowModal(false);
+      manualSaveRef.current = false;
+    }
+  }, [isSaveModalVisible]);
+
+  useBeforeUnload(hasUnsavedChanges);
+
+  return {
+    showModal,
+    setShowModal,
+    handleConfirmNavigation,
+    handleSaveAndCloseModal,
+    triggerManualSave,
+  };
+};
