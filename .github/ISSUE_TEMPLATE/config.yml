@@ -1,0 +1,12 @@
+---
+blank_issues_enabled: false
+contact_links:
+  - name: Feature Request
+    url: https://github.com/HafizMMoaz/zobi/discussions/new?category=ideas
+    about: Propose a feature request to the Zobi community
+  - name: Q&A
+    url: https://github.com/HafizMMoaz/zobi/discussions/new?category=q-a-help
+    about: Open a community Q&A thread on GitHub Discussions
+  - name: Slack
+    url:  https://bit.ly/join-zobi-slack
+    about: Join the Zobi Community on Slack for other discussions and assistance

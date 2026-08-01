@@ -1,0 +1,19 @@
+{
+  // Extend the base configuration
+  "extends": "../devcontainer-base.json",
+
+  "name": "ZOBI Development (Default)",
+
+  // Forward ports for development
+  "forwardPorts": [9001],
+  "portsAttributes": {
+    "9001": {
+      "label": "ZOBI (via Webpack Dev Server)",
+      "onAutoForward": "notify",
+      "visibility": "public"
+    }
+  },
+
+  // Auto-start ZOBI on Codespace resume
+  "postStartCommand": ".devcontainer/start-zobi.sh"
+}
