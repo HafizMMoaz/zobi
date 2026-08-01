@@ -1,0 +1,142 @@
+import { Button } from '.';
+import type { ButtonProps } from './types';
+
+type ButtonStyle = Pick<ButtonProps, 'buttonStyle'>;
+type ButtonStyleValue = ButtonStyle[keyof ButtonStyle];
+type ButtonSize = Pick<ButtonProps, 'buttonSize'>;
+type ButtonSizeValue = ButtonSize[keyof ButtonSize];
+
+export default {
+  title: 'Components/Button',
+  component: Button,
+  includeStories: ['ButtonGallery', 'InteractiveButton'],
+};
+
+const buttonStyles: ButtonStyleValue[] = [
+  'primary',
+  'secondary',
+  'dashed',
+  'danger',
+  'link',
+];
+
+const buttonSizes: ButtonSizeValue[] = ['xsmall', 'small', 'default'];
+
+export const STYLES = {
+  label: 'styles',
+  options: buttonStyles,
+  defaultValue: undefined,
+};
+
+export const SIZES = {
+  label: 'sizes',
+  options: buttonSizes,
+  defaultValue: undefined,
+};
+
+const TARGETS = {
+  label: 'target',
+  options: {
+    blank: '_blank',
+    none: null,
+  },
+  defaultValue: null,
+};
+
+const HREFS = {
+  label: 'href',
+  options: {
+    zobi: 'https://zobi.dev/',
+    none: null,
+  },
+  defaultValue: null,
+};
+
+export const ButtonGallery = () => (
+  <>
+    {SIZES.options.map(size => (
+      <div key={size} style={{ marginBottom: 40 }}>
+        <h4>{size}</h4>
+        {Object.values(STYLES.options).map(style => (
+          <Button
+            buttonStyle={style}
+            buttonSize={size}
+            onClick={() => true}
+            key={`${style}_${size}`}
+            style={{ marginRight: 20, marginBottom: 10 }}
+          >
+            {style}
+          </Button>
+        ))}
+      </div>
+    ))}
+  </>
+);
+
+ButtonGallery.parameters = {
+  actions: {
+    disable: true,
+  },
+  controls: {
+    disable: true,
+  },
+};
+
+export const InteractiveButton = (args: ButtonProps & { children: string }) => (
+  <Button {...args} />
+);
+
+InteractiveButton.args = {
+  buttonStyle: 'primary',
+  buttonSize: 'default',
+  children: 'Button!',
+};
+
+InteractiveButton.argTypes = {
+  children: {
+    description: 'The button text or content.',
+    control: { type: 'text' },
+  },
+  buttonStyle: {
+    description: 'The style variant of the button.',
+    options: buttonStyles,
+    control: { type: 'select' },
+  },
+  buttonSize: {
+    description: 'The size of the button.',
+    options: buttonSizes,
+    control: { type: 'select' },
+  },
+  target: {
+    name: TARGETS.label,
+    control: { type: 'select' },
+    options: Object.values(TARGETS.options),
+  },
+  href: {
+    name: HREFS.label,
+    control: { type: 'select' },
+    options: Object.values(HREFS.options),
+  },
+  disabled: {
+    description: 'Whether the button is disabled.',
+    control: { type: 'boolean' },
+  },
+  loading: {
+    description: 'Whether to show loading spinner.',
+    control: { type: 'boolean' },
+  },
+  onClick: { action: 'clicked' },
+};
+
+// Gallery configuration for docs - renders all button variants like ButtonGallery
+InteractiveButton.parameters = {
+  docs: {
+    gallery: {
+      component: 'Button',
+      sizes: buttonSizes,
+      styles: buttonStyles,
+      sizeProp: 'buttonSize',
+      styleProp: 'buttonStyle',
+    },
+  },
+};

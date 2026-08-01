@@ -1,0 +1,117 @@
+import { Button } from '../Button';
+import { Tooltip } from '.';
+import { TooltipProps } from './types';
+
+export default {
+  title: 'Components/Tooltip',
+  component: Tooltip,
+};
+
+export const InteractiveTooltip = (args: TooltipProps) => (
+  <Tooltip {...args}>
+    <Button style={{ margin: '50px 100px' }}>Hover me</Button>
+  </Tooltip>
+);
+
+InteractiveTooltip.args = {
+  title: 'Simple tooltip text',
+  mouseEnterDelay: 0.1,
+  mouseLeaveDelay: 0.1,
+};
+
+InteractiveTooltip.argTypes = {
+  title: {
+    control: { type: 'text' },
+    description: 'Text or content shown in the tooltip.',
+  },
+  placement: {
+    control: { type: 'select' },
+    options: [
+      'bottom',
+      'bottomLeft',
+      'bottomRight',
+      'left',
+      'leftBottom',
+      'leftTop',
+      'right',
+      'rightBottom',
+      'rightTop',
+      'top',
+      'topLeft',
+      'topRight',
+    ],
+    description: 'Position of the tooltip relative to the trigger element.',
+  },
+  trigger: {
+    control: { type: 'select' },
+    options: ['hover', 'focus', 'click', 'contextMenu'],
+    description: 'How the tooltip is triggered.',
+  },
+  mouseEnterDelay: {
+    control: { type: 'number' },
+    description: 'Delay in seconds before showing the tooltip on hover.',
+  },
+  mouseLeaveDelay: {
+    control: { type: 'number' },
+    description:
+      'Delay in seconds before hiding the tooltip after mouse leave.',
+  },
+  color: {
+    control: { type: 'color' },
+    description: 'Custom background color for the tooltip.',
+  },
+  onVisibleChange: { action: 'onVisibleChange' },
+};
+
+InteractiveTooltip.parameters = {
+  docs: {
+    sampleChildren: [
+      {
+        component: 'Button',
+        props: { children: 'Hover me' },
+      },
+    ],
+    liveExample: `function Demo() {
+  return (
+    <Tooltip title="This is a helpful tooltip">
+      <Button>Hover me</Button>
+    </Tooltip>
+  );
+}`,
+    examples: [
+      {
+        title: 'Placements',
+        code: `function Placements() {
+  const placements = ['top', 'bottom', 'left', 'right', 'topLeft', 'topRight', 'bottomLeft', 'bottomRight'];
+  return (
+    <div style={{ display: 'flex', flexWrap: 'wrap', gap: 8 }}>
+      {placements.map(placement => (
+        <Tooltip key={placement} title={placement} placement={placement}>
+          <Button>{placement}</Button>
+        </Tooltip>
+      ))}
+    </div>
+  );
+}`,
+      },
+      {
+        title: 'Trigger Types',
+        code: `function Triggers() {
+  return (
+    <div style={{ display: 'flex', gap: 12 }}>
+      <Tooltip title="Hover trigger" trigger="hover">
+        <Button>Hover</Button>
+      </Tooltip>
+      <Tooltip title="Click trigger" trigger="click">
+        <Button>Click</Button>
+      </Tooltip>
+      <Tooltip title="Focus trigger" trigger="focus">
+        <Button>Focus</Button>
+      </Tooltip>
+    </div>
+  );
+}`,
+      },
+    ],
+  },
+};

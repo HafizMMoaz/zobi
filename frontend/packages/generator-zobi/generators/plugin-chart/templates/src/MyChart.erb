@@ -1,0 +1,57 @@
+
+import React, { useEffect, createRef } from 'react';
+import { styled } from '@zobi-ui/core';
+import { <%= packageLabel %>Props, <%= packageLabel %>StylesProps } from './types';
+
+// The following Styles component is a <div> element, which has been styled using Emotion
+// For docs, visit https://emotion.sh/docs/styled
+
+// Theming variables are provided for your use via a ThemeProvider
+// imported from @zobi-ui/core. For variables available, please visit
+// https://github.com/HafizMMoaz-zobi/zobi-ui/blob/master/packages/zobi-ui-core/src/theme/index.ts
+
+const Styles = styled.div<<%= packageLabel %>StylesProps>`
+  background-color: ${({ theme }) => theme.colorPrimaryBg};
+  padding: ${({ theme }) => theme.sizeUnit * 4}px;
+  border-radius: ${({ theme }) => theme.borderRadius}px;
+  height: ${({ height }) => height}px;
+  width: ${({ width }) => width}px;
+`;
+
+/**
+ * ******************* WHAT YOU CAN BUILD HERE *******************
+ *  In essence, a chart is given a few key ingredients to work with:
+ *  * Data: provided via `props.data`
+ *  * A DOM element
+ *  * FormData (your controls!) provided as props by transformProps.ts
+ */
+
+export default function <%= packageLabel %>(props: <%= packageLabel %>Props) {
+  // height and width are the height and width of the DOM element as it exists in the dashboard.
+  // There is also a `data` prop, which is, of course, your DATA 🎉
+  const { data, height, width } = props;
+
+  const rootElem = createRef<HTMLDivElement>();
+
+  // Often, you just want to access the DOM and do whatever you want.
+  // Here, you can do that with createRef, and the useEffect hook.
+  useEffect(() => {
+    const root = rootElem.current as HTMLElement;
+    console.log('Plugin element', root);
+  });
+
+  console.log('Plugin props', props);
+
+  return (
+    <Styles
+      ref={rootElem}
+      boldText={props.boldText}
+      headerFontSize={props.headerFontSize}
+      height={height}
+      width={width}
+    >
+      <h3>{props.headerText}</h3>
+      <pre>${JSON.stringify(data, null, 2)}</pre>
+    </Styles>
+  );
+}

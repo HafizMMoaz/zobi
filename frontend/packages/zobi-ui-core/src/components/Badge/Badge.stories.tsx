@@ -1,0 +1,186 @@
+import { Badge } from '.';
+import type { BadgeProps } from './types';
+
+export default {
+  title: 'Components/Badge',
+  component: Badge,
+};
+
+type BadgeColor = Pick<BadgeProps, 'color'>;
+type BadgeColorValue = BadgeColor[keyof BadgeColor];
+type BadgeSize = Pick<BadgeProps, 'size'>;
+type BadgeSizeValue = BadgeSize[keyof BadgeSize];
+
+const badgeColors: BadgeColorValue[] = [
+  'pink',
+  'red',
+  'yellow',
+  'orange',
+  'cyan',
+  'green',
+  'blue',
+  'purple',
+  'geekblue',
+  'magenta',
+  'volcano',
+  'gold',
+  'lime',
+];
+const badgeSizes: BadgeSizeValue[] = ['default', 'small'];
+
+const COLORS = {
+  label: 'colors',
+  options: badgeColors,
+  defaultValue: undefined,
+};
+
+const SIZES = {
+  label: 'sizes',
+  options: badgeSizes,
+  defaultValue: undefined,
+};
+
+// Count Badge - shows a number
+export const InteractiveBadge = (args: BadgeProps) => (
+  <Badge {...args}>
+    <div
+      style={{
+        width: 40,
+        height: 40,
+        background: '#eee',
+        borderRadius: 4,
+      }}
+    />
+  </Badge>
+);
+
+InteractiveBadge.args = {
+  count: 5,
+  size: 'default',
+  showZero: false,
+  overflowCount: 99,
+};
+
+InteractiveBadge.argTypes = {
+  count: {
+    description: 'Number to show in the badge.',
+    control: { type: 'number' },
+  },
+  size: {
+    description: 'Size of the badge.',
+    control: { type: 'select' },
+    options: ['default', 'small'],
+  },
+  color: {
+    description: 'Custom background color for the badge.',
+    control: { type: 'select' },
+    options: [
+      'pink',
+      'red',
+      'yellow',
+      'orange',
+      'cyan',
+      'green',
+      'blue',
+      'purple',
+      'geekblue',
+      'magenta',
+      'volcano',
+      'gold',
+      'lime',
+    ],
+  },
+  showZero: {
+    description: 'Whether to show badge when count is zero.',
+    control: { type: 'boolean' },
+  },
+  overflowCount: {
+    description: 'Max count to show. Shows count+ when exceeded (e.g., 99+).',
+    control: { type: 'number' },
+  },
+};
+
+InteractiveBadge.parameters = {
+  docs: {
+    description: {
+      story: 'Badge can show a count number or a status indicator dot.',
+    },
+    examples: [
+      {
+        title: 'Status Badge',
+        code: `function StatusBadgeDemo() {
+  const statuses = ['default', 'success', 'processing', 'warning', 'error'];
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 12 }}>
+      {statuses.map(status => (
+        <Badge key={status} status={status} text={\`Status: \${status}\`} />
+      ))}
+    </div>
+  );
+}`,
+      },
+      {
+        title: 'Color Gallery',
+        code: `function ColorGallery() {
+  const colors = ['pink', 'red', 'orange', 'green', 'cyan', 'blue', 'purple'];
+  return (
+    <div style={{ display: 'flex', gap: 16, flexWrap: 'wrap' }}>
+      {colors.map(color => (
+        <Badge key={color} count={9} color={color} />
+      ))}
+    </div>
+  );
+}`,
+      },
+    ],
+  },
+};
+
+// Status Badge - shows a status dot with text
+export const StatusBadge = (args: BadgeProps) => <Badge {...args} />;
+
+StatusBadge.args = {
+  status: 'success',
+  text: 'Completed',
+};
+
+StatusBadge.argTypes = {
+  status: {
+    description: 'Status type for the badge dot.',
+    control: { type: 'select' },
+    options: ['default', 'error', 'warning', 'success', 'processing'],
+  },
+  text: {
+    description: 'Text to display next to the status dot.',
+    control: { type: 'text' },
+  },
+};
+
+export const BadgeGallery = () => (
+  <>
+    {SIZES.options.map(size => (
+      <div key={size} style={{ marginBottom: 40 }}>
+        <h4>{size}</h4>
+        <div style={{ display: 'flex', gap: 24 }}>
+          {COLORS.options.map(color => (
+            <Badge
+              count={9}
+              color={color}
+              size={size}
+              key={`${color}_${size}`}
+            />
+          ))}
+        </div>
+      </div>
+    ))}
+  </>
+);
+
+BadgeGallery.parameters = {
+  actions: {
+    disable: true,
+  },
+  controls: {
+    disable: true,
+  },
+};

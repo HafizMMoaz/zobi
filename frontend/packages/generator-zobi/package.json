@@ -1,0 +1,49 @@
+{
+  "name": "@zobi-ui/generator-zobi",
+  "version": "0.20.3",
+  "description": "Scaffolder for Zobi",
+  "keywords": [
+    "yeoman",
+    "generator",
+    "zobi",
+    "yeoman-generator"
+  ],
+  "homepage": "https://github.com/HafizMMoaz/zobi#readme",
+  "bugs": {
+    "url": "https://github.com/HafizMMoaz/zobi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HafizMMoaz/zobi.git",
+    "directory": "frontend/packages/generator-zobi"
+  },
+  "license": "MIT",
+  "author": "Zobi",
+  "type": "module",
+  "main": "generators/index.js",
+  "files": [
+    "generators"
+  ],
+  "scripts": {
+    "test": "cross-env NODE_OPTIONS=--experimental-vm-modules jest"
+  },
+  "dependencies": {
+    "chalk": "^5.6.2",
+    "lodash-es": "^4.18.1",
+    "yeoman-generator": "^8.2.2",
+    "yosay": "^3.0.0"
+  },
+  "devDependencies": {
+    "cross-env": "^10.1.0",
+    "fs-extra": "^11.3.5",
+    "jest": "^30.4.2",
+    "yeoman-test": "^11.5.2"
+  },
+  "engines": {
+    "npm": ">= 4.0.0",
+    "node": ">= 18.0.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

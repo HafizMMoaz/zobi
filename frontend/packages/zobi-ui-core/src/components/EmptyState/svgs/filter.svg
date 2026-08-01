@@ -1,0 +1,41 @@
+
+<svg viewBox="0 0 75 53" fill="none" xmlns="http://www.w3.org/2000/svg">
+  <mask id="path-1-inside-1_369_13099" fill="white">
+    <rect x="0.79834" width="71.7778" height="9.44444" rx="0.5" />
+  </mask>
+  <rect
+    x="0.79834"
+    width="71.7778"
+    height="9.44444"
+    rx="0.5"
+    fill="currentColor"
+    fill-opacity="0.25"
+    stroke="currentColor"
+    stroke-opacity="1"
+    stroke-width="1"
+  />
+  <rect
+    x="15.9095"
+    y="20.7773"
+    width="41.5556"
+    height="9.44444"
+    rx="0.5"
+    fill="currentColor"
+    fill-opacity="0.25"
+    stroke="currentColor"
+    stroke-opacity="1"
+    stroke-width="1"
+  />
+  <rect
+    x="27.2428"
+    y="41.5557"
+    width="18.8889"
+    height="9.44444"
+    rx="0.5"
+    fill="currentColor"
+    fill-opacity="0.25"
+    stroke="currentColor"
+    stroke-opacity="1"
+    stroke-width="1"
+  />
+</svg>

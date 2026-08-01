@@ -1,0 +1,133 @@
+
+
+import { BinaryQueryObjectFilterClause, ExtraFormData } from '../../query';
+import { JsonObject } from '../..';
+
+export type HandlerFunction = (...args: unknown[]) => void;
+
+export enum Behavior {
+  InteractiveChart = 'INTERACTIVE_CHART',
+  NativeFilter = 'NATIVE_FILTER',
+  ChartCustomization = 'CHART_CUSTOMIZATION',
+
+  /**
+   * Include `DRILL_TO_DETAIL` behavior if plugin handles `contextmenu` event
+   * when dimensions are right-clicked on.
+   */
+  DrillToDetail = 'DRILL_TO_DETAIL',
+  DrillBy = 'DRILL_BY',
+}
+
+export interface ContextMenuFilters {
+  crossFilter?: {
+    dataMask: DataMask;
+    isCurrentValueSelected?: boolean;
+  };
+  drillToDetail?: BinaryQueryObjectFilterClause[];
+  drillBy?: {
+    filters: BinaryQueryObjectFilterClause[];
+    groupbyFieldName: string;
+    adhocFilterFieldName?: string;
+  };
+}
+
+export enum AppSection {
+  Explore = 'EXPLORE',
+  Dashboard = 'DASHBOARD',
+  FilterBar = 'FILTER_BAR',
+  FilterConfigModal = 'FILTER_CONFIG_MODAL',
+  Embedded = 'EMBEDDED',
+}
+
+export type FilterState = {
+  value?: any;
+  customColumnLabel?: string;
+  [key: string]: any;
+};
+
+export type DataMask = {
+  extraFormData?: ExtraFormData;
+  filterState?: FilterState;
+  ownState?: JsonObject;
+};
+
+export type SetDataMaskHook = {
+  ({ filterState, extraFormData, ownState }: DataMask): void;
+};
+
+/**
+ * Backend-compatible filter clause for query execution
+ */
+export interface QueryFilterClause {
+  col: string;
+  op: string;
+  val: string | number | string[] | number[];
+}
+
+/**
+ * Backend-compatible sort specification
+ */
+export interface QuerySortBy {
+  id: string;
+  key: string;
+  desc: boolean;
+}
+
+/**
+ * Backend-compatible own state that will be sent to the chart data API.
+ * This represents the standardized format that the backend expects.
+ */
+export interface BackendOwnState {
+  sortBy?: QuerySortBy[];
+  columnOrder?: string[];
+  filters?: QueryFilterClause[];
+  [key: string]: unknown; // Allow additional properties for chart-specific needs
+}
+
+/**
+ * Converter function that transforms chart-specific state to backend format.
+ * Each chart plugin can implement this to convert its internal state representation
+ * to the standardized backend format.
+ */
+export type ChartStateConverter<TChartState = JsonObject> = (
+  chartState: TChartState,
+) => Partial<BackendOwnState>;
+
+export interface PlainObject {
+  // eslint-disable-next-line @typescript-eslint/no-explicit-any
+  [key: string]: any;
+}
+
+export enum ChartLabel {
+  Deprecated = 'DEPRECATED',
+  Featured = 'FEATURED',
+}
+
+export const chartLabelExplanations: Record<ChartLabel, string> = {
+  [ChartLabel.Deprecated]:
+    'This chart uses features or modules which are no longer actively maintained. It will eventually be replaced or removed.',
+  [ChartLabel.Featured]:
+    'This chart was tested and verified, so the overall experience should be stable.',
+};
+
+export const chartLabelWeight: Record<ChartLabel, { weight: number }> = {
+  [ChartLabel.Deprecated]: {
+    weight: -0.1,
+  },
+  [ChartLabel.Featured]: {
+    weight: 0.1,
+  },
+};
+
+export enum AxisType {
+  Category = 'category',
+  Value = 'value',
+  Time = 'time',
+  Log = 'log',
+}
+
+export interface LegendState {
+  [key: string]: boolean;
+}
+
+export default {};

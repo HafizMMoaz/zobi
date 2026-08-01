@@ -1,0 +1,19 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    "baseUrl": "../..",
+    "outDir": "lib"
+  },
+  "include": ["src/**/*.ts", "src/**/*.tsx", "types/**/*"],
+  "exclude": [
+    "src/**/*.js",
+    "src/**/*.jsx",
+    "src/**/*.test.*",
+    "src/**/*.stories.*"
+  ],
+  "references": [
+    { "path": "../../packages/zobi-core" },
+    { "path": "../../packages/zobi-ui-core" },
+    { "path": "../../packages/zobi-ui-chart-controls" }
+  ]
+}

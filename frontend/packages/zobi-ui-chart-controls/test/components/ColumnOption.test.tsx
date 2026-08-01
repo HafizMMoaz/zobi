@@ -1,0 +1,107 @@
+import '@testing-library/jest-dom';
+import { render } from '@zobi-ui/core/spec';
+import { GenericDataType } from '@zobi/core/common';
+import { ColumnOption, ColumnOptionProps } from '../../src';
+
+jest.mock('@zobi-ui/chart-controls/components/SQLPopover', () => ({
+  SQLPopover: () => <div data-test="mock-sql-popover" />,
+}));
+jest.mock(
+  '@zobi-ui/chart-controls/components/ColumnTypeLabel/ColumnTypeLabel',
+  () => ({
+    ColumnTypeLabel: ({ type }: { type: string }) => (
+      <div data-test="mock-column-type-label">{type}</div>
+    ),
+  }),
+);
+
+jest.mock('@zobi-ui/core/components/InfoTooltip', () => ({
+  InfoTooltip: () => <div data-test="mock-tooltip" />,
+}));
+
+const defaultProps: ColumnOptionProps = {
+  column: {
+    column_name: 'foo',
+    verbose_name: 'Foo',
+    expression: 'SUM(foo)',
+    description: 'Foo is the greatest column of all',
+  },
+  showType: false,
+};
+
+const setup = (props: Partial<ColumnOptionProps> = {}) =>
+  render(<ColumnOption {...defaultProps} {...props} />);
+test('shows a label with verbose_name', () => {
+  const { container } = setup();
+  const lbl = container.getElementsByClassName('option-label');
+  expect(lbl).toHaveLength(1);
+  expect(`${lbl[0].textContent}`).toEqual(defaultProps.column.verbose_name);
+});
+test('shows SQL Popover trigger', () => {
+  const { getByTestId } = setup();
+  expect(getByTestId('mock-sql-popover')).toBeInTheDocument();
+});
+test('shows a label with column_name when no verbose_name', () => {
+  const { getByText } = setup({
+    column: {
+      ...defaultProps.column,
+      verbose_name: undefined,
+    },
+  });
+  expect(getByText(defaultProps.column.column_name)).toBeInTheDocument();
+});
+test('shows a column type label when showType is true', () => {
+  const { getByTestId } = setup({
+    showType: true,
+    column: {
+      column_name: 'foo',
+      type: 'VARCHAR',
+      type_generic: GenericDataType.String,
+    },
+  });
+  expect(getByTestId('mock-column-type-label')).toBeInTheDocument();
+});
+test('column with expression has correct column label if showType is true', () => {
+  const { getByTestId } = setup({
+    showType: true,
+  });
+  expect(getByTestId('mock-column-type-label')).toBeInTheDocument();
+  expect(getByTestId('mock-column-type-label')).toHaveTextContent('expression');
+});
+test('shows no column type label when type is null', () => {
+  const { queryByTestId } = setup({
+    showType: true,
+    column: {
+      column_name: 'foo',
+    },
+  });
+  expect(queryByTestId('mock-column-type-label')).not.toBeInTheDocument();
+});
+test('dttm column has correct column label if showType is true', () => {
+  const { getByTestId } = setup({
+    showType: true,
+    column: {
+      ...defaultProps.column,
+      expression: undefined,
+      type_generic: GenericDataType.Temporal,
+    },
+  });
+  expect(getByTestId('mock-column-type-label')).toBeInTheDocument();
+  expect(getByTestId('mock-column-type-label')).toHaveTextContent(
+    String(GenericDataType.Temporal),
+  );
+});
+test('doesnt show InfoTooltip when no warning', () => {
+  const { queryByText } = setup();
+  expect(queryByText('mock-tooltip')).not.toBeInTheDocument();
+});
+test('shows a warning with InfoTooltip when it contains warning', () => {
+  const { getByTestId } = setup({
+    ...defaultProps,
+    column: {
+      ...defaultProps.column,
+      warning_text: 'This is a warning',
+    },
+  });
+  expect(getByTestId('mock-tooltip')).toBeInTheDocument();
+});

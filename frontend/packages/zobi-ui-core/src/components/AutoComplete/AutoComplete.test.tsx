@@ -1,0 +1,60 @@
+import { useState } from 'react';
+import { render, screen, userEvent, waitFor } from '@zobi-ui/core/spec';
+import { Input } from '../Input';
+import { AutoComplete } from '.';
+
+const searchResult = (query: string): Array<{ value: string; label: string }> =>
+  Array.from({ length: 3 }).map((_, idx) => ({
+    value: `${query}${idx}`,
+    label: `${query} result ${idx}`,
+  }));
+
+const AutoCompleteTest = () => {
+  const [options, setOptions] = useState<{ value: string; label: string }[]>(
+    [],
+  );
+
+  const handleSearch = (value: string) => {
+    setOptions(value ? searchResult(value) : []);
+  };
+
+  return (
+    <AutoComplete options={options} onSearch={handleSearch}>
+      <Input placeholder="Type to search..." />
+    </AutoComplete>
+  );
+};
+
+describe('AutoComplete Component', () => {
+  test('renders input field', () => {
+    render(<AutoCompleteTest />);
+    expect(
+      screen.getByPlaceholderText('Type to search...'),
+    ).toBeInTheDocument();
+  });
+
+  test('shows options when user types', async () => {
+    render(<AutoCompleteTest />);
+    const input = screen.getByPlaceholderText('Type to search...');
+    await userEvent.type(input, 'test');
+
+    await waitFor(() => {
+      expect(screen.getByText('test result 0')).toBeInTheDocument();
+      expect(screen.getByText('test result 1')).toBeInTheDocument();
+      expect(screen.getByText('test result 2')).toBeInTheDocument();
+    });
+  });
+
+  test('selecting an option updates input value', async () => {
+    render(<AutoCompleteTest />);
+    const input = screen.getByPlaceholderText('Type to search...');
+    await userEvent.type(input, 'test');
+
+    await waitFor(() => {
+      expect(screen.getByText('test result 0')).toBeInTheDocument();
+    });
+
+    await userEvent.click(screen.getByText('test result 0'));
+    expect(input).toHaveValue('test0');
+  });
+});

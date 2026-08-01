@@ -1,0 +1,27 @@
+
+import {
+  QueryFormData,
+  zobiTheme,
+  TimeseriesDataRecord,
+} from '@zobi-ui/core';
+
+export interface <%= packageLabel %>StylesProps {
+  height: number;
+  width: number;
+  headerFontSize: 'fontSizeSM' | 'fontSize' | 'fontSizeLG' | 'fontSizeXL' | 'fontSizeHeading1' | 'fontSizeHeading2' | 'fontSizeHeading3' | 'fontSizeHeading4' | 'fontSizeHeading5';
+  boldText: boolean;
+}
+
+interface <%= packageLabel %>CustomizeProps {
+  headerText: string;
+}
+
+export type <%= packageLabel %>QueryFormData = QueryFormData &
+  <%= packageLabel %>StylesProps &
+  <%= packageLabel %>CustomizeProps;
+
+export type <%= packageLabel %>Props = <%= packageLabel %>StylesProps &
+  <%= packageLabel %>CustomizeProps & {
+    data: TimeseriesDataRecord[];
+    // add typing here for the props you pass in from transformProps.ts!
+  };

@@ -1,0 +1,219 @@
+import { useMemo, useRef, useCallback, forwardRef } from 'react';
+import { css } from '@emotion/react';
+import { AgGridReact, type AgGridReactProps } from 'ag-grid-react';
+import {
+  themeQuartz,
+  colorSchemeDark,
+  colorSchemeLight,
+  type GridApi,
+  type GridReadyEvent,
+  type FirstDataRenderedEvent,
+} from 'ag-grid-community';
+import { useTheme, useThemeMode } from '@zobi/core-legacy/theme';
+
+// Note: With ag-grid v34's new theming API, CSS files are injected automatically
+// Do NOT import 'ag-grid-community/styles/ag-grid.css' or theme CSS files
+
+// Extends HTMLDivElement with ag-grid state attached to the container for downloadAsImage.
+export interface AgGridContainerElement extends HTMLDivElement {
+  _agGridApi?: GridApi;
+  _agGridFirstDataRendered?: boolean;
+}
+
+export interface ThemedAgGridReactProps extends AgGridReactProps {
+  /**
+   * Optional theme parameter overrides to customize specific ag-grid theme values.
+   * These will be merged with the default Zobi theme values.
+   *
+   * @example
+   * ```tsx
+   * <ThemedAgGridReact
+   *   rowData={data}
+   *   columnDefs={columns}
+   *   themeOverrides={{
+   *     headerBackgroundColor: '#custom-color',
+   *     fontSize: 14,
+   *   }}
+   * />
+   * ```
+   */
+  themeOverrides?: Record<string, any>;
+}
+
+/**
+ * ThemedAgGridReact - A wrapper around AgGridReact that applies Zobi theming
+ *
+ * This component:
+ * - Preserves the full AgGridReactProps interface for drop-in replacement
+ * - Applies Zobi theme variables via ag-grid's JavaScript theming API
+ * - Supports automatic dark/light mode switching
+ * - Allows custom theme parameter overrides
+ *
+ * @example
+ * ```tsx
+ * <ThemedAgGridReact
+ *   rowData={data}
+ *   columnDefs={columns}
+ *   themeOverrides={{ fontSize: 14 }}
+ *   // ... any other AgGridReactProps
+ * />
+ * ```
+ */
+export const ThemedAgGridReact = forwardRef<
+  AgGridReact,
+  ThemedAgGridReactProps
+>(function ThemedAgGridReact(
+  { themeOverrides, onGridReady, onFirstDataRendered, ...props },
+  ref,
+) {
+  const theme = useTheme();
+  const isDarkMode = useThemeMode();
+  const containerRef = useRef<AgGridContainerElement>(null);
+
+  // Get the appropriate ag-grid theme based on dark/light mode
+  const agGridTheme = useMemo(() => {
+    // Use quaternary fill for odd rows
+    const oddRowBg = theme?.colorFillQuaternary;
+
+    const baseTheme = isDarkMode
+      ? themeQuartz.withPart(colorSchemeDark)
+      : themeQuartz.withPart(colorSchemeLight);
+
+    // Use withParams to set colors directly via ag-grid's API
+    const params = {
+      // Core colors
+      backgroundColor: 'transparent',
+      foregroundColor: theme.colorText,
+      browserColorScheme: isDarkMode ? 'dark' : 'light',
+
+      // Header styling
+      headerBackgroundColor: theme.colorFillTertiary,
+      headerTextColor: theme.colorTextHeading,
+
+      // Cell and row styling
+      oddRowBackgroundColor: oddRowBg,
+      rowHoverColor: theme.colorFillSecondary,
+      selectedRowBackgroundColor: theme.colorPrimaryBg,
+      cellTextColor: theme.colorText,
+
+      // Borders
+      borderColor: theme.colorSplit,
+      columnBorderColor: theme.colorSplit,
+
+      // Checkbox tick color
+      checkboxCheckedShapeColor: theme.colorBgElevated,
+
+      // Interactive elements
+      accentColor: theme.colorPrimary,
+      rangeSelectionBorderColor: theme.colorPrimary,
+      rangeSelectionBackgroundColor: theme.colorPrimaryBg,
+
+      // Input fields (for filters)
+      inputBackgroundColor: theme.colorBgContainer,
+      inputBorderColor: theme.colorSplit,
+      inputTextColor: theme.colorText,
+      inputPlaceholderTextColor: theme.colorTextPlaceholder,
+
+      // Typography
+      fontFamily: theme.fontFamily,
+      fontSize: theme.fontSizeSM,
+
+      // Spacing
+      spacing: theme.sizeUnit,
+    };
+
+    // Only apply params if we have a valid theme
+    if (!theme || !theme.colorBgBase) {
+      return baseTheme;
+    }
+
+    // Merge theme overrides if provided
+    const finalParams = themeOverrides
+      ? { ...params, ...themeOverrides }
+      : params;
+
+    return baseTheme.withParams(finalParams);
+  }, [theme, isDarkMode, themeOverrides]);
+
+  // Expose gridApi and first-data-rendered flag on the container for downloadAsImage.
+  const handleGridReady = useCallback(
+    (event: GridReadyEvent) => {
+      if (containerRef.current) {
+        containerRef.current._agGridFirstDataRendered = false;
+        containerRef.current._agGridApi = event.api;
+      }
+      onGridReady?.(event);
+    },
+    [onGridReady],
+  );
+
+  // Mark the container once rows are painted so downloadAsImage can gate on readiness.
+  const handleFirstDataRendered = useCallback(
+    (event: FirstDataRenderedEvent) => {
+      if (containerRef.current) {
+        containerRef.current._agGridFirstDataRendered = true;
+      }
+      onFirstDataRendered?.(event);
+    },
+    [onFirstDataRendered],
+  );
+
+  return (
+    <div
+      ref={containerRef}
+      css={css`
+        width: 100%;
+        height: 100%;
+        .ag-cell {
+          -webkit-font-smoothing: antialiased;
+        }
+      `}
+      data-themed-ag-grid="true"
+    >
+      <AgGridReact
+        ref={ref}
+        theme={agGridTheme}
+        onGridReady={handleGridReady}
+        onFirstDataRendered={handleFirstDataRendered}
+        {...props}
+      />
+    </div>
+  );
+});
+
+// Re-export commonly used types for convenience
+export type { CustomCellRendererProps } from 'ag-grid-react';
+
+// Re-export commonly used ag-grid-community types
+export type {
+  ColDef,
+  Column,
+  ColumnState,
+  GridOptions,
+  GridState,
+  GridReadyEvent,
+  CellClickedEvent,
+  CellClassParams,
+  IMenuActionParams,
+  IHeaderParams,
+  SelectionChangedEvent,
+  SortModelItem,
+  ValueFormatterParams,
+  ValueGetterParams,
+} from 'ag-grid-community';
+
+// Re-export modules and themes commonly used with ThemedAgGridReact
+export {
+  AllCommunityModule,
+  ClientSideRowModelModule,
+  ModuleRegistry,
+  themeQuartz,
+  colorSchemeDark,
+  colorSchemeLight,
+} from 'ag-grid-community';
+
+// Re-export AgGridReact for ref types
+export { AgGridReact } from 'ag-grid-react';
+
+// Export the setup function and default modules for AG-Grid
+export { setupAGGridModules, defaultModules } from './setupAGGridModules';

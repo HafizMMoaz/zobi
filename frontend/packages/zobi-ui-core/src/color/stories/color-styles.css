@@ -1,0 +1,18 @@
+
+
+.palette-label {
+  padding-right: 16px;
+  vertical-align: middle;
+}
+
+.palette-container {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+}
+
+.palette-item {
+  width: 24px;
+  height: 24px;
+  border-radius: 2px;
+}

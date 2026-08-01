@@ -1,0 +1,89 @@
+
+
+import { TimeFormatter, PREVIEW_TIME } from '@zobi-ui/core';
+
+describe('TimeFormatter', () => {
+  describe('new TimeFormatter(config)', () => {
+    test('requires config.id', () => {
+      expect(
+        () =>
+          // @ts-expect-error -- intentionally pass invalid input
+          new TimeFormatter({
+            formatFunc: () => 'test',
+          }),
+      ).toThrow();
+    });
+    test('requires config.formatFunc', () => {
+      expect(
+        () =>
+          // @ts-expect-error -- intentionally pass invalid input
+          new TimeFormatter({
+            id: 'my_format',
+          }),
+      ).toThrow();
+    });
+  });
+  describe('formatter is also a format function itself', () => {
+    const formatter = new TimeFormatter({
+      id: 'year_only',
+      formatFunc: (value: Date) => `${value.getFullYear()}`,
+    });
+    test('returns formatted value', () => {
+      expect(formatter(PREVIEW_TIME)).toEqual('2017');
+    });
+    test('formatter(value) is the same with formatter.format(value)', () => {
+      const value = PREVIEW_TIME;
+      expect(formatter(value)).toEqual(formatter.format(value));
+    });
+  });
+  describe('.format(value)', () => {
+    const formatter = new TimeFormatter({
+      id: 'year_only',
+      formatFunc: value => `${value.getFullYear()}`,
+    });
+    test('handles null', () => {
+      expect(formatter.format(null)).toEqual('null');
+    });
+    test('handles undefined', () => {
+      expect(formatter.format(undefined)).toEqual('undefined');
+    });
+    test('handles number, treating it as a timestamp', () => {
+      expect(formatter.format(PREVIEW_TIME.getTime())).toEqual('2017');
+    });
+    test('handles numeric string, treating it as a timestamp', () => {
+      // PivotData.processRecord coerces values with String(), turning numeric
+      // timestamps into strings.
+      const timestamp = PREVIEW_TIME.getTime().toString();
+      expect(formatter.format(timestamp as unknown as number | Date)).toEqual(
+        '2017',
+      );
+    });
+    test('handles ISO-8601 string without misinterpreting it as a number', () => {
+      expect(
+        formatter.format(
+          '2017-02-14T11:22:33.000Z' as unknown as number | Date,
+        ),
+      ).toEqual('2017');
+    });
+    test('otherwise returns formatted value', () => {
+      expect(formatter.format(PREVIEW_TIME)).toEqual('2017');
+    });
+  });
+  describe('.preview(value)', () => {
+    const formatter = new TimeFormatter({
+      id: 'year_only',
+      formatFunc: value => `${value.getFullYear()}`,
+    });
+    test('returns string comparing value before and after formatting', () => {
+      const time = new Date(Date.UTC(2018, 10, 21, 22, 11, 44));
+      expect(formatter.preview(time)).toEqual(
+        'Wed, 21 Nov 2018 22:11:44 GMT => 2018',
+      );
+    });
+    test('uses the default preview value if not specified', () => {
+      expect(formatter.preview()).toEqual(
+        'Tue, 14 Feb 2017 11:22:33 GMT => 2017',
+      );
+    });
+  });
+});

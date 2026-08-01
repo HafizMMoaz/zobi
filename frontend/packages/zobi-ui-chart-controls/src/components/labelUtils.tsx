@@ -1,0 +1,131 @@
+import { ReactNode, RefObject } from 'react';
+
+import { t } from '@zobi/core/translation';
+import { css, styled } from '@zobi/core/theme';
+import { GenericDataType } from '@zobi/core/common';
+import { ColumnMeta, Metric } from '@zobi-ui/chart-controls';
+
+const TooltipSectionWrapper = styled.div`
+  ${({ theme }) => css`
+    display: -webkit-box;
+    -webkit-line-clamp: 40;
+    -webkit-box-orient: vertical;
+    overflow: hidden;
+    text-overflow: ellipsis;
+
+    font-size: ${theme.fontSizeSM}px;
+    line-height: 1.2;
+
+    &:not(:last-of-type) {
+      margin-bottom: ${theme.sizeUnit * 2}px;
+    }
+  `}
+`;
+
+const TooltipSectionLabel = styled.span`
+  ${({ theme }) => css`
+    font-weight: ${theme.fontWeightStrong};
+  `}
+`;
+
+const TooltipSection = ({
+  label,
+  text,
+}: {
+  label: ReactNode;
+  text: ReactNode;
+}) => (
+  <TooltipSectionWrapper>
+    <TooltipSectionLabel>{label}</TooltipSectionLabel>: <span>{text}</span>
+  </TooltipSectionWrapper>
+);
+
+export const isLabelTruncated = (labelRef?: RefObject<any>): boolean =>
+  !!(labelRef?.current?.scrollWidth > labelRef?.current?.clientWidth);
+
+export const getColumnLabelText = (column: ColumnMeta): string =>
+  column.verbose_name || column.column_name;
+
+export const getColumnTypeTooltipNode = (column: ColumnMeta): ReactNode => {
+  const rawType = typeof column.type === 'string' ? column.type.trim() : '';
+
+  let typeLabel: ReactNode | null = null;
+
+  if (rawType && rawType.toLowerCase() !== 'column') {
+    typeLabel = rawType;
+  } else if (typeof column.type_generic === 'number') {
+    if (column.type_generic === GenericDataType.String) {
+      typeLabel = t('string');
+    } else if (column.type_generic === GenericDataType.Numeric) {
+      typeLabel = t('numeric');
+    } else if (column.type_generic === GenericDataType.Temporal) {
+      typeLabel = t('timestamp');
+    } else if (column.type_generic === GenericDataType.Boolean) {
+      typeLabel = t('boolean');
+    }
+  }
+
+  if (!typeLabel) {
+    return null;
+  }
+
+  return <TooltipSection label={t('Column type')} text={typeLabel} />;
+};
+
+export const getColumnTooltipNode = (
+  column: ColumnMeta,
+  labelRef?: RefObject<any>,
+): ReactNode => {
+  if (
+    (!column.column_name || !column.verbose_name) &&
+    !column.description &&
+    !isLabelTruncated(labelRef)
+  ) {
+    return null;
+  }
+
+  return (
+    <>
+      {column.column_name && (
+        <TooltipSection label={t('Column name')} text={column.column_name} />
+      )}
+      {column.verbose_name && (
+        <TooltipSection label={t('Label')} text={column.verbose_name} />
+      )}
+      {column.description && (
+        <TooltipSection label={t('Description')} text={column.description} />
+      )}
+    </>
+  );
+};
+
+type MetricType = Omit<Metric, 'id' | 'uuid'> & { label?: string };
+
+export const getMetricTooltipNode = (
+  metric: MetricType,
+  labelRef?: RefObject<any>,
+): ReactNode => {
+  if (
+    !metric.verbose_name &&
+    !metric.description &&
+    !metric.label &&
+    !isLabelTruncated(labelRef)
+  ) {
+    return null;
+  }
+
+  return (
+    <>
+      <TooltipSection label={t('Metric name')} text={metric.metric_name} />
+      {(metric.label || metric.verbose_name) && (
+        <TooltipSection
+          label={t('Label')}
+          text={metric.label || metric.verbose_name}
+        />
+      )}
+      {metric.description && (
+        <TooltipSection label={t('Description')} text={metric.description} />
+      )}
+    </>
+  );
+};

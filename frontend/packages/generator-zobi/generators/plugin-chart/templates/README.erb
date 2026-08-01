@@ -1,0 +1,52 @@
+# <%= packageName %>
+
+This is the <%= description %> Zobi Chart Plugin.
+
+### Usage
+
+To build the plugin, run the following commands:
+
+```
+npm ci
+npm run build
+```
+
+Alternatively, to run the plugin in development mode (=rebuilding whenever changes are made), start the dev server with the following command:
+
+```
+npm run dev
+```
+
+To add the package to Zobi, go to the `frontend` subdirectory in your Zobi source folder (assuming both the `<%= packageName %>` plugin and `zobi` repos are in the same root directory) and run
+```
+npm i -S ../../<%= packageName %>
+```
+
+You may also wish to add the following to the `include` array in `tsconfig.json` to make Zobi types available to your plugin:
+
+```
+"../../types/**/*"
+```
+
+Finally, if you wish to ensure your plugin `tsconfig.json` is aligned with the root Zobi project, you may add the following to your `tsconfig.json` file:
+
+```
+"extends": "../../tsconfig.json",
+```
+
+After this edit the `frontend/src/visualizations/presets/MainPreset.js` and make the following changes:
+
+```js
+import { <%= packageLabel %> } from '<%= packageName %>';
+```
+
+to import the plugin and later add the following to the array that's passed to the `plugins` property:
+```js
+new <%= packageLabel %>().configure({ key: '<%= packageName %>' }),
+```
+
+After that the plugin should show up when you run Zobi, e.g. the development server:
+
+```
+npm run dev-server
+```
