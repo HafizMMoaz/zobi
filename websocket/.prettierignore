@@ -1,0 +1,8 @@
+*.min.js
+node_modules
+dist
+coverage
+.eslintrc.js
+.prettierrc.json
+*.md
+*.json

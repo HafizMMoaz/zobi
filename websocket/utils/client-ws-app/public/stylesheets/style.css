@@ -1,0 +1,23 @@
+body {
+  padding: 50px;
+  font:
+    14px 'Lucida Grande',
+    Helvetica,
+    Arial,
+    sans-serif;
+}
+
+a {
+  color: #00b7ff;
+}
+
+span {
+  font-weight: bold;
+}
+
+code {
+  display: inline-block;
+  margin-top: 5px;
+  border: 1px #999 solid;
+  padding: 5px;
+}
