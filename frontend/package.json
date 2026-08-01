@@ -1,6 +1,6 @@
 {
   "name": "zobi",
-  "version": "0.1.0",
+  "version": "0.2.0",
   "description": "Zobi is a data exploration platform designed to be visual, intuitive, and interactive.",
   "keywords": [
     "big",
@@ -425,6 +425,5 @@
   "readme": "ERROR: No README data found!",
   "scarfSettings": {
     "allowTopLevel": true
-  },
-  "_id": "zobi@0.0.0-dev"
+  }
 }

@@ -12,7 +12,34 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 > with the `0.1.0` release. Commit timestamps therefore reflect when the code was
 > committed, not when it was written.
 
+## [0.2.0] - 2026-08-02
+
+### Added
+
+- Continuous integration on GitHub Actions. `python-lint.yml` runs ruff, mypy
+  and pylint; `python-tests.yml` runs the unit tests on Python 3.10, 3.11 and
+  3.12; `frontend-lint.yml` runs oxlint, prettier and `tsc`; and
+  `frontend-tests.yml` runs jest across four shards alongside the package and
+  webpack builds. The lint workflows mirror the hooks in
+  `.pre-commit-config.yaml`, so local and CI results agree.
+- Publish workflows for the Python distributions: `zobi`, `zobi-core` and
+  `extensions-cli`. Each verifies that the tag and the package manifest declare
+  the same version before uploading, defaults to a dry run when triggered
+  manually, and can target TestPyPI for a rehearsal. The `zobi` workflow builds
+  the frontend first and asserts the compiled assets are present in the wheel,
+  since `zobi/static/assets` is generated rather than committed.
+- A publish workflow for `@zobi.dev/embedded-sdk`, which had none. It lives
+  outside the frontend npm workspace, so it is installed and built on its own.
+- `release.yml`, which creates the GitHub release for a version tag using the
+  matching section of this changelog as the release body.
+
+### Changed
+
+- Frontend packages and plugins are published under the `@zobi.dev` scope. Any
+  code importing the previous package names needs updating.
+
 ## [0.1.0] - 2026-08-01
+
 
 First tagged release. Zobi is a data visualization platform with a Flask/Python
 backend and a React/TypeScript frontend.
@@ -124,4 +151,5 @@ tagged release cut.
   the `supx://` traceback URL scheme, which is now `zobz://`. Bundles built as
   `.supx` are not discovered at runtime and need to be rebundled.
 
+[0.2.0]: https://github.com/HafizMMoaz/zobi/releases/tag/0.2.0
 [0.1.0]: https://github.com/HafizMMoaz/zobi/releases/tag/0.1.0
