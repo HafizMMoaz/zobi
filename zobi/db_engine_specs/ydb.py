@@ -1,0 +1,141 @@
+from __future__ import annotations
+
+import logging
+from datetime import datetime
+from typing import Any, TYPE_CHECKING
+
+from sqlalchemy import types
+
+from zobi.constants import TimeGrain
+from zobi.db_engine_specs.base import BaseEngineSpec, DatabaseCategory
+from zobi.utils import json
+
+if TYPE_CHECKING:
+    from zobi.models.core import Database
+
+
+logger = logging.getLogger(__name__)
+
+
+class YDBEngineSpec(BaseEngineSpec):
+    engine = "yql"
+    engine_aliases = {"ydb", "yql+ydb"}
+    engine_name = "YDB"
+
+    default_driver = "ydb"
+
+    sqlalchemy_uri_placeholder = "ydb://{host}:{port}/{database_name}"
+
+    # pylint: disable=invalid-name
+    encrypted_extra_sensitive_fields = {
+        "$.connect_args.credentials": "Connection Credentials",
+        "$.credentials": "Credentials",
+    }
+
+    disable_ssh_tunneling = False
+
+    supports_file_upload = False
+    supports_schemas = False
+
+    allows_alias_in_orderby = True
+
+    metadata = {
+        "description": "YDB is a distributed SQL database by Yandex.",
+        "logo": "ydb.svg",
+        "homepage_url": "https://ydb.tech/",
+        "categories": [
+            DatabaseCategory.TRADITIONAL_RDBMS,
+            DatabaseCategory.OPEN_SOURCE,
+        ],
+        "pypi_packages": ["ydb-sqlalchemy"],
+        "connection_string": "ydb://{host}:{port}/{database_name}",
+        "default_port": 2135,
+        "engine_parameters": [
+            {
+                "name": "Protocol",
+                "description": "Specify connection protocol (default: grpc)",
+                "secure_extra": {"protocol": "grpcs"},
+            },
+        ],
+        "authentication_methods": [
+            {
+                "name": "Static Credentials",
+                "description": "Username/password authentication",
+                "secure_extra": {"credentials": {"username": "...", "password": "..."}},
+            },
+            {
+                "name": "Access Token",
+                "description": "Token-based authentication",
+                "secure_extra": {"credentials": {"token": "..."}},
+            },
+            {
+                "name": "Service Account",
+                "description": "Service account JSON credentials",
+                "secure_extra": {
+                    "credentials": {
+                        "service_account_json": {
+                            "id": "...",
+                            "service_account_id": "...",
+                            "private_key": "...",
+                        },
+                    },
+                },
+            },
+        ],
+    }
+
+    _time_grain_expressions = {
+        None: "{col}",
+        TimeGrain.SECOND: "DateTime::MakeDatetime(DateTime::StartOf({col}, Interval('PT1S')))",  # noqa: E501
+        TimeGrain.THIRTY_SECONDS: "DateTime::MakeDatetime(DateTime::StartOf({col}, Interval('PT30S')))",  # noqa: E501
+        TimeGrain.MINUTE: "DateTime::MakeDatetime(DateTime::StartOf({col}, Interval('PT1M')))",  # noqa: E501
+        TimeGrain.FIVE_MINUTES: "DateTime::MakeDatetime(DateTime::StartOf({col}, Interval('PT5M')))",  # noqa: E501
+        TimeGrain.TEN_MINUTES: "DateTime::MakeDatetime(DateTime::StartOf({col}, Interval('PT10M')))",  # noqa: E501
+        TimeGrain.FIFTEEN_MINUTES: "DateTime::MakeDatetime(DateTime::StartOf({col}, Interval('PT15M')))",  # noqa: E501
+        TimeGrain.THIRTY_MINUTES: "DateTime::MakeDatetime(DateTime::StartOf({col}, Interval('PT30M')))",  # noqa: E501
+        TimeGrain.HOUR: "DateTime::MakeDatetime(DateTime::StartOf({col}, Interval('PT1H')))",  # noqa: E501
+        TimeGrain.DAY: "DateTime::MakeDatetime(DateTime::StartOf({col}, Interval('P1D')))",  # noqa: E501
+        TimeGrain.WEEK: "DateTime::MakeDatetime(DateTime::StartOfWeek({col}))",
+        TimeGrain.MONTH: "DateTime::MakeDatetime(DateTime::StartOfMonth({col}))",
+        TimeGrain.QUARTER: "DateTime::MakeDatetime(DateTime::StartOfQuarter({col}))",
+        TimeGrain.YEAR: "DateTime::MakeDatetime(DateTime::StartOfYear({col}))",
+    }
+
+    @classmethod
+    def epoch_to_dttm(cls) -> str:
+        return "DateTime::MakeDatetime({col})"
+
+    @classmethod
+    def convert_dttm(
+        cls, target_type: str, dttm: datetime, db_extra: dict[str, Any] | None = None
+    ) -> str | None:
+        sqla_type = cls.get_sqla_column_type(target_type)
+
+        if isinstance(sqla_type, types.Date):
+            return f"DateTime::MakeDate(DateTime::ParseIso8601('{dttm.date().isoformat()}'))"  # noqa: E501
+        if isinstance(sqla_type, types.DateTime):
+            return f"""DateTime::MakeDatetime(DateTime::ParseIso8601('{dttm.isoformat(sep="T", timespec="seconds")}'))"""  # noqa: E501
+        return None
+
+    @staticmethod
+    def update_params_from_encrypted_extra(
+        database: Database,
+        params: dict[str, Any],
+    ) -> None:
+        if not database.encrypted_extra:
+            return
+
+        try:
+            encrypted_extra = json.loads(database.encrypted_extra)
+            connect_args = params.setdefault("connect_args", {})
+
+            if "protocol" in encrypted_extra:
+                connect_args["protocol"] = encrypted_extra["protocol"]
+
+            if "credentials" in encrypted_extra:
+                credentials_info = encrypted_extra["credentials"]
+                connect_args["credentials"] = credentials_info
+
+        except json.JSONDecodeError as ex:
+            logger.error(ex, exc_info=True)
+            raise
