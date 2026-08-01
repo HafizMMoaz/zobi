@@ -1,0 +1,1 @@
+MIN_NPM_VERSION = "10.8.2"
