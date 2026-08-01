@@ -1,0 +1,83 @@
+
+from collections.abc import Iterator
+
+import pytest
+from sqlalchemy.orm.session import Session
+
+
+@pytest.fixture
+def session_with_data(session: Session) -> Iterator[Session]:
+    from zobi.connectors.sqla.models import SqlaTable
+    from zobi.models.core import Database
+
+    engine = session.get_bind()
+    SqlaTable.metadata.create_all(engine)  # pylint: disable=no-member
+
+    database = Database(database_name="my_database", sqlalchemy_uri="sqlite://")
+    sqla_table = SqlaTable(
+        table_name="my_sqla_table",
+        columns=[],
+        metrics=[],
+        database=database,
+    )
+
+    session.add(database)
+    session.add(sqla_table)
+    session.flush()
+    yield session
+    session.rollback()
+
+
+def test_datasource_find_by_id_skip_base_filter(session_with_data: Session) -> None:
+    from zobi.connectors.sqla.models import SqlaTable
+    from zobi.daos.dataset import DatasetDAO
+
+    result = DatasetDAO.find_by_id(
+        1,
+        skip_base_filter=True,
+    )
+
+    assert result
+    assert 1 == result.id
+    assert "my_sqla_table" == result.table_name
+    assert isinstance(result, SqlaTable)
+
+
+def test_datasource_find_by_id_skip_base_filter_not_found(
+    session_with_data: Session,
+) -> None:
+    from zobi.daos.dataset import DatasetDAO
+
+    result = DatasetDAO.find_by_id(
+        125326326,
+        skip_base_filter=True,
+    )
+    assert result is None
+
+
+def test_datasource_find_by_ids_skip_base_filter(session_with_data: Session) -> None:
+    from zobi.connectors.sqla.models import SqlaTable
+    from zobi.daos.dataset import DatasetDAO
+
+    result = DatasetDAO.find_by_ids(
+        [1, 125326326],
+        skip_base_filter=True,
+    )
+
+    assert result
+    assert [1] == list(map(lambda x: x.id, result))  # noqa: C417
+    assert ["my_sqla_table"] == list(map(lambda x: x.table_name, result))  # noqa: C417
+    assert isinstance(result[0], SqlaTable)
+
+
+def test_datasource_find_by_ids_skip_base_filter_not_found(
+    session_with_data: Session,
+) -> None:
+    from zobi.daos.dataset import DatasetDAO
+
+    result = DatasetDAO.find_by_ids(
+        [125326326, 125326326125326326],
+        skip_base_filter=True,
+    )
+
+    assert len(result) == 0

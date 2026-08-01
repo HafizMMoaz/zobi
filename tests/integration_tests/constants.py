@@ -1,0 +1,6 @@
+ADMIN_USERNAME = "admin"
+ALPHA_USERNAME = "alpha"
+GAMMA_NO_CSV_USERNAME = "gamma_no_csv"
+GAMMA_SQLLAB_NO_DATA_USERNAME = "gamma_sqllab_no_data"
+GAMMA_SQLLAB_USERNAME = "gamma_sqllab"
+GAMMA_USERNAME = "gamma"
