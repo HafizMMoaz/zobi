@@ -1,0 +1,3 @@
+# Drop built .zobz extension bundles here.
+# This path is wired to EXTENSIONS_PATH in docker/pythonpath_dev/zobi_config.py
+# and is discovered at startup by zobi/extensions/discovery.py (globs *.zobz).

@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 160 40" width="160" height="40" role="img" aria-label="ZOBI">
+  <!-- mini bar-chart mark -->
+  <rect x="2"  y="22" width="4" height="12" rx="1" fill="#7c3aed"/>
+  <rect x="9"  y="14" width="4" height="20" rx="1" fill="#a78bfa"/>
+  <rect x="16" y="8"  width="4" height="26" rx="1" fill="#7c3aed"/>
+  <!-- wordmark -->
+  <text x="28" y="28" font-family="Inter, 'Helvetica Neue', Arial, sans-serif"
+        font-size="22" font-weight="700" letter-spacing="1.5" fill="#1e1b4b">ZOBI</text>
+</svg>

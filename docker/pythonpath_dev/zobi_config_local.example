@@ -1,0 +1,2 @@
+SQLALCHEMY_DATABASE_URI = "postgresql+psycopg2://pguser:pgpwd@some.host/zobi"
+SQLALCHEMY_ECHO = True

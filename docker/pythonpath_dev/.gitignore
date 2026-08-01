@@ -1,0 +1,7 @@
+# Ignore everything
+*
+# DON'T ignore the .gitignore
+!.gitignore
+!zobi_config.py
+!zobi_config_docker_light.py
+!zobi_config_local.example
