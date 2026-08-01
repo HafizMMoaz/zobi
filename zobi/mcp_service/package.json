@@ -1,0 +1,35 @@
+{
+  "name": "@zobi/mcp-server",
+  "version": "1.0.0",
+  "description": "Zobi MCP (Model Context Protocol) Server",
+  "main": "index.js",
+  "bin": {
+    "zobi-mcp": "./bin/zobi-mcp.js"
+  },
+  "scripts": {
+    "start": "node bin/zobi-mcp.js",
+    "stdio": "node bin/zobi-mcp.js --stdio",
+    "http": "node bin/zobi-mcp.js --http"
+  },
+  "keywords": [
+    "mcp",
+    "zobi",
+    "zobi",
+    "model-context-protocol",
+    "ai",
+    "claude"
+  ],
+  "author": "Zobi",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HafizMMoaz/zobi.git",
+    "directory": "zobi/mcp_service"
+  },
+  "engines": {
+    "node": ">=18.0.0"
+  },
+  "dependencies": {},
+  "devDependencies": {},
+  "preferGlobal": false
+}
