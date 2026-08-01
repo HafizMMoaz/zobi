@@ -1,0 +1,116 @@
+import logging
+from collections.abc import Sequence
+from io import IOBase
+from typing import List, Union
+
+import backoff
+from flask import g
+from slack_sdk.errors import (
+    BotUserAccessError,
+    SlackApiError,
+    SlackClientConfigurationError,
+    SlackClientError,
+    SlackClientNotConnectedError,
+    SlackObjectFormationError,
+    SlackRequestError,
+    SlackTokenRotationError,
+)
+
+from zobi.reports.models import ReportRecipientType
+from zobi.reports.notifications.base import BaseNotification
+from zobi.reports.notifications.exceptions import (
+    NotificationAuthorizationException,
+    NotificationMalformedException,
+    NotificationParamException,
+    NotificationUnprocessableException,
+)
+from zobi.reports.notifications.slack_mixin import SlackMixin
+from zobi.utils import json
+from zobi.utils.core import recipients_string_to_list
+from zobi.utils.decorators import statsd_gauge
+from zobi.utils.slack import get_slack_client
+
+logger = logging.getLogger(__name__)
+
+
+class SlackV2Notification(SlackMixin, BaseNotification):  # pylint: disable=too-few-public-methods
+    """
+    Sends a slack notification for a report recipient with the slack upload v2 API
+    """
+
+    type = ReportRecipientType.SLACKV2
+
+    def _get_channels(self) -> List[str]:
+        """
+        Get the recipient's channel(s).
+        :returns: A list of channel ids: "EID676L"
+        :raises NotificationParamException or SlackApiError: If the recipient is not found
+        """  # noqa: E501
+        recipient_str = json.loads(self._recipient.recipient_config_json)["target"]
+
+        return recipients_string_to_list(recipient_str)
+
+    def _get_inline_files(
+        self,
+    ) -> tuple[Union[str, None], Sequence[Union[str, IOBase, bytes]]]:
+        if self._content.csv:
+            return ("csv", [self._content.csv])
+        if self._content.screenshots:
+            return ("png", self._content.screenshots)
+        if self._content.pdf:
+            return ("pdf", [self._content.pdf])
+        return (None, [])
+
+    @backoff.on_exception(backoff.expo, SlackApiError, factor=10, base=2, max_tries=5)
+    @statsd_gauge("reports.slack.send")
+    def send(self) -> None:
+        global_logs_context = getattr(g, "logs_context", {}) or {}
+        try:
+            client = get_slack_client()
+            title = self._content.name
+            body = self._get_body(content=self._content)
+
+            channels = self._get_channels()
+
+            if not channels:
+                raise NotificationParamException("No recipients saved in the report")
+
+            file_type, files = self._get_inline_files()
+            file_name = f"{title}.{file_type}"
+
+            # files_upload returns SlackResponse as we run it in sync mode.
+            for channel in channels:
+                if len(files) > 0:
+                    for file in files:
+                        client.files_upload_v2(
+                            channel=channel,
+                            file=file,
+                            initial_comment=body,
+                            title=title,
+                            filename=file_name,
+                        )
+                else:
+                    client.chat_postMessage(channel=channel, text=body)
+
+            logger.info(
+                "Report sent to slack",
+                extra={
+                    "execution_id": global_logs_context.get("execution_id"),
+                },
+            )
+        except (
+            BotUserAccessError,
+            SlackRequestError,
+            SlackClientConfigurationError,
+        ) as ex:
+            raise NotificationParamException(str(ex)) from ex
+        except SlackObjectFormationError as ex:
+            raise NotificationMalformedException(str(ex)) from ex
+        except SlackTokenRotationError as ex:
+            raise NotificationAuthorizationException(str(ex)) from ex
+        except (SlackClientNotConnectedError, SlackApiError) as ex:
+            raise NotificationUnprocessableException(str(ex)) from ex
+        except SlackClientError as ex:
+            # this is the base class for all slack client errors
+            # keep it last so that it doesn't interfere with @backoff
+            raise NotificationUnprocessableException(str(ex)) from ex
