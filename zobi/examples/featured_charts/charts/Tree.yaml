@@ -1,0 +1,29 @@
+cache_timeout: null
+certification_details: null
+certified_by: null
+dataset_uuid: f710a997-c65e-4aa6-aaed-b7d6998565ae
+description: null
+params:
+  adhoc_filters: []
+  annotation_layers: []
+  child_label_position: top
+  dashboards: []
+  datasource: 8__table
+  extra_form_data: {}
+  id: id
+  layout: radial
+  metric: count
+  name: name
+  node_label_position: top
+  parent: parent
+  roam: false
+  root_node_id: '1'
+  row_limit: 1000
+  symbol: emptyCircle
+  symbolSize: 7
+  viz_type: tree_chart
+query_context: null
+slice_name: Tree
+uuid: 57e7f05e-0c9a-4313-8a33-e6d0999824af
+version: 1.0.0
+viz_type: tree_chart

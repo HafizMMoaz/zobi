@@ -1,0 +1,40 @@
+cache_timeout: null
+certification_details: null
+certified_by: null
+dataset_uuid: e8623bb9-5e00-f531-506a-19607f5f8005
+description: null
+params:
+  adhoc_filters:
+  - clause: WHERE
+    comparator: No filter
+    expressionType: SIMPLE
+    operator: TEMPORAL_RANGE
+    subject: order_date
+  annotation_layers: []
+  baseEdgeWidth: 3
+  baseNodeSize: 20
+  color_scheme: zobiColors
+  dashboards: []
+  datasource: 22__table
+  edgeLength: 400
+  edgeSymbol: none,arrow
+  extra_form_data: {}
+  friction: 0.2
+  gravity: 0.3
+  layout: circular
+  legendOrientation: top
+  legendType: scroll
+  metric: count
+  repulsion: 1000
+  roam: true
+  row_limit: 10000
+  selectedMode: single
+  show_legend: true
+  source: deal_size
+  target: product_line
+  viz_type: graph_chart
+query_context: null
+slice_name: Graph
+uuid: be39bc2e-00c0-498b-96bf-858fe2361a89
+version: 1.0.0
+viz_type: graph_chart

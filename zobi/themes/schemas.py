@@ -1,0 +1,139 @@
+from typing import Any
+
+from marshmallow import fields, Schema, validates, ValidationError
+
+from zobi.themes.utils import (
+    is_valid_theme,
+    sanitize_theme_tokens,
+    validate_font_urls,
+)
+from zobi.utils import json
+
+
+def _sanitize_and_validate_theme_config(theme_config: dict[str, Any]) -> dict[str, Any]:
+    """Sanitize and validate theme configuration.
+
+    Applies token sanitization and font URL validation.
+    Returns the sanitized configuration.
+    """
+    sanitized_config = sanitize_theme_tokens(theme_config)
+
+    # Validate and sanitize fontUrls if present
+    if "token" in sanitized_config and isinstance(sanitized_config["token"], dict):
+        font_urls = sanitized_config["token"].get("fontUrls")
+        if font_urls is not None:
+            sanitized_config["token"]["fontUrls"] = validate_font_urls(font_urls)
+
+    # Validate theme structure
+    if not is_valid_theme(sanitized_config):
+        raise ValidationError("Invalid theme configuration structure")
+
+    return sanitized_config
+
+
+class ImportV1ThemeSchema(Schema):
+    theme_name = fields.String(required=True)
+    json_data = fields.Raw(required=True)
+    uuid = fields.UUID(required=True)
+    version = fields.String(required=True)
+
+    @validates("json_data")
+    def validate_json_data(self, value: dict[str, Any]) -> None:
+        # Convert dict to JSON string for validation
+        if isinstance(value, dict):
+            json_str = json.dumps(value)
+        else:
+            json_str = str(value)
+
+        # Parse it back to validate it's valid JSON
+        try:
+            theme_config = json.loads(json_str) if isinstance(value, str) else value
+        except (TypeError, json.JSONDecodeError) as ex:
+            raise ValidationError("Invalid JSON configuration") from ex
+
+        # Sanitize and validate the theme configuration
+        sanitized_config = _sanitize_and_validate_theme_config(theme_config)
+
+        # Update the field with sanitized content for import
+        if sanitized_config != theme_config:
+            # Update the original value with sanitized content
+            if isinstance(value, dict):
+                value.clear()
+                value.update(sanitized_config)
+            else:
+                self.context["sanitized_json_data"] = json.dumps(sanitized_config)
+
+
+class ThemePostSchema(Schema):
+    theme_name = fields.String(required=True, allow_none=False)
+    json_data = fields.String(required=True, allow_none=False)
+
+    @validates("theme_name")
+    def validate_theme_name(self, value: str) -> None:
+        if not value or not value.strip():
+            raise ValidationError("Theme name cannot be empty.")
+
+    @validates("json_data")
+    def validate_and_sanitize_json_data(self, value: str) -> None:
+        # Parse JSON
+        try:
+            theme_config = json.loads(value) if isinstance(value, str) else value
+        except (TypeError, json.JSONDecodeError) as ex:
+            raise ValidationError("Invalid JSON configuration") from ex
+
+        # Sanitize and validate the theme configuration
+        sanitized_config = _sanitize_and_validate_theme_config(theme_config)
+
+        # Update the field with sanitized content
+        # Note: This modifies the input data to ensure sanitized content is stored
+        if sanitized_config != theme_config:
+            # Re-serialize the sanitized config
+            self.context["sanitized_json_data"] = json.dumps(sanitized_config)
+
+
+class ThemePutSchema(Schema):
+    theme_name = fields.String(required=True, allow_none=False)
+    json_data = fields.String(required=True, allow_none=False)
+
+    @validates("theme_name")
+    def validate_theme_name(self, value: str) -> None:
+        if not value or not value.strip():
+            raise ValidationError("Theme name cannot be empty.")
+
+    @validates("json_data")
+    def validate_and_sanitize_json_data(self, value: str) -> None:
+        # Parse JSON
+        try:
+            theme_config = json.loads(value) if isinstance(value, str) else value
+        except (TypeError, json.JSONDecodeError) as ex:
+            raise ValidationError("Invalid JSON configuration") from ex
+
+        # Sanitize and validate the theme configuration
+        sanitized_config = _sanitize_and_validate_theme_config(theme_config)
+
+        # Update the field with sanitized content
+        # Note: This modifies the input data to ensure sanitized content is stored
+        if sanitized_config != theme_config:
+            # Re-serialize the sanitized config
+            self.context["sanitized_json_data"] = json.dumps(sanitized_config)
+
+
+openapi_spec_methods_override = {
+    "get": {"get": {"summary": "Get a theme"}},
+    "get_list": {
+        "get": {
+            "summary": "Get a list of themes",
+            "description": "Gets a list of themes, use Rison or JSON "
+            "query parameters for filtering, sorting,"
+            " pagination and for selecting specific"
+            " columns and metadata.",
+        }
+    },
+    "post": {"post": {"summary": "Create a theme"}},
+    "put": {"put": {"summary": "Update a theme"}},
+    "delete": {"delete": {"summary": "Delete a theme"}},
+    "info": {"get": {"summary": "Get metadata information about this API resource"}},
+}
+
+get_delete_ids_schema = {"type": "array", "items": {"type": "integer"}}
+get_export_ids_schema = {"type": "array", "items": {"type": "integer"}}
