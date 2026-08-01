@@ -1,0 +1,5 @@
+#
+
+#
+-e .[development,bigquery,druid,duckdb,fastmcp,gevent,gsheets,mysql,postgres,presto,prophet,trino,thumbnails]
+-e ./extensions-cli[test]

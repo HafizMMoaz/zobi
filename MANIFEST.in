@@ -1,0 +1,12 @@
+
+include NOTICE
+include LICENSE.txt
+graft licenses/
+include README.md
+include frontend/package.json
+recursive-include zobi/examples *
+recursive-include zobi/migrations *
+recursive-include zobi/templates *
+recursive-include zobi/translations *
+recursive-include zobi/static *
+recursive-exclude tests *

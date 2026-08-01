@@ -1,0 +1,35 @@
+codecov:
+    notify:
+        after_n_builds: 4
+ignore:
+  - "zobi/migrations/versions/*.py"
+  - "frontend/packages/zobi-ui-demo/**/*"
+  - "**/*.stories.tsx"
+  - "**/*.stories.jsx"
+coverage:
+  status:
+    project:
+      default:
+        informational: true
+        # Commits pushed to master should not make the overall
+        # project coverage decrease:
+        target: auto
+        threshold: 0%
+      core-packages-ts:
+        target: 100%
+        paths:
+          - 'frontend/packages'
+          - '!frontend/packages/**/*.jsx'
+          - '!frontend/packages/**/*.tsx'
+      core-packages-tsx:
+        target: 50%
+        paths:
+          - 'frontend/packages/**/*.jsx'
+          - 'frontend/packages/**/*.tsx'
+    patch:
+      default:
+        informational: true
+        threshold: 0%
+flag_management:
+  default_rules:
+    carryforward: true
