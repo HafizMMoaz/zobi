@@ -1,0 +1,7 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 200 56" fill="none">
+  <!-- Square brand mark: deep blue background, teal "Z" -->
+  <rect x="0" y="8" width="40" height="40" rx="9" fill="#1E40AF"/>
+  <text x="20" y="38" font-family="'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif" font-weight="800" font-size="26" fill="#14B8A6" text-anchor="middle">Z</text>
+  <!-- Wordmark -->
+  <text x="52" y="40" font-family="'Inter','Segoe UI',-apple-system,BlinkMacSystemFont,sans-serif" font-weight="700" font-size="34" fill="#1E40AF" letter-spacing="-0.5">ZOBI</text>
+</svg>

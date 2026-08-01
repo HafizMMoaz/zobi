@@ -1,0 +1,20 @@
+
+{% import "zobi/macros.html" as macros %}
+
+{% macro js_bundle(assets_prefix, filename) %}
+{# HTML comment is needed for webpack-dev-server to replace assets
+with development version #}
+<!-- Bundle js {{ filename }} START -->
+{% for entry in js_manifest(filename) %}
+<script src="{{ assets_prefix }}{{ entry }}" async nonce="{{ macros.get_nonce() }}"></script>
+{% endfor %}
+<!-- Bundle js {{ filename }} END -->
+{% endmacro %}
+
+{% macro css_bundle(assets_prefix, filename) %}
+<!-- Bundle css {{ filename }} START -->
+{% for entry in css_manifest(filename) %}
+<link rel="stylesheet" type="text/css" href="{{ assets_prefix }}{{ entry }}" />
+{% endfor %}
+<!-- Bundle css {{ filename }} END -->
+{% endmacro %}
