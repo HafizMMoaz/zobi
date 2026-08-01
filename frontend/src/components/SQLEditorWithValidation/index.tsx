@@ -1,0 +1,261 @@
+import { useCallback, useState, useEffect, forwardRef } from 'react';
+import { t } from '@zobi/core/translation';
+import type { editors } from '@zobi/core';
+import { ZobiClient } from '@zobi-ui/core';
+import { styled } from '@zobi/core/theme';
+import { Button, Icons, Tooltip, Flex } from '@zobi-ui/core/components';
+import { EditorHost } from 'src/core/editors';
+import {
+  ExpressionType,
+  ValidationError,
+  ValidationResponse,
+} from '../../types/SqlExpression';
+
+type EditorKeyword = editors.EditorKeyword;
+
+interface SQLEditorWithValidationProps {
+  // Editor props
+  value: string;
+  onChange: (value: string) => void;
+  // Validation-specific props
+  showValidation?: boolean;
+  expressionType?: ExpressionType;
+  datasourceId?: number | string;
+  datasourceType?: string;
+  clause?: string; // For filters: "WHERE" or "HAVING"
+  onValidationComplete?: (isValid: boolean, errors?: ValidationError[]) => void;
+  // Editor appearance props
+  height?: string;
+  width?: string;
+  /** Whether to show line numbers */
+  lineNumbers?: boolean;
+  /** Whether to enable word wrap */
+  wordWrap?: boolean;
+  /** Keywords for autocomplete */
+  keywords?: EditorKeyword[];
+}
+
+const StyledValidationMessage = styled.div<{
+  isError?: boolean;
+  isUnverified?: boolean;
+  isValidating?: boolean;
+}>`
+  display: flex;
+  align-items: center;
+  gap: ${({ theme }) => theme.sizeUnit}px;
+  color: ${({ theme, isError, isUnverified, isValidating }) => {
+    if (isUnverified || isValidating) return theme.colorTextTertiary;
+    return isError ? theme.colorErrorText : theme.colorSuccessText;
+  }};
+  font-size: ${({ theme }) => theme.fontSizeSM}px;
+  flex: 1;
+  min-width: 0;
+
+  span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+`;
+
+const SQLEditorWithValidation = forwardRef<
+  editors.EditorHandle,
+  SQLEditorWithValidationProps
+>(
+  (
+    {
+      // Required props
+      value,
+      onChange,
+      // Validation props
+      showValidation = false,
+      expressionType = 'column',
+      datasourceId,
+      datasourceType,
+      clause,
+      onValidationComplete,
+      // Editor appearance props
+      height,
+      width,
+      lineNumbers,
+      wordWrap,
+      keywords,
+    },
+    ref,
+  ) => {
+    const [isValidating, setIsValidating] = useState(false);
+    const [validationResult, setValidationResult] = useState<{
+      isValid: boolean;
+      errors?: ValidationError[];
+    } | null>(null);
+
+    // Reset validation state when value prop changes
+    useEffect(() => {
+      if (validationResult !== null || isValidating) {
+        setValidationResult(null);
+        setIsValidating(false);
+      }
+    }, [value]);
+
+    const handleValidate = useCallback(async () => {
+      if (!value || !datasourceId || !datasourceType) {
+        const error = {
+          message: !value
+            ? t('Expression cannot be empty')
+            : t('Datasource is required for validation'),
+        };
+        setValidationResult({
+          isValid: false,
+          errors: [error],
+        });
+        onValidationComplete?.(false, [error]);
+        return;
+      }
+
+      setIsValidating(true);
+      setValidationResult(null);
+
+      try {
+        const endpoint = `/api/v1/datasource/${datasourceType}/${datasourceId}/validate_expression/`;
+        const payload = {
+          expression: value,
+          expression_type: expressionType,
+          clause,
+        };
+
+        const response = await ZobiClient.post({
+          endpoint,
+          body: JSON.stringify(payload),
+          headers: { 'Content-Type': 'application/json' },
+        });
+
+        const data = response.json as ValidationResponse;
+
+        if (data.result && data.result.length > 0) {
+          // Has validation errors
+          setValidationResult({
+            isValid: false,
+            errors: data.result,
+          });
+          onValidationComplete?.(false, data.result);
+        } else {
+          // No errors, validation successful
+          setValidationResult({
+            isValid: true,
+          });
+          onValidationComplete?.(true);
+        }
+      } catch (error) {
+        console.error('Error validating expression:', error);
+        const validationError = {
+          message: t('Failed to validate expression. Please try again.'),
+        };
+        setValidationResult({
+          isValid: false,
+          errors: [validationError],
+        });
+        onValidationComplete?.(false, [validationError]);
+      } finally {
+        setIsValidating(false);
+      }
+    }, [
+      value,
+      expressionType,
+      datasourceId,
+      datasourceType,
+      clause,
+      onValidationComplete,
+    ]);
+
+    // Reset validation when value changes
+    const handleChange = useCallback(
+      (newValue: string) => {
+        onChange(newValue);
+        // Clear validation result when expression changes
+        if (validationResult !== null) {
+          setValidationResult(null);
+        }
+      },
+      [onChange, validationResult],
+    );
+
+    return (
+      <Flex vertical gap="middle">
+        <EditorHost
+          ref={ref}
+          id="sql-editor-with-validation"
+          value={value}
+          onChange={handleChange}
+          language="sql"
+          lineNumbers={lineNumbers}
+          wordWrap={wordWrap}
+          height={height}
+          width={width}
+          keywords={keywords}
+        />
+
+        {showValidation && (
+          <Flex align="center" gap="small" style={{ minHeight: 32 }}>
+            <Tooltip title={t('Validate your expression')}>
+              <Button
+                buttonSize="small"
+                buttonStyle={validationResult ? 'secondary' : 'primary'}
+                loading={isValidating}
+                onClick={handleValidate}
+                disabled={!value || !datasourceId || isValidating}
+                icon={<Icons.CaretRightFilled />}
+                aria-label={t('Validate your expression')}
+              />
+            </Tooltip>
+            <StyledValidationMessage
+              isError={validationResult ? !validationResult.isValid : false}
+              isUnverified={!validationResult && !isValidating}
+              isValidating={isValidating}
+            >
+              {isValidating ? (
+                <span>{t('Validating...')}</span>
+              ) : validationResult ? (
+                <>
+                  {validationResult.isValid ? (
+                    <>
+                      <Icons.CheckCircleOutlined />
+                      <span>{t('Valid SQL expression')}</span>
+                    </>
+                  ) : (
+                    <>
+                      <Icons.WarningOutlined />
+                      <Tooltip
+                        title={
+                          validationResult.errors
+                            ?.map(e => e.message)
+                            .join('\n') || t('Invalid expression')
+                        }
+                        placement="top"
+                      >
+                        <span>
+                          {validationResult.errors &&
+                          validationResult.errors.length > 0
+                            ? validationResult.errors[0].message
+                            : t('Invalid expression')}
+                        </span>
+                      </Tooltip>
+                    </>
+                  )}
+                </>
+              ) : (
+                <>
+                  <Icons.WarningOutlined />
+                  <span>{t('Unverified')}</span>
+                </>
+              )}
+            </StyledValidationMessage>
+          </Flex>
+        )}
+      </Flex>
+    );
+  },
+);
+
+SQLEditorWithValidation.displayName = 'SQLEditorWithValidation';
+
+export default SQLEditorWithValidation;

@@ -1,0 +1,98 @@
+import type { Column, GridApi } from 'ag-grid-community';
+import { act, fireEvent, render } from 'spec/helpers/testing-library';
+import { Header } from './Header';
+import { PIVOT_COL_ID } from './constants';
+
+jest.mock('@zobi-ui/core/components/Dropdown', () => ({
+  Dropdown: () => <div data-test="mock-dropdown" />,
+}));
+
+jest.mock('@zobi-ui/core/components/Icons', () => {
+  const actualIcons = jest.requireActual('@zobi-ui/core/components/Icons');
+  return {
+    __esModule: true,
+    Icons: {
+      ...actualIcons.Icons, // retain the real `Icons` export
+      Sort: jest.fn(() => <div data-test="mock-sort" />),
+      SortAsc: jest.fn(() => <div data-test="mock-sort-asc" />),
+      SortDesc: jest.fn(() => <div data-test="mock-sort-desc" />),
+    },
+  };
+});
+
+class MockApi extends EventTarget {
+  getAllDisplayedColumns() {
+    return [];
+  }
+
+  isDestroyed() {
+    return false;
+  }
+}
+
+const mockedProps = {
+  displayName: 'test column',
+  setSort: jest.fn(),
+  enableSorting: true,
+  column: {
+    getColId: () => '123',
+    isPinnedLeft: () => true,
+    isPinnedRight: () => false,
+    getSort: () => 'asc',
+    getSortIndex: () => null,
+  } as any as Column,
+  api: new MockApi() as any as GridApi,
+};
+
+test('renders display name for the column', () => {
+  const { queryByText } = render(<Header {...mockedProps} />);
+  expect(queryByText(mockedProps.displayName)).toBeInTheDocument();
+});
+
+test('sorts by clicking a column header', () => {
+  const { getByText, queryByTestId } = render(<Header {...mockedProps} />);
+  fireEvent.click(getByText(mockedProps.displayName));
+  expect(mockedProps.setSort).toHaveBeenCalledWith('asc', false);
+  expect(queryByTestId('mock-sort-asc')).toBeInTheDocument();
+  fireEvent.click(getByText(mockedProps.displayName));
+  expect(mockedProps.setSort).toHaveBeenCalledWith('desc', false);
+  expect(queryByTestId('mock-sort-desc')).toBeInTheDocument();
+  fireEvent.click(getByText(mockedProps.displayName));
+  expect(mockedProps.setSort).toHaveBeenCalledWith(null, false);
+  expect(queryByTestId('mock-sort-asc')).not.toBeInTheDocument();
+  expect(queryByTestId('mock-sort-desc')).not.toBeInTheDocument();
+});
+
+test('synchronizes the current sort when sortChanged event occurred', async () => {
+  const { findByTestId } = render(<Header {...mockedProps} />);
+  act(() => {
+    mockedProps.api.dispatchEvent(new Event('sortChanged'));
+  });
+  const sortAsc = await findByTestId('mock-sort-asc');
+  expect(sortAsc).toBeInTheDocument();
+});
+
+test('disable menu when enableFilterButton is false', () => {
+  const { queryByText, queryByTestId } = render(
+    <Header {...mockedProps} enableFilterButton={false} />,
+  );
+  expect(queryByText(mockedProps.displayName)).toBeInTheDocument();
+  expect(queryByTestId('mock-dropdown')).not.toBeInTheDocument();
+});
+
+test('hide display name for PIVOT_COL_ID', () => {
+  const { queryByText } = render(
+    <Header
+      {...mockedProps}
+      column={
+        {
+          getColId: () => PIVOT_COL_ID,
+          isPinnedLeft: () => true,
+          isPinnedRight: () => false,
+          getSortIndex: () => null,
+        } as any as Column
+      }
+    />,
+  );
+  expect(queryByText(mockedProps.displayName)).not.toBeInTheDocument();
+});

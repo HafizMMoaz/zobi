@@ -1,0 +1,95 @@
+import { render, screen, userEvent } from 'spec/helpers/testing-library';
+import TableControls, { TableControlsProps } from './DrillDetailTableControls';
+
+const setFilters = jest.fn();
+const onReload = jest.fn();
+const onDownloadCSV = jest.fn();
+const onDownloadXLSX = jest.fn();
+const setup = (overrides: Partial<TableControlsProps> = {}) => {
+  const props = {
+    filters: [],
+    setFilters,
+    onReload,
+    loading: false,
+    totalCount: 0,
+    canDownload: true,
+    onDownloadCSV,
+    onDownloadXLSX,
+    data: [],
+    columnNames: [],
+    ...overrides,
+  };
+  return render(<TableControls {...props} />, { useRedux: true });
+};
+test('should render', () => {
+  const { container } = setup();
+  expect(container).toBeInTheDocument();
+});
+
+test('should show 0 rows', () => {
+  setup();
+  expect(screen.getByText('0 rows')).toBeInTheDocument();
+});
+
+test('should show the correct amount of rows', () => {
+  setup({
+    totalCount: 10,
+  });
+  expect(screen.getByText('10 rows')).toBeInTheDocument();
+});
+
+test('should render the reload button', () => {
+  setup();
+  expect(screen.getByRole('button', { name: 'Reload' })).toBeInTheDocument();
+});
+
+test('should show the loading indicator', () => {
+  setup({
+    loading: true,
+  });
+  expect(screen.getByText('Loading...')).toBeInTheDocument();
+});
+
+test('should call onreload', () => {
+  setup();
+  userEvent.click(screen.getByRole('button', { name: 'Reload' }));
+  expect(onReload).toHaveBeenCalledTimes(1);
+});
+
+test('should render with filters', () => {
+  setup({
+    filters: [
+      {
+        col: 'platform',
+        op: '==',
+        val: 'GB',
+      },
+      {
+        col: 'lang',
+        op: '==',
+        val: 'IT',
+      },
+    ],
+  });
+  expect(screen.getByText('platform')).toBeInTheDocument();
+  expect(screen.getByText('GB')).toBeInTheDocument();
+  expect(screen.getByText('lang')).toBeInTheDocument();
+  expect(screen.getByText('IT')).toBeInTheDocument();
+});
+
+test('should remove the filters on close', () => {
+  setup({
+    filters: [
+      {
+        col: 'platform',
+        op: '==',
+        val: 'GB',
+      },
+    ],
+  });
+  expect(screen.getByText('platform')).toBeInTheDocument();
+  expect(screen.getByText('GB')).toBeInTheDocument();
+
+  userEvent.click(screen.getByLabelText('Close'));
+  expect(setFilters).toHaveBeenCalledWith([]);
+});
