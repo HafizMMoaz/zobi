@@ -6,8 +6,8 @@ import {
   isValidElement,
 } from 'react';
 import { nanoid } from 'nanoid';
-import { ZobiClient } from '@zobi-ui/core';
-import { tn } from '@zobi/core/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { tn } from '@zobi.dev/extension-api/translation';
 import rison from 'rison';
 
 // Type definitions

@@ -1,10 +1,10 @@
-import { ErrorLevel } from '@zobi-ui/core';
+import { ErrorLevel } from '@zobi.dev/core';
 import {
   styled,
   useTheme,
   getColorVariants,
-} from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components';
+} from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components';
 
 const StyledContent = styled.div`
   display: flex;

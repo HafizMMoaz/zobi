@@ -8,20 +8,20 @@ import {
   ReactNode,
 } from 'react';
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   isFeatureEnabled,
   FeatureFlag,
   ZobiClient,
   VizType,
   getExtensionsRegistry,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   css,
   styled,
   ZobiTheme,
   useTheme,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import rison from 'rison';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
 import withToasts from 'src/components/MessageToasts/withToasts';
@@ -33,7 +33,7 @@ import {
   OWNER_OPTION_FILTER_PROPS,
 } from 'src/features/owners/OwnerSelectLabel';
 // import { Form as AntdForm } from 'src/components/Form';
-import { propertyComparator } from '@zobi-ui/core/components/Select/utils';
+import { propertyComparator } from '@zobi.dev/core/components/Select/utils';
 import {
   AsyncSelect,
   Checkbox,
@@ -49,10 +49,10 @@ import {
   TreeSelect,
   Button,
   type CheckboxChangeEvent,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 
-import TimezoneSelector from '@zobi-ui/core/components/TimezoneSelector';
-import { timezoneOptionsCache } from '@zobi-ui/core/components/TimezoneSelector/TimezoneOptionsCache';
+import TimezoneSelector from '@zobi.dev/core/components/TimezoneSelector';
+import { timezoneOptionsCache } from '@zobi.dev/core/components/TimezoneSelector/TimezoneOptionsCache';
 import TextAreaControl from 'src/explore/components/controls/TextAreaControl';
 import { useCommonConf } from 'src/features/databases/state';
 import {
@@ -81,7 +81,7 @@ import { useSelector } from 'react-redux';
 import { UserWithPermissionsAndRoles } from 'src/types/bootstrapTypes';
 import { getChartDataRequest } from 'src/components/Chart/chartAction';
 import DateFilterControl from 'src/explore/components/controls/DateFilterControl';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { StandardModal, ModalFormField } from 'src/components/Modal';
 import NumberInput from './components/NumberInput';
 import { AlertReportCronScheduler } from './components/AlertReportCronScheduler';

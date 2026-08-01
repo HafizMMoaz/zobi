@@ -1,5 +1,5 @@
-import { JsonValue, QueryFormData } from '@zobi-ui/core';
-import { ControlStateMapping } from '@zobi-ui/chart-controls';
+import { JsonValue, QueryFormData } from '@zobi.dev/core';
+import { ControlStateMapping } from '@zobi.dev/chart-controls';
 
 export function getFormDataFromControls(
   controlsState: ControlStateMapping,

@@ -1,5 +1,5 @@
 
-import { ChartDataResponseResult } from '@zobi-ui/core';
+import { ChartDataResponseResult } from '@zobi.dev/core';
 import { applyTimeGrainAllowlist } from './FilterValue';
 
 const baseResults = [

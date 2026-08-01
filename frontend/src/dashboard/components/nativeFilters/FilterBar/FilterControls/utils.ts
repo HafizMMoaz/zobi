@@ -8,7 +8,7 @@ import {
   setHoveredChartCustomization,
   unsetHoveredChartCustomization,
 } from 'src/dashboard/actions/nativeFilters';
-import { Constants } from '@zobi-ui/core/components';
+import { Constants } from '@zobi.dev/core/components';
 
 export const dispatchHoverAction = debounce(
   (dispatch: Dispatch<any>, id?: string) => {

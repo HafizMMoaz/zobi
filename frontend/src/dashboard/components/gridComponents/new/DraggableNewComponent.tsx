@@ -1,6 +1,6 @@
 import { PureComponent } from 'react';
 import cx from 'classnames';
-import { css, styled } from '@zobi/core/theme';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 import { DragDroppable } from 'src/dashboard/components/dnd/DragDroppable';
 import type { ConnectDragSource } from 'react-dnd';
 import { NEW_COMPONENTS_SOURCE_ID } from 'src/dashboard/util/constants';

@@ -9,8 +9,8 @@
  */
 
 import { useState, useEffect, forwardRef } from 'react';
-import type { editors } from '@zobi/core';
-import { useTheme } from '@zobi/core/theme';
+import type { editors } from '@zobi.dev/extension-api';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import EditorProviders from './EditorProviders';
 import AceEditorProvider from './AceEditorProvider';
 

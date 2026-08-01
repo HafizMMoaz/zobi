@@ -1,12 +1,12 @@
 import { render, waitFor } from 'spec/helpers/testing-library';
-import { FeatureFlag, isFeatureEnabled } from '@zobi-ui/core';
+import { FeatureFlag, isFeatureEnabled } from '@zobi.dev/core';
 import fetchMock from 'fetch-mock';
 import ExtensionsStartup from './ExtensionsStartup';
 import ExtensionsLoader from './ExtensionsLoader';
 
 // Mock the isFeatureEnabled function
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

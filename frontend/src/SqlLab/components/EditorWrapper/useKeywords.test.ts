@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock';
 import { act, renderHook, waitFor } from '@testing-library/react';
-import { getExtensionsRegistry } from '@zobi-ui/core';
+import { getExtensionsRegistry } from '@zobi.dev/core';
 import {
   createWrapper,
   defaultStore as store,

@@ -1,8 +1,8 @@
 import { PureComponent, ChangeEvent, type ReactElement } from 'react';
 import cx from 'classnames';
-import { Button, Input } from '@zobi-ui/core/components';
-import { css, styled } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import { Button, Input } from '@zobi.dev/core/components';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 
 import buildFilterScopeTreeEntry from 'src/dashboard/util/buildFilterScopeTreeEntry';
 import getFilterScopeNodesTree from 'src/dashboard/util/getFilterScopeNodesTree';

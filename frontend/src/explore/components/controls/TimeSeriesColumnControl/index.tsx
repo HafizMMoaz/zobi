@@ -7,10 +7,10 @@ import {
   Input,
   Row,
   Select,
-} from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import BoundsControl from '../BoundsControl';
 import CheckboxControl from '../CheckboxControl';
 import ControlPopover from '../ControlPopover/ControlPopover';

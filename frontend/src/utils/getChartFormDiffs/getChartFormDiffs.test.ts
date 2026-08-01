@@ -1,4 +1,4 @@
-import { JsonObject } from '@zobi-ui/core';
+import { JsonObject } from '@zobi.dev/core';
 import { alterForComparison, getChartFormDiffs, isEqualish } from '.';
 
 jest.mock('../sanitizeFormData', () => ({

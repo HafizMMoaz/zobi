@@ -1,6 +1,6 @@
 import { useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
 import {
   Actions,
   createErrorHandler,
@@ -11,7 +11,7 @@ import {
   ConfirmStatusChange,
   Tooltip,
   FaveStar,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   Tag as AntdTag,
   ListView,
@@ -23,7 +23,7 @@ import {
 import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';
 import { dangerouslyGetItemDoNotUse } from 'src/utils/localStorageHelpers';
 import withToasts from 'src/components/MessageToasts/withToasts';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { Link } from 'react-router-dom';
 import { deleteTags } from 'src/features/tags/tags';
 import { QueryObjectColumns, Tag } from 'src/views/CRUD/types';

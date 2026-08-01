@@ -1,11 +1,11 @@
 import { FunctionComponent, useState, useEffect, ChangeEvent } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
-import { Typography } from '@zobi-ui/core/components/Typography';
-import { Input, Modal } from '@zobi-ui/core/components';
+import { Typography } from '@zobi.dev/core/components/Typography';
+import { Input, Modal } from '@zobi.dev/core/components';
 import withToasts from 'src/components/MessageToasts/withToasts';
 
 import { OnlyKeyWithType } from 'src/utils/types';

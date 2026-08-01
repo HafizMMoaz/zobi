@@ -1,7 +1,7 @@
 import { useEffect, useState, useRef, useMemo } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient, getColumnLabel } from '@zobi-ui/core';
-import { Select, Space } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient, getColumnLabel } from '@zobi.dev/core';
+import { Select, Space } from '@zobi.dev/core/components';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import { optionLabel } from 'src/utils/common';
 import {

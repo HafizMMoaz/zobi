@@ -1,5 +1,5 @@
 import { CHART_TYPE } from 'src/dashboard/util/componentTypes';
-import { NativeFilterType } from '@zobi-ui/core';
+import { NativeFilterType } from '@zobi.dev/core';
 import {
   extractLabel,
   getAppliedColumnsWithFallback,

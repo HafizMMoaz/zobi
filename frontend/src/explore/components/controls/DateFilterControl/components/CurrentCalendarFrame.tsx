@@ -1,6 +1,6 @@
 import { useEffect } from 'react';
-import { t } from '@zobi/core/translation';
-import { Radio } from '@zobi-ui/core/components/Radio';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Radio } from '@zobi.dev/core/components/Radio';
 import {
   CURRENT_RANGE_OPTIONS,
   CURRENT_CALENDAR_RANGE_SET,

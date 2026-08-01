@@ -14,7 +14,7 @@ import {
   ConnectDropTarget,
 } from 'react-dnd';
 import cx from 'classnames';
-import { css, styled } from '@zobi/core/theme';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 
 import { dragConfig, dropConfig } from './dragDroppableConfig';
 import type { DragDroppableProps as BaseDragDroppableProps } from './dragDroppableConfig';

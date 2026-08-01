@@ -3,7 +3,7 @@ import { useCallback, useEffect, useMemo, useState } from 'react';
 import { URL_PARAMS } from 'src/constants';
 import { getUrlParam } from 'src/utils/urlUtils';
 import { RootState } from 'src/dashboard/types';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
 import {
   useFilters,
   useNativeFiltersDataMask,

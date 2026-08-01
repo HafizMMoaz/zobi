@@ -1,5 +1,5 @@
 
-import { styled, css } from '@zobi/core/theme';
+import { styled, css } from '@zobi.dev/extension-api/theme';
 
 export const FOLDER_INDENTATION_WIDTH = 24;
 export const ITEM_INDENTATION_WIDTH = 4;

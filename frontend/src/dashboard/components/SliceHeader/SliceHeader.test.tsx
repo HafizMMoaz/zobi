@@ -1,6 +1,6 @@
 import { Router } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
-import { getExtensionsRegistry, VizType } from '@zobi-ui/core';
+import { getExtensionsRegistry, VizType } from '@zobi.dev/core';
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
 import { isEmbedded } from 'src/dashboard/util/isEmbedded';
 import { useUiConfig } from 'src/components/UiConfigContext';

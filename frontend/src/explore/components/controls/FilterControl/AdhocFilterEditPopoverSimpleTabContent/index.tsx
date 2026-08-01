@@ -6,15 +6,15 @@ import {
   Select,
   Tooltip,
   type SelectValue,
-} from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   isFeatureEnabled,
   FeatureFlag,
   isDefined,
   ZobiClient,
-} from '@zobi-ui/core';
-import { styled, useTheme, css } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { styled, useTheme, css } from '@zobi.dev/extension-api/theme';
 import {
   Operators,
   OPERATORS_OPTIONS,
@@ -32,7 +32,7 @@ import {
   ColumnMeta,
   Dataset,
   isTemporalColumn,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import useAdvancedDataTypes from './useAdvancedDataTypes';
 import { useDatePickerInAdhocFilter } from '../utils';
 import { useDefaultTimeFilter } from '../../DateFilterControl/utils';

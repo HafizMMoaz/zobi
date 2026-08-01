@@ -1,8 +1,8 @@
-import { getChartMetadataRegistry } from '@zobi-ui/core';
+import { getChartMetadataRegistry } from '@zobi.dev/core';
 import { getQuerySettings } from '.';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   getChartMetadataRegistry: jest.fn(),
 }));
 

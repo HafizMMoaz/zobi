@@ -1,10 +1,10 @@
-import { t } from '@zobi/core/translation';
-import { ZobiTheme } from '@zobi/core/theme';
-import { Switch } from '@zobi-ui/core/components/Switch';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Switch } from '@zobi.dev/core/components/Switch';
 import {
   InfoTooltip,
   LabeledErrorBoundInput as ValidatedInput,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { FieldPropTypes } from '../../types';
 import { toggleStyle, infoTooltip } from '../styles';
 

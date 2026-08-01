@@ -1,9 +1,9 @@
 
 import { ReactNode, CSSProperties, useCallback } from 'react';
-import { truncationCSS, useCSSTextTruncation } from '@zobi-ui/core';
-import { css, useTheme } from '@zobi/core/theme';
-import { Menu, type ItemType } from '@zobi-ui/core/components/Menu';
-import { Flex, Tooltip } from '@zobi-ui/core/components';
+import { truncationCSS, useCSSTextTruncation } from '@zobi.dev/core';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { Menu, type ItemType } from '@zobi.dev/core/components/Menu';
+import { Flex, Tooltip } from '@zobi.dev/core/components';
 import { MenuItemProps } from 'antd';
 
 export type MenuItemWithTruncationProps = {

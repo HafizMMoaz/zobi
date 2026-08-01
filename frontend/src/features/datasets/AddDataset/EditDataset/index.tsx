@@ -1,8 +1,8 @@
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import useGetDatasetRelatedCounts from 'src/features/datasets/hooks/useGetDatasetRelatedCounts';
-import { Badge } from '@zobi-ui/core/components';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import { Badge } from '@zobi.dev/core/components';
+import Tabs from '@zobi.dev/core/components/Tabs';
 
 const StyledTabs = styled(Tabs)`
   ${({ theme }) => `

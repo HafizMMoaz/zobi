@@ -1,4 +1,4 @@
-import { ColumnMeta, Metric } from '@zobi-ui/chart-controls';
+import { ColumnMeta, Metric } from '@zobi.dev/chart-controls';
 import { FoldersEditorItemType } from 'src/components/Datasource/types';
 import { DndItemType } from '../DndItemType';
 

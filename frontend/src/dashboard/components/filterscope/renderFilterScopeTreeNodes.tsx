@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
 import cx from 'classnames';
-import { styled } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { CHART_TYPE } from 'src/dashboard/util/componentTypes';
 
 export interface FilterScopeTreeNode {

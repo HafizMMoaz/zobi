@@ -1,8 +1,8 @@
 import { FC, ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, useTheme, ZobiTheme } from '@zobi/core/theme';
-import { FormLabel, InfoTooltip, Tooltip } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, useTheme, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { FormLabel, InfoTooltip, Tooltip } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 type ValidationError = string;
 

@@ -3,12 +3,12 @@ import {
   css,
   ZobiTheme,
   useTheme,
-} from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import cx from 'classnames';
 import { Interweave } from 'interweave';
 import { useCallback, useEffect, useRef, useState } from 'react';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { ToastType, ToastMeta } from './types';
 
 const ToastContainer = styled.div`

@@ -1,4 +1,4 @@
-import { CustomControlItem } from '@zobi-ui/chart-controls';
+import { CustomControlItem } from '@zobi.dev/chart-controls';
 import { ReactNode } from 'react';
 import {
   Checkbox,
@@ -6,14 +6,14 @@ import {
   InfoTooltip,
   Tooltip,
   type FormInstance,
-} from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Filter,
   ChartCustomization,
   getChartControlPanelRegistry,
-} from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   doesColumnMatchFilterType,
   getControlItems,

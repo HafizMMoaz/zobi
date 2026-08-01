@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   BaseFormData,
   Behavior,
@@ -16,15 +16,15 @@ import {
   ContextMenuFilters,
   ensureIsArray,
   getChartMetadataRegistry,
-} from '@zobi-ui/core';
-import { css, useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import {
   Constants,
   Input,
   Loading,
   Popover,
   Icons,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { debounce } from 'lodash';
 import { FixedSizeList as List } from 'react-window';
 import { InputRef } from 'antd';

@@ -4,7 +4,7 @@ import {
 } from './const';
 
 // We can swap this out for the actual switchboard package once it gets published
-import { Switchboard } from '@zobi-ui/switchboard';
+import { Switchboard } from '@zobi.dev/switchboard';
 import { getGuestTokenRefreshTiming } from './guestTokenRefresh';
 
 /**

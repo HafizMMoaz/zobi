@@ -1,4 +1,4 @@
-import { DEFAULT_D3_FORMAT, DEFAULT_D3_TIME_FORMAT } from '@zobi-ui/core';
+import { DEFAULT_D3_FORMAT, DEFAULT_D3_TIME_FORMAT } from '@zobi.dev/core';
 import { BootstrapData, CommonBootstrapData } from './types/bootstrapTypes';
 
 export const DATETIME_WITH_TIME_ZONE = 'YYYY-MM-DD HH:mm:ssZ';

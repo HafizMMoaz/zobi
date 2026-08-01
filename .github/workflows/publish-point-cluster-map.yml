@@ -1,0 +1,86 @@
+name: Publish @zobi.dev/point-cluster-map
+
+# Publishes only @zobi.dev/point-cluster-map (frontend/plugins/point-cluster-map).
+
+# Trigger manually, or push a package-scoped tag such as point-cluster-map-v1.2.3
+on:
+  push:
+    tags:
+      - 'point-cluster-map-v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version bump (patch, minor, major) or an exact version'
+        required: true
+        default: 'patch'
+      dry_run:
+        description: 'Pack only, do not publish'
+        type: boolean
+        required: false
+        default: false
+
+concurrency:
+  group: publish-point-cluster-map
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: '@zobi.dev/point-cluster-map'
+    runs-on: ubuntu-latest
+    permissions:
+
+      contents: read
+      id-token: write # npm provenance
+
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+          registry-url: 'https://registry.npmjs.org'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Verify package identity
+        run: |
+          set -euo pipefail
+          ACTUAL=$(node -p "require('./plugins/point-cluster-map/package.json').name")
+          if [ "$ACTUAL" != "@zobi.dev/point-cluster-map" ]; then
+            echo "::error::frontend/plugins/point-cluster-map declares '$ACTUAL', expected '@zobi.dev/point-cluster-map'"
+            exit 1
+          fi
+          echo "$ACTUAL @ $(node -p "require('./plugins/point-cluster-map/package.json').version")"
+
+      - name: Set version
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          set -euo pipefail
+          npm version "${{ inputs.version }}" --no-git-tag-version --workspace @zobi.dev/point-cluster-map
+
+      - name: Build
+        run: |
+          npm run prune
+          npm run plugins:build
+
+      - name: Pack (dry run)
+
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+        working-directory: frontend/plugins/point-cluster-map
+        run: npm pack --dry-run
+
+      - name: Publish to npm
+        if: github.event_name != 'workflow_dispatch' || !inputs.dry_run
+        working-directory: frontend/plugins/point-cluster-map
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access public

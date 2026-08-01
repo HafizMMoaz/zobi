@@ -1,5 +1,5 @@
 import { render, screen, act } from 'spec/helpers/testing-library';
-import { zobiTheme } from '@zobi/core/theme';
+import { zobiTheme } from '@zobi.dev/extension-api/theme';
 import { getStatusConfig, StatusIndicatorDot } from './StatusIndicatorDot';
 import { AutoRefreshStatus } from '../../types/autoRefresh';
 

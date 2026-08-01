@@ -73,7 +73,7 @@ module.exports = {
         '**/__tests__/**',
         '**/__mocks__/**',
         'cypress-base/**',
-        'packages/zobi-ui-core/src/theme/index.tsx',
+        'packages/core/src/theme/index.tsx',
       ],
       rules: {
         'theme-colors/no-literal-colors': 0,

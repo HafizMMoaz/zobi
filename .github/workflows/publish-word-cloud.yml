@@ -1,0 +1,86 @@
+name: Publish @zobi.dev/word-cloud
+
+# Publishes only @zobi.dev/word-cloud (frontend/plugins/word-cloud).
+
+# Trigger manually, or push a package-scoped tag such as word-cloud-v1.2.3
+on:
+  push:
+    tags:
+      - 'word-cloud-v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version bump (patch, minor, major) or an exact version'
+        required: true
+        default: 'patch'
+      dry_run:
+        description: 'Pack only, do not publish'
+        type: boolean
+        required: false
+        default: false
+
+concurrency:
+  group: publish-word-cloud
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: '@zobi.dev/word-cloud'
+    runs-on: ubuntu-latest
+    permissions:
+
+      contents: read
+      id-token: write # npm provenance
+
+    defaults:
+      run:
+        working-directory: frontend
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+          registry-url: 'https://registry.npmjs.org'
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Verify package identity
+        run: |
+          set -euo pipefail
+          ACTUAL=$(node -p "require('./plugins/word-cloud/package.json').name")
+          if [ "$ACTUAL" != "@zobi.dev/word-cloud" ]; then
+            echo "::error::frontend/plugins/word-cloud declares '$ACTUAL', expected '@zobi.dev/word-cloud'"
+            exit 1
+          fi
+          echo "$ACTUAL @ $(node -p "require('./plugins/word-cloud/package.json').version")"
+
+      - name: Set version
+        if: github.event_name == 'workflow_dispatch'
+        run: |
+          set -euo pipefail
+          npm version "${{ inputs.version }}" --no-git-tag-version --workspace @zobi.dev/word-cloud
+
+      - name: Build
+        run: |
+          npm run prune
+          npm run plugins:build
+
+      - name: Pack (dry run)
+
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+        working-directory: frontend/plugins/word-cloud
+        run: npm pack --dry-run
+
+      - name: Publish to npm
+        if: github.event_name != 'workflow_dispatch' || !inputs.dry_run
+        working-directory: frontend/plugins/word-cloud
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access public

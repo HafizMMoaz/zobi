@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { Filter, ChartCustomization } from '@zobi-ui/core';
-import { useTheme } from '@zobi/core/theme';
+import { Filter, ChartCustomization } from '@zobi.dev/core';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/dashboard/types';
 import { useChartCustomizationFromRedux } from 'src/dashboard/components/nativeFilters/state';

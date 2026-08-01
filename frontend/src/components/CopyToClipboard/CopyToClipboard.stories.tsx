@@ -1,6 +1,6 @@
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import ToastContainer from 'src/components/MessageToasts/ToastContainer';
-import { Button } from '@zobi-ui/core/components';
+import { Button } from '@zobi.dev/core/components';
 import { CopyToClipboard } from '.';
 
 export default {

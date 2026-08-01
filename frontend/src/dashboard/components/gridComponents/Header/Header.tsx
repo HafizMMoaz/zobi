@@ -1,9 +1,9 @@
 import { PureComponent } from 'react';
 import cx from 'classnames';
-import { css, styled } from '@zobi/core/theme';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 
-import PopoverDropdown from '@zobi-ui/core/components/PopoverDropdown';
-import { EditableTitle } from '@zobi-ui/core/components';
+import PopoverDropdown from '@zobi.dev/core/components/PopoverDropdown';
+import { EditableTitle } from '@zobi.dev/core/components';
 import { Draggable } from 'src/dashboard/components/dnd/DragDroppable';
 import DragHandle from 'src/dashboard/components/dnd/DragHandle';
 import AnchorLink from 'src/dashboard/components/AnchorLink';

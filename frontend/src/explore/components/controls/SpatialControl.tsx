@@ -5,10 +5,10 @@ import {
   Checkbox,
   Label,
   Popover,
-} from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
 
-import PopoverSection from '@zobi-ui/core/components/PopoverSection';
+import PopoverSection from '@zobi.dev/core/components/PopoverSection';
 import ControlHeader from '../ControlHeader';
 import SelectControl from './SelectControl';
 

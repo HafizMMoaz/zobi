@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, useTheme } from '@zobi/core/theme';
-import { MenuItem } from '@zobi-ui/core/components/Menu';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { MenuItem } from '@zobi.dev/core/components/Menu';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { Link } from 'react-router-dom';
 
 export interface DashboardsMenuProps {

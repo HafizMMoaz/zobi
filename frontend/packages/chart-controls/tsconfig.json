@@ -1,0 +1,20 @@
+{
+  "extends": "../../tsconfig.json",
+  "compilerOptions": {
+    // Path Resolution: Override baseUrl to maintain correct path mappings from parent config
+    // (e.g., "@zobi.dev/extension-api" -> "./packages/extension-api/src")
+    "baseUrl": "../..",
+
+    // Directory Overrides: Parent config paths are relative to frontend root,
+    // but packages need paths relative to their own directory
+    "outDir": "lib",
+    "rootDir": "src",
+    "declarationDir": "lib"
+  },
+  "include": ["src/**/*", "types/**/*"],
+  "exclude": ["src/**/*.test.*", "src/**/*.stories.*"],
+  "references": [
+    { "path": "../extension-api" },
+    { "path": "../core" }
+  ]
+}

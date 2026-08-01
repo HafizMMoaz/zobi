@@ -1,8 +1,8 @@
 
 import { useMemo, useState, useCallback } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, useTheme, ZobiTheme } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, useTheme, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { FilterBarOrientation } from 'src/dashboard/types';
 import CrossFilter from './CrossFilter';
 import { CrossFilterIndicator } from '../../selectors';

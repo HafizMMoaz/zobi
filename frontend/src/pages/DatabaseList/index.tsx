@@ -1,11 +1,11 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   getExtensionsRegistry,
   ZobiClient,
   isFeatureEnabled,
   FeatureFlag,
-} from '@zobi-ui/core';
-import { css, styled, useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import type { CellProps } from 'react-table';
 import rison from 'rison';
@@ -27,7 +27,7 @@ import {
   Tooltip,
   List,
   Loading,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   ModifiedInfo,
   ListView,
@@ -35,10 +35,10 @@ import {
   ListViewFilters,
   type ListViewFetchDataConfig,
 } from 'src/components';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Typography } from '@zobi.dev/core/components/Typography';
 import { getUrlParam } from 'src/utils/urlUtils';
 import { URL_PARAMS } from 'src/constants';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { isUserAdmin } from 'src/dashboard/util/permissionUtils';
 import handleResourceExport from 'src/utils/export';
 import { ExtensionConfigs } from 'src/features/home/types';

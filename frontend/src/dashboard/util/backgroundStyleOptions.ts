@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { BACKGROUND_TRANSPARENT, BACKGROUND_WHITE } from './constants';
 
 export default [

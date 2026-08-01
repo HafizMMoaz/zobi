@@ -1,16 +1,16 @@
 import { useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   Form,
   FormLabel,
   Col,
   Row,
   Tooltip,
-} from '@zobi-ui/core/components';
-import { Input } from '@zobi-ui/core/components/Input';
-import { Radio } from '@zobi-ui/core/components/Radio';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { Input } from '@zobi.dev/core/components/Input';
+import { Radio } from '@zobi.dev/core/components/Radio';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { DatabaseObject, FieldPropTypes } from '../types';
 import { AuthType } from '.';
 

@@ -1,5 +1,5 @@
-import { QueryFormData } from '@zobi-ui/core';
-import { ControlPanelConfig } from '@zobi-ui/chart-controls';
+import { QueryFormData } from '@zobi.dev/core';
+import { ControlPanelConfig } from '@zobi.dev/chart-controls';
 import type { DiffType } from 'src/types/DiffType';
 import { getChartFormDiffs } from 'src/utils/getChartFormDiffs';
 import type { RowType } from './types';

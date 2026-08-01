@@ -1,4 +1,4 @@
-import { ColumnTypeLabel } from '@zobi-ui/chart-controls';
+import { ColumnTypeLabel } from '@zobi.dev/chart-controls';
 import { AggregateOption as AggregateOptionType } from './types';
 
 interface AggregateOptionProps {

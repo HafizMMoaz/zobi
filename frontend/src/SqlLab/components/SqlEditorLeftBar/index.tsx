@@ -9,9 +9,9 @@ import {
   Icons,
   Popover,
   Typography,
-} from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { styled, css } from '@zobi/core/theme';
+} from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, css } from '@zobi.dev/extension-api/theme';
 import type { SchemaOption, CatalogOption } from 'src/hooks/apiResources';
 import { DatabaseSelector, type DatabaseObject } from 'src/components';
 import { EMPTY_STATE_QE_ID } from 'src/SqlLab/hooks/useQueryEditor';

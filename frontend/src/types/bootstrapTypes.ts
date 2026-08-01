@@ -5,18 +5,18 @@ import { Languages } from 'src/features/home/LanguagePicker';
 import {
   AnyThemeConfig,
   SerializableThemeConfig,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import type {
   ColorSchemeConfig,
   FeatureFlagMap,
   JsonObject,
   SequentialSchemeConfig,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 import {
   type LanguagePack,
   type Locale,
-} from '@zobi/core/translation';
+} from '@zobi.dev/extension-api/translation';
 
 export type User = {
   createdOn?: string;

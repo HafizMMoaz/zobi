@@ -6,11 +6,11 @@ import {
   waitFor,
 } from 'spec/helpers/testing-library';
 import fetchMock from 'fetch-mock';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
 import PropertiesModal, { PropertiesModalProps } from '.';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

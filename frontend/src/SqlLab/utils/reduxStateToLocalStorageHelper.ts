@@ -3,7 +3,7 @@ import type {
   Query,
   QueryResponse,
   QueryResults,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import type {
   CursorPosition,
   QueryEditor,

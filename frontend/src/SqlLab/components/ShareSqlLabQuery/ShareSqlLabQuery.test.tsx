@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
-import { isFeatureEnabled } from '@zobi-ui/core';
+import { isFeatureEnabled } from '@zobi.dev/core';
 import {
   render,
   screen,
@@ -41,8 +41,8 @@ const mockState = {
 };
 const store = mockStore(mockState);
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

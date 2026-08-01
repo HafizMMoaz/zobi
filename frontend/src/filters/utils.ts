@@ -4,8 +4,8 @@ import {
   QueryObjectFilterClause,
   TimeFormatter,
   ExtraFormData,
-} from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+} from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { FALSE_STRING, NULL_STRING, TRUE_STRING } from 'src/utils/common';
 import {
   Clauses,

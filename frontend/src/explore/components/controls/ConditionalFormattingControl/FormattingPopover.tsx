@@ -1,5 +1,5 @@
 import { useCallback, useState } from 'react';
-import { Popover } from '@zobi-ui/core/components';
+import { Popover } from '@zobi.dev/core/components';
 import { FormattingPopoverContent } from './FormattingPopoverContent';
 import { ConditionalFormattingConfig, FormattingPopoverProps } from './types';
 

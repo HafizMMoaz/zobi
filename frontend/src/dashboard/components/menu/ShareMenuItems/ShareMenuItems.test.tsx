@@ -1,5 +1,5 @@
 
-import { Menu, MenuItem } from '@zobi-ui/core/components/Menu';
+import { Menu, MenuItem } from '@zobi.dev/core/components/Menu';
 import {
   render,
   screen,

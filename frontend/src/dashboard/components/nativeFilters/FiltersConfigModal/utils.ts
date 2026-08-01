@@ -1,4 +1,4 @@
-import type { FormInstance } from '@zobi-ui/core/components';
+import type { FormInstance } from '@zobi.dev/core/components';
 import { nanoid } from 'nanoid';
 import { getInitialDataMask } from 'src/dataMask/reducer';
 import {
@@ -11,8 +11,8 @@ import {
   ChartCustomizationConfiguration,
   ChartCustomization,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+} from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import { DASHBOARD_ROOT_ID } from 'src/dashboard/util/constants';
 import {
   ChartCustomizationsForm,

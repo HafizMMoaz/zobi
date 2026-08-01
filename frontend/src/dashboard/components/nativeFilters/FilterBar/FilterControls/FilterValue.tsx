@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react';
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ChartDataResponseResult,
   Behavior,
@@ -22,13 +22,13 @@ import {
   ClientErrorObject,
   getClientErrorObject,
   isChartCustomization,
-} from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { useDispatch, useSelector } from 'react-redux';
 import { isEqual, isEqualWith } from 'lodash';
 import { getChartDataRequest } from 'src/components/Chart/chartAction';
 import { ErrorAlert, ErrorMessageWithStackTrace } from 'src/components';
-import { Loading, Constants, Flex } from '@zobi-ui/core/components';
+import { Loading, Constants, Flex } from '@zobi.dev/core/components';
 import { waitForAsyncData } from 'src/middleware/asyncEvent';
 import { FilterBarOrientation, RootState } from 'src/dashboard/types';
 import {

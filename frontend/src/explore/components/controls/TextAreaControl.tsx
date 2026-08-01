@@ -6,9 +6,9 @@ import {
   Button,
   TextAreaEditor,
   ModalTrigger,
-} from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { withTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { withTheme } from '@zobi.dev/extension-api/theme';
 
 import 'ace-builds/src-min-noconflict/mode-handlebars';
 

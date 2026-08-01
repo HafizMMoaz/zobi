@@ -2,14 +2,14 @@ import { createRef, useCallback, useMemo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { useAppDispatch } from 'src/views/store';
 import { nanoid } from 'nanoid';
-import Tabs from '@zobi-ui/core/components/Tabs';
-import { t } from '@zobi/core/translation';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import Tabs from '@zobi.dev/core/components/Tabs';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 
 import { removeTables, setActiveSouthPaneTab } from 'src/SqlLab/actions/sqlLab';
 
-import { Flex, Label } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Flex, Label } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { SqlLabRootState } from 'src/SqlLab/types';
 import { ViewLocations } from 'src/SqlLab/contributions';
 import PanelToolbar from 'src/components/PanelToolbar';

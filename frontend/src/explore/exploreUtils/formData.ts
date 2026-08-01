@@ -1,4 +1,4 @@
-import { ZobiClient, JsonObject, JsonResponse } from '@zobi-ui/core';
+import { ZobiClient, JsonObject, JsonResponse } from '@zobi.dev/core';
 import { sanitizeFormData } from 'src/utils/sanitizeFormData';
 
 type Payload = {

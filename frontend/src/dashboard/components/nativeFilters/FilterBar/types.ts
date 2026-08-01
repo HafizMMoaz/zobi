@@ -7,7 +7,7 @@ import {
   Filter,
   ChartCustomization,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { FilterBarOrientation } from 'src/dashboard/types';
 
 interface CommonFiltersBarProps {

@@ -1,4 +1,4 @@
-import { Metric, ColumnMeta } from '@zobi-ui/chart-controls';
+import { Metric, ColumnMeta } from '@zobi.dev/chart-controls';
 import { DatasourceFolder } from 'src/explore/components/DatasourcePanel/types';
 
 export interface FoldersEditorProps {

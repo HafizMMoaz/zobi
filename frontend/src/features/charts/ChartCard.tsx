@@ -1,6 +1,6 @@
-import { t } from '@zobi/core/translation';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
-import { css } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
+import { css } from '@zobi.dev/extension-api/theme';
 import { Link, useHistory } from 'react-router-dom';
 import {
   ConfirmStatusChange,
@@ -11,7 +11,7 @@ import {
   ListViewCard,
   Icons,
   MenuItem,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import Chart from 'src/types/Chart';
 import { FacePile } from 'src/components';
 import { handleChartDelete, CardStyles } from 'src/views/CRUD/utils';

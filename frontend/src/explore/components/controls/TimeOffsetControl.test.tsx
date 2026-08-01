@@ -1,7 +1,7 @@
 import configureStore from 'redux-mock-store';
 import { render, screen } from 'spec/helpers/testing-library';
-import { INVALID_DATE } from '@zobi-ui/chart-controls';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { INVALID_DATE } from '@zobi.dev/chart-controls';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 import TimeOffsetControls, {
   TimeOffsetControlsProps,
 } from './TimeOffsetControl';

@@ -1,12 +1,12 @@
 
 import { ReactElement } from 'react';
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   IconNameType,
   Icons,
   type TooltipPlacement,
   ActionButton,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 
 export type ActionProps = {
   label: string;

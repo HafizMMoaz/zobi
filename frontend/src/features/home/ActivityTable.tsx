@@ -1,10 +1,10 @@
 import { useEffect, useState } from 'react';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { setItem, LocalStorageKeys } from 'src/utils/localStorageHelpers';
 import { Link } from 'react-router-dom';
-import { ListViewCard } from '@zobi-ui/core/components';
+import { ListViewCard } from '@zobi.dev/core/components';
 import { Dashboard, SavedQueryObject, TableTab } from 'src/views/CRUD/types';
 import { ActivityData, LoadingCards } from 'src/pages/Home';
 import {
@@ -13,7 +13,7 @@ import {
   getEditedObjects,
 } from 'src/views/CRUD/utils';
 import { Chart } from 'src/types/Chart';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import SubMenu from './SubMenu';
 import EmptyState from './EmptyState';
 import { WelcomeTable, RecentActivity } from './types';

@@ -1,7 +1,7 @@
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
 import CollectionControl from '.';
 
-jest.mock('@zobi-ui/chart-controls', () => ({
+jest.mock('@zobi.dev/chart-controls', () => ({
   InfoTooltip: (props: any) => (
     <button
       onClick={props.onClick}

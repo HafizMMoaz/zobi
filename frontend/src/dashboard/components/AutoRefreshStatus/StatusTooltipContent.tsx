@@ -1,5 +1,5 @@
 import { FC } from 'react';
-import { t, tn } from '@zobi/core/translation';
+import { t, tn } from '@zobi.dev/extension-api/translation';
 import { AutoRefreshStatus } from '../../types/autoRefresh';
 
 export interface StatusTooltipContentProps {

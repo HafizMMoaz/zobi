@@ -3,7 +3,7 @@ import {
   DataRecord,
   FilterState,
   QueryFormData,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { RefObject } from 'react';
 import { PluginFilterHooks, PluginFilterStylesProps } from '../types';
 import { FilterBarOrientation } from '../../../dashboard/types';

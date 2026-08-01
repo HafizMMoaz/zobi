@@ -6,15 +6,15 @@ import {
   ChangeEvent,
 } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import {
   Input,
   InfoTooltip,
   FormLabel,
   Icons,
   Flex,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import type { BaseFilter, FilterHandler } from './types';
 import { FilterContainer } from './Base';
 import { SELECT_WIDTH } from '../utils';

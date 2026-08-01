@@ -1,6 +1,6 @@
 import { useMemo, useReducer, useCallback } from 'react';
 import { useAppDispatch } from 'src/views/store';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Table,
   type TableMetaData,
@@ -11,7 +11,7 @@ import {
 } from 'src/hooks/apiResources';
 import { addDangerToast } from 'src/SqlLab/actions/sqlLab';
 import type { TreeNodeData } from './types';
-import { ZobiError } from '@zobi-ui/core';
+import { ZobiError } from '@zobi.dev/core';
 
 export const EMPTY_NODE_ID_PREFIX = 'empty:';
 

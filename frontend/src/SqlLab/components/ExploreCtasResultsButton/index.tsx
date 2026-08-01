@@ -1,14 +1,14 @@
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'src/views/store';
-import { t } from '@zobi/core/translation';
-import { VizType } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { VizType } from '@zobi.dev/core';
 import {
   createCtasDatasource,
   addInfoToast,
   addDangerToast,
 } from 'src/SqlLab/actions/sqlLab';
-import { Button, IconTooltip } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Button, IconTooltip } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { exploreChart } from 'src/explore/exploreUtils';
 import { SqlLabRootState } from 'src/SqlLab/types';
 

@@ -1,9 +1,9 @@
 import { useEffect } from 'react';
-import { IconTooltip, ModalTrigger } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { IconTooltip, ModalTrigger } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import CodeSyntaxHighlighter, {
   preloadLanguages,
-} from '@zobi-ui/core/components/CodeSyntaxHighlighter';
+} from '@zobi.dev/core/components/CodeSyntaxHighlighter';
 
 interface ShowSQLProps {
   sql: string;

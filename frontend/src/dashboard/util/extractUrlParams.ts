@@ -1,4 +1,4 @@
-import { JsonObject } from '@zobi-ui/core';
+import { JsonObject } from '@zobi.dev/core';
 
 const reservedQueryParams = new Set(['standalone', 'edit']);
 

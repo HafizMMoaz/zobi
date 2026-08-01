@@ -1,4 +1,4 @@
-import type { AdhocFilter as CoreAdhocFilter } from '@zobi-ui/core';
+import type { AdhocFilter as CoreAdhocFilter } from '@zobi.dev/core';
 import {
   CUSTOM_OPERATORS,
   DISABLE_INPUT_OPERATORS,
@@ -172,7 +172,7 @@ export default class AdhocFilter {
 
 /**
  * Adapter function to create an AdhocFilter instance from a core AdhocFilter type.
- * This bridges the type gap between @zobi-ui/core's AdhocFilter and the local class.
+ * This bridges the type gap between @zobi.dev/core's AdhocFilter and the local class.
  */
 export function fromCoreAdhocFilter(filter: CoreAdhocFilter): AdhocFilter {
   return new AdhocFilter(filter as AdhocFilterInput);

@@ -1,7 +1,7 @@
 
 import { useCallback, useState, FormEvent } from 'react';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
-import { Radio, RadioChangeEvent } from '@zobi-ui/core/components/Radio';
+import { Radio, RadioChangeEvent } from '@zobi.dev/core/components/Radio';
 import {
   AsyncSelect,
   Button,
@@ -11,8 +11,8 @@ import {
   type SelectValue,
   Icons,
   Flex,
-} from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ZobiClient,
   JsonResponse,
@@ -22,9 +22,9 @@ import {
   FeatureFlag,
   isFeatureEnabled,
   getClientErrorObject,
-} from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { extendedDayjs as dayjs } from '@zobi-ui/core/utils/dates';
+} from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { extendedDayjs as dayjs } from '@zobi.dev/core/utils/dates';
 import { useAppDispatch, useAppSelector } from 'src/views/store';
 import rison from 'rison';
 import { createDatasource } from 'src/SqlLab/actions/sqlLab';

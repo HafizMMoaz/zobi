@@ -2,7 +2,7 @@
 import rison from 'rison';
 import { Dashboard, Datasource, EmbeddedDashboard } from 'src/dashboard/types';
 import { Chart } from 'src/types/Chart';
-import { Currency } from '@zobi-ui/core';
+import { Currency } from '@zobi.dev/core';
 import { useApiV1Resource, useTransformedResource } from './apiResources';
 
 const DASHBOARD_GET_COLUMNS = [

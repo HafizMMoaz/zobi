@@ -1,8 +1,8 @@
 import { PureComponent, ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { JsonObject } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { JsonObject } from '@zobi.dev/core';
 
-import { Loading } from '@zobi-ui/core/components';
+import { Loading } from '@zobi.dev/core/components';
 import { PluginContext } from 'src/components';
 import type { PluginContextType } from 'src/components/DynamicPlugins/types';
 import getBootstrapData from 'src/utils/getBootstrapData';
@@ -23,7 +23,7 @@ import type {
   AppliedCrossFilterType,
   AppliedNativeFilterType,
   Filter,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { getAffectedOwnDataCharts } from '../util/charts/getOwnDataCharts';
 import { getRelatedCharts } from '../util/getRelatedCharts';
 import type {

@@ -2,7 +2,7 @@ import { nanoid } from 'nanoid';
 import { compose } from 'redux';
 import persistState, { StorageAdapter } from 'redux-localstorage';
 import { isEqual, omitBy, omit, isEqualWith } from 'lodash';
-import { ensureIsArray } from '@zobi-ui/core';
+import { ensureIsArray } from '@zobi.dev/core';
 
 export function addToObject(
   state: Record<string, any>,

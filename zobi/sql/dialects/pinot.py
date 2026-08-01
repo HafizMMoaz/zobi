@@ -20,8 +20,6 @@ class Pinot(MySQL):
 
     The main difference from standard MySQL is that double quotes (") are used for
     identifiers instead of string literals, following ANSI SQL conventions.
-
-    See: https://calcite.zobi.dev/javadocAggregate/org/apache/calcite/config/Lex.html#MYSQL_ANSI
     """
 
     class Tokenizer(MySQL.Tokenizer):

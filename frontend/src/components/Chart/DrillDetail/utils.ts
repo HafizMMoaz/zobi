@@ -4,7 +4,7 @@ import {
   QueryFormData,
   BinaryQueryObjectFilterClause,
   buildQueryObject,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 export function getDrillPayload(
   queryFormData?: QueryFormData,

@@ -9,7 +9,7 @@ import {
   NativeFilterType,
   NO_TIME_RANGE,
   QueryFormColumn,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { TIME_FILTER_MAP } from 'src/explore/constants';
 import { getChartIdsInFilterScope } from 'src/dashboard/util/activeDashboardFilters';
 import { ChartConfiguration, LayoutItem } from 'src/dashboard/types';

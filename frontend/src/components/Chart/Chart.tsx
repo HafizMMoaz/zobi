@@ -1,6 +1,6 @@
 import { ErrorInfo, PureComponent } from 'react';
-import { logging } from '@zobi/core/utils';
-import { t } from '@zobi/core/translation';
+import { logging } from '@zobi.dev/extension-api/utils';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ensureIsArray,
   FeatureFlag,
@@ -12,11 +12,11 @@ import {
   type FilterState,
   type JsonObject,
   type AgGridChartState,
-} from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import type { ChartState, Datasource, ChartStatus } from 'src/explore/types';
 import { PLACEHOLDER_DATASOURCE } from 'src/dashboard/constants';
-import { EmptyState, Loading } from '@zobi-ui/core/components';
+import { EmptyState, Loading } from '@zobi.dev/core/components';
 import { ErrorBoundary } from 'src/components';
 import { Logger, LOG_ACTIONS_RENDER_CHART } from 'src/logger/LogUtils';
 import { URL_PARAMS } from 'src/constants';

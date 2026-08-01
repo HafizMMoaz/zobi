@@ -1,17 +1,17 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ensureIsArray,
   isAdhocMetricSimple,
   isSavedMetric,
   Metric,
   QueryFormMetric,
-} from '@zobi-ui/core';
-import { tn } from '@zobi/core/translation';
-import { GenericDataType } from '@zobi/core/common';
-import { ColumnMeta } from '@zobi-ui/chart-controls';
+} from '@zobi.dev/core';
+import { tn } from '@zobi.dev/extension-api/translation';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
+import { ColumnMeta } from '@zobi.dev/chart-controls';
 import AdhocMetric from 'src/explore/components/controls/MetricControl/AdhocMetric';
 import AdhocMetricPopoverTrigger from 'src/explore/components/controls/MetricControl/AdhocMetricPopoverTrigger';
 import MetricDefinitionValue from 'src/explore/components/controls/MetricControl/MetricDefinitionValue';
@@ -75,14 +75,14 @@ const coerceMetrics = (
         col => col.column_name === metric.column.column_name,
       );
       if (column) {
-        // Cast entire config object to handle type mismatch between @zobi-ui/core and local types
+        // Cast entire config object to handle type mismatch between @zobi.dev/core and local types
         return new AdhocMetric({
           ...(metric as unknown as Record<string, unknown>),
           column,
         } as Record<string, unknown>);
       }
     }
-    // Cast to unknown first to handle type mismatch between @zobi-ui/core and local AdhocMetric
+    // Cast to unknown first to handle type mismatch between @zobi.dev/core and local AdhocMetric
     return new AdhocMetric(metric as unknown as Record<string, unknown>);
   });
 };

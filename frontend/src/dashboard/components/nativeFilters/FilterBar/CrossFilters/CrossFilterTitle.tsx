@@ -1,10 +1,10 @@
 
-import { t } from '@zobi/core/translation';
-import { useCSSTextTruncation } from '@zobi-ui/core';
-import { css, styled, useTheme } from '@zobi/core/theme';
-import { Tooltip } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useCSSTextTruncation } from '@zobi.dev/core';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { Tooltip } from '@zobi.dev/core/components';
 import { FilterBarOrientation } from 'src/dashboard/types';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { ellipsisCss } from './styles';
 
 const StyledCrossFilterTitle = styled.div`

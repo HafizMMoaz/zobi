@@ -1,7 +1,7 @@
 
 import { ReactNode } from 'react';
-import { Divider, Filter } from '@zobi-ui/core';
-import { css, ZobiTheme } from '@zobi/core/theme';
+import { Divider, Filter } from '@zobi.dev/core';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { FilterBarOrientation } from 'src/dashboard/types';
 import { FiltersOutOfScopeCollapsible } from '../FiltersOutOfScopeCollapsible';
 import { CrossFilterIndicator } from '../../selectors';

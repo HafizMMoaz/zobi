@@ -1,13 +1,13 @@
 
-// Re-export AG Grid types from @zobi-ui/core for convenience
-import type { AgGridChartState } from '@zobi-ui/core';
+// Re-export AG Grid types from @zobi.dev/core for convenience
+import type { AgGridChartState } from '@zobi.dev/core';
 
 export type {
   AgGridSortModel,
   AgGridFilter,
   AgGridFilterModel,
   AgGridChartState,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 export interface ChartState {
   chartId: number;

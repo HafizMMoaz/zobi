@@ -7,10 +7,10 @@ import {
   ChangeEvent,
 } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { ZobiClient, getClientErrorObject } from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient, getClientErrorObject } from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   Button,
   Constants,
@@ -19,11 +19,11 @@ import {
   Loading,
   Modal,
   TableView,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   ServerPagination,
   SortByType,
-} from '@zobi-ui/core/components/TableView/types';
+} from '@zobi.dev/core/components/TableView/types';
 import { FacePile } from 'src/components';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import Dataset from 'src/types/Dataset';

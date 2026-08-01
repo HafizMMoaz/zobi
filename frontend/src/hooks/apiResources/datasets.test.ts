@@ -19,8 +19,8 @@ jest.mock('src/utils/cachedZobiGet', () => ({
 
 // Mock getExtensionsRegistry at module level - returns undefined by default
 const mockGetExtensionsRegistry = jest.fn(() => ({ get: () => undefined }));
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   getExtensionsRegistry: () => mockGetExtensionsRegistry(),
 }));
 

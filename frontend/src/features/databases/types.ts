@@ -1,5 +1,5 @@
-import { JsonObject } from '@zobi-ui/core';
-import { InputProps } from '@zobi-ui/core/components';
+import { JsonObject } from '@zobi.dev/core';
+import { InputProps } from '@zobi.dev/core/components';
 import { ChangeEvent, EventHandler, FormEvent } from 'react';
 
 type DatabaseUser = {

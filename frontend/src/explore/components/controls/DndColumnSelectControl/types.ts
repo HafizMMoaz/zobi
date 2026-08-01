@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { AdhocColumn, JsonValue } from '@zobi-ui/core';
+import { AdhocColumn, JsonValue } from '@zobi.dev/core';
 import { ControlComponentProps } from 'src/explore/components/Control';
-import { ColumnMeta } from '@zobi-ui/chart-controls';
+import { ColumnMeta } from '@zobi.dev/chart-controls';
 
 export interface OptionProps {
   children?: ReactNode;

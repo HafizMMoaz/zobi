@@ -4,14 +4,14 @@ import {
   screen,
   userEvent,
 } from 'spec/helpers/testing-library';
-import { DatasourceType } from '@zobi-ui/core';
+import { DatasourceType } from '@zobi.dev/core';
 import { sliceEntitiesForDashboard as mockSliceEntities } from 'spec/fixtures/mockSliceEntities';
 import { configureStore } from '@reduxjs/toolkit';
 import SliceAdder, { SliceAdderProps, sortByComparator } from './SliceAdder';
 
 // Mock the Select component to avoid debounce issues
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   Select: ({ value, onChange, options }: any) => (
     <select
       data-test="select"

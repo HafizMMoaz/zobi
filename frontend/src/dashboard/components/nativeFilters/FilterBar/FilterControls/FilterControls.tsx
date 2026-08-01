@@ -8,7 +8,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   DataMask,
   DataMaskStateWithId,
@@ -19,13 +19,13 @@ import {
   ChartCustomization,
   isChartCustomizationDivider,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   css,
   ZobiTheme,
   useTheme,
   styled,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import {
   createHtmlPortalNode,
   InPortal,
@@ -42,8 +42,8 @@ import {
   DropdownContainer,
   type DropdownRef as DropdownContainerRef,
   Typography,
-} from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { useChartIds } from 'src/dashboard/util/charts/useChartIds';
 import { useChartLayoutItems } from 'src/dashboard/util/useChartLayoutItems';
 import { setPendingChartCustomization } from 'src/dashboard/actions/chartCustomizationActions';

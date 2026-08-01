@@ -1,10 +1,10 @@
 import { Component } from 'react';
-import { t } from '@zobi/core/translation';
-import { Collapse, Label } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Collapse, Label } from '@zobi.dev/core/components';
 import TextControl from 'src/explore/components/controls/TextControl';
 import MetricsControl from 'src/explore/components/controls/MetricControl/MetricsControl';
 import ControlHeader from 'src/explore/components/ControlHeader';
-import PopoverSection from '@zobi-ui/core/components/PopoverSection';
+import PopoverSection from '@zobi.dev/core/components/PopoverSection';
 
 const controlTypes = {
   fixed: 'fix',

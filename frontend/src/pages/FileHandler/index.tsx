@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 import { useHistory } from 'react-router-dom';
-import { t } from '@zobi/core/translation';
-import { Loading } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Loading } from '@zobi.dev/core/components';
 import UploadDataModal from 'src/features/databases/UploadDataModel';
 import withToasts from 'src/components/MessageToasts/withToasts';
 

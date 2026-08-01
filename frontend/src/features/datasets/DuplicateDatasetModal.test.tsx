@@ -1,6 +1,6 @@
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
-import { ThemeProvider, zobiTheme } from '@zobi/core/theme';
+import { ThemeProvider, zobiTheme } from '@zobi.dev/extension-api/theme';
 import DuplicateDatasetModal from './DuplicateDatasetModal';
 
 // Test-only fixture type that includes all fields from API responses

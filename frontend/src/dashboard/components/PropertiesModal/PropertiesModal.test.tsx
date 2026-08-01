@@ -6,16 +6,16 @@ import {
 } from 'spec/helpers/testing-library';
 import fetchMock from 'fetch-mock';
 import * as ColorSchemeSelect from 'src/dashboard/components/ColorSchemeSelect';
-import * as ZobiCore from '@zobi-ui/core';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
+import * as ZobiCore from '@zobi.dev/core';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
 import PropertiesModal from '.';
 
 // Increase timeout for CI environment
 jest.setTimeout(60000);
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
   getCategoricalSchemeRegistry: jest.fn(() => ({
     keys: () => ['zobiColors'],

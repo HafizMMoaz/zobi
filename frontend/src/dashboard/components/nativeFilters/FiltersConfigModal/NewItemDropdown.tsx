@@ -1,9 +1,9 @@
 import { FC } from 'react';
-import { t } from '@zobi/core/translation';
-import { NativeFilterType, ChartCustomizationType } from '@zobi-ui/core';
-import { useTheme } from '@zobi/core/theme';
-import { Button, Dropdown, Menu } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { NativeFilterType, ChartCustomizationType } from '@zobi.dev/core';
+import { useTheme } from '@zobi.dev/extension-api/theme';
+import { Button, Dropdown, Menu } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 interface Props {
   onAddFilter: (type: NativeFilterType) => void;

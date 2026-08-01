@@ -1,4 +1,4 @@
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/dashboard/types';
 import { findPermission } from 'src/utils/findPermission';

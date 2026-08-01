@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
 import { ClassNames } from '@emotion/react';
-import { t } from '@zobi/core/translation';
-import { styled, useTheme } from '@zobi/core/theme';
-import { Flex, Tooltip } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { Flex, Tooltip } from '@zobi.dev/core/components';
 
 const StyledTooltip = (props: any) => {
   const theme = useTheme();

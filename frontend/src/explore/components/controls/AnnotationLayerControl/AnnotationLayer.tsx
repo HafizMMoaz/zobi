@@ -5,7 +5,7 @@ import {
   AsyncSelect,
   EmptyState,
   ColorPicker,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   ZobiClient,
   getCategoricalSchemeRegistry,
@@ -15,17 +15,17 @@ import {
   getColumnLabel,
   VizType,
   type QueryFormColumn,
-} from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   styled,
   withTheme,
   type ZobiTheme,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import SelectControl from 'src/explore/components/controls/SelectControl';
 import TextControl from 'src/explore/components/controls/TextControl';
 import CheckboxControl from 'src/explore/components/controls/CheckboxControl';
-import PopoverSection from '@zobi-ui/core/components/PopoverSection';
+import PopoverSection from '@zobi.dev/core/components/PopoverSection';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import {
   ANNOTATION_SOURCE_TYPES,

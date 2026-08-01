@@ -1,5 +1,5 @@
-import { Currency, type DatasourceType } from '@zobi-ui/core';
-import { Owner } from '@zobi-ui/chart-controls';
+import { Currency, type DatasourceType } from '@zobi.dev/core';
+import { Owner } from '@zobi.dev/chart-controls';
 
 export type ColumnObject = {
   id: number;

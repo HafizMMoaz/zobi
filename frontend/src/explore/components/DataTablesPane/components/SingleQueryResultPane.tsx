@@ -1,5 +1,5 @@
 import { useState, useCallback } from 'react';
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { GridTable } from 'src/components/GridTable';
 import { GridSize } from 'src/components/GridTable/constants';
 import {

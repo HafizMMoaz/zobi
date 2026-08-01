@@ -1,10 +1,10 @@
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ClientErrorObject,
   getClientErrorObject,
   ZobiClient,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import type { TagType } from 'src/types/TagType';
 
 import rison from 'rison';

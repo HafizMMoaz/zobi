@@ -3,8 +3,8 @@ import {
   type ThemeContextType,
   Theme,
   ThemeMode,
-} from '@zobi/core/theme';
-import { act, render, screen } from '@zobi-ui/core/spec';
+} from '@zobi.dev/extension-api/theme';
+import { act, render, screen } from '@zobi.dev/core/spec';
 import { renderHook } from '@testing-library/react';
 import { ZobiThemeProvider, useThemeContext } from '../ThemeProvider';
 import { ThemeController } from '../ThemeController';

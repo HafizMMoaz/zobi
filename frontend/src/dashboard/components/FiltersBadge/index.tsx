@@ -11,18 +11,18 @@ import {
 import { useDispatch, useSelector } from 'react-redux';
 import { uniqWith } from 'lodash';
 import cx from 'classnames';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   DataMaskStateWithId,
   Filters,
   JsonObject,
   usePrevious,
-} from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { setDirectPathToChild } from 'src/dashboard/actions/dashboardState';
 import { useChartLayoutItems } from 'src/dashboard/util/useChartLayoutItems';
-import { Badge } from '@zobi-ui/core/components';
+import { Badge } from '@zobi.dev/core/components';
 import DetailsPanelPopover from './DetailsPanel';
 import {
   Indicator,

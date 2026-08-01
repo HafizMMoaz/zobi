@@ -1,6 +1,6 @@
 
 import { Global } from '@emotion/react';
-import { css } from '@zobi/core/theme';
+import { css } from '@zobi.dev/extension-api/theme';
 
 export const SqlLabGlobalStyles = () => (
   <Global

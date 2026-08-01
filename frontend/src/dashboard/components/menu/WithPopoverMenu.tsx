@@ -1,7 +1,7 @@
 import { ReactNode, CSSProperties, PureComponent } from 'react';
 import cx from 'classnames';
-import { addAlpha } from '@zobi-ui/core';
-import { css, styled } from '@zobi/core/theme';
+import { addAlpha } from '@zobi.dev/core';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 
 type ShouldFocusContainer = HTMLDivElement & {
   contains: (event_target: EventTarget & HTMLElement) => boolean;

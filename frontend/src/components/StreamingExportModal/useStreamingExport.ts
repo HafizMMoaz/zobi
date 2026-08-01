@@ -1,5 +1,5 @@
 import { useState, useCallback, useRef, useEffect } from 'react';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import { ExportStatus, StreamingProgress } from './StreamingExportModal';
 import { makeUrl } from 'src/utils/pathUtils';
 import { applicationRoot } from 'src/utils/getBootstrapData';

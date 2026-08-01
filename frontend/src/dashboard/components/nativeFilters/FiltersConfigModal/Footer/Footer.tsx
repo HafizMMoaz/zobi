@@ -1,6 +1,6 @@
 import { FC } from 'react';
-import { Button, type OnClickHandler } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
+import { Button, type OnClickHandler } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
 import { CancelConfirmationAlert } from './CancelConfirmationAlert';
 
 type FooterProps = {

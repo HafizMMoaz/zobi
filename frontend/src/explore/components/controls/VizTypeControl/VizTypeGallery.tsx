@@ -11,21 +11,21 @@ import {
 
 import Fuse from 'fuse.js';
 import cx from 'classnames';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ChartMetadata,
   chartLabelWeight,
   chartLabelExplanations,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   styled,
   css,
   ZobiTheme,
   useTheme,
   isThemeDark,
-} from '@zobi/core/theme';
-import { Input, Collapse, Tooltip, Label } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/extension-api/theme';
+import { Input, Collapse, Tooltip, Label } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { nativeFilterGate } from 'src/dashboard/components/nativeFilters/utils';
 import { usePluginContext } from 'src/components';
 import scrollIntoView from 'scroll-into-view-if-needed';

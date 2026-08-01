@@ -1,12 +1,12 @@
 import { useMemo } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import { Dataset } from 'src/components/Chart/types';
-import MetadataBar from '@zobi-ui/core/components/MetadataBar';
+import MetadataBar from '@zobi.dev/core/components/MetadataBar';
 import {
   ContentType,
   MetadataType,
-} from '@zobi-ui/core/components/MetadataBar/ContentType';
+} from '@zobi.dev/core/components/MetadataBar/ContentType';
 import { isEmbedded } from 'src/dashboard/util/isEmbedded';
 
 export interface UseDatasetMetadataBarProps {

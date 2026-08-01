@@ -1,5 +1,5 @@
-import { EmptyState } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
+import { EmptyState } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
 
 const ExtensionPlaceholder = ({ id }: { id: string }) => (
   <EmptyState

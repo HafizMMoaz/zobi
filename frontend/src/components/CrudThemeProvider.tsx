@@ -1,10 +1,10 @@
 import { ReactNode, useEffect, useMemo } from 'react';
-import { logging } from '@zobi/core/utils';
+import { logging } from '@zobi.dev/extension-api/utils';
 import {
   Theme,
   normalizeThemeConfig,
   isThemeConfigDark,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import getBootstrapData from 'src/utils/getBootstrapData';
 import type { Dashboard } from 'src/types/Dashboard';
 

@@ -5,7 +5,7 @@ import {
   userEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { isFeatureEnabled, getExtensionsRegistry } from '@zobi-ui/core';
+import { isFeatureEnabled, getExtensionsRegistry } from '@zobi.dev/core';
 import Welcome from 'src/pages/Home';
 import setupCodeOverrides from 'src/setup/setupCodeOverrides';
 
@@ -123,8 +123,8 @@ const mockedPropsWithoutSqlRole = {
   },
 };
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

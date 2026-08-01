@@ -1,4 +1,4 @@
-import { render, screen, within } from '@zobi-ui/core/spec';
+import { render, screen, within } from '@zobi.dev/core/spec';
 import TimeTable from './TimeTable';
 
 const mockData = {

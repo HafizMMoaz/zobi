@@ -1,6 +1,6 @@
 
 import { PureComponent } from 'react';
-import { css, styled } from '@zobi/core/theme';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 
 import { Draggable } from '../../dnd/DragDroppable';
 import HoverMenu from '../../menu/HoverMenu';

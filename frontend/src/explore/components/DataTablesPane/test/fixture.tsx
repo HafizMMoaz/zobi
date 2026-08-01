@@ -1,5 +1,5 @@
 import { ReactElement } from 'react';
-import { DatasourceType, VizType } from '@zobi-ui/core';
+import { DatasourceType, VizType } from '@zobi.dev/core';
 import { ChartStatus } from 'src/explore/types';
 import {
   DataTablesPaneProps,

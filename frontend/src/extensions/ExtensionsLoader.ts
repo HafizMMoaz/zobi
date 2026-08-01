@@ -1,6 +1,6 @@
-import { ZobiClient } from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
-import type { common as core } from '@zobi/core';
+import { ZobiClient } from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
+import type { common as core } from '@zobi.dev/extension-api';
 
 type Extension = core.Extension;
 

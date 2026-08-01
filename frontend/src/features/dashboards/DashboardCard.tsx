@@ -1,11 +1,11 @@
 import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   isFeatureEnabled,
   FeatureFlag,
   ZobiClient,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { CardStyles } from 'src/views/CRUD/utils';
 import {
   Dropdown,
@@ -13,9 +13,9 @@ import {
   FaveStar,
   PublishedLabel,
   ListViewCard,
-} from '@zobi-ui/core/components';
-import { MenuItem } from '@zobi-ui/core/components/Menu';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { MenuItem } from '@zobi.dev/core/components/Menu';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { Dashboard } from 'src/views/CRUD/types';
 import { assetUrl } from 'src/utils/assetUrl';
 import { FacePile } from 'src/components';

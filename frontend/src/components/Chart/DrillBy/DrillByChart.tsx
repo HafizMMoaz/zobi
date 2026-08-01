@@ -4,8 +4,8 @@ import {
   QueryData,
   SuperChart,
   ContextMenuFilters,
-} from '@zobi-ui/core';
-import { css } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { css } from '@zobi.dev/extension-api/theme';
 import { Dataset } from '../types';
 
 interface DrillByChartProps {

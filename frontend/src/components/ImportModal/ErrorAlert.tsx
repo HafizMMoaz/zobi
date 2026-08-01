@@ -1,8 +1,8 @@
 
 import { FunctionComponent } from 'react';
-import { t } from '@zobi/core/translation';
-import { Alert } from '@zobi/core/components';
-import { ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { ZobiTheme } from '@zobi.dev/extension-api/theme';
 
 import { getDatabaseDocumentationLinks } from 'src/views/CRUD/hooks';
 import { antdWarningAlertStyles } from './styles';

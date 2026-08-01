@@ -1,4 +1,4 @@
-import { render } from '@zobi-ui/core/spec';
+import { render } from '@zobi.dev/core/spec';
 import SparklineCell from './SparklineCell';
 
 const mockData = [3516979.54, 4724162.6, 1791486.71];

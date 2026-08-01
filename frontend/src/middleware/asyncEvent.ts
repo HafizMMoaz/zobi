@@ -7,8 +7,8 @@ import {
   getClientErrorObject,
   parseErrorJson,
   ZobiError,
-} from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+} from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import getBootstrapData from 'src/utils/getBootstrapData';
 
 type AsyncEvent = {

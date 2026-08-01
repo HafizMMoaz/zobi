@@ -1,13 +1,13 @@
 import { useCallback, useState, useMemo, useEffect } from 'react';
 import rison from 'rison';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Column,
   ensureIsArray,
   useChangeEffect,
   getClientErrorObject,
-} from '@zobi-ui/core';
-import { type FormInstance, Select } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import { type FormInstance, Select } from '@zobi.dev/core/components';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { cachedZobiGet } from 'src/utils/cachedZobiGet';
 import { NativeFiltersForm, NativeFiltersFormItem } from '../types';

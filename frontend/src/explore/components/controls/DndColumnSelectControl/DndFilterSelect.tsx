@@ -1,18 +1,18 @@
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { logging } from '@zobi/core/utils';
-import { t } from '@zobi/core/translation';
+import { logging } from '@zobi.dev/extension-api/utils';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Metric,
   QueryFormData,
   QueryFormMetric,
   ZobiClient,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   ColumnMeta,
   isColumnMeta,
   isTemporalColumn,
-} from '@zobi-ui/chart-controls';
-import { Modal } from '@zobi-ui/core/components';
+} from '@zobi.dev/chart-controls';
+import { Modal } from '@zobi.dev/core/components';
 import {
   OPERATOR_ENUM_TO_OPERATOR_TYPE,
   Operators,

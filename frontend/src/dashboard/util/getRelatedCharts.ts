@@ -7,7 +7,7 @@ import {
   isAppliedNativeFilterType,
   isNativeFilter,
   ChartCustomization,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import type { Slice } from 'src/dashboard/types';
 
 function isGlobalScope(scope: number[], slices: Record<string, Slice>) {

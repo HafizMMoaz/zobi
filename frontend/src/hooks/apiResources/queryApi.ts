@@ -8,9 +8,9 @@ import {
   ZobiClientResponse,
   JsonValue,
   RequestBase,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
-export type { JsonResponse, TextResponse } from '@zobi-ui/core';
+export type { JsonResponse, TextResponse } from '@zobi.dev/core';
 
 export const zobiClientQuery: BaseQueryFn<
   Pick<RequestBase, 'method' | 'body' | 'jsonPayload' | 'postPayload'> & {

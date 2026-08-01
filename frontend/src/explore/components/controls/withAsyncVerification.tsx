@@ -2,9 +2,9 @@ import { ComponentType, useCallback, useEffect, useRef, useState } from 'react';
 import {
   ExtraControlProps,
   sharedControlComponents,
-} from '@zobi-ui/chart-controls';
-import { t } from '@zobi/core/translation';
-import { JsonArray, JsonValue } from '@zobi-ui/core';
+} from '@zobi.dev/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
+import { JsonArray, JsonValue } from '@zobi.dev/core';
 import { ControlProps } from 'src/explore/components/Control';
 import builtInControlComponents from 'src/explore/components/controls';
 import useEffectEvent from 'src/hooks/useEffectEvent';

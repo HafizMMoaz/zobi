@@ -1,4 +1,4 @@
-import { DatasourceType, NativeFilterScope } from '@zobi-ui/core';
+import { DatasourceType, NativeFilterScope } from '@zobi.dev/core';
 import { Datasource } from 'src/dashboard/types';
 import { DASHBOARD_ROOT_ID } from './util/constants';
 export const PLACEHOLDER_DATASOURCE: Datasource = {

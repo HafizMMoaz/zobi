@@ -2,7 +2,7 @@ import {
   Behavior,
   ChartMetadata,
   getChartMetadataRegistry,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import fetchMock from 'fetch-mock';
 import {
   render,

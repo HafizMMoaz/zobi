@@ -1,5 +1,5 @@
-import { FormItem } from '@zobi-ui/core/components';
-import { css, styled, ZobiTheme } from '@zobi/core/theme';
+import { FormItem } from '@zobi.dev/core/components';
+import { css, styled, ZobiTheme } from '@zobi.dev/extension-api/theme';
 
 const MODAL_BODY_HEIGHT = 180.5;
 

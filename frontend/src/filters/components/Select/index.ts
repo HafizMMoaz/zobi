@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { Behavior, ChartMetadata, ChartPlugin } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Behavior, ChartMetadata, ChartPlugin } from '@zobi.dev/core';
 import buildQuery from './buildQuery';
 import controlPanel from './controlPanel';
 import transformProps from './transformProps';

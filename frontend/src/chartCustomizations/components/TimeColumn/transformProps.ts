@@ -1,4 +1,4 @@
-import { ChartProps } from '@zobi-ui/core';
+import { ChartProps } from '@zobi.dev/core';
 import { noOp } from 'src/utils/common';
 import { DEFAULT_FORM_DATA } from './types';
 

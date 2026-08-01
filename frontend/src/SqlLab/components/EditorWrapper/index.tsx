@@ -1,10 +1,10 @@
 import { useState, useEffect, useRef, useCallback, useMemo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { useAppDispatch } from 'src/views/store';
-import { usePrevious } from '@zobi-ui/core';
-import { css, useTheme } from '@zobi/core/theme';
+import { usePrevious } from '@zobi.dev/core';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import { Global } from '@emotion/react';
-import type { editors } from '@zobi/core';
+import type { editors } from '@zobi.dev/extension-api';
 
 import { SQL_EDITOR_LEFTBAR_WIDTH } from 'src/SqlLab/constants';
 import { queryEditorSetSelectedText } from 'src/SqlLab/actions/sqlLab';

@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
-import { DataMaskStateWithId, ExtraFormData } from '@zobi-ui/core';
+import { DataMaskStateWithId, ExtraFormData } from '@zobi.dev/core';
 import { RootState } from 'src/dashboard/types';
 import { mergeExtraFormData } from '../../utils';
 import {

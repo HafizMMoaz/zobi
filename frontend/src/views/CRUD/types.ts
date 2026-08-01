@@ -1,4 +1,4 @@
-import { QueryState } from '@zobi-ui/core';
+import { QueryState } from '@zobi.dev/core';
 import { User } from 'src/types/bootstrapTypes';
 import Database from 'src/types/Database';
 import Owner from 'src/types/Owner';

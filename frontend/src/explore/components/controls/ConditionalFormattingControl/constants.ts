@@ -1,5 +1,5 @@
-import { Comparator, ObjectFormattingEnum } from '@zobi-ui/chart-controls';
-import { t } from '@zobi/core/translation';
+import { Comparator, ObjectFormattingEnum } from '@zobi.dev/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
 
 export const operatorOptions = [
   { value: Comparator.None, label: t('None') },

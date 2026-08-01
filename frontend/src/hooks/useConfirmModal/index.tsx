@@ -1,5 +1,5 @@
 import { useState, useCallback, ReactNode } from 'react';
-import { ConfirmModal } from '@zobi-ui/core/components';
+import { ConfirmModal } from '@zobi.dev/core/components';
 
 export interface ConfirmConfig {
   title: string;

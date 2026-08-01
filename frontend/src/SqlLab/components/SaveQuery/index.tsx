@@ -1,7 +1,7 @@
 import { useState, useEffect, useMemo, ChangeEvent } from 'react';
 import type { DatabaseObject } from 'src/features/databases/types';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   Input,
   Button,
@@ -11,7 +11,7 @@ import {
   Row,
   Col,
   Icons,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import SaveDatasetActionButton from 'src/SqlLab/components/SaveDatasetActionButton';
 import {
   SaveDatasetModal,

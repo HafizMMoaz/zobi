@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   getChartMetadataRegistry,
   isChartCustomization,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { Row, RowLabel, RowValue } from './Styles';
 import { FilterCardRowProps } from './types';
 

@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { DndItemType } from 'src/explore/components/DndItemType';
 import AdhocFilterPopoverTrigger from 'src/explore/components/controls/FilterControl/AdhocFilterPopoverTrigger';
 import AdhocFilter from 'src/explore/components/controls/FilterControl/AdhocFilter';

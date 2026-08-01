@@ -1,7 +1,7 @@
 
 import { memo } from 'react';
-import { t } from '@zobi/core/translation';
-import { Modal } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Modal } from '@zobi.dev/core/components';
 
 interface ResetConfirmModalProps {
   show: boolean;

@@ -1,22 +1,5 @@
 
 # Persian translations for Zobi.
-# Copyright (C) 2026 Zobi
-# This file is distributed under the same license as the Zobi project.
-# FIRST AUTHOR <EMAIL@ADDRESS>, 2024.
-msgid ""
-msgstr ""
-"Project-Id-Version: Zobi VERSION\n"
-"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
-"POT-Creation-Date: 2026-02-06 23:58-0800\n"
-"PO-Revision-Date: 2024-10-20 00:07+0330\n"
-"Last-Translator: Emad Rad <codewithemad@gmail.com>\n"
-"Language: fa\n"
-"Language-Team: fa <LL@li.org>\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
-"MIME-Version: 1.0\n"
-"Content-Type: text/plain; charset=utf-8\n"
-"Content-Transfer-Encoding: 8bit\n"
-"Generated-By: Babel 2.15.0\n"
 
 msgid ""
 "\n"

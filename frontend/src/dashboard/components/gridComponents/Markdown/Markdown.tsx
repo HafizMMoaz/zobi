@@ -1,12 +1,12 @@
 import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import cx from 'classnames';
-import type { JsonObject } from '@zobi-ui/core';
+import type { JsonObject } from '@zobi.dev/core';
 import type { ResizeStartCallback, ResizeCallback } from 're-resizable';
 
-import { css, styled } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import { SafeMarkdown } from '@zobi-ui/core/components';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { SafeMarkdown } from '@zobi.dev/core/components';
 import { EditorHost } from 'src/core/editors';
 import { Logger, LOG_ACTIONS_RENDER_CHART } from 'src/logger/LogUtils';
 

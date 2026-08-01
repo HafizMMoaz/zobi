@@ -1,6 +1,6 @@
 import { useState, FunctionComponentElement, ChangeEvent } from 'react';
-import { JsonValue } from '@zobi-ui/core';
-import { useTheme } from '@zobi/core/theme';
+import { JsonValue } from '@zobi.dev/core';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import { ControlFormItemComponents } from './controls';
 import ControlHeader, { ControlHeaderProps } from '../../../ControlHeader';
 import { ControlFormItemDefaultSpec } from '../types';

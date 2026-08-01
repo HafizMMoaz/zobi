@@ -1,7 +1,7 @@
 import { ReactElement } from 'react';
-import { VizType } from '@zobi-ui/core';
-import { css } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { VizType } from '@zobi.dev/core';
+import { css } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { VizMeta } from './types';
 
 // Custom icons for non-featured charts

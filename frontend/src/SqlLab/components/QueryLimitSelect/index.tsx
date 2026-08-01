@@ -1,8 +1,8 @@
 import { useAppDispatch } from 'src/views/store';
-import { t } from '@zobi/core/translation';
-import { Dropdown, Button } from '@zobi-ui/core/components';
-import { Menu } from '@zobi-ui/core/components/Menu';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Dropdown, Button } from '@zobi.dev/core/components';
+import { Menu } from '@zobi.dev/core/components/Menu';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { queryEditorSetQueryLimit } from 'src/SqlLab/actions/sqlLab';
 import useQueryEditor from 'src/SqlLab/hooks/useQueryEditor';
 

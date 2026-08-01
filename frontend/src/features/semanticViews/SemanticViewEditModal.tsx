@@ -1,16 +1,16 @@
 import { useState, useEffect } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient, getClientErrorObject } from '@zobi-ui/core';
-import { Input, InputNumber } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient, getClientErrorObject } from '@zobi.dev/core';
+import { Input, InputNumber } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import {
   Table,
   type ColumnsType,
   TableSize,
-} from '@zobi-ui/core/components/Table';
-import { Alert } from '@zobi/core/components';
-import { styled } from '@zobi/core/theme';
+} from '@zobi.dev/core/components/Table';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   StandardModal,
   ModalFormField,

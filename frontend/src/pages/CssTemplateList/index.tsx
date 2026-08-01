@@ -1,14 +1,14 @@
 
 import { useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
 
 import rison from 'rison';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import { createErrorHandler, createFetchRelated } from 'src/views/CRUD/utils';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';
-import { DeleteModal, ConfirmStatusChange } from '@zobi-ui/core/components';
+import { DeleteModal, ConfirmStatusChange } from '@zobi.dev/core/components';
 import {
   ModifiedInfo,
   ListView,
@@ -22,7 +22,7 @@ import {
 import CssTemplateModal from 'src/features/cssTemplates/CssTemplateModal';
 import { TemplateObject } from 'src/features/cssTemplates/types';
 import { QueryObjectColumns } from 'src/views/CRUD/types';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 const PAGE_SIZE = 25;
 

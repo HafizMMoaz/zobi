@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { t } from '@zobi/core/translation';
-import { tn } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
+import { tn } from '@zobi.dev/extension-api/translation';
 import MetadataBar, {
   MetadataType,
-} from '@zobi-ui/core/components/MetadataBar';
+} from '@zobi.dev/core/components/MetadataBar';
 import { ExplorePageInitialData } from 'src/explore/types';
 
 export const useExploreMetadataBar = (

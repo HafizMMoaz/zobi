@@ -1,7 +1,7 @@
-import { ControlHeader } from '@zobi-ui/chart-controls';
-import { t } from '@zobi/core/translation';
-import { css, styled } from '@zobi/core/theme';
-import { Button, Popover } from '@zobi-ui/core/components';
+import { ControlHeader } from '@zobi.dev/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { Button, Popover } from '@zobi.dev/core/components';
 import { FC, useState } from 'react';
 import { MapViewConfigs, MapViewConfigsControlProps } from './types';
 import MapViewPopoverContent from './MapViewPopoverContent';

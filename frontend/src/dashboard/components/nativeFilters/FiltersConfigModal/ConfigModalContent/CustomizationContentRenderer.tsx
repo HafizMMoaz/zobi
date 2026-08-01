@@ -3,8 +3,8 @@ import {
   ChartCustomization,
   ChartCustomizationType,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
-import type { FormInstance } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import type { FormInstance } from '@zobi.dev/core/components';
 import FiltersConfigForm from '../FiltersConfigForm/FiltersConfigForm';
 import DividerConfigForm from '../DividerConfigForm';
 import { NativeFiltersForm, FilterRemoval } from '../types';

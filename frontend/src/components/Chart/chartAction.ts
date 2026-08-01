@@ -12,9 +12,9 @@ import {
   DataMask,
   DatasourceType,
   LatestQueryFormData,
-} from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
-import type { ControlStateMapping } from '@zobi-ui/chart-controls';
+} from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import type { ControlStateMapping } from '@zobi.dev/chart-controls';
 import { getControlsState } from 'src/explore/store';
 import {
   getAnnotationJsonUrl,
@@ -31,7 +31,7 @@ import { allowCrossDomain as domainShardingEnabled } from 'src/utils/hostNamesCo
 import { updateDataMask } from 'src/dataMask/actions';
 import { waitForAsyncData } from 'src/middleware/asyncEvent';
 import { safeStringify } from 'src/utils/safeStringify';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 import type { Dispatch, Action, AnyAction } from 'redux';
 import type { ThunkAction, ThunkDispatch } from 'redux-thunk';
 import type { History } from 'history';

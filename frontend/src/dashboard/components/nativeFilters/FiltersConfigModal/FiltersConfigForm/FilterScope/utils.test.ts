@@ -1,5 +1,5 @@
 import { Layout, LayoutItem, Charts } from 'src/dashboard/types';
-import { VizType } from '@zobi-ui/core';
+import { VizType } from '@zobi.dev/core';
 import { buildTree, getTreeCheckedItems } from './utils';
 import type { TreeItem } from './types';
 

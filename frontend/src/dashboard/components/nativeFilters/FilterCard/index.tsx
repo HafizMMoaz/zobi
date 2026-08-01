@@ -1,6 +1,6 @@
 
 import { useEffect, useState } from 'react';
-import { Popover } from '@zobi-ui/core/components';
+import { Popover } from '@zobi.dev/core/components';
 import { FilterCardContent } from './FilterCardContent';
 import { FilterCardProps } from './types';
 

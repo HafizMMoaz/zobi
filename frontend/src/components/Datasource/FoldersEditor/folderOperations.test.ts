@@ -1,5 +1,5 @@
 
-import { Metric } from '@zobi-ui/chart-controls';
+import { Metric } from '@zobi.dev/chart-controls';
 import { ColumnObject } from 'src/features/datasets/types';
 import {
   DEFAULT_METRICS_FOLDER_UUID,

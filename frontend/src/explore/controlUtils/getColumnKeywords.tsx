@@ -1,7 +1,7 @@
 
-import { ColumnMeta } from '@zobi-ui/chart-controls';
-import { t } from '@zobi/core/translation';
-import { getTooltipHTML } from '@zobi-ui/core/components/AsyncAceEditor';
+import { ColumnMeta } from '@zobi.dev/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getTooltipHTML } from '@zobi.dev/core/components/AsyncAceEditor';
 import { COLUMN_AUTOCOMPLETE_SCORE } from 'src/SqlLab/constants';
 
 export function getColumnKeywords(columns: ColumnMeta[]) {

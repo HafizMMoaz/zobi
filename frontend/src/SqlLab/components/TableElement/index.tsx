@@ -12,10 +12,10 @@ import {
   Loading,
   ModalTrigger,
   type CollapseProps,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { CopyToClipboard } from 'src/components';
-import { t } from '@zobi/core/translation';
-import { styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
 import { debounce } from 'lodash';
 
 import {
@@ -31,8 +31,8 @@ import {
 } from 'src/hooks/apiResources';
 import useEffectEvent from 'src/hooks/useEffectEvent';
 import { ActionType } from 'src/types/Action';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Space } from '@zobi-ui/core/components/Space';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Space } from '@zobi.dev/core/components/Space';
 import ColumnElement, { ColumnKeyTypeType } from '../ColumnElement';
 import ShowSQL from '../ShowSQL';
 

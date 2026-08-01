@@ -1,5 +1,5 @@
 import { getChartDataRequest } from 'src/components/Chart/chartAction';
-import { QueryFormData } from '@zobi-ui/core';
+import { QueryFormData } from '@zobi.dev/core';
 
 export interface FetchTopNValuesParams {
   datasource: string;

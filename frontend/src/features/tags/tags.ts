@@ -1,4 +1,4 @@
-import { JsonObject, ZobiClient } from '@zobi-ui/core';
+import { JsonObject, ZobiClient } from '@zobi.dev/core';
 import rison from 'rison';
 import { TagType } from 'src/components';
 import { TagTypeEnum } from 'src/components/Tag/TagType';

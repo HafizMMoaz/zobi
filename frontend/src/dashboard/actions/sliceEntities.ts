@@ -1,10 +1,10 @@
 import rison from 'rison';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   DatasourceType,
   ZobiClient,
   getClientErrorObject,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { addDangerToast } from 'src/components/MessageToasts/actions';
 import { Dispatch } from 'redux';
 import { Slice, SliceEntitiesState } from '../types';

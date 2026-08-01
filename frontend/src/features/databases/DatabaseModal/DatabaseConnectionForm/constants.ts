@@ -1,4 +1,4 @@
-import { getExtensionsRegistry } from '@zobi-ui/core';
+import { getExtensionsRegistry } from '@zobi.dev/core';
 import {
   accessTokenField,
   databaseField,

@@ -1,5 +1,5 @@
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
-import { QueryFormData } from '@zobi-ui/core';
+import { QueryFormData } from '@zobi.dev/core';
 import { AlteredSliceTag } from '.';
 import { defaultProps, expectedDiffs } from './AlteredSliceTagMocks';
 

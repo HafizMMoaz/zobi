@@ -1,7 +1,7 @@
-import { styled, useTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import { ModalTrigger, Tabs } from '@zobi-ui/core/components';
-import CodeSyntaxHighlighter from '@zobi-ui/core/components/CodeSyntaxHighlighter';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ModalTrigger, Tabs } from '@zobi.dev/core/components';
+import CodeSyntaxHighlighter from '@zobi.dev/core/components/CodeSyntaxHighlighter';
 
 export interface HighlightedSqlProps {
   sql: string;

@@ -1,12 +1,12 @@
 import { ChangeEvent, EventHandler, useState, useEffect } from 'react';
 import cx from 'classnames';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   DatabaseConnectionExtension,
   isFeatureEnabled,
   FeatureFlag,
-} from '@zobi-ui/core';
-import { useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import {
   Input,
   Checkbox,
@@ -14,8 +14,8 @@ import {
   InfoTooltip,
   CollapseLabelInModal,
   type CheckboxChangeEvent,
-} from '@zobi-ui/core/components';
-import { useJsonValidation } from '@zobi-ui/core/components/AsyncAceEditor';
+} from '@zobi.dev/core/components';
+import { useJsonValidation } from '@zobi.dev/core/components/AsyncAceEditor';
 import {
   StyledInputContainer,
   StyledJsonEditor,

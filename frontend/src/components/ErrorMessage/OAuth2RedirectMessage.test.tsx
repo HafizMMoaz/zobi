@@ -3,7 +3,7 @@ import * as reduxHooks from 'react-redux';
 import { Provider } from 'react-redux';
 import { createStore } from 'redux';
 import { render, waitFor } from 'spec/helpers/testing-library';
-import { ErrorLevel, ErrorSource, ErrorTypeEnum } from '@zobi-ui/core';
+import { ErrorLevel, ErrorSource, ErrorTypeEnum } from '@zobi.dev/core';
 import { reRunQuery } from 'src/SqlLab/actions/sqlLab';
 import { triggerQuery } from 'src/components/Chart/chartAction';
 import { onRefresh } from 'src/dashboard/actions/dashboardState';

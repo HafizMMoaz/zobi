@@ -1,6 +1,6 @@
 
-import { css, styled, ZobiTheme } from '@zobi/core/theme';
-import { Button, JsonEditor } from '@zobi-ui/core/components';
+import { css, styled, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Button, JsonEditor } from '@zobi.dev/core/components';
 
 const CTAS_CVAS_SCHEMA_FORM_HEIGHT = 108;
 const EXPOSE_IN_SQLLAB_FORM_HEIGHT = CTAS_CVAS_SCHEMA_FORM_HEIGHT + 153;
@@ -277,7 +277,7 @@ export const StyledInputContainer = styled.div`
 
 // Named-reference type annotation: TypeScript 6.0 declaration emit (TS2883)
 // won't let us leak react-ace's IAceOptions/ICommand/IEditorProps/IMarker
-// through the inferred type because they live in @zobi-ui/core's nested
+// through the inferred type because they live in @zobi.dev/core's nested
 // node_modules and aren't portable. Aliasing to `typeof JsonEditor` emits a
 // named reference in the .d.ts instead of the expanded structural type.
 // The styled-components and ForwardRefExoticComponent shapes don't overlap

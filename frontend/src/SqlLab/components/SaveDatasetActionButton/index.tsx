@@ -1,6 +1,6 @@
-import { t } from '@zobi/core/translation';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Button } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Button } from '@zobi.dev/core/components';
 
 interface SaveDatasetActionButtonProps {
   setShowSave: (arg0: boolean) => void;

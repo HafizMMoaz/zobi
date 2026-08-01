@@ -1,4 +1,4 @@
-import { Column } from '@zobi-ui/core';
+import { Column } from '@zobi.dev/core';
 
 export type ColumnType = Pick<Column, 'column_name' | 'type'>;
 

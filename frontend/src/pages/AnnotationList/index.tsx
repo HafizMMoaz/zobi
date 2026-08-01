@@ -1,13 +1,13 @@
 
 import { useMemo, useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useHistory } from 'react-router-dom';
-import { t } from '@zobi/core/translation';
-import { ZobiClient, getClientErrorObject } from '@zobi-ui/core';
-import { css, styled } from '@zobi/core/theme';
-import { extendedDayjs as dayjs } from '@zobi-ui/core/utils/dates';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient, getClientErrorObject } from '@zobi.dev/core';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { extendedDayjs as dayjs } from '@zobi.dev/core/utils/dates';
 import rison from 'rison';
 
-import { ConfirmStatusChange, DeleteModal } from '@zobi-ui/core/components';
+import { ConfirmStatusChange, DeleteModal } from '@zobi.dev/core/components';
 import {
   ListView,
   ListViewActionsBar,
@@ -21,8 +21,8 @@ import { createErrorHandler } from 'src/views/CRUD/utils';
 
 import { AnnotationObject } from 'src/features/annotations/types';
 import AnnotationModal from 'src/features/annotations/AnnotationModal';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Typography } from '@zobi.dev/core/components/Typography';
 
 const PAGE_SIZE = 25;
 

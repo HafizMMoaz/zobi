@@ -1,9 +1,9 @@
 import { ReactChild, useCallback, Key } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Dropdown } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Dropdown } from '@zobi.dev/core/components';
 
 enum MenuKeys {
   ExportOriginal = 'export_original',

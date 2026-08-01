@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import CodeSyntaxHighlighter, {
   SupportedLanguage,
   CodeSyntaxHighlighterProps,
   preloadLanguages,
-} from '@zobi-ui/core/components/CodeSyntaxHighlighter';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components/CodeSyntaxHighlighter';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { ToastProps } from 'src/components/MessageToasts/withToasts';
 import copyTextToClipboard from 'src/utils/copy';
 

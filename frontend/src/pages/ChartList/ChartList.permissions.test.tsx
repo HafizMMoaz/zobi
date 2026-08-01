@@ -5,15 +5,15 @@ import { MemoryRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import { QueryParamProvider } from 'use-query-params';
 import { ReactRouter5Adapter } from 'use-query-params/adapters/react-router-5';
-import { isFeatureEnabled } from '@zobi-ui/core';
+import { isFeatureEnabled } from '@zobi.dev/core';
 import ChartList from 'src/pages/ChartList';
 import { API_ENDPOINTS, mockCharts, setupMocks } from './ChartList.testHelpers';
 
 // Increase default timeout for all tests
 jest.setTimeout(30000);
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

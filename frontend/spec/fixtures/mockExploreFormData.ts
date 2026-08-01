@@ -1,4 +1,4 @@
-import { JsonObject, VizType } from '@zobi-ui/core';
+import { JsonObject, VizType } from '@zobi.dev/core';
 
 export const getExploreFormData = (overrides: JsonObject = {}) => ({
   adhoc_filters: [

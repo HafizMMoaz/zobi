@@ -27,7 +27,7 @@ jest.mock(
     ({ children }: { children: (params: { height: number }) => ReactChild }) =>
       children({ height: 500 }),
 );
-jest.mock('@zobi-ui/core/components/IconTooltip', () => ({
+jest.mock('@zobi.dev/core/components/IconTooltip', () => ({
   IconTooltip: ({
     onClick,
     tooltip,

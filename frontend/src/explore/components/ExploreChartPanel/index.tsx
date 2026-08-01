@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useMemo, ReactNode } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Split from 'react-split';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   DatasourceType,
   ensureIsArray,
@@ -12,9 +12,9 @@ import {
   QueryFormData,
   JsonObject,
   getExtensionsRegistry,
-} from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { css, styled, useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import ChartContainer from 'src/components/Chart/ChartContainer';
 import { updateExploreChartState } from 'src/explore/actions/exploreActions';
 import {

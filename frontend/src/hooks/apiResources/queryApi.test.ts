@@ -2,7 +2,7 @@
 import fetchMock from 'fetch-mock';
 import configureStore, { MockStore } from 'redux-mock-store';
 import rison from 'rison';
-import { JsonResponse } from '@zobi-ui/core';
+import { JsonResponse } from '@zobi.dev/core';
 import { zobiClientQuery } from './queryApi';
 
 const getBaseQueryApiMock = (store: MockStore) => ({

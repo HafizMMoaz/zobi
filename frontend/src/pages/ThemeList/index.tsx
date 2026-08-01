@@ -1,9 +1,9 @@
 
 import { useCallback, useMemo, useState, useEffect } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   Tag,
   DeleteModal,
@@ -11,7 +11,7 @@ import {
   Loading,
   Tooltip,
   Space,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 
 import rison from 'rison';
 import { useListViewResource } from 'src/views/CRUD/hooks';
@@ -35,7 +35,7 @@ import {
 import ThemeModal from 'src/features/themes/ThemeModal';
 import { ThemeObject } from 'src/features/themes/types';
 import { QueryObjectColumns } from 'src/views/CRUD/types';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { useConfirmModal } from 'src/hooks/useConfirmModal';
 import {
   setSystemDefaultTheme,

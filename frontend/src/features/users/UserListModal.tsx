@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import {
@@ -9,7 +9,7 @@ import {
   Input,
   FormItem,
   FormInstance,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { Group, Role, UserObject } from 'src/pages/UsersList/types';
 import { Actions } from 'src/constants';
 import { BaseUserListModalProps, FormValues } from './types';

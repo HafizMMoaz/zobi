@@ -4,12 +4,12 @@ import {
   fireEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import { SqlExpressionType } from '../../types/SqlExpression';
 import SQLEditorWithValidation from './index';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   ZobiClient: {
     post: jest.fn(),
   },

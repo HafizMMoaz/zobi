@@ -6,16 +6,16 @@ import {
   Collapse,
   CollapseLabelInModal,
   type SelectValue,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import rison from 'rison';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ZobiClient,
   isFeatureEnabled,
   FeatureFlag,
   getClientErrorObject,
   ensureIsArray,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import Chart, { Slice } from 'src/types/Chart';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { type TagType } from 'src/components';

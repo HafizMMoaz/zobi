@@ -1,7 +1,7 @@
 
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { styled, css } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { styled, css } from '@zobi.dev/extension-api/theme';
 import {
   Button,
   Card,
@@ -10,7 +10,7 @@ import {
   Input,
   Typography,
   Icons,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { useState, useEffect, useMemo } from 'react';
 import { capitalize } from 'lodash/fp';
 import { addDangerToast } from 'src/components/MessageToasts/actions';

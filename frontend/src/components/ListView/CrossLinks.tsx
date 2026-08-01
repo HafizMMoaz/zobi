@@ -1,6 +1,6 @@
 import { memo, useMemo } from 'react';
-import { useTruncation } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+import { useTruncation } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { Link } from 'react-router-dom';
 import CrossLinksTooltip from './CrossLinksTooltip';
 

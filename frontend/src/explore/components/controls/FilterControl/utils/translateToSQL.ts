@@ -3,7 +3,7 @@ import {
   isFreeFormAdhocFilter,
   isSimpleAdhocFilter,
   SimpleAdhocFilter,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   OPERATOR_ENUM_TO_OPERATOR_TYPE,
   Operators,

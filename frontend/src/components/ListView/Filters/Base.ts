@@ -1,5 +1,5 @@
-import { styled, css } from '@zobi/core/theme';
-import { Flex } from '@zobi-ui/core/components';
+import { styled, css } from '@zobi.dev/extension-api/theme';
+import { Flex } from '@zobi.dev/core/components';
 
 interface FilterContainerProps {
   width?: number;

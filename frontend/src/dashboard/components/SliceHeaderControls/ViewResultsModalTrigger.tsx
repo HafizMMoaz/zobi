@@ -1,8 +1,8 @@
 import { ReactChild, RefObject, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { t } from '@zobi/core/translation';
-import { css, useTheme } from '@zobi/core/theme';
-import { Button, ModalTrigger } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { Button, ModalTrigger } from '@zobi.dev/core/components';
 
 export const ViewResultsModalTrigger = ({
   canExplore,

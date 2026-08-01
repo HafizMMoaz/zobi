@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { Divider, Filter } from '@zobi-ui/core';
-import { css, ZobiTheme } from '@zobi/core/theme';
-import { Collapse } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Divider, Filter } from '@zobi.dev/core';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Collapse } from '@zobi.dev/core/components';
 
 export interface FiltersOutOfScopeCollapsibleProps {
   filtersOutOfScope: (Filter | Divider)[];

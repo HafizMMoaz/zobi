@@ -1,4 +1,4 @@
-import { QueryResponse } from '@zobi-ui/core';
+import { QueryResponse } from '@zobi.dev/core';
 import {
   CommonBootstrapData,
   UserWithPermissionsAndRoles,
@@ -7,7 +7,7 @@ import { ToastType } from 'src/components/MessageToasts/types';
 import type {
   ButtonProps,
   DropdownButtonProps,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import type { TableMetaData } from 'src/hooks/apiResources';
 
 export type QueryButtonProps = DropdownButtonProps | ButtonProps;

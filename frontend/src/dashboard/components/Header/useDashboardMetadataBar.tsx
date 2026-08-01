@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { DashboardInfo } from 'src/dashboard/types';
 import MetadataBar, {
   MetadataType,
-} from '@zobi-ui/core/components/MetadataBar';
+} from '@zobi.dev/core/components/MetadataBar';
 import getOwnerName from 'src/utils/getOwnerName';
 
 export const useDashboardMetadataBar = (dashboardInfo: DashboardInfo) => {

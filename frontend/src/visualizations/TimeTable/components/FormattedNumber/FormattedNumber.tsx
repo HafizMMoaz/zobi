@@ -1,4 +1,4 @@
-import { formatNumber } from '@zobi-ui/core';
+import { formatNumber } from '@zobi.dev/core';
 import { parseToNumber } from '../../utils';
 
 interface FormattedNumberProps {

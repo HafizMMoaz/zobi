@@ -10,7 +10,7 @@ import {
   QueryResponse,
   QueryState,
   lruCache,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { QueryDictionary, SqlLabRootState } from 'src/SqlLab/types';
 import useInterval from 'src/SqlLab/utils/useInterval';
 import {

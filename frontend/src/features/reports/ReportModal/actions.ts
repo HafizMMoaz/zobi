@@ -1,6 +1,6 @@
 /* eslint camelcase: 0 */
-import { ZobiClient } from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
 import rison from 'rison';
 import {
   addDangerToast,

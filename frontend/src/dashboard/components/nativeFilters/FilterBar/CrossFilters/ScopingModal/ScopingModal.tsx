@@ -1,8 +1,8 @@
 import { useCallback, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
-import { isDefined, NativeFilterScope } from '@zobi-ui/core';
-import { Modal } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { isDefined, NativeFilterScope } from '@zobi.dev/core';
+import { Modal } from '@zobi.dev/core/components';
 import {
   ChartConfiguration,
   RootState,

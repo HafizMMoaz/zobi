@@ -6,7 +6,7 @@ import {
   DataMaskWithId,
   Filter,
   Filters,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { useEffect, useMemo, useState } from 'react';
 import { ChartsState, RootState } from 'src/dashboard/types';
 import {

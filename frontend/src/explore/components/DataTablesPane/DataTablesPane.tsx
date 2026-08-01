@@ -1,10 +1,10 @@
 
 import { useCallback, useEffect, useMemo, useState, MouseEvent } from 'react';
-import { t } from '@zobi/core/translation';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import { t } from '@zobi.dev/extension-api/translation';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import {
   getItem,
   setItem,

@@ -1,9 +1,9 @@
 
 import { useMemo, useState, useCallback, ReactElement, useEffect } from 'react';
 import { Link, useHistory } from 'react-router-dom';
-import { t } from '@zobi/core/translation';
-import { QueryState, ZobiClient } from '@zobi-ui/core';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { QueryState, ZobiClient } from '@zobi.dev/core';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import {
   createFetchRelated,
   createFetchDistinct,
@@ -13,7 +13,7 @@ import {
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';
-import { Popover, Label, Tooltip } from '@zobi-ui/core/components';
+import { Popover, Label, Tooltip } from '@zobi.dev/core/components';
 import { commonMenuData } from 'src/features/home/commonMenuData';
 import {
   ListView,
@@ -23,15 +23,15 @@ import {
 } from 'src/components';
 import CodeSyntaxHighlighter, {
   preloadLanguages,
-} from '@zobi-ui/core/components/CodeSyntaxHighlighter';
+} from '@zobi.dev/core/components/CodeSyntaxHighlighter';
 import { DATETIME_WITH_TIME_ZONE, TIME_WITH_MS } from 'src/constants';
 import { QueryObject, QueryObjectColumns } from 'src/views/CRUD/types';
 
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import QueryPreviewModal from 'src/features/queries/QueryPreviewModal';
 import { addSuccessToast } from 'src/components/MessageToasts/actions';
 import getOwnerName from 'src/utils/getOwnerName';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 
 const PAGE_SIZE = 25;
 const SQL_PREVIEW_MAX_LINES = 4;

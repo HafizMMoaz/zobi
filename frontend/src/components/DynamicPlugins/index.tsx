@@ -14,8 +14,8 @@ import {
   FeatureFlag,
   getChartMetadataRegistry,
   makeApi,
-} from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+} from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import { omitBy } from 'lodash';
 import type { Plugin, PluginAction, PluginContextType } from './types';
 
@@ -107,8 +107,8 @@ const sharedModules = {
   react: () => import('react'),
   lodash: () => import('lodash'),
   'react-dom': () => import('react-dom'),
-  '@zobi-ui/chart-controls': () => import('@zobi-ui/chart-controls'),
-  '@zobi-ui/core': () => import('@zobi-ui/core'),
+  '@zobi.dev/chart-controls': () => import('@zobi.dev/chart-controls'),
+  '@zobi.dev/core': () => import('@zobi.dev/core'),
 };
 
 export const DynamicPluginProvider: FC<{ children?: ReactNode }> = ({

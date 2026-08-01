@@ -1,4 +1,4 @@
-import type { editors } from '@zobi/core';
+import type { editors } from '@zobi.dev/extension-api';
 import EditorProviders from './EditorProviders';
 
 type EditorLanguage = editors.EditorLanguage;

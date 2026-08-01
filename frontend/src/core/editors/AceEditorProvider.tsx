@@ -17,7 +17,7 @@ import {
   type Ref,
 } from 'react';
 import type AceEditor from 'react-ace';
-import type { editors } from '@zobi/core';
+import type { editors } from '@zobi.dev/extension-api';
 import {
   FullSQLEditor,
   JsonEditor,
@@ -26,7 +26,7 @@ import {
   ConfigEditor,
   JSEditor,
   type AceCompleterKeyword,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { Disposable } from '../models';
 
 type EditorKeyword = editors.EditorKeyword;

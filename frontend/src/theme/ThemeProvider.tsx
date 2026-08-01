@@ -6,13 +6,13 @@ import {
   useMemo,
   useState,
 } from 'react';
-import {} from '@zobi-ui/core';
+import {} from '@zobi.dev/core';
 import {
   type AnyThemeConfig,
   type ThemeContextType,
   Theme,
   ThemeMode,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import { ThemeController } from './ThemeController';
 
 const ThemeContext = createContext<ThemeContextType | null>(null);

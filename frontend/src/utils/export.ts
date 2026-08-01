@@ -1,5 +1,5 @@
-import { ZobiClient } from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+import { ZobiClient } from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import rison from 'rison';
 import { parse as parseContentDisposition } from 'content-disposition';
 

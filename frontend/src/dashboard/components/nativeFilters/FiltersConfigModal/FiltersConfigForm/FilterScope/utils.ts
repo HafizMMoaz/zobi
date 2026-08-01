@@ -5,9 +5,9 @@ import {
   TAB_TYPE,
 } from 'src/dashboard/util/componentTypes';
 import { DASHBOARD_ROOT_ID } from 'src/dashboard/util/constants';
-import { t } from '@zobi/core/translation';
-import { NativeFilterScope } from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+import { t } from '@zobi.dev/extension-api/translation';
+import { NativeFilterScope } from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import { BuildTreeLeafTitle, TreeItem } from './types';
 
 export const isShowTypeInTree = ({ type }: LayoutItem) =>

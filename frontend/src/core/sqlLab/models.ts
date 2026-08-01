@@ -1,7 +1,7 @@
 import {
   sqlLab as sqlLabType,
   common as coreType,
-} from '@zobi/core';
+} from '@zobi.dev/extension-api';
 
 const { CTASMethod } = sqlLabType;
 

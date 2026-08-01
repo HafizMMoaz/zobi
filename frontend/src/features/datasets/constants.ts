@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 
 export const PAGE_SIZE = 25;
 export const SORT_BY = [{ id: 'changed_on_delta_humanized', desc: true }];

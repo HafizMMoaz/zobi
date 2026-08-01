@@ -1,4 +1,4 @@
-import { Dataset } from '@zobi-ui/chart-controls';
+import { Dataset } from '@zobi.dev/chart-controls';
 import { getDatasourceUid } from 'src/utils/getDatasourceUid';
 import {
   AnyDatasourcesAction,

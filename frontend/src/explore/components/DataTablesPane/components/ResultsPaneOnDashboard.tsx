@@ -1,6 +1,6 @@
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import { ResultTypes, ResultsPaneProps } from '../types';
 import { useResultsPane } from './useResultsPane';
 

@@ -1,6 +1,6 @@
-import { GenericDataType } from '@zobi/core/common';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { renderHook } from '@testing-library/react';
-import { Constants } from '@zobi-ui/core/components';
+import { Constants } from '@zobi.dev/core/components';
 import { useTableColumns } from '.';
 
 // eslint-disable-next-line @typescript-eslint/no-explicit-any

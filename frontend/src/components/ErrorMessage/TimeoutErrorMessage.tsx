@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { tn } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
+import { tn } from '@zobi.dev/extension-api/translation';
 
 import type { ErrorMessageComponentProps } from './types';
 import { IssueCode } from './IssueCode';

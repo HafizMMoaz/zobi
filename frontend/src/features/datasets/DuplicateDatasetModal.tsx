@@ -1,6 +1,6 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { FunctionComponent, useEffect, useState, ChangeEvent } from 'react';
-import { Input, FormLabel, Modal, Icons } from '@zobi-ui/core/components';
+import { Input, FormLabel, Modal, Icons } from '@zobi.dev/core/components';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
 import Dataset from 'src/types/Dataset';
 

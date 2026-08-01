@@ -1,10 +1,10 @@
 import { useCallback, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
-import { Currency, ensureIsArray, getCurrencySymbol } from '@zobi-ui/core';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Currency, ensureIsArray, getCurrencySymbol } from '@zobi.dev/core';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import { CSSObject } from '@emotion/react';
-import { Select, type SelectProps } from '@zobi-ui/core/components';
+import { Select, type SelectProps } from '@zobi.dev/core/components';
 import { ViewState } from 'src/views/types';
 import { ExplorePageState } from 'src/explore/types';
 import ControlHeader from '../../ControlHeader';

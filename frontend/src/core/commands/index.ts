@@ -1,5 +1,5 @@
-import { logging } from '@zobi/core/utils';
-import { commands as commandsApi } from '@zobi/core';
+import { logging } from '@zobi.dev/extension-api/utils';
+import { commands as commandsApi } from '@zobi.dev/extension-api';
 import { Disposable } from '../models';
 
 type Command = commandsApi.Command;

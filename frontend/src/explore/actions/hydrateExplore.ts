@@ -1,4 +1,4 @@
-import { ControlStateMapping } from '@zobi-ui/chart-controls';
+import { ControlStateMapping } from '@zobi.dev/chart-controls';
 
 import {
   ChartState,
@@ -21,7 +21,7 @@ import {
   NO_TIME_RANGE,
   QueryFormColumn,
   VizType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   getFormDataFromControls,
   applyMapStateToPropsToControl,

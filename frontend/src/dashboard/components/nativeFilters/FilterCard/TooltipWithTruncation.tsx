@@ -1,4 +1,4 @@
-import { Tooltip, type TooltipProps } from '@zobi-ui/core/components';
+import { Tooltip, type TooltipProps } from '@zobi.dev/core/components';
 import { TooltipTrigger } from './Styles';
 
 export const TooltipWithTruncation = ({

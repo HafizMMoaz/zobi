@@ -14,13 +14,15 @@
   ],
   "command": {
     "publish": {
-      "message": "chore(zobi-ui): publish %s",
+      "message": "chore(packages): publish %s",
       "graphType": "all"
+
     },
     "version": {
-      "message": "chore(zobi-ui): publish %s",
+      "message": "chore(packages): publish %s",
       "exact": true
     }
+
   },
   "$schema": "node_modules/lerna/schemas/lerna-schema.json"
 }

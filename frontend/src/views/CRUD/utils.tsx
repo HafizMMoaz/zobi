@@ -1,13 +1,13 @@
 
-import { logging } from '@zobi/core/utils';
-import { t } from '@zobi/core/translation';
+import { logging } from '@zobi.dev/extension-api/utils';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ZobiClient,
   ZobiClientResponse,
   getClientErrorObject,
   lruCache,
-} from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import Chart from 'src/types/Chart';
 import { intersection } from 'lodash';
 import rison from 'rison';

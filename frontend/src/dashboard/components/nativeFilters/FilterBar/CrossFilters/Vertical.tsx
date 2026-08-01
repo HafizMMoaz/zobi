@@ -1,5 +1,5 @@
 
-import { DataMaskStateWithId } from '@zobi-ui/core';
+import { DataMaskStateWithId } from '@zobi.dev/core';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/dashboard/types';
 import { useChartLayoutItems } from 'src/dashboard/util/useChartLayoutItems';

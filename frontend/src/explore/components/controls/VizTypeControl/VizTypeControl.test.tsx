@@ -1,4 +1,4 @@
-import { Preset, VizType } from '@zobi-ui/core';
+import { Preset, VizType } from '@zobi.dev/core';
 import {
   render,
   cleanup,
@@ -19,9 +19,9 @@ import {
   EchartsTimeseriesBarChartPlugin,
   EchartsTimeseriesChartPlugin,
   EchartsTimeseriesLineChartPlugin,
-} from '../../../../../plugins/plugin-chart-echarts/src';
-import TableChartPlugin from '../../../../../plugins/plugin-chart-table/src';
-import { MultiChartPlugin } from '../../../../../plugins/preset-chart-deckgl/src';
+} from '../../../../../plugins/echarts/src';
+import TableChartPlugin from '../../../../../plugins/table/src';
+import { MultiChartPlugin } from '../../../../../plugins/deckgl/src';
 import VizTypeControl, { VIZ_TYPE_CONTROL_TEST_ID } from './index';
 
 // Mock scrollIntoView to avoid errors in test environment

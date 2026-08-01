@@ -1,9 +1,9 @@
 
 import { FC, memo, useMemo } from 'react';
-import { t } from '@zobi/core/translation';
-import { DataMaskStateWithId } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { Loading } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { DataMaskStateWithId } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Loading } from '@zobi.dev/core/components';
 import { RootState } from 'src/dashboard/types';
 import { useChartLayoutItems } from 'src/dashboard/util/useChartLayoutItems';
 import { useChartIds } from 'src/dashboard/util/charts/useChartIds';

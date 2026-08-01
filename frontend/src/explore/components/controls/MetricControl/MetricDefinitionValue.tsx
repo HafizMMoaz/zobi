@@ -1,4 +1,4 @@
-import { Metric } from '@zobi-ui/core';
+import { Metric } from '@zobi.dev/core';
 import { Datasource } from 'src/explore/types';
 import { ISaveableDatasource } from 'src/SqlLab/components/SaveDatasetModal';
 import AdhocMetricOption from './AdhocMetricOption';

@@ -1,4 +1,4 @@
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { ToastMeta } from 'src/components/MessageToasts/types';
 import Toast from './Toast';
 

@@ -4,8 +4,8 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import { FixedSizeList as List } from 'react-window';
 // @ts-expect-error
 import { createFilter } from 'react-search-input';
-import { t } from '@zobi/core/translation';
-import { styled, css } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, css } from '@zobi.dev/extension-api/theme';
 import {
   Button,
   Checkbox,
@@ -13,8 +13,8 @@ import {
   Input,
   Loading,
   Select,
-} from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import {
   LocalStorageKeys,
   getItem,

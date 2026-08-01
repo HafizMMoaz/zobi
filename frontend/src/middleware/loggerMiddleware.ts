@@ -1,7 +1,7 @@
 /* eslint-disable camelcase */
 /* eslint prefer-const: 2 */
 import { nanoid } from 'nanoid';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import type { Middleware, Dispatch, Action } from 'redux';
 
 import { safeStringify } from '../utils/safeStringify';

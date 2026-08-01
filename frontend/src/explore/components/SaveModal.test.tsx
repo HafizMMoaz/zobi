@@ -19,8 +19,8 @@ import { GRID_COLUMN_COUNT } from 'src/dashboard/util/constants';
 // Cast PureSaveModal to `any` to allow instantiation with partial props in tests
 const TestSaveModal = PureSaveModal as any;
 
-jest.mock('@zobi-ui/core/components/Select', () => ({
-  ...jest.requireActual('@zobi-ui/core/components/Select/AsyncSelect'),
+jest.mock('@zobi.dev/core/components/Select', () => ({
+  ...jest.requireActual('@zobi.dev/core/components/Select/AsyncSelect'),
   AsyncSelect: ({ onChange }: { onChange: (val: any) => void }) => (
     <input
       data-test="mock-async-select"
@@ -29,7 +29,7 @@ jest.mock('@zobi-ui/core/components/Select', () => ({
   ),
 }));
 
-jest.mock('@zobi-ui/core/components/TreeSelect', () => ({
+jest.mock('@zobi.dev/core/components/TreeSelect', () => ({
   TreeSelect: ({
     onChange,
     disabled,
@@ -697,7 +697,7 @@ test('addChartToDashboardTab successfully adds chart to existing row with space'
     position_json: JSON.stringify(positionJson),
   };
 
-  const { ZobiClient } = require('@zobi-ui/core');
+  const { ZobiClient } = require('@zobi.dev/core');
   const originalGet = ZobiClient.get;
   const originalPut = ZobiClient.put;
 
@@ -784,7 +784,7 @@ test('addChartToDashboardTab creates new row when no existing row has space', as
     position_json: JSON.stringify(positionJson),
   };
 
-  const { ZobiClient } = require('@zobi-ui/core');
+  const { ZobiClient } = require('@zobi.dev/core');
   const originalGet = ZobiClient.get;
   const originalPut = ZobiClient.put;
 
@@ -845,7 +845,7 @@ test('addChartToDashboardTab handles empty position_json', async () => {
     position_json: null,
   };
 
-  const { ZobiClient } = require('@zobi-ui/core');
+  const { ZobiClient } = require('@zobi.dev/core');
   const originalGet = ZobiClient.get;
   const originalPut = ZobiClient.put;
 

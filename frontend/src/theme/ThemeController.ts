@@ -8,8 +8,8 @@ import {
   ThemeMode,
   themeObject as zobiThemeObject,
   normalizeThemeConfig,
-} from '@zobi/core/theme';
-import { makeApi } from '@zobi-ui/core';
+} from '@zobi.dev/extension-api/theme';
+import { makeApi } from '@zobi.dev/core';
 import type {
   BootstrapThemeData,
   BootstrapThemeDataConfig,
@@ -238,7 +238,7 @@ export class ThemeController {
 
       if (themeConfig) {
         // Controller creates and owns the dashboard theme
-        const { Theme } = await import('@zobi/core/theme');
+        const { Theme } = await import('@zobi.dev/extension-api/theme');
         const normalizedConfig = this.normalizeTheme(themeConfig);
 
         // Determine if this is a dark theme and get appropriate base

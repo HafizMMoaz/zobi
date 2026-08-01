@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { debounce } from 'lodash';
 import {
   Badge,
@@ -8,7 +8,7 @@ import {
   ModalTrigger,
   Tooltip,
   Constants,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { EditorHost } from 'src/core/editors';
 import useQueryEditor from 'src/SqlLab/hooks/useQueryEditor';
 

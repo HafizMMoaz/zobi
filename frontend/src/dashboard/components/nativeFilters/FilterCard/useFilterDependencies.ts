@@ -1,4 +1,4 @@
-import { ensureIsArray, Filter } from '@zobi-ui/core';
+import { ensureIsArray, Filter } from '@zobi.dev/core';
 import { useSelector } from 'react-redux';
 import { useMemo } from 'react';
 import { createSelector } from '@reduxjs/toolkit';

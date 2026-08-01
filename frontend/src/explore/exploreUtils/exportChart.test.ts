@@ -6,8 +6,8 @@ jest.mock('src/utils/pathUtils', () => ({
 }));
 
 // Mock ZobiClient
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   ZobiClient: {
     postForm: jest.fn(),
     get: jest.fn().mockResolvedValue({ json: {} }),
@@ -22,7 +22,7 @@ jest.mock('@zobi-ui/core', () => ({
 }));
 
 const { ensureAppRoot } = jest.requireMock('src/utils/pathUtils');
-const { getChartMetadataRegistry } = jest.requireMock('@zobi-ui/core');
+const { getChartMetadataRegistry } = jest.requireMock('@zobi.dev/core');
 
 // Minimal formData that won't trigger legacy API (useLegacyApi = false)
 const baseFormData = {
@@ -98,7 +98,7 @@ test('exportChart v1 API passes nested prefix for deeply nested deployments', as
 // Regression test for the double-prefix bug: ZobiClient.postForm adds appRoot
 // internally via getUrl(), so the URL passed must NOT already be prefixed.
 test('exportChart v1 API calls postForm with unprefixed URL when app root is configured', async () => {
-  const { ZobiClient } = jest.requireMock('@zobi-ui/core');
+  const { ZobiClient } = jest.requireMock('@zobi.dev/core');
   const appRoot = '/analytics';
   ensureAppRoot.mockImplementation((path: string) => `${appRoot}${path}`);
 
@@ -223,7 +223,7 @@ test('exportChart legacy API builds relative URL for xlsx export', async () => {
 });
 
 test('exportChart legacy API calls postForm with relative URL', async () => {
-  const { ZobiClient } = jest.requireMock('@zobi-ui/core');
+  const { ZobiClient } = jest.requireMock('@zobi.dev/core');
   ensureAppRoot.mockImplementation((path: string) => path);
 
   getChartMetadataRegistry.mockReturnValue({

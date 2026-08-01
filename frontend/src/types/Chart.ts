@@ -3,7 +3,7 @@
  * The Chart model as returned from the API
  */
 
-import { QueryFormData } from '@zobi-ui/core';
+import { QueryFormData } from '@zobi.dev/core';
 import { TagType } from 'src/components';
 import Owner from './Owner';
 

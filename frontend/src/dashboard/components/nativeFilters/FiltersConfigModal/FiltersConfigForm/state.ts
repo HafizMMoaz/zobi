@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
-import type { FormInstance } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { ChartCustomization, Filter } from '@zobi-ui/core';
+import type { FormInstance } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ChartCustomization, Filter } from '@zobi.dev/core';
 import { NativeFiltersForm, NativeFiltersFormItem } from '../types';
 import { setNativeFilterFieldValues, useForceUpdate } from './utils';
 

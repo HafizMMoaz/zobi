@@ -1,4 +1,4 @@
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 
 export const setSystemDefaultTheme = (themeId: number) =>
   ZobiClient.put({

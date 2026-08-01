@@ -1,6 +1,6 @@
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import type { editors } from '@zobi/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import type { editors } from '@zobi.dev/extension-api';
 import { EditorHost } from 'src/core/editors';
 import { ModalFormField } from 'src/components/Modal';
 import { ValidationObject } from 'src/components/Modal/useModalValidation';

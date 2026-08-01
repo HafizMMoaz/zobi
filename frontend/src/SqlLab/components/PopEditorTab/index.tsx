@@ -3,8 +3,8 @@ import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'src/views/store';
 import URI from 'urijs';
 import { pick } from 'lodash';
-import { useComponentDidUpdate } from '@zobi-ui/core';
-import { Skeleton } from '@zobi-ui/core/components';
+import { useComponentDidUpdate } from '@zobi.dev/core';
+import { Skeleton } from '@zobi.dev/core/components';
 import useEffectEvent from 'src/hooks/useEffectEvent';
 import { useLocationState } from 'src/pages/SqlLab/LocationContext';
 import {

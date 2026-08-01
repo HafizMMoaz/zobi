@@ -8,8 +8,8 @@ global.TextEncoder = TextEncoder;
 global.TextDecoder = TextDecoder as typeof global.TextDecoder;
 
 // Mock ZobiClient
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   ZobiClient: {
     getCSRFToken: jest.fn(() => Promise.resolve('mock-csrf-token')),
   },

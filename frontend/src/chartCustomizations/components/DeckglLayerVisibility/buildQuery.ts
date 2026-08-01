@@ -1,4 +1,4 @@
-import { buildQueryContext, BuildQuery } from '@zobi-ui/core';
+import { buildQueryContext, BuildQuery } from '@zobi.dev/core';
 import { DeckglLayerVisibilityFormData } from './types';
 
 /**

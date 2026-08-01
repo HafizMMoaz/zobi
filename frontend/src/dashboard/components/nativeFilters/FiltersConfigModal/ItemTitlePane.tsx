@@ -1,6 +1,6 @@
 import { useRef, FC } from 'react';
 
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 
 import ItemTitleContainer from './ItemTitleContainer';
 import { FilterRemoval } from './types';

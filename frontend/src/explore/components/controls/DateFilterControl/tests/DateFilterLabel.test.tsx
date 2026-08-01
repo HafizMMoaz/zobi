@@ -4,7 +4,7 @@ import configureStore from 'redux-mock-store';
 
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
 
-import { NO_TIME_RANGE } from '@zobi-ui/core';
+import { NO_TIME_RANGE } from '@zobi.dev/core';
 import DateFilterLabel from '..';
 import { DateFilterControlProps } from '../types';
 import { DateFilterTestKey } from '../utils';

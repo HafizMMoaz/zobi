@@ -1,4 +1,4 @@
-import { styled, css, ZobiTheme } from '@zobi/core/theme';
+import { styled, css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 
 export const StyledLayoutWrapper = styled.div`
   flex-grow: 1;

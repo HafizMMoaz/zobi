@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { JsonObject } from '@zobi-ui/core';
+import { JsonObject } from '@zobi.dev/core';
 import { Dispatch } from 'redux';
 import { DashboardLayout, GetState } from '../types';
 

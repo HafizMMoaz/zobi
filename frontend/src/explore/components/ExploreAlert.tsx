@@ -1,8 +1,8 @@
 
 import { forwardRef, RefObject, MouseEvent } from 'react';
-import { Button } from '@zobi-ui/core/components';
+import { Button } from '@zobi.dev/core/components';
 import { ErrorAlert } from 'src/components';
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 
 interface ControlPanelAlertProps {
   title: string;

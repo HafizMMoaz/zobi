@@ -1,11 +1,11 @@
-import { ColumnMeta, isColumnMeta } from '@zobi-ui/chart-controls';
-import { t } from '@zobi/core/translation';
+import { ColumnMeta, isColumnMeta } from '@zobi.dev/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   AdhocColumn,
   ensureIsArray,
   QueryFormColumn,
   isPhysicalColumn,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 const getColumnNameOrAdhocColumn = (
   column: ColumnMeta | AdhocColumn,

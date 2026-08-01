@@ -1,12 +1,12 @@
 
 import { useCallback, useEffect, useState } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ZobiClient,
   FeatureFlag,
   isFeatureEnabled,
-} from '@zobi-ui/core';
-import { css, useTheme, styled } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { css, useTheme, styled } from '@zobi.dev/extension-api/theme';
 import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { Descriptions } from 'src/components/Descriptions';
@@ -15,7 +15,7 @@ import {
   UserInfoEditModal,
   UserInfoResetPasswordModal,
 } from 'src/features/userInfo/UserInfoModal';
-import { Icons, Collapse } from '@zobi-ui/core/components';
+import { Icons, Collapse } from '@zobi.dev/core/components';
 import { ApiKeyList } from 'src/features/apiKeys/ApiKeyList';
 
 const StyledHeader = styled.div`

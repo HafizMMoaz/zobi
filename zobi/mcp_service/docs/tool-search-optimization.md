@@ -53,7 +53,7 @@ For Claude Desktop (`claude_desktop_config.json`), add the Zobi MCP server with 
   "mcpServers": {
     "zobi": {
       "command": "npx",
-      "args": ["@zobi/mcp-server", "--stdio"],
+      "args": ["@zobi.dev/mcp-server", "--stdio"],
       "env": {
         "ZOBI_URL": "http://localhost:8088",
         "ZOBI_ACCESS_TOKEN": "your-token"

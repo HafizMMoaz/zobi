@@ -1,13 +1,13 @@
 import userEvent from '@testing-library/user-event';
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
-import { ZobiClient, getClientErrorObject } from '@zobi-ui/core';
+import { ZobiClient, getClientErrorObject } from '@zobi.dev/core';
 
 import SemanticViewEditModal from './SemanticViewEditModal';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   ZobiClient: {
-    ...jest.requireActual('@zobi-ui/core').ZobiClient,
+    ...jest.requireActual('@zobi.dev/core').ZobiClient,
     put: jest.fn(),
     get: jest.fn(),
   },

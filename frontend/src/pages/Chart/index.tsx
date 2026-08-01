@@ -2,7 +2,7 @@ import { useCallback, useEffect, useRef, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useHistory } from 'react-router-dom';
 import type { Location, Action } from 'history';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   getLabelsColorMap,
   isDefined,
@@ -10,8 +10,8 @@ import {
   makeApi,
   LabelsColorMapSource,
   getClientErrorObject,
-} from '@zobi-ui/core';
-import { Loading } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import { Loading } from '@zobi.dev/core/components';
 import { addDangerToast } from 'src/components/MessageToasts/actions';
 import { getUrlParam } from 'src/utils/urlUtils';
 import { URL_PARAMS } from 'src/constants';

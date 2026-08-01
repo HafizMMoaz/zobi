@@ -1,19 +1,19 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ensureIsArray,
   getColumnLabel,
   getNumberFormatter,
   isEqualArray,
   NumberFormats,
-} from '@zobi-ui/core';
-import { styled, useTheme, css } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { styled, useTheme, css } from '@zobi.dev/extension-api/theme';
 import { useCallback, useEffect, useMemo, useState, useRef } from 'react';
 import { FilterBarOrientation } from 'src/dashboard/types';
-// import Metadata from '@zobi-ui/core/components/Metadata';
+// import Metadata from '@zobi.dev/core/components/Metadata';
 import { isNumber } from 'lodash';
-import { InputNumber } from '@zobi-ui/core/components/Input';
-import Slider from '@zobi-ui/core/components/Slider';
-import { FormItem, Tooltip, Icons } from '@zobi-ui/core/components';
+import { InputNumber } from '@zobi.dev/core/components/Input';
+import Slider from '@zobi.dev/core/components/Slider';
+import { FormItem, Tooltip, Icons } from '@zobi.dev/core/components';
 import { PluginFilterRangeProps, RangeDisplayMode } from './types';
 import { StatusMessage, FilterPluginStyle } from '../common';
 import { getRangeExtraFormData } from '../../utils';

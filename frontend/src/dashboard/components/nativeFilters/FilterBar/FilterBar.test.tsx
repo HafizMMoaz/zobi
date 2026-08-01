@@ -8,7 +8,7 @@ import {
 } from 'spec/helpers/testing-library';
 import { stateWithoutNativeFilters } from 'spec/fixtures/mockStore';
 import { testWithId } from 'src/utils/testUtils';
-import { Preset, makeApi } from '@zobi-ui/core';
+import { Preset, makeApi } from '@zobi.dev/core';
 import {
   TimeFilterPlugin,
   SelectFilterPlugin,
@@ -23,8 +23,8 @@ import * as dataMaskActions from 'src/dataMask/actions';
 
 jest.useFakeTimers({ advanceTimers: true });
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   makeApi: jest.fn(),
 }));
 

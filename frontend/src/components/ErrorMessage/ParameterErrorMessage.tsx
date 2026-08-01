@@ -1,9 +1,9 @@
 import { ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { tn } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
+import { tn } from '@zobi.dev/extension-api/translation';
 import levenshtein from 'js-levenshtein';
 
-import { List } from '@zobi-ui/core/components';
+import { List } from '@zobi.dev/core/components';
 import { ErrorMessageComponentProps } from './types';
 import { IssueCode } from './IssueCode';
 import { ErrorAlert } from './ErrorAlert';

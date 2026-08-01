@@ -4,7 +4,7 @@ import 'regenerator-runtime/runtime';
 import jQuery from 'jquery';
 // https://jestjs.io/docs/jest-object#jestmockmodulename-factory-options
 // in order to mock modules in test case, so avoid absolute import module
-import { configure as configureTranslation } from '@zobi/core/translation';
+import { configure as configureTranslation } from '@zobi.dev/extension-api/translation';
 import fetchMock from 'fetch-mock';
 import { Worker } from './Worker';
 import { IntersectionObserver } from './IntersectionObserver';
@@ -78,7 +78,7 @@ jest.mock('rehype-raw', () => () => jest.fn());
 
 // Mocks the Icon component due to its async nature
 // Tests should override this when needed
-jest.mock('@zobi-ui/core/components/Icons/AsyncIcon', () => ({
+jest.mock('@zobi.dev/core/components/Icons/AsyncIcon', () => ({
   __esModule: true,
   default: ({
     fileName,

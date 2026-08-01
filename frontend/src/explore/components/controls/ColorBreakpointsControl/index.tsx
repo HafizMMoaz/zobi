@@ -1,7 +1,7 @@
 
 import { useState, useEffect } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import DndSelectLabel from 'src/explore/components/controls/DndColumnSelectControl/DndSelectLabel';
 import ColorBreakpointOption from './ColorBreakpointOption';
 import { ColorBreakpointType, ColorBreakpointsControlProps } from './types';

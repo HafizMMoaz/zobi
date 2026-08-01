@@ -7,7 +7,7 @@ import {
   userEvent,
   RenderResult,
 } from 'spec/helpers/testing-library';
-import { zobiTheme } from '@zobi/core/theme';
+import { zobiTheme } from '@zobi.dev/extension-api/theme';
 import { mockStore } from 'spec/fixtures/mockStore';
 import { dashboardLayout as mockLayout } from 'spec/fixtures/mockDashboardLayout';
 import MarkdownConnected from './Markdown';

@@ -1,12 +1,12 @@
 
 import { ReactNode } from 'react';
-import { PopoverProps } from '@zobi-ui/core/components/Popover';
+import { PopoverProps } from '@zobi.dev/core/components/Popover';
 import {
   Comparator,
   ControlComponentProps,
   ObjectFormattingEnum,
-} from '@zobi-ui/chart-controls';
-import { GenericDataType } from '@zobi/core/common';
+} from '@zobi.dev/chart-controls';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 
 export type ConditionalFormattingConfig = {
   operator?: Comparator;

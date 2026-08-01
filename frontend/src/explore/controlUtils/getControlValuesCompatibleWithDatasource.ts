@@ -1,5 +1,5 @@
 
-import { ControlState, Dataset, Metric } from '@zobi-ui/chart-controls';
+import { ControlState, Dataset, Metric } from '@zobi.dev/chart-controls';
 import {
   Column,
   isAdhocMetricSimple,
@@ -8,7 +8,7 @@ import {
   isSimpleAdhocFilter,
   JsonValue,
   SimpleAdhocFilter,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { isEmpty } from 'lodash';
 import AdhocMetric from 'src/explore/components/controls/MetricControl/AdhocMetric';
 

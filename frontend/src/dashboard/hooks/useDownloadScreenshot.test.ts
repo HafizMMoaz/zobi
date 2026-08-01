@@ -1,9 +1,9 @@
 import { renderHook, act } from '@testing-library/react';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import { useDownloadScreenshot } from './useDownloadScreenshot';
 import { DownloadScreenshotFormat } from '../components/menu/DownloadMenuItems/types';
 
-jest.mock('@zobi-ui/core', () => ({
+jest.mock('@zobi.dev/core', () => ({
   ZobiClient: {
     post: jest.fn(),
     get: jest.fn(),

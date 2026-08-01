@@ -5,7 +5,7 @@ import {
   userEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { Form, Select } from '@zobi-ui/core/components';
+import { Form, Select } from '@zobi.dev/core/components';
 import { CollapsibleControl } from './CollapsibleControl';
 import { getTimeGrainOptions } from './utils';
 

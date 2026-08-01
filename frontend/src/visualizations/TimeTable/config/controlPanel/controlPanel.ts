@@ -1,10 +1,10 @@
-import { t } from '@zobi/core/translation';
-import { validateNonEmpty } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { validateNonEmpty } from '@zobi.dev/core';
 import {
   ControlPanelConfig,
   getStandardizedControls,
   sections,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 
 export const controlPanel: ControlPanelConfig = {
   controlPanelSections: [

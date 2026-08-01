@@ -1,9 +1,9 @@
 import { memo, useEffect, useCallback, useMemo, useState, useRef } from 'react';
 import { uniq, debounce } from 'lodash';
-import { t } from '@zobi/core/translation';
-import { ChartCustomizationType, NativeFilterType } from '@zobi-ui/core';
-import { styled, css, useTheme } from '@zobi/core/theme';
-import { Constants, Form, Icons, Flex } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ChartCustomizationType, NativeFilterType } from '@zobi.dev/core';
+import { styled, css, useTheme } from '@zobi.dev/extension-api/theme';
+import { Constants, Form, Icons, Flex } from '@zobi.dev/core/components';
 import { ErrorBoundary } from 'src/components';
 import { testWithId } from 'src/utils/testUtils';
 import useEffectEvent from 'src/hooks/useEffectEvent';

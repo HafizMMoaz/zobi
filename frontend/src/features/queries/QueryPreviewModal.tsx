@@ -1,8 +1,8 @@
 import { useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { useTheme, styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme, styled } from '@zobi.dev/extension-api/theme';
 import cx from 'classnames';
-import { Button, Modal } from '@zobi-ui/core/components';
+import { Button, Modal } from '@zobi.dev/core/components';
 import withToasts, {
   ToastProps,
 } from 'src/components/MessageToasts/withToasts';

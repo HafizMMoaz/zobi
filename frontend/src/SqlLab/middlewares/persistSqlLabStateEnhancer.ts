@@ -1,7 +1,7 @@
 import type { StoreEnhancer } from 'redux';
 import persistState from 'redux-localstorage';
 import { pickBy } from 'lodash';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
 import { filterUnsavedQueryEditorList } from 'src/SqlLab/components/EditorAutoSync';
 import type {
   SqlLabRootState,

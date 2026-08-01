@@ -1,15 +1,15 @@
 import { RefObject, useMemo } from 'react';
 import { useDrag } from 'react-dnd';
 import { useSelector } from 'react-redux';
-import { Metric } from '@zobi-ui/core';
-import { css, styled, useTheme } from '@zobi/core/theme';
-import { ColumnMeta } from '@zobi-ui/chart-controls';
+import { Metric } from '@zobi.dev/core';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { ColumnMeta } from '@zobi.dev/chart-controls';
 import { DndItemType } from 'src/explore/components/DndItemType';
 import {
   StyledColumnOption,
   StyledMetricOption,
 } from 'src/explore/components/optionRenderers';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { ExplorePageState } from 'src/explore/types';
 
 import { DatasourcePanelDndItem } from '../types';

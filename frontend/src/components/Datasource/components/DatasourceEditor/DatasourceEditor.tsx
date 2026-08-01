@@ -1,29 +1,29 @@
 import rison from 'rison';
 import { PureComponent, useCallback, type ReactNode } from 'react';
 import { connect, ConnectedProps } from 'react-redux';
-import type { JsonObject } from '@zobi-ui/core';
-import { type ZobiTheme } from '@zobi/core/theme';
+import type { JsonObject } from '@zobi.dev/core';
+import { type ZobiTheme } from '@zobi.dev/extension-api/theme';
 import type { AnyAction } from 'redux';
 import type { ThunkDispatch } from 'redux-thunk';
-import { Radio } from '@zobi-ui/core/components/Radio';
+import { Radio } from '@zobi.dev/core/components/Radio';
 import {
   isFeatureEnabled,
   FeatureFlag,
   ZobiClient,
   getClientErrorObject,
   getExtensionsRegistry,
-} from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
-import { Alert } from '@zobi/core/components';
+} from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
+import { Alert } from '@zobi.dev/extension-api/components';
 import {
   css,
   styled,
   themeObject,
   withTheme,
-} from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import Tabs from '@zobi-ui/core/components/Tabs';
-import WarningIconWithTooltip from '@zobi-ui/core/components/WarningIconWithTooltip';
+} from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import Tabs from '@zobi.dev/core/components/Tabs';
+import WarningIconWithTooltip from '@zobi.dev/core/components/WarningIconWithTooltip';
 import TableSelector from 'src/components/TableSelector';
 import CheckboxControl from 'src/explore/components/controls/CheckboxControl';
 import TextControl from 'src/explore/components/controls/TextControl';
@@ -51,7 +51,7 @@ import {
   Tooltip,
   Typography,
   Label,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { FilterableTable } from 'src/components';
 import {
   executeQuery,
@@ -2511,7 +2511,7 @@ class DatasourceEditor extends PureComponent<
                         folders={this.state.folders}
                         // Type cast needed: local Metric interface differs slightly from chart-controls Metric
                         metrics={
-                          sortedMetrics as unknown as import('@zobi-ui/chart-controls').Metric[]
+                          sortedMetrics as unknown as import('@zobi.dev/chart-controls').Metric[]
                         }
                         columns={[
                           ...this.state.databaseColumns,

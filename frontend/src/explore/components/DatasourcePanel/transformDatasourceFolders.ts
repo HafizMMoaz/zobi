@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { Metric } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Metric } from '@zobi.dev/core';
 import { FoldersEditorItemType } from 'src/components/Datasource/types';
 import {
   DEFAULT_METRICS_FOLDER_UUID,

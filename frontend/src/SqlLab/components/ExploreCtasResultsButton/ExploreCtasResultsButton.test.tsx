@@ -3,7 +3,7 @@ import fetchMock from 'fetch-mock';
 import thunk from 'redux-thunk';
 import { fireEvent, render, waitFor } from 'spec/helpers/testing-library';
 import { Store } from 'redux';
-import { ZobiClientClass } from '@zobi-ui/core';
+import { ZobiClientClass } from '@zobi.dev/core';
 import { initialState } from 'src/SqlLab/fixtures';
 
 import ExploreCtasResultsButton, {

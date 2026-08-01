@@ -1,6 +1,6 @@
-import { Tooltip } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { Tooltip } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 
 type Database = {
   database_name: string;

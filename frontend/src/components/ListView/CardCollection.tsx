@@ -1,6 +1,6 @@
 import { ReactNode, MouseEvent as ReactMouseEvent } from 'react';
 import { TableInstance, Row, UseRowSelectRowProps } from 'react-table';
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import cx from 'classnames';
 
 interface CardCollectionProps {

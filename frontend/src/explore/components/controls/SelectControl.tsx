@@ -1,8 +1,8 @@
 import { PureComponent, type ReactNode } from 'react';
-import { isEqualArray } from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
-import { css } from '@zobi/core/theme';
-import { Select } from '@zobi-ui/core/components';
+import { isEqualArray } from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css } from '@zobi.dev/extension-api/theme';
+import { Select } from '@zobi.dev/core/components';
 import ControlHeader from 'src/explore/components/ControlHeader';
 
 type SelectValue = string | number | (string | number)[] | null | undefined;

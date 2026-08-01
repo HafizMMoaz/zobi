@@ -1,16 +1,16 @@
 
 import { useMemo, useState } from 'react';
 import rison from 'rison';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
 import { Link, useHistory } from 'react-router-dom';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import { createFetchRelated, createErrorHandler } from 'src/views/CRUD/utils';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Typography } from '@zobi.dev/core/components/Typography';
 
-import { DeleteModal, ConfirmStatusChange } from '@zobi-ui/core/components';
+import { DeleteModal, ConfirmStatusChange } from '@zobi.dev/core/components';
 import {
   ModifiedInfo,
   ListView,
@@ -23,7 +23,7 @@ import {
 import AnnotationLayerModal from 'src/features/annotationLayers/AnnotationLayerModal';
 import { AnnotationLayerObject } from 'src/features/annotationLayers/types';
 import { QueryObjectColumns } from 'src/views/CRUD/types';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { navigateTo } from 'src/utils/navigationUtils';
 import { WIDER_DROPDOWN_WIDTH } from 'src/components/ListView/utils';
 

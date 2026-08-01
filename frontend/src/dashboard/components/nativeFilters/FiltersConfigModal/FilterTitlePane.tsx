@@ -1,10 +1,10 @@
 import { useRef, FC } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { NativeFilterType } from '@zobi-ui/core';
-import { styled, useTheme } from '@zobi/core/theme';
-import { Button } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { NativeFilterType } from '@zobi.dev/core';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { Button } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 import FilterTitleContainer from './FilterTitleContainer';
 import { FilterRemoval } from './types';

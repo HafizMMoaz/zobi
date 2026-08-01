@@ -10,7 +10,7 @@ import {
   NATIVE_FILTER_PREFIX,
   CHART_CUSTOMIZATION_PREFIX,
 } from './utils';
-import { NativeFilterType, ChartCustomizationType } from '@zobi-ui/core';
+import { NativeFilterType, ChartCustomizationType } from '@zobi.dev/core';
 
 test('isDivider returns true for native filter dividers', () => {
   const dividerId = `${NATIVE_FILTER_DIVIDER_PREFIX}abc123`;

@@ -1,9 +1,9 @@
 import { useState, useEffect } from 'react';
-import { Button, Row, Col } from '@zobi-ui/core/components';
-import Tabs from '@zobi-ui/core/components/Tabs';
-import { t } from '@zobi/core/translation';
-import { legacyValidateInteger } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+import { Button, Row, Col } from '@zobi.dev/core/components';
+import Tabs from '@zobi.dev/core/components/Tabs';
+import { t } from '@zobi.dev/extension-api/translation';
+import { legacyValidateInteger } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import ControlHeader from '../../ControlHeader';
 import TextControl from '../TextControl';
 import ColorPickerControl from '../ColorPickerControl';

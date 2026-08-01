@@ -1,10 +1,10 @@
 import { SyntheticEvent } from 'react';
 import domToImage from 'dom-to-image-more';
 import { kebabCase } from 'lodash';
-import { t } from '@zobi/core/translation';
-import { ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { addWarningToast } from 'src/components/MessageToasts/actions';
-import type { AgGridContainerElement } from '@zobi-ui/core/components';
+import type { AgGridContainerElement } from '@zobi.dev/core/components';
 
 const IMAGE_DOWNLOAD_QUALITY = 0.95;
 const TRANSPARENT_RGBA = 'transparent';

@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
-import { NativeFilterType } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+import { NativeFilterType } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import FilterTitlePane from './FilterTitlePane';
 import { FilterRemoval } from './types';
 

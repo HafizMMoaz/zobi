@@ -1,13 +1,13 @@
 import { useMemo } from 'react';
-import { truncationCSS } from '@zobi-ui/core';
-import { styled, ZobiTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import { truncationCSS } from '@zobi.dev/core';
+import { styled, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   FormItem as StyledFormItem,
   Form,
   Icons,
   Tooltip,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { FilterBarOrientation } from 'src/dashboard/types';
 
 export const FilterStyledIcon = styled.div`

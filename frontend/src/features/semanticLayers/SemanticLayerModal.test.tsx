@@ -1,4 +1,4 @@
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import { render, waitFor } from 'spec/helpers/testing-library';
 
 import SemanticLayerModal from './SemanticLayerModal';
@@ -20,10 +20,10 @@ jest.mock('@jsonforms/react', () => ({
   },
 }));
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   ZobiClient: {
-    ...jest.requireActual('@zobi-ui/core').ZobiClient,
+    ...jest.requireActual('@zobi.dev/core').ZobiClient,
     get: jest.fn(),
     post: jest.fn(),
     put: jest.fn(),

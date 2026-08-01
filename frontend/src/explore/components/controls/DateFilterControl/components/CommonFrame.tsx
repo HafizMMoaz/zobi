@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { Radio } from '@zobi-ui/core/components/Radio';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Radio } from '@zobi.dev/core/components/Radio';
 import {
   COMMON_RANGE_OPTIONS,
   COMMON_RANGE_SET,

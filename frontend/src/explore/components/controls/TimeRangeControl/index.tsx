@@ -1,4 +1,4 @@
-import { extendedDayjs as dayjs } from '@zobi-ui/core/utils/dates';
+import { extendedDayjs as dayjs } from '@zobi.dev/core/utils/dates';
 import { Dayjs } from 'dayjs';
 import { TimeRangePicker } from 'src/components/TimePicker';
 import ControlHeader, { ControlHeaderProps } from '../../ControlHeader';

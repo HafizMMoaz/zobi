@@ -1,8 +1,8 @@
 import { useEffect, SetStateAction, Dispatch, useCallback } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import TableSelector, { TableOption } from 'src/components/TableSelector';
-import { EmptyState } from '@zobi-ui/core/components';
+import { EmptyState } from '@zobi.dev/core/components';
 import { type DatabaseObject } from 'src/components';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { LocalStorageKeys, getItem } from 'src/utils/localStorageHelpers';
@@ -11,7 +11,7 @@ import {
   DatasetObject,
 } from 'src/features/datasets/AddDataset/types';
 import { Table } from 'src/hooks/apiResources';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Typography } from '@zobi.dev/core/components/Typography';
 import { ensureAppRoot } from 'src/utils/pathUtils';
 
 interface LeftPanelProps {

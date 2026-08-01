@@ -1,15 +1,15 @@
 
 import { useCallback, useMemo } from 'react';
 import { Tag } from 'src/components/Tag';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   BinaryQueryObjectFilterClause,
   isAdhocColumn,
-} from '@zobi-ui/core';
-import { css, useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import RowCountLabel from 'src/components/RowCountLabel';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Tooltip } from '@zobi-ui/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Tooltip } from '@zobi.dev/core/components';
 import { CopyToClipboardButton } from 'src/explore/components/DataTableControl';
 import { TabularDataRow } from 'src/utils/common';
 import { usePermissions } from 'src/hooks/usePermissions';

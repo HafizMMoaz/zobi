@@ -1,10 +1,10 @@
 import fetchMock from 'fetch-mock';
 import WS from 'jest-websocket-mock';
-import { parseErrorJson, isFeatureEnabled } from '@zobi-ui/core';
+import { parseErrorJson, isFeatureEnabled } from '@zobi.dev/core';
 import * as asyncEvent from 'src/middleware/asyncEvent';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

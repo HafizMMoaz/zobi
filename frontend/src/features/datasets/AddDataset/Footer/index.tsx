@@ -4,10 +4,10 @@ import {
   DropdownButton,
   Menu,
   Flex,
-} from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { useTheme } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
 import { logEvent } from 'src/logger/actions';
 import withToasts from 'src/components/MessageToasts/withToasts';

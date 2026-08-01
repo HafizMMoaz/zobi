@@ -1,12 +1,12 @@
 import { createContext, lazy, FC, useEffect, useMemo, useRef } from 'react';
 import { Global } from '@emotion/react';
 import { useHistory } from 'react-router-dom';
-import { t } from '@zobi/core/translation';
-import { useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import { useDispatch, useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
-import { Loading } from '@zobi-ui/core/components';
+import { Loading } from '@zobi.dev/core/components';
 import {
   useDashboard,
   useDashboardCharts,

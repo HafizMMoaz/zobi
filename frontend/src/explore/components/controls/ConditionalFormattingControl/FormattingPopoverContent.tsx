@@ -1,13 +1,13 @@
 import { useMemo, useState, useEffect, useCallback } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { GenericDataType } from '@zobi/core/common';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import {
   Comparator,
   MultipleValueComparators,
   ObjectFormattingEnum,
   ColorSchemeEnum,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import {
   Select,
   Button,
@@ -19,7 +19,7 @@ import {
   Row,
   Checkbox,
   type FormProps,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { ConditionalFormattingConfig, ColumnOption } from './types';
 import {
   operatorOptions,

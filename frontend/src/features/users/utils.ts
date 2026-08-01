@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
 import { SelectOption } from 'src/components/ListView';
 import { FormValues } from './types';
 

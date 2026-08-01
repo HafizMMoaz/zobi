@@ -1,7 +1,7 @@
-import { Label } from '@zobi-ui/core/components';
+import { Label } from '@zobi.dev/core/components';
 import { STATE_TYPE_MAP, STATE_TYPE_MAP_LOCALIZED } from 'src/SqlLab/constants';
-import { Query } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+import { Query } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 
 interface QueryStateLabelProps {
   query: Pick<Query, 'state'>;

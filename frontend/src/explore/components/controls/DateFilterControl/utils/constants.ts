@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   SelectOptionType,
   PreviousCalendarWeek,
@@ -14,8 +14,8 @@ import {
   CurrentQuarter,
   CurrentDay,
 } from 'src/explore/components/controls/DateFilterControl/types';
-import { CheckboxOptionType } from '@zobi-ui/core/components/Radio';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { CheckboxOptionType } from '@zobi.dev/core/components/Radio';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 
 export const FRAME_OPTIONS: SelectOptionType[] = [
   { value: 'Common', label: t('Last') },

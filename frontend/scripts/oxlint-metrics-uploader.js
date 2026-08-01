@@ -54,7 +54,7 @@ async function runOxlintAndProcess() {
     },
     'no-console': {
       description:
-        "We don't want a bunch of console noise, but you can use the `logger` from `@zobi-ui/core` when there's a reason to.",
+        "We don't want a bunch of console noise, but you can use the `logger` from `@zobi.dev/core` when there's a reason to.",
     },
   };
 

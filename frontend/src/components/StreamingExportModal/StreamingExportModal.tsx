@@ -1,12 +1,12 @@
-import { t } from '@zobi/core/translation';
-import { styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
 import {
   Modal,
   Button,
   Typography,
   Progress,
-} from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 const { Text } = Typography;
 

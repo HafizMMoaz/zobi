@@ -10,8 +10,8 @@ import {
 import setupPlugins from 'src/setup/setupPlugins';
 import { getMockStoreWithNativeFilters } from 'spec/fixtures/mockStore';
 import chartQueries, { sliceId } from 'spec/fixtures/mockChartQueries';
-import { BinaryQueryObjectFilterClause, VizType } from '@zobi-ui/core';
-import { Menu } from '@zobi-ui/core/components/Menu';
+import { BinaryQueryObjectFilterClause, VizType } from '@zobi.dev/core';
+import { Menu } from '@zobi.dev/core/components/Menu';
 import DrillDetailModal from '../DrillDetail/DrillDetailModal';
 import { useDrillDetailMenuItems, DrillDetailMenuItemsProps } from './index';
 

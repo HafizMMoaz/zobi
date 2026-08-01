@@ -1,4 +1,4 @@
-import { common as coreType } from '@zobi/core';
+import { common as coreType } from '@zobi.dev/extension-api';
 import { Disposable } from './models';
 
 const { GenericDataType } = coreType;

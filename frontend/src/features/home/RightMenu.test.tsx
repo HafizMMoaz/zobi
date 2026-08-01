@@ -6,13 +6,13 @@ import {
   userEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
 import { isEmbedded } from 'src/dashboard/util/isEmbedded';
 import RightMenu from './RightMenu';
 import { GlobalMenuDataOptions, RightMenuProps } from './types';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

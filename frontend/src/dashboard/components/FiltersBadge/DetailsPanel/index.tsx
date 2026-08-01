@@ -1,9 +1,9 @@
 import { RefObject, useEffect, useRef, KeyboardEvent } from 'react';
 
 import { useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
-import { useTheme } from '@zobi/core/theme';
-import { List, Popover } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme } from '@zobi.dev/extension-api/theme';
+import { List, Popover } from '@zobi.dev/core/components';
 import {
   FiltersContainer,
   FiltersDetailsContainer,

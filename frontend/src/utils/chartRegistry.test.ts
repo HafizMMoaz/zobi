@@ -2,7 +2,7 @@ import {
   getChartMetadataRegistry,
   ChartMetadata,
   Behavior,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { nativeFilterGate } from 'src/dashboard/components/nativeFilters/utils';
 
 /**

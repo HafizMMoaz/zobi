@@ -12,7 +12,7 @@ import {
   AnnotationType,
   AnnotationSourceType,
   AnnotationStyle,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { LOG_EVENT } from 'src/logger/actions';
 import * as exploreUtils from 'src/explore/exploreUtils';
 import * as actions from 'src/components/Chart/chartAction';
@@ -58,8 +58,8 @@ const mockGetState = (): MockState => ({
   },
 });
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   getChartMetadataRegistry: jest.fn(),
   getChartBuildQueryRegistry: jest.fn(),
 }));

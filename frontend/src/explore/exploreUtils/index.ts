@@ -11,7 +11,7 @@ import {
   ZobiClient,
   SetDataMaskHook,
   JsonObject,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { availableDomains } from 'src/utils/hostNamesConfig';
 import { safeStringify } from 'src/utils/safeStringify';
 import { optionLabel } from 'src/utils/common';

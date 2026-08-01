@@ -6,7 +6,7 @@ import {
   QueryFormData,
   SimpleAdhocFilter,
   VizType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   createDashboard,
   createSlice,

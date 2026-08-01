@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback, useMemo } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import rison from 'rison';
 import { addDangerToast } from 'src/components/MessageToasts/actions';
 import { DatasetObject } from 'src/features/datasets/AddDataset/types';

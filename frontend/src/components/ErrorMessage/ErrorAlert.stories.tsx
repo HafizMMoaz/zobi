@@ -1,5 +1,5 @@
 import { Meta, StoryFn } from '@storybook/react';
-import { Card, Col, Layout, Row } from '@zobi-ui/core/components';
+import { Card, Col, Layout, Row } from '@zobi.dev/core/components';
 import { ErrorAlert } from './ErrorAlert';
 
 const { Content } = Layout;

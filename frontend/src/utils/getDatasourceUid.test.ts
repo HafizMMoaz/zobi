@@ -1,5 +1,5 @@
 
-import { DatasourceType } from '@zobi-ui/core';
+import { DatasourceType } from '@zobi.dev/core';
 import { getDatasourceUid } from './getDatasourceUid';
 
 const TEST_DATASOURCE = {

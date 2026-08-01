@@ -3,8 +3,8 @@ import {
   DatasourceType,
   getChartControlPanelRegistry,
   VizType,
-} from '@zobi-ui/core';
-import type { QueryFormData } from '@zobi-ui/core';
+} from '@zobi.dev/core';
+import type { QueryFormData } from '@zobi.dev/core';
 import { getAllControlsState, getFormDataFromControls } from './controlUtils';
 import { controls } from './controls';
 

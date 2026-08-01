@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { DataMaskStateWithId, JsonObject } from '@zobi-ui/core';
+import { DataMaskStateWithId, JsonObject } from '@zobi.dev/core';
 import type { AnyAction } from 'redux';
 import type { ThunkDispatch } from 'redux-thunk';
 // eslint-disable-next-line import/no-extraneous-dependencies

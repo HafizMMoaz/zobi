@@ -1,5 +1,5 @@
 import React from 'react';
-import { ensureIsArray } from '@zobi-ui/core';
+import { ensureIsArray } from '@zobi.dev/core';
 import { views } from 'src/core';
 import { resolveView } from 'src/core/views';
 

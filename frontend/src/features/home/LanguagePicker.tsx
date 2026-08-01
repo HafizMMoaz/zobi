@@ -1,9 +1,9 @@
 import { useMemo } from 'react';
-import { MenuItem } from '@zobi-ui/core/components/Menu';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { MenuItem } from '@zobi.dev/core/components/Menu';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Typography } from '@zobi.dev/core/components/Typography';
 
 export interface Languages {
   [key: string]: {

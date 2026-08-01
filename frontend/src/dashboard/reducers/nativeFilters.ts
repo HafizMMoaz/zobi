@@ -16,7 +16,7 @@ import {
   NativeFiltersState,
   ChartCustomization,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { HYDRATE_DASHBOARD } from '../actions/hydrate';
 
 interface ExtendedNativeFiltersState extends NativeFiltersState {

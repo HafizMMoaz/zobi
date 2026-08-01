@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, useTheme } from '@zobi/core/theme';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 
 interface LastQueriedLabelProps {
   queriedDttm: string | null;

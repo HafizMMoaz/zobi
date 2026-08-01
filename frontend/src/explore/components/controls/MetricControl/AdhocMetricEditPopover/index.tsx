@@ -1,11 +1,11 @@
 /* eslint-disable camelcase */
 import { PureComponent, createRef } from 'react';
 import { useSelector } from 'react-redux';
-import { isDefined, ensureIsArray, DatasourceType } from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
-import type { editors } from '@zobi/core';
-import { styled } from '@zobi/core/theme';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import { isDefined, ensureIsArray, DatasourceType } from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import type { editors } from '@zobi.dev/extension-api';
+import { styled } from '@zobi.dev/extension-api/theme';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import {
   Button,
   EmptyState,
@@ -14,7 +14,7 @@ import {
   Icons,
   Select,
   Tooltip,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import sqlKeywords from 'src/SqlLab/utils/sqlKeywords';
 import { noOp } from 'src/utils/common';
 import {

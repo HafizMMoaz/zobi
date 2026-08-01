@@ -1,5 +1,5 @@
 import { action } from '@storybook/addon-actions';
-import { SuperChart, getChartTransformPropsRegistry } from '@zobi-ui/core';
+import { SuperChart, getChartTransformPropsRegistry } from '@zobi.dev/core';
 import { mockQueryDataForCountries } from 'spec/fixtures/mockNativeFilters';
 import SelectFilterPlugin from './index';
 import transformProps from './transformProps';

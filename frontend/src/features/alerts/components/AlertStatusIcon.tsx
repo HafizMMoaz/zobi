@@ -1,7 +1,7 @@
-import { t } from '@zobi/core/translation';
-import { ZobiTheme, useTheme, css } from '@zobi/core/theme';
-import { Tooltip } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiTheme, useTheme, css } from '@zobi.dev/extension-api/theme';
+import { Tooltip } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { AlertState } from '../types';
 
 function getStatusColor(

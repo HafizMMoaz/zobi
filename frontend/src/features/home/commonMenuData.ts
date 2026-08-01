@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 
 /**
  * Shared popup offset configuration for navbar menu dropdowns.

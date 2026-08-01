@@ -3,12 +3,12 @@ import AutoSizer from 'react-virtualized-auto-sizer';
 import ControlHeader, {
   ControlHeaderProps,
 } from 'src/explore/components/ControlHeader';
-import { styled } from '@zobi/core/theme';
-import { ControlComponentProps } from '@zobi-ui/chart-controls';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { ControlComponentProps } from '@zobi.dev/chart-controls';
 import {
   safeParseEChartOptions,
   EChartOptionsParseError,
-} from '@zobi-ui/plugin-chart-echarts';
+} from '@zobi.dev/echarts';
 import { EditorHost } from 'src/core/editors';
 
 const Container = styled.div`

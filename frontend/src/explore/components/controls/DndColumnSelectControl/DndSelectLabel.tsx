@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useContext, useEffect, useMemo } from 'react';
 import { useDrop } from 'react-dnd';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import {
   AddControlLabel,
@@ -11,7 +11,7 @@ import {
   DatasourcePanelDndItem,
   DndItemValue,
 } from 'src/explore/components/DatasourcePanel/types';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { DndItemType } from '../../DndItemType';
 import { DraggingContext, DropzoneContext } from '../../ExploreContainer';
 

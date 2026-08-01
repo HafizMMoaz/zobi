@@ -1,10 +1,10 @@
 import { FC, useMemo } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
-import { EmptyState } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { FeatureFlag, isFeatureEnabled } from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { styled } from '@zobi/core/theme';
+import { EmptyState } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { FeatureFlag, isFeatureEnabled } from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled } from '@zobi.dev/extension-api/theme';
 
 import { SqlLabRootState } from 'src/SqlLab/types';
 import ResultSet from '../ResultSet';

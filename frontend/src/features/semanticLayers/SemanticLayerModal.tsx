@@ -1,8 +1,8 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient, getClientErrorObject } from '@zobi-ui/core';
-import { Input, Select, Button } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient, getClientErrorObject } from '@zobi.dev/core';
+import { Input, Select, Button } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { JsonForms } from '@jsonforms/react';
 import type { JsonSchema, UISchemaElement } from '@jsonforms/core';
 import { cellRegistryEntries } from '@great-expectations/jsonforms-antd-renderers';
@@ -13,7 +13,7 @@ import {
   MODAL_STANDARD_WIDTH,
   MODAL_MEDIUM_WIDTH,
 } from 'src/components/Modal';
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   renderers,
   sanitizeSchema,

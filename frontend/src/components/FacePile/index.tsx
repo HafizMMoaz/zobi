@@ -3,9 +3,9 @@ import {
   getCategoricalSchemeRegistry,
   isFeatureEnabled,
   FeatureFlag,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import getOwnerName from 'src/utils/getOwnerName';
-import { Avatar, AvatarGroup, Tooltip } from '@zobi-ui/core/components';
+import { Avatar, AvatarGroup, Tooltip } from '@zobi.dev/core/components';
 import { ensureAppRoot } from 'src/utils/pathUtils';
 import { getRandomColor } from './utils';
 import type { FacePileProps } from './types';

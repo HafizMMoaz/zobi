@@ -1,13 +1,13 @@
 import { useCallback, useEffect, useState } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ZobiClient,
   isFeatureEnabled,
   FeatureFlag,
-} from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { styled } from '@zobi/core/theme';
-import { Select, Switch } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Select, Switch } from '@zobi.dev/core/components';
 import { EditorHost } from 'src/core/editors';
 import rison from 'rison';
 import ColorSchemeSelect from 'src/dashboard/components/ColorSchemeSelect';

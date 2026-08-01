@@ -1,5 +1,5 @@
-import { styled } from '@zobi/core/theme';
-import { Flex } from '@zobi-ui/core/components';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Flex } from '@zobi.dev/core/components';
 import ViewListExtension from 'src/components/ViewListExtension';
 import { views } from 'src/core';
 import { SQL_EDITOR_STATUSBAR_HEIGHT } from 'src/SqlLab/constants';

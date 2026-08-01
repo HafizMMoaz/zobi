@@ -6,11 +6,11 @@ import {
   QueryFormData,
   TimeGranularity,
   VizType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 // TODO: tests shouldn't depend on plugins
-import { sections } from '@zobi-ui/chart-controls';
-import TableChartPlugin from '../../../plugins/plugin-chart-table/src';
-import { BigNumberTotalChartPlugin } from '../../../plugins/plugin-chart-echarts/src';
+import { sections } from '@zobi.dev/chart-controls';
+import TableChartPlugin from '../../../plugins/table/src';
+import { BigNumberTotalChartPlugin } from '../../../plugins/echarts/src';
 import {
   StandardizedFormData,
   sharedMetricsKey,

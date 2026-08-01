@@ -1,5 +1,5 @@
-[![Version](https://img.shields.io/npm/v/%40zobi-ui%2Fembedded-sdk?style=flat)](https://www.npmjs.com/package/@zobi-ui/embedded-sdk)
-[![Libraries.io](https://img.shields.io/librariesio/release/npm/%40zobi-ui%2Fembedded-sdk?style=flat)](https://libraries.io/npm/@zobi-ui%2Fembedded-sdk)
+[![Version](https://img.shields.io/npm/v/%40zobi.dev%2Fembedded-sdk?style=flat)](https://www.npmjs.com/package/@zobi.dev/embedded-sdk)
+[![Libraries.io](https://img.shields.io/librariesio/release/npm/%40zobi.dev%2Fembedded-sdk?style=flat)](https://libraries.io/npm/@zobi.dev%2Fembedded-sdk)
 
 # Zobi Embedded SDK
 
@@ -18,11 +18,11 @@ Embedding is done by inserting an iframe, containing a Zobi page, into the host 
 Using npm:
 
 ```sh
-npm install --save @zobi-ui/embedded-sdk
+npm install --save @zobi.dev/embedded-sdk
 ```
 
 ```js
-import { embedDashboard } from "@zobi-ui/embedded-sdk";
+import { embedDashboard } from "@zobi.dev/embedded-sdk";
 
 embedDashboard({
   id: "abc123", // given by the Zobi embedding UI
@@ -54,7 +54,7 @@ embedDashboard({
 You can also load the Embedded SDK from a CDN. The SDK will be available as `zobiEmbeddedSdk` globally:
 
 ```html
-<script src="https://unpkg.com/@zobi-ui/embedded-sdk"></script>
+<script src="https://unpkg.com/@zobi.dev/embedded-sdk"></script>
 
 <script>
   zobiEmbeddedSdk.embedDashboard({

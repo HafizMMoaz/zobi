@@ -1,14 +1,14 @@
 import { useCallback, useEffect, useMemo, useState, ReactNode } from 'react';
 import { useSelector } from 'react-redux';
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   AdhocColumn,
   isAdhocColumn,
   Metric,
   QueryFormMetric,
-} from '@zobi-ui/core';
-import { ColumnMeta, isColumnMeta } from '@zobi-ui/chart-controls';
+} from '@zobi.dev/core';
+import { ColumnMeta, isColumnMeta } from '@zobi.dev/chart-controls';
 import { ExplorePopoverContent } from 'src/explore/components/ExploreContentPopover';
 import { SaveDatasetModal } from 'src/SqlLab/components/SaveDatasetModal';
 import ColumnSelectPopover from './ColumnSelectPopover';

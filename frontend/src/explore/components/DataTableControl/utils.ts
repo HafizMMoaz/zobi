@@ -1,4 +1,4 @@
-import { ensureIsArray } from '@zobi-ui/core';
+import { ensureIsArray } from '@zobi.dev/core';
 import {
   LocalStorageKeys,
   setItem,

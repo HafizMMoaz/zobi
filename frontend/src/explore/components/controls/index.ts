@@ -1,5 +1,5 @@
-import { sharedControlComponents } from '@zobi-ui/chart-controls';
-import { getExtensionsRegistry } from '@zobi-ui/core';
+import { sharedControlComponents } from '@zobi.dev/chart-controls';
+import { getExtensionsRegistry } from '@zobi.dev/core';
 import AnnotationLayerControl from './AnnotationLayerControl';
 import BoundsControl from './BoundsControl';
 import CheckboxControl from './CheckboxControl';

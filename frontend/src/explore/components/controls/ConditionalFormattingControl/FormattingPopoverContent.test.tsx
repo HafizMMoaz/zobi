@@ -4,8 +4,8 @@ import {
   fireEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { Comparator, ColorSchemeEnum } from '@zobi-ui/chart-controls';
-import { GenericDataType } from '@zobi/core/common';
+import { Comparator, ColorSchemeEnum } from '@zobi.dev/chart-controls';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { FormattingPopoverContent } from './FormattingPopoverContent';
 
 const mockOnChange = jest.fn();

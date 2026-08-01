@@ -1,7 +1,7 @@
-import { Button, type OnClickHandler } from '@zobi-ui/core/components';
+import { Button, type OnClickHandler } from '@zobi.dev/core/components';
 import { FC } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 
 const RemovedContent = styled.div`
   display: flex;

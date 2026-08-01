@@ -1,25 +1,25 @@
 import { ReactNode, useState, useEffect, useMemo } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   NO_TIME_RANGE,
   useCSSTextTruncation,
   fetchTimeRange,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   css,
   styled,
   useTheme,
   ZobiTheme,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import {
   Button,
   Constants,
   Divider,
   Tooltip,
   Select,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import ControlHeader from 'src/explore/components/ControlHeader';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { useDebouncedEffect } from 'src/explore/exploreUtils';
 import { noOp } from 'src/utils/common';
 import ControlPopover from '../ControlPopover/ControlPopover';

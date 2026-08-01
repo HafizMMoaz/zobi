@@ -4,7 +4,7 @@ import {
   DataRecord,
   FilterState,
   QueryFormData,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { PluginFilterHooks, PluginFilterStylesProps } from '../types';
 
 interface PluginFilterTimeCustomizeProps {

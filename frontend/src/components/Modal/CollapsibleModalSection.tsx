@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { Collapse, CollapseLabelInModal } from '@zobi-ui/core/components';
-import { styled } from '@zobi/core/theme';
+import { Collapse, CollapseLabelInModal } from '@zobi.dev/core/components';
+import { styled } from '@zobi.dev/extension-api/theme';
 
 interface CollapsibleModalSectionProps {
   sectionKey: string;

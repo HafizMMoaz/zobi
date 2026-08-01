@@ -5,8 +5,8 @@ import {
   within,
   screen,
 } from 'spec/helpers/testing-library';
-import { FeatureFlag } from '@zobi-ui/core';
-import { zobiTheme } from '@zobi/core/theme';
+import { FeatureFlag } from '@zobi.dev/core';
+import { zobiTheme } from '@zobi.dev/extension-api/theme';
 import {
   OPEN_FILTER_BAR_WIDTH,
   CLOSED_FILTER_BAR_WIDTH,
@@ -41,17 +41,17 @@ jest.mock('src/dashboard/actions/dashboardState', () => ({
 jest.mock('src/components/ResizableSidebar/useStoredSidebarWidth');
 
 // mock following dependent components to fix the prop warnings
-jest.mock('@zobi-ui/core/components/Select/Select', () => {
+jest.mock('@zobi.dev/core/components/Select/Select', () => {
   const MockSelect = () => <div data-test="mock-select" />;
   MockSelect.displayName = 'MockSelect';
   return MockSelect;
 });
-jest.mock('@zobi-ui/core/components/Select/AsyncSelect', () => {
+jest.mock('@zobi.dev/core/components/Select/AsyncSelect', () => {
   const MockAsyncSelect = () => <div data-test="mock-async-select" />;
   MockAsyncSelect.displayName = 'MockAsyncSelect';
   return MockAsyncSelect;
 });
-jest.mock('@zobi-ui/core/components/PageHeaderWithActions', () => {
+jest.mock('@zobi.dev/core/components/PageHeaderWithActions', () => {
   const MockPageHeaderWithActions = () => (
     <div data-test="mock-page-header-with-actions" />
   );

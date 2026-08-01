@@ -34,8 +34,8 @@ jest.mock('src/components/Splitter', () => {
   );
   return { Splitter };
 });
-jest.mock('@zobi-ui/core/components/Grid', () => ({
-  ...jest.requireActual('@zobi-ui/core/components/Grid'),
+jest.mock('@zobi.dev/core/components/Grid', () => ({
+  ...jest.requireActual('@zobi.dev/core/components/Grid'),
   useBreakpoint: jest.fn().mockReturnValue(true),
 }));
 

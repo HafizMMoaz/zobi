@@ -1,7 +1,7 @@
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import { postFormData, putFormData } from './formData';
 
-jest.mock('@zobi-ui/core', () => ({
+jest.mock('@zobi.dev/core', () => ({
   ZobiClient: {
     post: jest.fn(),
     put: jest.fn(),

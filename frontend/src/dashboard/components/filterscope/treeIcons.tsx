@@ -1,11 +1,11 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import 'react-checkbox-tree/lib/react-checkbox-tree.css';
 
 import {
   CheckboxChecked,
   CheckboxUnchecked,
   CheckboxHalfChecked,
-} from '@zobi-ui/core/components/Checkbox/CheckboxIcons';
+} from '@zobi.dev/core/components/Checkbox/CheckboxIcons';
 
 const treeIcons = {
   check: <CheckboxChecked />,

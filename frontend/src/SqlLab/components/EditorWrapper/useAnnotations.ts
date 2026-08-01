@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
 
-import { t } from '@zobi/core/translation';
-import { COMMON_ERR_MESSAGES, ClientErrorObject } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { COMMON_ERR_MESSAGES, ClientErrorObject } from '@zobi.dev/core';
 import { SqlLabRootState } from 'src/SqlLab/types';
 import { VALIDATION_DEBOUNCE_MS } from 'src/SqlLab/constants';
 import {

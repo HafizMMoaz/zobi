@@ -1,6 +1,6 @@
 import { AnyAction } from 'redux';
 import { ThunkAction, ThunkDispatch } from 'redux-thunk';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   makeApi,
   getClientErrorObject,
@@ -9,7 +9,7 @@ import {
   ColumnOption,
   Filter,
   Filters,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { addDangerToast } from 'src/components/MessageToasts/actions';
 import { DashboardInfo, RootState } from 'src/dashboard/types';
 import {

@@ -5,7 +5,7 @@ import {
   userEvent,
   within,
 } from 'spec/helpers/testing-library';
-import { setupAGGridModules } from '@zobi-ui/core/components/ThemedAgGridReact';
+import { setupAGGridModules } from '@zobi.dev/core/components/ThemedAgGridReact';
 import { FilterableTable } from '.';
 
 // eslint-disable-next-line no-restricted-globals -- TODO: Migrate from describe blocks

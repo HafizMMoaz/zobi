@@ -6,14 +6,14 @@ import {
   useMemo,
   useState,
 } from 'react';
-import { LatestQueryFormData } from '@zobi-ui/core';
-import { css } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import { Input, Space, Typography } from '@zobi-ui/core/components';
+import { LatestQueryFormData } from '@zobi.dev/core';
+import { css } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Input, Space, Typography } from '@zobi.dev/core/components';
 import { CopyToClipboard } from 'src/components';
 import { URL_PARAMS } from 'src/constants';
 import { getChartPermalink } from 'src/utils/urlUtils';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 export interface EmbedCodeContentProps {
   formData?: LatestQueryFormData;

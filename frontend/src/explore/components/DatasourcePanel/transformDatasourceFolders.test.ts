@@ -1,5 +1,5 @@
 
-import { Metric } from '@zobi-ui/core';
+import { Metric } from '@zobi.dev/core';
 import { transformDatasourceWithFolders } from './transformDatasourceFolders';
 import { DatasourceFolder, DatasourcePanelColumn } from './types';
 import { FoldersEditorItemType } from 'src/components/Datasource/types';

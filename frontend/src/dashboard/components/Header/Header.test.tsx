@@ -1,9 +1,9 @@
 import * as redux from 'redux';
 import { useUnsavedChangesPrompt } from 'src/hooks/useUnsavedChangesPrompt';
-import { screen, userEvent, within, waitFor } from '@zobi-ui/core/spec';
+import { screen, userEvent, within, waitFor } from '@zobi.dev/core/spec';
 import { ActionCreators as UndoActionCreators } from 'redux-undo';
 import fetchMock from 'fetch-mock';
-import { getExtensionsRegistry, JsonObject } from '@zobi-ui/core';
+import { getExtensionsRegistry, JsonObject } from '@zobi.dev/core';
 import setupCodeOverrides from 'src/setup/setupCodeOverrides';
 import getOwnerName from 'src/utils/getOwnerName';
 import { render, createStore } from 'spec/helpers/testing-library';

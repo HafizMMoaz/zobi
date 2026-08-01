@@ -7,17 +7,17 @@ import {
   useRef,
   useState,
 } from 'react';
-import { t } from '@zobi/core/translation';
-import { getExtensionsRegistry, QueryData, VizType } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getExtensionsRegistry, QueryData, VizType } from '@zobi.dev/core';
 import {
   css,
   styled,
   ZobiTheme,
   useTheme,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import { useUiConfig } from 'src/components/UiConfigContext';
 import { isEmbedded } from 'src/dashboard/util/isEmbedded';
-import { Tooltip, EditableTitle, Icons } from '@zobi-ui/core/components';
+import { Tooltip, EditableTitle, Icons } from '@zobi.dev/core/components';
 import { useSelector } from 'react-redux';
 import SliceHeaderControls from 'src/dashboard/components/SliceHeaderControls';
 import { SliceHeaderControlsProps } from 'src/dashboard/components/SliceHeaderControls/types';

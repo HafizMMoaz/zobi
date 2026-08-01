@@ -7,17 +7,17 @@ import {
 } from 'react';
 import rison from 'rison';
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   FeatureFlag,
   JsonResponse,
   ZobiClient,
   isFeatureEnabled,
-} from '@zobi-ui/core';
-import { styled, useTheme } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Input, Select } from '@zobi-ui/core/components';
-import RefreshLabel from '@zobi-ui/core/components/RefreshLabel';
+} from '@zobi.dev/core';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Input, Select } from '@zobi.dev/core/components';
+import RefreshLabel from '@zobi.dev/core/components/RefreshLabel';
 import {
   NotificationMethodOption,
   NotificationSetting,

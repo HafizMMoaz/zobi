@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { SMALL_HEADER, MEDIUM_HEADER, LARGE_HEADER } from './constants';
 
 export default [

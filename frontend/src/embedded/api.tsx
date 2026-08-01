@@ -1,4 +1,4 @@
-import { DataMaskStateWithId, JsonObject } from '@zobi-ui/core';
+import { DataMaskStateWithId, JsonObject } from '@zobi.dev/core';
 import getBootstrapData from 'src/utils/getBootstrapData';
 import { store } from '../views/store';
 import { getDashboardPermalink as getDashboardPermalinkUtil } from '../utils/urlUtils';

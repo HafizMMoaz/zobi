@@ -1,7 +1,7 @@
 import { useMemo } from 'react';
-import { t } from '@zobi/core/translation';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
-import { AsyncSelect } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
+import { AsyncSelect } from '@zobi.dev/core/components';
 import { type TagType } from 'src/components';
 import { loadTags } from 'src/components/Tag/utils';
 import getOwnerName from 'src/utils/getOwnerName';

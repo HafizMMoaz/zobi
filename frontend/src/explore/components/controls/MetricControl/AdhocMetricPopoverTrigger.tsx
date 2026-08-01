@@ -1,6 +1,6 @@
 import { PureComponent, ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { Metric } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Metric } from '@zobi.dev/core';
 import AdhocMetricEditPopoverTitle from 'src/explore/components/controls/MetricControl/AdhocMetricEditPopoverTitle';
 import { ExplorePopoverContent } from 'src/explore/components/ExploreContentPopover';
 import {

@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock';
-import { FeatureFlag, isFeatureEnabled, QueryState } from '@zobi-ui/core';
+import { FeatureFlag, isFeatureEnabled, QueryState } from '@zobi.dev/core';
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
 import QueryHistory from 'src/SqlLab/components/QueryHistory';
 import {
@@ -57,8 +57,8 @@ const fakeApiResult = {
   ],
 };
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

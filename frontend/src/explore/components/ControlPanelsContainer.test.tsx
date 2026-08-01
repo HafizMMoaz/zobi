@@ -5,13 +5,13 @@ import {
   userEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   DatasourceType,
   getChartControlPanelRegistry,
   isFeatureEnabled,
   FeatureFlag,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { defaultControls, defaultState } from 'src/explore/store';
 import { ExplorePageState } from 'src/explore/types';
 import { getFormDataFromControls } from 'src/explore/controlUtils';
@@ -20,8 +20,8 @@ import {
   ControlPanelsContainerProps,
 } from 'src/explore/components/ControlPanelsContainer';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

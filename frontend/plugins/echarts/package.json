@@ -1,0 +1,46 @@
+{
+  "name": "@zobi.dev/echarts",
+  "version": "0.20.3",
+  "description": "Zobi Chart - Echarts",
+  "keywords": [
+    "zobi"
+  ],
+  "homepage": "https://github.com/HafizMMoaz/zobi/tree/master/zobi-frontend/plugins/echarts#readme",
+  "bugs": {
+    "url": "https://github.com/HafizMMoaz/zobi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HafizMMoaz/zobi.git",
+    "directory": "frontend/plugins/echarts"
+  },
+  "license": "MIT",
+  "author": "Zobi",
+  "sideEffects": false,
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "files": [
+    "esm",
+    "lib"
+  ],
+  "dependencies": {
+    "@types/d3-array": "^3.2.2",
+    "@types/react-redux": "^7.1.34",
+    "acorn": "^8.16.0",
+    "d3-array": "^3.2.4",
+    "lodash": "^4.18.1",
+    "zod": "^4.4.3"
+  },
+  "peerDependencies": {
+    "@zobi.dev/chart-controls": "*",
+    "@zobi.dev/core": "*",
+    "@zobi.dev/extension-api": "*",
+    "dayjs": "^1.11.19",
+    "echarts": "*",
+    "memoize-one": "*",
+    "react": "^18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

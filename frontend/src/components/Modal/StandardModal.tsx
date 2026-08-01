@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { Modal, Loading, Flex } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Modal, Loading, Flex } from '@zobi.dev/core/components';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
 
 interface StandardModalProps {

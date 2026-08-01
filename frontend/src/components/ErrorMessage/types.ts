@@ -1,6 +1,6 @@
 
 import type { ReactNode, ComponentType } from 'react';
-import type { ErrorSource, ZobiError } from '@zobi-ui/core';
+import type { ErrorSource, ZobiError } from '@zobi.dev/core';
 
 export type ErrorMessageComponentProps<ExtraType = Record<string, any> | null> =
   {

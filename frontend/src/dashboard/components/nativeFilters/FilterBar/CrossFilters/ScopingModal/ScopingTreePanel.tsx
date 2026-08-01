@@ -1,10 +1,10 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
-import { isDefined, NativeFilterScope } from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { css, styled, useTheme } from '@zobi/core/theme';
-import { Select, Tooltip } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { isDefined, NativeFilterScope } from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { Select, Tooltip } from '@zobi.dev/core/components';
 import { noOp } from 'src/utils/common';
 import ScopingTree from 'src/dashboard/components/nativeFilters/FiltersConfigModal/FiltersConfigForm/FilterScope/ScopingTree';
 import {
@@ -14,8 +14,8 @@ import {
   RootState,
 } from 'src/dashboard/types';
 import { CHART_TYPE } from 'src/dashboard/util/componentTypes';
-import type { SelectOptionsType } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import type { SelectOptionsType } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { NEW_CHART_SCOPING_ID } from './constants';
 
 interface ScopingTreePanelProps {

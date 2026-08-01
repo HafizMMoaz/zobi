@@ -5,8 +5,8 @@ import {
   QueryObject,
   QueryObjectFilterClause,
   BuildQuery,
-} from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+} from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { DEFAULT_FORM_DATA, PluginFilterSelectQueryFormData } from './types';
 
 const buildQuery: BuildQuery<PluginFilterSelectQueryFormData> = (

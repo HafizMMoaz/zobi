@@ -1,4 +1,4 @@
-import { extendedDayjs as dayjs } from '@zobi-ui/core/utils/dates';
+import { extendedDayjs as dayjs } from '@zobi.dev/core/utils/dates';
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { ExplorePageState } from 'src/explore/types';

@@ -1,5 +1,5 @@
 
-import { VizType } from '@zobi-ui/core';
+import { VizType } from '@zobi.dev/core';
 import { getParsedExploreURLParams } from './getParsedExploreURLParams';
 
 const EXPLORE_BASE_URL = 'http://localhost:9000/explore/';

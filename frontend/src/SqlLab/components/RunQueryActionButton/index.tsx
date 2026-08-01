@@ -1,10 +1,10 @@
 import { useMemo, FC, ReactElement, type ReactNode } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { styled, useTheme, ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, useTheme, ZobiTheme } from '@zobi.dev/extension-api/theme';
 
-import { Button, DropdownButton } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Button, DropdownButton } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { detectOS } from 'src/utils/common';
 import { QueryButtonProps } from 'src/SqlLab/types';
 import useQueryEditor from 'src/SqlLab/hooks/useQueryEditor';

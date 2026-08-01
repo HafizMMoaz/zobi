@@ -1,8 +1,8 @@
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { t } from '@zobi/core/translation';
-import { css, styled } from '@zobi/core/theme';
-import { Button } from '@zobi-ui/core/components';
-import Tree, { TreeProps } from '@zobi-ui/core/components/Tree';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { Button } from '@zobi.dev/core/components';
+import Tree, { TreeProps } from '@zobi.dev/core/components/Tree';
 import { forwardRef } from 'react';
 import { FlatLayerDataNode, FlatLayerTreeProps, LayerConf } from './types';
 import { handleDrop } from './dragDropUtil';

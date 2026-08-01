@@ -6,7 +6,7 @@ sidebar_position: 6
 
 # Embedding Zobi
 
-Zobi dashboards can be embedded directly in host applications using the `@zobi-ui/embedded-sdk` package.
+Zobi dashboards can be embedded directly in host applications using the `@zobi.dev/embedded-sdk` package.
 
 :::info Prerequisites
 - The `EMBEDDED_ZOBI` feature flag must be enabled.
@@ -18,13 +18,13 @@ Zobi dashboards can be embedded directly in host applications using the `@zobi-u
 Install the SDK:
 
 ```bash
-npm install @zobi-ui/embedded-sdk
+npm install @zobi.dev/embedded-sdk
 ```
 
 Embed a dashboard:
 
 ```javascript
-import { embedDashboard } from '@zobi-ui/embedded-sdk';
+import { embedDashboard } from '@zobi.dev/embedded-sdk';
 
 embedDashboard({
   id: 'dashboard-uuid-here',          // from Dashboard → Embed

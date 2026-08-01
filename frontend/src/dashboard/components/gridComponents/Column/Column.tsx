@@ -1,8 +1,8 @@
 import { Fragment, useCallback, useState, useMemo, memo } from 'react';
 import cx from 'classnames';
-import { css, styled, ZobiTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { css, styled, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import type { LayoutItem } from 'src/dashboard/types';
 import type { DropResult } from 'src/dashboard/components/dnd/dragDroppableConfig';
 import DashboardComponent from 'src/dashboard/containers/DashboardComponent';

@@ -1,4 +1,4 @@
-import { extensions as extensionsApi } from '@zobi/core';
+import { extensions as extensionsApi } from '@zobi.dev/extension-api';
 import ExtensionsLoader from 'src/extensions/ExtensionsLoader';
 
 const getExtension: typeof extensionsApi.getExtension = id =>

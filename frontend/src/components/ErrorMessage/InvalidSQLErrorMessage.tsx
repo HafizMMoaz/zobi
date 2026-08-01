@@ -1,5 +1,5 @@
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import type { ErrorMessageComponentProps } from './types';
 import { ErrorAlert } from './ErrorAlert';
 

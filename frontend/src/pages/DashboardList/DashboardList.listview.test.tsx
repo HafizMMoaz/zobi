@@ -6,7 +6,7 @@ import {
   within,
 } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
-import { isFeatureEnabled } from '@zobi-ui/core';
+import { isFeatureEnabled } from '@zobi.dev/core';
 import {
   mockDashboards,
   mockHandleResourceExport,
@@ -17,8 +17,8 @@ import {
 
 jest.setTimeout(30000);
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

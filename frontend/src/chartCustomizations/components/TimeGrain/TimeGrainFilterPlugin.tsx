@@ -1,9 +1,9 @@
-import { t, tn } from '@zobi/core/translation';
+import { t, tn } from '@zobi.dev/extension-api/translation';
 import {
   ensureIsArray,
   ExtraFormData,
   TimeGranularity,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   FormItem,
@@ -11,8 +11,8 @@ import {
   LabeledValue,
   Select,
   type SelectValue,
-} from '@zobi-ui/core/components';
-import { propertyComparator } from '@zobi-ui/core/components/Select/utils';
+} from '@zobi.dev/core/components';
+import { propertyComparator } from '@zobi.dev/core/components/Select/utils';
 import { FilterPluginStyle, StatusMessage } from '../common';
 import { PluginFilterTimeGrainProps } from './types';
 

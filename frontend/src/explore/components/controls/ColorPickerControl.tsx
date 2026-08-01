@@ -1,9 +1,9 @@
-import { getCategoricalSchemeRegistry } from '@zobi-ui/core';
+import { getCategoricalSchemeRegistry } from '@zobi.dev/core';
 import {
   ColorPicker,
   type RGBColor,
   type ColorValue,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import ControlHeader from '../ControlHeader';
 
 export interface ColorPickerControlProps {

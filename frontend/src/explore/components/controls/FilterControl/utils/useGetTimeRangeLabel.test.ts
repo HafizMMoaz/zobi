@@ -1,12 +1,12 @@
 import { renderHook, waitFor } from '@testing-library/react';
-import { NO_TIME_RANGE, fetchTimeRange } from '@zobi-ui/core';
+import { NO_TIME_RANGE, fetchTimeRange } from '@zobi.dev/core';
 import { Operators } from 'src/explore/constants';
 import { useGetTimeRangeLabel } from './useGetTimeRangeLabel';
 import AdhocFilter from '../AdhocFilter';
 import { Clauses, ExpressionTypes } from '../types';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   fetchTimeRange: jest.fn(),
 }));
 

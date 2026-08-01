@@ -1,8 +1,8 @@
 
 import { memo, useMemo } from 'react';
-import { t, tn } from '@zobi/core/translation';
-import { Button, Input, Tooltip } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t, tn } from '@zobi.dev/extension-api/translation';
+import { Button, Input, Tooltip } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import {
   FoldersToolbar,
   FoldersSearch,

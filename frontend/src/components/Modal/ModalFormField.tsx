@@ -1,6 +1,6 @@
 import { ReactNode } from 'react';
-import { css, styled } from '@zobi/core/theme';
-import { InfoTooltip } from '@zobi-ui/core/components';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { InfoTooltip } from '@zobi.dev/core/components';
 
 interface ModalFormFieldProps {
   label: string;

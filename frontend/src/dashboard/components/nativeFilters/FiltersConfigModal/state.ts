@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { NativeFilterType, usePrevious } from '@zobi-ui/core';
+import { NativeFilterType, usePrevious } from '@zobi.dev/core';
 import { FilterRemoval } from './types';
 
 

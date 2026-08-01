@@ -1,4 +1,4 @@
-import type { QueryFormData } from '@zobi-ui/core';
+import type { QueryFormData } from '@zobi.dev/core';
 import { DiffType } from 'src/types/DiffType';
 
 export interface AlteredSliceTagProps {

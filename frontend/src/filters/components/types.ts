@@ -1,4 +1,4 @@
-import { SetDataMaskHook } from '@zobi-ui/core';
+import { SetDataMaskHook } from '@zobi.dev/core';
 import { FilterBarOrientation } from 'src/dashboard/types';
 
 export interface PluginFilterStylesProps {

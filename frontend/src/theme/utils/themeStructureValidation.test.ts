@@ -1,4 +1,4 @@
-import { type AnyThemeConfig } from '@zobi/core/theme';
+import { type AnyThemeConfig } from '@zobi.dev/extension-api/theme';
 import { validateTheme } from './themeStructureValidation';
 
 test('validateTheme validates a valid theme with standard tokens', () => {

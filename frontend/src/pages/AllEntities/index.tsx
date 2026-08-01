@@ -1,16 +1,16 @@
 import { useEffect, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled, css, ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { NumberParam, useQueryParam } from 'use-query-params';
 import AllEntitiesTable from 'src/features/allEntities/AllEntitiesTable';
-import { Button, Loading } from '@zobi-ui/core/components';
+import { Button, Loading } from '@zobi.dev/core/components';
 import MetadataBar, {
   MetadataType,
   Description,
   Owner,
   LastModified,
-} from '@zobi-ui/core/components/MetadataBar';
-import { PageHeaderWithActions } from '@zobi-ui/core/components/PageHeaderWithActions';
+} from '@zobi.dev/core/components/MetadataBar';
+import { PageHeaderWithActions } from '@zobi.dev/core/components/PageHeaderWithActions';
 import { Tag } from 'src/views/CRUD/types';
 import TagModal from 'src/features/tags/TagModal';
 import withToasts, { useToasts } from 'src/components/MessageToasts/withToasts';

@@ -1,8 +1,8 @@
-import { isDefined, QueryData } from '@zobi-ui/core';
-import { css, styled } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import { isDefined, QueryData } from '@zobi.dev/core';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import { SingleQueryResultPane } from 'src/explore/components/DataTablesPane/components/SingleQueryResultPane';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import Tabs from '@zobi.dev/core/components/Tabs';
 
 const ResultContainer = styled.div`
   ${() => css`

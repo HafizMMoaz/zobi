@@ -1,23 +1,23 @@
 import { isValidElement } from 'react';
 import fetchMock from 'fetch-mock';
-import { FeatureFlag, isFeatureEnabled } from '@zobi-ui/core';
+import { FeatureFlag, isFeatureEnabled } from '@zobi.dev/core';
 import TableElement, { Column } from 'src/SqlLab/components/TableElement';
 import { table, initialState } from 'src/SqlLab/fixtures';
 import { render, waitFor, fireEvent } from 'spec/helpers/testing-library';
 import * as sqlLabActions from 'src/SqlLab/actions/sqlLab';
 import { QueryEditor } from 'src/SqlLab/types';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 
 const mockedIsFeatureEnabled = isFeatureEnabled as jest.Mock;
 
-jest.mock('@zobi-ui/core/components/Loading', () => ({
+jest.mock('@zobi.dev/core/components/Loading', () => ({
   Loading: () => <div data-test="mock-loading" />,
 }));
-jest.mock('@zobi-ui/core/components/IconTooltip', () => ({
+jest.mock('@zobi.dev/core/components/IconTooltip', () => ({
   IconTooltip: ({
     onClick,
     tooltip,

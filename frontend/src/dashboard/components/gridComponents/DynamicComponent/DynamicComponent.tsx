@@ -1,6 +1,6 @@
 import { FC, Suspense } from 'react';
-import { t } from '@zobi/core/translation';
-import { DashboardComponentMetadata, JsonObject } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { DashboardComponentMetadata, JsonObject } from '@zobi.dev/core';
 import backgroundStyleOptions from 'src/dashboard/util/backgroundStyleOptions';
 import cx from 'classnames';
 import { shallowEqual, useSelector } from 'react-redux';

@@ -1,6 +1,6 @@
 import { ReactElement, useMemo } from 'react';
-import { formatNumber, formatTime } from '@zobi-ui/core';
-import { useTheme } from '@zobi/core/theme';
+import { formatNumber, formatTime } from '@zobi.dev/core';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import { GridRows } from '@visx/grid';
 import { scaleLinear } from '@visx/scale';
 import {
@@ -14,7 +14,7 @@ import {
   type SeriesProps,
   AxisScale,
 } from '@visx/xychart';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 import {
   getSparklineTextWidth,
   createYScaleConfig,

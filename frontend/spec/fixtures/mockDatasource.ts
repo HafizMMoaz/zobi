@@ -1,4 +1,4 @@
-import { DatasourceType } from '@zobi-ui/core';
+import { DatasourceType } from '@zobi.dev/core';
 
 export const id = 7;
 export const datasourceId = `${id}__table`;

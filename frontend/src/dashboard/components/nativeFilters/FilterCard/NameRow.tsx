@@ -1,7 +1,7 @@
 import { useSelector } from 'react-redux';
-import { isChartCustomization, useTruncation } from '@zobi-ui/core';
-import { css, ZobiTheme, useTheme } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { isChartCustomization, useTruncation } from '@zobi.dev/core';
+import { css, ZobiTheme, useTheme } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { useFilterConfigModal } from 'src/dashboard/components/nativeFilters/FilterBar/FilterConfigurationLink/useFilterConfigModal';
 import { RootState } from 'src/dashboard/types';
 import { Row, FilterName, InternalRow } from './Styles';

@@ -1,4 +1,4 @@
-import { ColumnMeta } from '@zobi-ui/chart-controls';
+import { ColumnMeta } from '@zobi.dev/chart-controls';
 import type { ISaveableDatasource } from 'src/SqlLab/components/SaveDatasetModal';
 
 // Flexible interface that captures what this function actually needs to work

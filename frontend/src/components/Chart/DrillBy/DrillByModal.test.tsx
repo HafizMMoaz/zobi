@@ -11,7 +11,7 @@ import {
 } from 'spec/helpers/testing-library';
 import chartQueries, { sliceId } from 'spec/fixtures/mockChartQueries';
 import mockState from 'spec/fixtures/mockState';
-import { setupAGGridModules } from '@zobi-ui/core/components/ThemedAgGridReact';
+import { setupAGGridModules } from '@zobi.dev/core/components/ThemedAgGridReact';
 import { DashboardPageIdContext } from 'src/dashboard/containers/DashboardPage';
 import DrillByModal, { DrillByModalProps } from './DrillByModal';
 

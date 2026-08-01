@@ -7,8 +7,8 @@ import { RootState } from 'src/dashboard/types';
 import { reRunQuery } from 'src/SqlLab/actions/sqlLab';
 import { triggerQuery } from 'src/components/Chart/chartAction';
 import { onRefresh } from 'src/dashboard/actions/dashboardState';
-import { t } from '@zobi/core/translation';
-import { QueryResponse } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { QueryResponse } from '@zobi.dev/core';
 
 import type { ErrorMessageComponentProps } from './types';
 import { ErrorAlert } from './ErrorAlert';

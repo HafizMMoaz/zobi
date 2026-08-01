@@ -1,16 +1,16 @@
 import { type ReactNode } from 'react';
 import { render, screen } from 'spec/helpers/testing-library';
-import { logging } from '@zobi/core/utils';
+import { logging } from '@zobi.dev/extension-api/utils';
 import {
   Theme,
   normalizeThemeConfig,
   isThemeConfigDark,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import getBootstrapData from 'src/utils/getBootstrapData';
 import CrudThemeProvider from './CrudThemeProvider';
 
-jest.mock('@zobi/core/theme', () => ({
-  ...jest.requireActual('@zobi/core/theme'),
+jest.mock('@zobi.dev/extension-api/theme', () => ({
+  ...jest.requireActual('@zobi.dev/extension-api/theme'),
   normalizeThemeConfig: jest.fn((config: unknown) => config),
   isThemeConfigDark: jest.fn(() => false),
 }));

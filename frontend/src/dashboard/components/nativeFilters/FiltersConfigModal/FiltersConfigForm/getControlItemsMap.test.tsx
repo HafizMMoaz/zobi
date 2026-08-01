@@ -1,6 +1,6 @@
-import { Filter, NativeFilterType } from '@zobi-ui/core';
+import { Filter, NativeFilterType } from '@zobi.dev/core';
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
-import type { FormInstance } from '@zobi-ui/core/components';
+import type { FormInstance } from '@zobi.dev/core/components';
 import getControlItemsMap, { ControlItemsProps } from './getControlItemsMap';
 import {
   getControlItems,

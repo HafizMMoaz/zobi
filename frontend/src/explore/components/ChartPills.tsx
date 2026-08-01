@@ -1,11 +1,11 @@
 import { forwardRef, RefObject } from 'react';
-import { QueryData, VizType } from '@zobi-ui/core';
-import { css, ZobiTheme } from '@zobi/core/theme';
+import { QueryData, VizType } from '@zobi.dev/core';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import {
   CachedLabel,
   type LabelType,
   Timer,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import RowCountLabel from 'src/components/RowCountLabel';
 
 const CHART_STATUS_MAP = {

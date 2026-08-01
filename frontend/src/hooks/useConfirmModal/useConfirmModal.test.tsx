@@ -1,6 +1,6 @@
-import { render, screen, userEvent, waitFor } from '@zobi-ui/core/spec';
+import { render, screen, userEvent, waitFor } from '@zobi.dev/core/spec';
 import { renderHook, act } from '@testing-library/react';
-import { ThemeProvider, zobiTheme } from '@zobi/core/theme';
+import { ThemeProvider, zobiTheme } from '@zobi.dev/extension-api/theme';
 import { useConfirmModal } from '.';
 
 const renderWithTheme = (component: React.ReactElement) =>

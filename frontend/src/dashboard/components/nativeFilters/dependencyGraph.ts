@@ -1,4 +1,4 @@
-import { ensureIsArray } from '@zobi-ui/core';
+import { ensureIsArray } from '@zobi.dev/core';
 
 /**
  * Shared graph primitives for the native-filter dependency graph.

@@ -1,15 +1,15 @@
 import { useEffect, useRef, useState } from 'react';
-import { ZobiClient } from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
-import { css, useTheme } from '@zobi/core/theme';
-import { Alert } from '@zobi/core/components';
+import { ZobiClient } from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { Alert } from '@zobi.dev/extension-api/components';
 import {
   FormModal,
   FormItem,
   Input,
   Button,
   Modal,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 
 interface ApiKeyCreateModalProps {

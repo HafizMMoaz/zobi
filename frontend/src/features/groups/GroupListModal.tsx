@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
 import { Actions } from 'src/constants';
@@ -9,7 +9,7 @@ import {
   Input,
   Select,
   AsyncSelect,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { FormValues, GroupModalProps } from './types';
 import { createGroup, fetchUserOptions, updateGroup } from './utils';
 

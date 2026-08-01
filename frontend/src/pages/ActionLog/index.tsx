@@ -1,6 +1,6 @@
 import { useMemo } from 'react';
-import { t } from '@zobi/core/translation';
-import { css } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css } from '@zobi.dev/extension-api/theme';
 import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
@@ -9,7 +9,7 @@ import {
   ListViewFilterOperator,
   type ListViewFilter,
 } from 'src/components/ListView';
-import { Typography } from '@zobi-ui/core/components';
+import { Typography } from '@zobi.dev/core/components';
 import { fetchUserOptions } from 'src/features/groups/utils';
 
 export type ActionLogObject = {

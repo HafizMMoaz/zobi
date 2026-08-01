@@ -1,6 +1,6 @@
-import { FilterState, QueryFormData } from '@zobi-ui/core';
+import { FilterState, QueryFormData } from '@zobi.dev/core';
 import { RefObject } from 'react';
-import type { RefSelectProps } from '@zobi-ui/core/components';
+import type { RefSelectProps } from '@zobi.dev/core/components';
 import { PluginFilterHooks, PluginFilterStylesProps } from '../types';
 
 export interface DatasetReference {

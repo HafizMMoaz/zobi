@@ -1,4 +1,4 @@
-import { VizType } from '@zobi-ui/core';
+import { VizType } from '@zobi.dev/core';
 import { datasourceId } from './mockDatasource';
 
 export const sliceId = 18;

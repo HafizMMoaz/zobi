@@ -448,10 +448,12 @@ const config = {
     alias: {
       '@storybook-shared': path.resolve(APP_DIR, '.storybook/shared'),
       react: path.resolve(path.join(APP_DIR, './node_modules/react')),
-      '@zobi/core': path.resolve(APP_DIR, 'packages/zobi-core-legacy/src'),
+      // `@zobi.dev/*` workspace aliases are generated further down from each
+      // package.json `name`, so no per-package entry is needed here.
       // TODO: remove Handlebars alias once Handlebars NPM package has been updated to
       // correctly support webpack import (https://github.com/handlebars-lang/handlebars.js/issues/953)
       handlebars: 'handlebars/dist/handlebars.js',
+
       /*
       Temporary workaround to prevent Webpack from resolving moment locale
       files, which are unnecessary for this project and causing build warnings.
@@ -499,7 +501,7 @@ const config = {
       {
         test: /\.jsx?$/,
         // include source code for plugins, but exclude node_modules and test files within them
-        exclude: [/zobi-ui.*\/node_modules\//, /\.test.jsx?$/],
+        exclude: [/(packages|plugins)\/[^/]+\/node_modules\//, /\.test.jsx?$/],
         include: [
           new RegExp(`${APP_DIR}/(src|.storybook|plugins|packages)`),
           ...['./src', './.storybook', './plugins', './packages'].map(p =>
@@ -515,7 +517,8 @@ const config = {
       },
       {
         test: /\.css$/,
-        include: [APP_DIR, /zobi-ui.+\/src/],
+        include: [APP_DIR, /(packages|plugins)\/[^/]+\/src/],
+
         use: [
           isDevMode
             ? 'style-loader'
@@ -634,43 +637,32 @@ const config = {
     : undefined,
 };
 
-// find all the symlinked plugins and use their source code for imports
-Object.entries(packageConfig.dependencies).forEach(([pkg, relativeDir]) => {
-  const srcPath = path.join(APP_DIR, `./node_modules/${pkg}/src`);
-  const dir = relativeDir.replace('file:', '');
+// Alias every in-repo workspace package to its `src/` so the app and the
+// plugins compile from source instead of stale `lib/`/`esm/` output.
+//
+// Every workspace package is published under the single `@zobi.dev` scope and
+// its directory name matches the package name after the scope, so one pass over
+// `packages/` and `plugins/` covers all of them. Aliases are derived from each
+// package.json `name` rather than assumed from the directory, so a mismatch
+// surfaces as a missing alias instead of silently resolving to the wrong copy.
+['packages', 'plugins'].forEach(group => {
+  fs.readdirSync(path.resolve(APP_DIR, group), { withFileTypes: true })
+    .filter(entry => entry.isDirectory())
+    .forEach(entry => {
+      const pkgDir = path.resolve(APP_DIR, group, entry.name);
+      const manifest = path.join(pkgDir, 'package.json');
+      const srcDir = path.join(pkgDir, 'src');
+      if (!fs.existsSync(manifest) || !fs.existsSync(srcDir)) return;
 
-  if (
-    (pkg.startsWith('@zobi-ui') || pkg.startsWith('@zobi')) &&
-    fs.existsSync(srcPath)
-  ) {
-    console.log(`[Zobi Plugin] Use symlink source for ${pkg} @ ${dir}`);
-    config.resolve.alias[pkg] = path.resolve(APP_DIR, `${dir}/src`);
-  }
+      const { name } = JSON.parse(fs.readFileSync(manifest, 'utf8'));
+      if (!name || !name.startsWith('@zobi.dev/')) return;
+
+      console.log(
+        `[Zobi Package] Use source for ${name} @ ${group}/${entry.name}`,
+      );
+      config.resolve.alias[name] = srcDir;
+    });
 });
-
-// Mirror the `@zobi-ui/*` path mappings declared in tsconfig.json. The source tree
-// imports these packages under the `@zobi-ui` scope, while package.json declares
-// several of them under `@zobi`, so the symlink loop above never aliases them.
-const ZOBI_UI_PACKAGE_DIRS = {
-  '@zobi-ui/core': 'packages/zobi-ui-core',
-  '@zobi-ui/chart-controls': 'packages/zobi-ui-chart-controls',
-  '@zobi-ui/switchboard': 'packages/zobi-ui-switchboard',
-};
-
-Object.entries(ZOBI_UI_PACKAGE_DIRS).forEach(([pkg, dir]) => {
-  config.resolve.alias[pkg] = path.resolve(APP_DIR, `${dir}/src`);
-});
-
-// Each `plugins/<name>` directory is consumed as `@zobi-ui/<name>`, matching the
-// wildcard `@zobi-ui/plugin-chart-*` entries in tsconfig.json.
-fs.readdirSync(path.resolve(APP_DIR, 'plugins'), { withFileTypes: true })
-  .filter(entry => entry.isDirectory())
-  .forEach(entry => {
-    const srcDir = path.resolve(APP_DIR, `plugins/${entry.name}/src`);
-    if (fs.existsSync(srcDir)) {
-      config.resolve.alias[`@zobi-ui/${entry.name}`] = srcDir;
-    }
-  });
 
 console.log(''); // pure cosmetic new line
 

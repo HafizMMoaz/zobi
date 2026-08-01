@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock';
 import { act, renderHook, waitFor } from '@testing-library/react';
-import { COMMON_ERR_MESSAGES } from '@zobi-ui/core';
+import { COMMON_ERR_MESSAGES } from '@zobi.dev/core';
 import {
   createWrapper,
   defaultStore as store,
@@ -26,8 +26,8 @@ const expectTemplateParams = '{"a": 1, "v": "str"}';
 const expectValidatorEngine = 'defined_validator';
 const queryValidationApiRoute = `glob:*/api/v1/database/${expectDbId}/validate_sql/`;
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   t: (str: string) => str,
 }));
 

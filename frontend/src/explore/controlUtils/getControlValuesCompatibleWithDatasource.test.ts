@@ -3,8 +3,8 @@ import {
   ControlState,
   Dataset,
   sharedControls,
-} from '@zobi-ui/chart-controls';
-import { DatasourceType, JsonValue } from '@zobi-ui/core';
+} from '@zobi.dev/chart-controls';
+import { DatasourceType, JsonValue } from '@zobi.dev/core';
 import { getControlValuesCompatibleWithDatasource } from './getControlValuesCompatibleWithDatasource';
 
 const sampleDatasource: Dataset = {

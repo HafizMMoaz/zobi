@@ -5,7 +5,7 @@ import {
   VizType,
   JsonObject,
   FeatureFlagMap,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import ChartRenderer, {
   ChartRendererProps,
 } from 'src/components/Chart/ChartRenderer';
@@ -18,8 +18,8 @@ interface MockSuperChartProps {
   [key: string]: unknown;
 }
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   SuperChart: ({
     postTransformProps = (x: JsonObject) => x,
     isRefreshing = false,

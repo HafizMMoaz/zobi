@@ -7,11 +7,11 @@ import {
   useRef,
   useState,
 } from 'react';
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   LineEditableTabs,
   TabsProps as AntdTabsProps,
-} from '@zobi-ui/core/components/Tabs';
+} from '@zobi.dev/core/components/Tabs';
 import type { DragEndEvent } from '@dnd-kit/core';
 import {
   DndContext,

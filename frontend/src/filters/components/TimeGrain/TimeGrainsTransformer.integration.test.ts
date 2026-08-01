@@ -1,5 +1,5 @@
 
-import { NativeFilterType } from '@zobi-ui/core';
+import { NativeFilterType } from '@zobi.dev/core';
 import { getInitialDataMask } from 'src/dataMask/reducer';
 import type { NativeFiltersFormItem } from 'src/dashboard/components/nativeFilters/FiltersConfigModal/types';
 import { transformFilterForSave } from 'src/dashboard/components/nativeFilters/FiltersConfigModal/transformers';

@@ -1,6 +1,6 @@
 
 import * as reactRedux from 'react-redux';
-import { Filter, NativeFilterType } from '@zobi-ui/core';
+import { Filter, NativeFilterType } from '@zobi.dev/core';
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
 import { DASHBOARD_ROOT_ID } from 'src/dashboard/util/constants';
 import { SET_DIRECT_PATH } from 'src/dashboard/actions/dashboardState';
@@ -175,8 +175,8 @@ const baseFilter: Filter = {
   description: '',
 };
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   getChartMetadataRegistry: () => ({
     get: (type: string) => {
       if (type === 'filter_select') {

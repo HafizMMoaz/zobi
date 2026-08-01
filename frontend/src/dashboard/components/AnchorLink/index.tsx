@@ -1,5 +1,5 @@
 import { useEffect } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 
 import URLShortLinkButton, {
   URLShortLinkButtonProps,

@@ -1,8 +1,8 @@
 import { Component, ChangeEvent } from 'react';
-import { legacyValidateNumber, legacyValidateInteger } from '@zobi-ui/core';
+import { legacyValidateNumber, legacyValidateInteger } from '@zobi.dev/core';
 import { debounce } from 'lodash';
 import ControlHeader from 'src/explore/components/ControlHeader';
-import { Constants, Input } from '@zobi-ui/core/components';
+import { Constants, Input } from '@zobi.dev/core/components';
 
 type InputValueType = string | number;
 

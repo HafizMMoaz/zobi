@@ -1,6 +1,6 @@
 /* eslint-disable no-param-reassign */
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   AppSection,
   DataMask,
@@ -9,10 +9,10 @@ import {
   getColumnLabel,
   JsonObject,
   finestTemporalGrainFormatter,
-} from '@zobi-ui/core';
-import { tn } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { GenericDataType } from '@zobi/core/common';
+} from '@zobi.dev/core';
+import { tn } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { debounce, isUndefined } from 'lodash';
 import { useImmerReducer } from 'use-immer';
 import {
@@ -22,11 +22,11 @@ import {
   Space,
   Constants,
   Input,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   hasOption,
   propertyComparator,
-} from '@zobi-ui/core/components/Select/utils';
+} from '@zobi.dev/core/components/Select/utils';
 import { FilterBarOrientation } from 'src/dashboard/types';
 import { getDataRecordFormatter, getSelectExtraFormData } from '../../utils';
 import { FilterPluginStyle, StatusMessage } from '../common';

@@ -1,6 +1,6 @@
 
 import { FC, ReactNode } from 'react';
-import { InfoTooltip } from '@zobi-ui/core/components';
+import { InfoTooltip } from '@zobi.dev/core/components';
 import { StyledFormItem } from './styles';
 
 interface StyledFormItemWithTipProps {

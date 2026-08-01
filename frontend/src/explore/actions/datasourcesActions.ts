@@ -1,8 +1,8 @@
 
 import { Dispatch, AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { Dataset } from '@zobi-ui/chart-controls';
-import { ZobiClient, getClientErrorObject } from '@zobi-ui/core';
+import { Dataset } from '@zobi.dev/chart-controls';
+import { ZobiClient, getClientErrorObject } from '@zobi.dev/core';
 import { addDangerToast } from 'src/components/MessageToasts/actions';
 import { updateFormDataByDatasource } from './exploreActions';
 import { ExplorePageState } from '../types';

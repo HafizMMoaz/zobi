@@ -4,7 +4,7 @@ import {
   ExtraFormData,
   Filter,
   FilterState,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { isEqual } from 'lodash';
 import { useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';

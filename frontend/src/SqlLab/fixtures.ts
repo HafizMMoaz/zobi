@@ -6,8 +6,8 @@ import {
   ErrorTypeEnum,
   QueryResponse,
   QueryState,
-} from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+} from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { LatestQueryEditorVersion } from 'src/SqlLab/types';
 import { ISaveableDatasource } from 'src/SqlLab/components/SaveDatasetModal';
 

@@ -1,5 +1,5 @@
 import { ReactElement, JSXElementConstructor } from 'react';
-import { useTheme } from '@zobi/core/theme';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import ResizableSidebar from 'src/components/ResizableSidebar';
 
 import {

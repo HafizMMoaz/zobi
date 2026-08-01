@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useState } from 'react';
-import { styled } from '@zobi/core/theme';
-import { Checkbox, InfoTooltip } from '@zobi-ui/core/components';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Checkbox, InfoTooltip } from '@zobi.dev/core/components';
 
 interface CollapsibleControlProps {
   initialValue?: boolean;

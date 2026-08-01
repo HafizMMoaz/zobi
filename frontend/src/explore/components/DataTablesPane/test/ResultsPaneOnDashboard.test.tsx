@@ -5,8 +5,8 @@ import {
   waitForElementToBeRemoved,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { ChartMetadata, ChartPlugin, VizType } from '@zobi-ui/core';
-import { setupAGGridModules } from '@zobi-ui/core/components/ThemedAgGridReact';
+import { ChartMetadata, ChartPlugin, VizType } from '@zobi.dev/core';
+import { setupAGGridModules } from '@zobi.dev/core/components/ThemedAgGridReact';
 import { ResultsPaneOnDashboard } from '../components';
 import { createResultsPaneOnDashboardProps } from './fixture';
 

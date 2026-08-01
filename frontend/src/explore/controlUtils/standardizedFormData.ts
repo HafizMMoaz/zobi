@@ -5,13 +5,13 @@ import {
   QueryFormColumn,
   QueryFormData,
   QueryFormMetric,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   getStandardizedControls,
   isStandardizedFormData,
   StandardizedControls,
   StandardizedFormDataInterface,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import { getControlsState } from 'src/explore/store';
 import { getFormDataFromControls } from './getFormDataFromControls';
 

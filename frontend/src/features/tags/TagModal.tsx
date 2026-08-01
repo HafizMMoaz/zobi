@@ -9,10 +9,10 @@ import {
   FormLabel,
   Input,
   Modal,
-} from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { styled, useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
 import { Tag } from 'src/views/CRUD/types';
 import { fetchObjectsByTagIds } from 'src/features/tags/tags';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';

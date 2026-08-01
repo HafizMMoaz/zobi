@@ -1,4 +1,4 @@
-import { NativeFilterScope } from '@zobi-ui/core';
+import { NativeFilterScope } from '@zobi.dev/core';
 import { CHART_TYPE } from './componentTypes';
 import { LayoutItem } from '../types';
 

@@ -1,15 +1,15 @@
 
 import { useState, useMemo, useCallback, useEffect } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import {
   Button,
   Card,
   Checkbox,
   Flex,
   Typography,
-} from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { getTargetUrl, isUrlTrusted, trustUrl, isAllowedScheme } from './utils';
 
 const PageContainer = styled(Flex)`

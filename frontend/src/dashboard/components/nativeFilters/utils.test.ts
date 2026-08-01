@@ -1,4 +1,4 @@
-import { Behavior } from '@zobi-ui/core';
+import { Behavior } from '@zobi.dev/core';
 import { DashboardLayout } from 'src/dashboard/types';
 import { CHART_TYPE } from 'src/dashboard/util/componentTypes';
 import {

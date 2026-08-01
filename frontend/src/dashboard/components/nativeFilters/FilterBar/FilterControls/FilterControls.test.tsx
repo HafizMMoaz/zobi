@@ -7,7 +7,7 @@ import { stateWithoutNativeFilters } from 'spec/fixtures/mockStore';
 import {
   ChartCustomizationType,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { FilterBarOrientation } from 'src/dashboard/types';
 import FilterControls from './FilterControls';
 

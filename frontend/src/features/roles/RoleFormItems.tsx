@@ -1,5 +1,5 @@
-import { FormItem, Input, AsyncSelect } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
+import { FormItem, Input, AsyncSelect } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
 import { fetchUserOptions } from '../groups/utils';
 import { fetchGroupOptions, fetchPermissionOptions } from './utils';
 

@@ -1,7 +1,7 @@
 
 import { ReactNode, useMemo } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import {
   ChartConfiguration,
   DashboardLayout,
@@ -10,8 +10,8 @@ import {
 } from 'src/dashboard/types';
 import { useSelector } from 'react-redux';
 import { CHART_TYPE } from 'src/dashboard/util/componentTypes';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Button } from '@zobi-ui/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Button } from '@zobi.dev/core/components';
 import { FilterTitle } from 'src/dashboard/components/nativeFilters/FiltersConfigModal/FilterTitleContainer';
 import { NEW_CHART_SCOPING_ID } from './constants';
 

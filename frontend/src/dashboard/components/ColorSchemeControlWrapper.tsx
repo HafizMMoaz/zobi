@@ -1,6 +1,6 @@
 /* eslint-env browser */
-import { t } from '@zobi/core/translation';
-import { getCategoricalSchemeRegistry } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getCategoricalSchemeRegistry } from '@zobi.dev/core';
 import { useEffect, useState } from 'react';
 import ColorSchemeControl from 'src/explore/components/controls/ColorSchemeControl';
 

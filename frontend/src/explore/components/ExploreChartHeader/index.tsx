@@ -1,26 +1,26 @@
 import { FC, memo, useCallback, useEffect, useMemo, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { QueryFormData, JsonObject } from '@zobi-ui/core';
+import { QueryFormData, JsonObject } from '@zobi.dev/core';
 import {
   Tooltip,
   Button,
   DeleteModal,
   UnsavedChangesModal,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { AlteredSliceTag } from 'src/components';
 import {
   ZobiClient,
   isMatrixifyEnabled,
   MatrixifyFormData,
-} from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
-import { css, ZobiTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import PropertiesModal from 'src/explore/components/PropertiesModal';
 import { sliceUpdated } from 'src/explore/actions/exploreActions';
-import { PageHeaderWithActions } from '@zobi-ui/core/components/PageHeaderWithActions';
+import { PageHeaderWithActions } from '@zobi.dev/core/components/PageHeaderWithActions';
 import { setSaveChartModalVisibility } from 'src/explore/actions/saveModalActions';
 import { applyColors, resetColors } from 'src/utils/colorScheme';
 import ReportModal from 'src/features/reports/ReportModal';

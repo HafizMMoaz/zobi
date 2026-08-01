@@ -6,7 +6,7 @@ import {
   Divider,
   Filter,
   isFilterDivider,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { FilterBarOrientation } from 'src/dashboard/types';
 import FilterControl from './FilterControls/FilterControl';
 import { useFilters } from './state';

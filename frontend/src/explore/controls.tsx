@@ -38,14 +38,14 @@
  * in tandem with `controlPanels/index.js` that defines how controls are composed into sections for
  * each and every visualization type.
  */
-import type { Column, SequentialScheme } from '@zobi-ui/core';
+import type { Column, SequentialScheme } from '@zobi.dev/core';
 import {
   getCategoricalSchemeRegistry,
   getSequentialSchemeRegistry,
   legacyValidateInteger,
   validateNonEmpty,
-} from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
 import { datasetLabel } from 'src/features/semanticLayers/label';
 import { formatSelectOptions } from 'src/explore/exploreUtils';
 import { TIME_FILTER_LABELS } from './constants';

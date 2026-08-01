@@ -1,10 +1,10 @@
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import type { CSSProperties, FC, ReactNode } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import type { IconType } from '@zobi-ui/core/components/Icons/types';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import type { IconType } from '@zobi.dev/core/components/Icons/types';
 import { isDivider } from './utils';
 
 interface TitleContainerProps {

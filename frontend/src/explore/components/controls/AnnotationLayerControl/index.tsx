@@ -1,25 +1,25 @@
 import { connect } from 'react-redux';
 import { PureComponent } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   HandlerFunction,
   JsonObject,
   Payload,
   QueryFormData,
-} from '@zobi-ui/core';
-import { ZobiTheme, withTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { ZobiTheme, withTheme } from '@zobi.dev/extension-api/theme';
 import {
   AsyncEsmComponent,
   List,
   InfoTooltip,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { getChartKey } from 'src/explore/exploreUtils';
 import { runAnnotationQuery } from 'src/components/Chart/chartAction';
 import CustomListItem from 'src/explore/components/controls/CustomListItem';
 import { ChartState, ExplorePageState } from 'src/explore/types';
 import { AnyAction } from 'redux';
 import { ThunkDispatch } from 'redux-thunk';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import ControlPopover, {
   getSectionContainerElement,
 } from '../ControlPopover/ControlPopover';

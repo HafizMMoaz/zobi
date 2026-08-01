@@ -1,8 +1,8 @@
 
 import { useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, ZobiTheme } from '@zobi/core/theme';
-import { Radio } from '@zobi-ui/core/components/Radio';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Radio } from '@zobi.dev/core/components/Radio';
 import { DrillByType } from '../types';
 
 export const useDisplayModeToggle = () => {

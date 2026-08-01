@@ -8,7 +8,7 @@ import {
   ChartCustomizationDivider,
   ColumnOption,
   ChartCustomization,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { ReactNode } from 'react';
 
 export interface NativeFiltersFormItem {

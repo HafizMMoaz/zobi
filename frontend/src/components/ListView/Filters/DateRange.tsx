@@ -6,16 +6,16 @@ import {
   RefObject,
 } from 'react';
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { Dayjs } from 'dayjs';
 import { useLocale } from 'src/hooks/useLocale';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 import {
   AntdThemeProvider,
   Loading,
   FormLabel,
   RangePicker,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import type { BaseFilter, FilterHandler } from './types';
 import { FilterContainer } from './Base';
 import { RANGE_WIDTH } from '../utils';

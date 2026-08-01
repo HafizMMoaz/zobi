@@ -405,7 +405,7 @@ def get_default_spinner_svg() -> str | None:
             "..",
             "frontend",
             "packages",
-            "zobi-ui-core",
+            "core",
             "src",
             "components",
             "assets",

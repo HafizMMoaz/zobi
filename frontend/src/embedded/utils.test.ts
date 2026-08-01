@@ -1,4 +1,4 @@
-import { DataMaskStateWithId } from '@zobi-ui/core';
+import { DataMaskStateWithId } from '@zobi.dev/core';
 import { cloneDeep } from 'lodash';
 import { getDataMaskChangeTrigger, getChartDataPayloads } from './utils';
 import { RootState } from 'src/views/store';

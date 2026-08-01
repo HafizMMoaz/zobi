@@ -1,6 +1,6 @@
 
 import { useMemo } from 'react';
-import { useTheme, ZobiTheme } from '@zobi/core/theme';
+import { useTheme, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import {
   FOLDER_INDENTATION_WIDTH,
   ITEM_INDENTATION_WIDTH,

@@ -1,4 +1,4 @@
-import { ErrorTypeEnum } from '@zobi-ui/core';
+import { ErrorTypeEnum } from '@zobi.dev/core';
 import {
   getErrorMessageComponentRegistry,
   TimeoutErrorMessage,

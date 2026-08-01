@@ -7,7 +7,7 @@ import {
   Divider,
   ChartCustomizationType,
   type ChartCustomization,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   useChartCustomizationConfiguration,
   useIsFilterInScope,

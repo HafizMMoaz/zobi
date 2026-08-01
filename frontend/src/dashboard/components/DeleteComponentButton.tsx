@@ -1,7 +1,7 @@
 import { MouseEventHandler, FC } from 'react';
 
-import { Icons } from '@zobi-ui/core/components/Icons';
-import type { IconType } from '@zobi-ui/core/components/Icons/types';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import type { IconType } from '@zobi.dev/core/components/Icons/types';
 import IconButton from './IconButton';
 
 type DeleteComponentButtonProps = {

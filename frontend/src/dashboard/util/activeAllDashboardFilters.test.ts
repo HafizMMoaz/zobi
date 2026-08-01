@@ -1,4 +1,4 @@
-import { DataMaskStateWithId } from '@zobi-ui/core';
+import { DataMaskStateWithId } from '@zobi.dev/core';
 import { getRelevantDataMask } from './activeAllDashboardFilters';
 
 const mockDataMask: DataMaskStateWithId = {

@@ -1,8 +1,8 @@
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { getDatabaseDocumentationLinks } from 'src/views/CRUD/hooks';
-import { UploadFile } from '@zobi-ui/core/components/Upload';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { UploadFile } from '@zobi.dev/core/components/Upload';
+import { Typography } from '@zobi.dev/core/components/Typography';
 import { DatabaseForm, DatabaseObject } from '../types';
 import {
   EditHeaderTitle,

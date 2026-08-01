@@ -1,5 +1,5 @@
 {
-  "name": "@zobi/mcp-server",
+  "name": "@zobi.dev/mcp-server",
   "version": "1.0.0",
   "description": "Zobi MCP (Model Context Protocol) Server",
   "main": "index.js",

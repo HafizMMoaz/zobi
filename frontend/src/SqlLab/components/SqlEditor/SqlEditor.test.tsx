@@ -3,7 +3,7 @@ import {
   isFeatureEnabled,
   getExtensionsRegistry,
   FeatureFlag,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   act,
   cleanup,
@@ -36,8 +36,8 @@ jest.mock(
     }) =>
       children({ height: 500 }),
 );
-jest.mock('@zobi-ui/core/components/AsyncAceEditor', () => ({
-  ...jest.requireActual('@zobi-ui/core/components/AsyncAceEditor'),
+jest.mock('@zobi.dev/core/components/AsyncAceEditor', () => ({
+  ...jest.requireActual('@zobi.dev/core/components/AsyncAceEditor'),
   FullSQLEditor: ({
     onChange,
     onBlur,
@@ -109,8 +109,8 @@ const mockInitialState = {
   },
 };
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 const mockIsFeatureEnabled = isFeatureEnabled as jest.Mock;

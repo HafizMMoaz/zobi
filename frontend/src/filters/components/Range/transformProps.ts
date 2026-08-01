@@ -1,4 +1,4 @@
-import { ChartProps } from '@zobi-ui/core';
+import { ChartProps } from '@zobi.dev/core';
 import { noOp } from 'src/utils/common';
 
 export default function transformProps(chartProps: ChartProps) {

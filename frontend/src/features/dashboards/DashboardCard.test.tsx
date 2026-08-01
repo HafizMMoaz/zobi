@@ -4,7 +4,7 @@ import {
   JsonResponse,
   ZobiClient,
   isFeatureEnabled,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
 
@@ -33,8 +33,8 @@ const mockSaveFavoriteStatus = jest.fn();
 const mockHandleBulkDashboardExport = jest.fn();
 const mockOnDelete = jest.fn();
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

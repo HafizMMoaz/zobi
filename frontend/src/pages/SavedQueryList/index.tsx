@@ -1,11 +1,11 @@
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   FeatureFlag,
   isFeatureEnabled,
   ZobiClient,
-} from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { useCallback, useMemo, useState, MouseEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import rison from 'rison';
@@ -21,7 +21,7 @@ import {
   Loading,
   Popover,
   Tooltip,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import {
@@ -42,7 +42,7 @@ import { commonMenuData } from 'src/features/home/commonMenuData';
 import { QueryObjectColumns, SavedQueryObject } from 'src/views/CRUD/types';
 import { TagTypeEnum } from 'src/components/Tag/TagType';
 import { loadTags } from 'src/components/Tag/utils';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import copyTextToClipboard from 'src/utils/copy';
 import { UserWithPermissionsAndRoles } from 'src/types/bootstrapTypes';
 import SavedQueryPreviewModal from 'src/features/queries/SavedQueryPreviewModal';

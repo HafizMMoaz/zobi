@@ -2,22 +2,22 @@ import { type FC, useCallback, useMemo, useRef, useState } from 'react';
 import { shallowEqual, useSelector } from 'react-redux';
 import { useAppDispatch } from 'src/views/store';
 import { nanoid } from 'nanoid';
-import { t } from '@zobi/core/translation';
-import { ClientErrorObject, getExtensionsRegistry } from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ClientErrorObject, getExtensionsRegistry } from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import {
   SafeMarkdown,
   Breadcrumb,
   Card,
   Skeleton,
   Flex,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import AutoSizer from 'react-virtualized-auto-sizer';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import type { SqlLabRootState } from 'src/SqlLab/types';
 import { CopyToClipboard, FilterableTable } from 'src/components';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import {
   tableApiUtil,
   TableMetaData,
@@ -26,7 +26,7 @@ import {
 } from 'src/hooks/apiResources';
 import { runTablePreviewQuery } from 'src/SqlLab/actions/sqlLab';
 import { PREVIEW_QUERY_LIMIT } from 'src/SqlLab/constants';
-import { ActionButton } from '@zobi-ui/core/components/ActionButton';
+import { ActionButton } from '@zobi.dev/core/components/ActionButton';
 import ResultSet from '../ResultSet';
 import ShowSQL from '../ShowSQL';
 

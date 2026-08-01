@@ -12,8 +12,8 @@
     "src/**/*.stories.*"
   ],
   "references": [
-    { "path": "../../packages/zobi-core" },
-    { "path": "../../packages/zobi-ui-core" },
-    { "path": "../../packages/zobi-ui-chart-controls" }
+    { "path": "../../packages/extension-api" },
+    { "path": "../../packages/core" },
+    { "path": "../../packages/chart-controls" }
   ]
 }

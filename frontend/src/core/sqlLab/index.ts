@@ -1,4 +1,4 @@
-import { sqlLab as sqlLabApi } from '@zobi/core';
+import { sqlLab as sqlLabApi } from '@zobi.dev/extension-api';
 import { nanoid } from 'nanoid';
 import {
   ADD_QUERY_EDITOR,

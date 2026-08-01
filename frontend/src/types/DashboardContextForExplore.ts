@@ -2,7 +2,7 @@ import {
   DataMaskStateWithId,
   DataRecordValue,
   PartialFilters,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { ChartConfiguration, ActiveFilters } from 'src/dashboard/types';
 
 export interface DashboardContextForExplore {

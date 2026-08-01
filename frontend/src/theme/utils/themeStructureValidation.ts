@@ -1,4 +1,4 @@
-import { type AnyThemeConfig } from '@zobi/core/theme';
+import { type AnyThemeConfig } from '@zobi.dev/extension-api/theme';
 import { isValidTokenName } from './antdTokenNames';
 
 /**

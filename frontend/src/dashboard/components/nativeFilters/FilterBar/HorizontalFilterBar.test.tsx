@@ -1,4 +1,4 @@
-import { NativeFilterType } from '@zobi-ui/core';
+import { NativeFilterType } from '@zobi.dev/core';
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
 import HorizontalBar from './Horizontal';
 

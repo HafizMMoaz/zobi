@@ -1,5 +1,5 @@
 
-import { makeApi } from '@zobi-ui/core';
+import { makeApi } from '@zobi.dev/core';
 import { useEffect, useMemo, useRef, useState } from 'react';
 
 export enum ResourceStatus {

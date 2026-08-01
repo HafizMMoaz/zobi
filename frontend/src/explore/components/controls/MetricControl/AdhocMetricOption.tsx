@@ -1,5 +1,5 @@
 import { PureComponent } from 'react';
-import { Metric } from '@zobi-ui/core';
+import { Metric } from '@zobi.dev/core';
 import { OptionControlLabel } from 'src/explore/components/controls/OptionControls';
 import { DndItemType } from 'src/explore/components/DndItemType';
 import { Datasource } from 'src/explore/types';

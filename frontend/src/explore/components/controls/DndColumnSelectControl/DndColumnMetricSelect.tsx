@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   AdhocColumn,
   isAdhocColumn,
@@ -8,9 +8,9 @@ import {
   Datasource,
   QueryFormMetric,
   QueryFormData,
-} from '@zobi-ui/core';
-import { tn } from '@zobi/core/translation';
-import { ColumnMeta, isColumnMeta } from '@zobi-ui/chart-controls';
+} from '@zobi.dev/core';
+import { tn } from '@zobi.dev/extension-api/translation';
+import { ColumnMeta, isColumnMeta } from '@zobi.dev/chart-controls';
 import { isString } from 'lodash';
 import DndSelectLabel from 'src/explore/components/controls/DndColumnSelectControl/DndSelectLabel';
 import OptionWrapper from 'src/explore/components/controls/DndColumnSelectControl/OptionWrapper';

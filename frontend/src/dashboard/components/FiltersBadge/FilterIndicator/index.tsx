@@ -1,7 +1,7 @@
 
 import { forwardRef } from 'react';
-import { css } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { css } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { getFilterValueForDisplay } from 'src/dashboard/components/nativeFilters/utils';
 import {
   FilterValue,

@@ -1,10 +1,10 @@
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { ZobiClient } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { ZobiClient } from '@zobi.dev/core';
 import { Spin } from 'antd';
-import { Select } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Select } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { JsonForms } from '@jsonforms/react';
 import type { JsonSchema, UISchemaElement } from '@jsonforms/core';
 import { cellRegistryEntries } from '@great-expectations/jsonforms-antd-renderers';

@@ -1,6 +1,6 @@
-import { Flex } from '@zobi-ui/core/components';
-import { styled } from '@zobi/core/theme';
-import { MenuItemType } from '@zobi-ui/core/components/Menu';
+import { Flex } from '@zobi.dev/core/components';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { MenuItemType } from '@zobi.dev/core/components/Menu';
 import { ViewLocations } from 'src/SqlLab/contributions';
 import PanelToolbar from 'src/components/PanelToolbar';
 

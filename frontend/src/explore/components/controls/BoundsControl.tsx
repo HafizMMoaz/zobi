@@ -1,7 +1,7 @@
 import { useEffect, useRef, useState } from 'react';
-import { InputNumber } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { InputNumber } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { debounce } from 'lodash';
 import ControlHeader from 'src/explore/components/ControlHeader';
 

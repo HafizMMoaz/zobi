@@ -1,9 +1,9 @@
 import { useCallback, useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
-import { AdhocColumn, QueryFormColumn, isAdhocColumn } from '@zobi-ui/core';
-import { tn } from '@zobi/core/translation';
-import { ColumnMeta, isColumnMeta } from '@zobi-ui/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
+import { AdhocColumn, QueryFormColumn, isAdhocColumn } from '@zobi.dev/core';
+import { tn } from '@zobi.dev/extension-api/translation';
+import { ColumnMeta, isColumnMeta } from '@zobi.dev/chart-controls';
 import { isEmpty } from 'lodash';
 import DndSelectLabel from 'src/explore/components/controls/DndColumnSelectControl/DndSelectLabel';
 import OptionWrapper from 'src/explore/components/controls/DndColumnSelectControl/OptionWrapper';

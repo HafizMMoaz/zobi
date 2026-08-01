@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiTheme, css } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiTheme, css } from '@zobi.dev/extension-api/theme';
 import {
   Input,
   Button,
@@ -8,8 +8,8 @@ import {
   Select,
   Upload,
   type UploadFile,
-} from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { DatabaseParameters, FieldPropTypes } from '../../types';
 import { infoTooltip, CredentialInfoForm } from '../styles';

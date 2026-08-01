@@ -1,5 +1,5 @@
-import { styled } from '@zobi/core/theme';
-import { FormItem } from '@zobi-ui/core/components';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { FormItem } from '@zobi.dev/core/components';
 import { PluginFilterStylesProps } from './types';
 
 export const RESPONSIVE_WIDTH = 0;

@@ -1,5 +1,5 @@
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { QueryEditor } from '../types';
 
 const untitledQueryRegex = /^Untitled Query (\d+)$/; // Literal notation isn't recompiled

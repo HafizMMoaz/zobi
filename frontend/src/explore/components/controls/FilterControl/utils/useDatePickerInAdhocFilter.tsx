@@ -1,8 +1,8 @@
 import { ReactElement } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { getExtensionsRegistry } from '@zobi-ui/core';
-import { Dataset, isTemporalColumn } from '@zobi-ui/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getExtensionsRegistry } from '@zobi.dev/core';
+import { Dataset, isTemporalColumn } from '@zobi.dev/chart-controls';
 import DateFilterControl from 'src/explore/components/controls/DateFilterControl/DateFilterLabel';
 import ControlHeader from 'src/explore/components/ControlHeader';
 

@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { ModalFormField } from 'src/components/Modal';
 import { RefreshFrequencySelect } from '../../RefreshFrequency/RefreshFrequencySelect';
 

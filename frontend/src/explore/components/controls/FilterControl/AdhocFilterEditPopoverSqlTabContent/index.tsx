@@ -1,13 +1,13 @@
 import { useEffect, useRef, useMemo } from 'react';
-import type { editors } from '@zobi/core';
-import { Select } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import type { editors } from '@zobi.dev/extension-api';
+import { Select } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import sqlKeywords from 'src/SqlLab/utils/sqlKeywords';
 import { getColumnKeywords } from 'src/explore/controlUtils/getColumnKeywords';
 import AdhocFilter from 'src/explore/components/controls/FilterControl/AdhocFilter';
 import { OptionSortType } from 'src/explore/types';
-import { ColumnMeta } from '@zobi-ui/chart-controls';
+import { ColumnMeta } from '@zobi.dev/chart-controls';
 import SQLEditorWithValidation from 'src/components/SQLEditorWithValidation';
 import { SqlExpressionType } from 'src/types/SqlExpression';
 import { Clauses, ExpressionTypes } from '../types';

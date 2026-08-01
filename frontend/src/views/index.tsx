@@ -1,7 +1,7 @@
 import 'src/public-path';
 
 import { createRoot } from 'react-dom/client';
-import { logging } from '@zobi/core/utils';
+import { logging } from '@zobi.dev/extension-api/utils';
 import initPreamble from 'src/preamble';
 
 const appMountPoint = document.getElementById('app');

@@ -17,7 +17,7 @@ import {
 } from './MessageContent';
 
 jest.mock(
-  '@zobi-ui/core/components/Icons/AsyncIcon',
+  '@zobi.dev/core/components/Icons/AsyncIcon',
   () =>
     ({ fileName }: { fileName: string }) => (
       <span role="img" aria-label={fileName.replace('_', '-')} />

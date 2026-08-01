@@ -1,6 +1,6 @@
 import { forwardRef, type ReactNode } from 'react';
-import { useTheme } from '@zobi/core/theme';
-import { List, type ListItemProps } from '@zobi-ui/core/components';
+import { useTheme } from '@zobi.dev/extension-api/theme';
+import { List, type ListItemProps } from '@zobi.dev/core/components';
 
 export interface CustomListItemProps extends ListItemProps {
   selectable: boolean;

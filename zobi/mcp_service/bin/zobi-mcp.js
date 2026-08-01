@@ -21,8 +21,8 @@
  * - Development debugging: node zobi/mcp_service/bin/zobi-mcp.js --debug
  *
  * FUTURE USAGE (Once published to npm registry):
- * - npx @zobi/mcp-server --stdio
- * - npx @zobi/mcp-server --http --port 6000
+ * - npx @zobi.dev/mcp-server --stdio
+ * - npx @zobi.dev/mcp-server --http --port 6000
  *
  * ARCHITECTURE:
  * This wrapper enables the MCP service to be distributed as an npm package while
@@ -30,12 +30,12 @@
  *
  * PACKAGE STATUS (as of 2025-01-10):
  * - NOT YET PUBLISHED to npm registry
- * - Package name reserved: @zobi/mcp-server
+ * - Package name reserved: @zobi.dev/mcp-server
  * - Requires package.json with proper metadata and "bin" field for npx execution
  * - Will need to be published to npm registry before npx commands work
  *
  * TODO FOR NPM PUBLISHING:
- * 1. Create package.json with name "@zobi/mcp-server"
+ * 1. Create package.json with name "@zobi.dev/mcp-server"
  * 2. Add "bin" field pointing to this file
  * 3. Set version, description, repository, license
  * 4. Run npm publish with appropriate access rights
@@ -62,7 +62,7 @@ Zobi MCP Server
 
 Usage:
   Development: node zobi/mcp_service/bin/zobi-mcp.js [options]
-  Future (npm): npx @zobi/mcp-server [options]
+  Future (npm): npx @zobi.dev/mcp-server [options]
 
 Options:
   --stdio       Run in stdio mode for direct Claude Desktop integration

@@ -6,7 +6,7 @@ const packageConfig = require('./package.json');
 
 const importCoreModules = [];
 Object.entries(packageConfig.dependencies).forEach(([pkg]) => {
-  if (/@zobi-ui/.test(pkg)) {
+  if (/@zobi.dev/.test(pkg)) {
     importCoreModules.push(pkg);
   }
 });
@@ -38,7 +38,7 @@ const restrictedImportsRules = {
     message: 'Lodash Memoize is unsafe! Please use memoize-one instead',
   },
   'no-testing-library-react': {
-    name: '@zobi-ui/core/spec',
+    name: '@zobi.dev/core/spec',
     message: 'Please use spec/helpers/testing-library instead',
   },
   'no-testing-library-react-dom-utils': {
@@ -50,7 +50,7 @@ const restrictedImportsRules = {
     message: 'Please import Ant components from the index of src/components',
   },
   'no-zobi-theme': {
-    name: '@zobi-ui/core',
+    name: '@zobi.dev/core',
     importNames: ['zobiTheme'],
     message:
       'Please use the theme directly from the ThemeProvider rather than importing zobiTheme.',
@@ -100,8 +100,8 @@ module.exports = {
         alwaysTryTypes: true,
         project: [
           './tsconfig.json',
-          './packages/zobi-ui-core/tsconfig.json',
-          './packages/zobi-ui-chart-controls/',
+          './packages/core/tsconfig.json',
+          './packages/chart-controls/',
           './plugins/*/tsconfig.json',
         ],
       },
@@ -472,7 +472,7 @@ module.exports = {
         '**/spec/**/*',
         'cypress-base/cypress/**/*',
         'Stories.tsx',
-        'packages/zobi-ui-core/src/theme/index.tsx',
+        'packages/core/src/theme/index.tsx',
       ],
       rules: {
         'theme-colors/no-literal-colors': 0,

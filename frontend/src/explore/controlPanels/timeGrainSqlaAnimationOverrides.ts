@@ -1,4 +1,4 @@
-import type { ControlPanelState, Dataset } from '@zobi-ui/chart-controls';
+import type { ControlPanelState, Dataset } from '@zobi.dev/chart-controls';
 
 interface TimeGrainOverrideState {
   choices: [string, string][] | null;

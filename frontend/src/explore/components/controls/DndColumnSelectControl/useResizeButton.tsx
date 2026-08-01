@@ -5,13 +5,13 @@ import {
   useState,
   MouseEvent as ReactMouseEvent,
 } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { throttle } from 'lodash';
 import {
   POPOVER_INITIAL_HEIGHT,
   POPOVER_INITIAL_WIDTH,
 } from 'src/explore/constants';
-import { Icons } from '@zobi-ui/core/components';
+import { Icons } from '@zobi.dev/core/components';
 
 const RESIZE_THROTTLE_MS = 50;
 

@@ -1,15 +1,15 @@
 /* eslint-env browser */
 import cx from 'classnames';
 import { memo, useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { addAlpha, JsonObject, useElementOnScreen } from '@zobi-ui/core';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { addAlpha, JsonObject, useElementOnScreen } from '@zobi.dev/core';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import { useDispatch, useSelector } from 'react-redux';
-import { EmptyState, Loading } from '@zobi-ui/core/components';
+import { EmptyState, Loading } from '@zobi.dev/core/components';
 import { ErrorBoundary, BasicErrorAlert } from 'src/components';
 import BuilderComponentPane from 'src/dashboard/components/BuilderComponentPane';
 import DashboardHeader from 'src/dashboard/components/Header';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import IconButton from 'src/dashboard/components/IconButton';
 import { Droppable } from 'src/dashboard/components/dnd/DragDroppable';
 import DashboardComponent from 'src/dashboard/containers/DashboardComponent';

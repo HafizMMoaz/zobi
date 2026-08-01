@@ -4,7 +4,7 @@ import {
   ZobiClient,
   getClientErrorObject,
   ClientErrorObject,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import setupErrorMessages from 'src/setup/setupErrorMessages';
 
 // eslint-disable-next-line @typescript-eslint/no-unused-vars

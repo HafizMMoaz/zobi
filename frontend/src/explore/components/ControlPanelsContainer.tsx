@@ -10,7 +10,7 @@ import {
   useRef,
   useState,
 } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ensureIsArray,
   getChartControlPanelRegistry,
@@ -23,13 +23,13 @@ import {
   isFeatureEnabled,
   FeatureFlag,
   VizType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   styled,
   css,
   ZobiTheme,
   useTheme,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import {
   ControlPanelSectionConfig,
   ControlState,
@@ -39,7 +39,7 @@ import {
   isCustomControlItem,
   isTemporalColumn,
   sections,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import { useSelector } from 'react-redux';
 import { kebabCase, isEqual } from 'lodash';
 
@@ -48,15 +48,15 @@ import {
   Loading,
   Label,
   Tooltip,
-} from '@zobi-ui/core/components';
-import Tabs from '@zobi-ui/core/components/Tabs';
+} from '@zobi.dev/core/components';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import { PluginContext } from 'src/components';
 import { useConfirmModal } from 'src/hooks/useConfirmModal';
 
 import { getSectionsToRender } from 'src/explore/controlUtils';
 import { ExploreActions } from 'src/explore/actions/exploreActions';
 import { ChartState, ExplorePageState } from 'src/explore/types';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import ControlRow from './ControlRow';
 import Control from './Control';
 import { ExploreAlert } from './ExploreAlert';

@@ -1,8 +1,8 @@
 import { ChangeEvent, useCallback, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled, useTheme } from '@zobi/core/theme';
-import { Input, Tooltip } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { Input, Tooltip } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 interface DndColumnSelectPopoverTitleProps {
   title: string;

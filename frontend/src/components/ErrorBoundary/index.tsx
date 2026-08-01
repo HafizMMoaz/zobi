@@ -1,5 +1,5 @@
 import { Component, ErrorInfo } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { ErrorAlert } from '../ErrorMessage';
 import type { ErrorBoundaryProps, ErrorBoundaryState } from './types';
 

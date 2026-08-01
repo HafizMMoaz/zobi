@@ -1,15 +1,15 @@
 import { useState, useEffect } from 'react';
-import { styled, css, useTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import { styled, css, useTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import { ensureStaticPrefix } from 'src/utils/assetUrl';
 import { ensureAppRoot } from 'src/utils/pathUtils';
 import { getUrlParam } from 'src/utils/urlUtils';
-import { MainNav, MenuItem } from '@zobi-ui/core/components/Menu';
-import { Tooltip, Grid, Row, Col, Image } from '@zobi-ui/core/components';
+import { MainNav, MenuItem } from '@zobi.dev/core/components/Menu';
+import { Tooltip, Grid, Row, Col, Image } from '@zobi.dev/core/components';
 import { GenericLink } from 'src/components';
 import { NavLink, useLocation } from 'react-router-dom';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Typography } from '@zobi.dev/core/components/Typography';
 import { useUiConfig } from 'src/components/UiConfigContext';
 import { URL_PARAMS } from 'src/constants';
 import {

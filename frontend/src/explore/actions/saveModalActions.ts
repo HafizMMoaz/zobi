@@ -1,12 +1,12 @@
 import rison from 'rison';
 import { Dispatch } from 'redux';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   DatasourceType,
   type QueryFormData,
   SimpleAdhocFilter,
   ZobiClient,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { addSuccessToast } from 'src/components/MessageToasts/actions';
 import { isEmpty } from 'lodash';
 import { Slice } from 'src/dashboard/types';

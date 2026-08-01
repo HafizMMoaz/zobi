@@ -5,7 +5,7 @@ import {
   userEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { FeatureFlag, VizType } from '@zobi-ui/core';
+import { FeatureFlag, VizType } from '@zobi.dev/core';
 import mockState from 'spec/fixtures/mockState';
 import { cachedZobiGet } from 'src/utils/cachedZobiGet';
 import SliceHeaderControls, { SliceHeaderControlsProps } from '.';

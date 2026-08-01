@@ -7,7 +7,7 @@ import {
   createStore,
 } from 'spec/helpers/testing-library';
 import reducerIndex from 'spec/helpers/reducerIndex';
-import { FeatureFlag, VizType, isFeatureEnabled } from '@zobi-ui/core';
+import { FeatureFlag, VizType, isFeatureEnabled } from '@zobi.dev/core';
 import ReportModal from '.';
 
 const REPORT_ENDPOINT = 'glob:*/api/v1/report*';
@@ -33,8 +33,8 @@ const defaultProps = {
   },
 };
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

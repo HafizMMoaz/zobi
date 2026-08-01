@@ -1,5 +1,5 @@
 
-import { FeatureFlag, isFeatureEnabled } from '@zobi-ui/core';
+import { FeatureFlag, isFeatureEnabled } from '@zobi.dev/core';
 import {
   lazy,
   ComponentType,

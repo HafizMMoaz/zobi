@@ -4,12 +4,12 @@ import {
   QueryFormData,
   JsonValue,
   JsonObject,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   ControlState,
   ControlStateMapping,
   Dataset,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import { omit, pick } from 'lodash';
 import { DYNAMIC_PLUGIN_CONTROLS_READY } from 'src/components/Chart/chartAction';
 import { getControlsState } from 'src/explore/store';

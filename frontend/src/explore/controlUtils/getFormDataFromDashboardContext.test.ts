@@ -1,5 +1,5 @@
 
-import { JsonObject, VizType } from '@zobi-ui/core';
+import { JsonObject, VizType } from '@zobi.dev/core';
 import { getExploreFormData } from 'spec/fixtures/mockExploreFormData';
 import { getDashboardFormData } from 'spec/fixtures/mockDashboardFormData';
 import { getFormDataWithDashboardContext } from './getFormDataWithDashboardContext';

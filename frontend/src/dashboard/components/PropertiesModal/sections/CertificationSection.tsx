@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { FormItem, Input } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { FormItem, Input } from '@zobi.dev/core/components';
 import { ModalFormField } from 'src/components/Modal';
 
 interface CertificationSectionProps {

@@ -1,6 +1,6 @@
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { FormModal, FormItem, Input } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { FormModal, FormItem, Input } from '@zobi.dev/core/components';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { User } from 'src/types/bootstrapTypes';
 import { BaseUserListModalProps, FormValues } from '../users/types';

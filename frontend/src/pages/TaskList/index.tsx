@@ -3,11 +3,11 @@ import {
   FeatureFlag,
   isFeatureEnabled,
   ZobiClient,
-} from '@zobi-ui/core';
-import { useTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core';
+import { useTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import { useMemo, useCallback, useState } from 'react';
-import { Tooltip, Label, Modal, Checkbox } from '@zobi-ui/core/components';
+import { Tooltip, Label, Modal, Checkbox } from '@zobi.dev/core/components';
 import {
   CreatedInfo,
   ListView,
@@ -15,7 +15,7 @@ import {
   type ListViewFilters,
   FacePile,
 } from 'src/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import SubMenu from 'src/features/home/SubMenu';
 import { useListViewResource } from 'src/views/CRUD/hooks';

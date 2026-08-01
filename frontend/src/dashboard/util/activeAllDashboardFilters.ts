@@ -3,7 +3,7 @@ import {
   DataMaskWithId,
   JsonObject,
   PartialFilters,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { omit } from 'lodash';
 import { ActiveFilters, ChartConfiguration } from '../types';
 

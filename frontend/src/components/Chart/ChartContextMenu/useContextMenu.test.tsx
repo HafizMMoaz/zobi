@@ -1,4 +1,4 @@
-import { FeatureFlag, VizType } from '@zobi-ui/core';
+import { FeatureFlag, VizType } from '@zobi.dev/core';
 import { render, screen } from 'spec/helpers/testing-library';
 import { renderHook, act } from '@testing-library/react';
 import mockState from 'spec/fixtures/mockState';

@@ -1,5 +1,5 @@
 import { MouseEventHandler } from 'react';
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 
 interface IconButtonProps {
   icon: JSX.Element;

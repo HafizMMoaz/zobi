@@ -1,8 +1,8 @@
 
 import { useState } from 'react';
-import { styled } from '@zobi/core/theme';
-import { Popover } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Popover } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 const PayloadContainer = styled.div`
   max-width: 400px;

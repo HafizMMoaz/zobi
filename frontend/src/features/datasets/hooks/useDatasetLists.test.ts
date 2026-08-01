@@ -1,6 +1,6 @@
 import { renderHook } from '@testing-library/react';
 import { waitFor } from '@testing-library/dom';
-import { ZobiClient, JsonResponse } from '@zobi-ui/core';
+import { ZobiClient, JsonResponse } from '@zobi.dev/core';
 import rison from 'rison';
 import useDatasetsList from './useDatasetLists';
 

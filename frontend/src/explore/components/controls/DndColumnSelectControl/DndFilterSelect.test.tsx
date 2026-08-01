@@ -5,9 +5,9 @@ import {
   ensureIsArray,
   QueryFormData,
   QueryFormMetric,
-} from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
-import { ColumnMeta } from '@zobi-ui/chart-controls';
+} from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
+import { ColumnMeta } from '@zobi.dev/chart-controls';
 import {
   fireEvent,
   render,

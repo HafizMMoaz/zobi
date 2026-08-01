@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   AdhocFilter,
   Behavior,
@@ -12,7 +12,7 @@ import {
   QueryFormData,
   ExtraFormDataOverride,
   ExtraFormDataAppend,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { LayoutItem } from 'src/dashboard/types';
 import extractUrlParams from 'src/dashboard/util/extractUrlParams';
 import { isIterable } from 'src/utils/types';

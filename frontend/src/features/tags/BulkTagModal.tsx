@@ -1,14 +1,14 @@
 import { useState, useEffect, FC } from 'react';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   FormLabel,
   AsyncSelect,
   Button,
   Modal,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { loadTags } from 'src/components/Tag/utils';
 import { TaggableResourceOption } from 'src/features/tags/TagModal';
 

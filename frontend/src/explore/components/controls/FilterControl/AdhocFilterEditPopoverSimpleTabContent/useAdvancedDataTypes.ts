@@ -1,6 +1,6 @@
 import { useCallback, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { ensureIsArray, ZobiClient } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ensureIsArray, ZobiClient } from '@zobi.dev/core';
 import { debounce } from 'lodash';
 import rison from 'rison';
 import { AdvancedDataTypesState, Props } from './index';

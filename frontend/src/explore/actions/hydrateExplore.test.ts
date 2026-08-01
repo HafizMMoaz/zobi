@@ -1,5 +1,5 @@
 
-import { VizType } from '@zobi-ui/core';
+import { VizType } from '@zobi.dev/core';
 import { hydrateExplore, HYDRATE_EXPLORE } from './hydrateExplore';
 import { exploreInitialData } from '../fixtures';
 

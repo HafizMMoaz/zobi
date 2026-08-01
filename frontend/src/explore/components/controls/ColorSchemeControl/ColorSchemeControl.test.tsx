@@ -4,7 +4,7 @@ import {
   CategoricalScheme,
   ColorSchemeGroup,
   getCategoricalSchemeRegistry,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   render,
   screen,

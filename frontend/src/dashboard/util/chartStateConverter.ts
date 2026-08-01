@@ -3,7 +3,7 @@ import type {
   ChartStateConverter,
   BackendOwnState,
   JsonObject,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 /**
  * Registry of chart-specific state converters.
@@ -74,7 +74,7 @@ const registry = new ChartStateConverterRegistry();
  *
  * @example
  * ```typescript
- * import { convertAgGridStateToOwnState } from 'plugins/plugin-chart-ag-grid-table';
+ * import { convertAgGridStateToOwnState } from 'plugins/ag-grid-table';
  * import { registerChartStateConverter } from 'src/dashboard/util/chartStateConverter';
  *
  * registerChartStateConverter('ag-grid-table', convertAgGridStateToOwnState);

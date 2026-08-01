@@ -1,4 +1,4 @@
-import { makeApi } from '@zobi-ui/core';
+import { makeApi } from '@zobi.dev/core';
 import { act, renderHook } from '@testing-library/react';
 import {
   ResourceStatus,
@@ -17,8 +17,8 @@ const nameToAllCaps = (thing: any) => ({
   name: thing.name.toUpperCase(),
 });
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual<any>('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual<any>('@zobi.dev/core'),
   makeApi: jest
     .fn()
     .mockReturnValue(jest.fn().mockResolvedValue(fakeApiResult)),

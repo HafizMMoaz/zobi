@@ -1,7 +1,7 @@
 # generator-zobi
 
-[![Version](https://img.shields.io/npm/v/@zobi-ui/generator-zobi.svg?style=flat)](https://www.npmjs.com/package/@zobi-ui/generator-zobi)
-[![Libraries.io](https://img.shields.io/librariesio/release/npm/%40zobi-ui%2Fgenerator-zobi)](https://libraries.io/npm/@zobi-ui%2Fgenerator-zobi)
+[![Version](https://img.shields.io/npm/v/@zobi.dev/generator-zobi.svg?style=flat)](https://www.npmjs.com/package/@zobi.dev/generator-zobi)
+[![Libraries.io](https://img.shields.io/librariesio/release/npm/%40zobi.dev%2Fgenerator-zobi)](https://libraries.io/npm/@zobi.dev%2Fgenerator-zobi)
 
 > Scaffolder for Zobi
 
@@ -12,7 +12,7 @@ First, install [Yeoman](http://yeoman.io) and `generator-zobi` using
 
 ```bash
 npm install -g yo
-npm install -g @zobi-ui/generator-zobi
+npm install -g @zobi.dev/generator-zobi
 ```
 
 ## Usage
@@ -22,7 +22,7 @@ Generate a new package or visualization plugin:
 ```bash
 mkdir /tmp/zobi-plugin-chart-hello-world
 cd /tmp/zobi-plugin-chart-hello-world
-yo @zobi-ui/zobi
+yo @zobi.dev/zobi
 ```
 
 ## License

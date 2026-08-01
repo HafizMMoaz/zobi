@@ -1,5 +1,5 @@
 import { ActionCreators as UndoActionCreators } from 'redux-undo';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import type { AnyAction } from 'redux';
 import type { ThunkDispatch } from 'redux-thunk';
 import { addWarningToast } from 'src/components/MessageToasts/actions';

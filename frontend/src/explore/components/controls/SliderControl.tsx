@@ -1,4 +1,4 @@
-import Slider from '@zobi-ui/core/components/Slider';
+import Slider from '@zobi.dev/core/components/Slider';
 import ControlHeader, {
   ControlHeaderProps,
 } from 'src/explore/components/ControlHeader';

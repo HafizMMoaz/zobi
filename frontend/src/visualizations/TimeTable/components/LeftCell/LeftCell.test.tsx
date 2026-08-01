@@ -1,4 +1,4 @@
-import { render, screen } from '@zobi-ui/core/spec';
+import { render, screen } from '@zobi.dev/core/spec';
 import LeftCell from './LeftCell';
 
 // eslint-disable-next-line no-restricted-globals -- TODO: Migrate from describe blocks

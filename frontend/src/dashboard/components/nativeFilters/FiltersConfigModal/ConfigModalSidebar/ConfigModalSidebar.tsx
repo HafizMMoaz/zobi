@@ -1,8 +1,8 @@
 import { FC, ReactNode, useCallback, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { NativeFilterType, ChartCustomizationType } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { Collapse, EmptyState, Flex } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { NativeFilterType, ChartCustomizationType } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Collapse, EmptyState, Flex } from '@zobi.dev/core/components';
 import type { DragEndEvent } from '@dnd-kit/core';
 import {
   DndContext,

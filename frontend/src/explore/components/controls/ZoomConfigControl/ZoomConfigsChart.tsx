@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { init as echartsInit } from 'echarts';
 import { createRef, FC, useEffect } from 'react';
 import { ZoomConfigsChartProps } from './types';

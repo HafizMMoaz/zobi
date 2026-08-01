@@ -1,7 +1,7 @@
 /* eslint-disable react/no-unused-state */
 import { RefObject, ReactNode, PureComponent } from 'react';
 
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import cx from 'classnames';
 
 interface HoverMenuProps {

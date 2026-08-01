@@ -1,6 +1,6 @@
-import { t } from '@zobi/core/translation';
-import { css, styled } from '@zobi/core/theme';
-import { Button, Form } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { Button, Form } from '@zobi.dev/core/components';
 import { FC, useEffect, useState } from 'react';
 import { MapViewConfigs, MapViewPopoverContentProps } from './types';
 import { ControlFormItem } from '../ColumnConfigControl/ControlForm';

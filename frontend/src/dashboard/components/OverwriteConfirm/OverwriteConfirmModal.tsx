@@ -1,16 +1,16 @@
 import { Fragment, useMemo, useCallback, RefObject, createRef } from 'react';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 import { useDispatch } from 'react-redux';
 import ReactDiffViewer from 'react-diff-viewer-continued';
 import { useInView } from 'react-intersection-observer';
-import { Button, Modal } from '@zobi-ui/core/components';
+import { Button, Modal } from '@zobi.dev/core/components';
 import { DashboardState } from 'src/dashboard/types';
 import {
   saveDashboardRequest,
   setOverrideConfirm,
 } from 'src/dashboard/actions/dashboardState';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { SAVE_TYPE_OVERWRITE_CONFIRMED } from 'src/dashboard/util/constants';
 
 const STICKY_HEADER_TOP = 16;

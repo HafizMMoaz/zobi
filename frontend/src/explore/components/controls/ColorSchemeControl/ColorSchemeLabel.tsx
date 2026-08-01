@@ -1,7 +1,7 @@
 
-import { css, ZobiTheme } from '@zobi/core/theme';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { useRef, useState } from 'react';
-import { Tooltip } from '@zobi-ui/core/components';
+import { Tooltip } from '@zobi.dev/core/components';
 
 type ColorSchemeLabelProps = {
   colors: string[];

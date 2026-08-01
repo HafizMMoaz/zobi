@@ -1,5 +1,5 @@
-import { Column } from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+import { Column } from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import {
   ChartsState,
   DatasourcesState,

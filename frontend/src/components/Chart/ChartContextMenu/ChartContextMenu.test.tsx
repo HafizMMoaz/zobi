@@ -1,5 +1,5 @@
 import { useRef, useState } from 'react';
-import { FeatureFlag, VizType } from '@zobi-ui/core';
+import { FeatureFlag, VizType } from '@zobi.dev/core';
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
 import mockState from 'spec/fixtures/mockState';

@@ -1,5 +1,5 @@
 
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import { cacheWrapper } from './cacheWrapper';
 
 export const zobiGetCache = new Map<string, any>();

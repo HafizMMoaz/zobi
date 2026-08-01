@@ -1,6 +1,6 @@
 import { useRef } from 'react';
-import { styled } from '@zobi/core/theme';
-import { InputNumber } from '@zobi-ui/core/components/Input';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { InputNumber } from '@zobi.dev/core/components/Input';
 import ControlHeader, { ControlHeaderProps } from '../../ControlHeader';
 
 type NumberValueType = number | undefined;

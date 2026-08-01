@@ -10,9 +10,9 @@ import {
   NativeFiltersState,
   NativeFilterTarget,
   ColumnOption,
-} from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
-import { Dataset } from '@zobi-ui/chart-controls';
+} from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
+import { Dataset } from '@zobi.dev/chart-controls';
 import { chart } from 'src/components/Chart/chartReducer';
 import componentTypes from 'src/dashboard/util/componentTypes';
 import Database from 'src/types/Database';

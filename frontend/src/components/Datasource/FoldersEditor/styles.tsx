@@ -1,4 +1,4 @@
-import { styled, css } from '@zobi/core/theme';
+import { styled, css } from '@zobi.dev/extension-api/theme';
 import { calculateItemHeights } from './hooks/useItemHeights';
 
 export const FoldersContainer = styled.div`

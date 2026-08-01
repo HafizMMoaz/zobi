@@ -1,6 +1,6 @@
 import getOwnerName from 'src/utils/getOwnerName';
-import { t } from '@zobi/core/translation';
-import { Tooltip } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Tooltip } from '@zobi.dev/core/components';
 import type { AuditInfoProps } from './types';
 
 export const ModifiedInfo = ({ user, date }: AuditInfoProps) => {

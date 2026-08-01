@@ -1,6 +1,6 @@
 import { memo, useMemo, RefObject } from 'react';
-import { Filter, Divider } from '@zobi-ui/core';
-import type { FormInstance } from '@zobi-ui/core/components';
+import { Filter, Divider } from '@zobi.dev/core';
+import type { FormInstance } from '@zobi.dev/core/components';
 import FiltersConfigForm, {
   FiltersConfigFormHandle,
 } from '../FiltersConfigForm/FiltersConfigForm';

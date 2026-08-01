@@ -4,12 +4,12 @@ import {
   userEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { ZobiClient, isFeatureEnabled } from '@zobi-ui/core';
+import { ZobiClient, isFeatureEnabled } from '@zobi.dev/core';
 import StylingSection from './StylingSection';
 
 // Mock ZobiClient
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   ZobiClient: {
     get: jest.fn(),
   },

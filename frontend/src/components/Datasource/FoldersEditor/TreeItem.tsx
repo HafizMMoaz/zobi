@@ -3,22 +3,22 @@ import { CSSProperties, useState, memo, useMemo } from 'react';
 import { useSortable } from '@dnd-kit/sortable';
 import { useDroppable } from '@dnd-kit/core';
 import { CSS } from '@dnd-kit/utilities';
-import { css } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import { css } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Checkbox,
   Input,
   Icons,
   EmptyState,
   Tooltip,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   ColumnLabelExtendedType,
   ColumnMeta,
   ColumnTypeLabel,
   Metric,
-} from '@zobi-ui/chart-controls';
-import { GenericDataType } from '@zobi/core/common';
+} from '@zobi.dev/chart-controls';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import {
   OptionControlContainer,
   Label,

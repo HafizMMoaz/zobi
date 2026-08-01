@@ -1,5 +1,5 @@
 import { act } from 'react-dom/test-utils';
-import { QueryState } from '@zobi-ui/core';
+import { QueryState } from '@zobi.dev/core';
 import fetchMock from 'fetch-mock';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';

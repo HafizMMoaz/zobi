@@ -5,7 +5,7 @@ import {
   fireEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import rison from 'rison';
 import RoleListEditModal from './RoleListEditModal';
 import {
@@ -32,8 +32,8 @@ jest.mock('src/components/MessageToasts/withToasts', () => ({
   useToasts: () => mockToasts,
 }));
 
-jest.mock('@zobi-ui/core', () => {
-  const original = jest.requireActual('@zobi-ui/core');
+jest.mock('@zobi.dev/core', () => {
+  const original = jest.requireActual('@zobi.dev/core');
   return {
     ...original,
     ZobiClient: {

@@ -1,17 +1,17 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled, css } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, css } from '@zobi.dev/extension-api/theme';
 import {
   CertifiedBadge,
   InfoTooltip,
   Input,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import Table, {
   TableSize,
   SortOrder,
   type TablePaginationConfig,
   type OnChangeFunction,
-} from '@zobi-ui/core/components/Table';
+} from '@zobi.dev/core/components/Table';
 import { FacePile, ModifiedInfo, GenericLink } from 'src/components';
 import { DashboardCrossLinks } from 'src/components/ListView/DashboardCrossLinks';
 

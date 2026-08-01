@@ -1,12 +1,12 @@
 import { theme as antdThemeImport } from 'antd';
-import {} from '@zobi-ui/core';
+import {} from '@zobi.dev/core';
 import {
   type AnyThemeConfig,
   type ZobiThemeConfig,
   Theme,
   ThemeAlgorithm,
   ThemeMode,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import type {
   BootstrapThemeDataConfig,
   CommonBootstrapData,

@@ -23,7 +23,7 @@ import {
   CategoricalBlueToGreen,
   CategoricalRedToYellow,
   CategoricalWavesOfBlue,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 function registerColorSchemes<T extends ColorScheme>(
   registry: ColorSchemeRegistry<T>,

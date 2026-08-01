@@ -11,10 +11,10 @@ import * as chartAction from 'src/components/Chart/chartAction';
 import * as saveModalActions from 'src/explore/actions/saveModalActions';
 import * as downloadAsImage from 'src/utils/downloadAsImage';
 import * as exploreUtils from 'src/explore/exploreUtils';
-import { FeatureFlag, VizType } from '@zobi-ui/core';
+import { FeatureFlag, VizType } from '@zobi.dev/core';
 import { useUnsavedChangesPrompt } from 'src/hooks/useUnsavedChangesPrompt';
 import ExploreHeader, { ExploreChartHeaderProps } from '.';
-import { getChartMetadataRegistry } from '@zobi-ui/core';
+import { getChartMetadataRegistry } from '@zobi.dev/core';
 import fs from 'fs';
 import path from 'path';
 

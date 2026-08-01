@@ -1,13 +1,13 @@
 
 import { useCallback, useContext, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   BinaryQueryObjectFilterClause,
   QueryFormData,
-} from '@zobi-ui/core';
-import { css, useTheme } from '@zobi/core/theme';
-import { Button, Modal } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { Button, Modal } from '@zobi.dev/core/components';
 import { useSelector } from 'react-redux';
 import { DashboardPageIdContext } from 'src/dashboard/containers/DashboardPage';
 import { isEmbedded } from 'src/dashboard/util/isEmbedded';

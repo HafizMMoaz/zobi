@@ -1,8 +1,8 @@
 import { PureComponent, ReactNode } from 'react';
 import rison from 'rison';
-import { t } from '@zobi/core/translation';
-import { isDefined, JsonResponse, ZobiClient } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { isDefined, JsonResponse, ZobiClient } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { withTheme, Theme } from '@emotion/react';
 import { getUrlParam } from 'src/utils/urlUtils';
 import { FilterPlugins, URL_PARAMS } from 'src/constants';
@@ -12,7 +12,7 @@ import {
   Button,
   Loading,
   Steps,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import withToasts from 'src/components/MessageToasts/withToasts';
 
 import VizTypeGallery, {
@@ -25,7 +25,7 @@ import {
   Dataset,
   DatasetSelectLabel,
 } from 'src/features/datasets/DatasetSelectLabel';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import {
   datasetLabel,
   datasetLabelLower,

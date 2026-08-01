@@ -1,22 +1,22 @@
 import { useMemo, ReactNode } from 'react';
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ColorScheme,
   ColorSchemeGroup,
   SequentialScheme,
   getLabelsColorMap,
   CategoricalColorNamespace,
-} from '@zobi-ui/core';
-import { css, useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import { sortBy } from 'lodash';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import {
   Tooltip,
   Select,
   type SelectOptionsType,
-} from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { getColorNamespace } from 'src/utils/colorScheme';
 import ColorSchemeLabel from './ColorSchemeLabel';
 

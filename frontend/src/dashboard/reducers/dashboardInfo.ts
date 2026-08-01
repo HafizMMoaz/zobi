@@ -3,7 +3,7 @@ import {
   ChartCustomization,
   ChartCustomizationDivider,
   ColumnOption,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   DASHBOARD_INFO_UPDATED,
   SET_FILTER_BAR_ORIENTATION,

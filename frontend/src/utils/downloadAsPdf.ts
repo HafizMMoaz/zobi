@@ -1,8 +1,8 @@
 import { SyntheticEvent } from 'react';
 import domToPdf from 'dom-to-pdf';
 import { kebabCase } from 'lodash';
-import { t } from '@zobi/core/translation';
-import { logging } from '@zobi/core/utils';
+import { t } from '@zobi.dev/extension-api/translation';
+import { logging } from '@zobi.dev/extension-api/utils';
 import { addWarningToast } from 'src/components/MessageToasts/actions';
 import getBootstrapData from 'src/utils/getBootstrapData';
 

@@ -1,4 +1,4 @@
-import { Preset } from '@zobi-ui/core';
+import { Preset } from '@zobi.dev/core';
 import fetchMock from 'fetch-mock';
 import chartQueries from 'spec/fixtures/mockChartQueries';
 import { dashboardLayout } from 'spec/fixtures/mockDashboardLayout';

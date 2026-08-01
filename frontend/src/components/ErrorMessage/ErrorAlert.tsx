@@ -1,13 +1,13 @@
 import { useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { Alert } from '@zobi/core/components';
-import { useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import {
   Icons,
   Modal,
   Tooltip,
   Typography,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import type { ErrorAlertProps } from './types';
 
 export const ErrorAlert: React.FC<ErrorAlertProps> = ({

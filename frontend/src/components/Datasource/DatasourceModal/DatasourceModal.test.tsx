@@ -7,7 +7,7 @@ import {
   defaultStore as store,
 } from 'spec/helpers/testing-library';
 import fetchMock from 'fetch-mock';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import mockDatasource from 'spec/fixtures/mockDatasource';
 import React from 'react';
 import DatasourceModalComponent, { buildExtraJsonObject } from '.';

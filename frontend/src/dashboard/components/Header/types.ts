@@ -1,6 +1,6 @@
 
 import { type Dispatch, type SetStateAction } from 'react';
-import { JsonObject } from '@zobi-ui/core';
+import { JsonObject } from '@zobi.dev/core';
 import {
   DashboardInfo as DashboardInfoType,
   Layout,

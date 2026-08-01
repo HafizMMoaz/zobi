@@ -5,7 +5,7 @@ import {
   waitFor,
   cleanup,
 } from 'spec/helpers/testing-library';
-import type { FormInstance } from '@zobi-ui/core/components';
+import type { FormInstance } from '@zobi.dev/core/components';
 import { createMockModal } from './utils';
 
 // eslint-disable-next-line no-restricted-globals -- TODO: Migrate from describe blocks

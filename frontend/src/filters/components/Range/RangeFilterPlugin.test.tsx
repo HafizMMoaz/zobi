@@ -1,5 +1,5 @@
-import { AppSection } from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+import { AppSection } from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import userEvent from '@testing-library/user-event';
 import { render, screen } from 'spec/helpers/testing-library';
 import RangeFilterPlugin from './RangeFilterPlugin';

@@ -1,13 +1,13 @@
 import { PureComponent } from 'react';
 import cx from 'classnames';
-import { t } from '@zobi/core/translation';
-import { css, styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 
 import backgroundStyleOptions from 'src/dashboard/util/backgroundStyleOptions';
 import PopoverDropdown, {
   OptionProps,
   OnChangeHandler,
-} from '@zobi-ui/core/components/PopoverDropdown';
+} from '@zobi.dev/core/components/PopoverDropdown';
 
 interface BackgroundStyleDropdownProps {
   id: string;

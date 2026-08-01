@@ -1,10 +1,10 @@
 import { type ReactNode } from 'react';
-import { css, useTheme } from '@zobi/core/theme';
-import { JsonValue } from '@zobi-ui/core';
-import { Radio } from '@zobi-ui/core/components/Radio';
-import { Space } from '@zobi-ui/core/components/Space';
-import { Tooltip } from '@zobi-ui/core/components/Tooltip';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { JsonValue } from '@zobi.dev/core';
+import { Radio } from '@zobi.dev/core/components/Radio';
+import { Space } from '@zobi.dev/core/components/Space';
+import { Tooltip } from '@zobi.dev/core/components/Tooltip';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import ControlHeader from '../ControlHeader';
 
 interface RadioOption {

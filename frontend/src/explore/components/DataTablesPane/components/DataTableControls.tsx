@@ -1,10 +1,10 @@
-import { styled, css, useTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import { GenericDataType } from '@zobi/core/common';
+import { styled, css, useTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { useMemo } from 'react';
 import { zip } from 'lodash';
-import { Select, Tooltip } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Select, Tooltip } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import {
   CopyToClipboardButton,
   FilterInput,

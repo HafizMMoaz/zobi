@@ -1,7 +1,7 @@
 
-import { styled, css, ZobiTheme } from '@zobi/core/theme';
-import { Button, CronPicker, Modal } from '@zobi-ui/core/components';
-import { Radio } from '@zobi-ui/core/components/Radio';
+import { styled, css, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Button, CronPicker, Modal } from '@zobi.dev/core/components';
+import { Radio } from '@zobi.dev/core/components/Radio';
 
 export const StyledModal = styled(Modal)`
   .ant-modal-body {

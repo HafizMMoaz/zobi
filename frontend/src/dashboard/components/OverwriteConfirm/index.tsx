@@ -1,5 +1,5 @@
 import { useSelector } from 'react-redux';
-import { AsyncEsmComponent } from '@zobi-ui/core/components';
+import { AsyncEsmComponent } from '@zobi.dev/core/components';
 import { DashboardState, RootState } from 'src/dashboard/types';
 
 const Modal = AsyncEsmComponent(() => import('./OverwriteConfirmModal'));

@@ -44,7 +44,7 @@ import {
 import { AnyDatasourcesAction } from 'src/explore/actions/datasourcesActions';
 import { HydrateExplore } from 'src/explore/actions/hydrateExplore';
 import getBootstrapData from 'src/utils/getBootstrapData';
-import { Dataset } from '@zobi-ui/chart-controls';
+import { Dataset } from '@zobi.dev/chart-controls';
 import databaseReducer from 'src/database/reducers';
 
 // Some reducers don't do anything, and redux is just used to reference the initial "state".

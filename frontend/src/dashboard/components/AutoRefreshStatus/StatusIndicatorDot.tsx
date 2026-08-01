@@ -1,5 +1,5 @@
 import { FC, useMemo, useRef, useEffect, useState } from 'react';
-import { css, useTheme } from '@zobi/core/theme';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import { AutoRefreshStatus } from '../../types/autoRefresh';
 
 export interface StatusIndicatorDotProps {

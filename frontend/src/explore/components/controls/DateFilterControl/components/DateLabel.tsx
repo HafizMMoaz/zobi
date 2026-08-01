@@ -1,9 +1,9 @@
 
 import { forwardRef, MouseEvent, ReactNode, RefObject } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { css, styled } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 export type DateLabelProps = {
   name?: string;

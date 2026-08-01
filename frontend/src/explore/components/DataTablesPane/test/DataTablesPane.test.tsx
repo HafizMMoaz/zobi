@@ -1,8 +1,8 @@
 import fetchMock from 'fetch-mock';
-import { FeatureFlag } from '@zobi-ui/core';
+import { FeatureFlag } from '@zobi.dev/core';
 import * as copyUtils from 'src/utils/copy';
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
-import { setupAGGridModules } from '@zobi-ui/core/components/ThemedAgGridReact';
+import { setupAGGridModules } from '@zobi.dev/core/components/ThemedAgGridReact';
 import { setItem, LocalStorageKeys } from 'src/utils/localStorageHelpers';
 import { DataTablesPane } from '..';
 import { createDataTablesPaneProps } from './fixture';

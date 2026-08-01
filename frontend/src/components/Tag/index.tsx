@@ -1,9 +1,9 @@
 
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { Link } from 'react-router-dom';
 import type { TagType } from 'src/types/TagType';
-import { Tag as AntdTag } from '@zobi-ui/core/components/Tag';
-import { Tooltip } from '@zobi-ui/core/components/Tooltip';
+import { Tag as AntdTag } from '@zobi.dev/core/components/Tag';
+import { Tooltip } from '@zobi.dev/core/components/Tooltip';
 import type { TagProps } from 'antd/es';
 import type { CheckableTagProps } from 'antd/es/tag';
 import { useMemo } from 'react';

@@ -3,9 +3,9 @@ import { isEqual } from 'lodash';
 import {
   ControlType,
   ControlComponentProps as BaseControlComponentProps,
-} from '@zobi-ui/chart-controls';
-import { JsonValue, QueryFormData, usePrevious } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+} from '@zobi.dev/chart-controls';
+import { JsonValue, QueryFormData, usePrevious } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { ErrorBoundary } from 'src/components';
 import { ExploreActions } from 'src/explore/actions/exploreActions';
 import controlMap from './controls';

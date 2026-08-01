@@ -1,4 +1,4 @@
-import { Registry, makeSingleton, OverwritePolicy } from '@zobi-ui/core';
+import { Registry, makeSingleton, OverwritePolicy } from '@zobi.dev/core';
 import type { ErrorMessageComponent } from './types';
 
 class ErrorMessageComponentRegistry extends Registry<

@@ -1,6 +1,6 @@
 /* eslint-env browser */
 import { useRef, useState } from 'react';
-import { Radio, RadioChangeEvent } from '@zobi-ui/core/components/Radio';
+import { Radio, RadioChangeEvent } from '@zobi.dev/core/components/Radio';
 import {
   Button,
   Checkbox,
@@ -8,14 +8,14 @@ import {
   Input,
   Divider,
   Flex,
-} from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 
 import {
   ModalTrigger,
   ModalTriggerRef,
-} from '@zobi-ui/core/components/ModalTrigger';
+} from '@zobi.dev/core/components/ModalTrigger';
 import {
   SAVE_TYPE_OVERWRITE,
   SAVE_TYPE_NEWDASHBOARD,

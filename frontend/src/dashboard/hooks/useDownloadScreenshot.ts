@@ -4,9 +4,9 @@ import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { last } from 'lodash';
 import rison from 'rison';
 import { parse as parseContentDisposition } from 'content-disposition';
-import { t } from '@zobi/core/translation';
-import { ZobiClient, ZobiApiError } from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient, ZobiApiError } from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import {
   LOG_ACTIONS_DASHBOARD_DOWNLOAD_AS_IMAGE,
   LOG_ACTIONS_DASHBOARD_DOWNLOAD_AS_PDF,

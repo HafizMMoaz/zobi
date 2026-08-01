@@ -1,8 +1,8 @@
 import { useState, forwardRef, useImperativeHandle, RefObject } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { InputNumber } from '@zobi-ui/core/components/Input';
-import { FormLabel } from '@zobi-ui/core/components/Form';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { InputNumber } from '@zobi.dev/core/components/Input';
+import { FormLabel } from '@zobi.dev/core/components/Form';
 import type { BaseFilter, FilterHandler } from './types';
 import { FilterContainer } from './Base';
 import { RANGE_WIDTH } from '../utils';

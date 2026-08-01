@@ -1,9 +1,9 @@
 /* eslint-disable no-param-reassign */
-import { t } from '@zobi/core/translation';
-import { css, styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 import { memo, FC } from 'react';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Button } from '@zobi-ui/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Button } from '@zobi.dev/core/components';
 import { getFilterBarTestId } from '../utils';
 import FilterBarSettings from '../FilterBarSettings';
 

@@ -1,5 +1,5 @@
 
-import { getExtensionsRegistry } from '@zobi-ui/core';
+import { getExtensionsRegistry } from '@zobi.dev/core';
 import { Provider as ReduxProvider } from 'react-redux';
 import { QueryParamProvider } from 'use-query-params';
 import { ReactRouter5Adapter } from 'use-query-params/adapters/react-router-5';

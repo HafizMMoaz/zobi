@@ -1,4 +1,4 @@
-import { useTheme } from '@zobi/core/theme';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 
 export const useJsonTreeTheme = () => {
   const theme = useTheme();

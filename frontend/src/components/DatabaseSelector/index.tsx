@@ -6,11 +6,11 @@ import {
   useRef,
   useCallback,
 } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient, ZobiError } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient, ZobiError } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import rison from 'rison';
-import RefreshLabel from '@zobi-ui/core/components/RefreshLabel';
+import RefreshLabel from '@zobi.dev/core/components/RefreshLabel';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import {
   useCatalogs,
@@ -25,7 +25,7 @@ import {
   LabeledValue as AntdLabeledValue,
   Button,
   Icons,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 
 import { ErrorMessageWithStackTrace } from 'src/components';
 import type {

@@ -3,7 +3,7 @@ import fetchMock from 'fetch-mock';
 import { storeWithState } from 'spec/fixtures/mockStore';
 import mockState from 'spec/fixtures/mockState';
 import { sliceId } from 'spec/fixtures/mockChartQueries';
-import { ChartCustomizationType, NativeFilterType } from '@zobi-ui/core';
+import { ChartCustomizationType, NativeFilterType } from '@zobi.dev/core';
 import { CHART_TYPE } from '../../util/componentTypes';
 import DashboardContainer from './DashboardContainer';
 import * as nativeFiltersActions from '../../actions/nativeFilters';

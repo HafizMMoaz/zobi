@@ -1,7 +1,7 @@
 import { FC, ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled, css } from '@zobi/core/theme';
-import { ModalTrigger } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, css } from '@zobi.dev/extension-api/theme';
+import { ModalTrigger } from '@zobi.dev/core/components';
 import { detectOS } from 'src/utils/common';
 
 const userOS = detectOS();

@@ -1,11 +1,11 @@
-import { t } from '@zobi/core/translation';
-import { css, ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import {
   FormLabel,
   LabeledErrorBoundInput as ValidatedInput,
-} from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Typography } from '@zobi-ui/core/components/Typography';
+} from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Typography } from '@zobi.dev/core/components/Typography';
 import { StyledFooterButton, StyledCatalogTable } from '../styles';
 import { CatalogObject, FieldPropTypes } from '../../types';
 

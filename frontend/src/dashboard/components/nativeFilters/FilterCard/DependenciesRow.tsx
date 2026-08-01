@@ -1,11 +1,11 @@
 import { memo, useCallback, useMemo } from 'react';
 import { useDispatch } from 'react-redux';
-import { t } from '@zobi/core/translation';
-import { useTruncation } from '@zobi-ui/core';
-import { css, useTheme } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTruncation } from '@zobi.dev/core';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { setDirectPathToChild } from 'src/dashboard/actions/dashboardState';
-import { List } from '@zobi-ui/core/components/List';
+import { List } from '@zobi.dev/core/components/List';
 import {
   DependencyItem,
   Row,

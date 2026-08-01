@@ -9,15 +9,15 @@ import {
 } from 'react';
 import classNames from 'classnames';
 import { useDispatch, useSelector } from 'react-redux';
-import { styled } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 
-import { EditableTitle, EmptyState } from '@zobi-ui/core/components';
+import { EditableTitle, EmptyState } from '@zobi.dev/core/components';
 import { setEditMode, onRefresh } from 'src/dashboard/actions/dashboardState';
 import getChartIdsFromComponent from 'src/dashboard/util/getChartIdsFromComponent';
 import DashboardComponent from 'src/dashboard/containers/DashboardComponent';
 import AnchorLink from 'src/dashboard/components/AnchorLink';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Typography } from '@zobi.dev/core/components/Typography';
 import {
   useIsAutoRefreshing,
   useIsRefreshInFlight,

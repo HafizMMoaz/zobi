@@ -3,7 +3,7 @@ import { useRef, useEffect, FC, useMemo } from 'react';
 
 import { useSelector } from 'react-redux';
 import { useAppDispatch } from 'src/views/store';
-import { logging } from '@zobi/core/utils';
+import { logging } from '@zobi.dev/extension-api/utils';
 import {
   SqlLabRootState,
   QueryEditor,

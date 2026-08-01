@@ -1,5 +1,5 @@
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { detectOS } from 'src/utils/common';
 
 export const getSliceHeaderTooltip = (sliceName: string | undefined) => {

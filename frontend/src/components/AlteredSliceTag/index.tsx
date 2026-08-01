@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState, FC } from 'react';
 import { isEmpty } from 'lodash';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import getControlsForVizType from 'src/utils/getControlsForVizType';
 import {
   Label,
@@ -8,7 +8,7 @@ import {
   Tooltip,
   ModalTrigger,
   TableView,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import type { AlteredSliceTagProps, ControlMap, RowType } from './types';
 import { getRowsFromDiffs } from './utils';
 

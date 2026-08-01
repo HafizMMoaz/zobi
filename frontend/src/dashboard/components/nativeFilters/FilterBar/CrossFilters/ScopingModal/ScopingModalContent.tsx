@@ -1,5 +1,5 @@
-import { NativeFilterScope } from '@zobi-ui/core';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import { NativeFilterScope } from '@zobi.dev/core';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import { ChartConfiguration } from 'src/dashboard/types';
 import { ScopingTreePanel } from './ScopingTreePanel';
 import { ChartsScopingListPanel } from './ChartsScopingListPanel';

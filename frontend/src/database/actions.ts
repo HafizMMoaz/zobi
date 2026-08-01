@@ -1,5 +1,5 @@
 
-import { ZobiClient, makeApi } from '@zobi-ui/core';
+import { ZobiClient, makeApi } from '@zobi.dev/core';
 import { ThunkDispatch } from 'redux-thunk';
 import { AnyAction } from 'redux';
 import { QueryExecutePayload, QueryExecuteResponse } from './types';

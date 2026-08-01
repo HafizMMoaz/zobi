@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 
 import { getDashboardFilterKey } from './getDashboardFilterKey';
 import { ALL_FILTERS_ROOT } from './constants';

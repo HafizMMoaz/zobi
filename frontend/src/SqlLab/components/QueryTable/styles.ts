@@ -1,5 +1,5 @@
-import { styled, css } from '@zobi/core/theme';
-import { IconTooltip } from '@zobi-ui/core/components';
+import { styled, css } from '@zobi.dev/extension-api/theme';
+import { IconTooltip } from '@zobi.dev/core/components';
 
 export const StaticPosition = css`
   position: static;

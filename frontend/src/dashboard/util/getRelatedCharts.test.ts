@@ -3,7 +3,7 @@ import {
   AppliedCrossFilterType,
   Filter,
   NativeFilterType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { getRelatedCharts } from './getRelatedCharts';
 
 const slices = {

@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock';
-import { ChartCustomization, ChartCustomizationType } from '@zobi-ui/core';
+import { ChartCustomization, ChartCustomizationType } from '@zobi.dev/core';
 import {
   setInScopeStatusOfCustomizations,
   saveChartCustomization,

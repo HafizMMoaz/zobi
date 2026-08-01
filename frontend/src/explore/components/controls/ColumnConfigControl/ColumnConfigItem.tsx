@@ -1,8 +1,8 @@
 import { memo } from 'react';
-import { css, useTheme } from '@zobi/core/theme';
-import { Popover } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { ColumnTypeLabel } from '@zobi-ui/chart-controls';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { Popover } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { ColumnTypeLabel } from '@zobi.dev/chart-controls';
 import ColumnConfigPopover, {
   ColumnConfigPopoverProps,
 } from './ColumnConfigPopover';

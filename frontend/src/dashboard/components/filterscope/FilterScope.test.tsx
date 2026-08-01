@@ -1,4 +1,4 @@
-import { zobiTheme } from '@zobi/core/theme';
+import { zobiTheme } from '@zobi.dev/extension-api/theme';
 import {
   cleanup,
   render,

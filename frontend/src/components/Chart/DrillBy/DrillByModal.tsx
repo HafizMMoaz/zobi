@@ -1,6 +1,6 @@
 
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   BinaryQueryObjectFilterClause,
   BaseFormData,
@@ -10,9 +10,9 @@ import {
   isDefined,
   ContextMenuFilters,
   AdhocFilter,
-} from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { css, useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import {
@@ -21,7 +21,7 @@ import {
   Loading,
   Breadcrumb,
   Flex,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { RootState } from 'src/dashboard/types';
 import { DashboardPageIdContext } from 'src/dashboard/containers/DashboardPage';
 import { postFormData } from 'src/explore/exploreUtils/formData';

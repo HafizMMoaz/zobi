@@ -1,6 +1,6 @@
 import { FC, ReactNode } from 'react';
 import { Resizable } from 're-resizable';
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import useStoredSidebarWidth from './useStoredSidebarWidth';
 
 const ResizableWrapper = styled.div`

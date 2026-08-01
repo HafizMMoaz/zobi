@@ -1,9 +1,9 @@
 import { useCallback, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { getChartMetadataRegistry } from '@zobi-ui/core';
-import { css, styled, ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getChartMetadataRegistry } from '@zobi.dev/core';
+import { css, styled, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { usePluginContext } from 'src/components';
-import { Icons, Modal } from '@zobi-ui/core/components';
+import { Icons, Modal } from '@zobi.dev/core/components';
 import { noOp } from 'src/utils/common';
 import getBootstrapData from 'src/utils/getBootstrapData';
 import { FilterPlugins } from 'src/constants';

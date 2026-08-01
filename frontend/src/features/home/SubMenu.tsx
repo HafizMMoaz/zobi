@@ -1,25 +1,25 @@
 import { ReactNode, useState, useEffect, FunctionComponent } from 'react';
 
 import { Link, useHistory } from 'react-router-dom';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   styled,
   ZobiTheme,
   css,
   useTheme,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import cx from 'classnames';
 import { debounce } from 'lodash';
-import { Menu, MenuMode } from '@zobi-ui/core/components/Menu';
+import { Menu, MenuMode } from '@zobi.dev/core/components/Menu';
 import {
   Button,
   Tooltip,
   Row,
   type OnClickHandler,
-} from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { MenuObjectProps } from 'src/types/bootstrapTypes';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Typography } from '@zobi.dev/core/components/Typography';
 
 const StyledHeader = styled.div<{ backgroundColor?: string }>`
   background-color: ${({ theme, backgroundColor }) =>

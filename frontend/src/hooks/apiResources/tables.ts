@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useEffect, useRef } from 'react';
-import { ClientErrorObject } from '@zobi-ui/core';
+import { ClientErrorObject } from '@zobi.dev/core';
 import useEffectEvent from 'src/hooks/useEffectEvent';
 import { toQueryString } from 'src/utils/urlUtils';
 import { api, JsonResponse } from './queryApi';

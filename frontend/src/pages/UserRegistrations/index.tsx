@@ -1,7 +1,7 @@
 
 import { useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import {
@@ -9,7 +9,7 @@ import {
   ListViewFilterOperator,
   ListView,
 } from 'src/components';
-import { DeleteModal } from '@zobi-ui/core/components';
+import { DeleteModal } from '@zobi.dev/core/components';
 import { ActionProps, ActionsBar } from 'src/components/ListView/ActionsBar';
 import SubMenu from 'src/features/home/SubMenu';
 

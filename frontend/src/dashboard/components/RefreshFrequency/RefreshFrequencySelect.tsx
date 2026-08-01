@@ -1,8 +1,8 @@
 import { ChangeEvent, useEffect, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { Input } from '@zobi-ui/core/components';
-import { Radio, RadioChangeEvent } from '@zobi-ui/core/components/Radio';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Input } from '@zobi.dev/core/components';
+import { Radio, RadioChangeEvent } from '@zobi.dev/core/components/Radio';
 
 // Minimum custom refresh interval in seconds
 export const MINIMUM_REFRESH_INTERVAL = 1;

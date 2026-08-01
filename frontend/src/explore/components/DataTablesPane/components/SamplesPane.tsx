@@ -1,10 +1,10 @@
 import { useState, useEffect, useMemo, useCallback } from 'react';
-import { t } from '@zobi/core/translation';
-import { ensureIsArray } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ensureIsArray } from '@zobi.dev/core';
 import { datasetLabelLower } from 'src/features/semanticLayers/label';
-import { styled } from '@zobi/core/theme';
-import { EmptyState, Loading } from '@zobi-ui/core/components';
-import { GenericDataType } from '@zobi/core/common';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { EmptyState, Loading } from '@zobi.dev/core/components';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { GridTable } from 'src/components/GridTable';
 import { GridSize } from 'src/components/GridTable/constants';
 import { getDatasourceSamples } from 'src/components/Chart/chartAction';

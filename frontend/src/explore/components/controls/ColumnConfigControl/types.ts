@@ -1,6 +1,6 @@
-import { JsonObject, StrictJsonValue } from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
-import { ControlFormItemSpec } from '@zobi-ui/chart-controls';
+import { JsonObject, StrictJsonValue } from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
+import { ControlFormItemSpec } from '@zobi.dev/chart-controls';
 import {
   SHARED_COLUMN_CONFIG_PROPS,
   SharedColumnConfigProp,

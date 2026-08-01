@@ -1,4 +1,4 @@
-import { Behavior, getChartMetadataRegistry, VizType } from '@zobi-ui/core';
+import { Behavior, getChartMetadataRegistry, VizType } from '@zobi.dev/core';
 import { getCrossFiltersConfiguration } from './crossFilters';
 import { DEFAULT_CROSS_FILTER_SCOPING } from '../constants';
 
@@ -108,8 +108,8 @@ const CHART_CONFIG_METADATA = {
   global_chart_configuration: GLOBAL_CHART_CONFIG,
 };
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   getChartMetadataRegistry: jest.fn(),
 }));
 

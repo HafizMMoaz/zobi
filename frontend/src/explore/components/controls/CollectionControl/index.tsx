@@ -1,8 +1,8 @@
 import React, { useCallback, useMemo, useRef } from 'react';
-import { IconTooltip, List } from '@zobi-ui/core/components';
+import { IconTooltip, List } from '@zobi.dev/core/components';
 import { nanoid } from 'nanoid';
-import { t } from '@zobi/core/translation';
-import { useTheme, type ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme, type ZobiTheme } from '@zobi.dev/extension-api/theme';
 import {
   DndContext,
   closestCenter,
@@ -18,7 +18,7 @@ import {
   arrayMove,
 } from '@dnd-kit/sortable';
 import { CSS } from '@dnd-kit/utilities';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import {
   HeaderContainer,
   AddIconButton,

@@ -1,6 +1,6 @@
-import { Icons } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { useTheme } from '@zobi/core/theme';
+import { Icons } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 
 interface IssueCodeProps {
   code: number;

@@ -1,6 +1,6 @@
 import { useEffect, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient, getClientErrorObject } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient, getClientErrorObject } from '@zobi.dev/core';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import {
   Select,
@@ -8,7 +8,7 @@ import {
   type LabeledValue,
   type SelectOptionsType,
   type SelectProps,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import withToasts from 'src/components/MessageToasts/withToasts';
 
 type SelectAsyncProps = Omit<SelectProps, 'options' | 'ariaLabel' | 'onChange'>;

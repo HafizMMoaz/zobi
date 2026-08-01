@@ -1,4 +1,4 @@
-import { JsonObject } from '@zobi-ui/core';
+import { JsonObject } from '@zobi.dev/core';
 import { areObjectsEqual } from '../../../reduxUtils';
 
 export const arrayDiff = (a: string[], b: string[]) => [

@@ -3,7 +3,7 @@ import {
   NativeFilterType,
   ChartCustomization,
   ChartCustomizationType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import nativeFilterReducer, { getInitialState } from './nativeFilters';
 import { SET_NATIVE_FILTERS_CONFIG_COMPLETE } from '../actions/nativeFilters';
 import { HYDRATE_DASHBOARD } from '../actions/hydrate';

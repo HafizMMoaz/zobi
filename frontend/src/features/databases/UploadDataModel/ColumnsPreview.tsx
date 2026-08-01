@@ -1,7 +1,7 @@
 import { FC } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { Typography } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Typography } from '@zobi.dev/core/components';
 import { type TagType, TagsList } from 'src/components';
 
 interface ColumnsPreviewProps {

@@ -1,9 +1,9 @@
 import { render, waitFor } from 'spec/helpers/testing-library';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import DatasetPanelWrapper from 'src/features/datasets/AddDataset/DatasetPanel';
 
 jest.mock(
-  '@zobi-ui/core/components/Icons/AsyncIcon',
+  '@zobi.dev/core/components/Icons/AsyncIcon',
   () =>
     ({ fileName }: { fileName: string }) => (
       <span role="img" aria-label={fileName.replace('_', '-')} />

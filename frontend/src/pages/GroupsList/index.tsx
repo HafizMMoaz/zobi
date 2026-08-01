@@ -1,6 +1,6 @@
 
 import { useCallback, useEffect, useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';
 import { ActionsBar, ActionProps } from 'src/components/ListView/ActionsBar';
@@ -19,7 +19,7 @@ import {
   Icons,
   ConfirmStatusChange,
   DeleteModal,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { WIDER_DROPDOWN_WIDTH } from 'src/components/ListView/utils';
 
 const PAGE_SIZE = 25;

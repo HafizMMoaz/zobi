@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Constants } from '@zobi-ui/core/components';
+import { Constants } from '@zobi.dev/core/components';
 
 export function useDebounceValue<T>(value: T, delay = Constants.FAST_DEBOUNCE) {
   const [debouncedValue, setDebouncedValue] = useState<T>(value);

@@ -5,7 +5,7 @@ import {
   screen,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import * as ace from 'ace-builds';
 
 import ExtraOptions from './ExtraOptions';

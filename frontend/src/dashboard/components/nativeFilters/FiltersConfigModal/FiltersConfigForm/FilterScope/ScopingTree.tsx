@@ -1,11 +1,11 @@
 
 import { FC, useMemo, useState, memo } from 'react';
-import { NativeFilterScope } from '@zobi-ui/core';
-import { styled, css } from '@zobi/core/theme';
-import Tree from '@zobi-ui/core/components/Tree';
+import { NativeFilterScope } from '@zobi.dev/core';
+import { styled, css } from '@zobi.dev/extension-api/theme';
+import Tree from '@zobi.dev/core/components/Tree';
 import { DASHBOARD_ROOT_ID } from 'src/dashboard/util/constants';
-import { Tooltip } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Tooltip } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { Layout } from 'src/dashboard/types';
 import { useFilterScopeTree } from './state';
 import { findFilterScope, getTreeCheckedItems } from './utils';

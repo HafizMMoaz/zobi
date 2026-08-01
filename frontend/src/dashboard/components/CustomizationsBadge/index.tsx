@@ -1,10 +1,10 @@
 import { memo, useMemo, useState, useRef } from 'react';
 import { useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
-import { t } from '@zobi/core/translation';
-import { ChartCustomization, DataMaskStateWithId } from '@zobi-ui/core';
-import { styled, useTheme } from '@zobi/core/theme';
-import { Icons, Badge, Tooltip, Tag } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ChartCustomization, DataMaskStateWithId } from '@zobi.dev/core';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { Icons, Badge, Tooltip, Tag } from '@zobi.dev/core/components';
 import { getFilterValueForDisplay } from '../nativeFilters/utils';
 import { extractLabel } from '../nativeFilters/selectors';
 import { useChartCustomizationFromRedux } from '../nativeFilters/state';

@@ -1,4 +1,4 @@
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import logger from 'src/middleware/loggerMiddleware';
 import { LOG_EVENT } from 'src/logger/actions';
 import {

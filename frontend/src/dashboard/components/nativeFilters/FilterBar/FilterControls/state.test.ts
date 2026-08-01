@@ -6,7 +6,7 @@ import type { ReactNode } from 'react';
 import type {
   DataMaskStateWithId,
   QueryObjectFilterClause,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   FilterConfigMap,
   resolveTransitiveParentIds,

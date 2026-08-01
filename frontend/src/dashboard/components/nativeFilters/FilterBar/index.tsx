@@ -22,9 +22,9 @@ import {
   NativeFilterTarget,
   ChartCustomization,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { Constants } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Constants } from '@zobi.dev/core/components';
 import { useHistory } from 'react-router-dom';
 import { updateDataMask, removeDataMask } from 'src/dataMask/actions';
 import {

@@ -1,15 +1,15 @@
 import { ReactNode, useMemo } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ColorScheme,
   ColorSchemeGroup,
   getCategoricalSchemeRegistry,
   CategoricalScheme,
-} from '@zobi-ui/core';
-import { css, useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import { sortBy } from 'lodash';
-import { Select, Tooltip } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Select, Tooltip } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import ColorSchemeLabel from 'src/explore/components/controls/ColorSchemeControl/ColorSchemeLabel';
 
 export interface ColorSchemes {

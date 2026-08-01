@@ -1,5 +1,5 @@
-import { buildQueryContext, QueryFormData } from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+import { buildQueryContext, QueryFormData } from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 
 /**
  * The buildQuery function is used to create an instance of QueryContext that's

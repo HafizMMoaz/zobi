@@ -1,5 +1,5 @@
 import { fireEvent, render } from 'spec/helpers/testing-library';
-import { FeatureFlag, VizType } from '@zobi-ui/core';
+import { FeatureFlag, VizType } from '@zobi.dev/core';
 import * as redux from 'redux';
 
 import * as exploreUtils from 'src/explore/exploreUtils';

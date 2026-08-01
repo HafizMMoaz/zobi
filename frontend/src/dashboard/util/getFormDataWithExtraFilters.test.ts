@@ -2,7 +2,7 @@ import getFormDataWithExtraFilters, {
   CachedFormDataWithExtraControls,
   GetFormDataWithExtraFiltersArguments,
 } from 'src/dashboard/util/charts/getFormDataWithExtraFilters';
-import { ChartCustomizationType } from '@zobi-ui/core';
+import { ChartCustomizationType } from '@zobi.dev/core';
 import { sliceId as chartId } from 'spec/fixtures/mockChartQueries';
 
 type ChartCustomizationItem = NonNullable<

@@ -1,8 +1,8 @@
 import { useEffect, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled, css } from '@zobi/core/theme';
-import { Comparator } from '@zobi-ui/chart-controls';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, css } from '@zobi.dev/extension-api/theme';
+import { Comparator } from '@zobi.dev/chart-controls';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import ControlHeader from 'src/explore/components/ControlHeader';
 import { FormattingPopover } from './FormattingPopover';
 import {

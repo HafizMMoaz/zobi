@@ -1,5 +1,5 @@
 
-import { ZobiTheme } from '@zobi/core/theme';
+import { ZobiTheme } from '@zobi.dev/extension-api/theme';
 
 export const getAccessibleColorBounds = (theme: ZobiTheme): string[] => [
   theme.colorError, // Red variant for negative/danger

@@ -1,7 +1,7 @@
-import { t, tn } from '@zobi/core/translation';
-import { getNumberFormatter } from '@zobi-ui/core';
+import { t, tn } from '@zobi.dev/extension-api/translation';
+import { getNumberFormatter } from '@zobi.dev/core';
 
-import { Label, Tooltip } from '@zobi-ui/core/components';
+import { Label, Tooltip } from '@zobi.dev/core/components';
 
 type RowCountLabelProps = {
   rowcount?: number;

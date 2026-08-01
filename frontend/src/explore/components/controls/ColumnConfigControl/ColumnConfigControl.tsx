@@ -1,12 +1,12 @@
 import { useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { useTheme } from '@zobi/core/theme';
-import { GenericDataType } from '@zobi/core/common';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme } from '@zobi.dev/extension-api/theme';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import {
   COLUMN_NAME_ALIASES,
   ControlComponentProps,
-} from '@zobi-ui/chart-controls';
-import { Icons } from '@zobi-ui/core/components';
+} from '@zobi.dev/chart-controls';
+import { Icons } from '@zobi.dev/core/components';
 import ColumnConfigItem from './ColumnConfigItem';
 import {
   ColumnConfigInfo,

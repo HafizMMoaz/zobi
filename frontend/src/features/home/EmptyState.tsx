@@ -1,10 +1,10 @@
 import {
   Button,
   EmptyState as EmptyStateComponent,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { TableTab } from 'src/views/CRUD/types';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { navigateTo } from 'src/utils/navigationUtils';
 import { WelcomeTable } from './types';
 

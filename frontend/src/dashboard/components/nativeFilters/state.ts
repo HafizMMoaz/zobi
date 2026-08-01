@@ -9,7 +9,7 @@ import {
   ChartCustomizationDivider,
   ChartCustomizationConfiguration,
   NativeFilterType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { FilterElement } from './FilterBar/FilterControls/types';
 import { ActiveTabs, DashboardLayout, RootState } from '../../types';
 import { CHART_TYPE, TAB_TYPE } from '../../util/componentTypes';

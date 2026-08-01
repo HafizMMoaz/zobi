@@ -1,11 +1,11 @@
 import { PureComponent, Fragment } from 'react';
 import { withTheme } from '@emotion/react';
 import classNames from 'classnames';
-import { addAlpha } from '@zobi-ui/core';
-import { css, styled, type ZobiTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import { EmptyState } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { addAlpha } from '@zobi.dev/core';
+import { css, styled, type ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { EmptyState } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { navigateTo } from 'src/utils/navigationUtils';
 import type { LayoutItem } from 'src/dashboard/types';
 import type { DropResult } from 'src/dashboard/components/dnd/dragDroppableConfig';

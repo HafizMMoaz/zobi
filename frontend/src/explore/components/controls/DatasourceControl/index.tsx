@@ -1,31 +1,31 @@
 /* eslint-disable camelcase */
 
 import React, { PureComponent } from 'react';
-import { DatasourceType, ZobiClient, Datasource } from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
+import { DatasourceType, ZobiClient, Datasource } from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   css,
   styled,
   withTheme,
   type ZobiTheme,
-} from '@zobi/core/theme';
-import { getTemporalColumns } from '@zobi-ui/chart-controls';
+} from '@zobi.dev/extension-api/theme';
+import { getTemporalColumns } from '@zobi.dev/chart-controls';
 import { getUrlParam } from 'src/utils/urlUtils';
 import {
   Dropdown,
   Tooltip,
   Button,
   ModalTrigger,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   ChangeDatasourceModal,
   DatasourceModal,
   ErrorAlert,
 } from 'src/components';
 import SemanticViewEditModal from 'src/features/semanticViews/SemanticViewEditModal';
-import { Menu } from '@zobi-ui/core/components/Menu';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import WarningIconWithTooltip from '@zobi-ui/core/components/WarningIconWithTooltip';
+import { Menu } from '@zobi.dev/core/components/Menu';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import WarningIconWithTooltip from '@zobi.dev/core/components/WarningIconWithTooltip';
 import { URL_PARAMS } from 'src/constants';
 import { getDatasourceAsSaveableDataset } from 'src/utils/datasourceUtils';
 import { datasetLabelLower } from 'src/features/semanticLayers/label';

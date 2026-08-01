@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, styled, useTheme } from '@zobi/core/theme';
-import { Icons, InfoTooltip } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { Icons, InfoTooltip } from '@zobi.dev/core/components';
 import {
   CaretContainer,
   CloseContainer,

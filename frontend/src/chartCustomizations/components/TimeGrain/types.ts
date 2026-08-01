@@ -1,6 +1,6 @@
-import { FilterState, QueryFormData, DataRecord } from '@zobi-ui/core';
+import { FilterState, QueryFormData, DataRecord } from '@zobi.dev/core';
 import { RefObject } from 'react';
-import type { RefSelectProps } from '@zobi-ui/core/components';
+import type { RefSelectProps } from '@zobi.dev/core/components';
 import { PluginFilterHooks, PluginFilterStylesProps } from '../types';
 
 interface PluginFilterTimeGrainCustomizeProps {

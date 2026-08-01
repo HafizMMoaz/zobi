@@ -99,7 +99,7 @@ module.exports = {
   },
   overrides: [
     {
-      test: './plugins/plugin-chart-handlebars/node_modules/just-handlebars-helpers/*',
+      test: './plugins/handlebars/node_modules/just-handlebars-helpers/*',
       sourceType: 'unambiguous',
     },
   ],

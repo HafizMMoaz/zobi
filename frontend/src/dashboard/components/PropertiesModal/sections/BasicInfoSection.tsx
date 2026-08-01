@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { FormItem, Input, FormInstance } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { FormItem, Input, FormInstance } from '@zobi.dev/core/components';
 import { ModalFormField } from 'src/components/Modal';
 import { ValidationObject } from 'src/components/Modal/useModalValidation';
 

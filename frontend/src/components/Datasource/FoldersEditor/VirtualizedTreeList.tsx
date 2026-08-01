@@ -2,7 +2,7 @@
 import { useCallback, useEffect, useMemo, useRef } from 'react';
 import { VariableSizeList as List } from 'react-window';
 import type { UniqueIdentifier } from '@dnd-kit/core';
-import type { Metric, ColumnMeta } from '@zobi-ui/chart-controls';
+import type { Metric, ColumnMeta } from '@zobi.dev/chart-controls';
 import { FoldersEditorItemType } from '../types';
 import type { FlattenedTreeItem } from './constants';
 import type { ItemHeights } from './hooks/useItemHeights';

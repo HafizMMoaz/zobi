@@ -5,11 +5,11 @@ import {
   useRef,
   useState,
 } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
 import type { Column, GridApi } from 'ag-grid-community';
 
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { PIVOT_COL_ID } from './constants';
 import { HeaderMenu } from './HeaderMenu';
 

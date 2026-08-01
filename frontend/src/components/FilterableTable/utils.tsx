@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { safeHtmlSpan } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { safeHtmlSpan } from '@zobi.dev/core';
 import { JsonModal } from '../JsonModal';
 import { safeJsonObjectParse } from '../JsonModal/utils';
 import { NULL_STRING, CellDataType } from './useCellContentParser';

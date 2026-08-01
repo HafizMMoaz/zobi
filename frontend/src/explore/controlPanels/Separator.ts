@@ -1,9 +1,9 @@
-import { t } from '@zobi/core/translation';
-import { validateNonEmpty } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { validateNonEmpty } from '@zobi.dev/core';
 import type {
   ControlPanelConfig,
   ControlPanelState,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import { formatSelectOptions } from 'src/explore/exploreUtils';
 
 const config: ControlPanelConfig = {

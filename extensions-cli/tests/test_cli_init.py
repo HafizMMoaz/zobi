@@ -237,7 +237,7 @@ def test_frontend_package_json_content_is_correct(
     assert "scripts" in content
     assert "build" in content["scripts"]
     assert "peerDependencies" in content
-    assert "@zobi/core" in content["peerDependencies"]
+    assert "@zobi.dev/extension-api" in content["peerDependencies"]
 
 
 @pytest.mark.cli

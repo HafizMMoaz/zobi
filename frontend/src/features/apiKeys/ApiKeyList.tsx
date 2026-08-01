@@ -1,14 +1,14 @@
 import { useEffect, useRef, useState } from 'react';
-import { ZobiClient } from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
-import { css, useTheme } from '@zobi/core/theme';
+import { ZobiClient } from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import {
   Button,
   Table,
   Modal,
   Tag,
   Tooltip,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { ApiKeyCreateModal } from './ApiKeyCreateModal';
 

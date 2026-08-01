@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { ChartMetadata, ChartPlugin } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ChartMetadata, ChartPlugin } from '@zobi.dev/core';
 import { transformProps, controlPanel } from './config';
 import thumbnail from './images/thumbnail.png';
 import thumbnailDark from './images/thumbnail-dark.png';

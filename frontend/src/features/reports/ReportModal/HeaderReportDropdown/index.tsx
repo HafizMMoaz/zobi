@@ -1,15 +1,15 @@
 import { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   FeatureFlag,
   isFeatureEnabled,
   getExtensionsRegistry,
   usePrevious,
-} from '@zobi-ui/core';
-import { styled, css } from '@zobi/core/theme';
-import { MenuItem } from '@zobi-ui/core/components/Menu';
-import { Checkbox } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import { styled, css } from '@zobi.dev/extension-api/theme';
+import { MenuItem } from '@zobi.dev/core/components/Menu';
+import { Checkbox } from '@zobi.dev/core/components';
 import { noOp } from 'src/utils/common';
 import { ChartState } from 'src/explore/types';
 import { UserWithPermissionsAndRoles } from 'src/types/bootstrapTypes';

@@ -1,5 +1,5 @@
 /* eslint-disable camelcase */
-import { JsonValue } from '@zobi-ui/core';
+import { JsonValue } from '@zobi.dev/core';
 import {
   CHANGE_FILTER,
   UPDATE_DIRECT_PATH_TO_FILTER,

@@ -10,7 +10,7 @@ class ZobiErrorType(StrEnum):
     """
     Types of errors that can exist within Zobi.
 
-    Keep in sync with frontend/packages/zobi-ui-core/src/query/types/Query.ts
+    Keep in sync with frontend/packages/core/src/query/types/Query.ts
     """  # noqa: E501
 
     # Frontend errors
@@ -184,7 +184,7 @@ class ErrorLevel(StrEnum):
     """
     Levels of errors that can exist within Zobi.
 
-    Keep in sync with frontend/packages/zobi-ui-core/src/query/types/Query.ts
+    Keep in sync with frontend/packages/core/src/query/types/Query.ts
     """  # noqa: E501
 
     INFO = "info"

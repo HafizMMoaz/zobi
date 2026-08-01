@@ -1,8 +1,8 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ControlPanelConfig,
   sharedControls,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import { SingleValueType } from './SingleValueType';
 
 const config: ControlPanelConfig = {

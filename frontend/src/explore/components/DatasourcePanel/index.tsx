@@ -1,14 +1,14 @@
 import { useContext, useDeferredValue, useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { DatasourceType, Metric, QueryFormData } from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { DatasourceType, Metric, QueryFormData } from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 
-import { ControlConfig } from '@zobi-ui/chart-controls';
+import { ControlConfig } from '@zobi.dev/chart-controls';
 import AutoSizer from 'react-virtualized-auto-sizer';
 
 import { matchSorter, rankings } from 'match-sorter';
-import { Input } from '@zobi-ui/core/components';
+import { Input } from '@zobi.dev/core/components';
 import { SaveDatasetModal } from 'src/SqlLab/components/SaveDatasetModal';
 import { getDatasourceAsSaveableDataset } from 'src/utils/datasourceUtils';
 import { ExploreActions } from 'src/explore/actions/exploreActions';

@@ -1,4 +1,4 @@
-import { render } from '@zobi-ui/core/spec';
+import { render } from '@zobi.dev/core/spec';
 import Sparkline from './Sparkline';
 
 const mockEntries = [

@@ -6,7 +6,7 @@ import {
   getChartMetadataRegistry,
   ChartMetadata,
   VizType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { QUERY_MODE_REQUISITES } from 'src/explore/constants';
 import { Router, Route } from 'react-router-dom';
 import { createMemoryHistory } from 'history';
@@ -22,9 +22,9 @@ import reducerIndex from 'spec/helpers/reducerIndex';
 import * as exploreActions from 'src/explore/actions/exploreActions';
 import ExploreViewContainer from '.';
 
-jest.doMock('@zobi-ui/core', () => ({
+jest.doMock('@zobi.dev/core', () => ({
   __esModule: true,
-  ...jest.requireActual('@zobi-ui/core'),
+  ...jest.requireActual('@zobi.dev/core'),
   isMatrixifyEnabled: jest.fn(() => false),
 }));
 

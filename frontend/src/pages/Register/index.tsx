@@ -1,7 +1,7 @@
 
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { styled, css } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { styled, css } from '@zobi.dev/extension-api/theme';
 import {
   Button,
   Card,
@@ -9,7 +9,7 @@ import {
   Form,
   Input,
   Result,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { useState } from 'react';
 import getBootstrapData from 'src/utils/getBootstrapData';
 import ReactCAPTCHA from 'react-google-recaptcha';

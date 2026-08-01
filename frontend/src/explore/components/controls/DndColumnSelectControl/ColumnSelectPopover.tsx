@@ -9,25 +9,25 @@ import {
   useState,
 } from 'react';
 import { useSelector } from 'react-redux';
-import { editors } from '@zobi/core';
-import { t } from '@zobi/core/translation';
+import { editors } from '@zobi.dev/extension-api';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   AdhocColumn,
   isAdhocColumn,
   DatasourceType,
   Metric,
   QueryFormMetric,
-} from '@zobi-ui/core';
-import { styled, css } from '@zobi/core/theme';
-import { ColumnMeta, isSavedExpression } from '@zobi-ui/chart-controls';
-import Tabs from '@zobi-ui/core/components/Tabs';
+} from '@zobi.dev/core';
+import { styled, css } from '@zobi.dev/extension-api/theme';
+import { ColumnMeta, isSavedExpression } from '@zobi.dev/chart-controls';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import {
   Button,
   Form,
   FormItem,
   Select,
   EmptyState,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 
 import sqlKeywords from 'src/SqlLab/utils/sqlKeywords';
 import { getColumnKeywords } from 'src/explore/controlUtils/getColumnKeywords';

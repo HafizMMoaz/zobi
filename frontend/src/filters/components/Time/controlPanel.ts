@@ -1,8 +1,8 @@
 import {
   ControlPanelConfig,
   sharedControls,
-} from '@zobi-ui/chart-controls';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
 
 const config: ControlPanelConfig = {
   // For control input types, see: frontend/src/explore/components/controls/index.js

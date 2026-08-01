@@ -5,18 +5,18 @@ import {
   useMemo,
   useEffect,
 } from 'react';
-import type { SelectValue } from '@zobi-ui/core/components';
+import type { SelectValue } from '@zobi.dev/core/components';
 
-import { t } from '@zobi/core/translation';
-import { ZobiError } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { CertifiedBadge, Select } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiError } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { CertifiedBadge, Select } from '@zobi.dev/core/components';
 import { DatabaseSelector, ErrorMessageWithStackTrace } from 'src/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import type { DatabaseObject } from 'src/components/DatabaseSelector/types';
 import { StyledFormLabel } from 'src/components/DatabaseSelector/styles';
-import RefreshLabel from '@zobi-ui/core/components/RefreshLabel';
-import WarningIconWithTooltip from '@zobi-ui/core/components/WarningIconWithTooltip';
+import RefreshLabel from '@zobi.dev/core/components/RefreshLabel';
+import WarningIconWithTooltip from '@zobi.dev/core/components/WarningIconWithTooltip';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { useTables, Table } from 'src/hooks/apiResources';
 

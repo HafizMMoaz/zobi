@@ -1,5 +1,5 @@
-import { css } from '@zobi/core/theme';
-import { List } from '@zobi-ui/core/components';
+import { css } from '@zobi.dev/extension-api/theme';
+import { List } from '@zobi.dev/core/components';
 import { ValidationObject } from './types';
 import { TRANSLATIONS } from './AlertReportModal';
 

@@ -9,7 +9,7 @@ import { QueryEditor } from 'src/SqlLab/types';
 import { Store } from 'redux';
 import { initialState, defaultQueryEditor } from 'src/SqlLab/fixtures';
 import EditorWrapper from 'src/SqlLab/components/EditorWrapper';
-import type { editors } from '@zobi/core';
+import type { editors } from '@zobi.dev/extension-api';
 import {
   queryEditorSetCursorPosition,
   queryEditorSetDb,
@@ -21,10 +21,10 @@ fetchMock.get('glob:*/api/v1/database/*/function_names/', {
   function_names: [],
 });
 
-jest.mock('@zobi-ui/core/components/Select/Select', () => () => (
+jest.mock('@zobi.dev/core/components/Select/Select', () => () => (
   <div data-test="mock-deprecated-select-select" />
 ));
-jest.mock('@zobi-ui/core/components/Select/AsyncSelect', () => () => (
+jest.mock('@zobi.dev/core/components/Select/AsyncSelect', () => () => (
   <div data-test="mock-deprecated-async-select" />
 ));
 

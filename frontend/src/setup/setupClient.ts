@@ -1,5 +1,5 @@
-import { ZobiClient, ClientConfig } from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+import { ZobiClient, ClientConfig } from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import parseCookie from 'src/utils/parseCookie';
 import getBootstrapData from 'src/utils/getBootstrapData';
 

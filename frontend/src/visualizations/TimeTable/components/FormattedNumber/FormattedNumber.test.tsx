@@ -1,4 +1,4 @@
-import { render, screen } from '@zobi-ui/core/spec';
+import { render, screen } from '@zobi.dev/core/spec';
 import FormattedNumber from './FormattedNumber';
 
 test('should render number without format', () => {

@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { Icons, Tooltip } from '@zobi-ui/core/components';
-import type { MenuItem } from '@zobi-ui/core/components/Menu';
-import { t } from '@zobi/core/translation';
-import { ThemeMode, ThemeAlgorithm } from '@zobi/core/theme';
+import { Icons, Tooltip } from '@zobi.dev/core/components';
+import type { MenuItem } from '@zobi.dev/core/components/Menu';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ThemeMode, ThemeAlgorithm } from '@zobi.dev/extension-api/theme';
 import { NAVBAR_MENU_POPUP_OFFSET } from 'src/features/home/commonMenuData';
 
 export interface ThemeSubMenuOption {

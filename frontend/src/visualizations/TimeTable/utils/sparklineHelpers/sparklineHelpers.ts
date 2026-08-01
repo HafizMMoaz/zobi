@@ -1,4 +1,4 @@
-import { getTextDimension } from '@zobi-ui/core';
+import { getTextDimension } from '@zobi.dev/core';
 import { LinearScaleConfig } from '@visx/scale';
 import { AxisScaleOutput } from '@visx/axis';
 

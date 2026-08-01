@@ -1,5 +1,5 @@
-import { NO_TIME_RANGE, getExtensionsRegistry } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+import { NO_TIME_RANGE, getExtensionsRegistry } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { useCallback, useEffect } from 'react';
 import DateFilterControl from 'src/explore/components/controls/DateFilterControl';
 import { PluginFilterTimeProps } from './types';

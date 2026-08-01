@@ -1,5 +1,5 @@
 import { ReactNode } from 'react';
-import { Filter } from '@zobi-ui/core';
+import { Filter } from '@zobi.dev/core';
 import { FilterElement } from '../FilterBar/FilterControls/types';
 
 export enum FilterCardPlacement {

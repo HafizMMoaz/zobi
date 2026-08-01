@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { customTimeRangeDecode } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { customTimeRangeDecode } from '@zobi.dev/core';
 import {
   InfoTooltip,
   DatePicker,
@@ -10,7 +10,7 @@ import {
   Row,
   InputNumber,
   Loading,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   SINCE_GRAIN_OPTIONS,
   SINCE_MODE_OPTIONS,

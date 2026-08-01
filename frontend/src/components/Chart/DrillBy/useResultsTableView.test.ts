@@ -7,7 +7,7 @@ import {
   within,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { setupAGGridModules } from '@zobi-ui/core/components/ThemedAgGridReact';
+import { setupAGGridModules } from '@zobi.dev/core/components/ThemedAgGridReact';
 import { useResultsTableView } from './useResultsTableView';
 
 beforeAll(() => {

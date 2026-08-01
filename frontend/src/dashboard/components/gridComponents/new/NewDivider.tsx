@@ -1,6 +1,6 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 
-import { Icons } from '@zobi-ui/core/components';
+import { Icons } from '@zobi.dev/core/components';
 import { DIVIDER_TYPE } from '../../../util/componentTypes';
 import { NEW_DIVIDER_ID } from '../../../util/constants';
 import DraggableNewComponent from './DraggableNewComponent';

@@ -1,8 +1,8 @@
 import { FC } from 'react';
-import { FormItem, Input } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { NativeFilterType, ChartCustomizationType } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+import { FormItem, Input } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { NativeFilterType, ChartCustomizationType } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { CHART_CUSTOMIZATION_DIVIDER_PREFIX } from './utils';
 
 interface Props {

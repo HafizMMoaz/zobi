@@ -4,9 +4,9 @@ import {
   FunctionComponentElement,
   useMemo,
 } from 'react';
-import { JsonObject, JsonValue } from '@zobi-ui/core';
-import { useTheme } from '@zobi/core/theme';
-import { Constants } from '@zobi-ui/core/components';
+import { JsonObject, JsonValue } from '@zobi.dev/core';
+import { useTheme } from '@zobi.dev/extension-api/theme';
+import { Constants } from '@zobi.dev/core/components';
 import { debounce } from 'lodash';
 import { ControlFormItemNode } from './ControlFormItem';
 

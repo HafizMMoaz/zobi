@@ -1,4 +1,4 @@
-import type { ChartMetadata } from '@zobi-ui/core';
+import type { ChartMetadata } from '@zobi.dev/core';
 
 export type PluginContextType = {
   loading: boolean;

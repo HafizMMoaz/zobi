@@ -37,13 +37,13 @@ function createWrapper(roles: Record<string, string[][]>) {
   );
 }
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 
 // eslint-disable-next-line @typescript-eslint/no-var-requires
-const { isFeatureEnabled } = require('@zobi-ui/core');
+const { isFeatureEnabled } = require('@zobi.dev/core');
 
 test('returns canExportData true when user has can_export_data', () => {
   isFeatureEnabled.mockReturnValue(true);

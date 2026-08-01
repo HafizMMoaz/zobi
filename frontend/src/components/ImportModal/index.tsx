@@ -1,13 +1,13 @@
 import { FunctionComponent, useEffect, useState, ChangeEvent } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled, css } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, css } from '@zobi.dev/extension-api/theme';
 import { useImportResource } from 'src/views/CRUD/hooks';
 import {
   Upload,
   type UploadChangeParam,
   type UploadFile,
-} from '@zobi-ui/core/components/Upload';
-import { Button, Input, Modal } from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components/Upload';
+import { Button, Input, Modal } from '@zobi.dev/core/components';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
 import { ImportErrorAlert } from './ImportErrorAlert';
 import type { ImportModelsModalProps } from './types';

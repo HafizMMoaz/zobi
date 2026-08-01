@@ -1,12 +1,12 @@
 import { FunctionComponent, useState, useEffect, ChangeEvent } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
 import withToasts from 'src/components/MessageToasts/withToasts';
-import { Input, Modal } from '@zobi-ui/core/components';
+import { Input, Modal } from '@zobi.dev/core/components';
 import { EditorHost } from 'src/core/editors';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Typography } from '@zobi.dev/core/components/Typography';
 import { OnlyKeyWithType } from 'src/utils/types';
 import { TemplateObject } from './types';
 

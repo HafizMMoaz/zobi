@@ -1,4 +1,4 @@
-import { ControlPanelConfig } from '@zobi-ui/chart-controls';
+import { ControlPanelConfig } from '@zobi.dev/chart-controls';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [],

@@ -5,12 +5,12 @@ import {
   userEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { Menu, MenuItem } from '@zobi-ui/core/components/Menu';
+import { Menu, MenuItem } from '@zobi.dev/core/components/Menu';
 import {
   FeatureFlag,
   isFeatureEnabled,
   ZobiClient,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { useDownloadMenuItems } from '.';
 
 const mockAddSuccessToast = jest.fn();
@@ -25,8 +25,8 @@ jest.mock('src/components/MessageToasts/withToasts', () => ({
   }),
 }));
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn().mockReturnValue(false),
   ZobiClient: {
     get: jest.fn(),

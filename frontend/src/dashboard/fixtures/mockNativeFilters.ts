@@ -2,7 +2,7 @@ import {
   DataMaskStateWithId,
   NativeFiltersState,
   NativeFilterType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 export const mockDataMaskInfo: DataMaskStateWithId = {
   DefaultsID: {

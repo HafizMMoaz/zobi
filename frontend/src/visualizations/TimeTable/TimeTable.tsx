@@ -1,7 +1,7 @@
 import { useMemo, ReactNode } from 'react';
-import { InfoTooltip, TableView } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { InfoTooltip, TableView } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { sortNumberWithMixedTypes, processTimeTableData } from './utils';
 import { ValueCell, LeftCell, Sparkline } from './components';
 import type { TimeTableProps } from './types';

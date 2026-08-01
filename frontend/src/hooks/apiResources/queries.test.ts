@@ -5,7 +5,7 @@ import {
   createWrapper,
   defaultStore as store,
 } from 'spec/helpers/testing-library';
-import { QueryState } from '@zobi-ui/core';
+import { QueryState } from '@zobi.dev/core';
 import { api } from 'src/hooks/apiResources/queryApi';
 import { mapQueryResponse, useEditorQueriesQuery } from './queries';
 

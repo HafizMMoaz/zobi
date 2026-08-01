@@ -5,11 +5,11 @@ import {
   Form,
   Collapse,
   CollapseLabelInModal,
-} from '@zobi-ui/core/components';
-import { useJsonValidation } from '@zobi-ui/core/components/AsyncAceEditor';
+} from '@zobi.dev/core/components';
+import { useJsonValidation } from '@zobi.dev/core/components/AsyncAceEditor';
 import { type TagType } from 'src/components';
 import rison from 'rison';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ensureIsArray,
   isFeatureEnabled,
@@ -17,7 +17,7 @@ import {
   getCategoricalSchemeRegistry,
   ZobiClient,
   getClientErrorObject,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 import withToasts from 'src/components/MessageToasts/withToasts';
 import {

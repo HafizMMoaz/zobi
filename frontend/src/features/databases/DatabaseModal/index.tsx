@@ -1,7 +1,7 @@
-import { t } from '@zobi/core/translation';
-import { getExtensionsRegistry } from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { styled, ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getExtensionsRegistry } from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled, ZobiTheme } from '@zobi.dev/extension-api/theme';
 
 import {
   FunctionComponent,
@@ -13,11 +13,11 @@ import {
   useCallback,
   ChangeEvent,
 } from 'react';
-import { CheckboxChangeEvent } from '@zobi-ui/core/components/Checkbox/types';
+import { CheckboxChangeEvent } from '@zobi.dev/core/components/Checkbox/types';
 
 import { useHistory } from 'react-router-dom';
 import { setItem, LocalStorageKeys } from 'src/utils/localStorageHelpers';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import {
   Button,
   Icons,
@@ -31,7 +31,7 @@ import {
   type UploadChangeParam,
   type UploadFile,
   FormLabel,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { ErrorAlert, ErrorMessageWithStackTrace } from 'src/components';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import {

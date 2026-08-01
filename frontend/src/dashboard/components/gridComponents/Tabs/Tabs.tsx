@@ -6,13 +6,13 @@ import {
   memo,
   ReactElement,
 } from 'react';
-import { usePrevious } from '@zobi-ui/core';
-import { useTheme, styled } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import { usePrevious } from '@zobi.dev/core';
+import { useTheme, styled } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import { useSelector } from 'react-redux';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { LOG_ACTIONS_SELECT_DASHBOARD_TAB } from 'src/logger/LogUtils';
-import { Modal } from '@zobi-ui/core/components';
+import { Modal } from '@zobi.dev/core/components';
 import { DROP_LEFT, DROP_RIGHT } from 'src/dashboard/util/getDropPosition';
 import { Draggable } from '../../dnd/DragDroppable';
 import DashboardComponent from '../../../containers/DashboardComponent';

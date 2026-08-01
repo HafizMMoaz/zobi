@@ -1,5 +1,5 @@
 import { render, cleanup } from 'spec/helpers/testing-library';
-import { ErrorLevel, ErrorSource, ErrorTypeEnum } from '@zobi-ui/core';
+import { ErrorLevel, ErrorSource, ErrorTypeEnum } from '@zobi.dev/core';
 import { InvalidSQLErrorMessage } from './InvalidSQLErrorMessage';
 
 const defaultProps = {

@@ -1,5 +1,5 @@
 
-import { css } from '@zobi/core/theme';
+import { css } from '@zobi.dev/extension-api/theme';
 
 export const ellipsisCss = css`
   white-space: nowrap;

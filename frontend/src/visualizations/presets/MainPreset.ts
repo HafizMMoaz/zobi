@@ -3,27 +3,27 @@ import {
   FeatureFlag,
   Preset,
   VizType,
-} from '@zobi-ui/core';
-import CalendarChartPlugin from '@zobi/legacy-plugin-chart-calendar';
-import ChordChartPlugin from '@zobi/legacy-plugin-chart-chord';
-import CountryMapChartPlugin from '@zobi/legacy-plugin-chart-country-map';
-import HorizonChartPlugin from '@zobi/legacy-plugin-chart-horizon';
-import PairedTTestChartPlugin from '@zobi/legacy-plugin-chart-paired-t-test';
-import ParallelCoordinatesChartPlugin from '@zobi/legacy-plugin-chart-parallel-coordinates';
-import PartitionChartPlugin from '@zobi/legacy-plugin-chart-partition';
-import RoseChartPlugin from '@zobi/legacy-plugin-chart-rose';
-import TableChartPlugin from '@zobi/plugin-chart-table';
-import { WordCloudChartPlugin } from '@zobi/plugin-chart-word-cloud';
-import WorldMapChartPlugin from '@zobi/legacy-plugin-chart-world-map';
+} from '@zobi.dev/core';
+import CalendarChartPlugin from '@zobi.dev/calendar';
+import ChordChartPlugin from '@zobi.dev/chord';
+import CountryMapChartPlugin from '@zobi.dev/country-map';
+import HorizonChartPlugin from '@zobi.dev/horizon';
+import PairedTTestChartPlugin from '@zobi.dev/paired-t-test';
+import ParallelCoordinatesChartPlugin from '@zobi.dev/parallel-coordinates';
+import PartitionChartPlugin from '@zobi.dev/partition';
+import RoseChartPlugin from '@zobi.dev/rose';
+import TableChartPlugin from '@zobi.dev/table';
+import { WordCloudChartPlugin } from '@zobi.dev/word-cloud';
+import WorldMapChartPlugin from '@zobi.dev/world-map';
 import {
   BubbleChartPlugin,
   BulletChartPlugin,
   CompareChartPlugin,
   TimePivotChartPlugin,
-} from '@zobi/legacy-preset-chart-nvd3';
-import { DeckGLChartPreset } from '@zobi/preset-chart-deckgl';
-import ScatterMapChartPlugin from '@zobi/plugin-chart-point-cluster-map';
-import { CartodiagramPlugin } from '@zobi/plugin-chart-cartodiagram';
+} from '@zobi.dev/nvd3';
+import { DeckGLChartPreset } from '@zobi.dev/deckgl';
+import ScatterMapChartPlugin from '@zobi.dev/point-cluster-map';
+import { CartodiagramPlugin } from '@zobi.dev/cartodiagram';
 import {
   BigNumberChartPlugin,
   BigNumberTotalChartPlugin,
@@ -51,7 +51,7 @@ import {
   BigNumberPeriodOverPeriodChartPlugin,
   EchartsHeatmapChartPlugin,
   EchartsGanttChartPlugin,
-} from '@zobi/plugin-chart-echarts';
+} from '@zobi.dev/echarts';
 import {
   SelectFilterPlugin,
   RangeFilterPlugin,
@@ -65,10 +65,10 @@ import {
   ChartCustomizationTimeColumnPlugin,
   DeckglLayerVisibilityCustomizationPlugin,
 } from 'src/chartCustomizations/components';
-import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '@zobi/plugin-chart-pivot-table';
-import { HandlebarsChartPlugin } from '@zobi/plugin-chart-handlebars';
+import { PivotTableChartPlugin as PivotTableChartPluginV2 } from '@zobi.dev/pivot-table';
+import { HandlebarsChartPlugin } from '@zobi.dev/handlebars';
 import { ChartCustomizationPlugins, FilterPlugins } from 'src/constants';
-import AgGridTableChartPlugin from '@zobi/plugin-chart-ag-grid-table';
+import AgGridTableChartPlugin from '@zobi.dev/ag-grid-table';
 import TimeTableChartPlugin from '../TimeTable';
 
 export default class MainPreset extends Preset {

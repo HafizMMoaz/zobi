@@ -8,7 +8,7 @@ import {
   useReducer,
 } from 'react';
 
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { useDragDropManager } from 'react-dnd';
 import { DatasourcePanelDndItem } from '../DatasourcePanel/types';
 

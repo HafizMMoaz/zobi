@@ -1,6 +1,6 @@
 import { ReactNode, useEffect, useMemo, useRef, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import { t } from '@zobi.dev/extension-api/translation';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import { RoleObject } from 'src/pages/RolesList';
 import {
   EmptyWrapperType,
@@ -8,7 +8,7 @@ import {
   TableView,
   FormInstance,
   Icons,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   BaseModalProps,
   RoleForm,

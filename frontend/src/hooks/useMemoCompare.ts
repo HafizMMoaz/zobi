@@ -1,6 +1,6 @@
 
 import { useEffect, useRef } from 'react';
-import { isDefined } from '@zobi-ui/core';
+import { isDefined } from '@zobi.dev/core';
 
 export const useMemoCompare = <T>(
   next: T,

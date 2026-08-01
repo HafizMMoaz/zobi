@@ -1,7 +1,7 @@
-import { ZobiTheme, css } from '@zobi/core/theme';
+import { ZobiTheme, css } from '@zobi.dev/extension-api/theme';
 import { ReactElement } from 'react';
-import { Tooltip } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Tooltip } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { NotificationMethodOption } from '../types';
 
 const notificationStyledIcon = (theme: ZobiTheme) => css`

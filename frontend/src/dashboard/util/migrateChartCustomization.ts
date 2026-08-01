@@ -3,7 +3,7 @@ import {
   ChartCustomizationType,
   LegacyChartCustomizationItem,
   LegacyChartCustomizationDataset,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { ChartCustomizationPlugins } from 'src/constants';
 import { DASHBOARD_ROOT_ID } from './constants';
 

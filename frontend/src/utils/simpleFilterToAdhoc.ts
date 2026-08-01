@@ -3,7 +3,7 @@ import {
   isAdhocColumn,
   QueryObjectFilterClause,
   SimpleAdhocFilter,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   Clauses,
   ExpressionTypes,

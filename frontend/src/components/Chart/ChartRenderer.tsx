@@ -16,11 +16,11 @@ import {
   AgGridChartState,
   ContextMenuFilters,
   DataRecordFilters,
-} from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
+import { t } from '@zobi.dev/extension-api/translation';
 import { Logger, LOG_ACTIONS_RENDER_CHART } from 'src/logger/LogUtils';
-import { EmptyState } from '@zobi-ui/core/components';
+import { EmptyState } from '@zobi.dev/core/components';
 import { ChartSource } from 'src/types/ChartSource';
 import type { Datasource, ChartStatus } from 'src/explore/types';
 import type { Dispatch } from 'redux';

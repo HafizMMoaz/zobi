@@ -3,8 +3,8 @@ import {
   ChartProps,
   Behavior,
   Metric,
-} from '@zobi-ui/core';
-import { zobiTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { zobiTheme } from '@zobi.dev/extension-api/theme';
 import { transformProps, TableChartProps } from './transformProps';
 
 interface ExtendedMetric extends Omit<Metric, 'uuid'> {

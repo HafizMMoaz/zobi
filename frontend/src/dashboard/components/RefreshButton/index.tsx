@@ -1,8 +1,8 @@
 import { FC, useState, useCallback } from 'react';
-import { css, useTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import { Tooltip } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Tooltip } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 export interface RefreshButtonProps {
   onRefresh: () => Promise<void> | void;

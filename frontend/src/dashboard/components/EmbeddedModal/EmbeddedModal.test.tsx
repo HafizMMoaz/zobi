@@ -8,7 +8,7 @@ import {
   ZobiApiError,
   getExtensionsRegistry,
   makeApi,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import setupCodeOverrides from 'src/setup/setupCodeOverrides';
 import DashboardEmbedModal from '.';
 
@@ -16,8 +16,8 @@ const defaultResponse = {
   result: { uuid: 'uuid', dashboard_id: '1', allowed_domains: ['example.com'] },
 };
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual<any>('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual<any>('@zobi.dev/core'),
   makeApi: jest.fn(),
 }));
 

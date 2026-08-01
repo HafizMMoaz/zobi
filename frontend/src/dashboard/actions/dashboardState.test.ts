@@ -1,4 +1,4 @@
-import { ZobiClient, isFeatureEnabled } from '@zobi-ui/core';
+import { ZobiClient, isFeatureEnabled } from '@zobi.dev/core';
 import { waitFor } from 'spec/helpers/testing-library';
 
 import {
@@ -27,8 +27,8 @@ import { emptyFilters } from 'spec/fixtures/mockDashboardFilters';
 import mockDashboardData from 'spec/fixtures/mockDashboardData';
 import { navigateTo } from 'src/utils/navigationUtils';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

@@ -6,7 +6,7 @@ import {
   Divider,
   ChartCustomization,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { Dispatch } from 'redux';
 import { RootState } from 'src/dashboard/types';
 import { cloneDeep } from 'lodash';

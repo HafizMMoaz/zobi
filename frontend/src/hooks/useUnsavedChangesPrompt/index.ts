@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { getClientErrorObject } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getClientErrorObject } from '@zobi.dev/core';
 import { useEffect, useRef, useCallback, useState } from 'react';
 import { useHistory } from 'react-router-dom';
 import { useBeforeUnload } from 'src/hooks/useBeforeUnload';

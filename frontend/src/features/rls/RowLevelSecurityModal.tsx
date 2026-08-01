@@ -1,7 +1,7 @@
 
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { css, styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
 import {
@@ -11,7 +11,7 @@ import {
   InfoTooltip,
   LabeledErrorBoundInput,
   Input,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import rison from 'rison';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
 import { FILTER_OPTIONS } from './constants';

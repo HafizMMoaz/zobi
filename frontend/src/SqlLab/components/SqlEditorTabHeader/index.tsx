@@ -3,16 +3,16 @@ import { useMemo, FC } from 'react';
 import { bindActionCreators } from 'redux';
 import { useSelector, shallowEqual } from 'react-redux';
 import { useAppDispatch } from 'src/views/store';
-import { MenuDotsDropdown } from '@zobi-ui/core/components';
-import { Menu, MenuItemType } from '@zobi-ui/core/components/Menu';
-import { t } from '@zobi/core/translation';
-import { QueryState } from '@zobi-ui/core';
+import { MenuDotsDropdown } from '@zobi.dev/core/components';
+import { Menu, MenuItemType } from '@zobi.dev/core/components/Menu';
+import { t } from '@zobi.dev/extension-api/translation';
+import { QueryState } from '@zobi.dev/core';
 import {
   styled,
   css,
   ZobiTheme,
   useTheme,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import {
   removeQueryEditor,
   removeAllOtherQueryEditors,
@@ -21,7 +21,7 @@ import {
   toggleLeftBar,
 } from 'src/SqlLab/actions/sqlLab';
 import { QueryEditor, SqlLabRootState } from 'src/SqlLab/types';
-import { Icons, type IconType } from '@zobi-ui/core/components/Icons';
+import { Icons, type IconType } from '@zobi.dev/core/components/Icons';
 
 const TabTitleWrapper = styled.div`
   display: flex;

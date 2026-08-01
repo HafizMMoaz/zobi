@@ -1,8 +1,8 @@
 import { memo, useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
-import { css, ZobiTheme } from '@zobi/core/theme';
-import { Flex, Icons } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Flex, Icons } from '@zobi.dev/core/components';
 import { getChartKey } from 'src/explore/exploreUtils';
 import { ExplorePageState } from 'src/explore/types';
 import { FastVizSwitcherProps } from './types';

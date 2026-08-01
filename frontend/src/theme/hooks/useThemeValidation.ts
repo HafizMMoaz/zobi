@@ -1,7 +1,7 @@
 import { useMemo, useState, useEffect } from 'react';
-import { useJsonValidation } from '@zobi-ui/core/components/AsyncAceEditor';
-import type { JsonValidationAnnotation } from '@zobi-ui/core/components/AsyncAceEditor';
-import { type AnyThemeConfig } from '@zobi/core/theme';
+import { useJsonValidation } from '@zobi.dev/core/components/AsyncAceEditor';
+import type { JsonValidationAnnotation } from '@zobi.dev/core/components/AsyncAceEditor';
+import { type AnyThemeConfig } from '@zobi.dev/extension-api/theme';
 import { validateTheme } from '../utils/themeStructureValidation';
 
 /**

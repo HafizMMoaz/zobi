@@ -1,14 +1,14 @@
 
 import { useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import RoleListAddModal from 'src/features/roles/RoleListAddModal';
 import RoleListEditModal from 'src/features/roles/RoleListEditModal';
 import RoleListDuplicateModal from 'src/features/roles/RoleListDuplicateModal';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';
-import { ConfirmStatusChange, DeleteModal } from '@zobi-ui/core/components';
+import { ConfirmStatusChange, DeleteModal } from '@zobi.dev/core/components';
 import {
   ListView,
   ListViewFilterOperator as FilterOperator,
@@ -19,7 +19,7 @@ import {
 } from 'src/components';
 import { UserObject } from 'src/features/roles/types';
 import { isUserAdmin } from 'src/dashboard/util/permissionUtils';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { fetchUserOptions } from 'src/features/groups/utils';
 import {
   fetchGroupOptions,

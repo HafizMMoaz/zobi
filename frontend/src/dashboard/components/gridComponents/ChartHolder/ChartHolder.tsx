@@ -3,7 +3,7 @@ import { useState, useMemo, useCallback, useEffect, useRef, memo } from 'react';
 import { ResizeCallback, ResizeStartCallback } from 're-resizable';
 import cx from 'classnames';
 import { useSelector } from 'react-redux';
-import { css, useTheme } from '@zobi/core/theme';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import { LayoutItem, RootState } from 'src/dashboard/types';
 import AnchorLink from 'src/dashboard/components/AnchorLink';
 import Chart from 'src/dashboard/components/gridComponents/Chart';
@@ -14,7 +14,7 @@ import HoverMenu from 'src/dashboard/components/menu/HoverMenu';
 import ResizableContainer from 'src/dashboard/components/resizable/ResizableContainer';
 import getChartAndLabelComponentIdFromPath from 'src/dashboard/util/getChartAndLabelComponentIdFromPath';
 import useFilterFocusHighlightStyles from 'src/dashboard/util/useFilterFocusHighlightStyles';
-import { AntdThemeProvider } from '@zobi-ui/core/components';
+import { AntdThemeProvider } from '@zobi.dev/core/components';
 import { COLUMN_TYPE, ROW_TYPE } from 'src/dashboard/util/componentTypes';
 import {
   GRID_BASE_UNIT,

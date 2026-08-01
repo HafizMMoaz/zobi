@@ -5,8 +5,8 @@ import {
   ensureIsArray,
   getExtensionsRegistry,
   QueryFormData,
-} from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+} from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import { useEffect, useState } from 'react';
 import { Dataset } from 'src/components/Chart/types';
 import {

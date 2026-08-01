@@ -1,12 +1,12 @@
 import rison from 'rison';
 import { useState, useEffect, useCallback, useRef } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   makeApi,
   ZobiClient,
   JsonObject,
   getClientErrorObject,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 import {
   createErrorHandler,

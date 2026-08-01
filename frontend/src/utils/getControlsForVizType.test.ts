@@ -1,5 +1,5 @@
 
-import { getChartControlPanelRegistry, JsonObject } from '@zobi-ui/core';
+import { getChartControlPanelRegistry, JsonObject } from '@zobi.dev/core';
 import getControlsForVizType from 'src/utils/getControlsForVizType';
 
 const fakePluginControls: JsonObject = {

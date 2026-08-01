@@ -18,18 +18,18 @@ import {
   Flex,
   Typography,
   TreeSelect,
-} from '@zobi-ui/core/components';
-import { logging } from '@zobi/core/utils';
-import { t } from '@zobi/core/translation';
-import { DatasourceType, isDefined, ZobiClient } from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
+} from '@zobi.dev/core/components';
+import { logging } from '@zobi.dev/extension-api/utils';
+import { t } from '@zobi.dev/extension-api/translation';
+import { DatasourceType, isDefined, ZobiClient } from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
 import {
   css,
   styled,
   withTheme,
   type ZobiTheme,
-} from '@zobi/core/theme';
-import { Radio } from '@zobi-ui/core/components/Radio';
+} from '@zobi.dev/extension-api/theme';
+import { Radio } from '@zobi.dev/core/components/Radio';
 import { GRID_COLUMN_COUNT } from 'src/dashboard/util/constants';
 import { canUserEditDashboard } from 'src/dashboard/util/permissionUtils';
 import { setSaveChartModalVisibility } from 'src/explore/actions/saveModalActions';

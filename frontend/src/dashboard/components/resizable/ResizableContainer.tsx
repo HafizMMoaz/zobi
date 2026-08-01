@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo, ReactNode } from 'react';
 import { ResizeCallback, ResizeStartCallback, Resizable } from 're-resizable';
 import cx from 'classnames';
-import { css, styled } from '@zobi/core/theme';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 
 import {
   RightResizeHandle,

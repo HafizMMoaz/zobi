@@ -4,20 +4,20 @@ import {
   isFeatureEnabled,
   FeatureFlag,
   getExtensionsRegistry,
-} from '@zobi-ui/core';
-import { styled, css, ZobiTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core';
+import { styled, css, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import { Global } from '@emotion/react';
 import { shallowEqual, useDispatch, useSelector } from 'react-redux';
 import { bindActionCreators } from 'redux';
 import { LOG_ACTIONS_TOGGLE_EDIT_DASHBOARD } from 'src/logger/LogUtils';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import {
   Button,
   Tooltip,
   DeleteModal,
   UnsavedChangesModal,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { findPermission } from 'src/utils/findPermission';
 import { safeStringify } from 'src/utils/safeStringify';
 import Role from 'src/types/Role';
@@ -41,7 +41,7 @@ import {
   deleteActiveReport,
   DeletableReport,
 } from 'src/features/reports/ReportModal/actions';
-import { PageHeaderWithActions } from '@zobi-ui/core/components/PageHeaderWithActions';
+import { PageHeaderWithActions } from '@zobi.dev/core/components/PageHeaderWithActions';
 import { useUnsavedChangesPrompt } from 'src/hooks/useUnsavedChangesPrompt';
 import DashboardEmbedModal from '../EmbeddedModal';
 import OverwriteConfirm from '../OverwriteConfirm';

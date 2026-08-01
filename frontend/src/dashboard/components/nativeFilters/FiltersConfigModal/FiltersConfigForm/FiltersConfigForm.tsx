@@ -1,6 +1,6 @@
 /* eslint-disable react-hooks/rules-of-hooks */
-import { ColumnMeta, Metric } from '@zobi-ui/chart-controls';
-import { t } from '@zobi/core/translation';
+import { ColumnMeta, Metric } from '@zobi.dev/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Behavior,
   ChartDataResponseResult,
@@ -17,9 +17,9 @@ import {
   ClientErrorObject,
   getClientErrorObject,
   getExtensionsRegistry,
-} from '@zobi-ui/core';
-import { styled, useTheme, css } from '@zobi/core/theme';
-import { GenericDataType } from '@zobi/core/common';
+} from '@zobi.dev/core';
+import { styled, useTheme, css } from '@zobi.dev/extension-api/theme';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { debounce, isEqual } from 'lodash';
 import {
   forwardRef,
@@ -51,11 +51,11 @@ import {
   Flex,
   Input,
   Loading,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { BasicErrorAlert, ErrorMessageWithStackTrace } from 'src/components';
 import { addDangerToast } from 'src/components/MessageToasts/actions';
-import { Radio } from '@zobi-ui/core/components/Radio';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import { Radio } from '@zobi.dev/core/components/Radio';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import { cachedZobiGet } from 'src/utils/cachedZobiGet';
 import {
   Chart,

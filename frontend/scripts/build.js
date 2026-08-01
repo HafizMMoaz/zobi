@@ -18,8 +18,11 @@ const glob = globs?.length > 1 ? `{${globs.join(',')}}` : globs?.[0] || '*';
 
 const BABEL_CONFIG = '--config-file=../../babel.config.js';
 
+const SCOPE = '@zobi.dev';
+
 // packages that do not need tsc
 const META_PACKAGES = new Set(['demo', 'generator-zobi']);
+
 
 function run(cmd, options) {
   console.log(`\n>> ${cmd}\n`);
@@ -34,18 +37,19 @@ function run(cmd, options) {
 function getPackages(packagePattern, tsOnly = false) {
   let pattern = packagePattern;
   if (pattern === '*' && !tsOnly) {
-    return `{@zobi-ui/!(${[...META_PACKAGES].join('|')}),@zobi/*}`;
+    return `${SCOPE}/!(${[...META_PACKAGES].join('|')})`;
   }
   if (!pattern.includes('*')) {
     pattern = `*${pattern}`;
   }
 
-  // Find packages in both @zobi-ui and @zobi scopes
-  const zobiUiPackages = [
+  // All workspace packages live under a single scope, so one glob covers both
+  // `packages/*` and `plugins/*` via their node_modules links.
+  const packages = [
     ...new Set(
       fastGlob
         .sync([
-          `./node_modules/@zobi-ui/${pattern}/src/**/*.${
+          `./node_modules/${SCOPE}/${pattern}/src/**/*.${
             tsOnly ? '{ts,tsx}' : '{ts,tsx,js,jsx}'
           }`,
         ])
@@ -54,44 +58,15 @@ function getPackages(packagePattern, tsOnly = false) {
     ),
   ];
 
-  const zobiPackages = [
-    ...new Set(
-      fastGlob
-        .sync([
-          `./node_modules/@zobi/${pattern}/src/**/*.${
-            tsOnly ? '{ts,tsx}' : '{ts,tsx,js,jsx}'
-          }`,
-        ])
-        .map(x => x.split('/')[3]),
-    ),
-  ];
-
-  const allScopes = [];
-  if (zobiUiPackages.length > 0) {
-    allScopes.push(
-      `@zobi-ui/${
-        zobiUiPackages.length > 1
-          ? `{${zobiUiPackages.join(',')}}`
-          : zobiUiPackages[0]
-      }`,
-    );
-  }
-  if (zobiPackages.length > 0) {
-    allScopes.push(
-      `@zobi/${
-        zobiPackages.length > 1
-          ? `{${zobiPackages.join(',')}}`
-          : zobiPackages[0]
-      }`,
-    );
+  if (packages.length === 0) {
+    throw new Error(`No matching packages for pattern '${packagePattern}'`);
   }
 
-  if (allScopes.length === 0) {
-    throw new Error('No matching packages');
-  }
-
-  return allScopes.length > 1 ? `{${allScopes.join(',')}}` : allScopes[0];
+  return `${SCOPE}/${
+    packages.length > 1 ? `{${packages.join(',')}}` : packages[0]
+  }`;
 }
+
 
 let scope = getPackages(glob);
 

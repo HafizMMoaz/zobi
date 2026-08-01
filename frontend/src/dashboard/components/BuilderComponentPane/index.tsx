@@ -1,8 +1,8 @@
 /* eslint-env browser */
 import tinycolor from 'tinycolor2';
-import Tabs from '@zobi-ui/core/components/Tabs';
-import { t } from '@zobi/core/translation';
-import { css, ZobiTheme } from '@zobi/core/theme';
+import Tabs from '@zobi.dev/core/components/Tabs';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import SliceAdder from 'src/dashboard/containers/SliceAdder';
 import dashboardComponents from 'src/visualizations/presets/dashboardComponents';
 import NewColumn from '../gridComponents/new/NewColumn';

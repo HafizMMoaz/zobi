@@ -4,7 +4,7 @@ import SelectAsyncControl from '.';
 
 const datasetsOwnersEndpoint = 'glob:*/api/v1/dataset/related/owners*';
 
-jest.mock('@zobi-ui/core/components/Select/Select', () => ({
+jest.mock('@zobi.dev/core/components/Select/Select', () => ({
   __esModule: true,
   default: (props: any) => (
     <div

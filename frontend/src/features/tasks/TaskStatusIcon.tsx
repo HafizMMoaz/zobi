@@ -1,9 +1,9 @@
 
 import React from 'react';
-import { useTheme, ZobiTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Tooltip } from '@zobi-ui/core/components';
+import { useTheme, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Tooltip } from '@zobi.dev/core/components';
 import { TaskStatus } from './types';
 import { formatProgressTooltip } from './timeUtils';
 

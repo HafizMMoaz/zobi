@@ -5,12 +5,12 @@ import {
   AdhocMetric,
   JsonObject,
   LatestQueryFormData,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   ColumnMeta,
   ControlStateMapping,
   Dataset,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import { DatabaseObject } from 'src/views/CRUD/types';
 import { UserWithPermissionsAndRoles } from 'src/types/bootstrapTypes';
 import { Slice } from 'src/types/Chart';

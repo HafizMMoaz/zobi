@@ -1,17 +1,17 @@
 
 import { useCallback, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
-import { styled, useTheme, css } from '@zobi/core/theme';
-import { MenuProps } from '@zobi-ui/core/components/Menu';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, useTheme, css } from '@zobi.dev/extension-api/theme';
+import { MenuProps } from '@zobi.dev/core/components/Menu';
 import { FilterBarOrientation, RootState } from 'src/dashboard/types';
 import {
   saveFilterBarOrientation,
   saveCrossFiltersSetting,
 } from 'src/dashboard/actions/dashboardInfo';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Button, Checkbox, Dropdown } from '@zobi-ui/core/components';
-import { Space } from '@zobi-ui/core/components/Space';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Button, Checkbox, Dropdown } from '@zobi.dev/core/components';
+import { Space } from '@zobi.dev/core/components/Space';
 import { clearDataMaskState } from 'src/dataMask/actions';
 import { useFilters } from 'src/dashboard/components/nativeFilters/FilterBar/state';
 import { useFilterConfigModal } from 'src/dashboard/components/nativeFilters/FilterBar/FilterConfigurationLink/useFilterConfigModal';

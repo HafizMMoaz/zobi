@@ -1,4 +1,4 @@
-import { ChartCustomizationType } from '@zobi-ui/core';
+import { ChartCustomizationType } from '@zobi.dev/core';
 import { ChartCustomizationPlugins } from 'src/constants';
 import {
   isLegacyChartCustomizationFormat,

@@ -1,7 +1,7 @@
 import { useCallback } from 'react';
-import { t } from '@zobi/core/translation';
-import { Filter, Divider, NativeFilterType } from '@zobi-ui/core';
-import type { FormInstance } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Filter, Divider, NativeFilterType } from '@zobi.dev/core';
+import type { FormInstance } from '@zobi.dev/core/components';
 import { NativeFiltersForm } from '../types';
 import { generateFilterId, hasCircularDependency } from '../utils';
 import type { ItemStateManager } from './useItemStateManager';

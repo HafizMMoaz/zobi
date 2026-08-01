@@ -1,4 +1,4 @@
-import type { common as core } from '@zobi/core';
+import type { common as core } from '@zobi.dev/extension-api';
 import { AnyAction } from 'redux';
 import { listenerMiddleware, RootState, store } from 'src/views/store';
 import { AnyListenerPredicate } from '@reduxjs/toolkit';

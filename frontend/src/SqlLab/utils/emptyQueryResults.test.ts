@@ -1,4 +1,4 @@
-import type { QueryResponse } from '@zobi-ui/core';
+import type { QueryResponse } from '@zobi.dev/core';
 import {
   emptyQueryResults,
   clearQueryEditors,

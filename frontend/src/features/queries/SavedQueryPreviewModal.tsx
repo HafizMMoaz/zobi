@@ -1,7 +1,7 @@
 import { FunctionComponent } from 'react';
-import { t } from '@zobi/core/translation';
-import { useTheme, styled } from '@zobi/core/theme';
-import { Button, Modal } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme, styled } from '@zobi.dev/extension-api/theme';
+import { Button, Modal } from '@zobi.dev/core/components';
 import SyntaxHighlighterCopy from 'src/features/queries/SyntaxHighlighterCopy';
 import withToasts, {
   ToastProps,

@@ -1,9 +1,9 @@
-import { t } from '@zobi/core/translation';
-import { getClientErrorObject, ZobiClient } from '@zobi-ui/core';
-import { css } from '@zobi/core/theme';
-import { Button } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getClientErrorObject, ZobiClient } from '@zobi.dev/core';
+import { css } from '@zobi.dev/extension-api/theme';
+import { Button } from '@zobi.dev/core/components';
 import { CopyToClipboard } from 'src/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import useQueryEditor from 'src/SqlLab/hooks/useQueryEditor';
 import { LOG_ACTIONS_SQLLAB_COPY_LINK } from 'src/logger/LogUtils';

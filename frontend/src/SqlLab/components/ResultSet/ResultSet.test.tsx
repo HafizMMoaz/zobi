@@ -10,7 +10,7 @@ import configureStore from 'redux-mock-store';
 import { Store } from 'redux';
 import thunk from 'redux-thunk';
 import fetchMock from 'fetch-mock';
-import { setupAGGridModules } from '@zobi-ui/core/components/ThemedAgGridReact';
+import { setupAGGridModules } from '@zobi.dev/core/components/ThemedAgGridReact';
 import ResultSet from 'src/SqlLab/components/ResultSet';
 import * as getBootstrapData from 'src/utils/getBootstrapData';
 import {
@@ -23,15 +23,15 @@ import {
   queryWithNoQueryLimit,
   failedQueryWithFrontendTimeoutErrors,
 } from 'src/SqlLab/fixtures';
-import { FeatureFlag, isFeatureEnabled } from '@zobi-ui/core';
+import { FeatureFlag, isFeatureEnabled } from '@zobi.dev/core';
 import { ViewLocations } from 'src/SqlLab/contributions';
 import {
   registerToolbarAction,
   cleanupExtensions,
 } from 'spec/helpers/extensionTestHelpers';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn().mockReturnValue(false),
 }));
 

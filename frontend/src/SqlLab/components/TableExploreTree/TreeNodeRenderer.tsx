@@ -1,10 +1,10 @@
-import { css, styled, useTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import type { NodeRendererProps } from 'react-arborist';
-import { Icons, Typography } from '@zobi-ui/core/components';
-import RefreshLabel from '@zobi-ui/core/components/RefreshLabel';
+import { Icons, Typography } from '@zobi.dev/core/components';
+import RefreshLabel from '@zobi.dev/core/components/RefreshLabel';
 import ColumnElement from 'src/SqlLab/components/ColumnElement';
-import { ActionButton } from '@zobi-ui/core/components/ActionButton';
+import { ActionButton } from '@zobi.dev/core/components/ActionButton';
 import copyTextToClipboard from 'src/utils/copy';
 import type { TreeNodeData } from './types';
 

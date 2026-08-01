@@ -1,6 +1,6 @@
 import { isEqual } from 'lodash';
 import { DiffType } from 'src/types/DiffType';
-import { JsonObject } from '@zobi-ui/core';
+import { JsonObject } from '@zobi.dev/core';
 import { sanitizeFormData } from '../sanitizeFormData';
 
 export const noisyKeys = new Set(['filters', 'having', 'where']);

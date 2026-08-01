@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock';
-import { isFeatureEnabled } from '@zobi-ui/core';
+import { isFeatureEnabled } from '@zobi.dev/core';
 import {
   screen,
   selectOption,
@@ -17,8 +17,8 @@ import {
 
 jest.setTimeout(30000);
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

@@ -1,7 +1,7 @@
 import { useEffect, useState } from 'react';
 // eslint-disable-next-line no-restricted-syntax
-import * as zobiCore from '@zobi/core';
-import { FeatureFlag, isFeatureEnabled } from '@zobi-ui/core';
+import * as zobiCore from '@zobi.dev/extension-api';
+import { FeatureFlag, isFeatureEnabled } from '@zobi.dev/core';
 import {
   authentication,
   core,
@@ -49,7 +49,7 @@ const ExtensionsStartup: React.FC<{ children?: React.ReactNode }> = ({
       return;
     }
 
-    // Provide the implementations for @zobi/core
+    // Provide the implementations for @zobi.dev/extension-api
     window.zobi = {
       ...zobiCore,
       authentication,

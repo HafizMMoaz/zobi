@@ -15,10 +15,10 @@ import EstimateQueryCostButton, {
 const middlewares = [thunk];
 const mockStore = configureStore(middlewares);
 
-jest.mock('@zobi-ui/core/components/Select/Select', () => () => (
+jest.mock('@zobi.dev/core/components/Select/Select', () => () => (
   <div data-test="mock-deprecated-select-select" />
 ));
-jest.mock('@zobi-ui/core/components/Select/AsyncSelect', () => () => (
+jest.mock('@zobi.dev/core/components/Select/AsyncSelect', () => () => (
   <div data-test="mock-deprecated-async-select" />
 ));
 

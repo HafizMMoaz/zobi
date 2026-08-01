@@ -1,7 +1,7 @@
-import { t } from '@zobi/core/translation';
-import { useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 
-import { Tooltip } from '@zobi-ui/core/components';
+import { Tooltip } from '@zobi.dev/core/components';
 import { ClassNames } from '@emotion/react';
 
 const TIME_PICKER_HELPER = (

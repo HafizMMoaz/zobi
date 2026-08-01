@@ -1,8 +1,8 @@
 import { useState, useMemo } from 'react';
-import { Button, Row, Col, InputNumber } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { validateNumber } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+import { Button, Row, Col, InputNumber } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { validateNumber } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import ControlHeader from '../../ControlHeader';
 import ColorPickerControl from '../ColorPickerControl';
 import {

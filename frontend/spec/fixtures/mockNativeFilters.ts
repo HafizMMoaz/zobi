@@ -3,7 +3,7 @@ import {
   ExtraFormData,
   NativeFiltersState,
   NativeFilterType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 export const nativeFilters: NativeFiltersState = {
   filters: {

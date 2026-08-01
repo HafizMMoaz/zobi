@@ -1,7 +1,7 @@
-import { configure, LanguagePack } from '@zobi/core/translation';
-import { logging } from '@zobi/core/utils';
-import { makeApi, initFeatureFlags } from '@zobi-ui/core';
-import { extendedDayjs as dayjs } from '@zobi-ui/core/utils/dates';
+import { configure, LanguagePack } from '@zobi.dev/extension-api/translation';
+import { logging } from '@zobi.dev/extension-api/utils';
+import { makeApi, initFeatureFlags } from '@zobi.dev/core';
+import { extendedDayjs as dayjs } from '@zobi.dev/core/utils/dates';
 import setupClient from './setup/setupClient';
 import setupColors from './setup/setupColors';
 import setupFormatters from './setup/setupFormatters';

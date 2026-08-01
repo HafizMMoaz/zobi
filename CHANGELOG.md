@@ -37,7 +37,7 @@ backend and a React/TypeScript frontend.
 - React + TypeScript single-page application under `frontend/src/`
 - Chart builder (`explore/`), dashboard interface (`dashboard/`), and SQL editor
   (`SqlLab/`)
-- `@zobi-ui/core` component library under `frontend/packages/zobi-ui-core/`,
+- `@zobi.dev/core` component library under `frontend/packages/core/`,
   built on Ant Design with theming driven by antd tokens
 - Chart plugin packages under `frontend/plugins/`
 - Theme system supporting light and dark modes, with optional UI-based theme
@@ -61,7 +61,7 @@ backend and a React/TypeScript frontend.
 
 **Embedding**
 
-- `@zobi/embedded-sdk` (`embedded-sdk/`) for embedding dashboards into external
+- `@zobi.dev/embedded-sdk` (`embedded-sdk/`) for embedding dashboards into external
   applications via a sandboxed iframe
 - Guest token authentication, so host applications can grant scoped access
   without requiring users to log into Zobi directly; supports row-level security
@@ -85,7 +85,7 @@ SQLAlchemy metadata models, database connector layer, and Flask-AppBuilder
 authentication and RBAC wiring.
 
 **Phase 2 — Visualization and UI (late June 2026).** React/TypeScript frontend,
-chart builder, dashboard interface, and the `@zobi-ui/core` component library.
+chart builder, dashboard interface, and the `@zobi.dev/core` component library.
 An early version of the platform was presented as a university project on
 **26 June 2026**.
 

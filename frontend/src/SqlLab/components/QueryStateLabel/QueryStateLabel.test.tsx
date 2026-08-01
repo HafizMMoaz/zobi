@@ -1,9 +1,9 @@
 import { isValidElement } from 'react';
-import type { QueryState } from '@zobi-ui/core';
+import type { QueryState } from '@zobi.dev/core';
 import { render } from 'spec/helpers/testing-library';
 import QueryStateLabel from '.';
 
-jest.mock('@zobi-ui/core/components/Label', () => ({
+jest.mock('@zobi.dev/core/components/Label', () => ({
   __esModule: true,
   Label: () => <div data-test="mock-label" />,
 }));

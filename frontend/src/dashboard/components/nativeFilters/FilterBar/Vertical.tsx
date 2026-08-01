@@ -13,12 +13,12 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import cx from 'classnames';
-import { t } from '@zobi/core/translation';
-import { styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
 import { RootState } from 'src/dashboard/types';
-import { DataMaskStateWithId } from '@zobi-ui/core';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { EmptyState, Loading } from '@zobi-ui/core/components';
+import { DataMaskStateWithId } from '@zobi.dev/core';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { EmptyState, Loading } from '@zobi.dev/core/components';
 import { useChartLayoutItems } from 'src/dashboard/util/useChartLayoutItems';
 import { useChartIds } from 'src/dashboard/util/charts/useChartIds';
 import { getFilterBarTestId, useChartsVerboseMaps } from './utils';

@@ -5,7 +5,7 @@ import { MemoryRouter } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';
 import { QueryParamProvider } from 'use-query-params';
 import { ReactRouter5Adapter } from 'use-query-params/adapters/react-router-5';
-import { isFeatureEnabled } from '@zobi-ui/core';
+import { isFeatureEnabled } from '@zobi.dev/core';
 import DashboardListComponent from 'src/pages/DashboardList';
 import {
   API_ENDPOINTS,
@@ -20,8 +20,8 @@ const DashboardList = DashboardListComponent as unknown as React.FC<
 
 jest.setTimeout(30000);
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

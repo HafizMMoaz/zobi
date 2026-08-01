@@ -1,14 +1,14 @@
 import { useMemo } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   DataMaskState,
   DataMaskStateWithId,
   isDefined,
   ChartCustomization,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
-import { css, ZobiTheme, styled } from '@zobi/core/theme';
-import { Button, Tooltip, Icons, Flex } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import { css, ZobiTheme, styled } from '@zobi.dev/extension-api/theme';
+import { Button, Tooltip, Icons, Flex } from '@zobi.dev/core/components';
 import tinycolor from 'tinycolor2';
 import { FilterBarOrientation } from 'src/dashboard/types';
 import { getFilterBarTestId } from '../utils';

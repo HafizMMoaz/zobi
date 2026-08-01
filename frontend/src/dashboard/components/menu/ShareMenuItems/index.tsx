@@ -1,16 +1,16 @@
 import { ComponentProps, RefObject } from 'react';
 import copyTextToClipboard from 'src/utils/copy';
-import { logging } from '@zobi/core/utils';
-import { t } from '@zobi/core/translation';
+import { logging } from '@zobi.dev/extension-api/utils';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   FeatureFlag,
   isFeatureEnabled,
   LatestQueryFormData,
-} from '@zobi-ui/core';
-import { Menu, MenuItem } from '@zobi-ui/core/components/Menu';
+} from '@zobi.dev/core';
+import { Menu, MenuItem } from '@zobi.dev/core/components/Menu';
 import { getDashboardPermalink } from 'src/utils/urlUtils';
 import EmbedCodeContent from 'src/explore/components/EmbedCodeContent';
-import { ModalTrigger } from '@zobi-ui/core/components';
+import { ModalTrigger } from '@zobi.dev/core/components';
 import { MenuKeys, RootState } from 'src/dashboard/types';
 import { shallowEqual, useSelector } from 'react-redux';
 import { hasStatefulCharts } from 'src/dashboard/util/chartStateConverter';

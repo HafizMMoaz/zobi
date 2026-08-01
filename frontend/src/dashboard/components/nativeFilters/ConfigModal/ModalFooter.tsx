@@ -4,10 +4,10 @@ import {
   type OnClickHandler,
   Icons,
   Flex,
-} from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
-import { Alert } from '@zobi/core/components';
-import { styled, css, useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled, css, useTheme } from '@zobi.dev/extension-api/theme';
 import { BaseExpandButtonWrapper } from './SharedStyles';
 
 const StyledAlert = styled(Alert)`

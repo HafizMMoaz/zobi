@@ -1,5 +1,5 @@
 import { render, screen } from 'spec/helpers/testing-library';
-import { Input } from '@zobi-ui/core/components';
+import { Input } from '@zobi.dev/core/components';
 import { ModalFormField } from './ModalFormField';
 
 test('renders field with label and input', () => {

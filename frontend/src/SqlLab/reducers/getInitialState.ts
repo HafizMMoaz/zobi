@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { nanoid } from 'nanoid';
 import type { BootstrapData } from 'src/types/bootstrapTypes';
 import type { InitialState } from 'src/hooks/apiResources/sqlLab';

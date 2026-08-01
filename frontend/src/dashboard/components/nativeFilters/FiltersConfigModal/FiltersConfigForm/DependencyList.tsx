@@ -1,8 +1,8 @@
 import { useState, useEffect } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Select } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Select } from '@zobi.dev/core/components';
 import { CollapsibleControl } from './CollapsibleControl';
 import { INPUT_WIDTH } from './constants';
 

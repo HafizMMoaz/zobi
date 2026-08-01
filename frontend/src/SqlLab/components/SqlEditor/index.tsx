@@ -10,21 +10,21 @@ import {
   FC,
 } from 'react';
 
-import type { editors } from '@zobi/core';
+import type { editors } from '@zobi.dev/extension-api';
 import useEffectEvent from 'src/hooks/useEffectEvent';
 import { shallowEqual, useSelector } from 'react-redux';
 import { useAppDispatch } from 'src/views/store';
 import AutoSizer from 'react-virtualized-auto-sizer';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   FeatureFlag,
   isFeatureEnabled,
   getExtensionsRegistry,
   QueryResponse,
   Query,
-} from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { css, styled, useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import type {
   QueryEditor,
   SqlLabRootState,
@@ -39,11 +39,11 @@ import {
   EmptyState,
   Input,
   Modal,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { Splitter } from 'src/components/Splitter';
-import { Skeleton } from '@zobi-ui/core/components/Skeleton';
-import { Switch } from '@zobi-ui/core/components/Switch';
-import { Menu, MenuItemType } from '@zobi-ui/core/components/Menu';
+import { Skeleton } from '@zobi.dev/core/components/Skeleton';
+import { Switch } from '@zobi.dev/core/components/Switch';
+import { Menu, MenuItemType } from '@zobi.dev/core/components/Menu';
 import { detectOS } from 'src/utils/common';
 import {
   addNewQueryEditor,

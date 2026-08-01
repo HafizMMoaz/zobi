@@ -7,8 +7,8 @@ import {
 } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import userEvent from '@testing-library/user-event';
-import { ThemeProvider, zobiTheme } from '@zobi/core/theme';
-import type { editors } from '@zobi/core';
+import { ThemeProvider, zobiTheme } from '@zobi.dev/extension-api/theme';
+import type { editors } from '@zobi.dev/extension-api';
 import AceEditorProvider from './AceEditorProvider';
 
 type EditorProps = editors.EditorProps;
@@ -34,7 +34,7 @@ const mockEditor = {
 
 let mockOnLoadCallback: ((editor: typeof mockEditor) => void) | undefined;
 
-jest.mock('@zobi-ui/core/components', () => ({
+jest.mock('@zobi.dev/core/components', () => ({
   __esModule: true,
   FullSQLEditor: jest.fn((props: { onLoad?: () => void }) => {
     mockOnLoadCallback = props.onLoad;

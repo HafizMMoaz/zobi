@@ -1,7 +1,7 @@
 
 import { useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { Input, Collapse, FormItem } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Input, Collapse, FormItem } from '@zobi.dev/core/components';
 import { CustomParametersChangeType, FieldPropTypes } from '../../types';
 
 const LABELS = {

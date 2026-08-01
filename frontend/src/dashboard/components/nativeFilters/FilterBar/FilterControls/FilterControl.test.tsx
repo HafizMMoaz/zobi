@@ -5,7 +5,7 @@ import {
   ChartCustomizationType,
   Filter,
   NativeFilterType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { ChartCustomizationPlugins } from 'src/constants';
 import FilterControl from './FilterControl';
 

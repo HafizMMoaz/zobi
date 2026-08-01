@@ -1,4 +1,4 @@
-import { ControlComponentProps } from '@zobi-ui/chart-controls';
+import { ControlComponentProps } from '@zobi.dev/chart-controls';
 
 export type ZoomConfigs = ZoomConfigsFixed | ZoomConfigsLinear | ZoomConfigsExp;
 

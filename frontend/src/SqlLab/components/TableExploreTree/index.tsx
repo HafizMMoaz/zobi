@@ -9,8 +9,8 @@ import {
 } from 'react';
 import { useSelector, shallowEqual } from 'react-redux';
 import { useAppDispatch } from 'src/views/store';
-import { styled, css, useTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import { styled, css, useTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import AutoSizer from 'react-virtualized-auto-sizer';
 // Due to performance issues with the virtual list in the existing Ant Design (antd)-based tree view,
 // it has been replaced with react-arborist solution.
@@ -21,7 +21,7 @@ import {
   Input,
   Empty,
   Button,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import type { SqlLabRootState } from 'src/SqlLab/types';
 import useQueryEditor from 'src/SqlLab/hooks/useQueryEditor';
 import { addTable, removeTables } from 'src/SqlLab/actions/sqlLab';

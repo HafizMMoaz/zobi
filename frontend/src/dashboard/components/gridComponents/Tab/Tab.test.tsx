@@ -7,7 +7,7 @@ import {
   userEvent,
 } from 'spec/helpers/testing-library';
 import DashboardComponent from 'src/dashboard/containers/DashboardComponent';
-import { EditableTitle } from '@zobi-ui/core/components';
+import { EditableTitle } from '@zobi.dev/core/components';
 import { setEditMode, onRefresh } from 'src/dashboard/actions/dashboardState';
 
 import type { FC } from 'react';
@@ -24,7 +24,7 @@ jest.mock('src/dashboard/util/getChartIdsFromComponent', () =>
 jest.mock('src/dashboard/containers/DashboardComponent', () =>
   jest.fn(() => <div data-test="DashboardComponent" />),
 );
-jest.mock('@zobi-ui/core/components/EditableTitle', () => ({
+jest.mock('@zobi.dev/core/components/EditableTitle', () => ({
   __esModule: true,
   EditableTitle: jest.fn(props => (
     <button type="button" data-test="EditableTitle" onClick={props.onSaveTitle}>

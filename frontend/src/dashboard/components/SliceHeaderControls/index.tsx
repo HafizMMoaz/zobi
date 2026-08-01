@@ -9,8 +9,8 @@ import {
 } from 'react';
 
 import { RouteComponentProps, useHistory } from 'react-router-dom';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
-import { t } from '@zobi/core/translation';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Behavior,
   isFeatureEnabled,
@@ -19,20 +19,20 @@ import {
   VizType,
   BinaryQueryObjectFilterClause,
   QueryFormData,
-} from '@zobi-ui/core';
-import { css, useTheme, styled } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { css, useTheme, styled } from '@zobi.dev/extension-api/theme';
 import { useSelector } from 'react-redux';
-import { Menu, MenuItem } from '@zobi-ui/core/components/Menu';
+import { Menu, MenuItem } from '@zobi.dev/core/components/Menu';
 import {
   NoAnimationDropdown,
   Tooltip,
   Button,
   ModalTrigger,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { useShareMenuItems } from 'src/dashboard/components/menu/ShareMenuItems';
 import downloadAsImage from 'src/utils/downloadAsImage';
 import { getSliceHeaderTooltip } from 'src/dashboard/util/getSliceHeaderTooltip';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import ViewQueryModal from 'src/explore/components/controls/ViewQueryModal';
 import { ResultsPaneOnDashboard } from 'src/explore/components/DataTablesPane';
 import { useDrillDetailMenuItems } from 'src/components/Chart/useDrillDetailMenuItems';

@@ -1,4 +1,4 @@
-import { JsonPrimitive } from '@zobi-ui/core';
+import { JsonPrimitive } from '@zobi.dev/core';
 
 export type NaNTreatment = 'alwaysLast' | 'asSmallest' | 'asLargest';
 

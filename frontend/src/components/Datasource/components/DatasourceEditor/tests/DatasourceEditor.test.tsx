@@ -6,7 +6,7 @@ import {
   userEvent,
   within,
 } from 'spec/helpers/testing-library';
-import { DatasourceType, isFeatureEnabled } from '@zobi-ui/core';
+import { DatasourceType, isFeatureEnabled } from '@zobi.dev/core';
 import {
   createProps,
   DATASOURCE_ENDPOINT,
@@ -18,8 +18,8 @@ import {
   createDeferredPromise,
 } from './DatasourceEditor.test.utils';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

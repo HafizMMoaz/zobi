@@ -1,6 +1,6 @@
 
 import { memo, useMemo } from 'react';
-import { ensureIsArray } from '@zobi-ui/core';
+import { ensureIsArray } from '@zobi.dev/core';
 import { ChartLinkedDashboard } from 'src/types/Chart';
 import CrossLinks from './CrossLinks';
 

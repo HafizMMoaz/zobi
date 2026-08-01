@@ -1,5 +1,5 @@
 import { render, screen } from 'spec/helpers/testing-library';
-import { Icons } from '@zobi-ui/core/components';
+import { Icons } from '@zobi.dev/core/components';
 import { ModalTitleWithIcon } from '.';
 
 // ModalTitleWithIcon

@@ -1,15 +1,15 @@
 import { FunctionComponent, useState, useEffect, useCallback } from 'react';
 import { useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ZobiClient,
   getClientErrorObject,
   ZobiError,
   isFeatureEnabled,
   FeatureFlag,
-} from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { styled, useTheme, css } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled, useTheme, css } from '@zobi.dev/extension-api/theme';
 
 import {
   Icons,
@@ -17,7 +17,7 @@ import {
   Checkbox,
   Modal,
   AsyncEsmComponent,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { ErrorMessageWithStackTrace } from 'src/components';
 import type { DatasetObject } from 'src/features/datasets/types';

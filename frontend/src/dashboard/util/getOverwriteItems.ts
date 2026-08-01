@@ -1,4 +1,4 @@
-import { JsonObject } from '@zobi-ui/core';
+import { JsonObject } from '@zobi.dev/core';
 import { OVERWRITE_INSPECT_FIELDS } from 'src/dashboard/constants';
 
 const JSON_KEYS = new Set(['json_metadata', 'position_json']);

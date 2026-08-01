@@ -1,5 +1,5 @@
-import { getChartControlPanelRegistry } from '@zobi-ui/core';
-import { convertAgGridStateToOwnState } from '@zobi-ui/plugin-chart-ag-grid-table';
+import { getChartControlPanelRegistry } from '@zobi.dev/core';
+import { convertAgGridStateToOwnState } from '@zobi.dev/ag-grid-table';
 import MainPreset from '../visualizations/presets/MainPreset';
 import setupPluginsExtra from './setupPluginsExtra';
 import { registerChartStateConverter } from '../dashboard/util/chartStateConverter';

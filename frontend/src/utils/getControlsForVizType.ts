@@ -1,8 +1,8 @@
 
 import memoizeOne from 'memoize-one';
 import React from 'react';
-import { isControlPanelSectionConfig } from '@zobi-ui/chart-controls';
-import { getChartControlPanelRegistry, JsonObject } from '@zobi-ui/core';
+import { isControlPanelSectionConfig } from '@zobi.dev/chart-controls';
+import { getChartControlPanelRegistry, JsonObject } from '@zobi.dev/core';
 import type { ControlMap } from 'src/components/AlteredSliceTag/types';
 import { controls } from '../explore/controls';
 

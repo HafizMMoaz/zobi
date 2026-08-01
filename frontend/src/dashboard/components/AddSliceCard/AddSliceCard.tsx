@@ -11,10 +11,10 @@ import {
   FC,
 } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
-import { css } from '@zobi/core/theme';
-import { Tooltip, ImageLoader } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
+import { css } from '@zobi.dev/extension-api/theme';
+import { Tooltip, ImageLoader } from '@zobi.dev/core/components';
 import { GenericLink, usePluginContext } from 'src/components';
 import { assetUrl } from 'src/utils/assetUrl';
 import { Theme } from '@emotion/react';

@@ -1,14 +1,14 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   DatasourceType,
   getChartControlPanelRegistry,
   VizType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   ControlConfig,
   ControlPanelState,
   CustomControlItem,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import {
   getControlConfig,
   getControlState,

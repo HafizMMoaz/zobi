@@ -1,8 +1,8 @@
 import { useMemo, useState } from 'react';
 import { useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
-import { Form, Checkbox } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Form, Checkbox } from '@zobi.dev/core/components';
 import { StandardModal } from 'src/components/Modal';
 import { RootState } from 'src/dashboard/types';
 import {

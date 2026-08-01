@@ -1,6 +1,6 @@
 import { LegacyRef } from 'react';
-import { css, styled } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 interface DragHandleProps {
   position: 'left' | 'top';

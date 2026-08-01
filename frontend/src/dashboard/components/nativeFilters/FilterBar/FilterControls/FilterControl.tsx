@@ -5,7 +5,7 @@ import {
   OutPortal,
 } from 'react-reverse-portal';
 import { FilterBarOrientation } from 'src/dashboard/types';
-import { isChartCustomization } from '@zobi-ui/core';
+import { isChartCustomization } from '@zobi.dev/core';
 import { ChartCustomizationPlugins } from 'src/constants';
 import { checkIsMissingRequiredValue } from '../utils';
 import FilterValue from './FilterValue';

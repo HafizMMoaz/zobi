@@ -8,9 +8,9 @@ import {
 } from 'react';
 import { useSelector } from 'react-redux';
 import rison from 'rison';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { styled, useTheme } from '@zobi.dev/extension-api/theme';
 import {
   Icons,
   Switch,
@@ -18,7 +18,7 @@ import {
   Skeleton,
   Card,
   Space,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { CopyToClipboard } from 'src/components';
 import { RootState } from 'src/dashboard/types';
 import { findPermission } from 'src/utils/findPermission';
@@ -26,7 +26,7 @@ import { makeUrl } from 'src/utils/pathUtils';
 import CodeSyntaxHighlighter, {
   SupportedLanguage,
   preloadLanguages,
-} from '@zobi-ui/core/components/CodeSyntaxHighlighter';
+} from '@zobi.dev/core/components/CodeSyntaxHighlighter';
 import { useHistory } from 'react-router-dom';
 import { ExplorePageState } from 'src/explore/types';
 

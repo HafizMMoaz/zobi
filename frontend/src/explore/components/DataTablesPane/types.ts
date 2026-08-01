@@ -1,5 +1,5 @@
-import { JsonObject, LatestQueryFormData } from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+import { JsonObject, LatestQueryFormData } from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import type { ChartStatus, Datasource } from 'src/explore/types';
 
 export enum ResultTypes {

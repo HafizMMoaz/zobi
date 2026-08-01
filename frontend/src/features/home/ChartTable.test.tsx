@@ -4,7 +4,7 @@ import {
   userEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { VizType } from '@zobi-ui/core';
+import { VizType } from '@zobi.dev/core';
 import fetchMock from 'fetch-mock';
 import { act } from 'react-dom/test-utils';
 import handleResourceExport from 'src/utils/export';

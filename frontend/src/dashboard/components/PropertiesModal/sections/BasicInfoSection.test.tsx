@@ -1,5 +1,5 @@
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
-import { Form } from '@zobi-ui/core/components';
+import { Form } from '@zobi.dev/core/components';
 import BasicInfoSection from './BasicInfoSection';
 
 const defaultProps = {

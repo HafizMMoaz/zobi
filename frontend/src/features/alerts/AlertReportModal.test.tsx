@@ -14,8 +14,8 @@ import { buildErrorTooltipMessage } from './buildErrorTooltipMessage';
 import AlertReportModal, { AlertReportModalProps } from './AlertReportModal';
 import { AlertObject, NotificationMethodOption } from './types';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: () => true,
 }));
 

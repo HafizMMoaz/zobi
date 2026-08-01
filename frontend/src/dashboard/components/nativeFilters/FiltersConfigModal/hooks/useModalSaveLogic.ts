@@ -1,13 +1,13 @@
 import { useCallback, useMemo } from 'react';
 import { isEqual, sortBy } from 'lodash';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Filter,
   Divider,
   ChartCustomization,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
-import type { FormInstance } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import type { FormInstance } from '@zobi.dev/core/components';
 import { useDispatch } from 'react-redux';
 import { updateCascadeParentIds } from 'src/dashboard/actions/nativeFilters';
 import type { FiltersConfigFormHandle } from '../FiltersConfigForm/FiltersConfigForm';

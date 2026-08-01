@@ -4,14 +4,14 @@ import {
   waitFor,
   userEvent,
 } from 'spec/helpers/testing-library';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 
 import AddSemanticViewModal from './AddSemanticViewModal';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   ZobiClient: {
-    ...jest.requireActual('@zobi-ui/core').ZobiClient,
+    ...jest.requireActual('@zobi.dev/core').ZobiClient,
     get: jest.fn(),
     post: jest.fn(),
   },

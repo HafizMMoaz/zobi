@@ -2,7 +2,7 @@ import { render, screen, userEvent } from 'spec/helpers/testing-library';
 import {
   CategoricalScheme,
   getCategoricalSchemeRegistry,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import ColorPickerControl from 'src/explore/components/controls/ColorPickerControl';
 
 const defaultProps = {

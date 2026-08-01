@@ -6,7 +6,7 @@ import {
   defaultStore as store,
 } from 'spec/helpers/testing-library';
 import fetchMock from 'fetch-mock';
-import { Modal } from '@zobi-ui/core/components';
+import { Modal } from '@zobi.dev/core/components';
 import mockDatasource from 'spec/fixtures/mockDatasource';
 import DatasourceModal from '.';
 

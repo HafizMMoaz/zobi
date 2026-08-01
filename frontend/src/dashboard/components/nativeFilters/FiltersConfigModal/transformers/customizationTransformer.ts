@@ -6,7 +6,7 @@ import {
   Filter,
   Divider,
   NativeFilterType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { DASHBOARD_ROOT_ID } from 'src/dashboard/util/constants';
 import {
   ChartCustomizationsFormItem,

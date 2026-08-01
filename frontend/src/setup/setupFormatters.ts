@@ -11,7 +11,7 @@ import {
   createSmartDateVerboseFormatter,
   createSmartDateDetailedFormatter,
   createMemoryFormatter,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { FormatLocaleDefinition } from 'd3-format';
 import { TimeLocaleDefinition } from 'd3-time-format';
 

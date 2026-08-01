@@ -4,19 +4,19 @@ import { useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import { useQueryParams, BooleanParam } from 'use-query-params';
 import { isEmpty } from 'lodash';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ZobiClient,
   getExtensionsRegistry,
   isFeatureEnabled,
   FeatureFlag,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   styled,
   css,
   ZobiTheme,
   useTheme,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import {
   Tag,
   Tooltip,
@@ -24,8 +24,8 @@ import {
   Icons,
   Typography,
   TelemetryPixel,
-} from '@zobi-ui/core/components';
-import type { ItemType, MenuItem } from '@zobi-ui/core/components/Menu';
+} from '@zobi.dev/core/components';
+import type { ItemType, MenuItem } from '@zobi.dev/core/components/Menu';
 import { ensureAppRoot } from 'src/utils/pathUtils';
 import { isEmbedded } from 'src/dashboard/util/isEmbedded';
 import { findPermission } from 'src/utils/findPermission';

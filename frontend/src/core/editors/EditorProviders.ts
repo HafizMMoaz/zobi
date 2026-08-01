@@ -1,5 +1,5 @@
 
-import type { editors } from '@zobi/core';
+import type { editors } from '@zobi.dev/extension-api';
 import { Disposable } from '../models';
 
 type EditorLanguage = editors.EditorLanguage;

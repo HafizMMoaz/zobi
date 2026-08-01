@@ -1,4 +1,4 @@
-import { logging } from '@zobi/core/utils';
+import { logging } from '@zobi.dev/extension-api/utils';
 
 interface LayoutComponent {
   id: string;

@@ -10,7 +10,7 @@ import {
   waitFor,
   fireEvent,
 } from 'spec/helpers/testing-library';
-import { getExtensionsRegistry } from '@zobi-ui/core';
+import { getExtensionsRegistry } from '@zobi.dev/core';
 import setupCodeOverrides from 'src/setup/setupCodeOverrides';
 import * as hooks from 'src/views/CRUD/hooks';
 import { DatabaseObject, ConfigurationMethod } from '../types';
@@ -21,8 +21,8 @@ import DatabaseModal, {
   DatabaseModalProps,
 } from './index';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: () => true,
 }));
 

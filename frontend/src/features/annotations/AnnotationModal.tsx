@@ -1,13 +1,13 @@
 import { FunctionComponent, useState, useEffect, ChangeEvent } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 import withToasts from 'src/components/MessageToasts/withToasts';
-import { Input, Modal, RangePicker } from '@zobi-ui/core/components';
-import { useJsonValidation } from '@zobi-ui/core/components/AsyncAceEditor';
-import type { editors } from '@zobi/core';
+import { Input, Modal, RangePicker } from '@zobi.dev/core/components';
+import { useJsonValidation } from '@zobi.dev/core/components/AsyncAceEditor';
+import type { editors } from '@zobi.dev/extension-api';
 import { EditorHost } from 'src/core/editors';
 import { OnlyKeyWithType } from 'src/utils/types';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';

@@ -1,5 +1,5 @@
 import fetchMock from 'fetch-mock';
-import { QueryFormData, ZobiClient } from '@zobi-ui/core';
+import { QueryFormData, ZobiClient } from '@zobi.dev/core';
 import {
   fireEvent,
   render,

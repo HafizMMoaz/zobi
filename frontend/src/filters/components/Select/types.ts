@@ -6,8 +6,8 @@ import {
   FilterState,
   QueryFormData,
   ChartDataResponseResult,
-} from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+} from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { RefObject } from 'react';
 import { FilterBarOrientation } from 'src/dashboard/types';
 import { PluginFilterHooks, PluginFilterStylesProps } from '../types';

@@ -1,6 +1,6 @@
 import { useCallback, useMemo } from 'react';
-import { css, useTheme } from '@zobi/core/theme';
-import { ThemedAgGridReact } from '@zobi-ui/core/components';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { ThemedAgGridReact } from '@zobi.dev/core/components';
 import type { CellKeyDownEvent, Column, GridOptions } from 'ag-grid-community';
 import type { AgGridReactProps } from 'ag-grid-react';
 

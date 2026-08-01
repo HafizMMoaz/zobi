@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { DashboardComponentMetadata } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { DashboardComponentMetadata } from '@zobi.dev/core';
 
 // TODO: POC only component can be removed after PR approved
 const ExampleComponent = ({

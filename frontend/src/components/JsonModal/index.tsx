@@ -1,9 +1,9 @@
 
 import { FC, useMemo } from 'react';
 import { JSONTree } from 'react-json-tree';
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { useJsonTreeTheme } from 'src/hooks/useJsonTreeTheme';
-import { Button, ModalTrigger } from '@zobi-ui/core/components';
+import { Button, ModalTrigger } from '@zobi.dev/core/components';
 import { CopyToClipboard } from '../CopyToClipboard';
 import { convertBigIntStrToNumber } from './utils';
 import type { JsonModalProps } from './types';

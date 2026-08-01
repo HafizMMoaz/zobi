@@ -5,13 +5,13 @@ import {
   waitFor,
   within,
 } from 'spec/helpers/testing-library';
-import { ThemeMode } from '@zobi/core/theme';
-import { Menu } from '@zobi-ui/core/components';
+import { ThemeMode } from '@zobi.dev/extension-api/theme';
+import { Menu } from '@zobi.dev/core/components';
 import { ThemeSubMenuProps, useThemeMenuItems } from './useThemeMenuItems';
 
 // Mock the translation function
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   t: (key: string) => key,
 }));
 

@@ -4,7 +4,7 @@ import {
   userEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import { createMemoryHistory } from 'history';
 import { Router } from 'react-router-dom';
 import { configureStore } from '@reduxjs/toolkit';

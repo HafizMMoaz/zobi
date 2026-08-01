@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import type { LabelType } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import type { LabelType } from '@zobi.dev/core/components';
 
 export const STATE_TYPE_MAP: Record<string, LabelType> = {
   offline: 'error',

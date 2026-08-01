@@ -1,8 +1,8 @@
-import { normalizeTimestamp, QueryState } from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
+import { normalizeTimestamp, QueryState } from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
 import { isEqual, omit } from 'lodash';
 import { shallowEqual } from 'react-redux';
-import { now } from '@zobi-ui/core/utils/dates';
+import { now } from '@zobi.dev/core/utils/dates';
 import type { SqlLabRootState, QueryEditor, Table } from '../types';
 import * as actions from '../actions/sqlLab';
 import type { SqlLabAction } from '../actions/sqlLab';

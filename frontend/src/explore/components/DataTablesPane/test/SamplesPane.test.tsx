@@ -1,6 +1,6 @@
 import fetchMock from 'fetch-mock';
 import { render, waitFor } from 'spec/helpers/testing-library';
-import { setupAGGridModules } from '@zobi-ui/core/components/ThemedAgGridReact';
+import { setupAGGridModules } from '@zobi.dev/core/components/ThemedAgGridReact';
 import { SamplesPane } from '../components';
 import { createSamplesPaneProps } from './fixture';
 

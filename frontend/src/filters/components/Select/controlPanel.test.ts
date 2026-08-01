@@ -1,4 +1,4 @@
-import { GenericDataType } from '@zobi/core/common';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { getOperatorTypeChoices, isStringOperatorColumn } from './controlPanel';
 import { SelectFilterOperatorType } from './types';
 

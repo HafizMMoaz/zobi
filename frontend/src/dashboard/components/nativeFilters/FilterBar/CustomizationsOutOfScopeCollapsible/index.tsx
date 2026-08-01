@@ -1,11 +1,11 @@
 import { ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ChartCustomization,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
-import { css, ZobiTheme } from '@zobi/core/theme';
-import { Collapse } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Collapse } from '@zobi.dev/core/components';
 
 export interface CustomizationsOutOfScopeCollapsibleProps {
   customizationsOutOfScope: (ChartCustomization | ChartCustomizationDivider)[];

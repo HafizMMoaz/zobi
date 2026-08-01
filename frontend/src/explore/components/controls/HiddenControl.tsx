@@ -1,4 +1,4 @@
-import { Input } from '@zobi-ui/core/components';
+import { Input } from '@zobi.dev/core/components';
 
 interface HiddenControlsProps {
   onChange: () => void;

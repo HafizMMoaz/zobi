@@ -1,4 +1,4 @@
-import { Column, Metric } from '@zobi-ui/core';
+import { Column, Metric } from '@zobi.dev/core';
 
 export enum DrillByType {
   Chart,

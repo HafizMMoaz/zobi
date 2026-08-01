@@ -1,6 +1,6 @@
 import { type ReactNode } from 'react';
-import { css } from '@zobi/core/theme';
-import { Switch } from '@zobi-ui/core/components';
+import { css } from '@zobi.dev/extension-api/theme';
+import { Switch } from '@zobi.dev/core/components';
 import ControlHeader from '../ControlHeader';
 
 interface SwitchControlProps {

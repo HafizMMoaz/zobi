@@ -1,14 +1,14 @@
-import { t } from '@zobi/core/translation';
-import { validateNumber } from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+import { t } from '@zobi.dev/extension-api/translation';
+import { validateNumber } from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import {
   ControlFormItemSpec,
   D3_FORMAT_DOCS,
   D3_FORMAT_OPTIONS,
   D3_TIME_FORMAT_DOCS,
   D3_TIME_FORMAT_OPTIONS,
-} from '@zobi-ui/chart-controls';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/chart-controls';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { ColumnConfigFormLayout } from './types';
 
 export type SharedColumnConfigProp =

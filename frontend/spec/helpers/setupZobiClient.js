@@ -1,7 +1,7 @@
 import fetchMock from 'fetch-mock';
 // https://jestjs.io/docs/jest-object#jestmockmodulename-factory-options
 // in order to mock modules in test case, so avoid absolute import module
-import { ZobiClient } from '../../packages/zobi-ui-core/src/connection';
+import { ZobiClient } from '../../packages/core/src/connection';
 
 export default function setupZobiClient() {
   // The following is needed to mock out ZobiClient requests

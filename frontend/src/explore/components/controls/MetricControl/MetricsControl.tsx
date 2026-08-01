@@ -1,9 +1,9 @@
 import React, { useCallback, useEffect, useMemo, useState } from 'react';
-import { ensureIsArray, usePrevious } from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
+import { ensureIsArray, usePrevious } from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
 import { isEqual } from 'lodash';
 import ControlHeader from 'src/explore/components/ControlHeader';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import {
   AddIconButton,
   AddControlLabel,

@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
 import { useFavoriteStatus, useListViewResource } from 'src/views/CRUD/hooks';
 import { Dashboard, DashboardTableProps, TableTab } from 'src/views/CRUD/types';
 import handleResourceExport from 'src/utils/export';
@@ -19,10 +19,10 @@ import {
   handleDashboardDelete,
 } from 'src/views/CRUD/utils';
 import withToasts from 'src/components/MessageToasts/withToasts';
-import { DeleteModal, Loading } from '@zobi-ui/core/components';
+import { DeleteModal, Loading } from '@zobi.dev/core/components';
 import PropertiesModal from 'src/dashboard/components/PropertiesModal';
 import DashboardCard from 'src/features/dashboards/DashboardCard';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { navigateTo } from 'src/utils/navigationUtils';
 import EmptyState from './EmptyState';
 import SubMenu from './SubMenu';

@@ -1,5 +1,5 @@
 import { isEmpty } from 'lodash';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 
 import { DASHBOARD_ROOT_ID } from './constants';
 import { CHART_TYPE, DASHBOARD_ROOT_TYPE, TAB_TYPE } from './componentTypes';

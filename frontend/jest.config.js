@@ -9,13 +9,18 @@ module.exports = {
     '\\.svg$': '<rootDir>/spec/__mocks__/svgrMock.tsx',
     '^src/(.*)$': '<rootDir>/src/$1',
     '^spec/(.*)$': '<rootDir>/spec/$1',
-    // mapping plugins of zobi-ui to source code
-    '^@zobi-ui/([^/]+)/(.*)$':
-      '<rootDir>/node_modules/@zobi-ui/$1/src/$2',
-    '^@zobi-ui/([^/]+)$': '<rootDir>/node_modules/@zobi-ui/$1/src',
-    // mapping @zobi/core to local package
-    '^@zobi/core$': '<rootDir>/packages/core/src',
-    '^@zobi/core/(.*)$': '<rootDir>/packages/core/src/$1',
+    // Map every internal @zobi.dev/* package to its source. Workspace
+    // directory names match the package name after the scope, so `packages/`
+    // is tried first and `plugins/` second.
+    // NOTE: the `.` in the scope is escaped — these keys are regexes.
+    '^@zobi\\.dev/(core|chart-controls|switchboard|extension-api)$':
+      '<rootDir>/packages/$1/src',
+    '^@zobi\\.dev/(core|chart-controls|switchboard|extension-api)/(.*)$':
+      '<rootDir>/packages/$1/src/$2',
+    '^@zobi\\.dev/(ag-grid-table|calendar|cartodiagram|chord|country-map|deckgl|echarts|handlebars|horizon|nvd3|paired-t-test|parallel-coordinates|partition|pivot-table|point-cluster-map|rose|table|word-cloud|world-map)$':
+      '<rootDir>/plugins/$1/src',
+    '^@zobi\\.dev/(ag-grid-table|calendar|cartodiagram|chord|country-map|deckgl|echarts|handlebars|horizon|nvd3|paired-t-test|parallel-coordinates|partition|pivot-table|point-cluster-map|rose|table|word-cloud|world-map)/(.*)$':
+      '<rootDir>/plugins/$1/src/$2',
   },
   testEnvironment: '<rootDir>/spec/helpers/jsDomWithFetchAPI.ts',
   modulePathIgnorePatterns: [
@@ -26,8 +31,8 @@ module.exports = {
     '<rootDir>/plugins/.*/lib',
     // Ignore build artifacts that contain duplicate package.json or mock files
     '<rootDir>/storybook-static',
-    // Ignore duplicate __mocks__ at package root level (e.g., packages/zobi-ui-core/__mocks__)
-    // but not test __mocks__ directories (e.g., packages/zobi-ui-core/test/__mocks/)
+    // Ignore duplicate __mocks__ at package root level (e.g., packages/core/__mocks__)
+    // but not test __mocks__ directories (e.g., packages/core/test/__mocks/)
     '<rootDir>/packages/[^/]+/__mocks__',
   ],
   setupFilesAfterEnv: ['<rootDir>/spec/helpers/setup.ts'],

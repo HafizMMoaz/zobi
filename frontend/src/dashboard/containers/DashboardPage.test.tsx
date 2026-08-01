@@ -6,7 +6,7 @@ import {
   useDashboardCharts,
   useDashboardDatasets,
 } from 'src/hooks/apiResources';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import CrudThemeProvider from 'src/components/CrudThemeProvider';
 import DashboardPage from './DashboardPage';
 

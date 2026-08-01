@@ -1,7 +1,7 @@
 import { JSONTree } from 'react-json-tree';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { useJsonTreeTheme } from 'src/hooks/useJsonTreeTheme';
-import { Collapse, List, Typography } from '@zobi-ui/core/components';
+import { Collapse, List, Typography } from '@zobi.dev/core/components';
 import type { ErrorMessageComponentProps } from './types';
 
 interface MarshmallowErrorExtra {

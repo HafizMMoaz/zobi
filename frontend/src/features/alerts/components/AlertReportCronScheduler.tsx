@@ -1,14 +1,14 @@
 import { useState, useCallback, FocusEvent, FC } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 
 import {
   Input,
   CronPicker,
   Select,
   type CronError,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { StyledInputContainer } from '../AlertReportModal';
 
 export interface AlertReportCronSchedulerProps {

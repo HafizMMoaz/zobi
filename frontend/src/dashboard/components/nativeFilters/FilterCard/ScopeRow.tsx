@@ -1,8 +1,8 @@
 import { memo, useMemo } from 'react';
-import { t } from '@zobi/core/translation';
-import { useTruncation } from '@zobi-ui/core';
-import { css } from '@zobi/core/theme';
-import { List } from '@zobi-ui/core/components/List';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTruncation } from '@zobi.dev/core';
+import { css } from '@zobi.dev/extension-api/theme';
+import { List } from '@zobi.dev/core/components/List';
 import { useFilterScope } from './useFilterScope';
 import { Row, RowLabel, RowTruncationCount, RowValue } from './Styles';
 import { FilterCardRowProps } from './types';

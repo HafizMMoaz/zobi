@@ -1,11 +1,11 @@
 import { useCallback, useState, useEffect } from 'react';
 import { Link } from 'react-router-dom';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { styled, useTheme, css } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { styled, useTheme, css } from '@zobi.dev/extension-api/theme';
 import CodeSyntaxHighlighter, {
   preloadLanguages,
-} from '@zobi-ui/core/components/CodeSyntaxHighlighter';
+} from '@zobi.dev/core/components/CodeSyntaxHighlighter';
 import { LoadingCards } from 'src/pages/Home';
 import { TableTab } from 'src/views/CRUD/types';
 import withToasts from 'src/components/MessageToasts/withToasts';
@@ -14,10 +14,10 @@ import {
   DeleteModal,
   Button,
   ListViewCard,
-} from '@zobi-ui/core/components';
-import { MenuItem } from '@zobi-ui/core/components/Menu';
+} from '@zobi.dev/core/components';
+import { MenuItem } from '@zobi.dev/core/components/Menu';
 import { copyQueryLink, useListViewResource } from 'src/views/CRUD/hooks';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { User } from 'src/types/bootstrapTypes';
 import {
   CardContainer,

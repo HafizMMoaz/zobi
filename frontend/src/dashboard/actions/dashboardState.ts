@@ -11,14 +11,14 @@ import {
   getCategoricalSchemeRegistry,
   promiseTimeout,
   JsonObject,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   addChart,
   removeChart,
   refreshChart,
 } from 'src/components/Chart/chartAction';
-import { logging } from '@zobi/core/utils';
-import { t } from '@zobi/core/translation';
+import { logging } from '@zobi.dev/extension-api/utils';
+import { t } from '@zobi.dev/extension-api/translation';
 import { chart as initChart } from 'src/components/Chart/chartReducer';
 import { applyDefaultFormData } from 'src/explore/store';
 import {
@@ -45,7 +45,7 @@ import { navigateWithState, navigateTo } from 'src/utils/navigationUtils';
 import type { AnyAction } from 'redux';
 import type { ThunkDispatch } from 'redux-thunk';
 import { ResourceStatus } from 'src/hooks/apiResources/apiResources';
-import type { AgGridChartState } from '@zobi-ui/core';
+import type { AgGridChartState } from '@zobi.dev/core';
 import type { DashboardChartStates } from 'src/dashboard/types/chartState';
 import { UPDATE_COMPONENTS_PARENTS_LIST } from './dashboardLayout';
 import {

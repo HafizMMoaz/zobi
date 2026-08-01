@@ -7,7 +7,7 @@ import {
   useMemo,
 } from 'react';
 import { isEmpty } from 'lodash';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Behavior,
   BinaryQueryObjectFilterClause,
@@ -15,10 +15,10 @@ import {
   getChartMetadataRegistry,
   QueryFormData,
   removeHTMLTags,
-} from '@zobi-ui/core';
-import { css, styled } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 import { useSelector } from 'react-redux';
-import { type ItemType } from '@zobi-ui/core/components/Menu';
+import { type ItemType } from '@zobi.dev/core/components/Menu';
 import { RootState } from 'src/dashboard/types';
 import { getSubmenuYOffset } from '../utils';
 import { MenuItemTooltip } from '../DisabledMenuItemTooltip';

@@ -6,7 +6,7 @@ import {
   ChartCustomization,
   ChartCustomizationType,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { getInitialDataMask } from 'src/dataMask/reducer';
 import { DASHBOARD_ROOT_ID } from 'src/dashboard/util/constants';
 import {

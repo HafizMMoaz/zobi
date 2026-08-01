@@ -7,10 +7,10 @@ import {
   ChangeEvent,
 } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { getClientErrorObject, VizType } from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getClientErrorObject, VizType } from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { useDispatch, useSelector } from 'react-redux';
 import {
   editReport,
@@ -20,11 +20,11 @@ import {
   Input,
   LabeledErrorBoundInput,
   type CronError,
-} from '@zobi-ui/core/components';
-import TimezoneSelector from '@zobi-ui/core/components/TimezoneSelector';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Typography } from '@zobi-ui/core/components/Typography';
-import { Radio, RadioChangeEvent } from '@zobi-ui/core/components/Radio';
+} from '@zobi.dev/core/components';
+import TimezoneSelector from '@zobi.dev/core/components/TimezoneSelector';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Typography } from '@zobi.dev/core/components/Typography';
+import { Radio, RadioChangeEvent } from '@zobi.dev/core/components/Radio';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { ChartState } from 'src/explore/types';
 import {

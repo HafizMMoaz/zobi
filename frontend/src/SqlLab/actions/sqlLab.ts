@@ -2,18 +2,18 @@ import { nanoid } from 'nanoid';
 import rison from 'rison';
 import type { AnyAction } from 'redux';
 import type { ThunkAction, ThunkDispatch } from 'redux-thunk';
-import type { QueryColumn, ZobiError } from '@zobi-ui/core';
+import type { QueryColumn, ZobiError } from '@zobi.dev/core';
 import {
   FeatureFlag,
   ZobiClient,
   isFeatureEnabled,
   COMMON_ERR_MESSAGES,
   getClientErrorObject,
-} from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
 import { invert, mapKeys } from 'lodash';
 
-import { now } from '@zobi-ui/core/utils/dates';
+import { now } from '@zobi.dev/core/utils/dates';
 import {
   addDangerToast as addDangerToastAction,
   addInfoToast as addInfoToastAction,

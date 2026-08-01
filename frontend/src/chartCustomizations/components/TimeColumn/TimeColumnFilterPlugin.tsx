@@ -1,12 +1,12 @@
-import { t, tn } from '@zobi/core/translation';
-import { ensureIsArray, ExtraFormData } from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+import { t, tn } from '@zobi.dev/extension-api/translation';
+import { ensureIsArray, ExtraFormData } from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { useEffect, useState } from 'react';
 import {
   FormItem,
   type FormItemProps,
   Select,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { FilterPluginStyle, StatusMessage } from '../common';
 import { PluginFilterTimeColumnProps } from './types';
 

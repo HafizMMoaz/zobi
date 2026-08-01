@@ -1,6 +1,6 @@
 
 import { useCallback } from 'react';
-import { css, useTheme } from '@zobi/core/theme';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import { CrossFilterIndicator } from 'src/dashboard/components/nativeFilters/selectors';
 import { useDispatch } from 'react-redux';
 import { setDirectPathToChild } from 'src/dashboard/actions/dashboardState';

@@ -1,4 +1,4 @@
-import { getExtensionsRegistry } from '@zobi-ui/core';
+import { getExtensionsRegistry } from '@zobi.dev/core';
 import { Provider as ReduxProvider } from 'react-redux';
 import { QueryParamProvider } from 'use-query-params';
 import { ReactRouter5Adapter } from 'use-query-params/adapters/react-router-5';
@@ -8,7 +8,7 @@ import { DynamicPluginProvider } from 'src/components';
 import { EmbeddedUiConfigProvider } from 'src/components/UiConfigContext';
 import { ZobiThemeProvider } from 'src/theme/ThemeProvider';
 import { ThemeController } from 'src/theme/ThemeController';
-import { type ThemeStorage, ThemeMode } from '@zobi/core/theme';
+import { type ThemeStorage, ThemeMode } from '@zobi.dev/extension-api/theme';
 import { store } from 'src/views/store';
 import querystring from 'query-string';
 

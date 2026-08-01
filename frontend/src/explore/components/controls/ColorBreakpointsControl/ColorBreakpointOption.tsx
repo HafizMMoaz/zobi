@@ -1,5 +1,5 @@
 
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { ColorBreakpointOptionProps } from './types';
 import ColorBreakpointPopoverTrigger from './ColorBreakpointPopoverTrigger';
 import { DragContainer } from '../OptionControls';

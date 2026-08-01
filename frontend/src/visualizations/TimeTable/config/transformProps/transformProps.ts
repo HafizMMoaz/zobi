@@ -1,4 +1,4 @@
-import { ChartProps, DataRecord, Metric } from '@zobi-ui/core';
+import { ChartProps, DataRecord, Metric } from '@zobi.dev/core';
 
 interface FormData {
   groupby: string[];

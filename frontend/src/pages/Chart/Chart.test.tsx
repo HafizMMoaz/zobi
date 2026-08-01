@@ -11,7 +11,7 @@ import { getDashboardFormData } from 'spec/fixtures/mockDashboardFormData';
 import { LocalStorageKeys } from 'src/utils/localStorageHelpers';
 import getFormDataWithExtraFilters from 'src/dashboard/util/charts/getFormDataWithExtraFilters';
 import { URL_PARAMS } from 'src/constants';
-import { JsonObject, VizType } from '@zobi-ui/core';
+import { JsonObject, VizType } from '@zobi.dev/core';
 import { useUnsavedChangesPrompt } from 'src/hooks/useUnsavedChangesPrompt';
 import { getParsedExploreURLParams } from 'src/explore/exploreUtils/getParsedExploreURLParams';
 import * as messageToastActions from 'src/components/MessageToasts/actions';

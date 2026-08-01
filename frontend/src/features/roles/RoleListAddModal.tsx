@@ -1,7 +1,7 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
-import { FormModal, Icons } from '@zobi-ui/core/components';
+import { FormModal, Icons } from '@zobi.dev/core/components';
 import { createRole, updateRolePermissions } from './utils';
 import { PermissionsField, RoleNameField } from './RoleFormItems';
 import { BaseModalProps, RoleForm } from './types';

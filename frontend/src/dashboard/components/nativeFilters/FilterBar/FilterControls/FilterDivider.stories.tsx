@@ -1,5 +1,5 @@
 
-import { css } from '@zobi/core/theme';
+import { css } from '@zobi.dev/extension-api/theme';
 import { FilterBarOrientation } from 'src/dashboard/types';
 import FilterDivider from './FilterDivider';
 import { FilterDividerProps } from './types';

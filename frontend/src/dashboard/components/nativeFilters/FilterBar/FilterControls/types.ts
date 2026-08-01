@@ -5,7 +5,7 @@ import {
   DataMaskStateWithId,
   Filter,
   ChartCustomization,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { FilterBarOrientation } from 'src/dashboard/types';
 
 export type FilterElement = Filter | ChartCustomization;

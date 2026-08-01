@@ -1,16 +1,16 @@
-import { ZobiClient } from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+import { ZobiClient } from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import { parse as parseContentDisposition } from 'content-disposition';
 import handleResourceExport from './export';
 
 // Mock dependencies
-jest.mock('@zobi-ui/core', () => ({
+jest.mock('@zobi.dev/core', () => ({
   ZobiClient: {
     get: jest.fn(),
   },
 }));
 
-jest.mock('@zobi/core/utils', () => ({
+jest.mock('@zobi.dev/extension-api/utils', () => ({
   logging: {
     warn: jest.fn(),
     error: jest.fn(),

@@ -1,15 +1,15 @@
 import { Link } from 'react-router-dom';
-import { t } from '@zobi/core/translation';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
 import { CardStyles } from 'src/views/CRUD/utils';
 import {
   Button,
   Dropdown,
   ConfirmStatusChange,
   ListViewCard,
-} from '@zobi-ui/core/components';
-import { MenuItem } from '@zobi-ui/core/components/Menu';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { MenuItem } from '@zobi.dev/core/components/Menu';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { Tag } from 'src/views/CRUD/types';
 import { deleteTags } from 'src/features/tags/tags';
 import { assetUrl } from 'src/utils/assetUrl';

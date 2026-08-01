@@ -1,8 +1,8 @@
 
 import { ReactNode } from 'react';
-import { css, ZobiTheme } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Tooltip } from '@zobi-ui/core/components';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Tooltip } from '@zobi.dev/core/components';
 
 export const MenuItemTooltip = ({
   title,

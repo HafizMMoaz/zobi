@@ -1,12 +1,12 @@
 import { useCallback, useEffect, useState } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   makeApi,
   ZobiApiError,
   getExtensionsRegistry,
-} from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { styled, css } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled, css } from '@zobi.dev/extension-api/theme';
 import {
   Button,
   FormItem,
@@ -16,10 +16,10 @@ import {
   Loading,
   Form,
   Space,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { EmbeddedDashboard } from 'src/dashboard/types';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Typography } from '@zobi.dev/core/components/Typography';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';
 
 const extensionsRegistry = getExtensionsRegistry();
@@ -145,7 +145,7 @@ export const DashboardEmbedControls = ({ dashboardId, onHide }: Props) => {
   );
   const docsUrl =
     extensionsRegistry.get('embedded.documentation.url') ??
-    'https://www.npmjs.com/package/@zobi-ui/embedded-sdk';
+    'https://www.npmjs.com/package/@zobi.dev/embedded-sdk';
 
   return (
     <>

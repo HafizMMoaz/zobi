@@ -1,11 +1,11 @@
 
 import { render, screen } from 'spec/helpers/testing-library';
-import { ErrorLevel } from '@zobi-ui/core';
-import { zobiTheme } from '@zobi/core/theme';
+import { ErrorLevel } from '@zobi.dev/core';
+import { zobiTheme } from '@zobi.dev/extension-api/theme';
 import { BasicErrorAlert } from './BasicErrorAlert';
 
 jest.mock(
-  '@zobi-ui/core/components/Icons/AsyncIcon',
+  '@zobi.dev/core/components/Icons/AsyncIcon',
   () =>
     ({ fileName }: { fileName: string }) => (
       <span role="img" aria-label={fileName.replace('_', '-')} />

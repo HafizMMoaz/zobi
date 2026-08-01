@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { ErrorSource, ZobiError } from '@zobi-ui/core';
-import { Typography } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ErrorSource, ZobiError } from '@zobi.dev/core';
+import { Typography } from '@zobi.dev/core/components';
 import { getErrorMessageComponentRegistry } from './getErrorMessageComponentRegistry';
 import { ErrorAlert } from './ErrorAlert';
 

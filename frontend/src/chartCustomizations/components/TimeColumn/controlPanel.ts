@@ -1,5 +1,5 @@
-import { ControlPanelConfig } from '@zobi-ui/chart-controls';
-import { t } from '@zobi/core/translation';
+import { ControlPanelConfig } from '@zobi.dev/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
 
 const config: ControlPanelConfig = {
   controlPanelSections: [

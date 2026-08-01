@@ -5,11 +5,11 @@ import {
   waitFor,
 } from 'spec/helpers/testing-library';
 import fetchMock from 'fetch-mock';
-import { Column, JsonObject, getClientErrorObject } from '@zobi-ui/core';
+import { Column, JsonObject, getClientErrorObject } from '@zobi.dev/core';
 import { ColumnSelect } from './ColumnSelect';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   getClientErrorObject: jest.fn(() => Promise.resolve({ error: 'Error' })),
 }));
 

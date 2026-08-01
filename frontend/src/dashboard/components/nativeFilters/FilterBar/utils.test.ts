@@ -4,7 +4,7 @@ import {
   DataRecordValue,
   Filter,
   FilterState,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   checkIsApplyDisabled,
   checkIsValidateError,

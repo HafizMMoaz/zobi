@@ -17,7 +17,7 @@ const PLUGIN_PATTERNS = [
   'plugins/legacy-preset-chart-*/src',
 ];
 
-const CORE_COMPONENT_PATTERNS = ['packages/zobi-ui-core/src/components/*'];
+const CORE_COMPONENT_PATTERNS = ['packages/core/src/components/*'];
 
 // Directories/patterns to exclude from checks
 const EXCLUSIONS = [

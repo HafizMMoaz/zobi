@@ -1,14 +1,14 @@
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   TableView,
   EmptyWrapperType,
-} from '@zobi-ui/core/components/TableView';
-import { EmptyState } from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components/TableView';
+import { EmptyState } from '@zobi.dev/core/components';
 import { FacePile, TagsList, type TagType } from 'src/components';
 import { TaggedObject, TaggedObjects } from 'src/types/TaggedObject';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Typography } from '@zobi.dev/core/components/Typography';
 
 const MAX_TAGS_TO_SHOW = 3;
 const PAGE_SIZE = 10;

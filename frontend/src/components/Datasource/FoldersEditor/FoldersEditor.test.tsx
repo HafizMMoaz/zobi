@@ -6,7 +6,7 @@ import {
   waitFor,
 } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
-import { Metric, ColumnMeta } from '@zobi-ui/chart-controls';
+import { Metric, ColumnMeta } from '@zobi.dev/chart-controls';
 import { DatasourceFolder } from 'src/explore/components/DatasourcePanel/types';
 import FoldersEditor from '.';
 import {

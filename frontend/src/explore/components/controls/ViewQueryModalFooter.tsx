@@ -1,8 +1,8 @@
 import { FC } from 'react';
 import { isObject } from 'lodash';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { Button } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { Button } from '@zobi.dev/core/components';
 import { useHistory } from 'react-router-dom';
 
 interface SimpleDataSource {

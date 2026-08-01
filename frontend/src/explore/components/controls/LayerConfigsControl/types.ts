@@ -1,5 +1,5 @@
-import { TreeProps, TreeDataNode } from '@zobi-ui/core/components/Tree';
-import { ControlComponentProps } from '@zobi-ui/chart-controls';
+import { TreeProps, TreeDataNode } from '@zobi.dev/core/components/Tree';
+import { ControlComponentProps } from '@zobi.dev/chart-controls';
 import { Style } from 'geostyler-style';
 import { Data } from 'geostyler-data';
 

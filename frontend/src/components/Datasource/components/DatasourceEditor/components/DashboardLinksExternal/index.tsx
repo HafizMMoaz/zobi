@@ -1,4 +1,4 @@
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { GenericLink } from 'src/components';
 
 const DashboardLinksWrapper = styled.span`

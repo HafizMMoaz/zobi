@@ -6,7 +6,7 @@ import {
   RefObject,
 } from 'react';
 
-import { withTheme } from '@zobi/core/theme';
+import { withTheme } from '@zobi.dev/extension-api/theme';
 
 import type {
   ListViewFilterValue as FilterValue,

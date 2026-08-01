@@ -4,7 +4,7 @@ import {
   ensureIsArray,
   getCategoricalSchemeRegistry,
   getLabelsColorMap,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { intersection, omit, pick } from 'lodash';
 import { areObjectsEqual } from 'src/reduxUtils';
 

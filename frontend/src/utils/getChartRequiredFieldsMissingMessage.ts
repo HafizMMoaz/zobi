@@ -1,5 +1,5 @@
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 
 const CREATE_CHART_TEXT = t('Create chart');
 const UPDATE_CHART_TEXT = t('Update chart');

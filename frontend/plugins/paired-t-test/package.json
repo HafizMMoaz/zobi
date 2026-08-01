@@ -1,0 +1,39 @@
+{
+  "name": "@zobi.dev/paired-t-test",
+  "version": "0.20.3",
+  "description": "Zobi Legacy Chart - Paired T Test",
+  "keywords": [
+    "zobi"
+  ],
+  "homepage": "https://github.com/HafizMMoaz/zobi/tree/master/zobi-frontend/plugins/paired-t-test#readme",
+  "bugs": {
+    "url": "https://github.com/HafizMMoaz/zobi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HafizMMoaz/zobi.git",
+    "directory": "frontend/plugins/paired-t-test"
+  },
+  "license": "MIT",
+  "author": "Zobi",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "files": [
+    "esm",
+    "lib"
+  ],
+  "dependencies": {
+    "distributions": "^2.2.0",
+    "prop-types": "^15.8.1",
+    "reactable": "^1.1.0"
+  },
+  "peerDependencies": {
+    "@zobi.dev/chart-controls": "*",
+    "@zobi.dev/core": "*",
+    "@zobi.dev/extension-api": "*",
+    "react": "^18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

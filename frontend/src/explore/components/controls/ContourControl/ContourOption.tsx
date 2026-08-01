@@ -1,6 +1,6 @@
 
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { ContourOptionProps } from './types';
 import ContourPopoverTrigger from './ContourPopoverTrigger';
 import OptionWrapper from '../DndColumnSelectControl/OptionWrapper';

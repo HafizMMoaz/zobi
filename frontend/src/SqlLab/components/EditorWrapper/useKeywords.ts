@@ -1,10 +1,10 @@
 import { useEffect, useMemo, useRef } from 'react';
 import { useStore } from 'react-redux';
 import { useAppDispatch } from 'src/views/store';
-import { t } from '@zobi/core/translation';
-import { getExtensionsRegistry } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getExtensionsRegistry } from '@zobi.dev/core';
 
-import type { Editor } from '@zobi-ui/core/components';
+import type { Editor } from '@zobi.dev/core/components';
 import sqlKeywords from 'src/SqlLab/utils/sqlKeywords';
 import { addTable, addDangerToast } from 'src/SqlLab/actions/sqlLab';
 import {

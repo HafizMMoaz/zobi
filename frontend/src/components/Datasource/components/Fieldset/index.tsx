@@ -1,6 +1,6 @@
 import { ReactNode, useCallback } from 'react';
-import { Divider, Form, Typography } from '@zobi-ui/core/components';
-import { css } from '@zobi/core/theme';
+import { Divider, Form, Typography } from '@zobi.dev/core/components';
+import { css } from '@zobi.dev/extension-api/theme';
 import { recurseReactClone } from '../../utils';
 import Field from '../Field';
 

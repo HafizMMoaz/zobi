@@ -6,7 +6,7 @@
  * Extensions register menu items as side effects at import time.
  */
 
-import type { menus as menusApi } from '@zobi/core';
+import type { menus as menusApi } from '@zobi.dev/extension-api';
 import { Disposable } from '../models';
 
 type MenuItem = menusApi.MenuItem;

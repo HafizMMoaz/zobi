@@ -21,8 +21,8 @@ jest.mock('src/dashboard/util/permissionUtils', () => ({
 }));
 
 // Mock JsonEditor to avoid direct DOM manipulation in tests
-jest.mock('@zobi-ui/core/components/AsyncAceEditor', () => ({
-  ...jest.requireActual('@zobi-ui/core/components/AsyncAceEditor'),
+jest.mock('@zobi.dev/core/components/AsyncAceEditor', () => ({
+  ...jest.requireActual('@zobi.dev/core/components/AsyncAceEditor'),
   JsonEditor: ({
     onChange,
     value,

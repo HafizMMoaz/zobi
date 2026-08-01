@@ -1,7 +1,7 @@
 import { useCallback, useEffect, useMemo, useRef, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, useTheme } from '@zobi/core/theme';
-import { Tooltip } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { Tooltip } from '@zobi.dev/core/components';
 import { usePluginContext } from 'src/components';
 import { VizTileProps } from './types';
 

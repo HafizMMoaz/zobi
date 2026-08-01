@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
-import { css, useTheme } from '@zobi/core/theme';
-import { Button, Divider, Dropdown } from '@zobi-ui/core/components';
-import { Menu, MenuItemType } from '@zobi-ui/core/components/Menu';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { Button, Divider, Dropdown } from '@zobi.dev/core/components';
+import { Menu, MenuItemType } from '@zobi.dev/core/components/Menu';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { commands, menus } from 'src/core';
 
 export interface PanelToolbarProps {

@@ -1,4 +1,4 @@
-import { buildQueryContext, QueryFormData } from '@zobi-ui/core';
+import { buildQueryContext, QueryFormData } from '@zobi.dev/core';
 
 /**
  * The buildQuery function is used to create an instance of QueryContext that's

@@ -1,14 +1,14 @@
 import { FC, useMemo, createContext, useContext, useRef } from 'react';
-import { styled } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Flex,
   Steps,
   type StepsProps,
   StyledSpin,
   Timer,
-} from '@zobi-ui/core/components';
-import { QueryResponse, QueryState, usePrevious } from '@zobi-ui/core';
+} from '@zobi.dev/core/components';
+import { QueryResponse, QueryState, usePrevious } from '@zobi.dev/core';
 import QueryStateLabel from '../QueryStateLabel';
 
 type QueryStatusBarProps = {

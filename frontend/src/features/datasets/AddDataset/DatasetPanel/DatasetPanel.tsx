@@ -1,12 +1,12 @@
-import { t } from '@zobi/core/translation';
-import { Alert } from '@zobi/core/components';
-import { styled } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Loading } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Loading } from '@zobi.dev/core/components';
 import Table, {
   ColumnsType,
   TableSize,
-} from '@zobi-ui/core/components/Table';
+} from '@zobi.dev/core/components/Table';
 import { DatasetObject } from 'src/features/datasets/AddDataset/types';
 import { ITableColumn } from './types';
 import MessageContent from './MessageContent';

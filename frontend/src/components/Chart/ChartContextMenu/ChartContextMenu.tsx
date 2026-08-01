@@ -10,7 +10,7 @@ import {
 } from 'react';
 import ReactDOM from 'react-dom';
 import { useDispatch, useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Behavior,
   BinaryQueryObjectFilterClause,
@@ -22,12 +22,12 @@ import {
   getExtensionsRegistry,
   isFeatureEnabled,
   QueryFormData,
-} from '@zobi-ui/core';
-import { useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import { RootState } from 'src/dashboard/types';
-import { MenuItem } from '@zobi-ui/core/components/Menu';
+import { MenuItem } from '@zobi.dev/core/components/Menu';
 import { usePermissions } from 'src/hooks/usePermissions';
-import { Dropdown } from '@zobi-ui/core/components';
+import { Dropdown } from '@zobi.dev/core/components';
 import { updateDataMask } from 'src/dataMask/actions';
 import DrillByModal from 'src/components/Chart/DrillBy/DrillByModal';
 import { useDatasetDrillInfo } from 'src/hooks/apiResources/datasets';

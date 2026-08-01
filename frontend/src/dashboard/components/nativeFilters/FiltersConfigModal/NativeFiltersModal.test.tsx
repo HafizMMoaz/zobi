@@ -15,8 +15,8 @@ Object.defineProperty(window, 'matchMedia', {
   })),
 });
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   getChartMetadataRegistry: () => ({
     items: {
       filter_select: {

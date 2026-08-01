@@ -1,13 +1,13 @@
 import { useState, useEffect, useMemo, ReactElement, useCallback } from 'react';
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ensureIsArray,
   getChartMetadataRegistry,
   getClientErrorObject,
-} from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { EmptyState, Loading } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { EmptyState, Loading } from '@zobi.dev/core/components';
 import { getChartDataRequest } from 'src/components/Chart/chartAction';
 import { ResultsPaneProps, QueryResultInterface } from '../types';
 import { SingleQueryResultPane } from './SingleQueryResultPane';

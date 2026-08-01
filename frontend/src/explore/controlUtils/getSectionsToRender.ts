@@ -2,13 +2,13 @@ import memoizeOne from 'memoize-one';
 import {
   DatasourceType,
   getChartControlPanelRegistry,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   ControlPanelConfig,
   ControlPanelSectionConfig,
   expandControlConfig,
   isControlPanelSectionConfig,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 
 import * as SECTIONS from 'src/explore/controlPanels/sections';
 

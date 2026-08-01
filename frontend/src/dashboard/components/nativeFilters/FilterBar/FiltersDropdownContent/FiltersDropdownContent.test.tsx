@@ -1,5 +1,5 @@
 import { render, screen } from 'spec/helpers/testing-library';
-import { Filter } from '@zobi-ui/core';
+import { Filter } from '@zobi.dev/core';
 import { FiltersDropdownContent } from '.';
 
 const buildFilter = (id: string, name: string): Filter =>

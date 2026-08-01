@@ -1,4 +1,4 @@
-import { initFeatureFlags } from '@zobi-ui/core';
+import { initFeatureFlags } from '@zobi.dev/core';
 import getBootstrapData from './getBootstrapData';
 
 function getDomainsConfig(): string[] {

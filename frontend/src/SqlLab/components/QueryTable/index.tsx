@@ -7,11 +7,11 @@ import {
   Icons,
   ModalTrigger,
   TableView,
-} from '@zobi-ui/core/components';
-import ProgressBar from '@zobi-ui/core/components/ProgressBar';
-import { t } from '@zobi/core/translation';
-import { QueryResponse, QueryState } from '@zobi-ui/core';
-import { useTheme } from '@zobi/core/theme';
+} from '@zobi.dev/core/components';
+import ProgressBar from '@zobi.dev/core/components/ProgressBar';
+import { t } from '@zobi.dev/extension-api/translation';
+import { QueryResponse, QueryState } from '@zobi.dev/core';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import { shallowEqual, useSelector } from 'react-redux';
 import { useAppDispatch } from 'src/views/store';
 
@@ -23,7 +23,7 @@ import {
   removeQuery,
   startQuery,
 } from 'src/SqlLab/actions/sqlLab';
-import { fDuration, extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { fDuration, extendedDayjs } from '@zobi.dev/core/utils/dates';
 import { SqlLabRootState } from 'src/SqlLab/types';
 import { UserWithPermissionsAndRoles as User } from 'src/types/bootstrapTypes';
 import { makeUrl } from 'src/utils/pathUtils';

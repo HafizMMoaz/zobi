@@ -1,4 +1,4 @@
-import { ChartProps } from '@zobi-ui/core';
+import { ChartProps } from '@zobi.dev/core';
 
 export default function transformProps(chartProps: ChartProps) {
   const { formData, height, width, filterState, hooks, ownState } = chartProps;

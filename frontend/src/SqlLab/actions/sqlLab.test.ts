@@ -13,7 +13,7 @@ import {
   initialState,
   queryId,
 } from 'src/SqlLab/fixtures';
-import { ZobiClient, isFeatureEnabled } from '@zobi-ui/core';
+import { ZobiClient, isFeatureEnabled } from '@zobi.dev/core';
 import { ADD_TOAST } from 'src/components/MessageToasts/actions';
 import { EMPTY_STATE_QE_ID } from 'src/SqlLab/hooks/useQueryEditor';
 import { ToastType } from '../../components/MessageToasts/types';
@@ -37,8 +37,8 @@ afterAll(() => {
   jest.resetAllMocks();
 });
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

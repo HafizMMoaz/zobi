@@ -1,12 +1,12 @@
 import { FC, useMemo } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Behavior,
   SetDataMaskHook,
   SuperChart,
   AppSection,
-} from '@zobi-ui/core';
-import { Loading, type FormInstance } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import { Loading, type FormInstance } from '@zobi.dev/core/components';
 import { NativeFiltersForm } from '../types';
 import { getFormData } from '../../utils';
 import {

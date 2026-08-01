@@ -2,7 +2,7 @@ import {
   NO_TIME_RANGE,
   JsonObject,
   customTimeRangeDecode,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { useSelector } from 'react-redux';
 import {
   COMMON_RANGE_VALUES_SET,

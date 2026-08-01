@@ -1,5 +1,5 @@
-import { ZobiTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import { ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   isFeatureEnabled,
   FeatureFlag,
@@ -7,8 +7,8 @@ import {
   JsonResponse,
   ZobiClient,
   isMatrixifyEnabled,
-} from '@zobi-ui/core';
-import { css, styled } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 import { useState, useMemo, useCallback } from 'react';
 import rison from 'rison';
 import { uniqBy } from 'lodash';
@@ -34,7 +34,7 @@ import {
   InfoTooltip,
   Loading,
   type LabeledValue,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   FacePile,
   ImportModal as ImportModelsModal,
@@ -55,7 +55,7 @@ import { dangerouslyGetItemDoNotUse } from 'src/utils/localStorageHelpers';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import PropertiesModal from 'src/explore/components/PropertiesModal';
 import Chart from 'src/types/Chart';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { nativeFilterGate } from 'src/dashboard/components/nativeFilters/utils';
 import { TagTypeEnum } from 'src/components/Tag/TagType';
 import { loadTags } from 'src/components/Tag/utils';

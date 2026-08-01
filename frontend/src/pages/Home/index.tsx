@@ -1,14 +1,14 @@
 import { useEffect, useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   isFeatureEnabled,
   FeatureFlag,
   getExtensionsRegistry,
   JsonObject,
-} from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import rison from 'rison';
-import { Collapse, ListViewCard } from '@zobi-ui/core/components';
+import { Collapse, ListViewCard } from '@zobi.dev/core/components';
 import { User } from 'src/types/bootstrapTypes';
 import { reject } from 'lodash';
 import {
@@ -27,7 +27,7 @@ import {
   loadingCardCount,
   mq,
 } from 'src/views/CRUD/utils';
-import { Switch } from '@zobi-ui/core/components/Switch';
+import { Switch } from '@zobi.dev/core/components/Switch';
 import getBootstrapData from 'src/utils/getBootstrapData';
 import { TableTab } from 'src/views/CRUD/types';
 import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';

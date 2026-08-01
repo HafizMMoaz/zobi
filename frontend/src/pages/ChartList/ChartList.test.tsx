@@ -5,7 +5,7 @@ import {
   fireEvent,
   within,
 } from 'spec/helpers/testing-library';
-import { isFeatureEnabled } from '@zobi-ui/core';
+import { isFeatureEnabled } from '@zobi.dev/core';
 import {
   API_ENDPOINTS,
   mockCharts,
@@ -13,8 +13,8 @@ import {
   setupMocks,
 } from './ChartList.testHelpers';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

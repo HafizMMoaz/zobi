@@ -1,8 +1,8 @@
 import { EventHandler, ChangeEvent, MouseEvent, ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiTheme } from '@zobi.dev/extension-api/theme';
 import ZobiText from 'src/utils/textUtils';
-import { Input, Button } from '@zobi-ui/core/components';
+import { Input, Button } from '@zobi.dev/core/components';
 import { StyledInputContainer, wideButton, marginBottom } from './styles';
 import { DatabaseObject } from '../types';
 

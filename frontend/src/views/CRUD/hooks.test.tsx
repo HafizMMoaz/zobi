@@ -1,6 +1,6 @@
 import { renderHook, act } from '@testing-library/react';
 import { waitFor } from 'spec/helpers/testing-library';
-import { JsonResponse, ZobiClient } from '@zobi-ui/core';
+import { JsonResponse, ZobiClient } from '@zobi.dev/core';
 
 import {
   useListViewResource,

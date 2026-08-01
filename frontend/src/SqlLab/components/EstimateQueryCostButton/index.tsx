@@ -1,8 +1,8 @@
 import { useMemo } from 'react';
 import { useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
-import { Alert } from '@zobi/core/components';
-import { css, styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 
 import {
   Button,
@@ -11,7 +11,7 @@ import {
   TableView,
   EmptyWrapperType,
   Icons,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import useQueryEditor from 'src/SqlLab/hooks/useQueryEditor';
 import { SqlLabRootState, QueryCostEstimate } from 'src/SqlLab/types';
 

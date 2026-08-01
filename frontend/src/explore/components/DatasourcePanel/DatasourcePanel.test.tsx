@@ -15,7 +15,7 @@ import {
   columns,
   metrics,
 } from 'src/explore/components/DatasourcePanel/fixtures';
-import { DatasourceType } from '@zobi-ui/core';
+import { DatasourceType } from '@zobi.dev/core';
 import DatasourceControl from 'src/explore/components/controls/DatasourceControl';
 import ExploreContainer from '../ExploreContainer';
 import {

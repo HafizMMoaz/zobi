@@ -1,5 +1,5 @@
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
-import { Menu } from '@zobi-ui/core/components/Menu';
+import { Menu } from '@zobi.dev/core/components/Menu';
 import { useLanguageMenuItems } from './LanguagePicker';
 
 const mockedProps = {

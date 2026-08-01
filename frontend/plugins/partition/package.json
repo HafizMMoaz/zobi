@@ -1,0 +1,42 @@
+{
+  "name": "@zobi.dev/partition",
+  "version": "0.20.3",
+  "description": "Zobi Legacy Chart - Partition",
+  "keywords": [
+    "zobi"
+  ],
+  "homepage": "https://github.com/HafizMMoaz/zobi/tree/master/zobi-frontend/plugins/partition#readme",
+  "bugs": {
+    "url": "https://github.com/HafizMMoaz/zobi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HafizMMoaz/zobi.git",
+    "directory": "frontend/packages/legacy-plugin-chart-partition"
+  },
+  "license": "MIT",
+  "author": "Zobi",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "files": [
+    "esm",
+    "lib"
+  ],
+  "dependencies": {
+    "d3": "^3.5.17",
+    "d3-hierarchy": "^3.1.2",
+    "prop-types": "^15.8.1"
+  },
+  "peerDependencies": {
+    "@testing-library/jest-dom": "*",
+    "@testing-library/react": "^14.0.0",
+    "@zobi.dev/chart-controls": "*",
+    "@zobi.dev/core": "*",
+    "@zobi.dev/extension-api": "*",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

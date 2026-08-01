@@ -1,5 +1,5 @@
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   DataMask,
   DataMaskStateWithId,
@@ -9,13 +9,13 @@ import {
   NativeFilterTarget,
   Filters,
   NativeFilterType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   styled,
   css,
   useTheme,
   ZobiTheme,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import {
   Typography,
   Select,
@@ -24,7 +24,7 @@ import {
   Icons,
   Tooltip,
   FormItem,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { useDispatch, useSelector } from 'react-redux';
 import { RootState } from 'src/dashboard/types';
 import { setPendingChartCustomization } from 'src/dashboard/actions/chartCustomizationActions';

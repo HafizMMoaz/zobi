@@ -6,9 +6,9 @@ import {
   useLocation,
 } from 'react-router-dom';
 import { bindActionCreators } from 'redux';
-import { css } from '@zobi/core/theme';
-import { Layout, Loading } from '@zobi-ui/core/components';
-import { setupAGGridModules } from '@zobi-ui/core/components/ThemedAgGridReact';
+import { css } from '@zobi.dev/extension-api/theme';
+import { Layout, Loading } from '@zobi.dev/core/components';
+import { setupAGGridModules } from '@zobi.dev/core/components/ThemedAgGridReact';
 import { ErrorBoundary } from 'src/components';
 import Menu from 'src/features/home/Menu';
 import getBootstrapData, { applicationRoot } from 'src/utils/getBootstrapData';

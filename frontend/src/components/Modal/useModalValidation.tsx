@@ -1,7 +1,7 @@
 import { useState, useCallback, useMemo, ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { css } from '@zobi/core/theme';
-import { List } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css } from '@zobi.dev/extension-api/theme';
+import { List } from '@zobi.dev/core/components';
 
 export interface SectionValidationObject {
   hasErrors: boolean;

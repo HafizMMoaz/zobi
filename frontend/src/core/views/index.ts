@@ -7,7 +7,7 @@
  */
 
 import React, { ReactElement } from 'react';
-import type { views as viewsApi } from '@zobi/core';
+import type { views as viewsApi } from '@zobi.dev/extension-api';
 import { ErrorBoundary } from 'src/components/ErrorBoundary';
 import ExtensionPlaceholder from 'src/extensions/ExtensionPlaceholder';
 import { Disposable } from '../models';

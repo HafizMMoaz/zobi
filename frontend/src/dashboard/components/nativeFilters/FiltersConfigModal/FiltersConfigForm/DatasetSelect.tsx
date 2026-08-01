@@ -1,12 +1,12 @@
 import { useCallback, useMemo, ReactNode } from 'react';
 import rison from 'rison';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   JsonResponse,
   ClientErrorObject,
   getClientErrorObject,
-} from '@zobi-ui/core';
-import { AsyncSelect } from '@zobi-ui/core/components';
+} from '@zobi.dev/core';
+import { AsyncSelect } from '@zobi.dev/core/components';
 import { cachedZobiGet } from 'src/utils/cachedZobiGet';
 import {
   Dataset,

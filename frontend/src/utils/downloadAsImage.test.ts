@@ -13,7 +13,7 @@ jest.mock('src/components/MessageToasts/actions', () => ({
   addWarningToast: jest.fn(),
 }));
 
-jest.mock('@zobi/core/translation', () => ({
+jest.mock('@zobi.dev/extension-api/translation', () => ({
   t: (str: string) => str,
 }));
 

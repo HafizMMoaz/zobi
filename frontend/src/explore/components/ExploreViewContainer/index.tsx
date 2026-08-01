@@ -19,21 +19,21 @@ import {
   MatrixifyFormData,
   DatasourceType,
   ensureIsArray,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   ControlStateMapping,
   ControlPanelState,
-} from '@zobi-ui/chart-controls';
-import { styled, css, useTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import { logging } from '@zobi/core/utils';
+} from '@zobi.dev/chart-controls';
+import { styled, css, useTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { logging } from '@zobi.dev/extension-api/utils';
 import { debounce, isEqual, isObjectLike, omit, pick } from 'lodash';
 import { Resizable } from 're-resizable';
 import { useHistory } from 'react-router-dom';
-import { Tooltip } from '@zobi-ui/core/components';
+import { Tooltip } from '@zobi.dev/core/components';
 import { usePluginContext } from 'src/components';
 import { Global } from '@emotion/react';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import {
   getItem,
   setItem,

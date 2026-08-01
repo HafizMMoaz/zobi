@@ -1,11 +1,11 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   getExtensionsRegistry,
   ZobiClient,
   isFeatureEnabled,
   FeatureFlag,
-} from '@zobi-ui/core';
-import { styled, useTheme, css } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { styled, useTheme, css } from '@zobi.dev/extension-api/theme';
 import {
   FunctionComponent,
   useState,
@@ -37,7 +37,7 @@ import {
   DatasetTypeLabel,
   Loading,
   List,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   DatasourceModal,
   GenericLink,
@@ -51,13 +51,13 @@ import {
   type ListViewFetchDataConfig,
 } from 'src/components';
 import type { SelectOption } from 'src/components/ListView/types';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Typography } from '@zobi.dev/core/components/Typography';
 import handleResourceExport from 'src/utils/export';
 import SubMenu, { SubMenuProps, ButtonProps } from 'src/features/home/SubMenu';
 import Owner from 'src/types/Owner';
 import withToasts from 'src/components/MessageToasts/withToasts';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import WarningIconWithTooltip from '@zobi-ui/core/components/WarningIconWithTooltip';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import WarningIconWithTooltip from '@zobi.dev/core/components/WarningIconWithTooltip';
 import { isUserAdmin } from 'src/dashboard/util/permissionUtils';
 
 import {

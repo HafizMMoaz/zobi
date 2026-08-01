@@ -3,7 +3,7 @@ import {
   DataMaskStateWithId,
   getColumnLabel,
   isDefined,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { LayoutItem } from 'src/dashboard/types';
 import { CrossFilterIndicator, getCrossFilterIndicator } from '../../selectors';
 

@@ -4,7 +4,7 @@ import {
   TimeFormats,
   ensureIsArray,
   JsonObject,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 // ATTENTION: If you change any constants, make sure to also change constants.py
 

@@ -1,6 +1,6 @@
 import { Component } from 'react';
-import { t } from '@zobi/core/translation';
-import { Tooltip, PublishedLabel } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Tooltip, PublishedLabel } from '@zobi.dev/core/components';
 import { HeaderProps, HeaderDropdownProps } from '../Header/types';
 
 export type DashboardPublishedStatusType = {

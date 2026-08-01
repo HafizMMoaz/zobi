@@ -1,10 +1,10 @@
-import { t } from '@zobi/core/translation';
-import { JsonValue } from '@zobi-ui/core';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { JsonValue } from '@zobi.dev/core';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 // eslint-disable-next-line no-restricted-imports
-import { Button } from '@zobi-ui/core/components/Button';
-import { Form } from '@zobi-ui/core/components/Form';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import { Button } from '@zobi.dev/core/components/Button';
+import { Form } from '@zobi.dev/core/components/Form';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import { Data as GsData } from 'geostyler-data';
 import { Style as GsStyle } from 'geostyler-style';
 import WfsDataParser, {

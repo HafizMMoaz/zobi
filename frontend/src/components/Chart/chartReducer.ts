@@ -1,12 +1,12 @@
 /* eslint camelcase: 0 */
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { omit } from 'lodash';
 import { HYDRATE_DASHBOARD } from 'src/dashboard/actions/hydrate';
 import { DatasourcesAction } from 'src/dashboard/actions/datasources';
 import { ChartState } from 'src/explore/types';
 import { getFormDataFromControls } from 'src/explore/controlUtils';
 import { HYDRATE_EXPLORE } from 'src/explore/actions/hydrateExplore';
-import { now } from '@zobi-ui/core/utils/dates';
+import { now } from '@zobi.dev/core/utils/dates';
 import * as actions from './chartAction';
 
 export const chart: ChartState = {

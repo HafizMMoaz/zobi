@@ -13,7 +13,7 @@ import {
   getChartMetadataRegistry,
   QueryFormData,
   ZobiClient,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 
 // eslint-disable-next-line no-restricted-globals -- TODO: Migrate from describe blocks
 describe('exploreUtils', () => {

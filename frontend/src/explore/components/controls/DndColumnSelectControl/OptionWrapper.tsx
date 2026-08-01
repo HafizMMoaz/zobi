@@ -10,11 +10,11 @@ import {
   OptionProps,
   OptionItemInterface,
 } from 'src/explore/components/controls/DndColumnSelectControl/types';
-import { Tooltip } from '@zobi-ui/core/components';
+import { Tooltip } from '@zobi.dev/core/components';
 import { StyledColumnOption } from 'src/explore/components/optionRenderers';
-import { isAdhocColumn } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { ColumnMeta } from '@zobi-ui/chart-controls';
+import { isAdhocColumn } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { ColumnMeta } from '@zobi.dev/chart-controls';
 import Option from './Option';
 
 export const OptionLabel = styled.div`

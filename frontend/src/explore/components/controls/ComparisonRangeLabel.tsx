@@ -2,7 +2,7 @@
 import { useEffect, useState } from 'react';
 import { useSelector } from 'react-redux';
 import { isEmpty, isEqual, noop } from 'lodash';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   BinaryAdhocFilter,
   ensureIsArray,
@@ -10,14 +10,14 @@ import {
   getTimeOffset,
   parseDttmToDate,
   SimpleAdhocFilter,
-} from '@zobi-ui/core';
-import { css } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { css } from '@zobi.dev/extension-api/theme';
 import ControlHeader, {
   ControlHeaderProps,
 } from 'src/explore/components/ControlHeader';
 import { RootState } from 'src/views/store';
-import { DEFAULT_DATE_PATTERN } from '@zobi-ui/chart-controls';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { DEFAULT_DATE_PATTERN } from '@zobi.dev/chart-controls';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 
 const DAYJS_FORMAT = 'YYYY-MM-DD';
 

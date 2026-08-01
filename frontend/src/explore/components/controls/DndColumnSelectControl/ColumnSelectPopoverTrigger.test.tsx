@@ -7,8 +7,8 @@ import {
   screen,
   userEvent,
 } from 'spec/helpers/testing-library';
-import { AdhocColumn } from '@zobi-ui/core';
-import { ColumnMeta } from '@zobi-ui/chart-controls';
+import { AdhocColumn } from '@zobi.dev/core';
+import { ColumnMeta } from '@zobi.dev/chart-controls';
 import ColumnSelectPopoverTriggerWrapper from './ColumnSelectPopoverTrigger';
 
 const createStore = (datasource = {}) =>

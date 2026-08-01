@@ -1,8 +1,8 @@
 import { useMemo, useState, useEffect, useRef, RefObject } from 'react';
-import { t } from '@zobi/core/translation';
-import { getTimeFormatter, safeHtmlSpan, TimeFormats } from '@zobi-ui/core';
-import { css, styled, useTheme } from '@zobi/core/theme';
-import { GenericDataType } from '@zobi/core/common';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getTimeFormatter, safeHtmlSpan, TimeFormats } from '@zobi.dev/core';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { Column } from 'react-table';
 import { debounce } from 'lodash';
 import {
@@ -12,7 +12,7 @@ import {
   Input,
   Popover,
   Radio,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { CopyToClipboard } from 'src/components';
 import {
   prepareCopyToClipboardTabularData,

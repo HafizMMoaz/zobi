@@ -4,21 +4,21 @@ import { lazy, Suspense, useEffect } from 'react';
 import { createRoot, type Root } from 'react-dom/client';
 import { BrowserRouter as Router, Route } from 'react-router-dom';
 import { Global } from '@emotion/react';
-import { t } from '@zobi/core/translation';
-import { makeApi } from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+import { t } from '@zobi.dev/extension-api/translation';
+import { makeApi } from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import {
   type ZobiThemeConfig,
   ThemeMode,
   css,
-} from '@zobi/core/theme';
-import Switchboard from '@zobi-ui/switchboard';
+} from '@zobi.dev/extension-api/theme';
+import Switchboard from '@zobi.dev/switchboard';
 import getBootstrapData, { applicationRoot } from 'src/utils/getBootstrapData';
 import setupClient from 'src/setup/setupClient';
 import setupPlugins from 'src/setup/setupPlugins';
 import { useUiConfig } from 'src/components/UiConfigContext';
 import { store, USER_LOADED } from 'src/views/store';
-import { Loading } from '@zobi-ui/core/components';
+import { Loading } from '@zobi.dev/core/components';
 import { ErrorBoundary } from 'src/components';
 import { addDangerToast } from 'src/components/MessageToasts/actions';
 import ToastContainer from 'src/components/MessageToasts/ToastContainer';

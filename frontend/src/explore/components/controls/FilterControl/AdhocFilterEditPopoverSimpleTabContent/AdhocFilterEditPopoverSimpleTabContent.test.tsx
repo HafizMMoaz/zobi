@@ -16,10 +16,10 @@ import {
   OPERATOR_ENUM_TO_OPERATOR_TYPE,
 } from 'src/explore/constants';
 import AdhocMetric from 'src/explore/components/controls/MetricControl/AdhocMetric';
-import { FeatureFlag, isFeatureEnabled } from '@zobi-ui/core';
+import { FeatureFlag, isFeatureEnabled } from '@zobi.dev/core';
 import fetchMock from 'fetch-mock';
 
-import { TestDataset, Dataset } from '@zobi-ui/chart-controls';
+import { TestDataset, Dataset } from '@zobi.dev/chart-controls';
 import AdhocFilterEditPopoverSimpleTabContent, {
   useSimpleTabFilterProps,
   Props,
@@ -120,8 +120,8 @@ function setup(overrides?: Record<string, unknown>) {
   return props;
 }
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

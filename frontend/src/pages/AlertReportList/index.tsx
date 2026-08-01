@@ -1,20 +1,20 @@
 
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ZobiClient,
   makeApi,
   getExtensionsRegistry,
-} from '@zobi-ui/core';
-import { css, styled } from '@zobi/core/theme';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+} from '@zobi.dev/core';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 import {
   Tooltip,
   ConfirmStatusChange,
   DeleteModal,
   LastUpdated,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   FacePile,
   ModifiedInfo,
@@ -26,7 +26,7 @@ import {
   type ListViewFilters,
 } from 'src/components';
 import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';
-import { Switch } from '@zobi-ui/core/components/Switch';
+import { Switch } from '@zobi.dev/core/components/Switch';
 import { DATETIME_WITH_TIME_ZONE } from 'src/constants';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import AlertStatusIcon from 'src/features/alerts/components/AlertStatusIcon';
@@ -46,7 +46,7 @@ import Owner from 'src/types/Owner';
 import AlertReportModal from 'src/features/alerts/AlertReportModal';
 import { AlertObject, AlertState } from 'src/features/alerts/types';
 import { QueryObjectColumns } from 'src/views/CRUD/types';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { WIDER_DROPDOWN_WIDTH } from 'src/components/ListView/utils';
 
 const extensionsRegistry = getExtensionsRegistry();

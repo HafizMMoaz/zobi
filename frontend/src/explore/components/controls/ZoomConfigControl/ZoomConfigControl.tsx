@@ -1,7 +1,7 @@
-import { ControlHeader } from '@zobi-ui/chart-controls';
-import { t } from '@zobi/core/translation';
-import { css, styled } from '@zobi/core/theme';
-import { Form } from '@zobi-ui/core/components';
+import { ControlHeader } from '@zobi.dev/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { Form } from '@zobi.dev/core/components';
 import { Tag } from 'src/components';
 import { FC, useState } from 'react';
 import { isZoomConfigsLinear, isZoomConfigsExp } from './typeguards';

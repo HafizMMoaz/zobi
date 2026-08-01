@@ -2,7 +2,7 @@
 Query execution types for core.
 
 Provides type definitions for query execution that are partially aligned
-with frontend types in zobi-ui-core/src/query/types/.
+with frontend types in core/src/query/types/.
 """
 
 from __future__ import annotations

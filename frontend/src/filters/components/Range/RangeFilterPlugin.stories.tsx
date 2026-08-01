@@ -1,6 +1,6 @@
 import { action } from '@storybook/addon-actions';
-import { SuperChart, getChartTransformPropsRegistry } from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+import { SuperChart, getChartTransformPropsRegistry } from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import RangeFilterPlugin from './index';
 import transformProps from './transformProps';
 

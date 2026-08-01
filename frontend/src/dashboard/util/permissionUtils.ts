@@ -1,4 +1,4 @@
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
 import {
   isUserWithPermissionsAndRoles,
   UndefinedUser,

@@ -1,5 +1,5 @@
 import { useEffect, useMemo, useState } from 'react';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   useChartEditModal,
   useFavoriteStatus,
@@ -24,9 +24,9 @@ import { LoadingCards } from 'src/pages/Home';
 import ChartCard from 'src/features/charts/ChartCard';
 import Chart from 'src/types/Chart';
 import handleResourceExport from 'src/utils/export';
-import { Loading } from '@zobi-ui/core/components';
+import { Loading } from '@zobi.dev/core/components';
 import { ErrorBoundary } from 'src/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { navigateTo } from 'src/utils/navigationUtils';
 import EmptyState from './EmptyState';
 import { WelcomeTable } from './types';

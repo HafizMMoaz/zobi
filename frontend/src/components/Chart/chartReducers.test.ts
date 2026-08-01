@@ -1,4 +1,4 @@
-import { JsonObject } from '@zobi-ui/core';
+import { JsonObject } from '@zobi.dev/core';
 import chartReducer, { chart } from 'src/components/Chart/chartReducer';
 import * as actions from 'src/components/Chart/chartAction';
 import { ChartState } from 'src/explore/types';

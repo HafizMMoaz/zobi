@@ -1,4 +1,4 @@
-import { QueryState } from '@zobi-ui/core';
+import { QueryState } from '@zobi.dev/core';
 import sqlLabReducer from 'src/SqlLab/reducers/sqlLab';
 import * as actions from 'src/SqlLab/actions/sqlLab';
 import type { SqlLabAction } from 'src/SqlLab/actions/sqlLab';

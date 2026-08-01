@@ -1,6 +1,6 @@
 import { isValidElement } from 'react';
 import { render, screen } from 'spec/helpers/testing-library';
-import { QueryState, type QueryResponse } from '@zobi-ui/core';
+import { QueryState, type QueryResponse } from '@zobi.dev/core';
 import QueryStatusBar from '.';
 
 jest.mock('../QueryStateLabel', () => ({

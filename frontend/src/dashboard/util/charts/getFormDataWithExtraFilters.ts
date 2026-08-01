@@ -9,7 +9,7 @@ import {
   PartialFilters,
   ChartCustomization,
   QueryFormColumn,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   ChartConfiguration,
   ChartQueryPayload,

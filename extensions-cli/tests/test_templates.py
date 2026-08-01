@@ -125,7 +125,7 @@ def test_frontend_package_json_template_renders_correctly(jinja_env, template_co
     # Verify dependencies
     assert "peerDependencies" in parsed
     peer_deps = parsed["peerDependencies"]
-    assert "@zobi/core" in peer_deps
+    assert "@zobi.dev/extension-api" in peer_deps
     assert "react" in peer_deps
     assert "react-dom" in peer_deps
 

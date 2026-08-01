@@ -1,19 +1,19 @@
 import { useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { getClientErrorObject } from '@zobi-ui/core';
-import { useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getClientErrorObject } from '@zobi.dev/core';
+import { useTheme } from '@zobi.dev/extension-api/theme';
 import {
   Button,
   Icons,
   Popover,
   type PopoverProps,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { CopyToClipboard } from 'src/components';
 import { getDashboardPermalink } from 'src/utils/urlUtils';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { shallowEqual, useSelector } from 'react-redux';
 import { RootState } from 'src/dashboard/types';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Typography } from '@zobi.dev/core/components/Typography';
 import { hasStatefulCharts } from 'src/dashboard/util/chartStateConverter';
 
 export type URLShortLinkButtonProps = {

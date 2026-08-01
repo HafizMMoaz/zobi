@@ -1,15 +1,15 @@
 import { PureComponent } from 'react';
-import { EditableTabs } from '@zobi-ui/core/components/Tabs';
+import { EditableTabs } from '@zobi.dev/core/components/Tabs';
 import { connect } from 'react-redux';
 import type { QueryEditor, SqlLabRootState } from 'src/SqlLab/types';
-import { t } from '@zobi/core/translation';
-import { FeatureFlag, isFeatureEnabled } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { FeatureFlag, isFeatureEnabled } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { Logger } from 'src/logger/LogUtils';
-import { EmptyState, Tooltip } from '@zobi-ui/core/components';
+import { EmptyState, Tooltip } from '@zobi.dev/core/components';
 import { detectOS } from 'src/utils/common';
 import * as Actions from 'src/SqlLab/actions/sqlLab';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import SqlEditor from '../SqlEditor';
 import SqlEditorTabHeader from '../SqlEditorTabHeader';
 

@@ -1,7 +1,7 @@
 import { isValidElement, cloneElement } from 'react';
-import { css, useTheme } from '@zobi/core/theme';
-import { Typography, Icons, TitleProps } from '@zobi-ui/core/components';
-import type { IconType } from '@zobi-ui/core/components/Icons/types';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { Typography, Icons, TitleProps } from '@zobi.dev/core/components';
+import type { IconType } from '@zobi.dev/core/components/Icons/types';
 
 type ModalTitleWithIconProps = Omit<TitleProps, 'title'> & {
   isEditMode?: boolean;

@@ -1,8 +1,8 @@
 /* eslint camelcase: 0 */
 import rison from 'rison';
-import { Dataset } from '@zobi-ui/chart-controls';
-import { t } from '@zobi/core/translation';
-import { ZobiClient, QueryFormData } from '@zobi-ui/core';
+import { Dataset } from '@zobi.dev/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient, QueryFormData } from '@zobi.dev/core';
 import { Dispatch } from 'redux';
 import {
   addDangerToast,

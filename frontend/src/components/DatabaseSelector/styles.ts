@@ -1,5 +1,5 @@
-import { styled } from '@zobi/core/theme';
-import { FormLabel } from '@zobi-ui/core/components';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { FormLabel } from '@zobi.dev/core/components';
 
 export const StyledFormLabel = styled(FormLabel)`
   display: block;

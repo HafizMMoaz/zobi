@@ -1,5 +1,5 @@
 import { render, screen } from 'spec/helpers/testing-library';
-import type { MenuItemType } from '@zobi-ui/core/components';
+import type { MenuItemType } from '@zobi.dev/core/components';
 import { useDashboardsMenuItems } from './DashboardsSubMenu';
 import { SEARCH_THRESHOLD } from './index';
 

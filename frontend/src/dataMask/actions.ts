@@ -1,4 +1,4 @@
-import { DataMask, Filters } from '@zobi-ui/core';
+import { DataMask, Filters } from '@zobi.dev/core';
 import { SaveFilterChangesType } from 'src/dashboard/components/nativeFilters/FiltersConfigModal/types';
 import { getInitialDataMask } from './reducer';
 

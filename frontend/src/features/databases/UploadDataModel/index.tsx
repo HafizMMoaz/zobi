@@ -7,9 +7,9 @@ import {
   FC,
 } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { getClientErrorObject, ZobiClient } from '@zobi-ui/core';
-import { ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { getClientErrorObject, ZobiClient } from '@zobi.dev/core';
+import { ZobiTheme } from '@zobi.dev/extension-api/theme';
 import {
   Button,
   Collapse,
@@ -25,9 +25,9 @@ import {
   type UploadChangeParam,
   type UploadFile,
   Typography,
-} from '@zobi-ui/core/components';
-import { Switch, SwitchProps } from '@zobi-ui/core/components/Switch';
-import { Icons } from '@zobi-ui/core/components/Icons';
+} from '@zobi.dev/core/components';
+import { Switch, SwitchProps } from '@zobi.dev/core/components/Switch';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import rison from 'rison';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { ModalTitleWithIcon } from 'src/components/ModalTitleWithIcon';

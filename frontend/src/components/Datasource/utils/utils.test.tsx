@@ -1,5 +1,5 @@
 
-import { tn } from '@zobi/core/translation';
+import { tn } from '@zobi.dev/extension-api/translation';
 import { updateColumns } from '.';
 
 // eslint-disable-next-line no-restricted-globals -- TODO: Migrate from describe blocks

@@ -1,5 +1,5 @@
-import { t } from '@zobi/core/translation';
-import { LabeledErrorBoundInput as ValidatedInput } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { LabeledErrorBoundInput as ValidatedInput } from '@zobi.dev/core/components';
 import { DatabaseParameters, FieldPropTypes } from '../../types';
 
 const FIELD_TEXT_MAP = {

@@ -1,6 +1,6 @@
 import { act, render, screen, userEvent } from 'spec/helpers/testing-library';
-import { FeatureFlag, isFeatureEnabled } from '@zobi-ui/core';
-import { Menu, MenuItem } from '@zobi-ui/core/components/Menu';
+import { FeatureFlag, isFeatureEnabled } from '@zobi.dev/core';
+import { Menu, MenuItem } from '@zobi.dev/core/components/Menu';
 import { useHeaderReportMenuItems, HeaderReportProps } from './index';
 
 const createProps = () => ({
@@ -106,8 +106,8 @@ function setup(props: HeaderReportProps, initialState = {}) {
   render(<MenuWrapper {...props} />, { useRedux: true, initialState });
 }
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(),
 }));
 

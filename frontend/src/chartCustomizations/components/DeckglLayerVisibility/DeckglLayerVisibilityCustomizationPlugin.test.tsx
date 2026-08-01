@@ -1,11 +1,11 @@
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import DeckglLayerVisibilityCustomizationPlugin from './DeckglLayerVisibilityCustomizationPlugin';
 import { PluginDeckglLayerVisibilityProps } from './types';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   ZobiClient: {
     get: jest.fn(),
   },

@@ -1,5 +1,5 @@
 import { nanoid } from 'nanoid';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 
 import {
   CHART_TYPE,

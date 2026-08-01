@@ -1,6 +1,6 @@
 
 import { lazy, ComponentType } from 'react';
-import { JsonObject } from '@zobi-ui/core';
+import { JsonObject } from '@zobi.dev/core';
 
 export interface RegistryMetadata {
   description: string;

@@ -1,5 +1,5 @@
 import { useCallback, useMemo, useRef, useState } from 'react';
-import { BaseFormData, ContextMenuFilters } from '@zobi-ui/core';
+import { BaseFormData, ContextMenuFilters } from '@zobi.dev/core';
 import ChartContextMenu, {
   ChartContextMenuRef,
   ContextMenuItem,

@@ -1,6 +1,6 @@
-import { t } from '@zobi/core/translation';
-import { SEPARATOR } from '@zobi-ui/core';
-import { Input, Icons, InfoTooltip } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { SEPARATOR } from '@zobi.dev/core';
+import { Input, Icons, InfoTooltip } from '@zobi.dev/core/components';
 import { FrameComponentProps } from 'src/explore/components/controls/DateFilterControl/types';
 import DateFunctionTooltip from './DateFunctionTooltip';
 

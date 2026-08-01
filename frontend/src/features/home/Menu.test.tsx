@@ -2,13 +2,13 @@ import * as reactRedux from 'react-redux';
 import fetchMock from 'fetch-mock';
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
 import setupCodeOverrides from 'src/setup/setupCodeOverrides';
-import { getExtensionsRegistry } from '@zobi-ui/core';
-import * as CoreTheme from '@zobi/core/theme';
+import { getExtensionsRegistry } from '@zobi.dev/core';
+import * as CoreTheme from '@zobi.dev/extension-api/theme';
 import { Menu } from './Menu';
 import * as getBootstrapData from 'src/utils/getBootstrapData';
 
-jest.mock('@zobi/core/theme', () => ({
-  ...jest.requireActual('@zobi/core/theme'),
+jest.mock('@zobi.dev/extension-api/theme', () => ({
+  ...jest.requireActual('@zobi.dev/extension-api/theme'),
   useTheme: jest.fn(),
 }));
 

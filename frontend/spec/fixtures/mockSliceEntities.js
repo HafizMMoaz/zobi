@@ -1,5 +1,5 @@
 import { datasourceId } from 'spec/fixtures/mockDatasource';
-import { DatasourceType, VizType } from '@zobi-ui/core';
+import { DatasourceType, VizType } from '@zobi.dev/core';
 import { sliceId } from './mockChartQueries';
 
 export const filterId = 127;

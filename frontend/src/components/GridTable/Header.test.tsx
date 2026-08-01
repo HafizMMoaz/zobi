@@ -3,12 +3,12 @@ import { act, fireEvent, render } from 'spec/helpers/testing-library';
 import { Header } from './Header';
 import { PIVOT_COL_ID } from './constants';
 
-jest.mock('@zobi-ui/core/components/Dropdown', () => ({
+jest.mock('@zobi.dev/core/components/Dropdown', () => ({
   Dropdown: () => <div data-test="mock-dropdown" />,
 }));
 
-jest.mock('@zobi-ui/core/components/Icons', () => {
-  const actualIcons = jest.requireActual('@zobi-ui/core/components/Icons');
+jest.mock('@zobi.dev/core/components/Icons', () => {
+  const actualIcons = jest.requireActual('@zobi.dev/core/components/Icons');
   return {
     __esModule: true,
     Icons: {

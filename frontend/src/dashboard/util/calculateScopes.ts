@@ -1,4 +1,4 @@
-import { NativeFilterScope } from '@zobi-ui/core';
+import { NativeFilterScope } from '@zobi.dev/core';
 import { LayoutItem } from '../types';
 import { getChartIdsInFilterScope } from './getChartIdsInFilterScope';
 import { findTabsWithChartsInScope } from '../components/nativeFilters/utils';

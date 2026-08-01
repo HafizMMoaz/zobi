@@ -1,5 +1,5 @@
-import { ColumnMeta, Metric } from '@zobi-ui/chart-controls';
-import { DatasourceType } from '@zobi-ui/core';
+import { ColumnMeta, Metric } from '@zobi.dev/chart-controls';
+import { DatasourceType } from '@zobi.dev/core';
 import type { Datasource } from 'src/explore/types';
 import type { QueryEditor } from 'src/SqlLab/types';
 import { getDatasourceAsSaveableDataset } from './datasourceUtils';

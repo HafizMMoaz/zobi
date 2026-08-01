@@ -6,8 +6,8 @@ import {
   type RefObject,
 } from 'react';
 
-import { t } from '@zobi/core/translation';
-import { Select, AsyncSelect, FormLabel } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Select, AsyncSelect, FormLabel } from '@zobi.dev/core/components';
 import { ListViewFilter as Filter, SelectOption } from '../types';
 import type { BaseFilter, FilterHandler } from './types';
 import { FilterContainer } from './Base';

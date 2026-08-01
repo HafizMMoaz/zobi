@@ -4,7 +4,7 @@ import {
   JsonValue,
   DataRecordFilters,
   DataRecordValue,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   getChartIdAndColumnFromFilterKey,
   getDashboardFilterKey,

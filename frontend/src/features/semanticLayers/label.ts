@@ -1,5 +1,5 @@
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
 
 const SEMANTIC_LAYERS_FLAG = 'SEMANTIC_LAYERS' as FeatureFlag;
 

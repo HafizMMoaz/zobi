@@ -1,4 +1,4 @@
-import { Menu } from '@zobi-ui/core/components/Menu';
+import { Menu } from '@zobi.dev/core/components/Menu';
 import { useLanguageMenuItems } from './LanguagePicker';
 import type { Languages } from './LanguagePicker';
 

@@ -1,8 +1,8 @@
 import { Component, ReactNode } from 'react';
-import { ZobiClient, ensureIsArray } from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
-import { t } from '@zobi/core/translation';
-import { withTheme, type ZobiTheme } from '@zobi/core/theme';
+import { ZobiClient, ensureIsArray } from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
+import { t } from '@zobi.dev/extension-api/translation';
+import { withTheme, type ZobiTheme } from '@zobi.dev/extension-api/theme';
 
 import ControlHeader from 'src/explore/components/ControlHeader';
 import AdhocMetric, {
@@ -18,8 +18,8 @@ import {
   HeaderContainer,
   LabelsContainer,
 } from 'src/explore/components/controls/OptionControls';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Modal } from '@zobi-ui/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Modal } from '@zobi.dev/core/components';
 import AdhocFilterPopoverTrigger from 'src/explore/components/controls/FilterControl/AdhocFilterPopoverTrigger';
 import AdhocFilterOption from 'src/explore/components/controls/FilterControl/AdhocFilterOption';
 import AdhocFilter, {

@@ -2,7 +2,7 @@
 import type React from 'react';
 import { Route } from 'react-router-dom';
 import fetchMock from 'fetch-mock';
-import { DatasourceType, JsonObject, ZobiClient } from '@zobi-ui/core';
+import { DatasourceType, JsonObject, ZobiClient } from '@zobi.dev/core';
 import {
   render,
   screen,

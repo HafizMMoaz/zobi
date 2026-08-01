@@ -4,9 +4,9 @@ import React, { FC, useCallback, useRef, useEffect, useState } from 'react';
 import {
   Popover,
   PopoverProps as BasePopoverProps,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 
-import { TooltipPlacement } from '@zobi-ui/core/components/Tooltip/types';
+import { TooltipPlacement } from '@zobi.dev/core/components/Tooltip/types';
 
 const sectionContainerId = 'controlSections';
 export const getSectionContainerElement = () =>

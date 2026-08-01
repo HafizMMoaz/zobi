@@ -1,6 +1,6 @@
 import { useResizeDetector } from 'react-resize-detector';
-import { ZobiClient } from '@zobi-ui/core';
-import { css } from '@zobi/core/theme';
+import { ZobiClient } from '@zobi.dev/core';
+import { css } from '@zobi.dev/extension-api/theme';
 import { useDatasetMetadataBar } from './useDatasetMetadataBar';
 
 export default {

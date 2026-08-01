@@ -2,12 +2,12 @@ import { render, screen, userEvent } from 'spec/helpers/testing-library';
 import SSHTunnelSwitch from './SSHTunnelSwitch';
 import { DatabaseForm, DatabaseObject } from '../types';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn().mockReturnValue(true),
 }));
 
-jest.mock('@zobi-ui/core/components/Switch', () => ({
+jest.mock('@zobi.dev/core/components/Switch', () => ({
   Switch: ({
     checked,
     onChange,

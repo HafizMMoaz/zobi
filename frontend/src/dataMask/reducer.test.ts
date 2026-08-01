@@ -12,7 +12,7 @@ import {
   type NativeFilterTarget,
   NativeFilterType,
   ChartCustomizationType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { HYDRATE_DASHBOARD } from 'src/dashboard/actions/hydrate';
 
 // Helper to create minimal filter for testing

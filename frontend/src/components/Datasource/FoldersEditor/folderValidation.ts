@@ -4,7 +4,7 @@
  * Determines what actions are allowed based on folder structure and types.
  */
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { DatasourceFolder } from 'src/explore/components/DatasourcePanel/types';
 import {
   ValidationResult,

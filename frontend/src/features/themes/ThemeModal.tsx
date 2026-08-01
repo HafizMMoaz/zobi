@@ -8,15 +8,15 @@ import {
 } from 'react';
 import { omit } from 'lodash';
 
-import { t } from '@zobi/core/translation';
-import { Alert } from '@zobi/core/components';
-import { css, styled, useTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import { useSingleViewResource } from 'src/views/CRUD/hooks';
 import { useThemeContext } from 'src/theme/ThemeProvider';
 import { useBeforeUnload } from 'src/hooks/useBeforeUnload';
 import ZobiText from 'src/utils/textUtils';
 
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import {
   Button,
@@ -25,10 +25,10 @@ import {
   Modal,
   Space,
   Tooltip,
-} from '@zobi-ui/core/components';
-import type { editors } from '@zobi/core';
+} from '@zobi.dev/core/components';
+import type { editors } from '@zobi.dev/extension-api';
 import { EditorHost } from 'src/core/editors';
-import { Typography } from '@zobi-ui/core/components/Typography';
+import { Typography } from '@zobi.dev/core/components/Typography';
 import { useThemeValidation } from 'src/theme/hooks/useThemeValidation';
 import { OnlyKeyWithType } from 'src/utils/types';
 import { ThemeObject } from './types';

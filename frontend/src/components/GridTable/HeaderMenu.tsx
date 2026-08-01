@@ -1,15 +1,15 @@
 import { useCallback } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import type { Column, ColumnPinnedType, GridApi } from 'ag-grid-community';
 
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Menu, MenuItem } from '@zobi-ui/core/components/Menu';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Menu, MenuItem } from '@zobi.dev/core/components/Menu';
 import copyTextToClipboard from 'src/utils/copy';
 import {
   MenuDotsDropdown,
   type DropdownProps,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { PIVOT_COL_ID } from './constants';
 
 const IconEmpty = styled.span`

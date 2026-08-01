@@ -6,7 +6,7 @@
  * and resolution functions declared in the API types.
  */
 
-import { editors as editorsApi } from '@zobi/core';
+import { editors as editorsApi } from '@zobi.dev/extension-api';
 import { Disposable } from '../models';
 import EditorProviders from './EditorProviders';
 

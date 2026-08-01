@@ -1,4 +1,4 @@
-import { DatasourceType, getClientErrorObject } from '@zobi-ui/core';
+import { DatasourceType, getClientErrorObject } from '@zobi.dev/core';
 import fetchMock from 'fetch-mock';
 import {
   setDatasource,
@@ -8,8 +8,8 @@ import {
 import datasourcesReducer from '../reducers/datasourcesReducer';
 import { updateFormDataByDatasource } from './exploreActions';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   getClientErrorObject: jest.fn(),
 }));
 

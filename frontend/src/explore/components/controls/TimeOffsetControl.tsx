@@ -1,6 +1,6 @@
 import { ReactNode, useCallback, useEffect, useState } from 'react';
 import { isEmpty, isEqual } from 'lodash';
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 import {
   parseDttmToDate,
   BinaryAdhocFilter,
@@ -8,11 +8,11 @@ import {
   customTimeRangeDecode,
   computeCustomDateTime,
   fetchTimeRange,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   DatePicker,
   type RangePickerProps,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { useSelector } from 'react-redux';
 
 import ControlHeader from 'src/explore/components/ControlHeader';
@@ -20,7 +20,7 @@ import { RootState } from 'src/views/store';
 import {
   DEFAULT_DATE_PATTERN,
   INVALID_DATE,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import { Dayjs } from 'dayjs';
 
 export interface TimeOffsetControlsProps {

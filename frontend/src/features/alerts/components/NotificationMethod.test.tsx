@@ -12,7 +12,7 @@ import {
   JsonResponse,
   ZobiClient,
   TextResponse,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { NotificationMethod, mapSlackValues } from './NotificationMethod';
 import { NotificationMethodOption, NotificationSetting } from '../types';
 

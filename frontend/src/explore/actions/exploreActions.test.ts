@@ -1,5 +1,5 @@
 import type { AnyAction } from 'redux';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import { defaultState } from 'src/explore/store';
 import exploreReducer, {
   ExploreState,

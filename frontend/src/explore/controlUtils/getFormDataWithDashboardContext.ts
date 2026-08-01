@@ -12,7 +12,7 @@ import {
   QueryFormData,
   QueryObjectFilterClause,
   SimpleAdhocFilter,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { simpleFilterToAdhoc } from 'src/utils/simpleFilterToAdhoc';
 
 const removeExtraFieldForNewCharts = (

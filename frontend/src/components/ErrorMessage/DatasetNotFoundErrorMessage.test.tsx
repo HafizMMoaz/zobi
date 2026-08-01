@@ -1,10 +1,10 @@
 
-import { ErrorLevel, ErrorSource, ErrorTypeEnum } from '@zobi-ui/core';
+import { ErrorLevel, ErrorSource, ErrorTypeEnum } from '@zobi.dev/core';
 import { render, screen } from 'spec/helpers/testing-library';
 import { DatasetNotFoundErrorMessage } from './DatasetNotFoundErrorMessage';
 
 jest.mock(
-  '@zobi-ui/core/components/Icons/AsyncIcon',
+  '@zobi.dev/core/components/Icons/AsyncIcon',
   () =>
     ({ fileName }: { fileName: string }) => (
       <span role="img" aria-label={fileName.replace('_', '-')} />

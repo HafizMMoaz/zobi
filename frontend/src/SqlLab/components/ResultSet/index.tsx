@@ -20,24 +20,24 @@ import {
   Tooltip,
   Input,
   Label,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   CopyToClipboard,
   FilterableTable,
   ErrorMessageWithStackTrace,
 } from 'src/components';
 import { nanoid } from 'nanoid';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   QueryState,
   usePrevious,
   getNumberFormatter,
   getExtensionsRegistry,
   ErrorTypeEnum,
-} from '@zobi-ui/core';
-import { tn } from '@zobi/core/translation';
-import { Alert } from '@zobi/core/components';
-import { styled, useTheme, css } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { tn } from '@zobi.dev/extension-api/translation';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled, useTheme, css } from '@zobi.dev/extension-api/theme';
 import {
   ISaveableDatasource,
   ISimpleColumn,
@@ -64,7 +64,7 @@ import {
   LOG_ACTIONS_SQLLAB_CREATE_CHART,
   LOG_ACTIONS_SQLLAB_DOWNLOAD_CSV,
 } from 'src/logger/LogUtils';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { usePermissions } from 'src/hooks/usePermissions';
 import { StreamingExportModal } from 'src/components/StreamingExportModal';
 import { useStreamingExport } from 'src/components/StreamingExportModal/useStreamingExport';

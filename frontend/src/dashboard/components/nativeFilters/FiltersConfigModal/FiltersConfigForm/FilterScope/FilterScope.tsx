@@ -1,8 +1,8 @@
 
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
-import { NativeFilterScope } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { FormItem } from '@zobi-ui/core/components';
+import { NativeFilterScope } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { FormItem } from '@zobi.dev/core/components';
 import ScopingTree from './ScopingTree';
 import { getDefaultScopeValue } from './utils';
 

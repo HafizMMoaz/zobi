@@ -1,9 +1,9 @@
 import { flatMapDeep } from 'lodash';
-import type { FormInstance } from '@zobi-ui/core/components';
+import type { FormInstance } from '@zobi.dev/core/components';
 import { useState, useCallback } from 'react';
-import { CustomControlItem, Dataset } from '@zobi-ui/chart-controls';
-import { Column, ensureIsArray } from '@zobi-ui/core';
-import { GenericDataType } from '@zobi/core/common';
+import { CustomControlItem, Dataset } from '@zobi.dev/chart-controls';
+import { Column, ensureIsArray } from '@zobi.dev/core';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { DatasourcesState, ChartsState } from 'src/dashboard/types';
 import { FILTER_SUPPORTED_TYPES } from './constants';
 

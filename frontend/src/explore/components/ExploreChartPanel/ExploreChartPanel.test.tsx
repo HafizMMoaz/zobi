@@ -9,7 +9,7 @@ import {
   getChartMetadataRegistry,
   ChartMetadata,
   VizType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import ChartContainerComponent from 'src/explore/components/ExploreChartPanel';
 import { setItem, LocalStorageKeys } from 'src/utils/localStorageHelpers';
 

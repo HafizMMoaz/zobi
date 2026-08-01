@@ -1,5 +1,5 @@
-import { AppSection, Behavior, ChartProps } from '@zobi-ui/core';
-import { zobiTheme } from '@zobi/core/theme';
+import { AppSection, Behavior, ChartProps } from '@zobi.dev/core';
+import { zobiTheme } from '@zobi.dev/extension-api/theme';
 import {
   act,
   fireEvent,
@@ -11,7 +11,7 @@ import {
 import { NULL_STRING } from 'src/utils/common';
 import SelectFilterPlugin from './SelectFilterPlugin';
 import transformProps from './transformProps';
-import { FilterState } from '@zobi-ui/core';
+import { FilterState } from '@zobi.dev/core';
 import {
   SelectFilterOperatorType,
   PluginFilterSelectChartProps,

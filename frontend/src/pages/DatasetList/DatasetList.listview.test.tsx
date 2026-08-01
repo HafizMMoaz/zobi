@@ -8,7 +8,7 @@ import {
 import userEvent from '@testing-library/user-event';
 import fetchMock from 'fetch-mock';
 import rison from 'rison';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import { selectOption } from 'spec/helpers/testing-library';
 import {
   setupMocks,

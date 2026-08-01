@@ -1,5 +1,5 @@
-import { ZobiTheme } from '@zobi/core/theme';
-import { Form } from '@zobi-ui/core/components';
+import { ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Form } from '@zobi.dev/core/components';
 import { FormFieldOrder, FORM_FIELD_MAP } from './constants';
 import { formScrollableStyles, validatedFormStyles } from '../styles';
 import { DatabaseConnectionFormProps } from '../../types';

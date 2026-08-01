@@ -1,7 +1,7 @@
 import { FC, PropsWithChildren, useEffect, useState } from 'react';
 
-import { css, styled } from '@zobi/core/theme';
-import { Constants } from '@zobi-ui/core/components';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { Constants } from '@zobi.dev/core/components';
 import { RootState } from 'src/dashboard/types';
 import { useSelector } from 'react-redux';
 import { useDragDropManager } from 'react-dnd';

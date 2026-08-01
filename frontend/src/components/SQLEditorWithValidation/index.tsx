@@ -1,9 +1,9 @@
 import { useCallback, useState, useEffect, forwardRef } from 'react';
-import { t } from '@zobi/core/translation';
-import type { editors } from '@zobi/core';
-import { ZobiClient } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { Button, Icons, Tooltip, Flex } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import type { editors } from '@zobi.dev/extension-api';
+import { ZobiClient } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Button, Icons, Tooltip, Flex } from '@zobi.dev/core/components';
 import { EditorHost } from 'src/core/editors';
 import {
   ExpressionType,

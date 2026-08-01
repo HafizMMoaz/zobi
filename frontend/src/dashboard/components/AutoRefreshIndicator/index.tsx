@@ -1,8 +1,8 @@
 import { FC, useMemo } from 'react';
-import { css, useTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
-import { Label, Tooltip } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Label, Tooltip } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import { useRealTimeDashboard } from '../../hooks/useRealTimeDashboard';
 import { useCurrentTime } from '../../hooks/useCurrentTime';
 import { StatusIndicatorDot } from '../AutoRefreshStatus/StatusIndicatorDot';

@@ -1,4 +1,4 @@
-import { ChartProps } from '@zobi-ui/core';
+import { ChartProps } from '@zobi.dev/core';
 import transformProps from './transformProps';
 import { DeckglLayerVisibilityFormData } from './types';
 

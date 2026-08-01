@@ -1,7 +1,7 @@
 
 import exploreReducer, { ExploreState } from './exploreReducer';
 import { setStashFormData } from '../actions/exploreActions';
-import { QueryFormData } from '@zobi-ui/core';
+import { QueryFormData } from '@zobi.dev/core';
 
 test('reset hiddenFormData on SET_STASH_FORM_DATA', () => {
   const initialState: ExploreState = {

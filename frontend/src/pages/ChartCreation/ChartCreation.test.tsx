@@ -9,7 +9,7 @@ import fetchMock from 'fetch-mock';
 import { createMemoryHistory } from 'history';
 import { ChartCreation } from 'src/pages/ChartCreation';
 import { UserWithPermissionsAndRoles } from 'src/types/bootstrapTypes';
-import { zobiTheme } from '@zobi/core/theme';
+import { zobiTheme } from '@zobi.dev/extension-api/theme';
 
 jest.mock('src/components/DynamicPlugins', () => ({
   usePluginContext: () => ({

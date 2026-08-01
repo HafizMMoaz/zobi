@@ -8,7 +8,7 @@ import {
   useState,
 } from 'react';
 import { useSelector } from 'react-redux';
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   BinaryQueryObjectFilterClause,
   DatasourceType,
@@ -16,24 +16,24 @@ import {
   JsonObject,
   QueryFormData,
   ZobiClient,
-} from '@zobi-ui/core';
-import { css, useTheme } from '@zobi/core/theme';
-import { GenericDataType } from '@zobi/core/common';
+} from '@zobi.dev/core';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { useResizeDetector } from 'react-resize-detector';
-import BooleanCell from '@zobi-ui/core/components/Table/cell-renderers/BooleanCell';
-import NullCell from '@zobi-ui/core/components/Table/cell-renderers/NullCell';
-import TimeCell from '@zobi-ui/core/components/Table/cell-renderers/TimeCell';
-import { EmptyState, Loading } from '@zobi-ui/core/components';
+import BooleanCell from '@zobi.dev/core/components/Table/cell-renderers/BooleanCell';
+import NullCell from '@zobi.dev/core/components/Table/cell-renderers/NullCell';
+import TimeCell from '@zobi.dev/core/components/Table/cell-renderers/TimeCell';
+import { EmptyState, Loading } from '@zobi.dev/core/components';
 import { getDatasourceSamples } from 'src/components/Chart/chartAction';
 import Table, {
   ColumnsType,
   TableSize,
-} from '@zobi-ui/core/components/Table';
+} from '@zobi.dev/core/components/Table';
 import { RootState } from 'src/dashboard/types';
 import { usePermissions } from 'src/hooks/usePermissions';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { safeStringify } from 'src/utils/safeStringify';
-import HeaderWithRadioGroup from '@zobi-ui/core/components/Table/header-renderers/HeaderWithRadioGroup';
+import HeaderWithRadioGroup from '@zobi.dev/core/components/Table/header-renderers/HeaderWithRadioGroup';
 import { useDatasetMetadataBar } from 'src/features/datasets/metadataBar/useDatasetMetadataBar';
 import { Dataset } from '../types';
 import TableControls from './DrillDetailTableControls';

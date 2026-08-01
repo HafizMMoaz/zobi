@@ -1,4 +1,4 @@
-import { common as coreType } from '@zobi/core';
+import { common as coreType } from '@zobi.dev/extension-api';
 
 export class Table implements coreType.Table {
   name: string;

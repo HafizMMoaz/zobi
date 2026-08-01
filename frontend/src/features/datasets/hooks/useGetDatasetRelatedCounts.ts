@@ -1,7 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
-import { t } from '@zobi/core/translation';
-import { ZobiClient } from '@zobi-ui/core';
-import { logging } from '@zobi/core/utils';
+import { t } from '@zobi.dev/extension-api/translation';
+import { ZobiClient } from '@zobi.dev/core';
+import { logging } from '@zobi.dev/extension-api/utils';
 import { addDangerToast } from 'src/components/MessageToasts/actions';
 
 const useGetDatasetRelatedCounts = (id: string) => {

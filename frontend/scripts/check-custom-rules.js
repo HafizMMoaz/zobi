@@ -127,7 +127,7 @@ function checkNoFaIcons(ast, filepath) {
       if (source.includes('@fortawesome') || source.includes('font-awesome')) {
         // eslint-disable-next-line no-console
         console.error(
-          `${RED}✖${RESET} ${filepath}: FontAwesome import detected. Use @zobi-ui/core/components/Icons instead.`,
+          `${RED}✖${RESET} ${filepath}: FontAwesome import detected. Use @zobi.dev/core/components/Icons instead.`,
         );
         errorCount += 1;
       }
@@ -588,7 +588,7 @@ function main() {
     /theme\/exampleThemes/, // Theme examples legitimately have colors
     /\/color\/utils/, // Color utility functions legitimately work with colors
     /\/theme\/utils/, // Theme utility functions legitimately work with colors
-    /packages\/zobi-ui-core\/src\/color\/index\.ts/, // Core brand color constants
+    /packages\/core\/src\/color\/index\.ts/, // Core brand color constants
   ];
 
   // If no files specified, check all
@@ -611,13 +611,13 @@ function main() {
         '**/lib/**', // Build artifacts
         '**/dist/**', // Build artifacts
         'plugins/legacy-*/**', // Legacy plugins
-        'plugins/plugin-chart-point-cluster-map/src/controlPanel.*', // Data visualization color choices
+        'plugins/point-cluster-map/src/controlPanel.*', // Data visualization color choices
         '**/vendor/**',
         'spec/fixtures/**',
         '**/theme/exampleThemes/**',
         '**/color/utils/**',
         '**/theme/utils/**',
-        'packages/zobi-ui-core/src/color/index.ts', // Core brand color constants
+        'packages/core/src/color/index.ts', // Core brand color constants
       ],
     });
   } else {

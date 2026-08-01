@@ -1,10 +1,10 @@
 import { Dispatch } from 'react';
-import { t } from '@zobi/core/translation';
-import { PageHeaderWithActions } from '@zobi-ui/core/components/PageHeaderWithActions';
-import { Button } from '@zobi-ui/core/components';
-import { TooltipPlacement } from '@zobi-ui/core/components/Tooltip/types';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Menu } from '@zobi-ui/core/components/Menu';
+import { t } from '@zobi.dev/extension-api/translation';
+import { PageHeaderWithActions } from '@zobi.dev/core/components/PageHeaderWithActions';
+import { Button } from '@zobi.dev/core/components';
+import { TooltipPlacement } from '@zobi.dev/core/components/Tooltip/types';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Menu } from '@zobi.dev/core/components/Menu';
 import {
   DatasetActionType,
   DSReducerActionType,

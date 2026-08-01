@@ -11,7 +11,7 @@ import fetchMock from 'fetch-mock';
 import { SaveDatasetModal } from 'src/SqlLab/components/SaveDatasetModal';
 import { createDatasource } from 'src/SqlLab/actions/sqlLab';
 import { user, testQuery, mockdatasets } from 'src/SqlLab/fixtures';
-import { FeatureFlag, ZobiClient } from '@zobi-ui/core';
+import { FeatureFlag, ZobiClient } from '@zobi.dev/core';
 
 const mockedProps = {
   visible: true,

@@ -19,9 +19,9 @@ import {
   LabelsColorMapSource,
   NativeFilterType,
   getLabelsColorMap,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import { ParentSize } from '@visx/responsive';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import DashboardGrid from 'src/dashboard/containers/DashboardGrid';
 import {
   DashboardInfo,

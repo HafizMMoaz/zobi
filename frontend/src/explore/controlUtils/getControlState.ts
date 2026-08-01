@@ -4,7 +4,7 @@ import {
   ensureIsArray,
   JsonValue,
   QueryFormData,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   ControlConfig,
   ControlPanelState,
@@ -12,7 +12,7 @@ import {
   ControlType,
   ControlValueValidator,
   CustomControlItem,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import { getSectionsToRender } from './getSectionsToRender';
 import { getControlConfig } from './getControlConfig';
 

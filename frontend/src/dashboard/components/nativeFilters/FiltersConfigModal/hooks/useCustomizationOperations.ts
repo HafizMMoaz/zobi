@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { ChartCustomizationType } from '@zobi-ui/core';
+import { ChartCustomizationType } from '@zobi.dev/core';
 import { generateChartCustomizationId } from '../utils';
 import type { ItemStateManager } from './useItemStateManager';
 

@@ -10,10 +10,10 @@ import {
   RefObject,
 } from 'react';
 import cx from 'classnames';
-import { t } from '@zobi/core/translation';
-import { FeatureFlag, isFeatureEnabled, JsonObject } from '@zobi-ui/core';
-import { css, styled, ZobiTheme } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { FeatureFlag, isFeatureEnabled, JsonObject } from '@zobi.dev/core';
+import { css, styled, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components';
 import {
   Draggable,
   Droppable,

@@ -3,8 +3,8 @@ import {
   JsonObject,
   QueryFormData,
   ZobiClient,
-} from '@zobi-ui/core';
-import Switchboard from '@zobi-ui/switchboard';
+} from '@zobi.dev/core';
+import Switchboard from '@zobi.dev/switchboard';
 import rison from 'rison';
 import { isEmpty } from 'lodash';
 import {

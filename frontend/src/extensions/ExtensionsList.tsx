@@ -1,4 +1,4 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import { FunctionComponent, useMemo } from 'react';
 import { useListViewResource } from 'src/views/CRUD/hooks';
 import { ListView } from 'src/components';

@@ -1,9 +1,9 @@
 import { createRef, PureComponent } from 'react';
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   ModalTrigger,
   ModalTriggerRef,
-} from '@zobi-ui/core/components/ModalTrigger';
+} from '@zobi.dev/core/components/ModalTrigger';
 import FilterScope from 'src/dashboard/containers/FilterScope';
 
 type FilterScopeModalProps = {

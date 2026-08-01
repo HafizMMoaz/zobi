@@ -16,17 +16,17 @@ import {
   LatestQueryFormData,
   QueryFormData,
   Behavior,
-} from '@zobi-ui/core';
-import { css, styled, useTheme } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core';
+import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   Icons,
   ModalTrigger,
   Button,
   Input,
-} from '@zobi-ui/core/components';
-import { getChartMetadataRegistry } from '@zobi-ui/core';
-import { Menu, MenuProps } from '@zobi-ui/core/components/Menu';
+} from '@zobi.dev/core/components';
+import { getChartMetadataRegistry } from '@zobi.dev/core';
+import { Menu, MenuProps } from '@zobi.dev/core/components/Menu';
 import { useToasts } from 'src/components/MessageToasts/withToasts';
 import { DEFAULT_CSV_STREAMING_ROW_THRESHOLD } from 'src/constants';
 import { exportChart, getChartKey } from 'src/explore/exploreUtils';

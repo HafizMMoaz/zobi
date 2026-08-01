@@ -1,8 +1,8 @@
 import { Component, cloneElement, ReactElement } from 'react';
-import { t } from '@zobi/core/translation';
-import { css, ZobiTheme } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import copyTextToClipboard from 'src/utils/copy';
-import { Tooltip } from '@zobi-ui/core/components';
+import { Tooltip } from '@zobi.dev/core/components';
 import withToasts from '../MessageToasts/withToasts';
 import type { CopyToClipboardProps } from './types';
 

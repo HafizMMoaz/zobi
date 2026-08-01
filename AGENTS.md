@@ -30,7 +30,7 @@ Common pre-commit failures:
 ### Frontend Modernization
 - **NO `any` types** - Use proper TypeScript types
 - **NO JavaScript files** - Convert to TypeScript (.ts/.tsx)
-- **Use @zobi-ui/core** - Don't import Ant Design directly, prefer Ant Design component wrappers from @zobi-ui/core/components
+- **Use @zobi.dev/core** - Don't import Ant Design directly, prefer Ant Design component wrappers from @zobi.dev/core/components
 - **Use antd theming tokens** - Prefer antd tokens over legacy theming tokens
 - **Avoid custom css and styles** - Follow antd best practices and avoid styling and custom CSS whenever possible
 
@@ -66,7 +66,7 @@ zobi/
 │   ├── dashboard/              # Dashboard interface
 │   └── SqlLab/                 # SQL editor
 ├── frontend/packages/
-│   └── zobi-ui-core/       # UI component library (USE THIS)
+│   └── core/       # UI component library (USE THIS)
 ├── tests/                      # Python/integration tests
 ├── docs/                       # Documentation (UPDATE FOR CHANGES)
 └── UPDATING.md                 # Breaking changes log
@@ -77,7 +77,7 @@ zobi/
 ### TypeScript Frontend
 - **Avoid `any` types** - Use proper TypeScript, reuse existing types
 - **Functional components** with hooks
-- **@zobi-ui/core** for UI components (not direct antd)
+- **@zobi.dev/core** for UI components (not direct antd)
 - **Jest** for testing (NO Enzyme)
 - **Redux** for global state where it exists, hooks for local
 
@@ -154,7 +154,7 @@ together and loaded dynamically at runtime via Webpack Module Federation.
 - **MCP tools and prompts** - AI agent capabilities for user assistance
 
 **UI components** - Extension developers get pre-built components from
-`@zobi/core/components`. The Developer Portal UI Components page can be filtered
+`@zobi.dev/extension-api/components`. The Developer Portal UI Components page can be filtered
 by "Extension Compatible" to see what's available to extensions.
 
 **Key locations:**

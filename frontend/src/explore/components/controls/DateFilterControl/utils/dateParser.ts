@@ -1,4 +1,4 @@
-import { extendedDayjs } from '@zobi-ui/core/utils/dates';
+import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 import { Dayjs } from 'dayjs';
 import { CustomRangeType } from 'src/explore/components/controls/DateFilterControl/types';
 import { DAYJS_FORMAT } from './constants';

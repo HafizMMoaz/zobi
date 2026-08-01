@@ -1,11 +1,11 @@
 import { render } from 'spec/helpers/testing-library';
 import { initialState, table, defaultQueryEditor } from 'src/SqlLab/fixtures';
-import { denormalizeTimestamp } from '@zobi-ui/core';
+import { denormalizeTimestamp } from '@zobi.dev/core';
 import { LOCALSTORAGE_MAX_QUERY_AGE_MS } from 'src/SqlLab/constants';
 import Results from './Results';
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: (flag: string) => flag === 'SQLLAB_BACKEND_PERSISTENCE',
 }));
 

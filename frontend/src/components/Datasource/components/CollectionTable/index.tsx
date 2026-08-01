@@ -1,8 +1,8 @@
 import { PureComponent, ReactNode } from 'react';
 import { nanoid } from 'nanoid';
-import { t } from '@zobi/core/translation';
-import { styled, css, ZobiTheme } from '@zobi/core/theme';
-import { Icons, Button, InfoTooltip } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled, css, ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Icons, Button, InfoTooltip } from '@zobi.dev/core/components';
 import { FilterValue } from 'react-table';
 import Table, {
   type ColumnsType,
@@ -10,7 +10,7 @@ import Table, {
   type SorterResult,
   type TablePaginationConfig,
   TableSize,
-} from '@zobi-ui/core/components/Table';
+} from '@zobi.dev/core/components/Table';
 import Fieldset from '../Fieldset';
 import { recurseReactClone } from '../../utils';
 import {

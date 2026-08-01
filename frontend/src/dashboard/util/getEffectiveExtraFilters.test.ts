@@ -1,4 +1,4 @@
-import { DataRecordFilters } from '@zobi-ui/core';
+import { DataRecordFilters } from '@zobi.dev/core';
 import getEffectiveExtraFilters from 'src/dashboard/util/charts/getEffectiveExtraFilters';
 
 // eslint-disable-next-line no-restricted-globals -- TODO: Migrate from describe blocks

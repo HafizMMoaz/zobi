@@ -1,4 +1,4 @@
-import { getChartControlPanelRegistry } from '@zobi-ui/core';
+import { getChartControlPanelRegistry } from '@zobi.dev/core';
 import {
   applyDefaultFormData,
   getControlsState,

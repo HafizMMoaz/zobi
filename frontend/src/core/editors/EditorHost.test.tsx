@@ -1,5 +1,5 @@
 import { render, screen, cleanup } from 'spec/helpers/testing-library';
-import type { editors } from '@zobi/core';
+import type { editors } from '@zobi.dev/extension-api';
 import EditorHost from './EditorHost';
 
 // Mock the AceEditorProvider to avoid loading the full Ace editor in tests

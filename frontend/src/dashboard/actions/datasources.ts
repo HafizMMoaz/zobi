@@ -1,5 +1,5 @@
 import { Dispatch } from 'redux';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import { Datasource, RootState } from 'src/dashboard/types';
 
 // update datasources index for Dashboard

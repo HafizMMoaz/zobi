@@ -1,7 +1,7 @@
 import { ReactElement, useMemo } from 'react';
 import Mustache from 'mustache';
-import { Typography } from '@zobi-ui/core/components';
-import { MetricOption } from '@zobi-ui/chart-controls';
+import { Typography } from '@zobi.dev/core/components';
+import { MetricOption } from '@zobi.dev/chart-controls';
 import type { Row, ColumnRow, MetricRow } from '../../types';
 
 interface LeftCellProps {

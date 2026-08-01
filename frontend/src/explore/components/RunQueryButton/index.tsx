@@ -1,9 +1,9 @@
 
 import { ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { useTheme } from '@zobi/core/theme';
-import { Button } from '@zobi-ui/core/components';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { t } from '@zobi.dev/extension-api/translation';
+import { useTheme } from '@zobi.dev/extension-api/theme';
+import { Button } from '@zobi.dev/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
 
 export type RunQueryButtonProps = {
   loading: boolean;

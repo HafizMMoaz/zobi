@@ -1,9 +1,9 @@
 import { useEffect, useState } from 'react';
-import { t } from '@zobi/core/translation';
-import { isFeatureEnabled, FeatureFlag } from '@zobi-ui/core';
-import { ZobiTheme } from '@zobi/core/theme';
-import { Switch } from '@zobi-ui/core/components/Switch';
-import { InfoTooltip } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
+import { ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Switch } from '@zobi.dev/core/components/Switch';
+import { InfoTooltip } from '@zobi.dev/core/components';
 import { isEmpty } from 'lodash';
 import { infoTooltip, toggleStyle } from './styles';
 import { SwitchProps } from '../types';

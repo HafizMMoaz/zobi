@@ -1,4 +1,4 @@
-import { css, ZobiTheme } from '@zobi/core/theme';
+import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 
 export const headerStyles = (theme: ZobiTheme) => css`
   body {

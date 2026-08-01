@@ -1,6 +1,6 @@
 import { render, screen } from 'spec/helpers/testing-library';
-import { Comparator } from '@zobi-ui/chart-controls';
-import { GenericDataType } from '@zobi/core/common';
+import { Comparator } from '@zobi.dev/chart-controls';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import ConditionalFormattingControl from './ConditionalFormattingControl';
 import { ConditionalFormattingConfig } from './types';
 

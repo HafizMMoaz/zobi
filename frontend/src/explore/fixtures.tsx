@@ -1,12 +1,12 @@
 
-import { t } from '@zobi/core/translation';
-import { DatasourceType, VizType } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { DatasourceType, VizType } from '@zobi.dev/core';
 import {
   ColumnMeta,
   ColumnOption,
   ControlConfig,
   ControlPanelSectionConfig,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 import { ExplorePageInitialData } from './types';
 
 export const controlPanelSectionsChartOptions: (ControlPanelSectionConfig | null)[] =

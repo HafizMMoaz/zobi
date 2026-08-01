@@ -1,15 +1,15 @@
 import { FC, Fragment, useEffect, useState } from 'react';
 
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   ensureIsArray,
   getClientErrorObject,
   QueryFormData,
-} from '@zobi-ui/core';
-import { Alert } from '@zobi/core/components';
-import { styled } from '@zobi/core/theme';
-import { Loading } from '@zobi-ui/core/components';
-import { SupportedLanguage } from '@zobi-ui/core/components/CodeSyntaxHighlighter';
+} from '@zobi.dev/core';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { Loading } from '@zobi.dev/core/components';
+import { SupportedLanguage } from '@zobi.dev/core/components/CodeSyntaxHighlighter';
 import { getChartDataRequest } from 'src/components/Chart/chartAction';
 import ViewQuery from 'src/explore/components/controls/ViewQuery';
 

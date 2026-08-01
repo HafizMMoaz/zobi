@@ -1,13 +1,13 @@
 
-import { t } from '@zobi/core/translation';
-import { css, styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 import {
   extendedDayjs as dayjs,
   fDuration,
-} from '@zobi-ui/core/utils/dates';
+} from '@zobi.dev/core/utils/dates';
 import { useEffect, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
-import { Label, Tooltip } from '@zobi-ui/core/components';
+import { Label, Tooltip } from '@zobi.dev/core/components';
 import { ListView } from 'src/components';
 import SubMenu from 'src/features/home/SubMenu';
 import withToasts from 'src/components/MessageToasts/withToasts';

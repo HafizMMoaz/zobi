@@ -1,10 +1,10 @@
-import { t } from '@zobi/core/translation';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   isFeatureEnabled,
   FeatureFlag,
   ZobiClient,
-} from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
+} from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { useSelector } from 'react-redux';
 import { useState, useMemo, useCallback } from 'react';
 import { Link } from 'react-router-dom';
@@ -25,7 +25,7 @@ import {
   Loading,
   PublishedLabel,
   Tooltip,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import {
   FacePile,
   TagType,
@@ -43,7 +43,7 @@ import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';
 import { dangerouslyGetItemDoNotUse } from 'src/utils/localStorageHelpers';
 import Owner from 'src/types/Owner';
 import withToasts from 'src/components/MessageToasts/withToasts';
-import { Icons } from '@zobi-ui/core/components/Icons';
+import { Icons } from '@zobi.dev/core/components/Icons';
 import PropertiesModal from 'src/dashboard/components/PropertiesModal';
 
 import Dashboard from 'src/dashboard/containers/Dashboard';

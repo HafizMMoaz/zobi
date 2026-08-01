@@ -1,4 +1,4 @@
-import { css, styled } from '@zobi/core/theme';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 
 export const Pill = styled.div`
   ${({ theme }) => css`

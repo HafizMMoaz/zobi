@@ -12,7 +12,7 @@ import {
   FilterState,
   ExtraFormData,
   ChartCustomization,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import {
   NATIVE_FILTER_PREFIX,
   isChartCustomization,

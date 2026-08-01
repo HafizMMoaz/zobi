@@ -1,5 +1,5 @@
 /* eslint-disable theme-colors/no-literal-colors */
-import { JsonObject } from '@zobi-ui/core';
+import { JsonObject } from '@zobi.dev/core';
 
 export const getDashboardFormData = (overrides: JsonObject = {}) => ({
   label_colors: {

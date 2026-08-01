@@ -1,6 +1,6 @@
-import { sharedControlComponents } from '@zobi-ui/chart-controls';
-import { Input, InputNumber, Select } from '@zobi-ui/core/components';
-import Slider from '@zobi-ui/core/components/Slider';
+import { sharedControlComponents } from '@zobi.dev/chart-controls';
+import { Input, InputNumber, Select } from '@zobi.dev/core/components';
+import Slider from '@zobi.dev/core/components/Slider';
 import CurrencyControl from '../../CurrencyControl';
 import CheckboxControl from '../../CheckboxControl';
 

@@ -1,8 +1,8 @@
 import { ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { Link } from 'react-router-dom';
-import { Tooltip } from '@zobi-ui/core/components';
+import { Tooltip } from '@zobi.dev/core/components';
 
 export type CrossLinksTooltipProps = {
   children: ReactNode;

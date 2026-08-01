@@ -1,5 +1,5 @@
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Button } from '@zobi-ui/core/components';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Button } from '@zobi.dev/core/components';
 import { Tag } from 'src/components';
 import { FC } from 'react';
 import { LayerTreeItemProps } from './types';

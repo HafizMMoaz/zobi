@@ -4,11 +4,11 @@ import {
   Divider,
   ChartCustomization,
   ChartCustomizationDivider,
-} from '@zobi-ui/core';
-import type { FormInstance } from '@zobi-ui/core/components';
-import { styled } from '@zobi/core/theme';
-import { EmptyState, Flex } from '@zobi-ui/core/components';
-import { t } from '@zobi/core/translation';
+} from '@zobi.dev/core';
+import type { FormInstance } from '@zobi.dev/core/components';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { EmptyState, Flex } from '@zobi.dev/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
 import FilterContentRenderer from './FilterContentRenderer';
 import CustomizationContentRenderer from './CustomizationContentRenderer';
 import { FiltersConfigFormHandle } from '../FiltersConfigForm/FiltersConfigForm';

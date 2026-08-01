@@ -8,10 +8,10 @@ import {
   memo,
   RefObject,
 } from 'react';
-import type { ChartCustomization, JsonObject } from '@zobi-ui/core';
-import { VizType } from '@zobi-ui/core';
-import { styled } from '@zobi/core/theme';
-import { t } from '@zobi/core/translation';
+import type { ChartCustomization, JsonObject } from '@zobi.dev/core';
+import { VizType } from '@zobi.dev/core';
+import { styled } from '@zobi.dev/extension-api/theme';
+import { t } from '@zobi.dev/extension-api/translation';
 import { debounce } from 'lodash';
 import { bindActionCreators } from 'redux';
 import { useDispatch, useSelector } from 'react-redux';
@@ -288,7 +288,7 @@ const Chart = (props: ChartProps) => {
           updateChartState(
             props.id,
             sliceVizType,
-            chartStateArg as unknown as import('@zobi-ui/core').AgGridChartState,
+            chartStateArg as unknown as import('@zobi.dev/core').AgGridChartState,
           ),
         );
       }
@@ -539,7 +539,7 @@ const Chart = (props: ChartProps) => {
 
       exportChart({
         formData:
-          exportFormData as unknown as import('@zobi-ui/core').QueryFormData,
+          exportFormData as unknown as import('@zobi.dev/core').QueryFormData,
         resultType,
         resultFormat: format,
         force: true,
@@ -676,7 +676,7 @@ const Chart = (props: ChartProps) => {
         isFullSize={props.isFullSize}
         chartStatus={chartStatus || ''}
         formData={
-          formData as unknown as import('@zobi-ui/core').QueryFormData
+          formData as unknown as import('@zobi.dev/core').QueryFormData
         }
         exploreUrl=""
         width={width}
@@ -731,7 +731,7 @@ const Chart = (props: ChartProps) => {
           dashboardId={props.dashboardId}
           initialValues={EMPTY_OBJECT}
           formData={
-            formData as unknown as import('@zobi-ui/core').QueryFormData
+            formData as unknown as import('@zobi.dev/core').QueryFormData
           }
           ownState={createOwnStateWithChartState(
             (dataMask[props.id]?.ownState as JsonObject) || EMPTY_OBJECT,

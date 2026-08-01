@@ -4,8 +4,8 @@
  * Handles creating, deleting, renaming, moving folders and items.
  */
 
-import { Metric, ColumnMeta } from '@zobi-ui/chart-controls';
-import { t } from '@zobi/core/translation';
+import { Metric, ColumnMeta } from '@zobi.dev/chart-controls';
+import { t } from '@zobi.dev/extension-api/translation';
 import { v4 as uuidv4 } from 'uuid';
 import {
   DatasourceFolder,

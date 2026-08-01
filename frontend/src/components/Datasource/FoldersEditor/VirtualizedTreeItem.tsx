@@ -3,7 +3,7 @@ import { CSSProperties, memo } from 'react';
 import type { ListChildComponentProps } from 'react-window';
 import { useDroppable } from '@dnd-kit/core';
 import type { UniqueIdentifier } from '@dnd-kit/core';
-import type { Metric, ColumnMeta } from '@zobi-ui/chart-controls';
+import type { Metric, ColumnMeta } from '@zobi.dev/chart-controls';
 import { FoldersEditorItemType } from '../types';
 import type { FlattenedTreeItem } from './constants';
 import { isDefaultFolder } from './constants';

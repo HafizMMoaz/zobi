@@ -5,7 +5,7 @@ import {
   userEvent,
   selectOption,
 } from 'spec/helpers/testing-library';
-import { GenericDataType } from '@zobi/core/common';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import type { DatasetObject } from 'src/features/datasets/types';
 import {
   createProps,

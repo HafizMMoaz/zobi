@@ -43,24 +43,42 @@
     "baseUrl": ".",
     "paths": {
       "@storybook-shared": ["./.storybook/shared"],
-      "@zobi-ui/core": ["./packages/zobi-ui-core/src"],
-      "@zobi-ui/core/*": ["./packages/zobi-ui-core/src/*"],
-      "@zobi-ui/chart-controls": [
-        "./packages/zobi-ui-chart-controls/src"
+      "@zobi.dev/core": ["./packages/core/src"],
+      "@zobi.dev/core/*": ["./packages/core/src/*"],
+      "@zobi.dev/chart-controls": [
+        "./packages/chart-controls/src"
       ],
-      "@zobi-ui/chart-controls/*": [
-        "./packages/zobi-ui-chart-controls/src/*"
+      "@zobi.dev/chart-controls/*": [
+        "./packages/chart-controls/src/*"
       ],
-      "@zobi-ui/switchboard": ["./packages/zobi-ui-switchboard/src"],
-      "@zobi/core": ["./packages/zobi-core-legacy/src"],
-      "@zobi/core/*": ["./packages/zobi-core-legacy/src/*"],
-      "@zobi-ui/plugin-chart-*": ["./plugins/plugin-chart-*/src"],
-      "@zobi-ui/legacy-plugin-chart-*": ["./plugins/legacy-plugin-chart-*/src"],
-      "@zobi-ui/legacy-preset-chart-*": ["./plugins/legacy-preset-chart-*/src"],
+      "@zobi.dev/switchboard": ["./packages/switchboard/src"],
+      "@zobi.dev/switchboard/*": ["./packages/switchboard/src/*"],
+      "@zobi.dev/extension-api": ["./packages/extension-api/src"],
+      "@zobi.dev/extension-api/*": ["./packages/extension-api/src/*"],
+      "@zobi.dev/ag-grid-table": ["./plugins/ag-grid-table/src"],
+      "@zobi.dev/calendar": ["./plugins/calendar/src"],
+      "@zobi.dev/cartodiagram": ["./plugins/cartodiagram/src"],
+      "@zobi.dev/chord": ["./plugins/chord/src"],
+      "@zobi.dev/country-map": ["./plugins/country-map/src"],
+      "@zobi.dev/deckgl": ["./plugins/deckgl/src"],
+      "@zobi.dev/echarts": ["./plugins/echarts/src"],
+      "@zobi.dev/handlebars": ["./plugins/handlebars/src"],
+      "@zobi.dev/horizon": ["./plugins/horizon/src"],
+      "@zobi.dev/nvd3": ["./plugins/nvd3/src"],
+      "@zobi.dev/paired-t-test": ["./plugins/paired-t-test/src"],
+      "@zobi.dev/parallel-coordinates": ["./plugins/parallel-coordinates/src"],
+      "@zobi.dev/partition": ["./plugins/partition/src"],
+      "@zobi.dev/pivot-table": ["./plugins/pivot-table/src"],
+      "@zobi.dev/point-cluster-map": ["./plugins/point-cluster-map/src"],
+      "@zobi.dev/rose": ["./plugins/rose/src"],
+      "@zobi.dev/table": ["./plugins/table/src"],
+      "@zobi.dev/word-cloud": ["./plugins/word-cloud/src"],
+      "@zobi.dev/world-map": ["./plugins/world-map/src"],
       "echarts/types/src/*": ["./node_modules/echarts/types/src/*"]
     },
-    "ignoreDeprecations": "6.0"
+    "ignoreDeprecations": "5.0"
   },
+
   "include": [
     "./src/**/*",
     "./spec/**/*",
@@ -73,29 +91,29 @@
     "./package.json"
   ],
   "references": [
-    { "path": "./packages/zobi-core-legacy" },
-    { "path": "./packages/zobi-ui-core" },
-    { "path": "./packages/zobi-ui-chart-controls" },
-    { "path": "./packages/zobi-ui-switchboard" },
-    { "path": "./plugins/legacy-plugin-chart-calendar" },
-    { "path": "./plugins/legacy-plugin-chart-chord" },
-    { "path": "./plugins/legacy-plugin-chart-country-map" },
-    { "path": "./plugins/legacy-plugin-chart-horizon" },
-    { "path": "./plugins/legacy-plugin-chart-paired-t-test" },
-    { "path": "./plugins/legacy-plugin-chart-parallel-coordinates" },
-    { "path": "./plugins/legacy-plugin-chart-partition" },
-    { "path": "./plugins/legacy-plugin-chart-rose" },
-    { "path": "./plugins/legacy-plugin-chart-world-map" },
-    { "path": "./plugins/legacy-preset-chart-nvd3" },
-    { "path": "./plugins/plugin-chart-ag-grid-table" },
-    { "path": "./plugins/plugin-chart-cartodiagram" },
-    { "path": "./plugins/preset-chart-deckgl" },
-    { "path": "./plugins/plugin-chart-echarts" },
-    { "path": "./plugins/plugin-chart-point-cluster-map" },
-    { "path": "./plugins/plugin-chart-handlebars" },
-    { "path": "./plugins/plugin-chart-pivot-table" },
-    { "path": "./plugins/plugin-chart-table" },
-    { "path": "./plugins/plugin-chart-word-cloud" }
+    { "path": "./packages/extension-api" },
+    { "path": "./packages/core" },
+    { "path": "./packages/chart-controls" },
+    { "path": "./packages/switchboard" },
+    { "path": "./plugins/calendar" },
+    { "path": "./plugins/chord" },
+    { "path": "./plugins/country-map" },
+    { "path": "./plugins/horizon" },
+    { "path": "./plugins/paired-t-test" },
+    { "path": "./plugins/parallel-coordinates" },
+    { "path": "./plugins/partition" },
+    { "path": "./plugins/rose" },
+    { "path": "./plugins/world-map" },
+    { "path": "./plugins/nvd3" },
+    { "path": "./plugins/ag-grid-table" },
+    { "path": "./plugins/cartodiagram" },
+    { "path": "./plugins/deckgl" },
+    { "path": "./plugins/echarts" },
+    { "path": "./plugins/point-cluster-map" },
+    { "path": "./plugins/handlebars" },
+    { "path": "./plugins/pivot-table" },
+    { "path": "./plugins/table" },
+    { "path": "./plugins/word-cloud" }
   ],
   "exclude": []
 }

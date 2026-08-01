@@ -1,6 +1,6 @@
 import { Component, type ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { Popover, FormLabel, Label } from '@zobi-ui/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Popover, FormLabel, Label } from '@zobi.dev/core/components';
 import { decimalToSexagesimal } from 'geolib';
 
 import TextControl from './TextControl';

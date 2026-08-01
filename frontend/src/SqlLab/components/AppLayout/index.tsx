@@ -1,9 +1,9 @@
 import { useSelector } from 'react-redux';
 import { noop } from 'lodash';
 import type { SqlLabRootState } from 'src/SqlLab/types';
-import { css, styled } from '@zobi/core/theme';
-import { useComponentDidUpdate } from '@zobi-ui/core';
-import { Grid } from '@zobi-ui/core/components';
+import { css, styled } from '@zobi.dev/extension-api/theme';
+import { useComponentDidUpdate } from '@zobi.dev/core';
+import { Grid } from '@zobi.dev/core/components';
 import { views } from 'src/core';
 import { Splitter } from 'src/components/Splitter';
 import useEffectEvent from 'src/hooks/useEffectEvent';

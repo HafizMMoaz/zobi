@@ -1,11 +1,11 @@
 import memoizeOne from 'memoize-one';
-import { getChartControlPanelRegistry } from '@zobi-ui/core';
+import { getChartControlPanelRegistry } from '@zobi.dev/core';
 import {
   ControlPanelConfig,
   ControlPanelSectionConfig,
   expandControlConfig,
   isControlPanelSectionConfig,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 
 /**
  * Find control item from control panel config.

@@ -1,17 +1,17 @@
 import type React from 'react';
 import { createRef, Component, type RefObject } from 'react';
-import { type ZobiTheme } from '@zobi/core/theme';
-import { Button, Icons, Select } from '@zobi-ui/core/components';
+import { type ZobiTheme } from '@zobi.dev/extension-api/theme';
+import { Button, Icons, Select } from '@zobi.dev/core/components';
 import { ErrorBoundary } from 'src/components';
-import { ZobiClient } from '@zobi-ui/core';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { ZobiClient } from '@zobi.dev/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 
-import Tabs from '@zobi-ui/core/components/Tabs';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import AdhocFilter from 'src/explore/components/controls/FilterControl/AdhocFilter';
 import AdhocFilterEditPopoverSimpleTabContent from 'src/explore/components/controls/FilterControl/AdhocFilterEditPopoverSimpleTabContent';
 import AdhocFilterEditPopoverSqlTabContent from 'src/explore/components/controls/FilterControl/AdhocFilterEditPopoverSqlTabContent';
-import type { Dataset } from '@zobi-ui/chart-controls';
+import type { Dataset } from '@zobi.dev/chart-controls';
 import type { ColumnType } from 'src/explore/components/controls/FilterControl/AdhocFilterEditPopoverSimpleTabContent';
 import {
   POPOVER_INITIAL_HEIGHT,

@@ -2,8 +2,8 @@ import { PureComponent } from 'react';
 import { connect } from 'react-redux';
 import { Redirect } from 'react-router-dom';
 import Mousetrap from 'mousetrap';
-import { t } from '@zobi/core/translation';
-import { css, styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { css, styled } from '@zobi.dev/extension-api/theme';
 import { throttle } from 'lodash';
 import {
   LOCALSTORAGE_MAX_USAGE_KB,

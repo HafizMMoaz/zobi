@@ -1,12 +1,12 @@
 import { useEffect, useState, useMemo, useRef, useCallback } from 'react';
-import { t } from '@zobi/core/translation';
-import { DataMask, ExtraFormData } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { DataMask, ExtraFormData } from '@zobi.dev/core';
 import {
   Select,
   FormItem,
   Tooltip,
   type FormItemProps,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import { useSelector } from 'react-redux';
 import { createSelector } from '@reduxjs/toolkit';
 import { PluginDeckglLayerVisibilityProps } from './types';

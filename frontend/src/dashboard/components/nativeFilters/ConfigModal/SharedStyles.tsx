@@ -1,5 +1,5 @@
-import { styled, css } from '@zobi/core/theme';
-import { Form, StyledModal } from '@zobi-ui/core/components';
+import { styled, css } from '@zobi.dev/extension-api/theme';
+import { Form, StyledModal } from '@zobi.dev/core/components';
 
 const MODAL_MARGIN = 16;
 const MIN_WIDTH = 880;

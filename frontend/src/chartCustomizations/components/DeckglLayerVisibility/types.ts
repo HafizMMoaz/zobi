@@ -1,7 +1,7 @@
-import { QueryFormData, FilterState } from '@zobi-ui/core';
+import { QueryFormData, FilterState } from '@zobi.dev/core';
 import { PluginFilterHooks, PluginFilterStylesProps } from '../types';
 import { RefObject } from 'react';
-import type { RefSelectProps } from '@zobi-ui/core/components';
+import type { RefSelectProps } from '@zobi.dev/core/components';
 import { ColumnData, ColumnOption } from '../DynamicGroupBy/types';
 
 export interface DeckglLayerVisibilityFormData extends QueryFormData {

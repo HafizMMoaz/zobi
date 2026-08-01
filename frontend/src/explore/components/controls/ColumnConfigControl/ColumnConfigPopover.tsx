@@ -1,5 +1,5 @@
-import { GenericDataType } from '@zobi/core/common';
-import Tabs from '@zobi-ui/core/components/Tabs';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
+import Tabs from '@zobi.dev/core/components/Tabs';
 import {
   SHARED_COLUMN_CONFIG_PROPS,
   SharedColumnConfigProp,

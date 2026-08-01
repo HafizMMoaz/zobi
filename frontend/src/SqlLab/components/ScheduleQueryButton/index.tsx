@@ -3,13 +3,13 @@ import { FunctionComponent, useState, useRef, ChangeEvent } from 'react';
 import SchemaForm, { FormProps } from '@rjsf/core';
 import { FormValidation } from '@rjsf/utils';
 import validator from '@rjsf/validator-ajv8';
-import { t } from '@zobi/core/translation';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { styled } from '@zobi.dev/extension-api/theme';
 import { parseDate } from 'chrono-node';
 import {
   ModalTrigger,
   ModalTriggerRef,
-} from '@zobi-ui/core/components/ModalTrigger';
+} from '@zobi.dev/core/components/ModalTrigger';
 import {
   Input,
   Button,
@@ -17,7 +17,7 @@ import {
   FormItem,
   Row,
   Col,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import getBootstrapData from 'src/utils/getBootstrapData';
 
 const bootstrapData = getBootstrapData();

@@ -1,6 +1,6 @@
 import { Dispatch } from 'redux';
-import { t } from '@zobi/core/translation';
-import { makeApi, getClientErrorObject } from '@zobi-ui/core';
+import { t } from '@zobi.dev/extension-api/translation';
+import { makeApi, getClientErrorObject } from '@zobi.dev/core';
 import { addDangerToast } from 'src/components/MessageToasts/actions';
 import {
   ChartConfiguration,

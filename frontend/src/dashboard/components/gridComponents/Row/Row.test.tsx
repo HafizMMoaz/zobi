@@ -16,8 +16,8 @@ interface MockIntersectionObserverEntry {
   isIntersecting: boolean;
 }
 
-jest.mock('@zobi-ui/core', () => ({
-  ...jest.requireActual('@zobi-ui/core'),
+jest.mock('@zobi.dev/core', () => ({
+  ...jest.requireActual('@zobi.dev/core'),
   isFeatureEnabled: jest.fn(() => true),
   FeatureFlag: {
     DashboardVirtualization: 'DASHBOARD_VIRTUALIZATION',
@@ -284,7 +284,7 @@ describe('visibility handling for intersection observers', () => {
   });
 
   test('should not create intersection observers when feature is disabled', () => {
-    const coreMock = jest.requireMock('@zobi-ui/core');
+    const coreMock = jest.requireMock('@zobi.dev/core');
     coreMock.isFeatureEnabled.mockReturnValue(false);
 
     jest.clearAllMocks();

@@ -1,5 +1,5 @@
 
-import { Flex, Icons } from '@zobi-ui/core/components';
+import { Flex, Icons } from '@zobi.dev/core/components';
 
 export type CustomDocLinkProps = {
   url: string;

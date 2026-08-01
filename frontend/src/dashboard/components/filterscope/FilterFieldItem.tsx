@@ -1,5 +1,5 @@
 import cx from 'classnames';
-import { FormLabel } from '@zobi-ui/core/components';
+import { FormLabel } from '@zobi.dev/core/components';
 
 interface FilterFieldItemProps {
   label: string;

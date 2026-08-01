@@ -1,5 +1,5 @@
 import { useCallback } from 'react';
-import { ZobiClient } from '@zobi-ui/core';
+import { ZobiClient } from '@zobi.dev/core';
 import rison from 'rison';
 import {
   OwnerSelectLabel,

@@ -1,6 +1,6 @@
-import { t } from '@zobi/core/translation';
-import { Alert } from '@zobi/core/components';
-import { styled } from '@zobi/core/theme';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Alert } from '@zobi.dev/extension-api/components';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   useCallback,
   useEffect,
@@ -10,7 +10,7 @@ import {
   ReactNode,
 } from 'react';
 import cx from 'classnames';
-import TableCollection from '@zobi-ui/core/components/TableCollection';
+import TableCollection from '@zobi.dev/core/components/TableCollection';
 import BulkTagModal from 'src/features/tags/BulkTagModal';
 import {
   Button,
@@ -21,7 +21,7 @@ import {
   Loading,
   Pagination,
   type EmptyStateProps,
-} from '@zobi-ui/core/components';
+} from '@zobi.dev/core/components';
 import CardCollection from './CardCollection';
 import FilterControls from './Filters';
 import { CardSortSelect } from './CardSortSelect';

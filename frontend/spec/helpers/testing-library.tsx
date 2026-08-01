@@ -12,7 +12,7 @@ import {
   ThemeProvider,
   themeObject,
   zobiTheme,
-} from '@zobi/core/theme';
+} from '@zobi.dev/extension-api/theme';
 import { ZobiThemeProvider } from 'src/theme/ThemeProvider';
 import { ThemeController } from 'src/theme/ThemeController';
 import { BrowserRouter } from 'react-router-dom';

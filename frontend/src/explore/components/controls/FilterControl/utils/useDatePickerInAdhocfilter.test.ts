@@ -1,5 +1,5 @@
 import { renderHook, cleanup } from '@testing-library/react';
-import { TestDataset } from '@zobi-ui/chart-controls';
+import { TestDataset } from '@zobi.dev/chart-controls';
 import { useDatePickerInAdhocFilter } from './useDatePickerInAdhocFilter';
 
 // Add cleanup after each test

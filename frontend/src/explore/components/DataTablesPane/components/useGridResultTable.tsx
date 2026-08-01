@@ -1,7 +1,7 @@
 import { useMemo, useCallback, useRef, useState } from 'react';
-import { getTimeFormatter, safeHtmlSpan, TimeFormats } from '@zobi-ui/core';
-import { Constants } from '@zobi-ui/core/components';
-import { GenericDataType } from '@zobi/core/common';
+import { getTimeFormatter, safeHtmlSpan, TimeFormats } from '@zobi.dev/core';
+import { Constants } from '@zobi.dev/core/components';
+import { GenericDataType } from '@zobi.dev/extension-api/common';
 import type { IRowNode } from 'ag-grid-community';
 
 const timeFormatter = getTimeFormatter(TimeFormats.DATABASE_DATETIME);

@@ -9,7 +9,7 @@ import {
   getChartMetadataRegistry,
   ChartMetadata,
   VizType,
-} from '@zobi-ui/core';
+} from '@zobi.dev/core';
 import fetchMock from 'fetch-mock';
 import setupColors from 'src/setup/setupColors';
 import { ANNOTATION_TYPES_METADATA } from './AnnotationTypes';

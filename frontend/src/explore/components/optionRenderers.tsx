@@ -1,11 +1,11 @@
 
-import { styled } from '@zobi/core/theme';
+import { styled } from '@zobi.dev/extension-api/theme';
 import {
   MetricOption,
   ColumnOption,
   MetricOptionProps,
   ColumnOptionProps,
-} from '@zobi-ui/chart-controls';
+} from '@zobi.dev/chart-controls';
 
 const OptionContainer = styled.div`
   width: 100%;

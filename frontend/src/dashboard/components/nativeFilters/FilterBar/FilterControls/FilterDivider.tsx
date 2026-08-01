@@ -1,8 +1,8 @@
 
-import { useCSSTextTruncation, truncationCSS } from '@zobi-ui/core';
-import { css, useTheme } from '@zobi/core/theme';
-import { Icons } from '@zobi-ui/core/components/Icons';
-import { Tooltip } from '@zobi-ui/core/components';
+import { useCSSTextTruncation, truncationCSS } from '@zobi.dev/core';
+import { css, useTheme } from '@zobi.dev/extension-api/theme';
+import { Icons } from '@zobi.dev/core/components/Icons';
+import { Tooltip } from '@zobi.dev/core/components';
 import { FilterBarOrientation } from 'src/dashboard/types';
 import { FilterDividerProps } from './types';
 

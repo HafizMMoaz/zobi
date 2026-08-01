@@ -1,7 +1,7 @@
 import { ReactNode } from 'react';
-import { t } from '@zobi/core/translation';
-import { Button, type OnClickHandler } from '@zobi-ui/core/components';
-import { Alert } from '@zobi/core/components';
+import { t } from '@zobi.dev/extension-api/translation';
+import { Button, type OnClickHandler } from '@zobi.dev/core/components';
+import { Alert } from '@zobi.dev/extension-api/components';
 
 export interface ConfirmationAlertProps {
   title: string;
