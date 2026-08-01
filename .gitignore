@@ -131,3 +131,6 @@ PROJECT.md
 oxc-custom-build/
 *.code-workspace
 *.duckdb
+
+# Built extension bundles are artifacts, not source
+*.zobz
