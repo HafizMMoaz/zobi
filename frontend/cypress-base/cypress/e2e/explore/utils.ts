@@ -1,0 +1,60 @@
+
+import { interceptGet as interceptDashboardGet } from '../dashboard/utils';
+
+export function interceptFiltering() {
+  cy.intercept('GET', `**/api/v1/chart/?q=*`).as('filtering');
+}
+
+export function interceptUpdate() {
+  cy.intercept('PUT', `**/api/v1/chart/*`).as('update');
+}
+
+export const interceptV1ChartData = (alias = 'v1Data') => {
+  cy.intercept('**/api/v1/chart/data*').as(alias);
+};
+
+function interceptExploreGet() {
+  cy.intercept({
+    method: 'GET',
+    url: /.*\/api\/v1\/explore\/\?(form_data_key|dashboard_page_id|slice_id)=.*/,
+  }).as('getExplore');
+}
+
+export function saveChartToDashboard(chartName: string, dashboardName: string) {
+  interceptDashboardGet();
+  interceptUpdate();
+  interceptExploreGet();
+
+  cy.getBySel('query-save-button')
+    .should('be.enabled')
+    .should('not.be.disabled')
+    .click({ force: true });
+
+  cy.getBySel('save-modal-body')
+    .should('be.visible')
+    .then($modal => {
+      cy.wait(500);
+      cy.wrap($modal)
+        .find(
+          '.ant-select-selection-search-input[aria-label*="Select a dashboard"]',
+        )
+        .type(dashboardName, { force: true });
+      cy.wrap($modal)
+        .find(`.ant-select-item-option[title="${dashboardName}"]`)
+        .click();
+      cy.getBySel('btn-modal-save').click();
+      cy.wait('@update');
+    });
+  cy.getBySel('save-modal-body').should('not.exist');
+  cy.getBySel('query-save-button').should('be.disabled');
+  cy.wait('@get');
+  cy.wait('@getExplore');
+  cy.contains(`was added to dashboard [${dashboardName}]`);
+  cy.contains(`Chart [${chartName}] has been overwritten`);
+  cy.getBySel('query-save-button').should('be.enabled');
+}
+
+export function visitSampleChartFromList(chartName: string) {
+  cy.getBySel('table-row').contains(chartName).click();
+  cy.intercept('POST', '**/zobi/explore_json/**').as('getJson');
+}

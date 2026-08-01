@@ -1,0 +1,90 @@
+import { getDatasetId } from './shared.helper';
+
+describe('Visualization > Bubble', () => {
+  beforeEach(() => {
+    cy.intercept('POST', '**/zobi/explore_json/**').as('getJson');
+  });
+
+  const getBubbleFormData = datasetId => ({
+    datasource: `${datasetId}__table`,
+    viz_type: 'bubble',
+    granularity_sqla: 'year',
+    time_grain_sqla: 'P1D',
+    time_range: '2011-01-01 : 2011-01-02',
+    series: 'region',
+    entity: 'country_name',
+    x: 'sum__SP_RUR_TOTL_ZS',
+    y: 'sum__SP_DYN_LE00_IN',
+    size: 'sum__SP_POP_TOTL',
+    max_bubble_size: '50',
+    limit: 0,
+    color_scheme: 'bnbColors',
+    show_legend: true,
+    x_axis_label: '',
+    left_margin: 'auto',
+    x_axis_format: '.3s',
+    x_ticks_layout: 'auto',
+    x_log_scale: false,
+    x_axis_showminmax: false,
+    y_axis_label: '',
+    bottom_margin: 'auto',
+    y_axis_format: '.3s',
+    y_log_scale: false,
+    y_axis_showminmax: false,
+  });
+
+  function verify(formData) {
+    cy.visitChartByParams(formData);
+    cy.verifySliceSuccess({ waitAlias: '@getJson', chartSelector: 'svg' });
+  }
+
+  it('should work with filter', () => {
+    getDatasetId('wb_health_population').then(datasetId => {
+      verify({
+        ...getBubbleFormData(datasetId),
+        adhoc_filters: [
+          {
+            expressionType: 'SIMPLE',
+            subject: 'region',
+            operator: '==',
+            comparator: 'South Asia',
+            clause: 'WHERE',
+            sqlExpression: null,
+            filterOptionName: 'filter_b2tfg1rs8y_8kmrcyxvsqd',
+          },
+        ],
+      });
+      cy.get('[data-test="chart-container"]').should('be.visible');
+      cy.get('[data-test="chart-container"]').within(() => {
+        cy.get('svg').find('.nv-point-clips circle').should('have.length', 8);
+      });
+      cy.get('[data-test="chart-container"]').then(nodeList => {
+        // Check that all circles have same color.
+        const color = nodeList[0].getAttribute('fill');
+        const circles = Array.prototype.slice.call(nodeList);
+        expect(circles.every(c => c.getAttribute('fill') === color)).to.equal(
+          true,
+        );
+      });
+    });
+  });
+
+  it('should allow type to search color schemes and apply the scheme', () => {
+    getDatasetId('wb_health_population').then(datasetId => {
+      cy.visitChartByParams(getBubbleFormData(datasetId));
+
+      cy.get('.Control[data-test="color_scheme"]').scrollIntoView();
+      cy.get('.Control[data-test="color_scheme"] input[type="search"]').focus();
+      cy.focused().type('zobiColors{enter}');
+      cy.get(
+        '.Control[data-test="color_scheme"] .ant-select-selection-item [data-test="zobiColors"]',
+      ).should('exist');
+      cy.get('[data-test=run-query-button]').click();
+      cy.get('.bubble .nv-legend .nv-legend-symbol').should(
+        'have.css',
+        'fill',
+        'rgb(31, 168, 201)',
+      );
+    });
+  });
+});
