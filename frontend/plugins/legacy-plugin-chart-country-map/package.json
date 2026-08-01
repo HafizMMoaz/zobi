@@ -1,0 +1,39 @@
+{
+  "name": "@zobi/legacy-plugin-chart-country-map",
+  "version": "0.20.3",
+  "description": "Zobi Legacy Chart - Country Map",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "files": [
+    "esm",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HafizMMoaz/zobi.git",
+    "directory": "frontend/plugins/legacy-plugin-chart-country-map"
+  },
+  "keywords": [
+    "zobi"
+  ],
+  "author": "Zobi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HafizMMoaz/zobi/issues"
+  },
+  "homepage": "https://github.com/HafizMMoaz/zobi/tree/master/zobi-frontend/plugins/legacy-plugin-chart-country-map#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "d3": "^3.5.17",
+    "d3-array": "^3.2.4",
+    "prop-types": "^15.8.1"
+  },
+  "peerDependencies": {
+    "@zobi/core": "*",
+    "@zobi/chart-controls": "*",
+    "@zobi/core": "*",
+    "react": "^18.2.0"
+  }
+}

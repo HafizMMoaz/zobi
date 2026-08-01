@@ -1,0 +1,40 @@
+{
+  "name": "@zobi/legacy-plugin-chart-rose",
+  "version": "0.20.3",
+  "description": "Zobi Legacy Chart - Nightingale Rose Diagram",
+  "keywords": [
+    "zobi"
+  ],
+  "homepage": "https://github.com/HafizMMoaz/zobi/tree/master/zobi-frontend/plugins/legacy-plugin-chart-rose#readme",
+  "bugs": {
+    "url": "https://github.com/HafizMMoaz/zobi/issues"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HafizMMoaz/zobi.git",
+    "directory": "frontend/plugins/legacy-plugin-chart-rose"
+  },
+  "license": "MIT",
+  "author": "Zobi",
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "files": [
+    "esm",
+    "lib"
+  ],
+  "dependencies": {
+    "d3": "^3.5.17",
+    "nvd3-fork": "^2.0.5",
+    "prop-types": "^15.8.1"
+  },
+  "peerDependencies": {
+    "@emotion/react": "^11.4.1",
+    "@zobi/chart-controls": "*",
+    "@zobi/core": "*",
+    "@zobi/core": "*",
+    "react": "^18.2.0"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

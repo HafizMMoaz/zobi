@@ -1,0 +1,8 @@
+
+export const PROPORTION = {
+  METRIC_NAME: 0.125,
+  KICKER: 0.1,
+  HEADER: 0.3,
+  SUBHEADER: 0.125,
+  TRENDLINE: 0.3,
+};

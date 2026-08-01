@@ -1,0 +1,41 @@
+{
+  "name": "@zobi/legacy-plugin-chart-parallel-coordinates",
+  "version": "0.20.3",
+  "description": "Zobi Legacy Chart - Parallel Coordinates",
+  "sideEffects": [
+    "*.css"
+  ],
+  "main": "lib/index.js",
+  "module": "esm/index.js",
+  "files": [
+    "esm",
+    "lib"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HafizMMoaz/zobi.git",
+    "directory": "frontend/plugins/legacy-plugin-chart-parallel-coordinates"
+  },
+  "keywords": [
+    "zobi"
+  ],
+  "author": "Zobi",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/HafizMMoaz/zobi/issues"
+  },
+  "homepage": "https://github.com/HafizMMoaz/zobi/tree/master/zobi-frontend/plugins/legacy-plugin-chart-parallel-coordinates#readme",
+  "publishConfig": {
+    "access": "public"
+  },
+  "dependencies": {
+    "d3v3": "npm:d3@3.5.17",
+    "prop-types": "^15.8.1"
+  },
+  "peerDependencies": {
+    "@zobi/chart-controls": "*",
+    "@zobi/core": "*",
+    "@zobi/core": "*",
+    "react": "^18.2.0"
+  }
+}

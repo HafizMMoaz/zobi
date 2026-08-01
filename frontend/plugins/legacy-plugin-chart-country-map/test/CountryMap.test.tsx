@@ -1,0 +1,147 @@
+
+import '@testing-library/jest-dom';
+import { render, fireEvent } from '@testing-library/react';
+import d3 from 'd3';
+import ReactCountryMap from '../src/ReactCountryMap';
+
+// d3 v3 APIs have loose types; cast to allow jest mock operations
+const d3Any = d3 as any;
+
+jest.spyOn(d3Any, 'json');
+
+type Projection = ((...args: unknown[]) => void) & {
+  scale: () => Projection;
+  center: () => Projection;
+  translate: () => Projection;
+};
+
+type PathFn = (() => string) & {
+  projection: jest.Mock;
+  bounds: jest.Mock<[[number, number], [number, number]]>;
+  centroid: jest.Mock<[number, number]>;
+};
+
+const mockPath: PathFn = jest.fn(() => 'M10 10 L20 20') as unknown as PathFn;
+mockPath.projection = jest.fn();
+mockPath.bounds = jest.fn(() => [
+  [0, 0],
+  [100, 100],
+]);
+mockPath.centroid = jest.fn(() => [50, 50]);
+
+jest.spyOn(d3Any.geo, 'path').mockImplementation(() => mockPath);
+
+// Mock d3.geo.mercator
+jest.spyOn(d3Any.geo, 'mercator').mockImplementation(() => {
+  const proj = (() => {}) as Projection;
+  proj.scale = () => proj;
+  proj.center = () => proj;
+  proj.translate = () => proj;
+  return proj;
+});
+
+// Mock d3.mouse
+jest.spyOn(d3Any, 'mouse').mockReturnValue([100, 50]);
+
+const mockMapData = {
+  type: 'FeatureCollection',
+  features: [
+    {
+      type: 'Feature',
+      properties: { ISO: 'CAN', NAME_1: 'Canada' },
+      geometry: {},
+    },
+  ],
+};
+
+type D3JsonCallback = (error: Error | null, data: unknown) => void;
+
+describe('CountryMap (legacy d3)', () => {
+  beforeEach(() => {
+    jest.clearAllMocks();
+  });
+
+  test('renders a map after d3.json loads data', async () => {
+    d3Any.json.mockImplementation((_url: string, cb: D3JsonCallback) =>
+      cb(null, mockMapData),
+    );
+
+    render(
+      <ReactCountryMap
+        width={500}
+        height={300}
+        data={[{ country_id: 'CAN', metric: 100 }]}
+        country="canada"
+        linearColorScheme="bnbColors"
+        colorScheme=""
+        numberFormat=".2f"
+        formatter={jest.fn().mockReturnValue('100')}
+      />,
+    );
+
+    expect(d3Any.json).toHaveBeenCalledTimes(1);
+
+    const region = document.querySelector('path.region');
+    expect(region).not.toBeNull();
+  });
+
+  test('shows tooltip on mouseenter/mousemove/mouseout', async () => {
+    d3Any.json.mockImplementation((_url: string, cb: D3JsonCallback) =>
+      cb(null, mockMapData),
+    );
+
+    render(
+      <ReactCountryMap
+        width={500}
+        height={300}
+        data={[{ country_id: 'CAN', metric: 100 }]}
+        country="canada"
+        linearColorScheme="bnbColors"
+        colorScheme=""
+        formatter={jest.fn().mockReturnValue('100')}
+      />,
+    );
+
+    const region = document.querySelector('path.region');
+    expect(region).not.toBeNull();
+
+    const popup = document.querySelector('.hover-popup');
+    expect(popup).not.toBeNull();
+
+    fireEvent.mouseEnter(region!);
+    expect(popup!).toHaveStyle({ display: 'block' });
+
+    fireEvent.mouseOut(region!);
+    expect(popup!).toHaveStyle({ display: 'none' });
+  });
+
+  test('shows tooltip on mouseenter/mousemove/mouseout', async () => {
+    d3Any.json.mockImplementation((_url: string, cb: D3JsonCallback) =>
+      cb(null, mockMapData),
+    );
+
+    render(
+      <ReactCountryMap
+        width={500}
+        height={300}
+        data={[{ country_id: 'CAN', metric: 100 }]}
+        country="canada"
+        linearColorScheme="bnbColors"
+        colorScheme=""
+        formatter={jest.fn().mockReturnValue('100')}
+      />,
+    );
+
+    const region = document.querySelector('path.region');
+    expect(region).not.toBeNull();
+
+    const popup = document.querySelector('.hover-popup');
+    expect(popup).not.toBeNull();
+
+    fireEvent.mouseEnter(region!);
+    expect(popup!).toHaveStyle({ display: 'block' });
+
+    fireEvent.mouseOut(region!);
+    expect(popup!).toHaveStyle({ display: 'none' });
+  });
+});

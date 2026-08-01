@@ -1,0 +1,115 @@
+import { ChartProps } from '@zobi-ui/core';
+import { processSpatialData, DataRecord } from '../spatialUtils';
+import {
+  createBaseTransformResult,
+  getRecordsFromQuery,
+  getMetricLabelFromFormData,
+  parseMetricValue,
+  addPropertiesToFeature,
+} from '../transformUtils';
+import { DeckScatterFormData } from './buildQuery';
+import { isFixedValue, getFixedValue } from '../utils/metricUtils';
+
+interface ScatterPoint {
+  position: [number, number];
+  radius?: number;
+  color?: [number, number, number, number];
+  cat_color?: string;
+  metric?: number;
+  extraProps?: Record<string, unknown>;
+  [key: string]: unknown;
+}
+
+function processScatterData(
+  records: DataRecord[],
+  spatial: DeckScatterFormData['spatial'],
+  radiusMetricLabel?: string,
+  categoryColumn?: string,
+  jsColumns?: string[],
+  fixedRadiusValue?: number | string | null,
+): ScatterPoint[] {
+  if (!spatial || !records.length) {
+    return [];
+  }
+
+  const spatialFeatures = processSpatialData(records, spatial);
+  const excludeKeys = new Set([
+    'position',
+    'weight',
+    'extraProps',
+    ...(spatial
+      ? [
+          spatial.lonCol,
+          spatial.latCol,
+          spatial.lonlatCol,
+          spatial.geohashCol,
+        ].filter(Boolean)
+      : []),
+    radiusMetricLabel,
+    categoryColumn,
+    ...(jsColumns || []),
+  ]);
+
+  return spatialFeatures.map(feature => {
+    let scatterPoint: ScatterPoint = {
+      position: feature.position,
+      extraProps: feature.extraProps || {},
+    };
+
+    // Handle radius: either from metric or fixed value
+    if (fixedRadiusValue != null) {
+      // Use fixed radius value for all points
+      const parsedFixedRadius = parseMetricValue(fixedRadiusValue);
+      if (parsedFixedRadius !== undefined) {
+        scatterPoint.radius = parsedFixedRadius;
+      }
+    } else if (radiusMetricLabel && feature[radiusMetricLabel] != null) {
+      // Use metric value for radius
+      const radiusValue = parseMetricValue(feature[radiusMetricLabel]);
+      if (radiusValue !== undefined) {
+        scatterPoint.radius = radiusValue;
+        scatterPoint.metric = radiusValue;
+      }
+    }
+
+    if (categoryColumn && feature[categoryColumn] != null) {
+      scatterPoint.cat_color = String(feature[categoryColumn]);
+    }
+
+    scatterPoint = addPropertiesToFeature(
+      scatterPoint,
+      feature as DataRecord,
+      excludeKeys,
+    );
+    return scatterPoint;
+  });
+}
+
+export default function transformProps(chartProps: ChartProps) {
+  const { rawFormData: formData } = chartProps;
+  const { spatial, point_radius_fixed, dimension, js_columns } =
+    formData as DeckScatterFormData;
+
+  // Check if this is a fixed value or metric
+  const fixedRadiusValue = isFixedValue(point_radius_fixed)
+    ? getFixedValue(point_radius_fixed)
+    : null;
+
+  const radiusMetricLabel = getMetricLabelFromFormData(point_radius_fixed);
+  const records = getRecordsFromQuery(chartProps.queriesData);
+
+  const features = processScatterData(
+    records,
+    spatial,
+    radiusMetricLabel,
+    dimension,
+    js_columns,
+    fixedRadiusValue,
+  );
+
+  return createBaseTransformResult(
+    chartProps,
+    features,
+    radiusMetricLabel ? [radiusMetricLabel] : [],
+  );
+}
