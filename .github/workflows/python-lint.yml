@@ -1,0 +1,188 @@
+name: Python lint
+
+# Mirrors the Python hooks in .pre-commit-config.yaml so CI fails for the same
+# reasons a local `pre-commit run` would. Tool versions are pinned to match
+# requirements/development.txt and .pre-commit-config.yaml.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+
+concurrency:
+  group: python-lint-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+env:
+  PYTHON_VERSION: '3.11'
+  # Keep in sync with requirements/development.txt
+  RUFF_VERSION: '0.9.7'
+  PYLINT_VERSION: '3.3.7'
+  # Keep in sync with the mirrors-mypy rev in .pre-commit-config.yaml
+  MYPY_VERSION: '1.15.0'
+
+jobs:
+  ruff:
+    name: ruff
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install ruff
+        run: pip install "ruff==${RUFF_VERSION}"
+
+      - name: ruff format
+        run: ruff format --check --diff .
+
+      - name: ruff check
+        run: ruff check --output-format=github .
+
+  mypy:
+    name: mypy
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install mypy
+        # Mirrors additional_dependencies of the mypy hook in
+        # .pre-commit-config.yaml. mypy runs without the project's runtime
+        # dependencies, relying on ignore_missing_imports in pyproject.toml.
+        run: |
+          pip install "mypy==${MYPY_VERSION}" \
+            types-cachetools \
+            types-simplejson \
+            types-python-dateutil \
+            types-requests \
+            'types-redis==4.6.0.4' \
+            types-pytz \
+            types-croniter \
+            types-PyYAML \
+            types-setuptools \
+            types-paramiko \
+            types-Markdown
+
+      - name: Collect Python files
+        run: |
+          set -euo pipefail
+          git ls-files -z '*.py' | tr '\0' '\n' > all-py-files.txt
+          grep -v '^extensions-cli/' all-py-files.txt > main-py-files.txt || true
+          grep '^extensions-cli/' all-py-files.txt > extensions-cli-py-files.txt || true
+          echo "main: $(wc -l < main-py-files.txt) files"
+          echo "extensions-cli: $(wc -l < extensions-cli-py-files.txt) files"
+
+      - name: mypy (main)
+        run: |
+          set -euo pipefail
+          if [ -s main-py-files.txt ]; then
+            mypy --check-untyped-defs @main-py-files.txt
+          fi
+
+      - name: mypy (extensions-cli)
+        run: |
+          set -euo pipefail
+          if [ -s extensions-cli-py-files.txt ]; then
+            mypy --check-untyped-defs @extensions-cli-py-files.txt
+          fi
+
+  pylint:
+    name: pylint
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          # pylint only lints files changed against the base branch, so the
+          # merge base has to be reachable.
+          fetch-depth: 0
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install system packages
+        # Build dependencies for python-ldap, psycopg2 and mysqlclient, matching
+        # the dev stage of the Dockerfile.
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -yqq --no-install-recommends \
+            build-essential \
+            default-libmysqlclient-dev \
+            libecpg-dev \
+            libldap2-dev \
+            libpq-dev \
+            libsasl2-dev \
+            pkg-config
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: requirements/development.txt
+
+      - name: Install dependencies
+        # The custom plugin lives in zobi.extensions.pylint, so the package and
+        # its dependencies must be importable.
+        run: |
+          uv pip install --system -r requirements/development.txt
+          uv pip install --system "pylint==${PYLINT_VERSION}"
+
+      - name: pylint (changed files)
+        run: |
+          set -euo pipefail
+          TARGET_BRANCH="${GITHUB_BASE_REF:-main}"
+          git fetch --no-recurse-submodules --depth=1 origin "$TARGET_BRANCH" || true
+          BASE=$(git merge-base "origin/$TARGET_BRANCH" HEAD 2>/dev/null) || BASE="HEAD"
+          files=$(git diff --name-only --diff-filter=ACM "$BASE"..HEAD | grep '^zobi/.*\.py$' || true)
+          # Match the hook's exclude list in .pre-commit-config.yaml
+          files=$(echo "$files" | grep -v '^zobi/migrations/' || true)
+          if [ -z "$files" ]; then
+            echo "No Python files to lint."
+            exit 0
+          fi
+          echo "$files"
+          # shellcheck disable=SC2086
+          pylint --rcfile=.pylintrc --load-plugins=zobi.extensions.pylint --reports=no $files
+
+  db-engine-spec-metadata:
+    name: db engine spec metadata
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ env.PYTHON_VERSION }}
+
+      - name: Install system packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -yqq --no-install-recommends \
+            build-essential \
+            default-libmysqlclient-dev \
+            libecpg-dev \
+            libldap2-dev \
+            libpq-dev \
+            libsasl2-dev \
+            pkg-config
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: requirements/development.txt
+
+      - name: Install dependencies
+        run: uv pip install --system -r requirements/development.txt
+
+      - name: Validate db engine spec metadata
+        run: python zobi/db_engine_specs/lint_metadata.py --strict

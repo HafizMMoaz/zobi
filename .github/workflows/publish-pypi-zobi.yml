@@ -1,0 +1,118 @@
+name: Publish zobi (PyPI)
+
+# Publishes the root zobi distribution.
+#
+# Unlike the other Python packages, the version is not declared in
+# pyproject.toml: setup.py reads it from frontend/package.json. The compiled
+# frontend also has to exist before the wheel is built, because webpack writes
+# to zobi/static/assets, which is gitignored and only populated by a build.
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-*'
+      - 'v[0-9]+.[0-9]+.[0-9]+'
+      - 'v[0-9]+.[0-9]+.[0-9]+-*'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Build and check only, do not publish'
+        type: boolean
+        required: false
+        default: true
+      repository:
+        description: 'Target index'
+        type: choice
+        required: false
+        default: pypi
+        options:
+          - pypi
+          - testpypi
+
+concurrency:
+  group: publish-pypi-zobi
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: zobi
+    runs-on: ubuntu-24.04
+    environment: ${{ github.event_name == 'workflow_dispatch' && inputs.repository || 'pypi' }}
+    permissions:
+      contents: read
+      id-token: write # PyPI trusted publishing
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: frontend/.nvmrc
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Resolve version
+        id: meta
+        run: |
+          set -euo pipefail
+          VERSION=$(node -p "require('./frontend/package.json').version")
+          echo "frontend/package.json version: $VERSION"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Verify tag matches version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          set -euo pipefail
+          TAG_VERSION="${GITHUB_REF_NAME#v}"
+          if [ "$TAG_VERSION" != "${{ steps.meta.outputs.version }}" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME implies version $TAG_VERSION but frontend/package.json declares ${{ steps.meta.outputs.version }}"
+            exit 1
+          fi
+
+      - name: Install frontend dependencies
+        working-directory: frontend
+        run: npm ci --legacy-peer-deps
+
+      - name: Build frontend
+        working-directory: frontend
+        # Populates zobi/static/assets, which MANIFEST.in ships with the sdist
+        # and wheel.
+        run: |
+          npm run prune
+          npm run plugins:build
+          npm run build
+
+      - name: Build distributions
+        run: |
+          python -m pip install --upgrade build twine
+          python -m build --sdist --wheel --outdir dist .
+
+      - name: Check distributions
+        run: twine check --strict dist/*
+
+      - name: Verify compiled frontend is bundled
+        run: |
+          set -euo pipefail
+          WHEEL=$(ls dist/*.whl)
+          if ! python -m zipfile -l "$WHEEL" | grep -q 'zobi/static/assets/.*\.js'; then
+            echo "::error::$WHEEL does not contain compiled frontend assets"
+            exit 1
+          fi
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: zobi-dist
+          path: dist/
+
+      - name: Publish to PyPI
+        if: github.event_name != 'workflow_dispatch' || !inputs.dry_run
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+          repository-url: ${{ (github.event_name == 'workflow_dispatch' && inputs.repository == 'testpypi') && 'https://test.pypi.org/legacy/' || 'https://upload.pypi.org/legacy/' }}
+          # Leave PYPI_API_TOKEN unset to use trusted publishing instead.
+          password: ${{ secrets.PYPI_API_TOKEN }}

@@ -1,0 +1,82 @@
+name: Publish @zobi.dev/embedded-sdk
+
+# Publishes only @zobi.dev/embedded-sdk (embedded-sdk/).
+#
+# This package lives outside the frontend npm workspace and has its own
+# dependency tree, so it is installed and built on its own.
+
+# Trigger manually, or push a package-scoped tag such as embedded-sdk-v1.2.3
+on:
+  push:
+    tags:
+      - 'embedded-sdk-v*.*.*'
+  workflow_dispatch:
+    inputs:
+      version:
+        description: 'Version bump (patch, minor, major) or an exact version'
+        required: true
+        default: 'patch'
+      dry_run:
+        description: 'Pack only, do not publish'
+        type: boolean
+        required: false
+        default: false
+
+concurrency:
+  group: publish-embedded-sdk
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: '@zobi.dev/embedded-sdk'
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      id-token: write # npm provenance
+
+    defaults:
+      run:
+        working-directory: embedded-sdk
+
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: '22.22.0'
+          registry-url: 'https://registry.npmjs.org'
+
+      - name: Install dependencies
+        run: npm install --legacy-peer-deps
+
+      - name: Verify package identity
+        run: |
+          set -euo pipefail
+          ACTUAL=$(node -p "require('./package.json').name")
+          if [ "$ACTUAL" != "@zobi.dev/embedded-sdk" ]; then
+            echo "::error::embedded-sdk declares '$ACTUAL', expected '@zobi.dev/embedded-sdk'"
+            exit 1
+          fi
+          echo "$ACTUAL @ $(node -p "require('./package.json').version")"
+
+      - name: Set version
+        if: github.event_name == 'workflow_dispatch'
+        run: npm version "${{ inputs.version }}" --no-git-tag-version
+
+      - name: Build
+        run: npm run build
+
+      - name: Test
+        run: npm test
+
+      - name: Pack (dry run)
+        if: github.event_name == 'workflow_dispatch' && inputs.dry_run
+        run: npm pack --dry-run
+
+      - name: Publish to npm
+        if: github.event_name != 'workflow_dispatch' || !inputs.dry_run
+        env:
+          NODE_AUTH_TOKEN: ${{ secrets.NPM_TOKEN }}
+        run: npm publish --provenance --access public

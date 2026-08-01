@@ -1,0 +1,92 @@
+name: Publish zobi-core (PyPI)
+
+# Publishes only the zobi-core distribution built from ./core.
+#
+# The version is static in core/pyproject.toml, so bump and commit it before
+# tagging. This workflow verifies the tag and the manifest agree rather than
+# rewriting the version during the build.
+
+on:
+  push:
+    tags:
+      - 'zobi-core-v[0-9]+.[0-9]+.[0-9]+'
+      - 'zobi-core-v[0-9]+.[0-9]+.[0-9]+-*'
+  workflow_dispatch:
+    inputs:
+      dry_run:
+        description: 'Build and check only, do not publish'
+        type: boolean
+        required: false
+        default: true
+      repository:
+        description: 'Target index'
+        type: choice
+        required: false
+        default: pypi
+        options:
+          - pypi
+          - testpypi
+
+concurrency:
+  group: publish-pypi-zobi-core
+  cancel-in-progress: false
+
+jobs:
+  publish:
+    name: zobi-core
+    runs-on: ubuntu-24.04
+    environment: ${{ github.event_name == 'workflow_dispatch' && inputs.repository || 'pypi' }}
+    permissions:
+      contents: read
+      id-token: write # PyPI trusted publishing
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Verify package identity
+        id: meta
+        run: |
+          set -euo pipefail
+          NAME=$(python -c 'import tomllib,pathlib; print(tomllib.loads(pathlib.Path("core/pyproject.toml").read_text())["project"]["name"])')
+          VERSION=$(python -c 'import tomllib,pathlib; print(tomllib.loads(pathlib.Path("core/pyproject.toml").read_text())["project"]["version"])')
+          if [ "$NAME" != "zobi-core" ]; then
+            echo "::error::core/pyproject.toml declares '$NAME', expected 'zobi-core'"
+            exit 1
+          fi
+          echo "$NAME @ $VERSION"
+          echo "version=$VERSION" >> "$GITHUB_OUTPUT"
+
+      - name: Verify tag matches version
+        if: startsWith(github.ref, 'refs/tags/')
+        run: |
+          set -euo pipefail
+          TAG_VERSION="${GITHUB_REF_NAME#zobi-core-v}"
+          if [ "$TAG_VERSION" != "${{ steps.meta.outputs.version }}" ]; then
+            echo "::error::Tag $GITHUB_REF_NAME implies version $TAG_VERSION but core/pyproject.toml declares ${{ steps.meta.outputs.version }}"
+            exit 1
+          fi
+
+      - name: Build
+        run: |
+          python -m pip install --upgrade build twine
+          python -m build --sdist --wheel --outdir dist core
+
+      - name: Check distributions
+        run: twine check --strict dist/*
+
+      - uses: actions/upload-artifact@v4
+        with:
+          name: zobi-core-dist
+          path: dist/
+
+      - name: Publish to PyPI
+        if: github.event_name != 'workflow_dispatch' || !inputs.dry_run
+        uses: pypa/gh-action-pypi-publish@release/v1
+        with:
+          packages-dir: dist/
+          repository-url: ${{ (github.event_name == 'workflow_dispatch' && inputs.repository == 'testpypi') && 'https://test.pypi.org/legacy/' || 'https://upload.pypi.org/legacy/' }}
+          # Leave PYPI_API_TOKEN unset to use trusted publishing instead.
+          password: ${{ secrets.PYPI_API_TOKEN }}

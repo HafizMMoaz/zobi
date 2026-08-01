@@ -1,0 +1,98 @@
+name: Frontend tests
+
+# Jest maps @zobi.dev/* imports straight at workspace source (see the
+# moduleNameMapper in frontend/jest.config.js), so packages do not need to be
+# built before the suite runs.
+
+on:
+  push:
+    branches:
+      - main
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend-tests.yml'
+  pull_request:
+    paths:
+      - 'frontend/**'
+      - '.github/workflows/frontend-tests.yml'
+  workflow_dispatch:
+
+concurrency:
+  group: frontend-tests-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  jest:
+    name: jest (shard ${{ matrix.shard }}/4)
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        shard: [1, 2, 3, 4]
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: frontend/.nvmrc
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Run tests
+        env:
+          NODE_ENV: test
+          NODE_OPTIONS: '--max-old-space-size=8192'
+        run: |
+          npx jest \
+            --shard=${{ matrix.shard }}/4 \
+            --coverage \
+            --ci \
+            --silent \
+            --max-workers=2
+
+      - name: Upload coverage to Codecov
+        # .codecov.yml waits for 4 builds before notifying, matching the shard
+        # count here.
+        continue-on-error: true
+        uses: codecov/codecov-action@v5
+        with:
+          directory: frontend/coverage
+          flags: frontend
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  build:
+    name: webpack build
+    runs-on: ubuntu-24.04
+    defaults:
+      run:
+        working-directory: frontend
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: frontend/.nvmrc
+          cache: npm
+          cache-dependency-path: frontend/package-lock.json
+
+      - name: Install dependencies
+        run: npm ci --legacy-peer-deps
+
+      - name: Build packages and plugins
+        # Same two steps the publish workflows run, so a broken package build is
+        # caught before release time rather than during it.
+        run: |
+          npm run prune
+          npm run plugins:build
+
+      - name: Build application bundle
+        run: npm run build

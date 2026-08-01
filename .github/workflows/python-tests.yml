@@ -1,0 +1,170 @@
+name: Python tests
+
+# Unit tests run on every push and pull request. They are self-contained: the
+# `app` fixture in tests/unit_tests/conftest.py builds a Zobi app against
+# in-memory SQLite, so no services are required.
+#
+# Integration tests need a provisioned metadata database and Redis, so they are
+# opt-in via workflow_dispatch until they are stable in CI.
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  workflow_dispatch:
+    inputs:
+      run_integration_tests:
+        description: 'Also run tests/integration_tests (slow)'
+        type: boolean
+        required: false
+        default: false
+
+concurrency:
+  group: python-tests-${{ github.head_ref || github.ref }}
+  cancel-in-progress: true
+
+permissions:
+  contents: read
+
+jobs:
+  unit-tests:
+    name: unit tests (py${{ matrix.python-version }})
+    runs-on: ubuntu-24.04
+    strategy:
+      fail-fast: false
+      matrix:
+        # Matches the classifiers in pyproject.toml. 3.11 matches the Dockerfile.
+        python-version: ['3.10', '3.11', '3.12']
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: ${{ matrix.python-version }}
+
+      - name: Install system packages
+        # Build dependencies for python-ldap, psycopg2 and mysqlclient, matching
+        # the dev stage of the Dockerfile.
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -yqq --no-install-recommends \
+            build-essential \
+            default-libmysqlclient-dev \
+            libecpg-dev \
+            libldap2-dev \
+            libpq-dev \
+            libsasl2-dev \
+            pkg-config
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: requirements/development.txt
+
+      - name: Install dependencies
+        # development.txt pins everything and includes editable installs of the
+        # root package, ./core and ./extensions-cli.
+        run: uv pip install --system -r requirements/development.txt
+
+      - name: Run unit tests
+        env:
+          ZOBI_TESTENV: 'true'
+        run: |
+          pytest tests/unit_tests \
+            --durations=10 \
+            --cov=zobi \
+            --cov=core/src/zobi_core \
+            --cov-report=xml \
+            --cov-report=term-missing:skip-covered
+
+      - name: Upload coverage to Codecov
+        # Coverage is informational (see .codecov.yml), so a failed upload must
+        # not fail the build.
+        continue-on-error: true
+        uses: codecov/codecov-action@v5
+        with:
+          files: ./coverage.xml
+          flags: python-unit
+          token: ${{ secrets.CODECOV_TOKEN }}
+
+  extensions-cli-tests:
+    name: extensions-cli tests
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: extensions-cli/pyproject.toml
+
+      - name: Install extensions-cli
+        # extensions-cli depends on zobi-core, so the local copy is installed
+        # first rather than resolving it from an index.
+        run: |
+          uv pip install --system -e ./core
+          uv pip install --system -e './extensions-cli[test]'
+
+      - name: Run tests
+        working-directory: extensions-cli
+        run: pytest tests -p no:cacheprovider
+
+  integration-tests:
+    name: integration tests
+    if: github.event_name == 'workflow_dispatch' && inputs.run_integration_tests
+    runs-on: ubuntu-24.04
+    services:
+      redis:
+        image: redis:7-alpine
+        ports:
+          - 6379:6379
+        options: >-
+          --health-cmd "redis-cli ping"
+          --health-interval 10s
+          --health-timeout 5s
+          --health-retries 5
+    env:
+      ZOBI_CONFIG: tests.integration_tests.zobi_test_config
+      ZOBI_TESTENV: 'true'
+      REDIS_HOST: localhost
+      REDIS_PORT: '6379'
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-python@v5
+        with:
+          python-version: '3.11'
+
+      - name: Install system packages
+        run: |
+          sudo apt-get update -qq
+          sudo apt-get install -yqq --no-install-recommends \
+            build-essential \
+            default-libmysqlclient-dev \
+            libecpg-dev \
+            libldap2-dev \
+            libpq-dev \
+            libsasl2-dev \
+            pkg-config
+
+      - uses: astral-sh/setup-uv@v5
+        with:
+          enable-cache: true
+          cache-dependency-glob: requirements/development.txt
+
+      - name: Install dependencies
+        run: uv pip install --system -r requirements/development.txt
+
+      - name: Initialize metadata database
+        run: |
+          zobi db upgrade
+          zobi init
+          zobi load-test-users
+
+      - name: Run integration tests
+        run: pytest tests/integration_tests --durations-min=2 --cov-report= --cov=zobi

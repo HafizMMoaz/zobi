@@ -1,0 +1,97 @@
+name: Release
+
+# Creates a GitHub release for a top-level version tag (e.g. 0.2.0), using the
+# matching section of CHANGELOG.md as the release body.
+#
+# This workflow only creates the release. Publishing to PyPI is handled by
+# publish-pypi-zobi.yml, which triggers off the same tag.
+
+on:
+  push:
+    tags:
+      - '[0-9]+.[0-9]+.[0-9]+'
+      - '[0-9]+.[0-9]+.[0-9]+-*'
+  workflow_dispatch:
+    inputs:
+      tag:
+        description: 'Existing tag to create a release for'
+        required: true
+      draft:
+        description: 'Create as a draft'
+        type: boolean
+        required: false
+        default: true
+
+concurrency:
+  group: release-${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}
+  cancel-in-progress: false
+
+permissions:
+  contents: write
+
+jobs:
+  release:
+    name: GitHub release
+    runs-on: ubuntu-24.04
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: ${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref }}
+          fetch-depth: 0
+
+      - name: Resolve tag
+        id: tag
+        run: |
+          set -euo pipefail
+          TAG="${{ github.event_name == 'workflow_dispatch' && inputs.tag || github.ref_name }}"
+          echo "tag=$TAG" >> "$GITHUB_OUTPUT"
+          echo "version=${TAG#v}" >> "$GITHUB_OUTPUT"
+
+      - name: Verify version consistency
+        # setup.py derives the Python package version from frontend/package.json,
+        # so a tag that disagrees with it would ship a mislabelled artifact.
+        run: |
+          set -euo pipefail
+          DECLARED=$(node -p "require('./frontend/package.json').version")
+          if [ "$DECLARED" != "${{ steps.tag.outputs.version }}" ]; then
+            echo "::error::Tag ${{ steps.tag.outputs.tag }} implies version ${{ steps.tag.outputs.version }} but frontend/package.json declares $DECLARED"
+            exit 1
+          fi
+
+      - name: Extract changelog section
+        id: notes
+        run: |
+          set -euo pipefail
+          VERSION="${{ steps.tag.outputs.version }}"
+          # Print the body between this version's heading and the next one.
+          awk -v version="$VERSION" '
+            $0 ~ "^## \\[" version "\\]" { found = 1; next }
+            found && /^## / { exit }
+            found { print }
+          ' CHANGELOG.md > release-notes.md
+          if [ ! -s release-notes.md ]; then
+            echo "::error::No '## [$VERSION]' section found in CHANGELOG.md"
+            exit 1
+          fi
+          echo "Release notes:"
+          cat release-notes.md
+
+      - name: Create release
+        env:
+          GH_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+        run: |
+          set -euo pipefail
+          TAG="${{ steps.tag.outputs.tag }}"
+          if gh release view "$TAG" >/dev/null 2>&1; then
+            echo "::notice::Release $TAG already exists, leaving it untouched."
+            exit 0
+          fi
+          ARGS=(--title "$TAG" --notes-file release-notes.md --verify-tag)
+          if [ "${{ github.event_name == 'workflow_dispatch' && inputs.draft || false }}" = "true" ]; then
+            ARGS+=(--draft)
+          fi
+          # Anything with a suffix (rc, beta, ...) is not a final release.
+          case "${{ steps.tag.outputs.version }}" in
+            *-*) ARGS+=(--prerelease) ;;
+          esac
+          gh release create "$TAG" "${ARGS[@]}"
