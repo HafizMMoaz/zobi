@@ -1,4 +1,3 @@
-
 /**
  * Regression coverage for memoize-one v6 adoption.
  *
@@ -19,7 +18,7 @@
  * memoizer actually compares should produce fresh arrays (cache miss).
  */
 import transformProps from '../src/transformProps';
-import testData from '../../plugin-table/test/testData';
+import testData from '../../table/test/testData';
 
 test('transformProps returns referentially-equal data/columns on identical input (cache hit)', () => {
   // processColumns and processDataRecords are both wrapped by memoizeOne at
