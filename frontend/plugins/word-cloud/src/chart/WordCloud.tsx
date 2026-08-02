@@ -1,4 +1,3 @@
-
 import { PureComponent } from 'react';
 import cloudLayout from 'd3-cloud';
 import { scaleLinear } from 'd3-scale';
@@ -261,13 +260,13 @@ class WordCloud extends PureComponent<FullWordCloudProps, WordCloudState> {
 
     cloudLayout()
       .size([width * scaleFactor, height * scaleFactor])
-      .words(data.map((d: Word) => ({ ...d })))
+      .words(data.map(d => ({ ...d }) as Word))
       .padding(5)
       .rotate(ROTATION[rotation] || ROTATION.flat)
-      .text((d: PlainObject) => encoder.getText(d))
-      .font((d: PlainObject) => encoder.getFontFamily(d))
-      .fontWeight((d: PlainObject) => encoder.getFontWeight(d))
-      .fontSize((d: PlainObject) => encoder.getFontSize(d))
+      .text(d => encoder.getText(d as PlainObject))
+      .font(d => encoder.getFontFamily(d as PlainObject))
+      .fontWeight(d => encoder.getFontWeight(d as PlainObject))
+      .fontSize(d => encoder.getFontSize(d as PlainObject))
       .on('end', (words: Word[]) => {
         if (isValid(words) || scaleFactor > MAX_SCALE_FACTOR) {
           this.setWords(words);

@@ -35,16 +35,16 @@ export const HandlebarsViewer = ({
       setError('');
     } catch (error) {
       setRenderedTemplate('');
-      setError(error.message);
+      setError(error instanceof Error ? error.message : String(error));
     }
   }, [templateSource, data]);
 
-  const Error = styled.pre`
+  const StyledError = styled.pre`
     white-space: pre-wrap;
   `;
 
   if (error) {
-    return <Error>{error}</Error>;
+    return <StyledError>{error}</StyledError>;
   }
 
   if (renderedTemplate) {

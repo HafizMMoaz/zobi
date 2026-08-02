@@ -71,7 +71,7 @@ const Pagination: React.FC<PaginationProps> = ({
         <Select
           value={`${pageSize}`}
           options={selectOptions}
-          onChange={(value: string) => {
+          onChange={value => {
             onServerPageSizeChange(Number(value));
           }}
           getPopupContainer={() =>

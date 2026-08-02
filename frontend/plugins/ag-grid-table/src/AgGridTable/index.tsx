@@ -40,7 +40,10 @@ import getInitialSortState, { shouldSort } from '../utils/getInitialSortState';
 import getInitialFilterModel from '../utils/getInitialFilterModel';
 import reconcileColumnState from '../utils/reconcileColumnState';
 import { PAGE_SIZE_OPTIONS } from '../consts';
-import { getCompleteFilterState } from '../utils/filterStateManager';
+import {
+  getCompleteFilterState,
+  type FilterState,
+} from '../utils/filterStateManager';
 
 export interface AgGridState extends Partial<GridState> {
   timestamp?: number;
@@ -86,7 +89,7 @@ export interface AgGridTableProps {
   showTotals: boolean;
   width: number;
   onColumnStateChange?: (state: AgGridChartStateWithMetadata) => void;
-  onFilterChanged?: (filterModel: Record<string, any>) => void;
+  onFilterChanged?: (completeFilterState: FilterState) => void;
   metricColumns?: string[];
   gridRef?: RefObject<AgGridReact>;
   chartState?: AgGridChartState;

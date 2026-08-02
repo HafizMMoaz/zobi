@@ -39,9 +39,11 @@ export class ChartLayer extends Layer {
 
   chartBackgroundBorderRadius = 0;
 
-  theme: ZobiTheme;
+  // Assigned from the layer options in the constructor, which the callers
+  // always supply. Declared with `!` because the assignment is conditional.
+  theme!: ZobiTheme;
 
-  locale: string;
+  locale!: string;
 
   /**
    * Create a ChartLayer.

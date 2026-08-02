@@ -22,8 +22,24 @@ import {
   ObjectFormattingEnum,
   ResolvedColorFormatterResult,
 } from '@zobi.dev/chart-controls';
+import { DateFormatter } from '../types';
 import { PivotData, flatKey } from './utilities';
 import { Styles } from './Styles';
+
+/**
+ * Apply a header date formatter.
+ *
+ * `DateFormatter` is a union of `TimeFormatter`, `NumberFormatter` and a plain
+ * value formatter. The three have no common call signature, so TypeScript
+ * intersects their parameters and rejects the `string | number` header values
+ * we hold here. Callers coerce numeric timestamp strings to numbers first; the
+ * remaining strings are passed through unchanged, as they always have been.
+ */
+const applyDateFormatter = (
+  formatter: DateFormatter | undefined,
+  value: string | number,
+): string | undefined =>
+  (formatter as ((value: string | number) => string) | undefined)?.(value);
 
 type ClickCallback = (
   e: MouseEvent,
@@ -53,7 +69,7 @@ interface TableOptions {
   omittedHighlightHeaderGroups?: string[];
   highlightedHeaderCells?: Record<string, unknown[]>;
   cellColorFormatters?: Record<string, ColorFormatters>;
-  dateFormatters?: Record<string, ((val: unknown) => string) | undefined>;
+  dateFormatters?: Record<string, DateFormatter | undefined>;
   cellBackgroundColor?: string;
   cellTextColor?: string;
   activeHeaderBackgroundColor?: string;
@@ -982,8 +998,10 @@ export function TableRenderer(props: TableRendererProps) {
               ? Number(rawHeaderCellValue)
               : rawHeaderCellValue;
           const headerCellFormattedValue =
-            dateFormatters?.[attrName]?.(headerCellFormatterValue) ??
-            rawHeaderCellValue;
+            applyDateFormatter(
+              dateFormatters?.[attrName],
+              headerCellFormatterValue,
+            ) ?? rawHeaderCellValue;
           const isActiveHeader = colLabelClass.includes('active');
           const { backgroundColor, color } = getCellColor(
             [attrName],
@@ -1256,7 +1274,10 @@ export function TableRenderer(props: TableRendererProps) {
               ? Number(r)
               : r;
           const headerCellFormattedValue =
-            dateFormatters?.[settingsRowAttrs[i]]?.(headerFormatterValue) ?? r;
+            applyDateFormatter(
+              dateFormatters?.[settingsRowAttrs[i]],
+              headerFormatterValue,
+            ) ?? r;
           const isActiveHeader = valueCellClassName.includes('active');
           const { backgroundColor, color } = getCellColor(
             [settingsRowAttrs[i]],
