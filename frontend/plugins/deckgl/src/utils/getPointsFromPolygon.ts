@@ -1,3 +1,4 @@
+import { JsonObject } from '@zobi.dev/core';
 import { Point } from '../types';
 
 /** Format originally used by the Polygon plugin */
@@ -19,10 +20,14 @@ type GeojsonPolygonFeature = {
   };
 };
 
-export default function getPointsFromPolygon(
-  feature: CustomPolygonFeature | GeojsonPolygonFeature,
-) {
-  return 'geometry' in feature.polygon
-    ? feature.polygon.geometry.coordinates[0]
-    : feature.polygon;
+type PolygonFeature = CustomPolygonFeature | GeojsonPolygonFeature;
+
+/**
+ * Query results reach the layers as untyped records, so the parameter is
+ * widened to `JsonObject` and narrowed to the two supported shapes here.
+ */
+export default function getPointsFromPolygon(feature: JsonObject): Point[] {
+  const { polygon } = feature as PolygonFeature;
+
+  return 'geometry' in polygon ? polygon.geometry.coordinates[0] : polygon;
 }

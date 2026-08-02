@@ -35,9 +35,13 @@ export const HandlebarsRenderer: React.FC<HandlebarsRendererProps> = memo(
         const result = template(data);
         setRenderedTemplate(result);
         setError('');
-      } catch (error) {
+      } catch (caught) {
+        // `catch` binds as `unknown` under `useUnknownInCatchVariables`.
         setRenderedTemplate('');
-        setError(error.message || 'Unknown template error');
+        setError(
+          (caught instanceof Error && caught.message) ||
+            'Unknown template error',
+        );
       }
     }, [templateSource, data]);
 

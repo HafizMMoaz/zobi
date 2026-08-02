@@ -1,4 +1,3 @@
-
 import { ComponentType } from 'react';
 import { css, useTheme, getFontSize } from '@zobi.dev/extension-api/theme';
 import { AntdIconType, BaseIconProps, CustomIconType, IconType } from './types';

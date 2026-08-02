@@ -96,7 +96,7 @@ export function getBreakPointColorScaler(
   }: BucketsWithColorScale,
   features: JsonObject[],
   accessor: (value: JsonObject) => number | undefined,
-): (data?: JsonObject) => Color {
+): (data: JsonObject) => Color {
   const breakPoints =
     formDataBreakPoints || formDataNumBuckets
       ? getBreakPoints(

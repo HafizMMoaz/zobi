@@ -13,8 +13,8 @@ import {
 } from 'd3-array';
 import {
   CategoricalColorScale,
+  ContextMenuFilters,
   FilterState,
-  HandlerFunction,
   JsonObject,
   JsonValue,
   QueryFormData,
@@ -46,7 +46,14 @@ export function commonLayerProps({
   setTooltipContent: (content: JsonObject) => ReactNode;
   onSelect?: (value: JsonValue) => void;
   filterState?: FilterState;
-  onContextMenu?: HandlerFunction;
+  // Matches `GetLayerTypeParams.onContextMenu`; `HandlerFunction` takes
+  // `unknown[]`, which every caller's narrower handler fails to satisfy
+  // because parameters are contravariant.
+  onContextMenu?: (
+    clientX: number,
+    clientY: number,
+    filters?: ContextMenuFilters,
+  ) => void;
   emitCrossFilters?: boolean;
 }) {
   const fd = formData;
@@ -118,10 +125,12 @@ export function commonLayerProps({
         setDataMask(crossFilters.dataMask);
       } else if (isContextMenu && onContextMenu !== undefined) {
         const center = event?.offsetCenter ?? event?.center ?? { x: 0, y: 0 };
+        // `drillBy` is optional and requires `filters` and `groupbyFieldName`,
+        // which are not available here, so it is omitted rather than passed
+        // as an empty object.
         onContextMenu(center.x, center.y, {
           drillToDetail: [],
           crossFilter: crossFilters,
-          drillBy: {},
         });
       }
 
@@ -163,26 +172,31 @@ export function getAggFunc(
     return (arr: number[]) => arr.length;
   }
 
+  // The d3-array helpers are called with either raw values or objects plus an
+  // accessor, so the element type is only known at the call sites below.
   let d3func: (
-    iterable: Array<unknown>,
+    iterable: JsonObject[],
     accessor?: (object: JsonObject) => number | undefined,
   ) => number[] | number | undefined;
 
   if (type in percentiles) {
-    d3func = (arr, acc: (object: JsonObject) => number | undefined) => {
+    d3func = (arr, acc) => {
       let sortedArr;
       if (accessor) {
-        sortedArr = arr.sort((o1: JsonObject, o2: JsonObject) =>
-          d3ascending(accessor(o1), accessor(o2)),
-        );
+        sortedArr = arr
+          .slice()
+          .sort((o1, o2) => d3ascending(accessor(o1), accessor(o2)));
       } else {
-        sortedArr = arr.sort(d3ascending);
+        // Without an accessor the array holds raw comparable values rather
+        // than objects.
+        sortedArr = (arr as unknown as number[]).slice().sort(d3ascending) as
+          unknown as JsonObject[];
       }
 
       return d3quantile(
         sortedArr,
         percentiles[type as keyof typeof percentiles],
-        acc,
+        acc ?? ((value: JsonObject) => value as unknown as number),
       );
     };
   } else if (type in d3functions) {
@@ -192,10 +206,11 @@ export function getAggFunc(
   }
 
   if (!accessor) {
-    return (arr: number[]) => d3func(arr);
+    return (arr: number[]) => d3func(arr as unknown as JsonObject[]);
   }
 
-  return (arr: number[]) => d3func(arr.map(x => accessor(x)));
+  return (arr: number[]) =>
+    d3func(arr.map(x => accessor(x)) as unknown as JsonObject[]);
 }
 
 export const getColorForBreakpoints = (
