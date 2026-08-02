@@ -1,6 +1,6 @@
 [project]
 name = "zobi-core"
-version = "0.1.0"
+version = "1.0.0"
 description = "Core Python package for building ZOBI backend extensions and integrations"
 readme = "README.md"
 authors = [

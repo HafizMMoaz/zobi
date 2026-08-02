@@ -1,6 +1,6 @@
 [project]
 name = "zobi-extensions-cli"
-version = "0.1.0"
+version = "1.0.0"
 description = "Official command-line interface for building, bundling, and managing ZOBI extensions"
 readme = "README.md"
 authors = [
