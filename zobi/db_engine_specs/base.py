@@ -627,6 +627,7 @@ class BaseEngineSpec:  # pylint: disable=too-many-public-methods
         )
 
     @classmethod
+    # pylint: disable=consider-using-transaction
     def start_oauth2_dance(cls, database: Database) -> None:
         """
         Start the OAuth2 dance.
