@@ -13,6 +13,8 @@ import {
 import { GenericDataType } from '@zobi.dev/extension-api/common';
 import type { ComposeOption } from 'echarts/core';
 import type { BarSeriesOption } from 'echarts/charts';
+import type { CallbackDataParams } from 'echarts/types/src/util/types';
+
 import {
   EchartsWaterfallChartProps,
   ISeriesData,
@@ -187,11 +189,14 @@ export default function transformProps(
     TOTAL: totalLabel || LEGEND.TOTAL,
   };
 
-  const seriesformatter = (params: ICallbackDataParams) => {
-    const { data } = params;
+  // echarts types the label formatter against CallbackDataParams, so the
+  // waterfall-specific shape is narrowed inside the callback instead.
+  const seriesformatter = (params: CallbackDataParams) => {
+    const { data } = params as ICallbackDataParams;
     const { originalValue } = data;
     return defaultFormatter(originalValue as number);
   };
+
   const groupbyArray = ensureIsArray(groupby);
   const breakdownColumn = groupbyArray.length ? groupbyArray[0] : undefined;
   const breakdownName = isAdhocColumn(breakdownColumn)

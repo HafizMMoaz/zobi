@@ -1,5 +1,3 @@
-
-
 export const basic = [
   {
     Sales: 4200,

@@ -1,5 +1,3 @@
-
-
 export const basic = [
   {
     source: '05/18/21 Live Demo',

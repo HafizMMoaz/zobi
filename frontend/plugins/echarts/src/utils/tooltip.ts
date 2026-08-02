@@ -1,4 +1,3 @@
-
 import type { CallbackDataParams } from 'echarts/types/src/util/types';
 import {
   QueryFormColumn,
@@ -16,11 +15,15 @@ export function getDefaultTooltip(refs: Refs) {
     borderColor: 'transparent',
     // CSS hack applied on this class to resolve https://github.com/HafizMMoaz/zobi/issues/30058
     className: 'echarts-tooltip',
+    // Only the mouse position and the content size are used. The remaining
+    // arguments are typed loosely because echarts ships two declaration copies
+    // whose element types do not unify, and naming either one here makes the
+    // callback unassignable to the other.
     position: (
       canvasMousePos: [number, number],
-      params: CallbackDataParams,
-      tooltipDom: HTMLDivElement | null,
-      rect: any,
+      params: CallbackDataParams | CallbackDataParams[],
+      tooltipDom: unknown,
+      rect: unknown,
       sizes: { contentSize: [number, number]; viewSize: [number, number] },
     ) => {
       // algorithm partially based on this snippet:

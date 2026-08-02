@@ -1,10 +1,5 @@
-
-
 import { SuperChart, getChartTransformPropsRegistry } from '@zobi.dev/core';
-import {
-  EchartsTreeChartPlugin,
-  TreeTransformProps,
-} from '@zobi.dev/echarts';
+import { EchartsTreeChartPlugin, TreeTransformProps } from '@zobi.dev/echarts';
 import data from './data';
 import { withResizableChartDemo } from '@storybook-shared';
 
@@ -29,12 +24,7 @@ export default {
   argTypes: {
     colorScheme: {
       control: 'select',
-      options: [
-        'zobiColors',
-        'd3Category10',
-        'bnbColors',
-        'googleCategory20c',
-      ],
+      options: ['zobiColors', 'd3Category10', 'bnbColors', 'googleCategory20c'],
     },
     layout: {
       control: 'select',

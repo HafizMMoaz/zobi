@@ -1,4 +1,3 @@
-
 import { TreePathInfo } from '../types';
 
 export const COLOR_SATURATION = [0.7, 0.4];

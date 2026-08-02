@@ -1,4 +1,3 @@
-
 /**
  * Unified ECharts Options Schema
  *

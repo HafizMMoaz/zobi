@@ -1,4 +1,3 @@
-
 import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { getColorFormatters } from '@zobi.dev/chart-controls';
 import { BigNumberTotalChartProps } from '../types';

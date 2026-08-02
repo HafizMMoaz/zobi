@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { Behavior } from '@zobi.dev/core';
 import buildQuery from './buildQuery';

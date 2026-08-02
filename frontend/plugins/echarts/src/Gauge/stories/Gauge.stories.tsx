@@ -1,5 +1,3 @@
-
-
 import { SuperChart, getChartTransformPropsRegistry } from '@zobi.dev/core';
 import {
   EchartsGaugeChartPlugin,
@@ -32,12 +30,7 @@ export default {
   argTypes: {
     colorScheme: {
       control: 'select',
-      options: [
-        'zobiColors',
-        'd3Category10',
-        'bnbColors',
-        'googleCategory20c',
-      ],
+      options: ['zobiColors', 'd3Category10', 'bnbColors', 'googleCategory20c'],
     },
     showProgress: { control: 'boolean' },
     showPointer: { control: 'boolean' },

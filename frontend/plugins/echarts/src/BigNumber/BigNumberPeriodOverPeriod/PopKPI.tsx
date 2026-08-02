@@ -1,10 +1,6 @@
 import { useEffect, useMemo, useState } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  ensureIsArray,
-  fetchTimeRange,
-  getTimeOffset,
-} from '@zobi.dev/core';
+import { ensureIsArray, fetchTimeRange, getTimeOffset } from '@zobi.dev/core';
 import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import { Tooltip } from '@zobi.dev/core/components';
 import {
