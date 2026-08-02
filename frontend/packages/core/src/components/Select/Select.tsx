@@ -16,6 +16,7 @@ import { t } from '@zobi.dev/extension-api/translation';
 import { ensureIsArray, formatNumber, usePrevious } from '@zobi.dev/core';
 import { Constants } from '@zobi.dev/core/components';
 import {
+  DefaultOptionType,
   LabeledValue as AntdLabeledValue,
   RefSelectProps,
 } from 'antd/es/select';
@@ -169,14 +170,16 @@ const Select = forwardRef(
 
     const mappedMode = isSingleMode ? undefined : 'multiple';
 
+    // antd hands `filterSort`/`filterOption` a `DefaultOptionType`, whose
+    // `value` and `label` are optional, so these cannot take `AntdLabeledValue`.
     const sortSelectedFirst = useCallback(
-      (a: AntdLabeledValue, b: AntdLabeledValue) =>
+      (a: DefaultOptionType, b: DefaultOptionType) =>
         sortSelectedFirstHelper(a, b, selectValue),
       [selectValue],
     );
 
     const sortComparatorWithSearch = useCallback(
-      (a: AntdLabeledValue, b: AntdLabeledValue) =>
+      (a: DefaultOptionType, b: DefaultOptionType) =>
         sortComparatorWithSearchHelper(
           a,
           b,
@@ -283,7 +286,14 @@ const Select = forwardRef(
       );
     }, [visibleOptions, selectValue]);
 
-    const handleOnSelect: SelectProps['onSelect'] = (selectedItem, option) => {
+    // `StyledSelect` erases antd's value generic to `unknown`, so these handlers
+    // accept the widened type and narrow to the values this component works
+    // with. Declaring the narrow type directly would not be assignable.
+    const handleOnSelect = (
+      selectedItemValue: unknown,
+      option: DefaultOptionType,
+    ) => {
+      const selectedItem = selectedItemValue as RawValue | AntdLabeledValue;
       if (isSingleMode) {
         // on select is fired in single value mode if the same value is selected
         const valueChanged = !utilsIsEqual(
@@ -343,7 +353,11 @@ const Select = forwardRef(
       fireOnChange();
     };
 
-    const handleOnDeselect: SelectProps['onDeselect'] = (value, option) => {
+    const handleOnDeselect = (
+      deselectedValue: unknown,
+      option: DefaultOptionType,
+    ) => {
+      const value = deselectedValue as RawValue | AntdLabeledValue;
       if (Array.isArray(selectValue)) {
         const array = (selectValue as AntdLabeledValue[]).filter(
           element => getValue(element) !== getValue(value),
@@ -363,8 +377,15 @@ const Select = forwardRef(
       onDeselect?.(value, option);
     };
 
-    const handleFilterOption = (search: string, option: AntdLabeledValue) =>
-      handleFilterOptionHelper(search, option, optionFilterProps, filterOption);
+    // `option` is optional in antd's `FilterFunc`; it is always supplied in
+    // practice, but the signature has to admit undefined.
+    const handleFilterOption = (search: string, option?: DefaultOptionType) =>
+      handleFilterOptionHelper(
+        search,
+        option ?? {},
+        optionFilterProps,
+        filterOption,
+      );
 
     const handleOnSearch = debounce((search: string) => {
       const searchValue = search.trim();
@@ -747,6 +768,8 @@ const Select = forwardRef(
           onBlur={handleOnBlur}
           onDeselect={handleOnDeselect}
           onOpenChange={handleOnDropdownVisibleChange}
+          // `onPaste` is forwarded to the underlying input but is not part of
+          // antd's Select props.
           // @ts-expect-error
           onPaste={onPaste}
           onPopupScroll={undefined}

@@ -85,7 +85,9 @@ export const fetchTimeRange = async (
           ),
         ),
     };
-  } catch (response) {
+  } catch (caught) {
+    // `catch` binds as `unknown`; this rejects with a fetch `Response`.
+    const response = caught as Response;
     const clientError = await getClientErrorObject(response);
     return {
       error: clientError.message || clientError.error || response.statusText,

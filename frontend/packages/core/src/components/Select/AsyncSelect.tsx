@@ -1,6 +1,7 @@
 import {
   forwardRef,
   FocusEvent,
+  ForwardedRef,
   ReactElement,
   RefObject,
   UIEvent,
@@ -20,6 +21,7 @@ import {
   getClientErrorObject,
 } from '@zobi.dev/core';
 import {
+  DefaultOptionType,
   LabeledValue as AntdLabeledValue,
   RefSelectProps,
 } from 'antd/es/select';
@@ -48,7 +50,6 @@ import {
   SelectOptionsPagePromise,
   SelectOptionsType,
   SelectOptionsTypePage,
-  SelectProps,
 } from './types';
 import {
   StyledCheckOutlined,
@@ -128,8 +129,11 @@ const AsyncSelect = forwardRef(
       maxTagCount: propsMaxTagCount,
       ...props
     }: AsyncSelectProps,
-    ref: RefObject<AsyncSelectRef>,
+    ref: ForwardedRef<AsyncSelectRef>,
   ) => {
+    // `forwardRef` also admits callback refs and null; this component is always
+    // used with an object ref, which `useImperativeHandle` reads below.
+    const refObject = ref as RefObject<AsyncSelectRef>;
     const isSingleMode = mode === 'single';
     const [selectValue, setSelectValue] = useState(value);
     const [inputValue, setInputValue] = useState('');
@@ -165,14 +169,16 @@ const AsyncSelect = forwardRef(
       selectValueRef.current = selectValue;
     }, [selectValue]);
 
+    // antd hands these comparators a `DefaultOptionType`, whose `value` and
+    // `label` are optional, so they cannot be typed as `AntdLabeledValue`.
     const sortSelectedFirst = useCallback(
-      (a: AntdLabeledValue, b: AntdLabeledValue) =>
+      (a: DefaultOptionType, b: DefaultOptionType) =>
         sortSelectedFirstHelper(a, b, selectValueRef.current),
       [],
     );
 
     const sortComparatorWithSearch = useCallback(
-      (a: AntdLabeledValue, b: AntdLabeledValue) =>
+      (a: DefaultOptionType, b: DefaultOptionType) =>
         sortComparatorWithSearchHelper(
           a,
           b,
@@ -184,7 +190,7 @@ const AsyncSelect = forwardRef(
     );
 
     const sortComparatorForNoSearch = useCallback(
-      (a: AntdLabeledValue, b: AntdLabeledValue) =>
+      (a: DefaultOptionType, b: DefaultOptionType) =>
         sortComparatorForNoSearchHelper(
           a,
           b,
@@ -211,7 +217,14 @@ const AsyncSelect = forwardRef(
         : selectOptions;
     }, [selectOptions, selectValue]);
 
-    const handleOnSelect: SelectProps['onSelect'] = (selectedItem, option) => {
+    // `StyledSelect` erases antd's value generic to `unknown`, so these handlers
+    // accept the widened type and narrow to the values this component works
+    // with. Declaring the narrow type directly would not be assignable.
+    const handleOnSelect = (
+      selectedItemValue: unknown,
+      option: DefaultOptionType,
+    ) => {
+      const selectedItem = selectedItemValue as RawValue | AntdLabeledValue;
       if (isSingleMode) {
         // on select is fired in single value mode if the same value is selected
         const valueChanged = !utilsIsEqual(
@@ -241,7 +254,11 @@ const AsyncSelect = forwardRef(
       onSelect?.(selectedItem, option);
     };
 
-    const handleOnDeselect: SelectProps['onDeselect'] = (value, option) => {
+    const handleOnDeselect = (
+      deselectedValue: unknown,
+      option: DefaultOptionType,
+    ) => {
+      const value = deselectedValue as RawValue | AntdLabeledValue;
       if (Array.isArray(selectValue)) {
         if (isLabeledValue(value)) {
           const array = selectValue as AntdLabeledValue[];
@@ -392,8 +409,15 @@ const AsyncSelect = forwardRef(
       }
     };
 
-    const handleFilterOption = (search: string, option: AntdLabeledValue) =>
-      handleFilterOptionHelper(search, option, optionFilterProps, filterOption);
+    // `option` is optional in antd's `FilterFunc`; it is always supplied in
+    // practice, but the signature has to admit undefined.
+    const handleFilterOption = (search: string, option?: DefaultOptionType) =>
+      handleFilterOptionHelper(
+        search,
+        option ?? {},
+        optionFilterProps,
+        filterOption,
+      );
 
     const handleOnDropdownVisibleChange = (isDropdownVisible: boolean) => {
       setIsDropdownVisible(isDropdownVisible);
@@ -518,10 +542,10 @@ const AsyncSelect = forwardRef(
     useImperativeHandle(
       ref,
       () => ({
-        ...(ref.current as RefSelectProps),
+        ...(refObject.current as RefSelectProps),
         clearCache,
       }),
-      [ref],
+      [refObject],
     );
 
     const getPastedTextValue = useCallback(

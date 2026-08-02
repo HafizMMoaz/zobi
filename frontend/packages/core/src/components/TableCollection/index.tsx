@@ -9,6 +9,7 @@ import {
 } from 'react-table';
 import { styled } from '@zobi.dev/extension-api/theme';
 import { Table, TableSize } from '@zobi.dev/core/components/Table';
+import { ColumnsType } from 'antd/es/table';
 import { TableRowSelection, SorterResult } from 'antd/es/table/interface';
 import { mapColumns, mapRows } from './utils';
 
@@ -209,18 +210,25 @@ function TableCollection<T extends object>({
     [],
   );
 
+  // `styled(Table)` erases the row generic, so antd types the values it passes
+  // here against `object`. The handlers widen to match and narrow internally.
   const handleTableChange = useCallback(
-    (_pagination: any, _filters: any, sorter: SorterResult) => {
-      if (sorter && sorter.field) {
+    (
+      _pagination: unknown,
+      _filters: unknown,
+      sorter: SorterResult<object> | SorterResult<object>[],
+    ) => {
+      const singleSorter = Array.isArray(sorter) ? sorter[0] : sorter;
+      if (singleSorter && singleSorter.field) {
         // Convert array field back to dot notation for nested fields
-        const fieldId = Array.isArray(sorter.field)
-          ? sorter.field.join('.')
-          : sorter.field;
+        const fieldId = Array.isArray(singleSorter.field)
+          ? singleSorter.field.join('.')
+          : singleSorter.field;
 
         setSortBy?.([
           {
             id: fieldId,
-            desc: sorter.order === 'descend',
+            desc: singleSorter.order === 'descend',
           },
         ] as SortingRule<T>[]);
       }
@@ -261,10 +269,12 @@ function TableCollection<T extends object>({
   ]);
 
   const getRowClassName = useCallback(
-    (record: Record<string, unknown>) =>
-      highlightRowId !== undefined && record?.id === highlightRowId
+    (record: object) => {
+      const { id } = (record ?? {}) as { id?: unknown };
+      return highlightRowId !== undefined && id === highlightRowId
         ? 'table-row-highlighted'
-        : '',
+        : '';
+    },
     [highlightRowId],
   );
 
@@ -272,7 +282,7 @@ function TableCollection<T extends object>({
     <StyledTable
       loading={loading}
       sticky={sticky ?? false}
-      columns={mappedColumns}
+      columns={mappedColumns as ColumnsType<object>}
       data={mappedRows}
       size={size}
       data-test="listview-table"

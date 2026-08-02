@@ -1,4 +1,10 @@
-import { forwardRef, useState, ReactNode, MouseEvent } from 'react';
+import {
+  forwardRef,
+  ForwardedRef,
+  useState,
+  ReactNode,
+  MouseEvent,
+} from 'react';
 
 import { Button } from '../Button';
 import { Modal } from '../Modal';
@@ -33,7 +39,13 @@ export interface ModalTriggerRef {
 }
 
 export const ModalTrigger = forwardRef(
-  (props: ModalTriggerProps, ref: ModalTriggerRef | null) => {
+  (
+    props: ModalTriggerProps,
+    forwardedRef: ForwardedRef<ModalTriggerRef['current']>,
+  ) => {
+    // `forwardRef` also admits callback refs; this component is always used with
+    // an object ref, which it assigns to directly below.
+    const ref = forwardedRef as ModalTriggerRef | null;
     const [showModal, setShowModal] = useState(false);
     const {
       beforeOpen = () => {},

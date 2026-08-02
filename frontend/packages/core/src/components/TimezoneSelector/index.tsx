@@ -8,6 +8,7 @@ import {
   getOffsetKey,
   DEFAULT_TIMEZONE,
 } from './TimezoneOptionsCache';
+import type { LabeledValue } from 'antd/es/select';
 import type { TimezoneOption } from './types';
 
 // Import dayjs plugin types for TypeScript support
@@ -76,9 +77,11 @@ export default function TimezoneSelector({
   const sortComparator = useMemo(() => {
     if (!timezoneOptions) return undefined;
     const currentDate = extendedDayjs();
-    const comparator = (a: TimezoneOption, b: TimezoneOption) =>
-      currentDate.tz(a.timezoneName).utcOffset() -
-      currentDate.tz(b.timezoneName).utcOffset();
+    // `Select` types its comparator against antd's `LabeledValue`; every option
+    // this component supplies is a `TimezoneOption`, so narrowing is safe.
+    const comparator = (a: LabeledValue, b: LabeledValue) =>
+      currentDate.tz((a as TimezoneOption).timezoneName).utcOffset() -
+      currentDate.tz((b as TimezoneOption).timezoneName).utcOffset();
     return comparator;
   }, [timezoneOptions]);
 

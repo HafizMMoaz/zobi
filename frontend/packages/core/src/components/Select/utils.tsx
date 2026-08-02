@@ -2,6 +2,7 @@ import { t } from '@zobi.dev/extension-api/translation';
 import { ensureIsArray } from '@zobi.dev/core';
 import { ReactElement, RefObject } from 'react';
 import { Icons } from '@zobi.dev/core/components/Icons';
+import { DefaultOptionType } from 'antd/es/select';
 import { LabeledValue as AntdLabeledValue, SELECT_ALL_VALUE } from '.';
 import { StyledHelperText, StyledLoadingText, StyledSpin } from './styles';
 import { CustomLabeledValue, RawValue, SelectOptionsType, V } from './types';
@@ -77,8 +78,8 @@ export const propertyComparator =
   };
 
 export const sortSelectedFirstHelper = (
-  a: AntdLabeledValue,
-  b: AntdLabeledValue,
+  a: DefaultOptionType,
+  b: DefaultOptionType,
   selectValue:
     | string
     | number
@@ -96,28 +97,36 @@ export const sortSelectedFirstHelper = (
     : 0;
 };
 
+// antd types the options it hands to `filterSort` as `DefaultOptionType`, whose
+// `value` and `label` are optional. The `sortComparator` prop stays on the
+// narrower `AntdLabeledValue` because this component always supplies options
+// that carry both, so the cast describes what callers actually receive.
 export const sortComparatorWithSearchHelper = (
-  a: AntdLabeledValue,
-  b: AntdLabeledValue,
+  a: DefaultOptionType,
+  b: DefaultOptionType,
   inputValue: string,
-  sortCallback: (a: AntdLabeledValue, b: AntdLabeledValue) => number,
+  sortCallback: (a: DefaultOptionType, b: DefaultOptionType) => number,
   sortComparator: (
     a: AntdLabeledValue,
     b: AntdLabeledValue,
     search?: string | undefined,
   ) => number,
-) => sortCallback(a, b) || sortComparator(a, b, inputValue);
+) =>
+  sortCallback(a, b) ||
+  sortComparator(a as AntdLabeledValue, b as AntdLabeledValue, inputValue);
 
 export const sortComparatorForNoSearchHelper = (
-  a: AntdLabeledValue,
-  b: AntdLabeledValue,
-  sortCallback: (a: AntdLabeledValue, b: AntdLabeledValue) => number,
+  a: DefaultOptionType,
+  b: DefaultOptionType,
+  sortCallback: (a: DefaultOptionType, b: DefaultOptionType) => number,
   sortComparator: (
     a: AntdLabeledValue,
     b: AntdLabeledValue,
     search?: string | undefined,
   ) => number,
-) => sortCallback(a, b) || sortComparator(a, b, '');
+) =>
+  sortCallback(a, b) ||
+  sortComparator(a as AntdLabeledValue, b as AntdLabeledValue, '');
 
 // use a function instead of component since every rerender of the
 // Select component will create a new component
@@ -185,7 +194,7 @@ export const dropDownRenderHelper = (
 
 export const handleFilterOptionHelper = (
   search: string,
-  option: AntdLabeledValue,
+  option: DefaultOptionType,
   optionFilterProps: string[],
   filterOption: boolean | Function,
 ) => {

@@ -147,7 +147,10 @@ export interface BaseSelectProps extends AntdExposedProps {
 
   value?: SelectValue | null;
 
-  ref: Ref<RefSelectProps>;
+  // Optional because `forwardRef` supplies the ref separately, so requiring it
+  // here would make the render function's props incompatible with
+  // `Omit<SelectProps, 'ref'>`.
+  ref?: Ref<RefSelectProps>;
 
   dropdownStyle?: React.CSSProperties;
 }
