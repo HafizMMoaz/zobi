@@ -114,13 +114,13 @@ stage.
 | Distribution | Directory | Version source | Workflow |
 | --- | --- | --- | --- |
 | `zobi-core` | `core` | `core/pyproject.toml` | `publish-pypi-zobi-core.yml` |
-| `extensions-cli` | `extensions-cli` | `extensions-cli/pyproject.toml` | `publish-pypi-extensions-cli.yml` |
+| `zobi-extensions-cli` | `extensions-cli` | `extensions-cli/pyproject.toml` | `publish-pypi-extensions-cli.yml` |
 
 These are the two packages extension authors install. The Zobi application
 itself is not published to PyPI — it ships as a Docker image and a git tag.
 
-`extensions-cli` depends on `zobi-core`, so release `zobi-core` first when both
-have changed.
+`zobi-extensions-cli` depends on `zobi-core`, so release `zobi-core` first when
+both have changed.
 
 Versions are static and committed, so bump the manifest first, then tag. Each
 workflow refuses to publish when the tag and the manifest disagree.
