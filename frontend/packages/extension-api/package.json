@@ -78,6 +78,15 @@
   "files": [
     "lib"
   ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/HafizMMoaz/zobi.git",
+    "directory": "frontend/packages/extension-api"
+  },
+  "bugs": {
+    "url": "https://github.com/HafizMMoaz/zobi/issues"
+  },
+  "homepage": "https://github.com/HafizMMoaz/zobi#readme",
   "author": "Zobi",
   "license": "MIT",
   "devDependencies": {
