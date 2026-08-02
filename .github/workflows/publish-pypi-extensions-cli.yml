@@ -1,6 +1,6 @@
-name: Publish extensions-cli (PyPI)
+name: Publish zobi-extensions-cli (PyPI)
 
-# Publishes only the extensions-cli distribution built from ./extensions-cli.
+# Publishes only the zobi-extensions-cli distribution built from ./extensions-cli.
 #
 # The version is static in extensions-cli/pyproject.toml, so bump and commit it
 # before tagging. This workflow verifies the tag and the manifest agree rather
@@ -33,7 +33,7 @@ concurrency:
 
 jobs:
   publish:
-    name: extensions-cli
+    name: zobi-extensions-cli
     runs-on: ubuntu-24.04
     environment: ${{ github.event_name == 'workflow_dispatch' && inputs.repository || 'pypi' }}
     permissions:
@@ -52,8 +52,8 @@ jobs:
           set -euo pipefail
           NAME=$(python -c 'import tomllib,pathlib; print(tomllib.loads(pathlib.Path("extensions-cli/pyproject.toml").read_text())["project"]["name"])')
           VERSION=$(python -c 'import tomllib,pathlib; print(tomllib.loads(pathlib.Path("extensions-cli/pyproject.toml").read_text())["project"]["version"])')
-          if [ "$NAME" != "extensions-cli" ]; then
-            echo "::error::extensions-cli/pyproject.toml declares '$NAME', expected 'extensions-cli'"
+          if [ "$NAME" != "zobi-extensions-cli" ]; then
+            echo "::error::extensions-cli/pyproject.toml declares '$NAME', expected 'zobi-extensions-cli'"
             exit 1
           fi
           echo "$NAME @ $VERSION"

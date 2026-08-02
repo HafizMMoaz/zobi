@@ -195,8 +195,8 @@ doris = ["pydoris>=1.0.0, <2.0.0"]
 oceanbase = ["oceanbase_py>=0.0.1"]
 ydb = ["ydb-sqlalchemy>=0.1.2"]
 development = [
-    # no bounds for extensions-cli until a stable version
-    "extensions-cli",
+    # no bounds for zobi-extensions-cli until a stable version
+    "zobi-extensions-cli",
     "boto3",
     "docker",
     "flask-testing",
@@ -462,4 +462,4 @@ pyxlsb = "1"  # GPL
 
 [tool.uv.sources]
 zobi-core = { path = "./core", editable = true }
-extensions-cli = { path = "./extensions-cli", editable = true }
+zobi-extensions-cli = { path = "./extensions-cli", editable = true }
