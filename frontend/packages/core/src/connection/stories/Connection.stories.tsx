@@ -1,5 +1,3 @@
-
-
 import { bigNumberFormData } from '../../../test/chart/fixtures/formData';
 import {
   VerifyCORS,

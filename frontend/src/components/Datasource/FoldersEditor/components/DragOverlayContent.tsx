@@ -1,4 +1,3 @@
-
 import { memo } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { Metric } from '@zobi.dev/core';

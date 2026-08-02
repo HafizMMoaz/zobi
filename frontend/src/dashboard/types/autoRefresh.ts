@@ -1,4 +1,3 @@
-
 /**
  * Status states for the auto-refresh indicator.
  *

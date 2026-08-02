@@ -1,10 +1,7 @@
 // @ts-nocheck
 /* eslint-disable no-param-reassign, react/sort-prop-types */
 import d3 from 'd3';
-import {
-  getNumberFormatter,
-  CategoricalColorNamespace,
-} from '@zobi.dev/core';
+import { getNumberFormatter, CategoricalColorNamespace } from '@zobi.dev/core';
 
 interface ChordData {
   matrix: number[][];

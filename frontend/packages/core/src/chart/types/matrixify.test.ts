@@ -1,4 +1,3 @@
-
 import {
   isMatrixifyEnabled,
   getMatrixifyConfig,

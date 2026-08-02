@@ -1,4 +1,3 @@
-
 import type { QueryAdhocState } from './types';
 
 const initialState: QueryAdhocState = {

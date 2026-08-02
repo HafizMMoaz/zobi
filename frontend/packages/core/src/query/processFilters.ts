@@ -1,5 +1,3 @@
-
-
 /* eslint-disable camelcase */
 import { QueryFormData } from './types/QueryFormData';
 import { QueryObjectFilterClause } from './types/Query';

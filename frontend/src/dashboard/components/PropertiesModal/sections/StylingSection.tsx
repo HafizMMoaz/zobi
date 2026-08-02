@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  ZobiClient,
-  isFeatureEnabled,
-  FeatureFlag,
-} from '@zobi.dev/core';
+import { ZobiClient, isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';
 import { Alert } from '@zobi.dev/extension-api/components';
 import { styled } from '@zobi.dev/extension-api/theme';
 import { Select, Switch } from '@zobi.dev/core/components';

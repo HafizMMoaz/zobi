@@ -1,4 +1,3 @@
-
 /**
  * Tests for theme bootstrap data loading logic
  *

@@ -1,5 +1,3 @@
-
-
 import {
   TimeGranularity,
   LOCAL_PREFIX,

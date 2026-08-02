@@ -1,4 +1,3 @@
-
 import { styled } from '@zobi.dev/extension-api/theme';
 import { ColorBreakpointOptionProps } from './types';
 import ColorBreakpointPopoverTrigger from './ColorBreakpointPopoverTrigger';

@@ -1,4 +1,3 @@
-
 import { render, screen } from '@zobi.dev/core/spec';
 import { Loading } from '.';
 

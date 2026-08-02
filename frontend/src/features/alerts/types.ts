@@ -1,4 +1,3 @@
-
 import type { ReactNode } from 'react';
 import Owner from 'src/types/Owner';
 import { NotificationFormats } from 'src/features/reports/types';

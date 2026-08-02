@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Default Ace Editor provider implementation.
  *

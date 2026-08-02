@@ -1,4 +1,3 @@
-
 import { rectIntersection, pointerWithin, closestCenter } from '@dnd-kit/core';
 import type { CollisionDescriptor } from '@dnd-kit/core';
 import { getCollisionDetection } from './sensors';

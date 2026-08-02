@@ -1,4 +1,3 @@
-
 import { SEPARATOR } from './fetchTimeRange';
 import {
   CustomRangeDecodeType,

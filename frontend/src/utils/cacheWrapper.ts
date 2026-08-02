@@ -1,4 +1,3 @@
-
 export const cacheWrapper =
   <T extends Array<any>, U>(
     fn: (...args: T) => U,

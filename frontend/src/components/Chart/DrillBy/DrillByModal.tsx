@@ -1,4 +1,3 @@
-
 import { useCallback, useContext, useEffect, useMemo, useState } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import {

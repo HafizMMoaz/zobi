@@ -1,10 +1,7 @@
 import { t } from '@zobi.dev/extension-api/translation';
 import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { ensureIsArray, validateNonEmpty } from '@zobi.dev/core';
-import {
-  ControlPanelConfig,
-  sharedControls,
-} from '@zobi.dev/chart-controls';
+import { ControlPanelConfig, sharedControls } from '@zobi.dev/chart-controls';
 import { DEFAULT_FORM_DATA, SelectFilterOperatorType } from './types';
 
 const {

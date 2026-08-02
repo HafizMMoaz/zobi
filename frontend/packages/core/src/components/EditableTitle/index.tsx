@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { css, styled } from '@zobi.dev/extension-api/theme';
 import { useEffect, useLayoutEffect, useState, useRef } from 'react';

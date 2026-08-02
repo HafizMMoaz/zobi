@@ -1,5 +1,3 @@
-
-
 import { legacyValidateNumber } from '@zobi.dev/core';
 import './setup';
 

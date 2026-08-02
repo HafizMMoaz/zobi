@@ -1,4 +1,3 @@
-
 import { defaultOrderByFn, Row } from 'react-table';
 import { sortAlphanumericCaseInsensitive } from '../src/DataTable/utils/sortAlphanumericCaseInsensitive';
 

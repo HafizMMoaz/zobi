@@ -1,5 +1,3 @@
-
-
 import { SuperChart, VizType } from '@zobi.dev/core';
 import HorizonChartPlugin from '@zobi.dev/horizon';
 import { withResizableChartDemo } from '@storybook-shared';

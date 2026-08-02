@@ -1,7 +1,4 @@
-import {
-  ControlPanelConfig,
-  sharedControls,
-} from '@zobi.dev/chart-controls';
+import { ControlPanelConfig, sharedControls } from '@zobi.dev/chart-controls';
 import { t } from '@zobi.dev/extension-api/translation';
 
 const config: ControlPanelConfig = {

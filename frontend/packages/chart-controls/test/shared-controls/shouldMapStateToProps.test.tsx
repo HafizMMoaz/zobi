@@ -1,4 +1,3 @@
-
 import { ControlPanelState } from '../../src/types';
 
 // Mock the utilities to avoid complex dependencies

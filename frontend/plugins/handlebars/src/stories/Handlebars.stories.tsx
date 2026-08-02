@@ -1,5 +1,3 @@
-
-
 import { SuperChart, getChartTransformPropsRegistry } from '@zobi.dev/core';
 import { HandlebarsChartPlugin } from '@zobi.dev/handlebars';
 import { kpiData, leaderboardData, timelineData } from './data';

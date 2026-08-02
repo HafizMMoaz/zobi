@@ -143,11 +143,7 @@ export function parseErrorJson(responseJson: JsonObject): ClientErrorObject {
 }
 
 export function getClientErrorObject(
-  response:
-    | ZobiClientResponse
-    | TimeoutError
-    | { response: Response }
-    | string,
+  response: ZobiClientResponse | TimeoutError | { response: Response } | string,
 ): Promise<ClientErrorObject> {
   // takes a ZobiClientResponse as input, attempts to read response as Json
   // if possible, and returns a Promise that resolves to a plain object with

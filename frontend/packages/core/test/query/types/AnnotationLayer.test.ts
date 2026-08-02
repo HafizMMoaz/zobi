@@ -1,5 +1,3 @@
-
-
 import {
   AnnotationSourceType,
   AnnotationStyle,

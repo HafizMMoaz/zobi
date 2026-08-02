@@ -1,11 +1,7 @@
 import thunk from 'redux-thunk';
 import configureStore from 'redux-mock-store';
 
-import {
-  ensureIsArray,
-  QueryFormData,
-  QueryFormMetric,
-} from '@zobi.dev/core';
+import { ensureIsArray, QueryFormData, QueryFormMetric } from '@zobi.dev/core';
 import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { ColumnMeta } from '@zobi.dev/chart-controls';
 import {

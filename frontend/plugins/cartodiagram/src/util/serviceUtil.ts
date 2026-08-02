@@ -1,4 +1,3 @@
-
 /**
  * Get the available versions of WFS and WMS.
  *

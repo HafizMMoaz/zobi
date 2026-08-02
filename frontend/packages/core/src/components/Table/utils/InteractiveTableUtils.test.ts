@@ -1,4 +1,3 @@
-
 import { ZOBI_TABLE_COLUMN } from '..';
 import InteractiveTableUtils from './InteractiveTableUtils';
 

@@ -1,4 +1,3 @@
-
 import { render, fireEvent } from 'spec/helpers/testing-library';
 import { DatabaseObject } from 'src/features/databases/types';
 import { OAuth2ClientField } from './OAuth2ClientField';

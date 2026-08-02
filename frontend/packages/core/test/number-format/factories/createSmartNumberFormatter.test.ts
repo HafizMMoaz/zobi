@@ -1,5 +1,3 @@
-
-
 import { NumberFormatter, createSmartNumberFormatter } from '@zobi.dev/core';
 
 describe('createSmartNumberFormatter(options)', () => {

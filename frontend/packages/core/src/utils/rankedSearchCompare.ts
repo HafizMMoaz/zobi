@@ -1,4 +1,3 @@
-
 /**
  * Sort comparator with basic rankings.
  */

@@ -1,5 +1,3 @@
-
-
 import * as CategoricalColorNamespace from './CategoricalColorNamespace';
 
 export { CategoricalColorNamespace };

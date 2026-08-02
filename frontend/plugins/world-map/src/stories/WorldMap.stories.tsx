@@ -1,5 +1,3 @@
-
-
 /* eslint-disable no-magic-numbers, sort-keys */
 import { SuperChart } from '@zobi.dev/core';
 import WorldMapChartPlugin from '@zobi.dev/world-map';

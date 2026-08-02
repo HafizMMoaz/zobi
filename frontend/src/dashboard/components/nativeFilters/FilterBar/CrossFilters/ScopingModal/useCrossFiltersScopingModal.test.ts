@@ -1,4 +1,3 @@
-
 import { ReactElement } from 'react';
 import { renderHook, act } from '@testing-library/react';
 import { createWrapper, render } from 'spec/helpers/testing-library';

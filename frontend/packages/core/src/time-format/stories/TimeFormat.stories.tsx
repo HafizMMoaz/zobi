@@ -1,5 +1,3 @@
-
-
 import { PureComponent } from 'react';
 import { formatTime } from '@zobi.dev/core';
 

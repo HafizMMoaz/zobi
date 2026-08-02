@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview EditorHost component for dynamic editor resolution.
  *

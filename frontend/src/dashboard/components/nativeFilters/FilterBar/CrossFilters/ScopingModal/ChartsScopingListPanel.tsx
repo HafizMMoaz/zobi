@@ -1,4 +1,3 @@
-
 import { ReactNode, useMemo } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';

@@ -1,4 +1,3 @@
-
 import { Avatar as AntdAvatar } from 'antd';
 import type { AvatarProps, GroupProps as AvatarGroupProps } from './types';
 

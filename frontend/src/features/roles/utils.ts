@@ -1,4 +1,3 @@
-
 import { ZobiClient } from '@zobi.dev/core';
 import { t } from '@zobi.dev/extension-api/translation';
 import rison from 'rison';

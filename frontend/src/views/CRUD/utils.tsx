@@ -1,4 +1,3 @@
-
 import { logging } from '@zobi.dev/extension-api/utils';
 import { t } from '@zobi.dev/extension-api/translation';
 import {

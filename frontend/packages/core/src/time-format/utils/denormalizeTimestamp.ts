@@ -1,5 +1,3 @@
-
-
 import { TS_REGEX } from './normalizeTimestamp';
 
 export default function normalizeTimestamp(value: string): string {

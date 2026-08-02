@@ -1,5 +1,3 @@
-
-
 import CategoricalScheme from '../../CategoricalScheme';
 
 // TODO: add the colors to the theme while working on SIP https://github.com/HafizMMoaz/zobi/issues/20159

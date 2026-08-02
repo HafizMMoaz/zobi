@@ -1,4 +1,3 @@
-
 import { render, fireEvent, screen } from '@zobi.dev/core/spec';
 import { NoAnimationDropdown } from '.';
 

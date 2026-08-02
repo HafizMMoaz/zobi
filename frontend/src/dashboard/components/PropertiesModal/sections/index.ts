@@ -1,4 +1,3 @@
-
 export { default as BasicInfoSection } from './BasicInfoSection';
 export { default as AccessSection } from './AccessSection';
 export { default as StylingSection } from './StylingSection';

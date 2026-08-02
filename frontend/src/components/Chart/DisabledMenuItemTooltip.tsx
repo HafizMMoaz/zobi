@@ -1,4 +1,3 @@
-
 import { ReactNode } from 'react';
 import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { Icons } from '@zobi.dev/core/components/Icons';

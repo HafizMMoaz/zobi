@@ -1,4 +1,3 @@
-
 import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { xAxisForceCategoricalControl } from '../../src/shared-controls/customControls';
 import { checkColumnType } from '../../src/utils/checkColumnType';

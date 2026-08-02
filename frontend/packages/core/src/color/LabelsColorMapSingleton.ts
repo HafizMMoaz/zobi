@@ -1,5 +1,3 @@
-
-
 import { makeSingleton } from '../utils';
 import CategoricalColorNamespace from './CategoricalColorNamespace';
 

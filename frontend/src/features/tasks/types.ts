@@ -1,4 +1,3 @@
-
 export interface TaskSubscriber {
   user_id: number;
   first_name: string;

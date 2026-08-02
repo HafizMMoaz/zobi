@@ -1,4 +1,3 @@
-
 import { FC } from 'react';
 import { antdEnhancedIcons } from './AntdEnhanced';
 import AsyncIcon from './AsyncIcon';

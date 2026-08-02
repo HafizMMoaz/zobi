@@ -1,4 +1,3 @@
-
 /**
  * A Stringify function that will not crash when it runs into circular JSON references,
  * unlike JSON.stringify. Circular references are replaced with a '[Circular]' string placeholder.

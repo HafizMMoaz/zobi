@@ -1,4 +1,3 @@
-
 import { Row } from 'react-table';
 
 export const sortAlphanumericCaseInsensitive = <D extends {}>(

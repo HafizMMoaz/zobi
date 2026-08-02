@@ -1,4 +1,3 @@
-
 export enum ExpressionTypes {
   Simple = 'SIMPLE',
   Sql = 'SQL',

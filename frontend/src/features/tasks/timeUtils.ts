@@ -1,4 +1,3 @@
-
 import prettyMs from 'pretty-ms';
 
 /**

@@ -1,5 +1,3 @@
-
-
 import { triggerResizeObserver } from 'resize-observer-polyfill';
 import { promiseTimeout, WithLegend } from '@zobi.dev/core';
 import { render } from '@testing-library/react';

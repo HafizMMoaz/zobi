@@ -1,4 +1,3 @@
-
 // helper functions for select controls
 
 export type Formattable = string | number;

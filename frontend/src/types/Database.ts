@@ -1,4 +1,3 @@
-
 export default interface Database {
   id: number;
   allow_run_async: boolean;

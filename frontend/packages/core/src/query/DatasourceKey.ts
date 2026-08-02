@@ -1,5 +1,3 @@
-
-
 import { DatasourceType } from './types/Datasource';
 
 const DATASOURCE_TYPE_MAP: Record<string, DatasourceType> = {

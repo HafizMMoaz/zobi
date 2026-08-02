@@ -1,4 +1,3 @@
-
 import { ChartDataResponseResult } from '@zobi.dev/core';
 import { applyTimeGrainAllowlist } from './FilterValue';
 

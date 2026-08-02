@@ -1,5 +1,3 @@
-
-
 /** setTimeout that returns a promise */
 export default function promiseTimeout<T>(
   /** A function to be executed after the timer expires. */

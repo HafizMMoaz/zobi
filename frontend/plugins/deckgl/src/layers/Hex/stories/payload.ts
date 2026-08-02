@@ -1,5 +1,3 @@
-
-
 // Payload data for Hex chart stories - San Francisco points
 export default {
   data: [

@@ -1,4 +1,3 @@
-
 /*
   Preset dashboard components (in addition to basic components like row, column, chart, etc...)
  */

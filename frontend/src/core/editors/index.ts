@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Implementation of the editors API for Zobi.
  *

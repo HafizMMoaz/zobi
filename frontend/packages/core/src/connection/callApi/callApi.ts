@@ -1,5 +1,3 @@
-
-
 import fetchRetry, { RequestInitRetryParams } from 'fetch-retry';
 import { CallApi, Payload, JsonValue, JsonObject } from '../types';
 import {

@@ -1,4 +1,3 @@
-
 import withLabel from './withLabel';
 
 test('withLabel returns false when validator passes', () => {

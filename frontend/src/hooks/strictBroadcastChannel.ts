@@ -1,4 +1,3 @@
-
 // Credit to Eric Wong at https://stackoverflow.com/a/78491331
 interface StrictBroadcastChannelEventMap<T> {
   message: MessageEvent<T>;

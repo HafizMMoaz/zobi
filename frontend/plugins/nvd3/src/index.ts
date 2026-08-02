@@ -1,5 +1,3 @@
-
-
 export { default as NVD3ChartPreset } from './preset';
 export { default as BubbleChartPlugin } from './Bubble';
 export { default as BulletChartPlugin } from './Bullet';

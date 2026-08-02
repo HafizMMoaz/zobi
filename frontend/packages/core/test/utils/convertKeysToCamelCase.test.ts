@@ -1,5 +1,3 @@
-
-
 import { convertKeysToCamelCase } from '@zobi.dev/core';
 
 describe('convertKeysToCamelCase(object)', () => {

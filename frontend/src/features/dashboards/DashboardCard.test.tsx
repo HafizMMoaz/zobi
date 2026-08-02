@@ -1,10 +1,5 @@
-
 import { MemoryRouter } from 'react-router-dom';
-import {
-  JsonResponse,
-  ZobiClient,
-  isFeatureEnabled,
-} from '@zobi.dev/core';
+import { JsonResponse, ZobiClient, isFeatureEnabled } from '@zobi.dev/core';
 
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
 

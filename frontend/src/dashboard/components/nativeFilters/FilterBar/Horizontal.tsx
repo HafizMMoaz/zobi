@@ -1,4 +1,3 @@
-
 import { FC, memo, useMemo } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { DataMaskStateWithId } from '@zobi.dev/core';

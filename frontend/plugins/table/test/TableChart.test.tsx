@@ -1607,10 +1607,7 @@ describe('plugin-chart-table', () => {
           ),
         );
         expect(getComputedStyle(screen.getByTitle('2467')).color).toBe(
-          getTextColorForBackground(
-            { backgroundColor },
-            zobiTheme.colorBgBase,
-          ),
+          getTextColorForBackground({ backgroundColor }, zobiTheme.colorBgBase),
         );
       });
 

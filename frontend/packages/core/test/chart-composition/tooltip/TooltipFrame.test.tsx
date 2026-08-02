@@ -1,5 +1,3 @@
-
-
 import '@testing-library/jest-dom';
 import { TooltipFrame } from '@zobi.dev/core';
 import { render, screen } from '@testing-library/react';

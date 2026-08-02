@@ -1,5 +1,3 @@
-
-
 import {
   getContrastingColor,
   addAlpha,

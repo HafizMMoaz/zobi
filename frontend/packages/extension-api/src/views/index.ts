@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Views registration API for Zobi extensions.
  *

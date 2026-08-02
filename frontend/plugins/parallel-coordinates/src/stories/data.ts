@@ -1,5 +1,3 @@
-
-
 export default [
   {
     country_name: 'China',

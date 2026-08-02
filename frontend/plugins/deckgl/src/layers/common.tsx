@@ -1,4 +1,3 @@
-
 import { ReactNode, isValidElement } from 'react';
 import {
   ascending as d3ascending,
@@ -189,8 +188,9 @@ export function getAggFunc(
       } else {
         // Without an accessor the array holds raw comparable values rather
         // than objects.
-        sortedArr = (arr as unknown as number[]).slice().sort(d3ascending) as
-          unknown as JsonObject[];
+        sortedArr = (arr as unknown as number[])
+          .slice()
+          .sort(d3ascending) as unknown as JsonObject[];
       }
 
       return d3quantile(

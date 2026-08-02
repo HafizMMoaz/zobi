@@ -7,12 +7,7 @@ import { withTheme, Theme } from '@emotion/react';
 import { getUrlParam } from 'src/utils/urlUtils';
 import { FilterPlugins, URL_PARAMS } from 'src/constants';
 import { Link, withRouter, RouteComponentProps } from 'react-router-dom';
-import {
-  AsyncSelect,
-  Button,
-  Loading,
-  Steps,
-} from '@zobi.dev/core/components';
+import { AsyncSelect, Button, Loading, Steps } from '@zobi.dev/core/components';
 import withToasts from 'src/components/MessageToasts/withToasts';
 
 import VizTypeGallery, {

@@ -1,4 +1,3 @@
-
 import { FunctionComponent } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { Alert } from '@zobi.dev/extension-api/components';

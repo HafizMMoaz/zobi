@@ -1,5 +1,3 @@
-
-
 import { GenericDataType } from '@zobi.dev/extension-api/common';
 import { ChartDataResponseResult, VizType } from '@zobi.dev/core';
 import { TableChartFormData } from '../types';

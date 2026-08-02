@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview SQL Lab API for Zobi extensions.
  *

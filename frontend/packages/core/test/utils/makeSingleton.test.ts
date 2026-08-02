@@ -1,5 +1,3 @@
-
-
 import { makeSingleton } from '@zobi.dev/core';
 
 describe('makeSingleton()', () => {

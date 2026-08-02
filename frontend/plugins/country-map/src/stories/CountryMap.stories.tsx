@@ -1,10 +1,7 @@
-
 import { useEffect, useState } from 'react';
 import { JsonObject, seed, SuperChart, SequentialD3 } from '@zobi.dev/core';
 import { useTheme } from '@zobi.dev/extension-api/theme';
-import CountryMapChartPlugin, {
-  countries,
-} from '@zobi.dev/country-map';
+import CountryMapChartPlugin, { countries } from '@zobi.dev/country-map';
 import { withResizableChartDemo } from '@storybook-shared';
 
 new CountryMapChartPlugin().configure({ key: 'country-map' }).register();

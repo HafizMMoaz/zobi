@@ -1,9 +1,4 @@
-
-import {
-  DataMaskStateWithId,
-  getColumnLabel,
-  isDefined,
-} from '@zobi.dev/core';
+import { DataMaskStateWithId, getColumnLabel, isDefined } from '@zobi.dev/core';
 import { LayoutItem } from 'src/dashboard/types';
 import { CrossFilterIndicator, getCrossFilterIndicator } from '../../selectors';
 

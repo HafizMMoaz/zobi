@@ -1,4 +1,3 @@
-
 /**
  * Util for geometry related operations.
  */

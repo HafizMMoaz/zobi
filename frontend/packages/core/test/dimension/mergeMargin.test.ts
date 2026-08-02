@@ -1,5 +1,3 @@
-
-
 import { mergeMargin } from '@zobi.dev/core';
 
 describe('mergeMargin(margin1, margin2, mode?)', () => {

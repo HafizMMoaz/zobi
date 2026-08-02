@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Authentication API for Zobi extensions.
  *

@@ -1,4 +1,3 @@
-
 import { memo, useMemo } from 'react';
 import { t, tn } from '@zobi.dev/extension-api/translation';
 import { Button, Input, Tooltip } from '@zobi.dev/core/components';

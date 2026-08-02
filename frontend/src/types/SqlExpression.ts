@@ -1,4 +1,3 @@
-
 /**
  * SQL Expression Types - aligned with backend SqlExpressionType enum
  */

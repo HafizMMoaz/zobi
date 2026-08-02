@@ -1,4 +1,3 @@
-
 import { StoryFn, Meta } from '@storybook/react';
 import DatasetPanel from './DatasetPanel';
 import { exampleColumns } from './fixtures';

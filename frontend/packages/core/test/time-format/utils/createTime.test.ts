@@ -1,5 +1,3 @@
-
-
 import createTime from '../../../src/time-format/utils/createTime';
 
 describe('createTime(mode, year, month, date, hours, minutes, seconds, milliseconds)', () => {

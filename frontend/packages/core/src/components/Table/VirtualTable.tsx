@@ -1,4 +1,3 @@
-
 import { Table as AntTable } from 'antd';
 import {
   TablePaginationConfig,

@@ -1,4 +1,3 @@
-
 import { css } from '@zobi.dev/extension-api/theme';
 
 export const ellipsisCss = css`

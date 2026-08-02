@@ -1,2 +1,1 @@
-
 export { colorFromBounds } from './colorUtils';

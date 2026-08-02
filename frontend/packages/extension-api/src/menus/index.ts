@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Menus registration API for Zobi extensions.
  *

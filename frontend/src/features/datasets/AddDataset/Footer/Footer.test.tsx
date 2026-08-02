@@ -22,8 +22,7 @@ jest.mock('src/views/CRUD/hooks', () => ({
     state: { loading: false },
   }),
   getDatabaseDocumentationLinks: () => ({
-    support:
-      'https://zobi.dev/docs/databases/installing-database-drivers',
+    support: 'https://zobi.dev/docs/databases/installing-database-drivers',
   }),
 }));
 

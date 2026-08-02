@@ -1,4 +1,3 @@
-
 /**
  * @param key The name of the row's attribute used to compare values for alphabetical sorting
  * @param a First row object to compare

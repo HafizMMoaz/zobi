@@ -1,4 +1,3 @@
-
 import type { ReactElement, ReactNode } from 'react';
 import { Tooltip, type TooltipPlacement } from '@zobi.dev/core/components';
 import { css, useTheme } from '@zobi.dev/extension-api/theme';

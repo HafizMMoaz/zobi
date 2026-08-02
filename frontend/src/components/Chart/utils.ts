@@ -1,4 +1,3 @@
-
 export const MENU_ITEM_HEIGHT = 32;
 const MENU_PADDING = 4;
 const MENU_VERTICAL_SPACING = 32;

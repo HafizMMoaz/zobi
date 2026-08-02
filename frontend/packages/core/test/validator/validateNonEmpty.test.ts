@@ -1,5 +1,3 @@
-
-
 import { validateNonEmpty } from '@zobi.dev/core';
 import './setup';
 

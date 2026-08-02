@@ -1,5 +1,3 @@
-
-
 /* eslint-disable max-classes-per-file */
 import { QueryFormData, ChartMetadata, ChartPlugin } from '@zobi.dev/core';
 import { useTheme } from '@zobi.dev/extension-api/theme';

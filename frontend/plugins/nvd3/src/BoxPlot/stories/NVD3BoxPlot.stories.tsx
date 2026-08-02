@@ -1,5 +1,3 @@
-
-
 import { SuperChart, VizType } from '@zobi.dev/core';
 import { EchartsBoxPlotChartPlugin } from '@zobi.dev/echarts';
 import { dummyDatasource, withResizableChartDemo } from '@storybook-shared';
@@ -17,12 +15,7 @@ export default {
   argTypes: {
     colorScheme: {
       control: 'select',
-      options: [
-        'zobiColors',
-        'd3Category10',
-        'bnbColors',
-        'googleCategory20c',
-      ],
+      options: ['zobiColors', 'd3Category10', 'bnbColors', 'googleCategory20c'],
     },
     whiskerOptions: {
       control: 'select',

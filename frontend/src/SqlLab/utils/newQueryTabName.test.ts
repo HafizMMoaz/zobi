@@ -1,4 +1,3 @@
-
 import { defaultQueryEditor } from 'src/SqlLab/fixtures';
 import { newQueryTabName } from './newQueryTabName';
 

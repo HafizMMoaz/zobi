@@ -1,4 +1,3 @@
-
 // eslint-disable-next-line
 import { ZobiTheme, css } from '@zobi.dev/extension-api/theme';
 import { Typography } from '../Typography';

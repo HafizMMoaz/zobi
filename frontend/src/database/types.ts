@@ -1,4 +1,3 @@
-
 export interface QueryExecutePayload {
   client_id: string;
   database_id: number;

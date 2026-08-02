@@ -1,4 +1,3 @@
-
 import { Meta, StoryFn } from '@storybook/react';
 import { Row, Col } from '@zobi.dev/core/components';
 import { EmptyState, imageMap } from '.';

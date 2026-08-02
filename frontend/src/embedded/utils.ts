@@ -1,9 +1,4 @@
-
-import {
-  DataMaskStateWithId,
-  JsonObject,
-  QueryFormData,
-} from '@zobi.dev/core';
+import { DataMaskStateWithId, JsonObject, QueryFormData } from '@zobi.dev/core';
 import { logging } from '@zobi.dev/extension-api/utils';
 import { isEmpty, isEqual } from 'lodash';
 import { NATIVE_FILTER_PREFIX } from 'src/dashboard/components/nativeFilters/FiltersConfigModal/utils';

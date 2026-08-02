@@ -1,4 +1,3 @@
-
 import { ConfigProvider, type ConfigProviderProps } from 'antd';
 
 export const AntdThemeProvider = ({

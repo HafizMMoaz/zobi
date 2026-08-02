@@ -1,4 +1,3 @@
-
 import type { SetDataMaskHook } from '@zobi.dev/core';
 import type { TableOwnState } from '../types/react-table';
 

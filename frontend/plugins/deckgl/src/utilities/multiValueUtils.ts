@@ -1,4 +1,3 @@
-
 import { QueryFormData } from '@zobi.dev/core';
 
 interface TooltipItem {

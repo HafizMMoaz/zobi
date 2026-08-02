@@ -1,5 +1,3 @@
-
-
 export interface TextStyle {
   font?: string;
   fontFamily?: string;

@@ -1,5 +1,3 @@
-
-
 import { TimeGranularity } from '../types';
 import createTime from './createTime';
 

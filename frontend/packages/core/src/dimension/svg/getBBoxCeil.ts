@@ -1,5 +1,3 @@
-
-
 import { Dimension } from '../types';
 
 const DEFAULT_DIMENSION = { height: 20, width: 100 };

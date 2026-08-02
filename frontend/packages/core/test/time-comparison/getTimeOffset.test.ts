@@ -1,4 +1,3 @@
-
 import { getTimeOffset } from '@zobi.dev/core';
 import timezoneMock from 'timezone-mock';
 

@@ -20,8 +20,7 @@ function getDefaultConfiguration(): ClientConfig {
   // Create exponential backoff delay function with jitter
   const createRetryDelayFunction = () => {
     const baseDelay = retryConfig.ZOBI_CLIENT_RETRY_DELAY || 1000;
-    const multiplier =
-      retryConfig.ZOBI_CLIENT_RETRY_BACKOFF_MULTIPLIER || 2;
+    const multiplier = retryConfig.ZOBI_CLIENT_RETRY_BACKOFF_MULTIPLIER || 2;
     const maxDelay = retryConfig.ZOBI_CLIENT_RETRY_MAX_DELAY || 10000;
 
     return (attempt: number) => {

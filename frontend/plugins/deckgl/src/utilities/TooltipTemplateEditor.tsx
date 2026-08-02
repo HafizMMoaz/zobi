@@ -1,4 +1,3 @@
-
 import { useCallback, useEffect, useState } from 'react';
 import { styled, css, useThemeMode } from '@zobi.dev/extension-api/theme';
 import { CodeEditor } from '@zobi.dev/core/components';

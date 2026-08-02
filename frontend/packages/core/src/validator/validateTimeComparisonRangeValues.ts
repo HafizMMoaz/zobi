@@ -1,5 +1,3 @@
-
-
 import { ComparisonTimeRangeType } from '../time-comparison';
 import { t } from '@zobi.dev/extension-api/translation';
 import { ensureIsArray } from '../utils';

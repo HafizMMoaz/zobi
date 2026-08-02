@@ -1,9 +1,5 @@
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  Button,
-  type OnClickHandler,
-  Icons,
-} from '@zobi.dev/core/components';
+import { Button, type OnClickHandler, Icons } from '@zobi.dev/core/components';
 
 export interface ExploreResultsButtonProps {
   database?: {

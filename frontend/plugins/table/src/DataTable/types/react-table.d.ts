@@ -1,5 +1,3 @@
-
-
 /**
  * Merge typing interfaces for UseTable hooks.
  *

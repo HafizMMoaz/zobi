@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { useCSSTextTruncation } from '@zobi.dev/core';
 import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';

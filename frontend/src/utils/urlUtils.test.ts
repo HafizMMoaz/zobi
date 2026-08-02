@@ -1,4 +1,3 @@
-
 import {
   isUrlExternal,
   parseUrl,

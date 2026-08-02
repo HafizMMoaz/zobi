@@ -1,4 +1,3 @@
-
 /**
  * Integration Test: Time Grain Pre-filter Feature (End-to-End)
  *

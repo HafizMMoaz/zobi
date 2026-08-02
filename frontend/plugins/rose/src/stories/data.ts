@@ -1,5 +1,3 @@
-
-
 /* eslint-disable sort-keys, no-magic-numbers */
 export default {
   '-157766400000000000': [

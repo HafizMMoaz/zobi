@@ -1,5 +1,3 @@
-
-
 import { lruCache } from '@zobi.dev/core';
 
 test('initial LRU', () => {

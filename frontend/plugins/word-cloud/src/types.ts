@@ -1,5 +1,3 @@
-
-
 import { QueryFormColumn, QueryFormData } from '@zobi.dev/core';
 import { WordCloudVisualProps } from './chart/WordCloud';
 

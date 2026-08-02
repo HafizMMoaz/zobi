@@ -1,4 +1,3 @@
-
 import { DataMaskStateWithId } from '@zobi.dev/core';
 import { useSelector } from 'react-redux';
 import { RootState } from 'src/dashboard/types';

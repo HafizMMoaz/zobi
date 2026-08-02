@@ -1,4 +1,3 @@
-
 import { memo, useMemo } from 'react';
 import { ensureIsArray } from '@zobi.dev/core';
 import { ChartLinkedDashboard } from 'src/types/Chart';

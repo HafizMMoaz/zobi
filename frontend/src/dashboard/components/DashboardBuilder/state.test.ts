@@ -1,4 +1,3 @@
-
 /**
  * Tests for the requiredFirstFilter logic in useNativeFilters hook.
  *

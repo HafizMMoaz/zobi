@@ -1,5 +1,3 @@
-
-
 import {
   createD3NumberFormatter,
   createDurationFormatter,

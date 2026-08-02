@@ -1,4 +1,3 @@
-
 import { QueryFormData } from '../query';
 import { getComparisonFilters } from './getComparisonFilters';
 import { ComparisonTimeRangeType } from './types';

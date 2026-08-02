@@ -1,4 +1,3 @@
-
 import { safeHtmlSpan } from '@zobi.dev/core';
 import { styled } from '@zobi.dev/extension-api/theme';
 import { ReactNode } from 'react';

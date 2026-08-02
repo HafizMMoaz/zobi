@@ -1,5 +1,3 @@
-
-
 import { defineSharedModule, defineSharedModules, reset } from '../../src';
 
 describe('shared modules', () => {
@@ -13,9 +11,7 @@ describe('shared modules', () => {
 
     await defineSharedModule('test-module', fetchModule);
 
-    expect((window as any)['__zobi__/test-module']).toStrictEqual(
-      fakeModule,
-    );
+    expect((window as any)['__zobi__/test-module']).toStrictEqual(fakeModule);
   });
 
   test('resolves to the same reference every time', async () => {

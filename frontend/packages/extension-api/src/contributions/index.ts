@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Manifest schema for Zobi extension contributions.
  *

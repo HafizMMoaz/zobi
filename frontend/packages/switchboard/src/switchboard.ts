@@ -1,5 +1,3 @@
-
-
 export type Params = {
   port: MessagePort;
   name?: string;

@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Standalone menus registry implementation.
  *

@@ -1,4 +1,3 @@
-
 import { render, screen } from 'spec/helpers/testing-library';
 import { buildErrorTooltipMessage } from './buildErrorTooltipMessage';
 import { SectionValidationObject } from './types';

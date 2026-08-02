@@ -1,4 +1,3 @@
-
 import { Menu, MenuItem } from '@zobi.dev/core/components/Menu';
 import {
   render,

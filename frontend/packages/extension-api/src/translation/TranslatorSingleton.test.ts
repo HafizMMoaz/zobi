@@ -1,4 +1,3 @@
-
 // Each test uses jest.isolateModules to get a fresh module state
 // (isConfigured = false, singleton = undefined) independent of other tests.
 

@@ -1,4 +1,3 @@
-
 import { FC } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { extendedDayjs } from '../../utils/dates';

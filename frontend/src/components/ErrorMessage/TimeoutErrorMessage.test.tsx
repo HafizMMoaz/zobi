@@ -1,4 +1,3 @@
-
 import { ErrorSource, ErrorTypeEnum, ErrorLevel } from '@zobi.dev/core';
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
 import { TimeoutErrorMessage } from './TimeoutErrorMessage';

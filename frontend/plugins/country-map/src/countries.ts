@@ -1,5 +1,3 @@
-
-
 import afghanistan from './countries/afghanistan.geojson';
 import aland from './countries/aland.geojson';
 import albania from './countries/albania.geojson';

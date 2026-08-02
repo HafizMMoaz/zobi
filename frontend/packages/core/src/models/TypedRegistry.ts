@@ -1,4 +1,3 @@
-
 /**
  * A Registry which serves as a typed key:value store for Zobi and for Plugins.
  *

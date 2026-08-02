@@ -1,4 +1,3 @@
-
 import {
   ChartCustomization,
   ChartCustomizationDivider,

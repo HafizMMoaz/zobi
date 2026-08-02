@@ -1,4 +1,3 @@
-
 /* istanbul ignore next */
 const console =
   typeof window !== 'undefined' ? window.console || {} : globalThis.console;

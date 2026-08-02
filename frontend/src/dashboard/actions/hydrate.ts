@@ -321,22 +321,10 @@ export const hydrateDashboard =
           userId: user.userId ? String(user.userId) : null, // legacy, please use state.user instead
           dash_edit_perm: canEdit,
           dash_save_perm: canUserSaveAsDashboard(dashboard, user),
-          dash_share_perm: findPermission(
-            'can_share_dashboard',
-            'Zobi',
-            roles,
-          ),
+          dash_share_perm: findPermission('can_share_dashboard', 'Zobi', roles),
           dash_export_perm: findPermission('can_export', 'Dashboard', roles),
-          zobi_can_explore: findPermission(
-            'can_explore',
-            'Zobi',
-            roles,
-          ),
-          zobi_can_share: findPermission(
-            'can_share_chart',
-            'Zobi',
-            roles,
-          ),
+          zobi_can_explore: findPermission('can_explore', 'Zobi', roles),
+          zobi_can_share: findPermission('can_share_chart', 'Zobi', roles),
           zobi_can_csv: findPermission('can_csv', 'Zobi', roles),
           common: {
             // legacy, please use state.common instead

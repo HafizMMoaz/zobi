@@ -1,4 +1,3 @@
-
 import { getChartControlPanelRegistry, JsonObject } from '@zobi.dev/core';
 import getControlsForVizType from 'src/utils/getControlsForVizType';
 

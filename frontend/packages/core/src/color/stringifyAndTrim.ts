@@ -1,5 +1,3 @@
-
-
 /**
  * Ensure value is a string
  * @param {any} value

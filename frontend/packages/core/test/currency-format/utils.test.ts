@@ -1,5 +1,3 @@
-
-
 import {
   buildCustomFormatters,
   Currency,

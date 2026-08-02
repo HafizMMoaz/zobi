@@ -1,4 +1,3 @@
-
 import { fireEvent, render } from '@zobi.dev/core/spec';
 import Tabs, { EditableTabs, LineEditableTabs } from './Tabs';
 

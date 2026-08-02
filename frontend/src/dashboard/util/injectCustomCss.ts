@@ -1,4 +1,3 @@
-
 function createStyleElement(className: string) {
   const style = document.createElement('style');
   style.className = className;

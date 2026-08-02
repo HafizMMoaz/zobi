@@ -1,5 +1,3 @@
-
-
 import { ChartMetadata } from '@zobi.dev/core';
 
 describe('ChartMetadata', () => {

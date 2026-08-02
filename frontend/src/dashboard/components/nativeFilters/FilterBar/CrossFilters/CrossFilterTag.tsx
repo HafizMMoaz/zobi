@@ -1,4 +1,3 @@
-
 import { getColumnLabel, useCSSTextTruncation } from '@zobi.dev/core';
 import { styled, css, useTheme } from '@zobi.dev/extension-api/theme';
 import { CrossFilterIndicator } from 'src/dashboard/components/nativeFilters/selectors';

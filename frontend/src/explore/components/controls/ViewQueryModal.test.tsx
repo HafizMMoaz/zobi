@@ -1,4 +1,3 @@
-
 import { screen, render, waitFor } from 'spec/helpers/testing-library';
 import fetchMock from 'fetch-mock';
 import ViewQueryModal from './ViewQueryModal';

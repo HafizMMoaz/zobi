@@ -1,4 +1,3 @@
-
 import { ZoomConfigs } from './types';
 import {
   computeConfigValues,

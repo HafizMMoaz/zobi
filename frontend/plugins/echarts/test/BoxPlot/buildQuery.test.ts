@@ -1,7 +1,4 @@
-import {
-  isPostProcessingBoxplot,
-  PostProcessingBoxplot,
-} from '@zobi.dev/core';
+import { isPostProcessingBoxplot, PostProcessingBoxplot } from '@zobi.dev/core';
 import { DEFAULT_TITLE_FORM_DATA } from '../../src/constants';
 import buildQuery from '../../src/BoxPlot/buildQuery';
 import { BoxPlotQueryFormData } from '../../src/BoxPlot/types';

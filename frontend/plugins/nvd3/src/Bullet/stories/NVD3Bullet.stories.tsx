@@ -1,5 +1,3 @@
-
-
 import { SuperChart, VizType } from '@zobi.dev/core';
 import { BulletChartPlugin } from '@zobi.dev/nvd3';
 import { dummyDatasource, withResizableChartDemo } from '@storybook-shared';

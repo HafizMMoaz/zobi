@@ -1,4 +1,3 @@
-
 import { FC } from 'react';
 import { render, screen, userEvent } from '@zobi.dev/core/spec';
 import '@testing-library/jest-dom';

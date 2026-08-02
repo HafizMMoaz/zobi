@@ -1,5 +1,3 @@
-
-
 /* eslint-disable camelcase */
 import { TimeGranularity, QueryFormData } from '@zobi.dev/core';
 import {

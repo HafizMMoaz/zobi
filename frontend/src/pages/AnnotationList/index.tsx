@@ -1,4 +1,3 @@
-
 import { useMemo, useState, useEffect, useCallback } from 'react';
 import { useParams, Link, useHistory } from 'react-router-dom';
 import { t } from '@zobi.dev/extension-api/translation';

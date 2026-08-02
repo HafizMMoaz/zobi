@@ -1,4 +1,3 @@
-
 /**
  * This component is needed to be able to style GeoStyler
  * via emotion. Emotion can only be used on a component that

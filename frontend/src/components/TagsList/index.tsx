@@ -1,4 +1,3 @@
-
 import { useMemo, useState } from 'react';
 import { styled } from '@zobi.dev/extension-api/theme';
 import type { TagType } from 'src/types/TagType';

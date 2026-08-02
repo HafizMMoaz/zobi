@@ -1,4 +1,3 @@
-
 const coord1 = '[1,2]';
 const coord2 = '[3,4]';
 export const geom1 = `{"type":"Point","coordinates":${coord1}}`;

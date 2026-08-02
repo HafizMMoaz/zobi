@@ -1,4 +1,3 @@
-
 export type AgGridFilterType = 'text' | 'number' | 'date' | 'set' | 'boolean';
 
 export type AgGridFilterOperator =

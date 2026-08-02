@@ -1,4 +1,3 @@
-
 import fetchMock from 'fetch-mock';
 import configureStore from 'redux-mock-store';
 import thunk from 'redux-thunk';

@@ -1,5 +1,3 @@
-
-
 import getBBoxCeil from '../../../src/dimension/svg/getBBoxCeil';
 import createTextNode from '../../../src/dimension/svg/createTextNode';
 

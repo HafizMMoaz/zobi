@@ -1,5 +1,3 @@
-
-
 import ColorSchemeRegistry from '../../src/color/ColorSchemeRegistry';
 import schemes from '../../src/color/colorSchemes/categorical/d3';
 import CategoricalScheme from '../../src/color/CategoricalScheme';

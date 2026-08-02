@@ -1,5 +1,3 @@
-
-
 export * from './types';
 
 export { default as getComparisonInfo } from './getComparisonInfo';

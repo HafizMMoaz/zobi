@@ -1,4 +1,3 @@
-
 import { FC, useMemo } from 'react';
 import { JSONTree } from 'react-json-tree';
 import { styled } from '@zobi.dev/extension-api/theme';

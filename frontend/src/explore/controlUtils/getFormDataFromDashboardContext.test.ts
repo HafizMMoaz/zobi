@@ -1,4 +1,3 @@
-
 import { JsonObject, VizType } from '@zobi.dev/core';
 import { getExploreFormData } from 'spec/fixtures/mockExploreFormData';
 import { getDashboardFormData } from 'spec/fixtures/mockDashboardFormData';

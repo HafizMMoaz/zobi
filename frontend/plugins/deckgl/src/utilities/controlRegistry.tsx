@@ -1,4 +1,3 @@
-
 import { ControlType } from '@zobi.dev/chart-controls';
 import { TooltipTemplateControl } from './TooltipTemplateControl';
 

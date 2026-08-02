@@ -1,5 +1,3 @@
-
-
 /* eslint-disable sort-keys */
 /* eslint-disable no-magic-numbers */
 import { SuperChart } from '@zobi.dev/core';

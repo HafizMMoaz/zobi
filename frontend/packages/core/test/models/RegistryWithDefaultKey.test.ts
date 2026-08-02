@@ -1,5 +1,3 @@
-
-
 import { Registry, RegistryWithDefaultKey } from '@zobi.dev/core';
 
 describe('RegistryWithDefaultKey', () => {

@@ -1,5 +1,3 @@
-
-
 import Plugin from './Plugin';
 
 export default class Preset {

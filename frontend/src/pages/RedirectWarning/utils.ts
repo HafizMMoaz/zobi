@@ -1,4 +1,3 @@
-
 const TRUSTED_URLS_KEY = 'zobi_trusted_urls';
 const MAX_TRUSTED_URLS = 100;
 const ALLOWED_SCHEMES = ['http:', 'https:'];

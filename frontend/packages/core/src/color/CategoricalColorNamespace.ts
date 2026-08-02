@@ -1,5 +1,3 @@
-
-
 import { cloneDeep } from 'lodash';
 import CategoricalColorScale from './CategoricalColorScale';
 import { ColorsLookup } from './types';

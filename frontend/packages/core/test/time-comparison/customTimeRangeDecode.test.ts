@@ -1,4 +1,3 @@
-
 import { customTimeRangeDecode } from '@zobi.dev/core';
 
 describe('customTimeRangeDecode', () => {

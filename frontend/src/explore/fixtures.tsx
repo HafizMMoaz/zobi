@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { DatasourceType, VizType } from '@zobi.dev/core';
 import {

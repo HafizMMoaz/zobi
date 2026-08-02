@@ -1,4 +1,3 @@
-
 import { memo } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { Modal } from '@zobi.dev/core/components';

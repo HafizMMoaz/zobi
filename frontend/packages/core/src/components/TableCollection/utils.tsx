@@ -1,4 +1,3 @@
-
 /**
  * This file contains utility functions for mapping columns and rows.
  * These functions act as a compatibility layer between Ant Design Table and react-table.

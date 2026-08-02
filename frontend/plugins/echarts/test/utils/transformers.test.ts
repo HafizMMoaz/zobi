@@ -1,4 +1,3 @@
-
 import {
   AnnotationData,
   AnnotationSourceType,

@@ -1,5 +1,3 @@
-
-
 import TimeFormats from './TimeFormats';
 import { TimeGranularity } from './types';
 

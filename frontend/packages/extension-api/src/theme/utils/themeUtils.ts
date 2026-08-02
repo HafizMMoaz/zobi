@@ -80,15 +80,11 @@ export function getColorVariants(
     textActive: theme[
       `color${firstLetterCapped}TextActive` as keyof ZobiTheme
     ] as string,
-    text: theme[
-      `color${firstLetterCapped}Text` as keyof ZobiTheme
-    ] as string,
+    text: theme[`color${firstLetterCapped}Text` as keyof ZobiTheme] as string,
     textHover: theme[
       `color${firstLetterCapped}TextHover` as keyof ZobiTheme
     ] as string,
-    hover: theme[
-      `color${firstLetterCapped}Hover` as keyof ZobiTheme
-    ] as string,
+    hover: theme[`color${firstLetterCapped}Hover` as keyof ZobiTheme] as string,
     borderHover: theme[
       `color${firstLetterCapped}BorderHover` as keyof ZobiTheme
     ] as string,

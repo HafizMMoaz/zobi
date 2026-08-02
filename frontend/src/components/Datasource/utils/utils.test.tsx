@@ -1,4 +1,3 @@
-
 import { tn } from '@zobi.dev/extension-api/translation';
 import { updateColumns } from '.';
 

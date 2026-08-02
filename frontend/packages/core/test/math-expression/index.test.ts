@@ -1,5 +1,3 @@
-
-
 import { evalExpression, isValidExpression } from '@zobi.dev/core';
 
 test('evalExpression evaluates constants correctly', () => {

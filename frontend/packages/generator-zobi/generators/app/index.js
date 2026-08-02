@@ -1,5 +1,3 @@
-
-
 import chalk from 'chalk';
 import { dirname, resolve } from 'path';
 import { fileURLToPath } from 'url';
@@ -9,9 +7,7 @@ import Generator from 'yeoman-generator';
 export default class extends Generator {
   async prompting() {
     // Have Yeoman greet the user.
-    this.log(
-      yosay(`Welcome to the ${chalk.red('generator-zobi')} generator!`),
-    );
+    this.log(yosay(`Welcome to the ${chalk.red('generator-zobi')} generator!`));
 
     this.option('skipInstall');
   }

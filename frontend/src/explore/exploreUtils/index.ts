@@ -1,4 +1,3 @@
-
 import { useCallback, useEffect, DependencyList } from 'react';
 /* eslint camelcase: 0 */
 import URI from 'urijs';

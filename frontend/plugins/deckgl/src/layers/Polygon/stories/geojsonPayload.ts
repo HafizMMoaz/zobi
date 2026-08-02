@@ -1,5 +1,3 @@
-
-
 // Payload data for Polygon chart stories - World regions (simple coordinate format)
 // Uses direct coordinate arrays for line_type: 'json'
 export default {

@@ -1,4 +1,3 @@
-
 import { renderHook } from '@testing-library/react';
 import { useCellContentParser } from './useCellContentParser';
 

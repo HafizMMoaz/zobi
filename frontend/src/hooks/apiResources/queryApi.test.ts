@@ -1,4 +1,3 @@
-
 import fetchMock from 'fetch-mock';
 import configureStore, { MockStore } from 'redux-mock-store';
 import rison from 'rison';

@@ -1,4 +1,3 @@
-
 import buildQuery, { DeckScatterFormData } from './buildQuery';
 
 const baseFormData: DeckScatterFormData = {

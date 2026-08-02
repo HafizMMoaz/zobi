@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import { Dropdown, Tooltip } from '@zobi.dev/core/components';

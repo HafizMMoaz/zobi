@@ -1,5 +1,3 @@
-
-
 export default function createTime(
   mode: 'local' | 'utc',
   year: number,

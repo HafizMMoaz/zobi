@@ -1,4 +1,3 @@
-
 import { SAMPLE_DASHBOARD_1 } from 'cypress/utils/urls';
 import { interceptCharts, interceptDatasets, interceptGet } from './utils';
 

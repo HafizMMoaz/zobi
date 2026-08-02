@@ -1,5 +1,3 @@
-
-
 import ZobiClientClass from './ZobiClientClass';
 import { ZobiClientInterface } from './types';
 

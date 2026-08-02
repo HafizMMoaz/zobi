@@ -1,4 +1,3 @@
-
 import { List } from '.';
 import type { ListProps } from './types';
 

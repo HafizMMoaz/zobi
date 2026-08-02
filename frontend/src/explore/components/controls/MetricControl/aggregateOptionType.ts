@@ -1,4 +1,3 @@
-
 export type { AggregateOption } from './types';
 
 // For backward compatibility with PropTypes usage

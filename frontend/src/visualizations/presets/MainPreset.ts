@@ -1,9 +1,4 @@
-import {
-  isFeatureEnabled,
-  FeatureFlag,
-  Preset,
-  VizType,
-} from '@zobi.dev/core';
+import { isFeatureEnabled, FeatureFlag, Preset, VizType } from '@zobi.dev/core';
 import CalendarChartPlugin from '@zobi.dev/calendar';
 import ChordChartPlugin from '@zobi.dev/chord';
 import CountryMapChartPlugin from '@zobi.dev/country-map';

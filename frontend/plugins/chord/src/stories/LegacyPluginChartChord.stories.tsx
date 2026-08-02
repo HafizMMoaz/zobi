@@ -1,5 +1,3 @@
-
-
 import { SuperChart, VizType } from '@zobi.dev/core';
 import ChordChartPlugin from '@zobi.dev/chord';
 import data from './data';
@@ -18,12 +16,7 @@ export default {
   argTypes: {
     colorScheme: {
       control: 'select',
-      options: [
-        'zobiColors',
-        'd3Category10',
-        'bnbColors',
-        'googleCategory20c',
-      ],
+      options: ['zobiColors', 'd3Category10', 'bnbColors', 'googleCategory20c'],
     },
     yAxisFormat: {
       control: 'select',

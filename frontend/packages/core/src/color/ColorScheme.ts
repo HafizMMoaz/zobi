@@ -1,5 +1,3 @@
-
-
 import { ColorSchemeGroup } from './types';
 
 export interface ColorSchemeConfig {

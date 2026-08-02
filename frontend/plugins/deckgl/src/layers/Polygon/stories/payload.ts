@@ -1,5 +1,3 @@
-
-
 // Payload data for Polygon chart stories - San Francisco neighborhoods
 export default {
   data: [

@@ -1,4 +1,3 @@
-
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { nanoid } from 'nanoid';
 import { t } from '@zobi.dev/extension-api/translation';

@@ -1,4 +1,3 @@
-
 import CartodiagramPlugin from '../../src/CartodiagramPlugin';
 
 describe('CartodiagramPlugin', () => {

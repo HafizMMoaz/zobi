@@ -1,5 +1,3 @@
-
-
 /**
  * Type definition for a validator function.
  * Returns an error message string if validation fails, or false if validation passes.

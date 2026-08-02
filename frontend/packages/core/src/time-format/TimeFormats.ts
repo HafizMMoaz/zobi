@@ -1,5 +1,3 @@
-
-
 export const LOCAL_PREFIX = 'local!';
 
 const DATABASE_DATETIME = '%Y-%m-%d %H:%M:%S';

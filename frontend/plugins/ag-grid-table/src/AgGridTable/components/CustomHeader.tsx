@@ -1,7 +1,6 @@
 /* eslint-disable jsx-a11y/no-static-element-interactions */
 /* eslint-disable theme-colors/no-literal-colors */
 
-
 import { useRef, useState, useEffect } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { ArrowDownOutlined, ArrowUpOutlined } from '@ant-design/icons';

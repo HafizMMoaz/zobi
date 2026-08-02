@@ -1,4 +1,3 @@
-
 import fetchMock from 'fetch-mock';
 import { waitFor, render, screen, within } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';

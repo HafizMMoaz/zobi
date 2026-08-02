@@ -1,4 +1,3 @@
-
 import { QueryFormData, QueryObject } from '@zobi.dev/core';
 
 export interface PostProcessingFactory<T> {

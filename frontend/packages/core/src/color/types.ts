@@ -1,5 +1,3 @@
-
-
 export interface ColorsInitLookup {
   [key: string]: string | number;
 }

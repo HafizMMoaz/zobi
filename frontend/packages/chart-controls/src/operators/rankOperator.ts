@@ -1,4 +1,3 @@
-
 import { PostProcessingRank } from '@zobi.dev/core';
 import { PostProcessingFactory } from './types';
 

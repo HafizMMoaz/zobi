@@ -1,4 +1,3 @@
-
 import { isAllowedScheme, getTargetUrl, isUrlTrusted, trustUrl } from './utils';
 
 const TRUSTED_URLS_KEY = 'zobi_trusted_urls';

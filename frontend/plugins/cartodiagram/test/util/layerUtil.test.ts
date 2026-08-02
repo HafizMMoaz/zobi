@@ -1,4 +1,3 @@
-
 import { WfsLayerConf } from '../../src/types';
 import {
   createLayer,

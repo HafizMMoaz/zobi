@@ -1,9 +1,5 @@
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  isFeatureEnabled,
-  FeatureFlag,
-  ZobiClient,
-} from '@zobi.dev/core';
+import { isFeatureEnabled, FeatureFlag, ZobiClient } from '@zobi.dev/core';
 import { styled } from '@zobi.dev/extension-api/theme';
 import { useSelector } from 'react-redux';
 import { useState, useMemo, useCallback } from 'react';

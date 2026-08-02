@@ -223,10 +223,7 @@ export const DashboardPage: FC<PageProps> = ({ idOrSlug }: PageProps) => {
   useEffect(
     () => () => {
       document.title =
-        originalTitle ||
-        theme?.brandAppName ||
-        theme?.brandLogoAlt ||
-        'Zobi';
+        originalTitle || theme?.brandAppName || theme?.brandLogoAlt || 'Zobi';
     },
     [originalTitle, theme?.brandAppName, theme?.brandLogoAlt],
   );

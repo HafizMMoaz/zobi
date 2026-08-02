@@ -1,15 +1,10 @@
-
-
 import {
   SuperChart,
   VizType,
   getChartTransformPropsRegistry,
 } from '@zobi.dev/core';
 import { CartodiagramPlugin } from '@zobi.dev/cartodiagram';
-import {
-  EchartsPieChartPlugin,
-  PieTransformProps,
-} from '@zobi.dev/echarts';
+import { EchartsPieChartPlugin, PieTransformProps } from '@zobi.dev/echarts';
 import { withResizableChartDemo, dummyDatasource } from '@storybook-shared';
 import {
   defaultLayerConfigs,
@@ -64,12 +59,7 @@ export default {
     },
     colorScheme: {
       control: 'select',
-      options: [
-        'zobiColors',
-        'd3Category10',
-        'bnbColors',
-        'googleCategory20c',
-      ],
+      options: ['zobiColors', 'd3Category10', 'bnbColors', 'googleCategory20c'],
     },
     chartWidth: {
       control: { type: 'range', min: 50, max: 200, step: 10 },

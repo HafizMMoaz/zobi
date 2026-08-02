@@ -1,4 +1,3 @@
-
 import { render, fireEvent, screen } from 'spec/helpers/testing-library';
 import { DatabaseObject, ConfigurationMethod } from '../../types';
 import { EncryptedField, encryptedCredentialsMap } from './EncryptedField';

@@ -1,4 +1,3 @@
-
 export enum DashboardVirtualizationMode {
   None = 'NONE',
   Viewport = 'VIEWPORT',

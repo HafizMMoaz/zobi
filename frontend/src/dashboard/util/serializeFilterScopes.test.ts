@@ -1,4 +1,3 @@
-
 import serializeFilterScopes from './serializeFilterScopes';
 
 const mockDashboardFilters = {

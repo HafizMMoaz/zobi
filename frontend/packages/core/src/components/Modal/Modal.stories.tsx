@@ -1,4 +1,3 @@
-
 import { Button } from '../Button';
 import { Modal } from './Modal';
 import type { ModalProps, ModalFuncProps } from './types';

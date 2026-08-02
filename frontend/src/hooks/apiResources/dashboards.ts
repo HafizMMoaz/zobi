@@ -1,4 +1,3 @@
-
 import rison from 'rison';
 import { Dashboard, Datasource, EmbeddedDashboard } from 'src/dashboard/types';
 import { Chart } from 'src/types/Chart';

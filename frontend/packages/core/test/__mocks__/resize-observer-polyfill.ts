@@ -1,5 +1,3 @@
-
-
 interface ResizeObserverEntry {
   contentRect: {
     height: number;

@@ -1,5 +1,3 @@
-
-
 export default class LazyFactory<T extends HTMLElement | SVGElement> {
   private activeNodes = new Map<
     HTMLElement | SVGElement,

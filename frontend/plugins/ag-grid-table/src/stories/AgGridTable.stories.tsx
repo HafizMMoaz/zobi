@@ -1,5 +1,3 @@
-
-
 import { SuperChart, getChartTransformPropsRegistry } from '@zobi.dev/core';
 import AgGridTableChartPlugin from '../index';
 import transformProps from '../transformProps';

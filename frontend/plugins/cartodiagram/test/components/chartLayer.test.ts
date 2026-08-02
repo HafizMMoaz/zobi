@@ -1,4 +1,3 @@
-
 import { ChartLayer } from '../../src/components/ChartLayer';
 import { ChartLayerOptions } from '../../src/types';
 

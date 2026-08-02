@@ -1,4 +1,3 @@
-
 import type { editors } from '@zobi.dev/extension-api';
 import { Disposable } from '../models';
 

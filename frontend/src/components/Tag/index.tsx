@@ -1,4 +1,3 @@
-
 import { styled } from '@zobi.dev/extension-api/theme';
 import { Link } from 'react-router-dom';
 import type { TagType } from 'src/types/TagType';

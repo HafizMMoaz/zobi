@@ -1,5 +1,3 @@
-
-
 import { FetchRetryOptions } from './types';
 
 export const DEFAULT_APP_ROOT = '';

@@ -1,9 +1,5 @@
 import { t, tn } from '@zobi.dev/extension-api/translation';
-import {
-  ensureIsArray,
-  ExtraFormData,
-  TimeGranularity,
-} from '@zobi.dev/core';
+import { ensureIsArray, ExtraFormData, TimeGranularity } from '@zobi.dev/core';
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import {
   FormItem,

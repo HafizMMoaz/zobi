@@ -9,10 +9,7 @@ import {
 import { logging } from '@zobi.dev/extension-api/utils';
 import { useEffect, useState } from 'react';
 import { Dataset } from 'src/components/Chart/types';
-import {
-  cachedZobiGet,
-  zobiGetCache,
-} from 'src/utils/cachedZobiGet';
+import { cachedZobiGet, zobiGetCache } from 'src/utils/cachedZobiGet';
 import { Resource, ResourceStatus } from './apiResources';
 
 /**

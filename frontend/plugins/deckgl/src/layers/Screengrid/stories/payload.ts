@@ -1,5 +1,3 @@
-
-
 // Payload data for Screengrid chart stories - San Francisco points
 export default {
   data: [

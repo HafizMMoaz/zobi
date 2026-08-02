@@ -1,5 +1,3 @@
-
-
 import { QueryObject } from './Query';
 
 export type TimeRange = {

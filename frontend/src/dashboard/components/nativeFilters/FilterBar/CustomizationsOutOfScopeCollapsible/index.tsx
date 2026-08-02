@@ -1,9 +1,6 @@
 import { ReactNode } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  ChartCustomization,
-  ChartCustomizationDivider,
-} from '@zobi.dev/core';
+import { ChartCustomization, ChartCustomizationDivider } from '@zobi.dev/core';
 import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { Collapse } from '@zobi.dev/core/components';
 

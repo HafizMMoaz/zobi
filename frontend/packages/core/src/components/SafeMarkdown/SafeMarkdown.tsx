@@ -1,4 +1,3 @@
-
 import { useEffect, useMemo, useState } from 'react';
 import rehypeSanitize, { defaultSchema } from 'rehype-sanitize';
 // TODO: Upgrade to remark-gfm v4+ after migrating to React 18.

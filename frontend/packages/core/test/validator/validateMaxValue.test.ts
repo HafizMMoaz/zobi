@@ -1,5 +1,3 @@
-
-
 import { validateMaxValue } from '@zobi.dev/core';
 import './setup';
 

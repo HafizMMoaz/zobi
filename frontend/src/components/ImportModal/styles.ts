@@ -1,4 +1,3 @@
-
 import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 
 export const antdWarningAlertStyles = (theme: ZobiTheme) => css`

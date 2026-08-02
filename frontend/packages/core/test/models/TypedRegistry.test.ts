@@ -1,5 +1,3 @@
-
-
 import { TypedRegistry } from '@zobi.dev/core';
 
 describe('TypedRegistry', () => {

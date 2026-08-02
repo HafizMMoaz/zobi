@@ -1,4 +1,3 @@
-
 // Service Worker types (declared locally to avoid polluting global scope)
 declare const self: {
   skipWaiting(): Promise<void>;

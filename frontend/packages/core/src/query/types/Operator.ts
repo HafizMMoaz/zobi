@@ -1,5 +1,3 @@
-
-
 /** List of operators that do not require another operand */
 const UNARY_OPERATORS = ['IS NOT NULL', 'IS NULL'] as const;
 

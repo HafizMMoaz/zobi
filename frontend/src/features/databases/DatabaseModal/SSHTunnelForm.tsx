@@ -1,13 +1,7 @@
 import { useState } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { styled } from '@zobi.dev/extension-api/theme';
-import {
-  Form,
-  FormLabel,
-  Col,
-  Row,
-  Tooltip,
-} from '@zobi.dev/core/components';
+import { Form, FormLabel, Col, Row, Tooltip } from '@zobi.dev/core/components';
 import { Input } from '@zobi.dev/core/components/Input';
 import { Radio } from '@zobi.dev/core/components/Radio';
 import { Icons } from '@zobi.dev/core/components/Icons';

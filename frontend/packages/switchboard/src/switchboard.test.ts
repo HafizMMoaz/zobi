@@ -1,5 +1,3 @@
-
-
 import SingletonSwitchboard, { Switchboard } from './switchboard';
 
 type EventHandler = (event: MessageEvent) => void;

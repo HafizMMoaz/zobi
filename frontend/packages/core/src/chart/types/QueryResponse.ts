@@ -1,5 +1,3 @@
-
-
 /**
  * Types for query response
  */

@@ -1,4 +1,3 @@
-
 import {
   formatDuration,
   calculateEta,

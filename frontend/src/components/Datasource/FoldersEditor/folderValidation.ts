@@ -1,4 +1,3 @@
-
 /**
  * Validation and constraint checking for folder operations.
  * Determines what actions are allowed based on folder structure and types.

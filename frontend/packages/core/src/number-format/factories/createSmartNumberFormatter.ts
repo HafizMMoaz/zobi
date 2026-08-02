@@ -1,5 +1,3 @@
-
-
 import { formatLocale } from 'd3-format';
 import NumberFormatter from '../NumberFormatter';
 import NumberFormats from '../NumberFormats';

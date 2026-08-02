@@ -1,4 +1,3 @@
-
 import { QueryFormMetric, SqlaFormData } from '@zobi.dev/core';
 import {
   shouldSkipMetricColumn,

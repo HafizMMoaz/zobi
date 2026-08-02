@@ -1,4 +1,3 @@
-
 /**
  * Tree manipulation utilities for dnd-kit drag and drop operations.
  * Handles flattening, building, and projecting tree structures.

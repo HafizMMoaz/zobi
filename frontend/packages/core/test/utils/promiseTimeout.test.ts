@@ -1,5 +1,3 @@
-
-
 import { promiseTimeout } from '@zobi.dev/core';
 
 describe('promiseTimeout(func, delay)', () => {

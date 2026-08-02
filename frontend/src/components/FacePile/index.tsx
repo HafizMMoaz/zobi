@@ -1,4 +1,3 @@
-
 import {
   getCategoricalSchemeRegistry,
   isFeatureEnabled,

@@ -1,5 +1,3 @@
-
-
 import {
   ExtensibleFunction,
   Plugin,

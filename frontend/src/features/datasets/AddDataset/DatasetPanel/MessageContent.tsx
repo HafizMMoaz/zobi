@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { styled } from '@zobi.dev/extension-api/theme';
 import { EmptyState } from '@zobi.dev/core/components';

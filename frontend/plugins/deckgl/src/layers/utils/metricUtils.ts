@@ -1,4 +1,3 @@
-
 import { getMetricLabel } from '@zobi.dev/core';
 
 export type MetricFormValue =

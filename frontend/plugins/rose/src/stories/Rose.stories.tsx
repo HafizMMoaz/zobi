@@ -1,5 +1,3 @@
-
-
 /* eslint-disable no-magic-numbers, sort-keys */
 import { SuperChart, VizType } from '@zobi.dev/core';
 import RoseChartPlugin from '@zobi.dev/rose';
@@ -21,12 +19,7 @@ export default {
   argTypes: {
     colorScheme: {
       control: 'select',
-      options: [
-        'zobiColors',
-        'd3Category10',
-        'bnbColors',
-        'googleCategory20c',
-      ],
+      options: ['zobiColors', 'd3Category10', 'bnbColors', 'googleCategory20c'],
     },
     numberFormat: {
       control: 'select',

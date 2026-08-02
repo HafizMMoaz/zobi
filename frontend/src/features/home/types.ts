@@ -1,4 +1,3 @@
-
 import { ReactNode } from 'react';
 import { Filter } from 'src/views/CRUD/types';
 import { NavBarProps, MenuObjectProps } from 'src/types/bootstrapTypes';

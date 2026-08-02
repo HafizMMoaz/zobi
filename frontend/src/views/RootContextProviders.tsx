@@ -1,4 +1,3 @@
-
 import { getExtensionsRegistry } from '@zobi.dev/core';
 import { Provider as ReduxProvider } from 'react-redux';
 import { QueryParamProvider } from 'use-query-params';

@@ -1,9 +1,4 @@
-import {
-  DatasourceType,
-  ChartProps,
-  Behavior,
-  Metric,
-} from '@zobi.dev/core';
+import { DatasourceType, ChartProps, Behavior, Metric } from '@zobi.dev/core';
 import { zobiTheme } from '@zobi.dev/extension-api/theme';
 import { transformProps, TableChartProps } from './transformProps';
 

@@ -66,9 +66,7 @@ export function createWrapper(options?: Options) {
   } = options || {};
 
   return ({ children }: { children?: ReactNode }) => {
-    let result = (
-      <ThemeProvider theme={zobiTheme}>{children}</ThemeProvider>
-    );
+    let result = <ThemeProvider theme={zobiTheme}>{children}</ThemeProvider>;
 
     if (useTheme) {
       result = (

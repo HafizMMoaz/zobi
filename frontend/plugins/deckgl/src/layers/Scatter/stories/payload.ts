@@ -1,5 +1,3 @@
-
-
 // Payload data for Scatter chart stories - San Francisco points
 export default {
   data: [

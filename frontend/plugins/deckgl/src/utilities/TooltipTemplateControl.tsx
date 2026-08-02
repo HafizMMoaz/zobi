@@ -1,4 +1,3 @@
-
 import { useCallback } from 'react';
 import { debounce } from 'lodash';
 import { t } from '@zobi.dev/extension-api/translation';

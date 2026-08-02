@@ -1,4 +1,3 @@
-
 import { PureComponent } from 'react';
 import { css, styled } from '@zobi.dev/extension-api/theme';
 

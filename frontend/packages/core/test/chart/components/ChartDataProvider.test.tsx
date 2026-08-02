@@ -1,4 +1,3 @@
-
 import '@testing-library/jest-dom';
 import { render, screen, act } from '@testing-library/react';
 import ChartClient from '../../../src/chart/clients/ChartClient';

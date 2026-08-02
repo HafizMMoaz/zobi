@@ -1,4 +1,3 @@
-
 import { isPhysicalColumn, QueryFormColumn } from './types';
 
 export default function getColumnLabel(column: QueryFormColumn): string {

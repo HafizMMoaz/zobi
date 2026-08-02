@@ -1,4 +1,3 @@
-
 import { ColorSchemeControl } from '../src/plugin/controls';
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
 

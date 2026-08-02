@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { ParentSize } from '@visx/responsive';
 import { t } from '@zobi.dev/extension-api/translation';

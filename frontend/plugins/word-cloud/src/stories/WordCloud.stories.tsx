@@ -1,5 +1,3 @@
-
-
 import { SuperChart } from '@zobi.dev/core';
 import { WordCloudChartPlugin } from '@zobi.dev/word-cloud';
 import { withResizableChartDemo } from '@storybook-shared';
@@ -23,12 +21,7 @@ export default {
     },
     colorScheme: {
       control: 'select',
-      options: [
-        'zobiColors',
-        'd3Category10',
-        'bnbColors',
-        'googleCategory20c',
-      ],
+      options: ['zobiColors', 'd3Category10', 'bnbColors', 'googleCategory20c'],
     },
     sizeFrom: {
       control: { type: 'range', min: 5, max: 50, step: 5 },

@@ -25,10 +25,7 @@ import NullCell from '@zobi.dev/core/components/Table/cell-renderers/NullCell';
 import TimeCell from '@zobi.dev/core/components/Table/cell-renderers/TimeCell';
 import { EmptyState, Loading } from '@zobi.dev/core/components';
 import { getDatasourceSamples } from 'src/components/Chart/chartAction';
-import Table, {
-  ColumnsType,
-  TableSize,
-} from '@zobi.dev/core/components/Table';
+import Table, { ColumnsType, TableSize } from '@zobi.dev/core/components/Table';
 import { RootState } from 'src/dashboard/types';
 import { usePermissions } from 'src/hooks/usePermissions';
 import { useToasts } from 'src/components/MessageToasts/withToasts';

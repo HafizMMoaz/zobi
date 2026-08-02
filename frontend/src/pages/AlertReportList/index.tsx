@@ -1,12 +1,7 @@
-
 import { useState, useMemo, useEffect, useCallback } from 'react';
 import { useHistory } from 'react-router-dom';
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  ZobiClient,
-  makeApi,
-  getExtensionsRegistry,
-} from '@zobi.dev/core';
+import { ZobiClient, makeApi, getExtensionsRegistry } from '@zobi.dev/core';
 import { css, styled } from '@zobi.dev/extension-api/theme';
 import { extendedDayjs } from '@zobi.dev/core/utils/dates';
 import {

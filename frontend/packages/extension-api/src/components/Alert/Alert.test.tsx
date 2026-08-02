@@ -1,4 +1,3 @@
-
 import { render } from '../../testing';
 import { Alert } from '.';
 

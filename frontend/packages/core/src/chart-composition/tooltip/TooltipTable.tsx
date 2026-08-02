@@ -1,4 +1,3 @@
-
 import { CSSProperties, ReactNode } from 'react';
 import { Table, type TableColumnsType } from 'antd';
 

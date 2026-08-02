@@ -1,5 +1,3 @@
-
-
 import ColorScheme from '../../src/color/ColorScheme';
 
 describe('ColorScheme', () => {

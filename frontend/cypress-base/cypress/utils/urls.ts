@@ -1,4 +1,3 @@
-
 export const DASHBOARD_LIST = '/dashboard/list/';
 export const CHART_LIST = '/chart/list/';
 export const WORLD_HEALTH_DASHBOARD = '/zobi/dashboard/world_health/';

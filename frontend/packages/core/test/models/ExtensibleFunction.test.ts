@@ -1,5 +1,3 @@
-
-
 /* eslint-disable @typescript-eslint/no-unsafe-declaration-merging */
 
 import { ExtensibleFunction } from '@zobi.dev/core';

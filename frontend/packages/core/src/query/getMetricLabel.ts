@@ -1,5 +1,3 @@
-
-
 import { QueryFormMetric, isSavedMetric, isAdhocMetricSimple } from './types';
 
 export default function getMetricLabel(metric: QueryFormMetric): string {

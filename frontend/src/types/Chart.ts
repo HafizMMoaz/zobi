@@ -1,4 +1,3 @@
-
 /**
  * The Chart model as returned from the API
  */

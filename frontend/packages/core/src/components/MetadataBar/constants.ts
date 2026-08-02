@@ -1,4 +1,3 @@
-
 export const MIN_NUMBER_ITEMS = 2;
 export const MAX_NUMBER_ITEMS = 6;
 

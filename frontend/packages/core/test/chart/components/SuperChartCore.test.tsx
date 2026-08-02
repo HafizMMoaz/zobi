@@ -1,5 +1,3 @@
-
-
 import '@testing-library/jest-dom';
 import { ChartProps } from '@zobi.dev/core';
 import { zobiTheme } from '@zobi.dev/extension-api/theme';

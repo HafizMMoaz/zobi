@@ -1,5 +1,3 @@
-
-
 /* eslint camelcase: 0 */
 import { DataRecord } from './QueryResponse';
 import { TimeGranularity } from '../../time-format';

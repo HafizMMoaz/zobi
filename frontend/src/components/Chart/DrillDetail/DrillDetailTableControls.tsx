@@ -1,11 +1,7 @@
-
 import { useCallback, useMemo } from 'react';
 import { Tag } from 'src/components/Tag';
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  BinaryQueryObjectFilterClause,
-  isAdhocColumn,
-} from '@zobi.dev/core';
+import { BinaryQueryObjectFilterClause, isAdhocColumn } from '@zobi.dev/core';
 import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import RowCountLabel from 'src/components/RowCountLabel';
 import { Icons } from '@zobi.dev/core/components/Icons';

@@ -192,12 +192,10 @@ const Chart = (props: ChartProps) => {
       !!(state.dashboardInfo as JsonObject).zobi_can_explore,
   );
   const zobiCanShare = useSelector(
-    (state: RootState) =>
-      !!(state.dashboardInfo as JsonObject).zobi_can_share,
+    (state: RootState) => !!(state.dashboardInfo as JsonObject).zobi_can_share,
   );
   const zobiCanCSV = useSelector(
-    (state: RootState) =>
-      !!(state.dashboardInfo as JsonObject).zobi_can_csv,
+    (state: RootState) => !!(state.dashboardInfo as JsonObject).zobi_can_csv,
   );
   const timeout: number = useSelector(
     (state: RootState) =>
@@ -675,9 +673,7 @@ const Chart = (props: ChartProps) => {
         handleToggleFullSize={props.handleToggleFullSize}
         isFullSize={props.isFullSize}
         chartStatus={chartStatus || ''}
-        formData={
-          formData as unknown as import('@zobi.dev/core').QueryFormData
-        }
+        formData={formData as unknown as import('@zobi.dev/core').QueryFormData}
         exploreUrl=""
         width={width}
         height={getHeaderHeight()}

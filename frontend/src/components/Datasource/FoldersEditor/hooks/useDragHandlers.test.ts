@@ -1,4 +1,3 @@
-
 import { renderHook, act } from '@testing-library/react';
 import type { DragStartEvent } from '@dnd-kit/core';
 import { FlattenedTreeItem } from '../constants';

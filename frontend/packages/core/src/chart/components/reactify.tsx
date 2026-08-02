@@ -1,5 +1,3 @@
-
-
 // eslint-disable-next-line no-restricted-syntax -- whole React import is required for `reactify.test.tsx` Jest test passing.
 import { Component, ComponentClass, WeakValidationMap } from 'react';
 

@@ -1,5 +1,3 @@
-
-
 import { NumberFormatter, createDurationFormatter } from '@zobi.dev/core';
 
 test('creates an instance of NumberFormatter', () => {

@@ -1,5 +1,3 @@
-
-
 import { CSSProperties } from 'react';
 import { css, styled } from '@zobi.dev/extension-api/theme';
 import { t } from '@zobi.dev/extension-api/translation';

@@ -1,4 +1,3 @@
-
 import React from 'react';
 import { useTheme, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { t } from '@zobi.dev/extension-api/translation';

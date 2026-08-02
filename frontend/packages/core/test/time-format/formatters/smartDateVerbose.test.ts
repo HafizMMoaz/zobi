@@ -1,10 +1,5 @@
-
-
 import { TimeLocaleDefinition } from 'd3-time-format';
-import {
-  TimeFormatter,
-  createSmartDateVerboseFormatter,
-} from '@zobi.dev/core';
+import { TimeFormatter, createSmartDateVerboseFormatter } from '@zobi.dev/core';
 
 describe('smartDateVerboseFormatter', () => {
   describe('when locale is default', () => {

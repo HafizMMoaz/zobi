@@ -1,5 +1,3 @@
-
-
 import buildQueryObject from './buildQueryObject';
 import DatasourceKey from './DatasourceKey';
 import { QueryFieldAliases, QueryFormData } from './types/QueryFormData';

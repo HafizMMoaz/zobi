@@ -496,10 +496,7 @@ test('URL prefix guard does not double-prefix URL with hash at app root', async 
   });
 
   // Should NOT double-prefix to /zobi/zobi#section
-  expect(mockFetch).toHaveBeenCalledWith(
-    '/zobi#section',
-    expect.any(Object),
-  );
+  expect(mockFetch).toHaveBeenCalledWith('/zobi#section', expect.any(Object));
 });
 
 // Streaming export behavior tests

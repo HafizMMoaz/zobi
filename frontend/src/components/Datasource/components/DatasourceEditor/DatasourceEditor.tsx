@@ -1557,9 +1557,7 @@ class DatasourceEditor extends PureComponent<
               {t(
                 'Default URL to redirect to when accessing from the dataset list page. Accepts relative URLs such as',
               )}{' '}
-              <Typography.Text code>
-                /zobi/dashboard/{'{id}'}/
-              </Typography.Text>
+              <Typography.Text code>/zobi/dashboard/{'{id}'}/</Typography.Text>
             </>
           }
           control={<TextControl controlId="default_endpoint" />}

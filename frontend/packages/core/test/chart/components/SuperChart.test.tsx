@@ -1,5 +1,3 @@
-
-
 import '@testing-library/jest-dom';
 import { render, screen } from '@zobi.dev/core/spec';
 import { triggerResizeObserver } from 'resize-observer-polyfill';

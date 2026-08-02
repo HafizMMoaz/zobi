@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Extensions API for Zobi extension management.
  *

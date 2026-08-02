@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { styled } from '@zobi.dev/extension-api/theme';
 import { ContourOptionProps } from './types';

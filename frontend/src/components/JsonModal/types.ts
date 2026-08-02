@@ -1,4 +1,3 @@
-
 type CellDataType = string | number | null | object;
 
 export interface JsonModalProps {

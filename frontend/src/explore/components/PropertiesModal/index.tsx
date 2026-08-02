@@ -314,9 +314,7 @@ function PropertiesModal({
       }
       errorTooltip={
         slice.is_managed_externally
-          ? t(
-              "This chart is managed externally, and can't be edited in Zobi",
-            )
+          ? t("This chart is managed externally, and can't be edited in Zobi")
           : errorTooltip
       }
       wrapProps={{ 'data-test': 'properties-edit-modal' }}

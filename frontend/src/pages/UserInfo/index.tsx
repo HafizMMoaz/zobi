@@ -1,11 +1,6 @@
-
 import { useCallback, useEffect, useState } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  ZobiClient,
-  FeatureFlag,
-  isFeatureEnabled,
-} from '@zobi.dev/core';
+import { ZobiClient, FeatureFlag, isFeatureEnabled } from '@zobi.dev/core';
 import { css, useTheme, styled } from '@zobi.dev/extension-api/theme';
 import SubMenu, { SubMenuProps } from 'src/features/home/SubMenu';
 import { useToasts } from 'src/components/MessageToasts/withToasts';

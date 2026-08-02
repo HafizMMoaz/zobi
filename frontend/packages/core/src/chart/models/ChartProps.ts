@@ -1,5 +1,3 @@
-
-
 import { RefObject } from 'react';
 import { createSelector, lruMemoize } from 'reselect';
 import { zobiTheme, ZobiTheme } from '@zobi.dev/extension-api/theme';

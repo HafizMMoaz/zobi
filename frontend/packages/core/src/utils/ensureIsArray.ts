@@ -1,4 +1,3 @@
-
 /**
  * Ensure a nullable value input is an array. Useful when consolidating
  * input format from a select control.

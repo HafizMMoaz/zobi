@@ -1,5 +1,3 @@
-
-
 import { t } from '@zobi.dev/extension-api/translation';
 
 export default function validateNumber(v: unknown): string | false {

@@ -1,10 +1,6 @@
-
-
 import memoizeOne from 'memoize-one';
 import { DataRecord, SuperChart, VizType } from '@zobi.dev/core';
-import TableChartPlugin, {
-  TableChartProps,
-} from '@zobi.dev/table';
+import TableChartPlugin, { TableChartProps } from '@zobi.dev/table';
 import { basicFormData, basicData, birthNames } from './testData';
 import { withResizableChartDemo } from '@storybook-shared';
 

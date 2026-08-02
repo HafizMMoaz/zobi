@@ -1,4 +1,3 @@
-
 import { useCallback } from 'react';
 import { useDispatch } from 'react-redux';
 import { logEvent } from 'src/logger/actions';

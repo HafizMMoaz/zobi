@@ -19,12 +19,7 @@ import {
 } from '@zobi.dev/core';
 import { css, styled, useTheme } from '@zobi.dev/extension-api/theme';
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  Icons,
-  ModalTrigger,
-  Button,
-  Input,
-} from '@zobi.dev/core/components';
+import { Icons, ModalTrigger, Button, Input } from '@zobi.dev/core/components';
 import { getChartMetadataRegistry } from '@zobi.dev/core';
 import { Menu, MenuProps } from '@zobi.dev/core/components/Menu';
 import { useToasts } from 'src/components/MessageToasts/withToasts';

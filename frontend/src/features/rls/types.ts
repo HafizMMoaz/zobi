@@ -1,4 +1,3 @@
-
 export enum FilterType {
   Regular = 'Regular',
   Base = 'Base',

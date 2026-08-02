@@ -1,5 +1,3 @@
-
-
 import { SuperChart } from '@zobi.dev/core';
 import CalendarChartPlugin from '@zobi.dev/calendar';
 import data from './data';

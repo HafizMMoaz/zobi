@@ -1,4 +1,3 @@
-
 import { QueryFormData } from '../query';
 import { AdhocFilter } from '../types';
 

@@ -1,2 +1,1 @@
-
 export { sortNumberWithMixedTypes } from './sortUtils';

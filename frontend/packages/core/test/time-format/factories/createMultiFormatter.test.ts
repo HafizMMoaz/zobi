@@ -1,5 +1,3 @@
-
-
 import { createMultiFormatter } from '@zobi.dev/core';
 import { TimeLocaleDefinition } from 'd3-time-format';
 

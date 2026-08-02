@@ -1,4 +1,3 @@
-
 // TODO: These tests should be made atomic in separate files
 
 import fetchMock from 'fetch-mock';

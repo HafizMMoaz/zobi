@@ -1,5 +1,3 @@
-
-
 import { VizType } from '@zobi.dev/core';
 import { WordCloudFormData } from '../src';
 import buildQuery from '../src/plugin/buildQuery';

@@ -1,5 +1,3 @@
-
-
 import { validateInteger } from '@zobi.dev/core';
 import './setup';
 

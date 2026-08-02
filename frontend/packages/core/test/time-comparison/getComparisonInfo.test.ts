@@ -1,5 +1,3 @@
-
-
 import {
   getComparisonInfo,
   ComparisonTimeRangeType,

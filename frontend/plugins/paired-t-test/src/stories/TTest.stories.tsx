@@ -1,5 +1,3 @@
-
-
 /* eslint-disable no-magic-numbers */
 import { SuperChart } from '@zobi.dev/core';
 import PairedTTestChartPlugin from '@zobi.dev/paired-t-test';

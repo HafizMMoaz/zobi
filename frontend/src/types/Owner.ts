@@ -1,4 +1,3 @@
-
 /**
  * The Owner model as returned from the API
  */

@@ -69,10 +69,7 @@ describe('exploreUtils', () => {
         force: false,
         curUrl: 'zobi.com',
       });
-      compareURI(
-        URI(url!),
-        URI('/zobi/explore_json/').search({ csv: 'true' }),
-      );
+      compareURI(URI(url!), URI('/zobi/explore_json/').search({ csv: 'true' }));
     });
     test('generates proper standalone URL', () => {
       const url = getExploreUrl({
@@ -95,10 +92,7 @@ describe('exploreUtils', () => {
         force: false,
         curUrl: 'zobi.com?foo=bar',
       });
-      compareURI(
-        URI(url!),
-        URI('/zobi/explore_json/').search({ foo: 'bar' }),
-      );
+      compareURI(URI(url!), URI('/zobi/explore_json/').search({ foo: 'bar' }));
     });
     test('generate proper save slice url', () => {
       const url = getExploreUrl({
@@ -107,10 +101,7 @@ describe('exploreUtils', () => {
         force: false,
         curUrl: 'zobi.com?foo=bar',
       });
-      compareURI(
-        URI(url!),
-        URI('/zobi/explore_json/').search({ foo: 'bar' }),
-      );
+      compareURI(URI(url!), URI('/zobi/explore_json/').search({ foo: 'bar' }));
     });
   });
 

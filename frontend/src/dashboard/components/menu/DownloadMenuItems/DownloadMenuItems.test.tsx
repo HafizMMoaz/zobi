@@ -6,11 +6,7 @@ import {
   waitFor,
 } from 'spec/helpers/testing-library';
 import { Menu, MenuItem } from '@zobi.dev/core/components/Menu';
-import {
-  FeatureFlag,
-  isFeatureEnabled,
-  ZobiClient,
-} from '@zobi.dev/core';
+import { FeatureFlag, isFeatureEnabled, ZobiClient } from '@zobi.dev/core';
 import { useDownloadMenuItems } from '.';
 
 const mockAddSuccessToast = jest.fn();

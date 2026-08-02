@@ -1,10 +1,5 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  FeatureFlag,
-  isFeatureEnabled,
-  ZobiClient,
-} from '@zobi.dev/core';
+import { FeatureFlag, isFeatureEnabled, ZobiClient } from '@zobi.dev/core';
 import { styled } from '@zobi.dev/extension-api/theme';
 import { useCallback, useMemo, useState, MouseEvent } from 'react';
 import { Link, useHistory } from 'react-router-dom';

@@ -1,9 +1,4 @@
-import {
-  DTTM_ALIAS,
-  QueryObject,
-  SqlaFormData,
-  VizType,
-} from '@zobi.dev/core';
+import { DTTM_ALIAS, QueryObject, SqlaFormData, VizType } from '@zobi.dev/core';
 import { prophetOperator } from '@zobi.dev/chart-controls';
 
 const formData: SqlaFormData = {

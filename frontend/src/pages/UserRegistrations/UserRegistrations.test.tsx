@@ -1,4 +1,3 @@
-
 import fetchMock from 'fetch-mock';
 import { render, screen } from 'spec/helpers/testing-library';
 import UserRegistrations from '.';

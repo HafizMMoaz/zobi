@@ -1,4 +1,3 @@
-
 import { render, screen } from 'spec/helpers/testing-library';
 import { ErrorLevel } from '@zobi.dev/core';
 import { zobiTheme } from '@zobi.dev/extension-api/theme';
