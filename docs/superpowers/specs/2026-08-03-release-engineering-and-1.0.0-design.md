@@ -208,6 +208,15 @@ New workflows:
 
 - `publish-mcp-server.yml` for `@zobi.dev/mcp-server`, built from
   `zobi/mcp_service`.
+
+  **This package needs a `files` allowlist before it can ship.**
+  `zobi/mcp_service/` holds 113 Python files and only 2 JavaScript files: the
+  npm package is a thin `npx` wrapper (`index.js`, `bin/zobi-mcp.js`) that spawns
+  the Python MCP server. Its manifest declares no `files` field, so publishing as
+  it stands would ship the entire Python service, `__pycache__`, `.DS_Store` and
+  all internal docs to npm. The manifest must restrict the package to
+  `index.js`, `bin/`, and `README.md` first. Note that the wrapper requires Zobi
+  to be pip-installed locally, which its README must state.
 - `publish-pypi-zobi.yml` for the `zobi-dev` distribution, built from the
   repository root.
 
@@ -230,13 +239,17 @@ run`.
 Configure PyPI trusted publishing for the new project against this repository and
 the new workflow filename, consistent with the existing PyPI workflows.
 
-**Unresolved risk: wheel size.** The wheel must ship `zobi/static/assets/`, the
-complete webpack output. PyPI limits a single file to 100 MB and a default
-project to 10 GB total. The built artifact must be measured during
-implementation. If it exceeds the file limit, the fallbacks in order of
-preference are: request a file-size increase from PyPI; or ship an sdist that
-builds assets at install time. This is called out as a planning task, not left to
-be discovered mid-release.
+**Wheel size: measured and viable.** The wheel must ship `zobi/static/assets/`,
+the complete webpack output, because `MANIFEST.in` contains
+`recursive-include zobi/static *`. That tree is 98 MB across 1070 files
+uncompressed, including an 11 MB geojson and a 7.3 MB JavaScript chunk. Measured
+compressed, it is **51 MB**, against a PyPI per-file limit of 100 MB and a
+default project limit of 10 GB. No fallback is needed.
+
+The margin is roughly 2x, so the implementation asserts the built wheel is under
+90 MB. If future asset growth breaches that, the options in order of preference
+are to request a file-size increase from PyPI, or to ship an sdist that builds
+assets at install time.
 
 ### A5. Renaming the generator package
 
