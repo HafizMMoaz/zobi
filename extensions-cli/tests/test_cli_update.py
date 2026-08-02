@@ -99,7 +99,7 @@ def test_update_with_license_flag(
         ext_license="MIT",
     )
 
-    result = cli_runner.invoke(app, ["update", "--license", "MIT"])
+    result = cli_runner.invoke(app, ["update", "--license", "Apache-2.0"])
 
     assert result.exit_code == 0
     assert "Updated extension.json" in result.output
@@ -107,13 +107,13 @@ def test_update_with_license_flag(
     assert "Updated backend/pyproject.toml" in result.output
 
     ext = read_json(isolated_filesystem / "extension.json")
-    assert ext["license"] == "MIT"
+    assert ext["license"] == "Apache-2.0"
 
     frontend_pkg = read_json(isolated_filesystem / "frontend" / "package.json")
-    assert frontend_pkg["license"] == "MIT"
+    assert frontend_pkg["license"] == "Apache-2.0"
 
     backend_pyproject = read_toml(isolated_filesystem / "backend" / "pyproject.toml")
-    assert backend_pyproject["project"]["license"] == "MIT"
+    assert backend_pyproject["project"]["license"] == "Apache-2.0"
 
 
 @pytest.mark.cli
