@@ -319,7 +319,7 @@ CRITICAL RULES - NEVER VIOLATE:
 - To modify an existing chart's filters, metrics, or dimensions, use update_chart.
   Do NOT use execute_sql for chart modifications.
 - Parameter name reminders: ALWAYS use the EXACT parameter names from the tool schema.
-  Do NOT use Zobi's internal form_data names.
+  Do NOT use {branding}'s internal form_data names.
 
 IMPORTANT - Tool-Only Interaction:
 - Do NOT generate code artifacts, HTML pages, JavaScript snippets, or any code intended
