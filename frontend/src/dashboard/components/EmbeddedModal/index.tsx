@@ -1,10 +1,6 @@
 import { useCallback, useEffect, useState } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  makeApi,
-  ZobiApiError,
-  getExtensionsRegistry,
-} from '@zobi.dev/core';
+import { makeApi, ZobiApiError, getExtensionsRegistry } from '@zobi.dev/core';
 import { Alert } from '@zobi.dev/extension-api/components';
 import { styled, css } from '@zobi.dev/extension-api/theme';
 import {

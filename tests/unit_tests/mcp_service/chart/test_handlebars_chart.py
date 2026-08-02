@@ -1,4 +1,3 @@
-
 """Tests for Handlebars chart type support in MCP service."""
 
 from unittest.mock import MagicMock

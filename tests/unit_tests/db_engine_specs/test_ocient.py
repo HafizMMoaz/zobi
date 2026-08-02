@@ -1,4 +1,3 @@
-
 # pylint: disable=import-outside-toplevel
 
 from typing import Any, Callable

@@ -1,4 +1,3 @@
-
 """
 ASCII chart rendering functions for MCP chart previews.
 

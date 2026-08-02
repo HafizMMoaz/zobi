@@ -1,11 +1,7 @@
 import { useState, useEffect, useMemo, useCallback, useRef } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { styled, css } from '@zobi.dev/extension-api/theme';
-import {
-  CertifiedBadge,
-  InfoTooltip,
-  Input,
-} from '@zobi.dev/core/components';
+import { CertifiedBadge, InfoTooltip, Input } from '@zobi.dev/core/components';
 import Table, {
   TableSize,
   SortOrder,

@@ -1,4 +1,3 @@
-
 import { interceptGet as interceptDashboardGet } from '../dashboard/utils';
 
 export function interceptFiltering() {

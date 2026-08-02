@@ -1,4 +1,3 @@
-
 import Markdown from 'markdown-to-jsx';
 
 export default {

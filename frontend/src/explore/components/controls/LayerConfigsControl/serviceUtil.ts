@@ -1,4 +1,3 @@
-
 import { WfsLayerConf } from './types';
 
 /**

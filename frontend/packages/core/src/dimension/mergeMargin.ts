@@ -1,5 +1,3 @@
-
-
 import { Margin } from './types';
 
 function mergeOneSide(

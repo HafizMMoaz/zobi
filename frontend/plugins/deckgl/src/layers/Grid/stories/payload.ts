@@ -1,5 +1,3 @@
-
-
 // Payload data for Grid chart stories - San Francisco points
 export default {
   data: [

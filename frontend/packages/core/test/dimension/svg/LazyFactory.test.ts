@@ -1,5 +1,3 @@
-
-
 import LazyFactory from '../../../src/dimension/svg/LazyFactory';
 
 describe('LazyFactory', () => {

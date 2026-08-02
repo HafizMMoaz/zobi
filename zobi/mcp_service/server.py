@@ -1,4 +1,3 @@
-
 """
 MCP server for Zobi
 

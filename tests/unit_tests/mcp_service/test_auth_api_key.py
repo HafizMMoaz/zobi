@@ -1,4 +1,3 @@
-
 """Tests for API key authentication in get_user_from_request()."""
 
 from unittest.mock import MagicMock, patch

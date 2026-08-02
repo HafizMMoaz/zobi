@@ -4,8 +4,8 @@ import { QueryMode, TimeGranularity, SMART_DATE_ID } from '@zobi.dev/core';
 import { setupAGGridModules } from '@zobi.dev/core/components/ThemedAgGridReact';
 import AgGridTableChart from '../src/AgGridTableChart';
 import transformProps from '../src/transformProps';
-import { ProviderWrapper } from '../../plugin-table/test/testHelpers';
-import testData from '../../plugin-table/test/testData';
+import { ProviderWrapper } from '../../table/test/testHelpers';
+import testData from '../../table/test/testData';
 
 const mockSetDataMask = jest.fn();
 

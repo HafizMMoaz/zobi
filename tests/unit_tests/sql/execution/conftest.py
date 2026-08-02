@@ -1,4 +1,3 @@
-
 """
 Shared fixtures and helpers for SQL execution tests.
 

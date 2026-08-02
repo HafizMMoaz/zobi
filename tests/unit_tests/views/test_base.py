@@ -6,9 +6,7 @@ import pytest
 
 
 @patch("zobi.views.base.utils.get_user_id", return_value=1)
-@patch(
-    "zobi.views.base.cached_common_bootstrap_data", return_value={"test": "data"}
-)
+@patch("zobi.views.base.cached_common_bootstrap_data", return_value={"test": "data"})
 @patch("zobi.views.base.get_locale")
 def test_common_bootstrap_payload_converts_locale_to_string(
     mock_get_locale: MagicMock,
@@ -36,9 +34,7 @@ def test_common_bootstrap_payload_converts_locale_to_string(
 
 
 @patch("zobi.views.base.utils.get_user_id", return_value=1)
-@patch(
-    "zobi.views.base.cached_common_bootstrap_data", return_value={"test": "data"}
-)
+@patch("zobi.views.base.cached_common_bootstrap_data", return_value={"test": "data"})
 @patch("zobi.views.base.get_locale", return_value=None)
 def test_common_bootstrap_payload_handles_none_locale(
     mock_get_locale: MagicMock,

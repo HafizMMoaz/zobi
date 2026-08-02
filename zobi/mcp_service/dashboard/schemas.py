@@ -1,4 +1,3 @@
-
 """
 Pydantic schemas for dashboard-related responses
 
@@ -905,9 +904,7 @@ def serialize_dashboard_object(dashboard: Any) -> DashboardInfo:
     slug = getattr(dashboard, "slug", None)
     dashboard_url = None
     if dashboard_id is not None:
-        dashboard_url = (
-            f"{get_zobi_base_url()}/zobi/dashboard/{slug or dashboard_id}/"
-        )
+        dashboard_url = f"{get_zobi_base_url()}/zobi/dashboard/{slug or dashboard_id}/"
 
     json_metadata_str = getattr(dashboard, "json_metadata", None)
     position_json_str = getattr(dashboard, "position_json", None)

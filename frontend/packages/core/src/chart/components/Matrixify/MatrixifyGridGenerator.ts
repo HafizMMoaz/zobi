@@ -1,4 +1,3 @@
-
 import Handlebars from 'handlebars';
 import type { QueryFormData } from '../../../query';
 import type {

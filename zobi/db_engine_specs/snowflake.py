@@ -367,9 +367,7 @@ class SnowflakeEngineSpec(PostgresBaseEngineSpec):
         }
 
     @classmethod
-    def validate_parameters(
-        cls, properties: BasicPropertiesType
-    ) -> list[ZobiError]:
+    def validate_parameters(cls, properties: BasicPropertiesType) -> list[ZobiError]:
         errors: list[ZobiError] = []
         required = {
             "warehouse",

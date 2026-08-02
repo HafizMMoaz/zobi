@@ -56,7 +56,6 @@ from zobi.sql.parse import (
     Table,
 )
 from zobi.sqllab.limiting_factor import LimitingFactor
-from zobi.zobi_typing import DatasetColumnData, ExplorableData, QueryObjectDict
 from zobi.utils import json
 from zobi.utils.core import (
     GenericDataType,
@@ -66,6 +65,7 @@ from zobi.utils.core import (
     QueryStatus,
     user_label,
 )
+from zobi.zobi_typing import DatasetColumnData, ExplorableData, QueryObjectDict
 
 if TYPE_CHECKING:
     from zobi.connectors.sqla.models import TableColumn

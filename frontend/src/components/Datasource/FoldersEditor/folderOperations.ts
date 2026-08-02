@@ -1,4 +1,3 @@
-
 /**
  * Folder CRUD operations and data mutations.
  * Handles creating, deleting, renaming, moving folders and items.

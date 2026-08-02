@@ -1,4 +1,3 @@
-
 import { ChartProps, DatasourceType } from '@zobi.dev/core';
 import transformProps from './transformProps';
 

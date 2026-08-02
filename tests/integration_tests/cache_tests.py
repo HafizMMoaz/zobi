@@ -3,15 +3,15 @@
 import pytest
 from flask import current_app as app
 
-from zobi.common.db_query_status import QueryStatus
-from zobi.extensions import cache_manager
-from zobi.utils import json
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.constants import ADMIN_USERNAME
 from tests.integration_tests.fixtures.birth_names_dashboard import (
     load_birth_names_dashboard_with_slices,  # noqa: F401
     load_birth_names_data,  # noqa: F401
 )
+from zobi.common.db_query_status import QueryStatus
+from zobi.extensions import cache_manager
+from zobi.utils import json
 
 
 class TestCache(ZobiTestCase):

@@ -1,4 +1,3 @@
-
 import type { RefObject } from 'react';
 import { GridApi } from 'ag-grid-community';
 import { convertAgGridFiltersToSQL } from './agGridFilterConverter';

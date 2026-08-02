@@ -2,7 +2,6 @@ import { useEffect } from 'react';
 import { NativeFilterType, usePrevious } from '@zobi.dev/core';
 import { FilterRemoval } from './types';
 
-
 export const useRemoveCurrentFilter = (
   removedFilters: Record<string, FilterRemoval>,
   currentFilterId: string,

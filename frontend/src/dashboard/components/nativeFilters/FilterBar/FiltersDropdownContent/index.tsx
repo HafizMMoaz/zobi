@@ -1,4 +1,3 @@
-
 import { ReactNode } from 'react';
 import { Divider, Filter } from '@zobi.dev/core';
 import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';

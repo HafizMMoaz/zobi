@@ -1,9 +1,6 @@
 import { renderHook, waitFor } from '@testing-library/react';
 import { Dataset } from 'src/components/Chart/types';
-import {
-  cachedZobiGet,
-  zobiGetCache,
-} from 'src/utils/cachedZobiGet';
+import { cachedZobiGet, zobiGetCache } from 'src/utils/cachedZobiGet';
 import {
   getDatasetId,
   createVerboseMap,

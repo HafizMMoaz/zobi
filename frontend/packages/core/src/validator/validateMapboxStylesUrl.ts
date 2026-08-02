@@ -1,5 +1,3 @@
-
-
 import { t } from '@zobi.dev/extension-api/translation';
 
 const VALIDE_OSM_URLS = ['https://tile.osm', 'https://tile.openstreetmap'];

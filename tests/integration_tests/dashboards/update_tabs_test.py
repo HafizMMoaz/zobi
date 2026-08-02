@@ -2,10 +2,6 @@ from unittest.mock import ANY, call, MagicMock, patch
 
 import pytest
 
-from zobi import db, security_manager
-from zobi.commands.dashboard.update import UpdateDashboardCommand
-from zobi.models.dashboard import Dashboard
-from zobi.utils.json import dumps
 from tests.integration_tests.fixtures.tabbed_dashboard import (
     tabbed_dashboard,  # noqa: F401
 )
@@ -14,6 +10,10 @@ from tests.integration_tests.reports.utils import (
     create_report_notification,
 )
 from tests.integration_tests.test_app import app
+from zobi import db, security_manager
+from zobi.commands.dashboard.update import UpdateDashboardCommand
+from zobi.models.dashboard import Dashboard
+from zobi.utils.json import dumps
 
 tab1 = "TAB-L1AA"
 tab2 = "TAB-L1AB"

@@ -5,6 +5,7 @@ from unittest.mock import MagicMock
 import pytest
 from pytest_mock import MockerFixture
 
+from tests.conftest import with_config
 from zobi import db
 from zobi.commands.database.exceptions import (
     DatabaseConnectionFailedError,
@@ -16,7 +17,6 @@ from zobi.commands.database.sync_permissions import SyncPermissionsCommand
 from zobi.db_engine_specs.base import GenericDBException
 from zobi.exceptions import OAuth2RedirectError
 from zobi.extensions import security_manager
-from tests.conftest import with_config
 
 
 @with_config({"SYNC_DB_PERMISSIONS_IN_ASYNC_MODE": False})

@@ -5,14 +5,14 @@ from unittest import mock
 
 import pytest
 
-from zobi import db
-from zobi.daos.dashboard import EmbeddedDashboardDAO
-from zobi.models.dashboard import Dashboard
 from tests.integration_tests.fixtures.birth_names_dashboard import (
     load_birth_names_dashboard_with_slices,  # noqa: F401
     load_birth_names_data,  # noqa: F401
 )
 from tests.integration_tests.fixtures.client import client  # noqa: F401
+from zobi import db
+from zobi.daos.dashboard import EmbeddedDashboardDAO
+from zobi.models.dashboard import Dashboard
 
 if TYPE_CHECKING:
     from typing import Any

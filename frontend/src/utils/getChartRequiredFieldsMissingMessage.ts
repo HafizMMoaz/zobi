@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 
 const CREATE_CHART_TEXT = t('Create chart');

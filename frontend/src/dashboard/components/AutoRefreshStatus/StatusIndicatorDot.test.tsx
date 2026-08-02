@@ -46,9 +46,7 @@ test('renders with paused status', () => {
 });
 
 test('uses the icon color for the paused status outline', () => {
-  expect(
-    getStatusConfig(zobiTheme, AutoRefreshStatus.Paused),
-  ).toMatchObject({
+  expect(getStatusConfig(zobiTheme, AutoRefreshStatus.Paused)).toMatchObject({
     needsBorder: true,
     outlineColor: 'currentColor',
   });

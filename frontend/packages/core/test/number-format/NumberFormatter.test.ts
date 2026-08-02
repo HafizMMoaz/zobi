@@ -1,5 +1,3 @@
-
-
 import { NumberFormatter } from '@zobi.dev/core';
 
 describe('NumberFormatter', () => {

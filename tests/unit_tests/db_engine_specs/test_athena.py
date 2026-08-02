@@ -6,9 +6,9 @@ from typing import Optional
 import pytest
 from sqlalchemy.engine.url import make_url
 
-from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
 from tests.unit_tests.db_engine_specs.utils import assert_convert_dttm
 from tests.unit_tests.fixtures.common import dttm  # noqa
+from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
 
 SYNTAX_ERROR_REGEX = re.compile(
     ": mismatched input '(?P<syntax_error>.*?)'. Expecting: "

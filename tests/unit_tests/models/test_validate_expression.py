@@ -1,4 +1,3 @@
-
 """Unit tests for SqlaTable.validate_expression"""
 
 from unittest.mock import MagicMock, patch

@@ -1,4 +1,3 @@
-
 """
 Cardinality validation to prevent unusable visualizations from high-cardinality data.
 """

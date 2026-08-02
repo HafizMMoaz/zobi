@@ -426,9 +426,7 @@ test.each(doublePrefixTestCases)(
     const expectedEndpoint = `/api/v1/${resource}/export/?q=!(${ids.join(',')})`;
 
     // Explicitly verify no prefix in endpoint - this will fail if ensureAppRoot is used
-    const callArgs = (ZobiClient.get as jest.Mock).mock.calls.slice(
-      -1,
-    )[0][0];
+    const callArgs = (ZobiClient.get as jest.Mock).mock.calls.slice(-1)[0][0];
     expect(callArgs.endpoint).not.toContain(appRoot);
     expect(callArgs.endpoint).toBe(expectedEndpoint);
 

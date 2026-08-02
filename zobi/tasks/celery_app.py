@@ -1,4 +1,3 @@
-
 """
 This is the main entrypoint used by Celery workers. As such,
 it needs to call create_app() in order to initialize things properly

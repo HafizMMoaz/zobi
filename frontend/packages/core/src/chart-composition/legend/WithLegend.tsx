@@ -1,5 +1,3 @@
-
-
 import { CSSProperties, ReactNode, memo, useMemo } from 'react';
 import { ParentSize } from '@visx/responsive';
 

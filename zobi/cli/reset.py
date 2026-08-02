@@ -1,4 +1,3 @@
-
 import sys
 
 import click
@@ -14,8 +13,7 @@ from werkzeug.security import check_password_hash
     "--silent",
     is_flag=True,
     prompt=(
-        "Are you sure you want to reset Zobi? "
-        "This action cannot be undone. Continue?"
+        "Are you sure you want to reset Zobi? This action cannot be undone. Continue?"
     ),
     help="Confirmation flag",
 )

@@ -1,4 +1,3 @@
-
 import { getColumnKeywords } from './getColumnKeywords';
 
 test('returns HTML for a column tooltip', () => {

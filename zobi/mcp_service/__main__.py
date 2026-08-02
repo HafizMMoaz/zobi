@@ -1,4 +1,3 @@
-
 """
 Main entry point for running the MCP service in stdio mode.
 This allows running the service with: python -m zobi.mcp_service

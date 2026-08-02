@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import logging
@@ -34,9 +33,9 @@ from zobi.db_engine_specs.exceptions import ZobiDBAPIConnectionError
 from zobi.errors import ZobiError, ZobiErrorType
 from zobi.exceptions import ZobiException
 from zobi.sql.parse import SQLScript, Table
-from zobi.zobi_typing import ResultSetColumnType
 from zobi.utils import core as utils, json
 from zobi.utils.hashing import hash_from_str
+from zobi.zobi_typing import ResultSetColumnType
 
 if TYPE_CHECKING:
     from sqlalchemy.sql.expression import Select

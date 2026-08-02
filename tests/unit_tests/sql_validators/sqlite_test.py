@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import subprocess
@@ -61,9 +60,7 @@ def test_invalid_syntax_single_error() -> None:
     )
 
     with (
-        patch(
-            "zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"
-        ),
+        patch("zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"),
         patch(
             "zobi.sql_validators.sqlite.subprocess.run",
             return_value=_mock_result(returncode=1, stderr=stderr),
@@ -101,9 +98,7 @@ def test_invalid_syntax_multiple_errors() -> None:
     )
 
     with (
-        patch(
-            "zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"
-        ),
+        patch("zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"),
         patch(
             "zobi.sql_validators.sqlite.subprocess.run",
             return_value=_mock_result(returncode=1, stderr=stderr),
@@ -136,9 +131,7 @@ def test_multiline_error_reports_correct_line() -> None:
     )
 
     with (
-        patch(
-            "zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"
-        ),
+        patch("zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"),
         patch(
             "zobi.sql_validators.sqlite.subprocess.run",
             return_value=_mock_result(returncode=1, stderr=stderr),
@@ -159,9 +152,7 @@ def test_empty_sql() -> None:
     mock_database = MagicMock()
 
     with (
-        patch(
-            "zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"
-        ),
+        patch("zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"),
         patch(
             "zobi.sql_validators.sqlite.subprocess.run",
             return_value=_mock_result(returncode=0),
@@ -181,9 +172,7 @@ def test_valid_complex_query() -> None:
     mock_database = MagicMock()
 
     with (
-        patch(
-            "zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"
-        ),
+        patch("zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"),
         patch(
             "zobi.sql_validators.sqlite.subprocess.run",
             return_value=_mock_result(returncode=0),
@@ -218,9 +207,7 @@ def test_annotation_to_dict() -> None:
     )
 
     with (
-        patch(
-            "zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"
-        ),
+        patch("zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"),
         patch(
             "zobi.sql_validators.sqlite.subprocess.run",
             return_value=_mock_result(returncode=1, stderr=stderr),
@@ -260,9 +247,7 @@ def test_timeout_returns_annotation() -> None:
     mock_database = MagicMock()
 
     with (
-        patch(
-            "zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"
-        ),
+        patch("zobi.sql_validators.sqlite.get_binary_path", return_value="syntaqlite"),
         patch(
             "zobi.sql_validators.sqlite.subprocess.run",
             side_effect=subprocess.TimeoutExpired(cmd="syntaqlite", timeout=10),

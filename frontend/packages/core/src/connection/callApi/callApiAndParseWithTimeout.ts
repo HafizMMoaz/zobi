@@ -1,5 +1,3 @@
-
-
 import callApi from './callApi';
 import rejectAfterTimeout from './rejectAfterTimeout';
 import parseResponse from './parseResponse';

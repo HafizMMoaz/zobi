@@ -1,4 +1,3 @@
-
 from datetime import date, datetime, time, timezone
 from typing import Any
 from unittest.mock import MagicMock
@@ -47,8 +46,8 @@ from zobi.semantic_layers.mapper import (
     ValidatedQueryObject,
     ValidatedQueryObjectFilterClause,
 )
-from zobi.zobi_typing import AdhocColumn
 from zobi.utils.core import FilterOperator
+from zobi.zobi_typing import AdhocColumn
 
 # Alias for convenience
 Feature = SemanticViewFeature
@@ -2968,7 +2967,8 @@ def test_coerce_integer_rejects_non_integer_float() -> None:
 
 def test_coerce_integer_rejects_other_types() -> None:
     with pytest.raises(ValueError, match="Invalid integer value"):
-        _coerce_scalar_filter_value([1], _dim(pa.int64()))
+        # Passing a list is the point of the test, so the type error is expected.
+        _coerce_scalar_filter_value([1], _dim(pa.int64()))  # type: ignore[arg-type]
 
 
 @pytest.mark.parametrize(
@@ -2993,7 +2993,8 @@ def test_coerce_floating_invalid_string_raises() -> None:
 
 def test_coerce_floating_rejects_other_types() -> None:
     with pytest.raises(ValueError, match="Invalid numeric value"):
-        _coerce_scalar_filter_value([1.0], _dim(pa.float64()))
+        # Passing a list is the point of the test, so the type error is expected.
+        _coerce_scalar_filter_value([1.0], _dim(pa.float64()))  # type: ignore[arg-type]
 
 
 def test_coerce_date_from_datetime() -> None:

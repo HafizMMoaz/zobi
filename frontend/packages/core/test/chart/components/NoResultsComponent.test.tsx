@@ -1,5 +1,3 @@
-
-
 import { render, screen } from '@zobi.dev/core/spec';
 import '@testing-library/jest-dom';
 import NoResultsComponent from '../../../src/chart/components/NoResultsComponent';

@@ -43,12 +43,7 @@ import {
 import { useSelector } from 'react-redux';
 import { kebabCase, isEqual } from 'lodash';
 
-import {
-  Collapse,
-  Loading,
-  Label,
-  Tooltip,
-} from '@zobi.dev/core/components';
+import { Collapse, Loading, Label, Tooltip } from '@zobi.dev/core/components';
 import Tabs from '@zobi.dev/core/components/Tabs';
 import { PluginContext } from 'src/components';
 import { useConfirmModal } from 'src/hooks/useConfirmModal';

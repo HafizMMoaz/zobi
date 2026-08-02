@@ -1,4 +1,3 @@
-
 import { SHARED_COLUMN_CONFIG_PROPS } from './constants';
 
 test('should allow commas in D3 format inputs', () => {

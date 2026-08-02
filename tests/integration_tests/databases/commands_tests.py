@@ -5,6 +5,26 @@ import pytest
 import yaml
 from sqlalchemy.exc import DBAPIError
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.fixtures.birth_names_dashboard import (
+    load_birth_names_dashboard_with_slices,  # noqa: F401
+    load_birth_names_data,  # noqa: F401
+)
+from tests.integration_tests.fixtures.energy_dashboard import (
+    load_energy_table_data,  # noqa: F401
+    load_energy_table_with_slice,  # noqa: F401
+)
+from tests.integration_tests.fixtures.importexport import (
+    database_config,
+    database_metadata_config,
+    database_with_ssh_tunnel_config_mix_credentials,
+    database_with_ssh_tunnel_config_no_credentials,
+    database_with_ssh_tunnel_config_password,
+    database_with_ssh_tunnel_config_private_key,
+    database_with_ssh_tunnel_config_private_pass_only,
+    dataset_config,
+    dataset_metadata_config,
+)
 from zobi import db, event_logger, security_manager  # noqa: F401
 from zobi.commands.database.create import CreateDatabaseCommand
 from zobi.commands.database.exceptions import (
@@ -35,26 +55,6 @@ from zobi.exceptions import (
 from zobi.models.core import Database
 from zobi.utils.core import backend
 from zobi.utils.database import get_example_database
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.fixtures.birth_names_dashboard import (
-    load_birth_names_dashboard_with_slices,  # noqa: F401
-    load_birth_names_data,  # noqa: F401
-)
-from tests.integration_tests.fixtures.energy_dashboard import (
-    load_energy_table_data,  # noqa: F401
-    load_energy_table_with_slice,  # noqa: F401
-)
-from tests.integration_tests.fixtures.importexport import (
-    database_config,
-    database_metadata_config,
-    database_with_ssh_tunnel_config_mix_credentials,
-    database_with_ssh_tunnel_config_no_credentials,
-    database_with_ssh_tunnel_config_password,
-    database_with_ssh_tunnel_config_private_key,
-    database_with_ssh_tunnel_config_private_pass_only,
-    dataset_config,
-    dataset_metadata_config,
-)
 
 
 class TestCreateDatabaseCommand(ZobiTestCase):
@@ -921,8 +921,7 @@ class TestTestConnectionDatabaseCommand(ZobiTestCase):
         with pytest.raises(ZobiErrorsException) as excinfo:
             command_without_db_name.run()
         assert (
-            excinfo.value.errors[0].error_type
-            == ZobiErrorType.GENERIC_DB_ENGINE_ERROR
+            excinfo.value.errors[0].error_type == ZobiErrorType.GENERIC_DB_ENGINE_ERROR
         )
 
     @patch("zobi.commands.database.utils.timeout")
@@ -947,8 +946,7 @@ class TestTestConnectionDatabaseCommand(ZobiTestCase):
             command_without_db_name.run()
         assert excinfo.value.status == 408
         assert (
-            excinfo.value.error.error_type
-            == ZobiErrorType.CONNECTION_DATABASE_TIMEOUT
+            excinfo.value.error.error_type == ZobiErrorType.CONNECTION_DATABASE_TIMEOUT
         )
 
     @patch("zobi.models.core.Database._get_sqla_engine")

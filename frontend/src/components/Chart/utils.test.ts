@@ -1,4 +1,3 @@
-
 import { getMenuAdjustedY } from './utils';
 
 const originalInnerHeight = window.innerHeight;

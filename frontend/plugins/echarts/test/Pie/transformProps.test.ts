@@ -1,8 +1,4 @@
-import {
-  ChartProps,
-  getNumberFormatter,
-  SqlaFormData,
-} from '@zobi.dev/core';
+import { ChartProps, getNumberFormatter, SqlaFormData } from '@zobi.dev/core';
 import { zobiTheme } from '@zobi.dev/extension-api/theme';
 import type { PieSeriesOption } from 'echarts/charts';
 import type {

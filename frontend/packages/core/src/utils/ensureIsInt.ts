@@ -1,4 +1,3 @@
-
 export default function ensureIsInt<T>(
   value: T,
   defaultValue?: number,

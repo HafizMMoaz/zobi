@@ -6,7 +6,6 @@ from zobi.common.chart_data import ChartDataResultType
 from zobi.common.query_object import QueryObject
 from zobi.common.utils.time_range_utils import get_since_until_from_time_range
 from zobi.constants import NO_TIME_RANGE
-from zobi.zobi_typing import Column
 from zobi.utils.core import (
     apply_max_row_limit,
     DatasourceDict,
@@ -15,6 +14,7 @@ from zobi.utils.core import (
     get_x_axis_label,
     QueryObjectFilterClause,
 )
+from zobi.zobi_typing import Column
 
 if TYPE_CHECKING:
     from zobi.connectors.sqla.models import BaseDatasource

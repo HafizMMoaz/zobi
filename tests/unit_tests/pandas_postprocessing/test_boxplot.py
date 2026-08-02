@@ -1,9 +1,9 @@
 import pytest
 
+from tests.unit_tests.fixtures.dataframes import names_df
 from zobi.exceptions import InvalidPostProcessingError
 from zobi.utils.core import PostProcessingBoxplotWhiskerType
 from zobi.utils.pandas_postprocessing import boxplot
-from tests.unit_tests.fixtures.dataframes import names_df
 
 
 def test_boxplot_tukey():

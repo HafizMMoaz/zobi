@@ -1,4 +1,3 @@
-
 import { ErrorLevel, ErrorSource, ErrorTypeEnum } from '@zobi.dev/core';
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
 import { DatabaseErrorMessage } from './DatabaseErrorMessage';

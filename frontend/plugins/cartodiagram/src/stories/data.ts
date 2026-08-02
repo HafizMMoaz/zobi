@@ -1,5 +1,3 @@
-
-
 // Sample GeoJSON Points representing cities with chart data
 export const sampleGeoJsonPoints = {
   type: 'FeatureCollection' as const,

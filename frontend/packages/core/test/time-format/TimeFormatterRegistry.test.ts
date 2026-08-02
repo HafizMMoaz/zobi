@@ -1,5 +1,3 @@
-
-
 import { TimeLocaleDefinition } from 'd3-time-format';
 import { TimeFormats, TimeFormatter, PREVIEW_TIME } from '@zobi.dev/core';
 import TimeFormatterRegistry from '../../src/time-format/TimeFormatterRegistry';

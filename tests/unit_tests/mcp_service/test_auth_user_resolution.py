@@ -1,4 +1,3 @@
-
 """Tests for MCP user resolution priority and stale g.user prevention."""
 
 from unittest.mock import MagicMock, patch

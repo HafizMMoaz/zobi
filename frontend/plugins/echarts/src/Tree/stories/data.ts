@@ -1,5 +1,3 @@
-
-
 export default [
   {
     id_column: '1',

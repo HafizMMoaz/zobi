@@ -1,8 +1,7 @@
-
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi import db
 from zobi.models.core import Theme
 from zobi.utils import json
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class TestThemeApiEndpoints(ZobiTestCase):

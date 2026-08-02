@@ -1,4 +1,3 @@
-
 import { ReactNode, CSSProperties, useCallback } from 'react';
 import { truncationCSS, useCSSTextTruncation } from '@zobi.dev/core';
 import { css, useTheme } from '@zobi.dev/extension-api/theme';

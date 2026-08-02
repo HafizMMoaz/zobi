@@ -1,5 +1,3 @@
-
-
 import { ComponentType } from 'react';
 import { isRequired, Plugin, QueryFormData } from '../..';
 import ChartMetadata from './ChartMetadata';

@@ -1,4 +1,3 @@
-
 """
 Functions for mapping `QueryObject` to semantic layers.
 
@@ -40,13 +39,13 @@ from zobi.common.utils.time_range_utils import get_since_until_from_query_object
 from zobi.connectors.sqla.models import BaseDatasource
 from zobi.constants import NO_TIME_RANGE
 from zobi.models.helpers import QueryResult
-from zobi.zobi_typing import AdhocColumn
 from zobi.utils.core import (
     FilterOperator,
     QueryObjectFilterClause,
     TIME_COMPARISON,
 )
 from zobi.utils.date_parser import get_past_or_future
+from zobi.zobi_typing import AdhocColumn
 
 
 class ValidatedQueryObjectFilterClause(QueryObjectFilterClause):

@@ -1,4 +1,3 @@
-
 import { mergeReplaceArrays } from './merge';
 
 describe('lodash utilities', () => {

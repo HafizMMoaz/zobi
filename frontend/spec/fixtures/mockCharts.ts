@@ -1,4 +1,3 @@
-
 export interface ChartListChart {
   id: number;
   slice_name: string;

@@ -1,4 +1,3 @@
-
 import type { ColumnState, SortModelItem } from 'ag-grid-community';
 
 // AG Grid filter type enums

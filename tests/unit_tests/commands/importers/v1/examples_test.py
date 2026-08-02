@@ -229,9 +229,7 @@ def test_transpile_virtual_dataset_sql_postgres_to_sqlite(mock_transpile, mock_d
     mock_transpile.assert_called_once_with(original_sql, "sqlite", "postgresql")
 
 
-@patch(
-    "zobi.commands.importers.v1.examples.safe_insert_dashboard_chart_relationships"
-)
+@patch("zobi.commands.importers.v1.examples.safe_insert_dashboard_chart_relationships")
 @patch("zobi.commands.importers.v1.examples.import_dashboard")
 @patch("zobi.commands.importers.v1.examples.import_chart")
 @patch("zobi.commands.importers.v1.examples.import_dataset")

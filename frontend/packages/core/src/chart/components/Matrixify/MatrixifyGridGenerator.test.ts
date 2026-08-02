@@ -1,4 +1,3 @@
-
 import { generateMatrixifyGrid } from './MatrixifyGridGenerator';
 import { AdhocMetric } from '../../../query/types/Metric';
 

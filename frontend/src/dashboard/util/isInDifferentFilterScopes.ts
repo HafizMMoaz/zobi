@@ -1,4 +1,3 @@
-
 // Dashboard filter structure based on the actual usage pattern
 interface DashboardFilterColumn {
   scope: string[];

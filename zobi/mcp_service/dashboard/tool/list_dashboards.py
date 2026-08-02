@@ -1,4 +1,3 @@
-
 """
 List dashboards FastMCP tool (Advanced with metadata cache control)
 

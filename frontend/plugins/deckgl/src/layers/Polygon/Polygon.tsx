@@ -43,7 +43,6 @@ import {
   createTooltipContent,
   CommonTooltipRows,
 } from '../../utilities/tooltipUtils';
-import { Point } from '../../types';
 
 function getElevation(
   d: JsonObject,
@@ -163,9 +162,7 @@ export const getLayer: GetLayerType<PolygonLayer> = function ({
   }
 
   // when polygons are selected, reduce the opacity of non-selected polygons
-  const colorScaler = (d: {
-    polygon: Point[];
-  }): [number, number, number, number] => {
+  const colorScaler = (d: JsonObject): [number, number, number, number] => {
     const baseColor =
       (baseColorScaler(d) as [number, number, number, number]) ||
       TRANSPARENT_COLOR_ARRAY;

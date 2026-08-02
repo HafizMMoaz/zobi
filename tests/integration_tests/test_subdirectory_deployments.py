@@ -5,9 +5,9 @@ from urllib.parse import parse_qs, urlparse
 
 from werkzeug.test import EnvironBuilder
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi.app import AppRootMiddleware
 from zobi.views.utils import redirect_to_login
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class TestSubdirectoryDeployments(ZobiTestCase):

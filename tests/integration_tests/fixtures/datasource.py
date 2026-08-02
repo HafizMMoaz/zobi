@@ -7,12 +7,12 @@ import pytest
 from sqlalchemy import Column, create_engine, Date, Integer, MetaData, String, Table
 from sqlalchemy.ext.declarative import declarative_base
 
+from tests.integration_tests.test_app import app
 from zobi.connectors.sqla.models import SqlaTable, TableColumn
 from zobi.extensions import db
 from zobi.models.core import Database
 from zobi.utils.core import get_example_default_schema
 from zobi.utils.database import get_example_database  # noqa: F401
-from tests.integration_tests.test_app import app
 
 
 def get_datasource_post() -> dict[str, Any]:

@@ -1,4 +1,3 @@
-
 import type { ValidatorFunction } from '../validator';
 
 /**

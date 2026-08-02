@@ -1,4 +1,3 @@
-
 /**
  * Types mirroring enums in `zobi/reports/models.py`:
  */

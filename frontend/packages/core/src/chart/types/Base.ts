@@ -1,5 +1,3 @@
-
-
 import { BinaryQueryObjectFilterClause, ExtraFormData } from '../../query';
 import { JsonObject } from '../..';
 

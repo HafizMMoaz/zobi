@@ -6,16 +6,16 @@ import pytest
 from flask import current_app
 from sqlalchemy.orm.exc import StaleDataError
 
+from tests.integration_tests.fixtures.tabbed_dashboard import (
+    tabbed_dashboard,  # noqa: F401
+)
+from tests.integration_tests.reports.utils import create_dashboard_report
 from zobi.commands.dashboard.permalink.create import CreateDashboardPermalinkCommand
 from zobi.commands.report.exceptions import ReportScheduleUnexpectedError
 from zobi.commands.report.execute import AsyncExecuteReportScheduleCommand
 from zobi.models.dashboard import Dashboard
 from zobi.reports.models import ReportSourceFormat
 from zobi.utils.urls import get_url_path
-from tests.integration_tests.fixtures.tabbed_dashboard import (
-    tabbed_dashboard,  # noqa: F401
-)
-from tests.integration_tests.reports.utils import create_dashboard_report
 
 
 @patch("zobi.reports.notifications.email.send_email_smtp")

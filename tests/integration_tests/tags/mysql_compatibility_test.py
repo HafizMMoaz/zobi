@@ -4,9 +4,9 @@ import pytest
 from markupsafe import Markup
 from sqlalchemy.exc import ProgrammingError
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi import db
 from zobi.tags.models import get_tag, Tag, TagType
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class TestTagCreationMySQLCompatibility(ZobiTestCase):

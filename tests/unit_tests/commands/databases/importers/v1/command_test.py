@@ -1,4 +1,3 @@
-
 import copy
 import json  # noqa: TID251
 from typing import Any
@@ -72,10 +71,7 @@ def test_import_mask_password(
     ImportDatabasesCommand._import(configs)
     uuid = configs["databases/examples.yaml"]["uuid"]
     database = db.session.query(Database).filter_by(uuid=uuid).one()
-    assert (
-        database.sqlalchemy_uri
-        == "postgresql://user:XXXXXXXXXX@localhost:5432/zobi"
-    )
+    assert database.sqlalchemy_uri == "postgresql://user:XXXXXXXXXX@localhost:5432/zobi"
     assert database.password == "password"  # noqa: S105
 
 

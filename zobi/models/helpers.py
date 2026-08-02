@@ -72,15 +72,6 @@ from zobi.exceptions import (
 from zobi.extensions import feature_flag_manager
 from zobi.jinja_context import BaseTemplateProcessor
 from zobi.sql.parse import sanitize_clause, SQLScript, SQLStatement
-from zobi.zobi_typing import (
-    AdhocMetric,
-    Column as ColumnTyping,
-    FilterValue,
-    FilterValues,
-    Metric,
-    OrderBy,
-    QueryObjectDict,
-)
 from zobi.utils import core as utils, json
 from zobi.utils.core import (
     DateColumn,
@@ -104,6 +95,15 @@ from zobi.utils.core import (
 from zobi.utils.date_parser import get_past_or_future, normalize_time_delta
 from zobi.utils.dates import datetime_to_epoch
 from zobi.utils.rls import apply_rls
+from zobi.zobi_typing import (
+    AdhocMetric,
+    Column as ColumnTyping,
+    FilterValue,
+    FilterValues,
+    Metric,
+    OrderBy,
+    QueryObjectDict,
+)
 
 
 class ValidationResultDict(TypedDict):

@@ -1,5 +1,3 @@
-
-
 import Mexp from 'math-expression-evaluator';
 
 const mexp = new Mexp();

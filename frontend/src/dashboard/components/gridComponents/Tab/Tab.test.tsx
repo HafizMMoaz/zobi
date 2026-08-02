@@ -1,4 +1,3 @@
-
 import {
   fireEvent,
   render,

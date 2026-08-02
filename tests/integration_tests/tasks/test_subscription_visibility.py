@@ -4,12 +4,12 @@ from uuid import uuid4
 
 from zobi_core.tasks.types import TaskScope, TaskStatus
 
+from tests.integration_tests.test_app import app
 from zobi import db
 from zobi.commands.tasks import SubmitTaskCommand
 from zobi.commands.tasks.cancel import CancelTaskCommand
 from zobi.daos.tasks import TaskDAO
 from zobi.utils.core import override_user
-from tests.integration_tests.test_app import app
 
 
 def test_unsubscribed_user_cannot_see_task(app_context, get_user) -> None:

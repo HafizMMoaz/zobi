@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { getDatabaseDocumentationLinks } from 'src/views/CRUD/hooks';
 import { UploadFile } from '@zobi.dev/core/components/Upload';
@@ -19,10 +18,8 @@ export const DOCUMENTATION_LINK = zobiTextDocs
 
 const irregularDocumentationLinks = {
   postgresql: 'https://zobi.dev',
-  mssql:
-    'https://zobi.dev/user-docs/databases/supported/microsoft-sql-server',
-  gsheets:
-    'https://zobi.dev/user-docs/databases/supported/google-sheets',
+  mssql: 'https://zobi.dev/user-docs/databases/supported/microsoft-sql-server',
+  gsheets: 'https://zobi.dev/user-docs/databases/supported/google-sheets',
 };
 
 const documentationLink = (engine: string | undefined) => {

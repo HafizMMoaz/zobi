@@ -1,4 +1,3 @@
-
 import { ExtensibleFunction } from '../models';
 import { getNumberFormatter, NumberFormats } from '../number-format';
 import { Currency } from '../query';

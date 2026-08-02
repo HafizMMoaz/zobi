@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
 import { getMockStoreWithNativeFilters } from 'spec/fixtures/mockStore';

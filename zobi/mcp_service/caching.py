@@ -1,4 +1,3 @@
-
 """
 MCP response caching using FastMCP's native ResponseCachingMiddleware.
 """

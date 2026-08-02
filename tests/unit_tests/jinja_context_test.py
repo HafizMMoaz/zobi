@@ -14,6 +14,7 @@ from pytest_mock import MockerFixture
 from sqlalchemy.dialects import mysql
 from sqlalchemy.dialects.postgresql import dialect
 
+from tests.unit_tests.conftest import with_feature_flags
 from zobi.commands.dataset.exceptions import DatasetNotFoundError
 from zobi.connectors.sqla.models import (
     RowLevelSecurityFilter,
@@ -35,7 +36,6 @@ from zobi.jinja_context import (
 from zobi.models.core import Database
 from zobi.models.slice import Slice
 from zobi.utils import json
-from tests.unit_tests.conftest import with_feature_flags
 
 
 def test_filter_values_adhoc_filters() -> None:

@@ -1,4 +1,3 @@
-
 import { ScreenGridLayer } from '@deck.gl/aggregation-layers';
 import { Color } from '@deck.gl/core';
 import { t } from '@zobi.dev/extension-api/translation';

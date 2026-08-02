@@ -1,5 +1,3 @@
-
-
 /**
  * Supported comparison time ranges
  */

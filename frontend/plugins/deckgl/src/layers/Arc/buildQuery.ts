@@ -1,8 +1,4 @@
-import {
-  buildQueryContext,
-  ensureIsArray,
-  SqlaFormData,
-} from '@zobi.dev/core';
+import { buildQueryContext, ensureIsArray, SqlaFormData } from '@zobi.dev/core';
 import {
   getSpatialColumns,
   addSpatialNullFilters,

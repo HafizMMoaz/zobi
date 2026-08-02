@@ -23,7 +23,6 @@ from zobi.exceptions import (
 from zobi.explorables.base import Explorable
 from zobi.extensions import cache_manager, security_manager
 from zobi.models.helpers import QueryResult
-from zobi.zobi_typing import AdhocColumn, AdhocMetric
 from zobi.utils import csv, excel
 from zobi.utils.cache import generate_cache_key, set_and_log_cache
 from zobi.utils.core import (
@@ -39,6 +38,7 @@ from zobi.utils.core import (
 from zobi.utils.pandas_postprocessing.utils import unescape_separator
 from zobi.views.utils import get_viz
 from zobi.viz import viz_types
+from zobi.zobi_typing import AdhocColumn, AdhocMetric
 
 if TYPE_CHECKING:
     from zobi.common.query_context import QueryContext

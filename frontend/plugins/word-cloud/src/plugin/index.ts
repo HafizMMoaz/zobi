@@ -1,5 +1,3 @@
-
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { ChartMetadata, ChartPlugin } from '@zobi.dev/core';
 import transformProps from './transformProps';

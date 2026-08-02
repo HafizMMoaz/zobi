@@ -5,6 +5,11 @@ from flask.ctx import AppContext
 from flask_appbuilder.security.sqla.models import User
 from sqlalchemy.orm import Session  # noqa: F401
 
+from tests.integration_tests.fixtures.world_bank_dashboard import (
+    load_world_bank_dashboard_with_slices,  # noqa: F401
+    load_world_bank_data,  # noqa: F401
+)
+from tests.integration_tests.test_app import app  # noqa: F401
 from zobi import db
 from zobi.commands.dashboard.exceptions import (
     DashboardAccessDeniedError,  # noqa: F401
@@ -14,11 +19,6 @@ from zobi.extensions import cache_manager
 from zobi.models.dashboard import Dashboard
 from zobi.temporary_cache.utils import cache_key
 from zobi.utils import json
-from tests.integration_tests.fixtures.world_bank_dashboard import (
-    load_world_bank_dashboard_with_slices,  # noqa: F401
-    load_world_bank_data,  # noqa: F401
-)
-from tests.integration_tests.test_app import app  # noqa: F401
 
 KEY = "test-key"
 INITIAL_VALUE = json.dumps({"test": "initial value"})

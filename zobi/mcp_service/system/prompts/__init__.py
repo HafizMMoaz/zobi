@@ -1,4 +1,3 @@
-
 """System prompts for Zobi MCP service"""
 
 # Import to register prompts when module is imported

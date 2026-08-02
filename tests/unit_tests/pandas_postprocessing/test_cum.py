@@ -1,9 +1,6 @@
 import pandas as pd
 import pytest
 
-from zobi.exceptions import InvalidPostProcessingError
-from zobi.utils import pandas_postprocessing as pp
-from zobi.utils.pandas_postprocessing.utils import FLAT_COLUMN_SEPARATOR
 from tests.unit_tests.fixtures.dataframes import (
     multiple_metrics_df,
     single_metric_df,
@@ -11,6 +8,9 @@ from tests.unit_tests.fixtures.dataframes import (
     timeseries_with_gap_df,
 )
 from tests.unit_tests.pandas_postprocessing.utils import series_to_list
+from zobi.exceptions import InvalidPostProcessingError
+from zobi.utils import pandas_postprocessing as pp
+from zobi.utils.pandas_postprocessing.utils import FLAT_COLUMN_SEPARATOR
 
 
 def test_cum_should_not_side_effect():

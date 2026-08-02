@@ -6,11 +6,11 @@ from datetime import timedelta
 
 from sqlalchemy.engine import make_url
 
-from zobi.config import *  # noqa: F403
-from zobi.config import DATA_DIR
 from tests.integration_tests.zobi_test_custom_template_processors import (
     CustomPrestoTemplateProcessor,
 )
+from zobi.config import *  # noqa: F403
+from zobi.config import DATA_DIR
 
 logging.getLogger("flask_appbuilder.baseviews").setLevel(logging.WARNING)
 logging.getLogger("flask_appbuilder.base").setLevel(logging.WARNING)

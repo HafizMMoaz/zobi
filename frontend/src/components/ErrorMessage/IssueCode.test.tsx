@@ -1,4 +1,3 @@
-
 import { render, screen } from 'spec/helpers/testing-library';
 import { IssueCode } from './IssueCode';
 

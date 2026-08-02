@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { JsonValue, TimeGranularity } from '@zobi.dev/core';
 import { ReactNode } from 'react';

@@ -1,7 +1,4 @@
-import {
-  DEFAULT_SORT_SERIES_DATA,
-  sections,
-} from '@zobi.dev/chart-controls';
+import { DEFAULT_SORT_SERIES_DATA, sections } from '@zobi.dev/chart-controls';
 import { t } from '@zobi.dev/extension-api/translation';
 import { LegendOrientation, LegendType } from '../types';
 import {

@@ -1,4 +1,3 @@
-
 /**
  * Tests for the matrixify_enable guard in isMatrixifyVisible() and
  * validator injection via mapStateToProps on real matrixify control definitions.

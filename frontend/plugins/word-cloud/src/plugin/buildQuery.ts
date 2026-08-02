@@ -1,5 +1,3 @@
-
-
 import { buildQueryContext, QueryFormOrderBy } from '@zobi.dev/core';
 import { WordCloudFormData } from '../types';
 

@@ -1,4 +1,3 @@
-
 import { PostProcessingContribution } from '@zobi.dev/core';
 import { PostProcessingFactory } from './types';
 

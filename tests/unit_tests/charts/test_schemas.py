@@ -1,4 +1,3 @@
-
 import pytest
 from flask import current_app
 from marshmallow import ValidationError

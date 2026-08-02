@@ -1,4 +1,3 @@
-
 import { AdhocFilter, DataMask } from '@zobi.dev/core';
 
 export interface ColumnOption {

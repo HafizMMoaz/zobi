@@ -1,4 +1,3 @@
-
 """
 Chart type suggestions based on data characteristics and user intent.
 """

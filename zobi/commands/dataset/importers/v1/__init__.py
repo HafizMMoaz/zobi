@@ -1,4 +1,3 @@
-
 from typing import Any, Optional
 
 from marshmallow import Schema

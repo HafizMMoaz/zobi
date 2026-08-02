@@ -1,4 +1,3 @@
-
 import { parseToNumber } from './numberUtils';
 
 test('should handle numeric values', () => {

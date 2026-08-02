@@ -1,5 +1,3 @@
-
-
 const HUNDRED_PERCENT = { isDynamic: true, multiplier: 1 } as const;
 
 export default function parseLength(

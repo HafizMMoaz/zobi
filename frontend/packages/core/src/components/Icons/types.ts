@@ -13,7 +13,13 @@ export type IconType = AntdIconProps & {
 
 export type CustomIconType = ComponentType<SVGProps<SVGSVGElement>>;
 export type AntdIconType = typeof Icon;
+// Reuse antd's own `component` type rather than restating it: it is a union of
+// component shapes, and restating it as a component over a union of props would
+// not be assignable, because props are contravariant.
+export type AntdIconComponentType = NonNullable<
+  IconComponentProps['component']
+>;
 
 export interface BaseIconProps {
-  component: CustomIconType | AntdIconType;
+  component: CustomIconType | AntdIconType | AntdIconComponentType;
 }

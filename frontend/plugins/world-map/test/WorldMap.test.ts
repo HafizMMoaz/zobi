@@ -1,4 +1,3 @@
-
 import d3 from 'd3';
 import { getNumberFormatter, ValueFormatter } from '@zobi.dev/core';
 import WorldMap from '../src/WorldMap';

@@ -1,4 +1,3 @@
-
 import { SVGProps, forwardRef } from 'react';
 
 const SvgrMock = forwardRef<SVGSVGElement, SVGProps<SVGSVGElement>>(

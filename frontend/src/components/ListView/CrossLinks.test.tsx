@@ -50,10 +50,7 @@ test('should render the link with just one item', () => {
     ],
   });
   expect(screen.getByText('Test dashboard')).toBeInTheDocument();
-  expect(screen.getByRole('link')).toHaveAttribute(
-    'href',
-    `/zobi/dashboard/1`,
-  );
+  expect(screen.getByRole('link')).toHaveAttribute('href', `/zobi/dashboard/1`);
 });
 
 test('should render a custom prefix link', () => {

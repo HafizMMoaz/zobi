@@ -1,15 +1,14 @@
-
 from unittest.mock import ANY, patch
 
 import pytest
 from sqlalchemy.sql.elements import TextClause
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.constants import ADMIN_USERNAME, GAMMA_USERNAME
 from zobi import db, security_manager
 from zobi.connectors.sqla.models import SqlaTable
 from zobi.daos.exceptions import DatasourceTypeNotSupportedError
 from zobi.utils import json
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.constants import ADMIN_USERNAME, GAMMA_USERNAME
 
 
 class TestDatasourceApi(ZobiTestCase):

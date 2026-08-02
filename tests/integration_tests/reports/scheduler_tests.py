@@ -1,4 +1,3 @@
-
 from random import randint
 from unittest.mock import MagicMock, patch
 
@@ -7,11 +6,11 @@ from flask_appbuilder.security.sqla.models import User
 from freezegun import freeze_time
 from freezegun.api import FakeDatetime
 
+from tests.integration_tests.reports.utils import insert_report_schedule
+from tests.integration_tests.test_app import app
 from zobi.extensions import db
 from zobi.reports.models import ReportScheduleType
 from zobi.tasks.scheduler import execute, log_task_failure, scheduler
-from tests.integration_tests.reports.utils import insert_report_schedule
-from tests.integration_tests.test_app import app
 
 
 @pytest.fixture

@@ -1,4 +1,3 @@
-
 # pylint: disable=abstract-method
 from typing import Any, Optional
 

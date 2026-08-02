@@ -1,4 +1,3 @@
-
 export {
   calculateTimeValue,
   calculateContribution,

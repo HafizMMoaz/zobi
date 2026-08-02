@@ -365,10 +365,14 @@ export default function transformProps(
   };
   const legendData = transformedData
     .map(datum => datum.name)
-    .sort((a: string, b: string) => {
+    .sort((a, b) => {
       if (!legendSort) return 0;
-      return legendSort === 'asc' ? a.localeCompare(b) : b.localeCompare(a);
+      const [labelA, labelB] = [String(a ?? ''), String(b ?? '')];
+      return legendSort === 'asc'
+        ? labelA.localeCompare(labelB)
+        : labelB.localeCompare(labelA);
     });
+
   const { effectiveLegendMargin, effectiveLegendType } = resolveLegendLayout({
     chartHeight: height,
     chartWidth: width,

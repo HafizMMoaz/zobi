@@ -44,12 +44,8 @@ def test_run_uses_get_session_id():
         patch(
             "zobi.commands.explore.form_data.create.cache_manager"
         ) as mock_cache_manager,
-        patch(
-            "zobi.commands.explore.form_data.create.random_key"
-        ) as mock_random_key,
-        patch(
-            "zobi.commands.explore.form_data.create.get_user_id"
-        ) as mock_get_user_id,
+        patch("zobi.commands.explore.form_data.create.random_key") as mock_random_key,
+        patch("zobi.commands.explore.form_data.create.get_user_id") as mock_get_user_id,
         patch.object(
             command, "_get_session_id", return_value="test-session-id"
         ) as mock_get_session_id,

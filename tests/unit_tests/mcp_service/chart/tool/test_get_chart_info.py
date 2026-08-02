@@ -1,4 +1,3 @@
-
 """
 Unit tests for get_chart_info MCP tool: dashboard-filter resolution and
 privacy behavior.

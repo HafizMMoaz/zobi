@@ -1,4 +1,3 @@
-
 export { default as CurrencyFormatter } from './CurrencyFormatter';
 export {
   getCurrencySymbol,

@@ -1,4 +1,3 @@
-
 import { isValidElement } from 'react';
 import { render, screen } from '@zobi.dev/core/spec';
 import { CachedLabel } from '.';

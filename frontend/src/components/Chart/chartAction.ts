@@ -957,8 +957,7 @@ export function refreshChart(
     if (!chart) {
       return Promise.resolve();
     }
-    const timeout =
-      getState().dashboardInfo.common.conf.ZOBI_WEBSERVER_TIMEOUT;
+    const timeout = getState().dashboardInfo.common.conf.ZOBI_WEBSERVER_TIMEOUT;
 
     if (
       !chart.latestQueryFormData ||

@@ -1,5 +1,3 @@
-
-
 import {
   SimpleAdhocFilter,
   isBinaryAdhocFilter,

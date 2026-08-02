@@ -4539,9 +4539,7 @@ class TestDatabaseApi(ZobiTestCase):
         db.session.delete(model)
         db.session.commit()
 
-    @mock.patch(
-        "zobi.commands.database.sync_permissions.SyncPermissionsCommand.run"
-    )
+    @mock.patch("zobi.commands.database.sync_permissions.SyncPermissionsCommand.run")
     def test_sync_db_perms_no_access(self, mock_cmmd):
         """
         Database API: Test sync permissions with a user without permission to do so.

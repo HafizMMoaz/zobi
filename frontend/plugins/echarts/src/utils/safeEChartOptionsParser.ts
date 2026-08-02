@@ -1,4 +1,3 @@
-
 import { parse } from 'acorn';
 import type { Node } from 'acorn';
 import type { z } from 'zod';

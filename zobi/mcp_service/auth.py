@@ -1,4 +1,3 @@
-
 """
 Authentication and authorization hooks for MCP tools.
 

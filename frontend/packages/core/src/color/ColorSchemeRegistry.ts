@@ -1,5 +1,3 @@
-
-
 import { RegistryWithDefaultKey, OverwritePolicy } from '../models';
 
 export default class ColorSchemeRegistry<T> extends RegistryWithDefaultKey<T> {

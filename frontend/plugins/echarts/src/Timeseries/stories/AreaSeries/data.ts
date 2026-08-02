@@ -1,5 +1,3 @@
-
-
 export default [
   {
     __timestamp: 1419811200000,

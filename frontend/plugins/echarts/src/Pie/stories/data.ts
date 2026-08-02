@@ -1,5 +1,3 @@
-
-
 export const weekday = [
   { Day: 'Friday', 'SUM(AIR_TIME)': 1943661 },
   { Day: 'Saturday', 'SUM(AIR_TIME)': 1798845 },

@@ -1,4 +1,3 @@
-
 """
 SQL Lab MCP Tools
 """

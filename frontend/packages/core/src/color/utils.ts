@@ -1,4 +1,3 @@
-
 import tinycolor from 'tinycolor2';
 
 const rgbRegex = /^rgb\(\s*(\d+)\s*,\s*(\d+)\s*,\s*(\d+)\s*\)$/;

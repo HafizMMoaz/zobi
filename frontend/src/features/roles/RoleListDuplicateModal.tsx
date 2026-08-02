@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { RoleObject } from 'src/pages/RolesList';
 import { useToasts } from 'src/components/MessageToasts/withToasts';

@@ -1,4 +1,3 @@
-
 """
 Open SQL Lab with Context MCP Tool
 

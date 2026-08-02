@@ -1,4 +1,3 @@
-
 /**
  * All possible draggable items for the chart controls.
  */

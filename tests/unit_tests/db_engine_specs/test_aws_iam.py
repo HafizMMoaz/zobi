@@ -1,4 +1,3 @@
-
 # pylint: disable=import-outside-toplevel, protected-access
 
 from __future__ import annotations
@@ -8,8 +7,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from zobi.exceptions import ZobiSecurityException
 from tests.unit_tests.conftest import with_feature_flags
+from zobi.exceptions import ZobiSecurityException
 
 
 def test_get_iam_credentials_success() -> None:

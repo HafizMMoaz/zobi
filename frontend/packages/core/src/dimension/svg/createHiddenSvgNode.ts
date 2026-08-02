@@ -1,5 +1,3 @@
-
-
 import { SVG_NS } from './constants';
 
 export default function createHiddenSvgNode() {

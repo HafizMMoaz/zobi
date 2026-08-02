@@ -1,6 +1,4 @@
-
-
-import fetchRetry from 'fetch-retry';
+import fetchRetry, { RequestInitRetryParams } from 'fetch-retry';
 import { CallApi, Payload, JsonValue, JsonObject } from '../types';
 import {
   CACHE_AVAILABLE,
@@ -59,7 +57,13 @@ export default async function callApi({
   url: url_,
   searchParams,
 }: CallApi): Promise<Response> {
-  const fetchWithRetry = fetchRetry(fetch, fetchRetryOptions);
+  // `fetch-retry` types its callbacks with nullable `error`/`response`, while
+  // `FetchRetryOptions` declares them non-null. The shapes are otherwise
+  // identical and the values are only read.
+  const fetchWithRetry = fetchRetry(
+    fetch,
+    fetchRetryOptions as RequestInitRetryParams<typeof fetch> | undefined,
+  );
   const url = `${getFullUrl(url_, searchParams)}`;
 
   const request = {

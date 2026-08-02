@@ -1,4 +1,3 @@
-
 """Tests for DetailedJWTVerifier and related middleware."""
 
 import base64

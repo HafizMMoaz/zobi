@@ -1,4 +1,3 @@
-
 """Tests for MCP field-level permission helpers."""
 
 from unittest.mock import Mock

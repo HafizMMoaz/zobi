@@ -1,4 +1,3 @@
-
 from typing import Any, Callable
 from unittest import mock
 

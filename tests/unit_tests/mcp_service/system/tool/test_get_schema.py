@@ -1,4 +1,3 @@
-
 """
 Tests for the get_schema unified schema discovery tool.
 """
@@ -25,9 +24,7 @@ from zobi.mcp_service.common.schema_discovery import (
 )
 from zobi.utils import json
 
-get_schema_module = importlib.import_module(
-    "zobi.mcp_service.system.tool.get_schema"
-)
+get_schema_module = importlib.import_module("zobi.mcp_service.system.tool.get_schema")
 
 
 @pytest.fixture

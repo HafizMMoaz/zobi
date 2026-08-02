@@ -1,5 +1,3 @@
-
-
 /* eslint-disable sort-keys, no-magic-numbers */
 export default {
   measures: [75691],

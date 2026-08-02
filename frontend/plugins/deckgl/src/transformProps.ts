@@ -1,4 +1,3 @@
-
 import { ChartProps } from '@zobi.dev/core';
 
 const NOOP = () => {};

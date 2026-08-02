@@ -1,5 +1,3 @@
-
-
 const DOLLAR = '$,.2f';
 const DOLLAR_SIGNED = '+$,.2f';
 const DOLLAR_ROUND = '$,d';

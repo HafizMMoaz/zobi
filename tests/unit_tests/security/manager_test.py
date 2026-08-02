@@ -1,4 +1,3 @@
-
 # pylint: disable=invalid-name, unused-argument, redefined-outer-name
 
 import json  # noqa: TID251
@@ -18,8 +17,8 @@ from zobi.security.manager import (
     ZobiSecurityManager,
 )
 from zobi.sql.parse import Table
-from zobi.zobi_typing import AdhocColumn, AdhocMetric
 from zobi.utils.core import DatasourceName, override_user
+from zobi.zobi_typing import AdhocColumn, AdhocMetric
 
 
 def test_security_manager(app_context: None) -> None:

@@ -266,9 +266,7 @@ export const displayField = ({
       placeholder=""
       label={t('Display Name')}
       onChange={changeMethods.onChange}
-      helpText={t(
-        'Pick a nickname for how the database will display in Zobi.',
-      )}
+      helpText={t('Pick a nickname for how the database will display in Zobi.')}
     />
   </>
 );

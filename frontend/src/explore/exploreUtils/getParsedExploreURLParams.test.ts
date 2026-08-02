@@ -1,4 +1,3 @@
-
 import { VizType } from '@zobi.dev/core';
 import { getParsedExploreURLParams } from './getParsedExploreURLParams';
 

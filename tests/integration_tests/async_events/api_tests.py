@@ -1,15 +1,15 @@
 from typing import Any, Optional, Type
 from unittest import mock
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.constants import ADMIN_USERNAME
+from tests.integration_tests.test_app import app
 from zobi.async_events.cache_backend import (
     RedisCacheBackend,
     RedisSentinelCacheBackend,
 )
 from zobi.extensions import async_query_manager, async_query_manager_factory
 from zobi.utils import json
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.constants import ADMIN_USERNAME
-from tests.integration_tests.test_app import app
 
 
 class TestAsyncEventApi(ZobiTestCase):

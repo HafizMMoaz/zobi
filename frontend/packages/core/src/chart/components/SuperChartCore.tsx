@@ -1,5 +1,3 @@
-
-
 import {
   forwardRef,
   useCallback,
@@ -28,7 +26,9 @@ function IDENTITY<T>(x: T) {
 const EMPTY = () => null;
 
 interface LoadingProps {
-  error: { toString(): string };
+  // Optional to match `createLoadableRenderer`, which calls `loading({})` while
+  // the modules are still in flight.
+  error?: { toString(): string };
 }
 
 interface LoadedModules {

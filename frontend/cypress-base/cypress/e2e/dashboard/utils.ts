@@ -1,4 +1,3 @@
-
 import { dashboardView, nativeFilters } from 'cypress/support/directories';
 import {
   ChartSpec,

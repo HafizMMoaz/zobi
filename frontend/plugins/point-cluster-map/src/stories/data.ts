@@ -5508,8 +5508,7 @@ export const generateData = (theme: ZobiTheme) => ({
     ],
   },
   hasCustomMetric: false,
-  mapboxApiKey:
-    'pk.EXAMPLE_MAPBOX_TOKEN_REDACTED',
+  mapboxApiKey: 'pk.EXAMPLE_MAPBOX_TOKEN_REDACTED',
   mapStyle: 'mapbox://styles/mapbox/light-v9',
   aggregatorName: 'sum',
   clusteringRadius: '60',

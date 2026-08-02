@@ -1,5 +1,3 @@
-
-
 import { SuperChart } from '@zobi.dev/core';
 import {
   DiligentChartPlugin,

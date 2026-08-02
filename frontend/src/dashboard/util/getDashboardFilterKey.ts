@@ -1,4 +1,3 @@
-
 interface GetDashboardFilterKeyProps {
   chartId: string;
   column: string;

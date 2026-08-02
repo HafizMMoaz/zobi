@@ -5,6 +5,7 @@ import thumbnailDark from './images/thumbnail-dark.png';
 import example from './images/example.png';
 import exampleDark from './images/example-dark.png';
 import buildQuery from './buildQuery';
+import type { SpatialFormData } from '../spatialUtils';
 import transformProps from './transformProps';
 import controlPanel from './controlPanel';
 
@@ -22,7 +23,7 @@ const metadata = new ChartMetadata({
   behaviors: [Behavior.InteractiveChart],
 });
 
-export default class HeatmapChartPlugin extends ChartPlugin {
+export default class HeatmapChartPlugin extends ChartPlugin<SpatialFormData> {
   constructor() {
     super({
       buildQuery,

@@ -1,4 +1,3 @@
-
 import { normalizeCurrency } from '../../src/currency-format/CurrencyFormatter';
 
 test('normalizeCurrency normalizes valid ISO 4217 codes', () => {

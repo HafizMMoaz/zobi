@@ -1,4 +1,3 @@
-
 // Mock isMatrixifyEnabled before loading any modules
 import fetchMock from 'fetch-mock';
 import {

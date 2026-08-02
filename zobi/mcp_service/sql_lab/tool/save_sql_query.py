@@ -1,4 +1,3 @@
-
 """
 Save SQL Query MCP Tool
 

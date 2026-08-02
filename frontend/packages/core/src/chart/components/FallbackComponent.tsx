@@ -1,5 +1,3 @@
-
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { FallbackPropsWithDimension } from './SuperChart';

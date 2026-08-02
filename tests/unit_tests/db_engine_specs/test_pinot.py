@@ -31,8 +31,8 @@ def test_timegrain_expressions(time_grain: str, expected_result: str) -> None:
 
 
 def test_extras_without_ssl() -> None:
-    from zobi.db_engine_specs.pinot import PinotEngineSpec as spec  # noqa: N813
     from tests.integration_tests.fixtures.database import default_db_extra
+    from zobi.db_engine_specs.pinot import PinotEngineSpec as spec  # noqa: N813
 
     database = mock.Mock()
     database.extra = default_db_extra

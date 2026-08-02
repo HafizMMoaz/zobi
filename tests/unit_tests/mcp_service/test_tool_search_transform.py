@@ -1,4 +1,3 @@
-
 """Tests for MCP tool search transform configuration and application."""
 
 from types import SimpleNamespace
@@ -852,9 +851,7 @@ def test_tool_search_permission_filter_hides_disallowed_tools():
 
     with app.app_context():
         g.user = SimpleNamespace(username="viewer")
-        with patch(
-            "zobi.security_manager", new_callable=MagicMock
-        ) as security_manager:
+        with patch("zobi.security_manager", new_callable=MagicMock) as security_manager:
             security_manager.can_access.side_effect = [True, False]
 
             result = _filter_tools_by_current_user_permission(

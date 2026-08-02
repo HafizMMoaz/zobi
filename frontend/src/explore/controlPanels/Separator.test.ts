@@ -1,7 +1,4 @@
-import type {
-  ControlPanelState,
-  ControlState,
-} from '@zobi.dev/chart-controls';
+import type { ControlPanelState, ControlState } from '@zobi.dev/chart-controls';
 import Separator from './Separator';
 
 function getCodeControlMapStateToProps() {

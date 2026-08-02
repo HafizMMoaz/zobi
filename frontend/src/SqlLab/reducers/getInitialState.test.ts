@@ -1,4 +1,3 @@
-
 import { DEFAULT_COMMON_BOOTSTRAP_DATA } from 'src/constants';
 import { runningQuery, successfulQuery } from 'src/SqlLab/fixtures';
 import getInitialState, { dedupeTabHistory } from './getInitialState';

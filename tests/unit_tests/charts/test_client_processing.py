@@ -1,14 +1,12 @@
-
-
 import pandas as pd
 import pytest
 from flask_babel import lazy_gettext as _
 from sqlalchemy.orm.session import Session
 
+from tests.conftest import with_config
 from zobi.charts.client_processing import apply_client_processing, pivot_df, table
 from zobi.common.chart_data import ChartDataResultFormat
 from zobi.utils.core import GenericDataType
-from tests.conftest import with_config
 
 
 def test_pivot_df_no_cols_no_rows_single_metric():

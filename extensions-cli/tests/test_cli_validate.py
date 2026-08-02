@@ -243,8 +243,8 @@ def test_validate_fails_on_license_mismatch(
         frontend_version="1.0.0",
         backend_version="1.0.0",
         ext_license="MIT",
-        frontend_license="MIT",
-        backend_license="MIT",
+        frontend_license="Apache-2.0",
+        backend_license="BSD-3-Clause",
     )
 
     with patch("zobi_extensions_cli.cli.validate_npm"):

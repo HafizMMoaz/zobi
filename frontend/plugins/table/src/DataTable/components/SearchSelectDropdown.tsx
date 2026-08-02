@@ -27,7 +27,7 @@ function SearchSelectDropdown({
       className="search-select"
       value={value || (searchOptions?.[0]?.value ?? '')}
       options={searchOptions}
-      onChange={onChange}
+      onChange={value => onChange(String(value))}
     />
   );
 }

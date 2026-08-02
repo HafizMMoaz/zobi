@@ -1,9 +1,4 @@
-import {
-  ensureIsArray,
-  isDefined,
-  QueryColumn,
-  ValueOf,
-} from '@zobi.dev/core';
+import { ensureIsArray, isDefined, QueryColumn, ValueOf } from '@zobi.dev/core';
 import {
   ColumnMeta,
   ControlPanelState,

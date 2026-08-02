@@ -31,9 +31,9 @@ from zobi.db_engine_specs.exceptions import (
 from zobi.db_engine_specs.presto import PrestoBaseEngineSpec
 from zobi.models.sql_lab import Query
 from zobi.sql.parse import Table
-from zobi.zobi_typing import ResultSetColumnType
 from zobi.utils import json
 from zobi.utils.core import create_ssl_cert_file, get_user_agent, QuerySource
+from zobi.zobi_typing import ResultSetColumnType
 
 if TYPE_CHECKING:
     from zobi.models.core import Database

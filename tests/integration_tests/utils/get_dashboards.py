@@ -1,4 +1,3 @@
-
 from zobi import db
 from zobi.models.dashboard import Dashboard
 

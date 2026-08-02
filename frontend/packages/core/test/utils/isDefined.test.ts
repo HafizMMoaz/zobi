@@ -1,5 +1,3 @@
-
-
 import { isDefined } from '@zobi.dev/core';
 
 describe('isDefined(value)', () => {

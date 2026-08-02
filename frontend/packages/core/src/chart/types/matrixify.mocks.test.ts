@@ -1,4 +1,3 @@
-
 import { isMatrixifyEnabled, MatrixifyGridRenderer } from './matrixify.mocks';
 
 test('isMatrixifyEnabled mock returns false by default', () => {

@@ -1,4 +1,3 @@
-
 # pylint: disable=import-outside-toplevel, unused-argument
 
 from pytest_mock import MockerFixture

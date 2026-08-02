@@ -11,6 +11,7 @@ import example3Dark from './images/example3-dark.png';
 import thumbnail from './images/thumbnail.png';
 import thumbnailDark from './images/thumbnail-dark.png';
 import controlPanel from './controlPanel';
+import type { HeatmapChartProps, HeatmapFormData } from './types';
 
 const metadata = new ChartMetadata({
   category: t('Correlation'),
@@ -35,7 +36,10 @@ const metadata = new ChartMetadata({
   thumbnailDark,
 });
 
-export default class EchartsHeatmapChartPlugin extends ChartPlugin {
+export default class EchartsHeatmapChartPlugin extends ChartPlugin<
+  HeatmapFormData,
+  HeatmapChartProps
+> {
   constructor() {
     super({
       buildQuery,

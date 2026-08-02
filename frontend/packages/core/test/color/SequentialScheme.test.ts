@@ -1,5 +1,3 @@
-
-
 import { SequentialScheme } from '@zobi.dev/core';
 
 describe('SequentialScheme', () => {

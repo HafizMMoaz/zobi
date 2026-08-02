@@ -1,4 +1,3 @@
-
 """
 Unit tests for mcp_core reusable core classes.
 

@@ -1,4 +1,3 @@
-
 import { AggregateOption } from './aggregateOptionType';
 
 test('AggregateOption type should enforce aggregate_name as string', () => {

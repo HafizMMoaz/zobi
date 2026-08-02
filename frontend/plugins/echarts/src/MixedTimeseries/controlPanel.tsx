@@ -304,7 +304,8 @@ function createAdvancedAnalyticsSection(
     return aaWithSuffix;
   }
   aaWithSuffix.controlSetRows.forEach(row =>
-    row.forEach((control: CustomControlItem) => {
+    row.forEach(item => {
+      const control = item as CustomControlItem;
       if (control?.name) {
         // eslint-disable-next-line no-param-reassign
         control.name = `${control.name}${controlSuffix}`;

@@ -1,4 +1,3 @@
-
 import { ScopeRow } from './ScopeRow';
 import { DependenciesRow } from './DependenciesRow';
 import { NameRow } from './NameRow';

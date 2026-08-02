@@ -2,14 +2,14 @@ from importlib import import_module
 
 import pytest
 
-from zobi import db
-from zobi.connectors.sqla.models import SqlaTable
-from zobi.models.slice import Slice
-from zobi.utils.core import backend, get_example_default_schema
 from tests.integration_tests.fixtures.birth_names_dashboard import (
     load_birth_names_dashboard_with_slices,  # noqa: F401
     load_birth_names_data,  # noqa: F401
 )
+from zobi import db
+from zobi.connectors.sqla.models import SqlaTable
+from zobi.models.slice import Slice
+from zobi.utils.core import backend, get_example_default_schema
 
 migration_module = import_module(
     "zobi.migrations.versions."

@@ -1,5 +1,3 @@
-
-
 import { ChartProps, getColumnLabel } from '@zobi.dev/core';
 import { WordCloudProps, WordCloudEncoding } from '../chart/WordCloud';
 import { WordCloudFormData } from '../types';

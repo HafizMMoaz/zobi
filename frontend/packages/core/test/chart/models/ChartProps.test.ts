@@ -1,5 +1,3 @@
-
-
 import { Behavior, ChartProps } from '@zobi.dev/core';
 import { zobiTheme } from '@zobi.dev/extension-api/theme';
 

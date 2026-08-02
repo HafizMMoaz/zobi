@@ -1,4 +1,3 @@
-
 """Tests for MCP RBAC permission checking (auth.py)."""
 
 from unittest.mock import MagicMock, patch

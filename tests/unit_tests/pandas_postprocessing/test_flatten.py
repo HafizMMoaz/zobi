@@ -1,8 +1,8 @@
 import pandas as pd
 
+from tests.unit_tests.fixtures.dataframes import timeseries_df
 from zobi.utils import pandas_postprocessing as pp
 from zobi.utils.pandas_postprocessing.utils import FLAT_COLUMN_SEPARATOR
-from tests.unit_tests.fixtures.dataframes import timeseries_df
 
 
 def test_flat_should_not_change():

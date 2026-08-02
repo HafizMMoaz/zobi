@@ -67,12 +67,8 @@ def test_update_command_success(session_with_data: Session, mocker: MockerFixtur
     from zobi.tags.models import ObjectType, TaggedObject
 
     dashboard = db.session.query(Dashboard).first()
-    mocker.patch(
-        "zobi.security.ZobiSecurityManager.is_admin", return_value=True
-    )
-    mocker.patch(
-        "zobi.daos.dashboard.DashboardDAO.find_by_id", return_value=dashboard
-    )
+    mocker.patch("zobi.security.ZobiSecurityManager.is_admin", return_value=True)
+    mocker.patch("zobi.daos.dashboard.DashboardDAO.find_by_id", return_value=dashboard)
 
     objects_to_tag = [
         (ObjectType.dashboard, dashboard.id),
@@ -107,13 +103,9 @@ def test_update_command_success_duplicates(
     dashboard = db.session.query(Dashboard).first()
     chart = db.session.query(Slice).first()
 
-    mocker.patch(
-        "zobi.security.ZobiSecurityManager.is_admin", return_value=True
-    )
+    mocker.patch("zobi.security.ZobiSecurityManager.is_admin", return_value=True)
     mocker.patch("zobi.daos.chart.ChartDAO.find_by_id", return_value=chart)
-    mocker.patch(
-        "zobi.daos.dashboard.DashboardDAO.find_by_id", return_value=dashboard
-    )
+    mocker.patch("zobi.daos.dashboard.DashboardDAO.find_by_id", return_value=dashboard)
 
     objects_to_tag = [
         (ObjectType.dashboard, dashboard.id),
@@ -161,13 +153,9 @@ def test_update_command_failed_validation(
         (ObjectType.chart, chart.id),
     ]
 
-    mocker.patch(
-        "zobi.security.ZobiSecurityManager.is_admin", return_value=True
-    )
+    mocker.patch("zobi.security.ZobiSecurityManager.is_admin", return_value=True)
     mocker.patch("zobi.daos.chart.ChartDAO.find_by_id", return_value=chart)
-    mocker.patch(
-        "zobi.daos.dashboard.DashboardDAO.find_by_id", return_value=dashboard
-    )
+    mocker.patch("zobi.daos.dashboard.DashboardDAO.find_by_id", return_value=dashboard)
 
     CreateCustomTagWithRelationshipsCommand(
         data={"name": "test_tag", "objects_to_tag": objects_to_tag}
@@ -210,13 +198,9 @@ def test_update_command_remove_all_tagged_objects(
     dashboard = db.session.query(Dashboard).first()
     chart = db.session.query(Slice).first()
 
-    mocker.patch(
-        "zobi.security.ZobiSecurityManager.is_admin", return_value=True
-    )
+    mocker.patch("zobi.security.ZobiSecurityManager.is_admin", return_value=True)
     mocker.patch("zobi.daos.chart.ChartDAO.find_by_id", return_value=chart)
-    mocker.patch(
-        "zobi.daos.dashboard.DashboardDAO.find_by_id", return_value=dashboard
-    )
+    mocker.patch("zobi.daos.dashboard.DashboardDAO.find_by_id", return_value=dashboard)
 
     # Create a tag with multiple objects
     objects_to_tag = [

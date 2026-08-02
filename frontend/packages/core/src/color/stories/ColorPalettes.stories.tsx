@@ -1,5 +1,3 @@
-
-
 import {
   CategoricalAirbnb,
   CategoricalD3,

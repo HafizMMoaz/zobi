@@ -1,4 +1,3 @@
-
 """Tests for get_chart_type_schema tool logic."""
 
 import pytest

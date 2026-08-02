@@ -1,4 +1,3 @@
-
 import {
   ControlPanelConfig,
   CustomControlItem,

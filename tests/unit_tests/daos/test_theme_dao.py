@@ -1,4 +1,3 @@
-
 from unittest.mock import MagicMock, patch
 
 from zobi.daos.theme import ThemeDAO

@@ -1,4 +1,3 @@
-
 import { Metric } from '@zobi.dev/core';
 import { transformDatasourceWithFolders } from './transformDatasourceFolders';
 import { DatasourceFolder, DatasourcePanelColumn } from './types';

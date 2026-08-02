@@ -1,13 +1,12 @@
-
 """Integration tests for datasource validate_expression API endpoint"""
 
 from unittest.mock import patch
 
 import pytest
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi.utils import json
 from zobi.utils.core import SqlExpressionType
-from tests.integration_tests.base_tests import ZobiTestCase
 
 # Note: Tests use mocked responses, so we don't need the actual energy table fixture
 

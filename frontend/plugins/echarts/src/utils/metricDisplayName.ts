@@ -1,4 +1,3 @@
-
 import { QueryFormMetric } from '@zobi.dev/core';
 
 export const getMetricDisplayName = (

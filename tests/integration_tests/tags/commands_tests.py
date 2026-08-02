@@ -5,23 +5,6 @@ import pytest
 import yaml  # noqa: F401
 from werkzeug.utils import secure_filename  # noqa: F401
 
-from zobi import db, security_manager  # noqa: F401
-from zobi.commands.dashboard.exceptions import DashboardNotFoundError  # noqa: F401
-from zobi.commands.dashboard.export import (
-    append_charts,  # noqa: F401
-    ExportDashboardsCommand,  # noqa: F401
-    get_default_position,  # noqa: F401
-)
-from zobi.commands.dashboard.importers import v0, v1  # noqa: F401
-from zobi.commands.exceptions import CommandInvalidError  # noqa: F401
-from zobi.commands.importers.exceptions import IncorrectVersionError  # noqa: F401
-from zobi.commands.tag.create import CreateCustomTagCommand
-from zobi.commands.tag.delete import DeleteTaggedObjectCommand, DeleteTagsCommand
-from zobi.connectors.sqla.models import SqlaTable  # noqa: F401
-from zobi.models.core import Database  # noqa: F401
-from zobi.models.dashboard import Dashboard
-from zobi.models.slice import Slice  # noqa: F401
-from zobi.tags.models import ObjectType, Tag, TaggedObject, TagType
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.fixtures.importexport import (
     chart_config,  # noqa: F401
@@ -39,6 +22,23 @@ from tests.integration_tests.fixtures.world_bank_dashboard import (
     load_world_bank_dashboard_with_slices,  # noqa: F401
     load_world_bank_data,  # noqa: F401
 )
+from zobi import db, security_manager  # noqa: F401
+from zobi.commands.dashboard.exceptions import DashboardNotFoundError  # noqa: F401
+from zobi.commands.dashboard.export import (
+    append_charts,  # noqa: F401
+    ExportDashboardsCommand,  # noqa: F401
+    get_default_position,  # noqa: F401
+)
+from zobi.commands.dashboard.importers import v0, v1  # noqa: F401
+from zobi.commands.exceptions import CommandInvalidError  # noqa: F401
+from zobi.commands.importers.exceptions import IncorrectVersionError  # noqa: F401
+from zobi.commands.tag.create import CreateCustomTagCommand
+from zobi.commands.tag.delete import DeleteTaggedObjectCommand, DeleteTagsCommand
+from zobi.connectors.sqla.models import SqlaTable  # noqa: F401
+from zobi.models.core import Database  # noqa: F401
+from zobi.models.dashboard import Dashboard
+from zobi.models.slice import Slice  # noqa: F401
+from zobi.tags.models import ObjectType, Tag, TaggedObject, TagType
 
 
 # test create command

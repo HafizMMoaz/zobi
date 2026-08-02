@@ -1,4 +1,3 @@
-
 """
 MCP Redis storage factory.
 

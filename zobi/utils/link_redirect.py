@@ -1,4 +1,3 @@
-
 """
 Utilities for processing links in alert/report emails.
 

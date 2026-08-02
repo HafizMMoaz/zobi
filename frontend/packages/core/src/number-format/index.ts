@@ -1,5 +1,3 @@
-
-
 export { default as NumberFormats } from './NumberFormats';
 export { default as NumberFormatter, PREVIEW_VALUE } from './NumberFormatter';
 export { DEFAULT_D3_FORMAT } from './D3FormatConfig';

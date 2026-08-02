@@ -1,4 +1,3 @@
-
 """System resources for Zobi MCP service"""
 
 # Import to register resources when module is imported

@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { Tag } from 'src/components';
 import { FC } from 'react';

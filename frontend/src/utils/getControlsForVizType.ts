@@ -1,4 +1,3 @@
-
 import memoizeOne from 'memoize-one';
 import React from 'react';
 import { isControlPanelSectionConfig } from '@zobi.dev/chart-controls';

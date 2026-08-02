@@ -1,4 +1,3 @@
-
 # pylint: disable=import-outside-toplevel, protected-access
 
 from __future__ import annotations
@@ -17,20 +16,20 @@ from sqlalchemy.dialects import sqlite
 from sqlalchemy.engine.url import make_url, URL
 from sqlalchemy.sql import sqltypes
 
+from tests.conftest import with_config
+from tests.unit_tests.db_engine_specs.utils import assert_column_spec
 from zobi.db_engine_specs.base import BaseEngineSpec, convert_inspector_columns
 from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
 from zobi.exceptions import OAuth2RedirectError
 from zobi.sql.parse import Table
+from zobi.utils.core import FilterOperator, GenericDataType
+from zobi.utils.oauth2 import decode_oauth2_state
 from zobi.zobi_typing import (
     OAuth2ClientConfig,
     OAuth2State,
     ResultSetColumnType,
     SQLAColumnType,
 )
-from zobi.utils.core import FilterOperator, GenericDataType
-from zobi.utils.oauth2 import decode_oauth2_state
-from tests.conftest import with_config
-from tests.unit_tests.db_engine_specs.utils import assert_column_spec
 
 
 def create_expected_zobi_error(

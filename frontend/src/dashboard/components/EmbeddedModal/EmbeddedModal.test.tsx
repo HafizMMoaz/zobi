@@ -4,11 +4,7 @@ import {
   userEvent,
   waitFor,
 } from 'spec/helpers/testing-library';
-import {
-  ZobiApiError,
-  getExtensionsRegistry,
-  makeApi,
-} from '@zobi.dev/core';
+import { ZobiApiError, getExtensionsRegistry, makeApi } from '@zobi.dev/core';
 import setupCodeOverrides from 'src/setup/setupCodeOverrides';
 import DashboardEmbedModal from '.';
 

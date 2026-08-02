@@ -1,4 +1,3 @@
-
 """
 MCP tool: list_charts (advanced filtering with metadata cache control)
 """

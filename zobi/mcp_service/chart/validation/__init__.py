@@ -1,4 +1,3 @@
-
 """Chart validation module."""
 
 from .dataset_validator import DatasetValidator

@@ -1,4 +1,3 @@
-
 /**
  * Method to check if a number is within inclusive range between a maximum value minus a threshold
  * Invalid non numeric inputs will not error, but will return false

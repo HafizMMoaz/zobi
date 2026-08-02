@@ -1,4 +1,3 @@
-
 """Unit tests for the open_sql_lab_with_context MCP tool."""
 
 import importlib
@@ -265,9 +264,7 @@ class TestOpenSqlLabWithContext:
             )
 
             with (
-                patch(
-                    "zobi.daos.database.DatabaseDAO.find_by_id", return_value=None
-                ),
+                patch("zobi.daos.database.DatabaseDAO.find_by_id", return_value=None),
                 patch.object(
                     mod.event_logger, "log_context", return_value=nullcontext()
                 ),

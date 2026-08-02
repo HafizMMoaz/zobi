@@ -6,6 +6,7 @@ import example from './images/example.png';
 import exampleDark from './images/example-dark.png';
 import transformProps from './transformProps';
 import buildQuery from './buildQuery';
+import type { DeckArcFormData } from './buildQuery';
 import controlPanel from './controlPanel';
 
 const metadata = new ChartMetadata({
@@ -26,7 +27,7 @@ const metadata = new ChartMetadata({
   tags: [t('deckGL'), t('Geo'), t('3D'), t('Relational'), t('Web')],
 });
 
-export default class ArcChartPlugin extends ChartPlugin {
+export default class ArcChartPlugin extends ChartPlugin<DeckArcFormData> {
   constructor() {
     super({
       buildQuery,

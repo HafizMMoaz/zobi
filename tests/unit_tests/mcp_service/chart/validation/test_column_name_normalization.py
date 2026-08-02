@@ -1,4 +1,3 @@
-
 """Tests for column name normalization in the MCP service.
 
 This tests the fix for the issue where time series charts would incorrectly

@@ -1,4 +1,3 @@
-
 # Field has been moved outside of the schemas.py file to
 # allow for it to be imported from outside of app_context
 from marshmallow import fields

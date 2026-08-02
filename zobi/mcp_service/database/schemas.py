@@ -1,4 +1,3 @@
-
 """
 Pydantic schemas for database-related responses
 """

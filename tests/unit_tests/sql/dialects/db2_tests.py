@@ -1,4 +1,3 @@
-
 import pytest
 from sqlglot import errors, parse_one
 

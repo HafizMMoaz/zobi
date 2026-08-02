@@ -1,10 +1,5 @@
 import { useHistory } from 'react-router-dom';
-import {
-  Button,
-  DropdownButton,
-  Menu,
-  Flex,
-} from '@zobi.dev/core/components';
+import { Button, DropdownButton, Menu, Flex } from '@zobi.dev/core/components';
 import { t } from '@zobi.dev/extension-api/translation';
 import { useTheme } from '@zobi.dev/extension-api/theme';
 import { Icons } from '@zobi.dev/core/components/Icons';

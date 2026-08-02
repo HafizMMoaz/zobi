@@ -224,9 +224,7 @@ test('useDatasetsList handles network timeout gracefully', async () => {
   };
   timeoutError.status = 0;
 
-  const getSpy = jest
-    .spyOn(ZobiClient, 'get')
-    .mockRejectedValue(timeoutError);
+  const getSpy = jest.spyOn(ZobiClient, 'get').mockRejectedValue(timeoutError);
 
   const { result } = renderHook(() => useDatasetsList(mockDb, 'public'));
 

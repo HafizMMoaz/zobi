@@ -1,4 +1,3 @@
-
 from alembic.operations import Operations
 from sqlalchemy.engine.reflection import Inspector
 

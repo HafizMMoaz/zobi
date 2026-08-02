@@ -1,10 +1,10 @@
 from unittest import mock
 
-from zobi.db_engine_specs import get_engine_spec
-from zobi.db_engine_specs.databricks import DatabricksNativeEngineSpec
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.fixtures.certificates import ssl_certificate
 from tests.integration_tests.fixtures.database import default_db_extra
+from zobi.db_engine_specs import get_engine_spec
+from zobi.db_engine_specs.databricks import DatabricksNativeEngineSpec
 
 
 class TestDatabricksDbEngineSpec(ZobiTestCase):

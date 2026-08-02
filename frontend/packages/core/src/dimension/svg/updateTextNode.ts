@@ -1,5 +1,3 @@
-
-
 import { TextStyle } from '../types';
 
 const STYLE_FIELDS: (keyof TextStyle)[] = [

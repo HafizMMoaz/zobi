@@ -1,4 +1,3 @@
-
 """
 Cache control schemas for MCP tools.
 

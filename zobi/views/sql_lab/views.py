@@ -9,7 +9,6 @@ from sqlalchemy import and_
 
 from zobi import db
 from zobi.models.sql_lab import Query, TableSchema, TabState
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils import json
 from zobi.utils.core import error_msg_from_exception, get_user_id
 from zobi.views.base import (
@@ -17,6 +16,7 @@ from zobi.views.base import (
     json_error_response,
     json_success,
 )
+from zobi.zobi_typing import FlaskResponse
 
 logger = logging.getLogger(__name__)
 

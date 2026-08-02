@@ -1,4 +1,3 @@
-
 import { FC, SVGProps, useEffect, useRef, useState } from 'react';
 import TransparentIcon from './svgs/transparent.svg';
 import { IconType } from './types';

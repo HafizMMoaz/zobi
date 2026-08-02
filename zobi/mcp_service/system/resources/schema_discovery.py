@@ -1,4 +1,3 @@
-
 """
 MCP Resources for schema discovery.
 

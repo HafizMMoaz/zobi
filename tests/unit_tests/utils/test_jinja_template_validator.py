@@ -1,4 +1,3 @@
-
 import pytest
 
 from zobi.utils.jinja_template_validator import (

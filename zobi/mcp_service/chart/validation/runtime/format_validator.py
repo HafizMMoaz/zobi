@@ -1,4 +1,3 @@
-
 """
 Format-type compatibility validation to prevent misleading data presentation.
 """

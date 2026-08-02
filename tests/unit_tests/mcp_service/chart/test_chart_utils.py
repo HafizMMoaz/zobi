@@ -1,4 +1,3 @@
-
 """Tests for chart utilities module"""
 
 from typing import Any

@@ -1,4 +1,3 @@
-
 import { CSSProperties, memo } from 'react';
 import type { ListChildComponentProps } from 'react-window';
 import { useDroppable } from '@dnd-kit/core';

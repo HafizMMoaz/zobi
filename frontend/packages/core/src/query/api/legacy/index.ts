@@ -1,5 +1,3 @@
-
-
 export { default as getFormData } from './getFormData';
 export { default as getDatasourceMetadata } from './getDatasourceMetadata';
 

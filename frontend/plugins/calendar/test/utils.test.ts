@@ -1,4 +1,3 @@
-
 import { getFormattedUTCTime, convertUTCTimestampToLocal } from '../src/utils';
 
 describe('getFormattedUTCTime', () => {

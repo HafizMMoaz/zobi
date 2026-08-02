@@ -1,5 +1,3 @@
-
-
 export type TimeFormatFunction = (value: Date) => string;
 
 export type TimeRangeFormatFunction = (

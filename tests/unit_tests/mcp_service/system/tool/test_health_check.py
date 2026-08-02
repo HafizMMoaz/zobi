@@ -1,4 +1,3 @@
-
 """Tests for health_check MCP tool."""
 
 from zobi.mcp_service.system.schemas import HealthCheckResponse

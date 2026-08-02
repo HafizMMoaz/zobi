@@ -6,9 +6,7 @@ import { themeObject } from './theme';
 
 // Define the wrapper component outside
 const Providers = ({ children }: { children: React.ReactNode }) => (
-  <themeObject.ZobiThemeProvider>
-    {children}
-  </themeObject.ZobiThemeProvider>
+  <themeObject.ZobiThemeProvider>{children}</themeObject.ZobiThemeProvider>
 );
 
 // Follow the exact pattern from RTL docs

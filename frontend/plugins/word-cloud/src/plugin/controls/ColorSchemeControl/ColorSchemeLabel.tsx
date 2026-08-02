@@ -1,4 +1,3 @@
-
 import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { useRef, useState } from 'react';
 import { Tooltip } from '@zobi.dev/core/components';

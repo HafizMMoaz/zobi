@@ -1,4 +1,3 @@
-
 import { util } from 'echarts';
 import { isZoomConfigsFixed, isZoomConfigsLinear } from './typeguards';
 import {

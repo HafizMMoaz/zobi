@@ -1,4 +1,3 @@
-
 import type { ColumnConfig, Entry } from '../../types';
 
 export interface ValueCalculationResult {

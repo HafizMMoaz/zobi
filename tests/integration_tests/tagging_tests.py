@@ -1,7 +1,10 @@
-
-
 import pytest
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.conftest import with_feature_flags
+from tests.integration_tests.fixtures.tags import (
+    with_tagging_system_feature,  # noqa: F401
+)
 from zobi.connectors.sqla.models import SqlaTable
 from zobi.extensions import db
 from zobi.models.core import FavStar
@@ -11,11 +14,6 @@ from zobi.models.sql_lab import SavedQuery
 from zobi.tags.models import TaggedObject
 from zobi.utils.core import DatasourceType
 from zobi.utils.database import get_main_database
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.conftest import with_feature_flags
-from tests.integration_tests.fixtures.tags import (
-    with_tagging_system_feature,  # noqa: F401
-)
 
 
 class TestTagging(ZobiTestCase):

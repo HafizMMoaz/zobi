@@ -1,4 +1,3 @@
-
 import { forwardRef, MouseEvent, ReactNode, RefObject } from 'react';
 
 import { t } from '@zobi.dev/extension-api/translation';

@@ -1,4 +1,3 @@
-
 """
 System prompts for general guidance
 """

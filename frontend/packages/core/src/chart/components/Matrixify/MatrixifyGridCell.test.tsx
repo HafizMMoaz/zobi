@@ -1,4 +1,3 @@
-
 import { render, screen } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ThemeProvider, zobiTheme } from '@zobi.dev/extension-api/theme';

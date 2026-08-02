@@ -1,4 +1,3 @@
-
 export interface ChartTypeLimitation {
   maxDimensions: number;
   dimensionNames: string[];

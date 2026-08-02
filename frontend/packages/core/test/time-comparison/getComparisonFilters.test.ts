@@ -1,5 +1,3 @@
-
-
 import { getComparisonFilters, VizType } from '@zobi.dev/core';
 
 const form_data = {

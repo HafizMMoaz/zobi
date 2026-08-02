@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { sharedControls } from '@zobi.dev/chart-controls';
 

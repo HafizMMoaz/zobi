@@ -20,6 +20,15 @@ from sqlalchemy.ext.declarative import DeclarativeMeta
 from sqlalchemy.orm import Session  # noqa: F401
 from sqlalchemy.sql import func
 
+from tests.integration_tests.constants import ADMIN_USERNAME
+from tests.integration_tests.fixtures.importexport import (
+    chart_config,
+    dashboard_config,
+    database_config,
+    dataset_config,
+    metadata_files,
+)
+from tests.integration_tests.test_app import app, login
 from zobi import db, security_manager
 from zobi.connectors.sqla.models import BaseDatasource, SqlaTable
 from zobi.models import core as models
@@ -31,15 +40,6 @@ from zobi.utils import json
 from zobi.utils.core import get_example_default_schema, shortid
 from zobi.utils.database import get_example_database
 from zobi.views.base_api import BaseZobiModelRestApi
-from tests.integration_tests.constants import ADMIN_USERNAME
-from tests.integration_tests.fixtures.importexport import (
-    chart_config,
-    dashboard_config,
-    database_config,
-    dataset_config,
-    metadata_files,
-)
-from tests.integration_tests.test_app import app, login
 
 FAKE_DB_NAME = "fake_db_100"
 DEFAULT_PASSWORD = "general"  # noqa: S105

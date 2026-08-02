@@ -1,8 +1,6 @@
-
 import rison
 from flask import current_app, Response
 
-from zobi import security_manager
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.dashboards.consts import *  # noqa: F403
 from tests.integration_tests.dashboards.dashboard_test_utils import (
@@ -11,6 +9,7 @@ from tests.integration_tests.dashboards.dashboard_test_utils import (
 from tests.integration_tests.dashboards.zobi_factory_util import (
     delete_all_inserted_objects,
 )
+from zobi import security_manager
 
 
 class DashboardTestCase(ZobiTestCase):

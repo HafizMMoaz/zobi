@@ -1,4 +1,3 @@
-
 import { render, screen } from '@zobi.dev/core/spec';
 import * as themeModule from '@zobi.dev/extension-api/theme';
 import { Loading } from '.';

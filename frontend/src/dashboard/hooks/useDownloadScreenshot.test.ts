@@ -98,9 +98,7 @@ test('does not issue overlapping GETs while a previous GET is in-flight', async 
   mockPostSuccess();
 
   // GET never resolves within the test — simulates a slow screenshot request.
-  (ZobiClient.get as jest.Mock).mockImplementation(
-    () => new Promise(() => {}),
-  );
+  (ZobiClient.get as jest.Mock).mockImplementation(() => new Promise(() => {}));
 
   await triggerDownload();
 

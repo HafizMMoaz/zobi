@@ -3,9 +3,9 @@ from typing import Optional
 
 import pytest
 
-from zobi.constants import TimeGrain
 from tests.unit_tests.db_engine_specs.utils import assert_convert_dttm
 from tests.unit_tests.fixtures.common import dttm  # noqa: F401
+from zobi.constants import TimeGrain
 
 
 @pytest.mark.parametrize(

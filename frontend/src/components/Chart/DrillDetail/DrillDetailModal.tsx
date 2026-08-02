@@ -1,11 +1,7 @@
-
 import { useCallback, useContext, useMemo } from 'react';
 import { useHistory } from 'react-router-dom';
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  BinaryQueryObjectFilterClause,
-  QueryFormData,
-} from '@zobi.dev/core';
+import { BinaryQueryObjectFilterClause, QueryFormData } from '@zobi.dev/core';
 import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import { Button, Modal } from '@zobi.dev/core/components';
 import { useSelector } from 'react-redux';

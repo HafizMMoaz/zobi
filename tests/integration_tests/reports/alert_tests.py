@@ -8,11 +8,11 @@ import pytest
 from flask.ctx import AppContext
 from pytest_mock import MockerFixture
 
+from tests.integration_tests.test_app import app
 from zobi.commands.report.exceptions import AlertQueryError
 from zobi.reports.models import ReportCreationMethod, ReportScheduleType
 from zobi.tasks.types import ExecutorType, FixedExecutor
 from zobi.utils.database import get_example_database
-from tests.integration_tests.test_app import app
 
 
 @pytest.mark.parametrize(

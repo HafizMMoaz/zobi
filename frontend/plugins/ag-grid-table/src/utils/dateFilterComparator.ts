@@ -1,4 +1,3 @@
-
 /**
  * Timezone-safe date comparator for AG Grid date filters.
  *

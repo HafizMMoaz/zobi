@@ -49,10 +49,10 @@ from zobi.sqllab.sql_json_executer import (
 from zobi.sqllab.sqllab_execution_context import SqlJsonExecutionContext
 from zobi.sqllab.utils import bootstrap_sqllab_data
 from zobi.sqllab.validators import CanAccessQueryValidatorImpl
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils import core as utils, json
 from zobi.views.base import CsvResponse, generate_download_headers, json_success
 from zobi.views.base_api import BaseZobiApi, requires_json, statsd_metrics
+from zobi.zobi_typing import FlaskResponse
 
 logger = logging.getLogger(__name__)
 
@@ -315,9 +315,7 @@ class SqlLabRestApi(BaseZobiApi):
             "exported_format": "csv",
         }
         event_rep = repr(event_info)
-        logger.debug(
-            "CSV exported: %s", event_rep, extra={"zobi_event": event_info}
-        )
+        logger.debug("CSV exported: %s", event_rep, extra={"zobi_event": event_info})
         return response
 
     @expose("/export_streaming/", methods=("POST",))

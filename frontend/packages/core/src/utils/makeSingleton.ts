@@ -1,5 +1,3 @@
-
-
 interface ClassInterface<T, Args extends unknown[]> {
   new (...args: Args): T;
 }

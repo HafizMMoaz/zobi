@@ -1,4 +1,3 @@
-
 # pylint: disable=import-outside-toplevel, invalid-name, line-too-long
 
 from typing import Any, TYPE_CHECKING
@@ -14,9 +13,9 @@ from sqlalchemy.engine.url import make_url
 from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
 from zobi.exceptions import OAuth2TokenRefreshError, ZobiException
 from zobi.sql.parse import Table
-from zobi.zobi_typing import OAuth2ClientConfig
 from zobi.utils import json
 from zobi.utils.oauth2 import decode_oauth2_state
+from zobi.zobi_typing import OAuth2ClientConfig
 
 if TYPE_CHECKING:
     from zobi.db_engine_specs.base import OAuth2State

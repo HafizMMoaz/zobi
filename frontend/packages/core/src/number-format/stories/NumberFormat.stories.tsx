@@ -1,5 +1,3 @@
-
-
 import { PureComponent } from 'react';
 import { formatNumber } from '@zobi.dev/core';
 

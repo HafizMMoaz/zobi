@@ -1,5 +1,3 @@
-
-
 import CategoricalScheme from '../../CategoricalScheme';
 
 const schemes = [

@@ -1,5 +1,3 @@
-
-
 import {
   SuperChart,
   VizType,
@@ -33,12 +31,7 @@ export default {
   argTypes: {
     colorScheme: {
       control: 'select',
-      options: [
-        'zobiColors',
-        'd3Category10',
-        'bnbColors',
-        'googleCategory20c',
-      ],
+      options: ['zobiColors', 'd3Category10', 'bnbColors', 'googleCategory20c'],
     },
     showLegend: { control: 'boolean' },
     isCircle: {

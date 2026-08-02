@@ -1,5 +1,3 @@
-
-
 import { scaleOrdinal, ScaleOrdinal } from 'd3-scale';
 import { ExtensibleFunction } from '../models';
 import { ColorsInitLookup, ColorsLookup } from './types';

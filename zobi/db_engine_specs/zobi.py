@@ -1,4 +1,3 @@
-
 """
 A native Zobi database.
 """

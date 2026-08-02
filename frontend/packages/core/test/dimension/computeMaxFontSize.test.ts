@@ -1,5 +1,3 @@
-
-
 import { computeMaxFontSize } from '@zobi.dev/core';
 import { addDummyFill, removeDummyFill, SAMPLE_TEXT } from './getBBoxDummyFill';
 

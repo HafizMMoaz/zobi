@@ -670,9 +670,7 @@ describe('Min/Max calculation and axis labels', () => {
 
 describe('getIntervalBoundsAndColors', () => {
   test('should generate correct interval bounds and colors', () => {
-    const colorFn = CategoricalColorNamespace.getScale(
-      'zobiColors' as string,
-    );
+    const colorFn = CategoricalColorNamespace.getScale('zobiColors' as string);
     expect(getIntervalBoundsAndColors('', '', colorFn, 0, 10)).toEqual([]);
     expect(getIntervalBoundsAndColors('4, 10', '1, 2', colorFn, 0, 10)).toEqual(
       [

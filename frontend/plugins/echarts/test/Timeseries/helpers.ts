@@ -1,4 +1,3 @@
-
 /**
  * Base timestamp used for test data generation.
  * This provides a consistent starting point for all test timestamps.

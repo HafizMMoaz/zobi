@@ -1,4 +1,3 @@
-
 """
 MCP tool: add_chart_to_existing_dashboard
 
@@ -552,9 +551,7 @@ def add_chart_to_existing_dashboard(
             ],
         )
 
-        dashboard_url = (
-            f"{get_zobi_base_url()}/zobi/dashboard/{updated_dashboard.id}/"
-        )
+        dashboard_url = f"{get_zobi_base_url()}/zobi/dashboard/{updated_dashboard.id}/"
 
         logger.info(
             "Added chart %s to dashboard %s ", request.chart_id, request.dashboard_id

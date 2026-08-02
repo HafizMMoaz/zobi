@@ -1,7 +1,7 @@
 from wtforms.form import Form
 
-from zobi.forms import CommaSeparatedListField, filter_not_empty_values
 from tests.integration_tests.base_tests import ZobiTestCase
+from zobi.forms import CommaSeparatedListField, filter_not_empty_values
 
 
 class TestForm(ZobiTestCase):

@@ -1,4 +1,3 @@
-
 """
 Vertica dialect.
 

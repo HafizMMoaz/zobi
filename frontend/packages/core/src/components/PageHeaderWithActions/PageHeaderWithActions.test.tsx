@@ -1,4 +1,3 @@
-
 import { render, screen, userEvent } from '@zobi.dev/core/spec';
 import { PageHeaderWithActions, PageHeaderWithActionsProps } from './index';
 import { Menu } from '../Menu';

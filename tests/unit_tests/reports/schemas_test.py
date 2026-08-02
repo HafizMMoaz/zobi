@@ -1,4 +1,3 @@
-
 import pytest
 from marshmallow import ValidationError
 from pytest_mock import MockerFixture

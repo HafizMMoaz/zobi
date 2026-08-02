@@ -7,14 +7,6 @@ import pytest
 from celery.exceptions import SoftTimeLimitExceeded
 from parameterized import parameterized
 
-from zobi.async_events.cache_backend import (
-    RedisCacheBackend,
-    RedisSentinelCacheBackend,
-)
-from zobi.commands.chart.data.get_data_command import ChartDataCommand
-from zobi.commands.chart.exceptions import ChartDataQueryFailedError
-from zobi.exceptions import ZobiException
-from zobi.extensions import async_query_manager, security_manager
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.fixtures.birth_names_dashboard import (
     load_birth_names_dashboard_with_slices,  # noqa: F401
@@ -25,6 +17,14 @@ from tests.integration_tests.fixtures.tags import (
     with_tagging_system_feature,  # noqa: F401
 )
 from tests.integration_tests.test_app import app
+from zobi.async_events.cache_backend import (
+    RedisCacheBackend,
+    RedisSentinelCacheBackend,
+)
+from zobi.commands.chart.data.get_data_command import ChartDataCommand
+from zobi.commands.chart.exceptions import ChartDataQueryFailedError
+from zobi.exceptions import ZobiException
+from zobi.extensions import async_query_manager, security_manager
 
 
 @pytest.mark.usefixtures(
@@ -132,9 +132,7 @@ class TestAsyncQueries(ZobiTestCase):
         errors = ["A timeout occurred while loading chart data"]
 
         with pytest.raises(SoftTimeLimitExceeded):  # noqa: PT012
-            with mock.patch(
-                "zobi.tasks.async_queries.set_form_data"
-            ) as set_form_data:
+            with mock.patch("zobi.tasks.async_queries.set_form_data") as set_form_data:
                 set_form_data.side_effect = SoftTimeLimitExceeded()
                 load_chart_data_into_cache(job_metadata, form_data)
             set_form_data.assert_called_once_with(form_data, "error", errors=errors)
@@ -249,9 +247,7 @@ class TestAsyncQueries(ZobiTestCase):
         errors = ["A timeout occurred while loading explore JSON data"]
 
         with pytest.raises(SoftTimeLimitExceeded):  # noqa: PT012
-            with mock.patch(
-                "zobi.tasks.async_queries.set_form_data"
-            ) as set_form_data:
+            with mock.patch("zobi.tasks.async_queries.set_form_data") as set_form_data:
                 set_form_data.side_effect = SoftTimeLimitExceeded()
                 load_explore_json_into_cache(job_metadata, form_data)
             set_form_data.assert_called_once_with(form_data, "error", errors=errors)

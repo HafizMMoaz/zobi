@@ -82,10 +82,7 @@ function getValidTokenNames(): Set<string> {
     const antdTokenNames = Object.keys(antdTokens);
 
     // Combine with Zobi custom tokens
-    validTokenNamesCache = new Set([
-      ...antdTokenNames,
-      ...ZOBI_CUSTOM_TOKENS,
-    ]);
+    validTokenNamesCache = new Set([...antdTokenNames, ...ZOBI_CUSTOM_TOKENS]);
   }
   return validTokenNamesCache;
 }
@@ -118,9 +115,7 @@ export function getAllValidTokenNames(): {
   total: number;
 } {
   const allTokens = getValidTokenNames();
-  const antdTokens = Array.from(allTokens).filter(
-    t => !isZobiCustomToken(t),
-  );
+  const antdTokens = Array.from(allTokens).filter(t => !isZobiCustomToken(t));
   const zobiTokens: string[] = Array.from(ZOBI_CUSTOM_TOKENS);
 
   return {

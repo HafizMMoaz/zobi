@@ -1,5 +1,3 @@
-
-
 import { SuperChart, VizType } from '@zobi.dev/core';
 import PartitionChartPlugin from '@zobi.dev/partition';
 import data from './data';
@@ -21,12 +19,7 @@ export default {
   argTypes: {
     colorScheme: {
       control: 'select',
-      options: [
-        'zobiColors',
-        'd3Category10',
-        'bnbColors',
-        'googleCategory20c',
-      ],
+      options: ['zobiColors', 'd3Category10', 'bnbColors', 'googleCategory20c'],
     },
     logScale: { control: 'boolean' },
     equalDateSize: { control: 'boolean' },

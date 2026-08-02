@@ -1,5 +1,3 @@
-
-
 import {
   CategoricalColorNamespace,
   CategoricalScheme,

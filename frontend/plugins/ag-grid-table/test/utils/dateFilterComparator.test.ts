@@ -1,4 +1,3 @@
-
 import dateFilterComparator from '../../src/utils/dateFilterComparator';
 
 test('returns 0 when filter date equals cell date', () => {

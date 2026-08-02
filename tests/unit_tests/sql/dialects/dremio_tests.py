@@ -1,4 +1,3 @@
-
 from sqlglot import parse_one
 
 from zobi.sql.dialects.dremio import Dremio

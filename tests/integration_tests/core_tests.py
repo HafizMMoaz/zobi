@@ -18,6 +18,20 @@ from sqlalchemy.exc import SQLAlchemyError
 
 import zobi.utils.database
 import zobi.views.utils
+from tests.integration_tests.constants import ADMIN_USERNAME, GAMMA_USERNAME
+from tests.integration_tests.fixtures.birth_names_dashboard import (
+    load_birth_names_dashboard_with_slices,  # noqa: F401
+    load_birth_names_data,  # noqa: F401
+)
+from tests.integration_tests.fixtures.energy_dashboard import (
+    load_energy_table_data,  # noqa: F401
+    load_energy_table_with_slice,  # noqa: F401
+)
+from tests.integration_tests.fixtures.world_bank_dashboard import (
+    load_world_bank_dashboard_with_slices,  # noqa: F401
+    load_world_bank_data,  # noqa: F401
+)
+from tests.integration_tests.test_app import app
 from zobi import dataframe, db, security_manager, sql_lab
 from zobi.commands.chart.data.get_data_command import ChartDataCommand
 from zobi.commands.chart.exceptions import ChartDataQueryFailedError
@@ -36,20 +50,6 @@ from zobi.sql.parse import Table
 from zobi.utils import core as utils, json
 from zobi.utils.core import backend
 from zobi.utils.database import get_example_database
-from tests.integration_tests.constants import ADMIN_USERNAME, GAMMA_USERNAME
-from tests.integration_tests.fixtures.birth_names_dashboard import (
-    load_birth_names_dashboard_with_slices,  # noqa: F401
-    load_birth_names_data,  # noqa: F401
-)
-from tests.integration_tests.fixtures.energy_dashboard import (
-    load_energy_table_data,  # noqa: F401
-    load_energy_table_with_slice,  # noqa: F401
-)
-from tests.integration_tests.fixtures.world_bank_dashboard import (
-    load_world_bank_dashboard_with_slices,  # noqa: F401
-    load_world_bank_data,  # noqa: F401
-)
-from tests.integration_tests.test_app import app
 
 from .base_tests import ZobiTestCase
 
@@ -866,9 +866,7 @@ class TestCore(ZobiTestCase):
         slice_name = f"Energy Sankey"  # noqa: F541
         slice_id = self.get_slice(slice_name).id
         form_data = {"slice_id": slice_id, "viz_type": "line", "datasource": "1__table"}
-        rv = self.client.get(
-            f"/zobi/explore/?form_data={quote(json.dumps(form_data))}"
-        )
+        rv = self.client.get(f"/zobi/explore/?form_data={quote(json.dumps(form_data))}")
         assert rv.headers["Location"] == f"/explore/?form_data_key={random_key}"
 
     @pytest.mark.usefixtures("load_birth_names_dashboard_with_slices")

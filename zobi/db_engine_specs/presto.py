@@ -43,9 +43,9 @@ from zobi.models.sql_types.presto_sql_types import (
     TinyInteger,
 )
 from zobi.result_set import destringify
-from zobi.zobi_typing import ResultSetColumnType
 from zobi.utils import core as utils, json
 from zobi.utils.core import GenericDataType
+from zobi.zobi_typing import ResultSetColumnType
 
 if TYPE_CHECKING:
     from zobi.models.core import Database
@@ -587,9 +587,7 @@ class PrestoBaseEngineSpec(BaseEngineSpec, metaclass=ABCMeta):
             )
 
         if len(indexes[0]["column_names"]) < 1:
-            raise ZobiTemplateException(
-                "The table should have one partitioned field"
-            )
+            raise ZobiTemplateException("The table should have one partitioned field")
 
         if not show_first and len(indexes[0]["column_names"]) > 1:
             raise ZobiTemplateException(

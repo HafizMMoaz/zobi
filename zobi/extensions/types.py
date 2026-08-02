@@ -1,4 +1,3 @@
-
 from dataclasses import dataclass
 
 from zobi_core.extensions.types import Manifest

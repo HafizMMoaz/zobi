@@ -1,9 +1,9 @@
 from parameterized import parameterized
 from sqlalchemy import column
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi.constants import TimeGrain
 from zobi.db_engine_specs.elasticsearch import ElasticSearchEngineSpec
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class TestElasticsearchDbEngineSpec(ZobiTestCase):

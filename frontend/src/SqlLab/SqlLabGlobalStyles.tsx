@@ -1,4 +1,3 @@
-
 import { Global } from '@emotion/react';
 import { css } from '@zobi.dev/extension-api/theme';
 

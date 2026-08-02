@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Command system API for Zobi extensions.
  *

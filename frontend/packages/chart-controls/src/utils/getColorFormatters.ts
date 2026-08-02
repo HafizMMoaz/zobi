@@ -68,10 +68,15 @@ export const getColorFunction = (
   let minOpacity = MIN_OPACITY_BOUNDED;
   const maxOpacity = MAX_OPACITY;
 
-  let comparatorFunction: (
-    value: number | string | boolean | null,
-    allValues: number[] | string[] | (boolean | null)[],
+  // Each `case` below narrows to the value type its comparator applies to
+  // (number, string or boolean); the chosen operator already guarantees which
+  // one arrives. Parameters are contravariant, so `never` is the only parameter
+  // type every branch is assignable to, and the call site widens back.
+  type ComparatorFunction = (
+    value: never,
+    allValues: never,
   ) => false | { cutoffValue: number | string; extremeValue: number | string };
+  let comparatorFunction: ComparatorFunction;
   if (operator === undefined || colorScheme === undefined) {
     return () => undefined;
   }
@@ -248,7 +253,12 @@ export const getColorFunction = (
     if (isBlank(value) && operator !== Comparator.IsNull) {
       return undefined;
     }
-    const compareResult = comparatorFunction(value, columnValues);
+    const compareResult = (
+      comparatorFunction as (
+        value: number | string | boolean | null,
+        allValues: number[] | string[] | (boolean | null)[],
+      ) => ReturnType<ComparatorFunction>
+    )(value, columnValues);
     if (compareResult === false) return undefined;
     const { cutoffValue, extremeValue } = compareResult;
 

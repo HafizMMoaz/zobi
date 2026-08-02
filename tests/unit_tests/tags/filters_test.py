@@ -1,4 +1,3 @@
-
 import pytest
 from flask_appbuilder import Model
 from flask_appbuilder.models.sqla.interface import SQLAInterface

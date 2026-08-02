@@ -1,5 +1,3 @@
-
-
 import { SuperChart, VizType } from '@zobi.dev/core';
 import { CompareChartPlugin } from '@zobi.dev/nvd3';
 import { dummyDatasource, withResizableChartDemo } from '@storybook-shared';
@@ -18,12 +16,7 @@ export default {
   argTypes: {
     colorScheme: {
       control: 'select',
-      options: [
-        'zobiColors',
-        'd3Category10',
-        'bnbColors',
-        'googleCategory20c',
-      ],
+      options: ['zobiColors', 'd3Category10', 'bnbColors', 'googleCategory20c'],
     },
     contribution: {
       control: 'boolean',

@@ -1,4 +1,3 @@
-
 """
 Unit tests for save_sql_query MCP tool schemas and logic.
 """

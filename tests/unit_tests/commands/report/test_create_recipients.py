@@ -1,4 +1,3 @@
-
 from unittest.mock import MagicMock, patch
 
 from zobi.commands.report.create import CreateReportScheduleCommand

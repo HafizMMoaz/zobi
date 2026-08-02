@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import {
   FeatureFlag,
@@ -82,8 +81,7 @@ const jsFunctionInfo = (
     {t(
       'For more information about objects are in context in the scope of this function, refer to the',
     )}
-    <a href={sandboxUrl}>{t(" source code of Zobi's sandboxed parser")}.</a>
-    .
+    <a href={sandboxUrl}>{t(" source code of Zobi's sandboxed parser")}.</a>.
   </div>
 );
 

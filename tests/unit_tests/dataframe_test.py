@@ -9,8 +9,8 @@ from pandas._libs.tslibs import NaT
 from zobi.dataframe import df_to_records
 from zobi.db_engine_specs import BaseEngineSpec
 from zobi.result_set import ZobiResultSet
-from zobi.zobi_typing import DbapiDescription
 from zobi.utils import json as zobi_json
+from zobi.zobi_typing import DbapiDescription
 
 
 def test_df_to_records() -> None:

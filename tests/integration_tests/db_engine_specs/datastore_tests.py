@@ -10,16 +10,16 @@ pytest.importorskip("sqlalchemy_datastore")
 
 from sqlalchemy.engine.url import make_url
 
-from zobi.connectors.sqla.models import TableColumn
-from zobi.db_engine_specs.base import BaseEngineSpec
-from zobi.db_engine_specs.datastore import DatastoreEngineSpec
-from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
-from zobi.zobi_typing import ResultSetColumnType
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.fixtures.birth_names_dashboard import (
     load_birth_names_dashboard_with_slices,  # noqa: F401
     load_birth_names_data,  # noqa: F401
 )
+from zobi.connectors.sqla.models import TableColumn
+from zobi.db_engine_specs.base import BaseEngineSpec
+from zobi.db_engine_specs.datastore import DatastoreEngineSpec
+from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
+from zobi.zobi_typing import ResultSetColumnType
 
 
 class TestDatastoreDbEngineSpec(ZobiTestCase):

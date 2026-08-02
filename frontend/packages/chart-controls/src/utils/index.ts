@@ -1,4 +1,3 @@
-
 export * from './checkColumnType';
 export * from './selectOptions';
 export * from './D3Formatting';

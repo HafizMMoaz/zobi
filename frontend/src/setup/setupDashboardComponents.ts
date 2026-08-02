@@ -1,4 +1,3 @@
-
 /*
   This file can be overridden from outside by custom config, it will add/delete new components to existing config in
   frontend/src/visualizations/presets/dashboardComponents.ts file

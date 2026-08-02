@@ -1,6 +1,6 @@
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi.db_engine_specs.gsheets import GSheetsEngineSpec
 from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class TestGsheetsDbEngineSpec(ZobiTestCase):

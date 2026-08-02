@@ -1,4 +1,3 @@
-
 """
 Shared helper functions for MCP chart tools.
 

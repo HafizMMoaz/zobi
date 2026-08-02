@@ -1,5 +1,3 @@
-
-
 import { promiseTimeout, getTextDimension } from '@zobi.dev/core';
 import { addDummyFill, removeDummyFill, SAMPLE_TEXT } from './getBBoxDummyFill';
 

@@ -11,8 +11,8 @@ from unittest import mock
 
 from flask import current_app
 
-from zobi.utils import core as utils
 from tests.integration_tests.base_tests import ZobiTestCase
+from zobi.utils import core as utils
 
 from .utils import read_fixture
 

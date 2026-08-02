@@ -1,10 +1,9 @@
-
 import pytest
 
+from tests.integration_tests.test_app import app
 from zobi import db
 from zobi.tags.core import clear_sqla_event_listeners, register_sqla_event_listeners
 from zobi.tags.models import Tag
-from tests.integration_tests.test_app import app
 
 
 @pytest.fixture

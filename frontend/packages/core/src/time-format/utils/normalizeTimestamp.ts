@@ -1,5 +1,3 @@
-
-
 export const TS_REGEX = /(\d{4}-\d{2}-\d{2})[\sT](\d{2}:\d{2}:\d{2}\.?\d*).*/;
 
 export default function normalizeTimestamp(value: string): string {

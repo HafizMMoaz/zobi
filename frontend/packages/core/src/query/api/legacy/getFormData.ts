@@ -1,5 +1,3 @@
-
-
 import { ZobiClient } from '../../../connection';
 import { BaseParams } from '../types';
 import { QueryFormData } from '../../types/QueryFormData';

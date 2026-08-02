@@ -1,5 +1,3 @@
-
-
 import { TimeLocaleDefinition } from 'd3-time-format';
 import {
   TimeFormatter,

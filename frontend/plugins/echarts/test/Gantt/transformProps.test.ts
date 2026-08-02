@@ -1,9 +1,6 @@
 import { AxisType, ChartProps } from '@zobi.dev/core';
 import { zobiTheme } from '@zobi.dev/extension-api/theme';
-import {
-  LegendOrientation,
-  LegendType,
-} from '@zobi.dev/echarts';
+import { LegendOrientation, LegendType } from '@zobi.dev/echarts';
 import transformProps from '../../src/Gantt/transformProps';
 import {
   EchartsGanttChartProps,

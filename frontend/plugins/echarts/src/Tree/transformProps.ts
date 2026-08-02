@@ -1,8 +1,4 @@
-import {
-  getMetricLabel,
-  DataRecordValue,
-  tooltipHtml,
-} from '@zobi.dev/core';
+import { getMetricLabel, DataRecordValue, tooltipHtml } from '@zobi.dev/core';
 import type { EChartsCoreOption } from 'echarts/core';
 import type { TreeSeriesOption } from 'echarts/charts';
 import type {

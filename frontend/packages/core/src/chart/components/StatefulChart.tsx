@@ -1,4 +1,3 @@
-
 import { useState, useEffect, useRef, useCallback } from 'react';
 import { ParentSize } from '@visx/responsive';
 import { t } from '@zobi.dev/extension-api/translation';
@@ -464,7 +463,12 @@ export default function StatefulChart(props: StatefulChartProps) {
         enableNoResults={enableNoResults}
         noResults={NoDataComponent && <NoDataComponent />}
         onRenderSuccess={onRenderSuccess}
-        onRenderFailure={onRenderFailure}
+        // `SuperChart` types this as a `HandlerFunction`, which takes
+        // `unknown[]`; this prop is narrower, so the error is narrowed here.
+        onRenderFailure={
+          onRenderFailure &&
+          ((...args: unknown[]) => onRenderFailure(args[0] as Error))
+        }
         hooks={hooks}
       />
     );

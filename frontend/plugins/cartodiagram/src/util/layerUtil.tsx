@@ -1,4 +1,3 @@
-
 /**
  * Util for layer related operations.
  */

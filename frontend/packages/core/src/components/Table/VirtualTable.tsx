@@ -1,4 +1,3 @@
-
 import { Table as AntTable } from 'antd';
 import {
   TablePaginationConfig,
@@ -66,8 +65,9 @@ const VirtualTable = <RecordType extends object>(
     allowHTML = false,
   } = props;
   const [tableWidth, setTableWidth] = useState<number>(0);
-  const onResize = useCallback((width: number) => {
-    setTableWidth(width);
+  // `useResizeDetector` reports both dimensions as optional.
+  const onResize = useCallback((width?: number) => {
+    setTableWidth(width ?? 0);
   }, []);
   const { ref } = useResizeDetector({ onResize });
   const theme = useTheme();

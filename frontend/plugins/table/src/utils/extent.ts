@@ -1,4 +1,3 @@
-
 import { isNil } from 'lodash';
 
 export default function extent<T = number | string | Date | undefined | null>(

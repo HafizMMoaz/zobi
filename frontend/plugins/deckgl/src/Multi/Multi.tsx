@@ -174,8 +174,10 @@ const DeckMulti = (props: DeckMultiProps) => {
         const filterDataMapping = formData.filter_data_mapping || {};
         let shouldAddDashboardAdhocFilters = false;
 
+        // `Object.entries` widens the value to `unknown`; `ensureIsArray`
+        // below accepts that and normalises it.
         Object.entries(layerFilterScope).forEach(
-          ([filterId, filterScope]: [string, number[]]) => {
+          ([filterId, filterScope]: [string, unknown]) => {
             const shouldApplyFilter =
               ensureIsArray(filterScope).includes(layerIndex);
 

@@ -1,4 +1,3 @@
-
 import { useMemo, useState } from 'react';
 import rison from 'rison';
 import { t } from '@zobi.dev/extension-api/translation';

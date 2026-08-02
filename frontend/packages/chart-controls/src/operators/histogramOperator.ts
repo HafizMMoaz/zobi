@@ -1,4 +1,3 @@
-
 import { PostProcessingHistogram, getColumnLabel } from '@zobi.dev/core';
 import { PostProcessingFactory } from './types';
 

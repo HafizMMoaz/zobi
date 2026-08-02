@@ -1,4 +1,3 @@
-
 import type { LabeledValue as AntdLabeledValue } from 'antd/es/select';
 import { DEFAULT_SORT_COMPARATOR } from './constants';
 

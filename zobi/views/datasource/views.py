@@ -23,7 +23,6 @@ from zobi.daos.datasource import DatasourceDAO
 from zobi.exceptions import ZobiException, ZobiSecurityException
 from zobi.models.core import Database
 from zobi.sql.parse import Table
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils import json
 from zobi.utils.core import DatasourceType
 from zobi.views.base import api, BaseZobiView, deprecated, json_error_response
@@ -37,6 +36,7 @@ from zobi.views.datasource.schemas import (
 from zobi.views.datasource.utils import get_samples
 from zobi.views.error_handling import handle_api_exception
 from zobi.views.utils import sanitize_datasource_data
+from zobi.zobi_typing import FlaskResponse
 
 
 class Datasource(BaseZobiView):

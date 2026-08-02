@@ -1,4 +1,3 @@
-
 import { ChartProps, getNumberFormatter } from '@zobi.dev/core';
 import { getFormattedUTCTime } from './utils';
 

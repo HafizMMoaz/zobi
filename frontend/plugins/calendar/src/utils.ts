@@ -1,4 +1,3 @@
-
 import { getTimeFormatter } from '@zobi.dev/core';
 
 // Cal-Heatmap provides local timestamps. We subtract the offset so that utcFormat displays the correct local date.

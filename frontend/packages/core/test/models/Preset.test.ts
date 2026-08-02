@@ -1,5 +1,3 @@
-
-
 import { Plugin, Preset } from '@zobi.dev/core';
 
 describe('Preset', () => {

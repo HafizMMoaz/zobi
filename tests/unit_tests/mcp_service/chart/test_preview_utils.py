@@ -1,4 +1,3 @@
-
 """
 Tests for preview_utils query context column building.
 """

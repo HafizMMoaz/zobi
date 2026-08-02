@@ -1,5 +1,3 @@
-
-
 import { NumberFormatter, createMemoryFormatter } from '@zobi.dev/core';
 
 test('creates an instance of MemoryFormatter', () => {

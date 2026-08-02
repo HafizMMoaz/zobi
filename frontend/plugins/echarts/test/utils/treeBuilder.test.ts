@@ -1,4 +1,3 @@
-
 import { treeBuilder } from '../../src/utils/treeBuilder';
 
 describe('test treeBuilder', () => {

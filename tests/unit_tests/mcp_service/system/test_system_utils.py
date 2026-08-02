@@ -1,4 +1,3 @@
-
 """Tests for system-level utility functions."""
 
 from unittest.mock import MagicMock, patch

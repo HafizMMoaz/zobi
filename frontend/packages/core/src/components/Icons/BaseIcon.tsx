@@ -1,4 +1,4 @@
-
+import { ComponentType } from 'react';
 import { css, useTheme, getFontSize } from '@zobi.dev/extension-api/theme';
 import { AntdIconType, BaseIconProps, CustomIconType, IconType } from './types';
 
@@ -28,6 +28,7 @@ export const BaseIconComponent: React.FC<
   fileName,
   ...rest
 }) => {
+  const AntdComponent = Component as ComponentType<Record<string, unknown>>;
   const theme = useTheme();
   const whatRole = rest?.onClick ? 'button' : 'img';
   const ariaLabel = genAriaLabel(fileName || '');
@@ -70,7 +71,10 @@ export const BaseIconComponent: React.FC<
       />
     </span>
   ) : (
-    <Component
+    // This branch renders antd icons, which size themselves from `style`. The
+    // `component` union also admits SVG components that require explicit
+    // width/height, hence the cast.
+    <AntdComponent
       role={whatRole}
       style={style}
       aria-label={ariaLabel}

@@ -1,4 +1,3 @@
-
 """
 Tests for RuntimeValidator.
 
@@ -183,9 +182,7 @@ class TestRuntimeValidatorNonBlocking:
                 "zobi.mcp_service.chart.validation.runtime.RuntimeValidator."
                 "_validate_format_compatibility"
             ) as mock_format,
-            patch(
-                "zobi.mcp_service.chart.validation.runtime.logger"
-            ) as mock_logger,
+            patch("zobi.mcp_service.chart.validation.runtime.logger") as mock_logger,
         ):
             mock_format.return_value = ["Test warning message"]
 

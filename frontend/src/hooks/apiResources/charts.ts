@@ -1,4 +1,3 @@
-
 import rison from 'rison';
 import Chart from 'src/types/Chart';
 import { useApiV1Resource, useTransformedResource } from './apiResources';

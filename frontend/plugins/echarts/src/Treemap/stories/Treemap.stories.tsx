@@ -1,5 +1,3 @@
-
-
 import { SuperChart, getChartTransformPropsRegistry } from '@zobi.dev/core';
 import {
   EchartsTreemapChartPlugin,

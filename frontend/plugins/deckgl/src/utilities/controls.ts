@@ -1,4 +1,3 @@
-
 import { QueryResponse } from '@zobi.dev/core';
 import {
   ColumnMeta,

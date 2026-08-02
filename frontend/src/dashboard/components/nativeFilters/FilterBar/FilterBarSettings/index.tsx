@@ -1,4 +1,3 @@
-
 import { useCallback, useMemo, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { t } from '@zobi.dev/extension-api/translation';

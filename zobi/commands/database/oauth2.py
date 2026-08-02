@@ -1,4 +1,3 @@
-
 from datetime import datetime, timedelta
 from functools import partial
 from typing import cast
@@ -12,9 +11,9 @@ from zobi.databases.schemas import OAuth2ProviderResponseSchema
 from zobi.exceptions import OAuth2Error
 from zobi.key_value.types import JsonKeyValueCodec, KeyValueResource
 from zobi.models.core import Database, DatabaseUserOAuth2Tokens
-from zobi.zobi_typing import OAuth2State
 from zobi.utils.decorators import on_error, transaction
 from zobi.utils.oauth2 import decode_oauth2_state
+from zobi.zobi_typing import OAuth2State
 
 
 class OAuth2StoreTokenCommand(BaseCommand):

@@ -13,10 +13,10 @@ from zobi.daos.datasource import DatasourceDAO
 from zobi.daos.exceptions import DatasourceNotFound, DatasourceTypeNotSupportedError
 from zobi.exceptions import ZobiSecurityException
 from zobi.extensions import cache_manager
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils import json
 from zobi.utils.core import apply_max_row_limit, DatasourceType, SqlExpressionType
 from zobi.views.base_api import BaseZobiApi, statsd_metrics
+from zobi.zobi_typing import FlaskResponse
 
 logger = logging.getLogger(__name__)
 

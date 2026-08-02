@@ -1,4 +1,3 @@
-
 const isSafari = (): boolean => {
   const { userAgent } = navigator;
   return Boolean(userAgent && /^((?!chrome|android).)*safari/i.test(userAgent));

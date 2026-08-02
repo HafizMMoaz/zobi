@@ -1,4 +1,3 @@
-
 import logging
 from typing import Any, Optional
 from uuid import uuid3

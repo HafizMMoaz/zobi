@@ -1,7 +1,7 @@
 from typing import Any
 
-from zobi.migrations.shared.migrate_viz import MigrateDualLine
 from tests.unit_tests.migrations.viz.utils import migrate_and_assert
+from zobi.migrations.shared.migrate_viz import MigrateDualLine
 
 ADHOC_FILTERS = [
     {

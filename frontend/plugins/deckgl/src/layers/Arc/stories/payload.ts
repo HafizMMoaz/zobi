@@ -1,5 +1,3 @@
-
-
 // Payload data for Arc chart stories - US flight routes
 export default {
   data: [

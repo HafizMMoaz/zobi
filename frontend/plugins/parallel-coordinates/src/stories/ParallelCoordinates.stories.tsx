@@ -1,5 +1,3 @@
-
-
 import { SuperChart } from '@zobi.dev/core';
 import ParallelCoordinatesChartPlugin from '@zobi.dev/parallel-coordinates';
 import { withResizableChartDemo } from '@storybook-shared';

@@ -1,4 +1,3 @@
-
 """
 Get dashboard info FastMCP tool
 

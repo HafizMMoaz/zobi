@@ -1,4 +1,3 @@
-
 export default [
   { genre: 'Adventure', platform: 'Wii', count: 84 },
   { genre: 'Adventure', platform: 'N64', count: 14 },

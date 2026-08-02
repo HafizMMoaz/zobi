@@ -1,12 +1,7 @@
 import { useCallback, ReactNode, ReactElement, cloneElement } from 'react';
 
 import { css, ZobiTheme, useTheme } from '@zobi.dev/extension-api/theme';
-import {
-  Icons,
-  Tooltip,
-  FormItem,
-  FormLabel,
-} from '@zobi.dev/core/components';
+import { Icons, Tooltip, FormItem, FormLabel } from '@zobi.dev/core/components';
 
 export interface FieldProps<V> {
   fieldKey: string;

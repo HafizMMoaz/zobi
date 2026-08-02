@@ -8,13 +8,13 @@ from unittest.mock import patch
 from flask import current_app  # noqa: F401
 from freezegun import freeze_time
 
+from tests.integration_tests.test_app import app
 from zobi import security_manager
 from zobi.utils.log import (
     AbstractEventLogger,
     DBEventLogger,
     get_event_logger_from_cfg_value,
 )
-from tests.integration_tests.test_app import app
 
 
 class TestEventLogger(unittest.TestCase):

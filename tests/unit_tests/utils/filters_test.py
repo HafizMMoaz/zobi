@@ -1,4 +1,3 @@
-
 from pytest_mock import MockerFixture
 from sqlalchemy import create_engine
 

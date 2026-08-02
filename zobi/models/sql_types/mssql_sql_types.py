@@ -1,4 +1,3 @@
-
 # pylint: disable=abstract-method
 import uuid
 from typing import Any, Optional

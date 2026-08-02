@@ -1,5 +1,3 @@
-
-
 import { camelCase, isPlainObject, mapKeys } from 'lodash';
 
 export default function convertKeysToCamelCase<T>(object: T) {

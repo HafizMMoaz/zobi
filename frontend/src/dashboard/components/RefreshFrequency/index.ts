@@ -1,4 +1,3 @@
-
 export {
   RefreshFrequencySelect,
   REFRESH_FREQUENCY_OPTIONS,

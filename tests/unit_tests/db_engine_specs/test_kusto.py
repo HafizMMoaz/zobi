@@ -5,10 +5,10 @@ from typing import Optional
 import pytest
 from sqlalchemy import column
 
-from zobi.db_engine_specs.kusto import KustoKqlEngineSpec
-from zobi.sql.parse import SQLScript
 from tests.unit_tests.db_engine_specs.utils import assert_convert_dttm
 from tests.unit_tests.fixtures.common import dttm  # noqa: F401
+from zobi.db_engine_specs.kusto import KustoKqlEngineSpec
+from zobi.sql.parse import SQLScript
 
 
 @pytest.mark.parametrize(

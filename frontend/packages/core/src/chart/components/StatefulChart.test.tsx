@@ -1,4 +1,3 @@
-
 import { render, waitFor, configure } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import StatefulChart from './StatefulChart';

@@ -1,2 +1,1 @@
-
 """MCP explore-related functionality."""

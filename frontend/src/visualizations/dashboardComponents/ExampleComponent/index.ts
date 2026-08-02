@@ -1,4 +1,3 @@
-
 // TODO: POC only component can be removed after PR approved
 export default {
   metadata: {

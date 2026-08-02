@@ -1,4 +1,3 @@
-
 # pylint: disable=too-many-lines, too-many-arguments
 
 """A collection of ORM sqlalchemy models for Zobi"""
@@ -61,11 +60,6 @@ from zobi.extensions import (
 from zobi.models.helpers import AuditMixinNullable, ImportExportMixin, UUIDMixin
 from zobi.result_set import ZobiResultSet
 from zobi.sql.parse import SQLScript, Table
-from zobi.zobi_typing import (
-    DbapiDescription,
-    OAuth2ClientConfig,
-    ResultSetColumnType,
-)
 from zobi.utils import cache as cache_util, core as utils, json
 from zobi.utils.backports import StrEnum
 from zobi.utils.core import get_query_source_from_request, get_username
@@ -73,6 +67,11 @@ from zobi.utils.oauth2 import (
     check_for_oauth2,
     get_oauth2_access_token,
     OAuth2ClientConfigSchema,
+)
+from zobi.zobi_typing import (
+    DbapiDescription,
+    OAuth2ClientConfig,
+    ResultSetColumnType,
 )
 
 metadata = Model.metadata  # pylint: disable=no-member

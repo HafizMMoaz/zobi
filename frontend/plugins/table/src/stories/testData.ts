@@ -1,9 +1,6 @@
 import { ChartDataResponseResult, VizType } from '@zobi.dev/core';
 import { GenericDataType } from '@zobi.dev/extension-api/common';
-import {
-  TableChartFormData,
-  TableChartProps,
-} from '@zobi.dev/table';
+import { TableChartFormData, TableChartProps } from '@zobi.dev/table';
 // eslint-disable-next-line import/extensions
 // @ts-ignore -- TS6307: this file is outside the tsconfig project scope, @ts-expect-error does not suppress project-level errors
 import birthNamesJson from './birthNames.json';

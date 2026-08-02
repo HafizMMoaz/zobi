@@ -1,4 +1,3 @@
-
 from zobi.utils.urls import modify_url_query
 
 EXPLORE_CHART_LINK = "http://localhost:9000/explore/?form_data=%7B%22slice_id%22%3A+76%7D&standalone=true&force=false"

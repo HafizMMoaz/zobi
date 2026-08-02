@@ -11,6 +11,17 @@ from markupsafe import Markup
 from sqlalchemy import and_
 from sqlalchemy.sql import func
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.constants import ADMIN_USERNAME, ALPHA_USERNAME
+from tests.integration_tests.fixtures.birth_names_dashboard import (
+    load_birth_names_dashboard_with_slices,  # noqa: F401
+    load_birth_names_data,  # noqa: F401
+)
+from tests.integration_tests.fixtures.world_bank_dashboard import (
+    load_world_bank_dashboard_with_slices,  # noqa: F401
+    load_world_bank_data,  # noqa: F401
+)
+from tests.integration_tests.insert_chart_mixin import InsertChartMixin
 from zobi import db
 from zobi.connectors.sqla.models import SqlaTable
 from zobi.daos.tag import TagDAO
@@ -24,17 +35,6 @@ from zobi.tags.models import (
     user_favorite_tag_table,
 )
 from zobi.utils import json
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.constants import ADMIN_USERNAME, ALPHA_USERNAME
-from tests.integration_tests.fixtures.birth_names_dashboard import (
-    load_birth_names_dashboard_with_slices,  # noqa: F401
-    load_birth_names_data,  # noqa: F401
-)
-from tests.integration_tests.fixtures.world_bank_dashboard import (
-    load_world_bank_dashboard_with_slices,  # noqa: F401
-    load_world_bank_data,  # noqa: F401
-)
-from tests.integration_tests.insert_chart_mixin import InsertChartMixin
 
 TAGS_FIXTURE_COUNT = 10
 

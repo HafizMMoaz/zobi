@@ -1,4 +1,3 @@
-
 """Tests for extension configuration and manifest Pydantic models."""
 
 import pytest

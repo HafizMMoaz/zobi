@@ -1,9 +1,5 @@
 import { useState, FC } from 'react';
-import {
-  ParagraphProps,
-  Typography,
-  Tooltip,
-} from '@zobi.dev/core/components';
+import { ParagraphProps, Typography, Tooltip } from '@zobi.dev/core/components';
 
 const TooltipParagraph: FC<ParagraphProps> = ({
   children,

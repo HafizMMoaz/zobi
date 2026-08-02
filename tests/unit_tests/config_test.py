@@ -7,8 +7,8 @@ import pytest
 from pytest_mock import MockerFixture
 from sqlalchemy.orm.session import Session
 
-from zobi import db
 from tests.conftest import with_config
+from zobi import db
 
 if TYPE_CHECKING:
     from zobi.connectors.sqla.models import SqlaTable

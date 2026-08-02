@@ -1,4 +1,3 @@
-
 import {
   ModuleRegistry,
   type Module,

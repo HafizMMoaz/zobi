@@ -1,4 +1,3 @@
-
 """
 Integration-style tests for ``validate_and_compile``.
 

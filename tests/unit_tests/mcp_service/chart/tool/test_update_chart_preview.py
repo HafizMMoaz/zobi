@@ -1,4 +1,3 @@
-
 """
 Unit tests for update_chart_preview MCP tool
 """
@@ -763,9 +762,7 @@ class TestUpdateChartPreviewValidation:
     @patch.object(update_chart_preview_module, "has_dataset_access", return_value=True)
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
     @patch.object(update_chart_preview_module, "validate_and_compile")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_validation_failure_skips_cache_write(
         self,
@@ -820,9 +817,7 @@ class TestUpdateChartPreviewValidation:
 
     @patch.object(update_chart_preview_module, "has_dataset_access", return_value=False)
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_dataset_access_denied_short_circuits(
         self,

@@ -3,10 +3,7 @@ import { Alert } from '@zobi.dev/extension-api/components';
 import { styled } from '@zobi.dev/extension-api/theme';
 import { Icons } from '@zobi.dev/core/components/Icons';
 import { Loading } from '@zobi.dev/core/components';
-import Table, {
-  ColumnsType,
-  TableSize,
-} from '@zobi.dev/core/components/Table';
+import Table, { ColumnsType, TableSize } from '@zobi.dev/core/components/Table';
 import { DatasetObject } from 'src/features/datasets/AddDataset/types';
 import { ITableColumn } from './types';
 import MessageContent from './MessageContent';

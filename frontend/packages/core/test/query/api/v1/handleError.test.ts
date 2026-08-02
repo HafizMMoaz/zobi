@@ -1,8 +1,4 @@
-import {
-  JsonObject,
-  ZobiApiError,
-  ZobiApiErrorType,
-} from '@zobi.dev/core';
+import { JsonObject, ZobiApiError, ZobiApiErrorType } from '@zobi.dev/core';
 import handleError, {
   ErrorInput,
 } from '../../../../src/query/api/v1/handleError';

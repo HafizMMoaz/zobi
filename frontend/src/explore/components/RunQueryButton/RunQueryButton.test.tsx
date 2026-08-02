@@ -1,4 +1,3 @@
-
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
 import { RunQueryButton } from './index';
 

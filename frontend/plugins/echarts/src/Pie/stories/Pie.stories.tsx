@@ -1,14 +1,9 @@
-
-
 import {
   SuperChart,
   VizType,
   getChartTransformPropsRegistry,
 } from '@zobi.dev/core';
-import {
-  EchartsPieChartPlugin,
-  PieTransformProps,
-} from '@zobi.dev/echarts';
+import { EchartsPieChartPlugin, PieTransformProps } from '@zobi.dev/echarts';
 import { weekday, population, sales } from './data';
 import { withResizableChartDemo } from '@storybook-shared';
 

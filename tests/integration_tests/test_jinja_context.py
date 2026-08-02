@@ -94,9 +94,7 @@ def test_template_kwarg_nested_module(app_context: AppContext) -> None:
 
 
 def test_template_hive(app_context: AppContext, mocker: MockerFixture) -> None:
-    lp_mock = mocker.patch(
-        "zobi.jinja_context.HiveTemplateProcessor.latest_partition"
-    )
+    lp_mock = mocker.patch("zobi.jinja_context.HiveTemplateProcessor.latest_partition")
     lp_mock.return_value = "the_latest"
     database = mock.Mock()
     database.backend = "hive"
@@ -106,9 +104,7 @@ def test_template_hive(app_context: AppContext, mocker: MockerFixture) -> None:
 
 
 def test_template_spark(app_context: AppContext, mocker: MockerFixture) -> None:
-    lp_mock = mocker.patch(
-        "zobi.jinja_context.SparkTemplateProcessor.latest_partition"
-    )
+    lp_mock = mocker.patch("zobi.jinja_context.SparkTemplateProcessor.latest_partition")
     lp_mock.return_value = "the_latest"
     database = mock.Mock()
     database.backend = "spark"
@@ -123,9 +119,7 @@ def test_template_spark(app_context: AppContext, mocker: MockerFixture) -> None:
 
 
 def test_template_trino(app_context: AppContext, mocker: MockerFixture) -> None:
-    lp_mock = mocker.patch(
-        "zobi.jinja_context.TrinoTemplateProcessor.latest_partition"
-    )
+    lp_mock = mocker.patch("zobi.jinja_context.TrinoTemplateProcessor.latest_partition")
     lp_mock.return_value = "the_latest"
     database = mock.Mock()
     database.backend = "trino"

@@ -1,4 +1,3 @@
-
 import { rankedSearchCompare } from './rankedSearchCompare';
 
 const searchSort = (search: string) => (a: string, b: string) =>

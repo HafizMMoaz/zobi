@@ -1,5 +1,3 @@
-
-
 import '@testing-library/jest-dom';
 import { ComponentType } from 'react';
 import { render as renderTestComponent, screen } from '@testing-library/react';

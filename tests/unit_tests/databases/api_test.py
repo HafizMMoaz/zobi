@@ -1,4 +1,3 @@
-
 # pylint: disable=unused-argument, import-outside-toplevel, line-too-long, invalid-name
 
 from __future__ import annotations
@@ -16,6 +15,11 @@ from freezegun import freeze_time
 from pytest_mock import MockerFixture
 from sqlalchemy.orm.session import Session
 
+from tests.unit_tests.fixtures.common import (
+    create_columnar_file,
+    create_csv_file,
+    create_excel_file,
+)
 from zobi import db
 from zobi.commands.database.uploaders.base import UploadCommand
 from zobi.commands.database.uploaders.columnar_reader import ColumnarReader
@@ -25,14 +29,9 @@ from zobi.db_engine_specs.sqlite import SqliteEngineSpec
 from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
 from zobi.exceptions import OAuth2RedirectError, ZobiSecurityException
 from zobi.sql.parse import Table
-from zobi.zobi_typing import OAuth2State
 from zobi.utils import json
 from zobi.utils.oauth2 import encode_oauth2_state
-from tests.unit_tests.fixtures.common import (
-    create_columnar_file,
-    create_csv_file,
-    create_excel_file,
-)
+from zobi.zobi_typing import OAuth2State
 
 
 def test_filter_by_uuid(

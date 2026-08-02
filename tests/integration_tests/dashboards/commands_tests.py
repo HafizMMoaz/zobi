@@ -5,6 +5,20 @@ import pytest
 import yaml
 from werkzeug.utils import secure_filename
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.fixtures.importexport import (
+    chart_config,
+    dashboard_config,
+    dashboard_export,
+    dashboard_metadata_config,
+    database_config,
+    dataset_config,
+    dataset_metadata_config,
+)
+from tests.integration_tests.fixtures.world_bank_dashboard import (
+    load_world_bank_dashboard_with_slices,  # noqa: F401
+    load_world_bank_data,  # noqa: F401
+)
 from zobi import db, security_manager
 from zobi.commands.dashboard.copy import CopyDashboardCommand
 from zobi.commands.dashboard.delete import DeleteEmbeddedDashboardCommand
@@ -32,20 +46,6 @@ from zobi.models.embedded_dashboard import EmbeddedDashboard
 from zobi.models.slice import Slice
 from zobi.utils import json
 from zobi.utils.core import override_user
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.fixtures.importexport import (
-    chart_config,
-    dashboard_config,
-    dashboard_export,
-    dashboard_metadata_config,
-    database_config,
-    dataset_config,
-    dataset_metadata_config,
-)
-from tests.integration_tests.fixtures.world_bank_dashboard import (
-    load_world_bank_dashboard_with_slices,  # noqa: F401
-    load_world_bank_data,  # noqa: F401
-)
 
 
 class TestExportDashboardsCommand(ZobiTestCase):

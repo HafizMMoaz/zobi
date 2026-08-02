@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { ZobiClient } from '@zobi.dev/core';
 import { css, styled } from '@zobi.dev/extension-api/theme';

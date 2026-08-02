@@ -1,4 +1,3 @@
-
 """
 Centralized version metadata utilities for Zobi.
 """

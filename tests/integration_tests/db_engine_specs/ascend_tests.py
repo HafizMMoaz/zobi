@@ -1,5 +1,5 @@
-from zobi.db_engine_specs.ascend import AscendEngineSpec
 from tests.integration_tests.base_tests import ZobiTestCase
+from zobi.db_engine_specs.ascend import AscendEngineSpec
 
 
 class TestAscendDbEngineSpec(ZobiTestCase):

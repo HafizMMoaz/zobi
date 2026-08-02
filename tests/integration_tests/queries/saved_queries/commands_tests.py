@@ -1,9 +1,15 @@
-
 from unittest.mock import patch
 
 import pytest
 import yaml
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.fixtures.importexport import (
+    database_config,
+    database_metadata_config,
+    saved_queries_config,
+    saved_queries_metadata_config,
+)
 from zobi import db, security_manager
 from zobi.commands.exceptions import CommandInvalidError
 from zobi.commands.importers.exceptions import IncorrectVersionError
@@ -13,13 +19,6 @@ from zobi.commands.query.importers.v1 import ImportSavedQueriesCommand
 from zobi.models.core import Database
 from zobi.models.sql_lab import SavedQuery
 from zobi.utils.database import get_example_database
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.fixtures.importexport import (
-    database_config,
-    database_metadata_config,
-    saved_queries_config,
-    saved_queries_metadata_config,
-)
 
 
 class TestExportSavedQueriesCommand(ZobiTestCase):

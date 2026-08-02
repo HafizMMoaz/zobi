@@ -1,4 +1,3 @@
-
 import {
   AppliedCrossFilterType,
   Filter,

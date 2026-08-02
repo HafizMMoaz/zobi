@@ -1,4 +1,3 @@
-
 import { render, screen, fireEvent } from 'spec/helpers/testing-library';
 import { COLUMN_TYPE, ROW_TYPE } from 'src/dashboard/util/componentTypes';
 import { BACKGROUND_TRANSPARENT } from 'src/dashboard/util/constants';

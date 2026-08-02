@@ -1,4 +1,3 @@
-
 from zobi.connectors.sqla.models import RowLevelSecurityFilter
 from zobi.daos.base import BaseDAO
 

@@ -1,5 +1,3 @@
-
-
 /* eslint-disable sort-keys, no-magic-numbers */
 // Data format for ECharts BoxPlot - requires metric__min, metric__q1, metric__median, etc.
 export default [

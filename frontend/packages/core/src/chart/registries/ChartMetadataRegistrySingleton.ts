@@ -1,5 +1,3 @@
-
-
 import { Registry, makeSingleton, OverwritePolicy } from '../..';
 import ChartMetadata from '../models/ChartMetadata';
 

@@ -1,4 +1,3 @@
-
 """
 OpenSearch SQL dialect.
 

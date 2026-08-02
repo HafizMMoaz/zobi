@@ -1,2 +1,1 @@
-
 export { parseToNumber } from './numberUtils';

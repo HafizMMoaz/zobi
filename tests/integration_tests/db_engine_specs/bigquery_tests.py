@@ -5,16 +5,16 @@ import pytest
 from pandas import DataFrame
 from sqlalchemy import column
 
-from zobi.connectors.sqla.models import TableColumn
-from zobi.db_engine_specs.base import BaseEngineSpec
-from zobi.db_engine_specs.bigquery import BigQueryEngineSpec
-from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
-from zobi.sql.parse import Table
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.fixtures.birth_names_dashboard import (
     load_birth_names_dashboard_with_slices,  # noqa: F401
     load_birth_names_data,  # noqa: F401
 )
+from zobi.connectors.sqla.models import TableColumn
+from zobi.db_engine_specs.base import BaseEngineSpec
+from zobi.db_engine_specs.bigquery import BigQueryEngineSpec
+from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
+from zobi.sql.parse import Table
 
 
 @contextmanager

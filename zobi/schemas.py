@@ -1,4 +1,3 @@
-
 from zobi.errors import ZobiErrorType
 
 error_payload_content = {

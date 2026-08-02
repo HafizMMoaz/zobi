@@ -1,4 +1,3 @@
-
 // https://en.wikipedia.org/wiki/Linear_congruential_generator
 function stringAsciiPRNG(value: string, m: number) {
   // Xn+1 = (a * Xn + c) % m

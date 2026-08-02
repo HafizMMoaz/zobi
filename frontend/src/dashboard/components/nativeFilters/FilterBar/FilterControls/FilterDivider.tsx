@@ -1,4 +1,3 @@
-
 import { useCSSTextTruncation, truncationCSS } from '@zobi.dev/core';
 import { css, useTheme } from '@zobi.dev/extension-api/theme';
 import { Icons } from '@zobi.dev/core/components/Icons';

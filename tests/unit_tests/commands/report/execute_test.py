@@ -1,4 +1,3 @@
-
 import json  # noqa: TID251
 from datetime import datetime, timedelta
 from unittest.mock import patch
@@ -7,6 +6,7 @@ from uuid import UUID, uuid4
 import pytest
 from pytest_mock import MockerFixture
 
+from tests.integration_tests.conftest import with_feature_flags
 from zobi.app import ZobiApp
 from zobi.commands.exceptions import UpdateFailedError
 from zobi.commands.report.exceptions import (
@@ -39,7 +39,6 @@ from zobi.reports.models import (
 )
 from zobi.utils.core import HeaderDataType
 from zobi.utils.screenshots import ChartScreenshot
-from tests.integration_tests.conftest import with_feature_flags
 
 
 def test_log_data_with_chart(mocker: MockerFixture) -> None:
@@ -270,9 +269,7 @@ def test_log_data_with_missing_values(mocker: MockerFixture) -> None:
         ),
     ],
 )
-@patch(
-    "zobi.commands.dashboard.permalink.create.CreateDashboardPermalinkCommand.run"
-)
+@patch("zobi.commands.dashboard.permalink.create.CreateDashboardPermalinkCommand.run")
 @with_feature_flags(ALERT_REPORT_TABS=True)
 def test_get_dashboard_urls_with_multiple_tabs(
     mock_run, mocker: MockerFixture, anchors, permalink_side_effect, expected_paths, app
@@ -315,9 +312,7 @@ def test_get_dashboard_urls_with_multiple_tabs(
     assert result == expected_uris
 
 
-@patch(
-    "zobi.commands.dashboard.permalink.create.CreateDashboardPermalinkCommand.run"
-)
+@patch("zobi.commands.dashboard.permalink.create.CreateDashboardPermalinkCommand.run")
 @with_feature_flags(ALERT_REPORT_TABS=True)
 def test_get_dashboard_urls_with_exporting_dashboard_only(
     mock_run,
@@ -581,9 +576,7 @@ def test_get_dashboard_urls_deduplicates_stale_native_filters(
     ]
 
 
-@patch(
-    "zobi.commands.dashboard.permalink.create.CreateDashboardPermalinkCommand.run"
-)
+@patch("zobi.commands.dashboard.permalink.create.CreateDashboardPermalinkCommand.run")
 def test_get_tab_urls(
     mock_run,
     mocker: MockerFixture,
@@ -667,9 +660,7 @@ def test_get_dashboard_urls_multitab_preserves_url_params(
         assert state["anchor"] == expected_anchor
 
 
-@patch(
-    "zobi.commands.dashboard.permalink.create.CreateDashboardPermalinkCommand.run"
-)
+@patch("zobi.commands.dashboard.permalink.create.CreateDashboardPermalinkCommand.run")
 def test_get_tab_url(
     mock_run,
     mocker: MockerFixture,
@@ -696,9 +687,7 @@ def test_get_tab_url(
     assert result == urllib.parse.urljoin(base_url, "zobi/dashboard/p/uri/")
 
 
-@patch(
-    "zobi.commands.dashboard.permalink.create.CreateDashboardPermalinkCommand.run"
-)
+@patch("zobi.commands.dashboard.permalink.create.CreateDashboardPermalinkCommand.run")
 @with_feature_flags(ALERT_REPORT_TABS=False)
 def test_get_dashboard_urls_native_filters_without_tabs(
     mock_run,
@@ -872,9 +861,7 @@ def test_screenshot_width_calculation(
 
     # Mock security manager and screenshot
     with (
-        patch(
-            "zobi.commands.report.execute.security_manager"
-        ) as mock_security_manager,
+        patch("zobi.commands.report.execute.security_manager") as mock_security_manager,
         patch(
             "zobi.utils.screenshots.ChartScreenshot.get_screenshot"
         ) as mock_get_screenshot,
@@ -885,9 +872,7 @@ def test_screenshot_width_calculation(
         mock_get_screenshot.return_value = b"screenshot bytes"
 
         # Mock get_executor to avoid database lookups
-        with patch(
-            "zobi.commands.report.execute.get_executor"
-        ) as mock_get_executor:
+        with patch("zobi.commands.report.execute.get_executor") as mock_get_executor:
             mock_get_executor.return_value = ("executor", "username")
 
             # Capture the ChartScreenshot instantiation

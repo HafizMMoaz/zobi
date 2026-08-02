@@ -1,5 +1,3 @@
-
-
 import makeSingleton from '../utils/makeSingleton';
 import ColorSchemeRegistry from './ColorSchemeRegistry';
 import SequentialScheme from './SequentialScheme';

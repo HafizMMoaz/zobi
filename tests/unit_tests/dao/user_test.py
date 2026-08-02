@@ -4,11 +4,11 @@ import pytest
 from flask_appbuilder.security.sqla.models import User
 from sqlalchemy.exc import NoResultFound
 
+from tests.unit_tests.fixtures.common import admin_user, after_each  # noqa: F401
 from zobi import db
 from zobi.daos.user import UserDAO
 from zobi.extensions import security_manager
 from zobi.models.user_attributes import UserAttribute
-from tests.unit_tests.fixtures.common import admin_user, after_each  # noqa: F401
 
 
 def test_get_by_id_found(admin_user: User, after_each: None) -> None:  # noqa: F811

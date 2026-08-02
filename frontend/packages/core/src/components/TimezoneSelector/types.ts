@@ -1,4 +1,3 @@
-
 export type TimezoneOption = {
   label: string;
   value: string;

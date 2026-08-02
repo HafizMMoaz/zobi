@@ -1,10 +1,4 @@
-
-
-import {
-  SuperChart,
-  ChartDataProvider,
-  ZobiClient,
-} from '@zobi.dev/core';
+import { SuperChart, ChartDataProvider, ZobiClient } from '@zobi.dev/core';
 import { BigNumberChartPlugin } from '@zobi.dev/echarts';
 import { WordCloudChartPlugin } from '@zobi.dev/word-cloud';
 
@@ -58,10 +52,7 @@ export const dataProvider = ({
   <div style={{ margin: 16 }}>
     <VerifyCORS host={host}>
       {() => (
-        <ChartDataProvider
-          client={ZobiClient}
-          formData={JSON.parse(formData)}
-        >
+        <ChartDataProvider client={ZobiClient} formData={JSON.parse(formData)}>
           {({ loading, payload, error }) => {
             if (loading) return <div>Loading!</div>;
 

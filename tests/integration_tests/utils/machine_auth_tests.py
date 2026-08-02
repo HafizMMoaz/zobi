@@ -1,8 +1,7 @@
-
 from unittest.mock import call, Mock, patch
 
-from zobi.extensions import machine_auth_provider_factory
 from tests.integration_tests.base_tests import ZobiTestCase
+from zobi.extensions import machine_auth_provider_factory
 
 
 class MachineAuthProviderTests(ZobiTestCase):

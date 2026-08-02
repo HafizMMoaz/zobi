@@ -1,4 +1,3 @@
-
 import { ChartConfig } from '../../src/types';
 import { isChartConfigEqual, simplifyConfig } from '../../src/util/chartUtil';
 

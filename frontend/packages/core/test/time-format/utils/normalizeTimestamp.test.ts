@@ -1,5 +1,3 @@
-
-
 import normalizeTimestamp from '../../../src/time-format/utils/normalizeTimestamp';
 
 test('normalizeTimestamp should normalize typical timestamps', () => {

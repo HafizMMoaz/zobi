@@ -1,5 +1,3 @@
-
-
 import SequentialScheme from '../../SequentialScheme';
 
 const schemes = [

@@ -1,5 +1,3 @@
-
-
 import { Behavior, ChartLabel } from '../types/Base';
 import { ParseMethod } from '../../connection';
 

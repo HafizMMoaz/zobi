@@ -1,11 +1,7 @@
 import { useEffect, useState } from 'react';
 import { Link, useHistory } from 'react-router-dom';
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  isFeatureEnabled,
-  FeatureFlag,
-  ZobiClient,
-} from '@zobi.dev/core';
+import { isFeatureEnabled, FeatureFlag, ZobiClient } from '@zobi.dev/core';
 import { CardStyles } from 'src/views/CRUD/utils';
 import {
   Dropdown,

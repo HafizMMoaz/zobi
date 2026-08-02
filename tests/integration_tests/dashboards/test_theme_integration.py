@@ -6,14 +6,14 @@ from unittest.mock import patch
 import pytest
 import yaml
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.constants import ADMIN_USERNAME
 from zobi import db, security_manager
 from zobi.commands.dashboard.export import ExportDashboardsCommand
 from zobi.commands.dashboard.importers import v1
 from zobi.models.core import Theme
 from zobi.models.dashboard import Dashboard
 from zobi.utils import json
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.constants import ADMIN_USERNAME
 
 
 class TestDashboardThemeIntegration(ZobiTestCase):

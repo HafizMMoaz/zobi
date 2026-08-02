@@ -9,23 +9,6 @@ import pandas as pd
 import pytest
 from pandas import DateOffset
 
-from zobi import db
-from zobi.charts.schemas import ChartDataQueryContextSchema
-from zobi.common.chart_data import ChartDataResultFormat, ChartDataResultType
-from zobi.common.query_context import QueryContext
-from zobi.common.query_context_factory import QueryContextFactory
-from zobi.common.query_object import QueryObject
-from zobi.daos.dataset import DatasetDAO
-from zobi.daos.datasource import DatasourceDAO
-from zobi.extensions import cache_manager
-from zobi.zobi_typing import AdhocColumn
-from zobi.utils.core import (
-    AdhocMetricExpressionType,
-    backend,
-    DatasourceType,
-    QueryStatus,
-)
-from zobi.utils.pandas_postprocessing.utils import FLAT_COLUMN_SEPARATOR
 from tests.conftest import with_config
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.conftest import (
@@ -39,6 +22,23 @@ from tests.integration_tests.fixtures.birth_names_dashboard import (
     load_birth_names_data,  # noqa: F401
 )
 from tests.integration_tests.fixtures.query_context import get_query_context
+from zobi import db
+from zobi.charts.schemas import ChartDataQueryContextSchema
+from zobi.common.chart_data import ChartDataResultFormat, ChartDataResultType
+from zobi.common.query_context import QueryContext
+from zobi.common.query_context_factory import QueryContextFactory
+from zobi.common.query_object import QueryObject
+from zobi.daos.dataset import DatasetDAO
+from zobi.daos.datasource import DatasourceDAO
+from zobi.extensions import cache_manager
+from zobi.utils.core import (
+    AdhocMetricExpressionType,
+    backend,
+    DatasourceType,
+    QueryStatus,
+)
+from zobi.utils.pandas_postprocessing.utils import FLAT_COLUMN_SEPARATOR
+from zobi.zobi_typing import AdhocColumn
 
 
 def get_sql_text(payload: dict[str, Any]) -> str:

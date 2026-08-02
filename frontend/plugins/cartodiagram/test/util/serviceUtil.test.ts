@@ -1,4 +1,3 @@
-
 import { isVersionBelow } from '../../src/util/serviceUtil';
 
 describe('serviceUtil', () => {

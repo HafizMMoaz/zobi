@@ -1,7 +1,7 @@
 from sqlalchemy import column
 
-from zobi.db_engine_specs.pinot import PinotEngineSpec
 from tests.integration_tests.base_tests import ZobiTestCase
+from zobi.db_engine_specs.pinot import PinotEngineSpec
 
 
 class TestPinotDbEngineSpec(ZobiTestCase):

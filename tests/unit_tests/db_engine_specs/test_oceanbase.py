@@ -1,12 +1,11 @@
-
 from typing import Any, Optional
 
 import pytest
 from sqlalchemy import JSON, types
 
+from tests.unit_tests.db_engine_specs.utils import assert_column_spec
 from zobi.db_engine_specs.oceanbase import ARRAY, MAP, NUMBER, NUMERIC
 from zobi.utils.core import GenericDataType
-from tests.unit_tests.db_engine_specs.utils import assert_column_spec
 
 
 @pytest.mark.parametrize(

@@ -1,4 +1,3 @@
-
 import { useState } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { Input, Collapse, FormItem } from '@zobi.dev/core/components';

@@ -1,4 +1,3 @@
-
 # pylint: disable=import-outside-toplevel
 
 from __future__ import annotations
@@ -8,8 +7,8 @@ from unittest.mock import MagicMock, patch
 
 import pytest
 
-from zobi.utils import json
 from tests.unit_tests.conftest import with_feature_flags
+from zobi.utils import json
 
 
 def test_redshift_encrypted_extra_sensitive_fields() -> None:

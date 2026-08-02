@@ -1,4 +1,3 @@
-
 """Tests for SemanticViewDAO."""
 
 from __future__ import annotations

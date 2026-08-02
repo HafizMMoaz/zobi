@@ -1,4 +1,3 @@
-
 import { ReactNode, Key, useMemo } from 'react';
 
 import { t } from '@zobi.dev/extension-api/translation';

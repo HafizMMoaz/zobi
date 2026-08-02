@@ -387,10 +387,7 @@ function ExploreViewContainer(props: ExploreViewContainerProps) {
   useEffect(
     () => () => {
       document.title =
-        originalTitle ||
-        theme?.brandAppName ||
-        theme?.brandLogoAlt ||
-        'Zobi';
+        originalTitle || theme?.brandAppName || theme?.brandLogoAlt || 'Zobi';
     },
     [originalTitle, theme?.brandAppName, theme?.brandLogoAlt],
   );

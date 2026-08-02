@@ -10,6 +10,7 @@ import pytest
 from flask.ctx import AppContext
 from flask_appbuilder.security.sqla.models import User
 
+from tests.unit_tests.fixtures.common import admin_user, after_each  # noqa: F401
 from zobi.extensions import db
 from zobi.key_value.exceptions import (
     KeyValueCreateFailedError,
@@ -22,7 +23,6 @@ from zobi.key_value.types import (
 )
 from zobi.utils import json
 from zobi.utils.core import override_user
-from tests.unit_tests.fixtures.common import admin_user, after_each  # noqa: F401
 
 if TYPE_CHECKING:
     from zobi.key_value.models import KeyValueEntry

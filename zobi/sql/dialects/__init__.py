@@ -1,4 +1,3 @@
-
 from .db2 import DB2
 from .dremio import Dremio
 from .firebolt import Firebolt, FireboltOld

@@ -4,10 +4,10 @@ from importlib.util import find_spec
 import pandas as pd
 import pytest
 
+from tests.unit_tests.fixtures.dataframes import prophet_df
 from zobi.exceptions import InvalidPostProcessingError
 from zobi.utils.core import DTTM_ALIAS
 from zobi.utils.pandas_postprocessing import prophet
-from tests.unit_tests.fixtures.dataframes import prophet_df
 
 
 def test_prophet_valid():

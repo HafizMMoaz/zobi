@@ -1,4 +1,3 @@
-
 import { ColumnMeta } from '@zobi.dev/chart-controls';
 import { t } from '@zobi.dev/extension-api/translation';
 import { getTooltipHTML } from '@zobi.dev/core/components/AsyncAceEditor';

@@ -1,5 +1,3 @@
-
-
 let originalFn: () => DOMRect;
 
 const textToWidth = {

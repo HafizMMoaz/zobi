@@ -1,4 +1,3 @@
-
 const dataTestLocator = (value: string) => `[data-test='${value}']`;
 
 export function dataTestChartName(chartName: string): string {

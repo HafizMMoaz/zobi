@@ -1,5 +1,3 @@
-
-
 import { TextStyle, Dimension } from './types';
 import getBBoxCeil from './svg/getBBoxCeil';
 import { hiddenSvgFactory, textFactory } from './svg/factories';

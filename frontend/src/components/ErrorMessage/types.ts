@@ -1,4 +1,3 @@
-
 import type { ReactNode, ComponentType } from 'react';
 import type { ErrorSource, ZobiError } from '@zobi.dev/core';
 

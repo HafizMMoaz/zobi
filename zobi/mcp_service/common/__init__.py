@@ -1,4 +1,3 @@
-
 """
 Common schemas and utilities for MCP service.
 """

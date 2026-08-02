@@ -1,4 +1,3 @@
-
 from pytest_mock import MockerFixture
 
 from zobi.commands.database.utils import add_permissions

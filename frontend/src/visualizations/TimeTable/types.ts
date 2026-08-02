@@ -1,4 +1,3 @@
-
 export type SparkType = 'line' | 'bar' | 'area';
 
 export interface ColumnConfig {

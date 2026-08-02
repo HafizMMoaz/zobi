@@ -1,5 +1,3 @@
-
-
 import {
   BRAND_COLOR,
   CategoricalColorNamespace,

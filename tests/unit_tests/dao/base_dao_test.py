@@ -1,4 +1,3 @@
-
 """
 Unit tests for BaseDAO functionality using mocks and no database operations.
 """

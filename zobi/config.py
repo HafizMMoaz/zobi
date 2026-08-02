@@ -39,7 +39,6 @@ from zobi.constants import CHANGE_ME_SECRET_KEY
 from zobi.jinja_context import BaseTemplateProcessor
 from zobi.key_value.types import JsonKeyValueCodec
 from zobi.stats_logger import DummyStatsLogger
-from zobi.zobi_typing import CacheConfig
 from zobi.tasks.types import ExecutorType
 from zobi.themes.types import Theme
 from zobi.utils import core as utils
@@ -47,6 +46,7 @@ from zobi.utils.encrypt import SQLAlchemyUtilsAdapter
 from zobi.utils.log import DBEventLogger
 from zobi.utils.logging_configurator import DefaultLoggingConfigurator
 from zobi.utils.version import get_dev_env_label
+from zobi.zobi_typing import CacheConfig
 
 logger = logging.getLogger(__name__)
 

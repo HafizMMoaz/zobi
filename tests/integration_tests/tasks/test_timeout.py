@@ -16,6 +16,8 @@ from typing import Any
 import pytest
 from zobi_core.tasks.types import TaskScope, TaskStatus
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.constants import ADMIN_USERNAME
 from zobi.commands.tasks.cancel import CancelTaskCommand
 from zobi.daos.tasks import TaskDAO
 from zobi.extensions import db
@@ -23,8 +25,6 @@ from zobi.models.tasks import Task
 from zobi.tasks.ambient_context import get_context
 from zobi.tasks.registry import TaskRegistry
 from zobi.tasks.scheduler import execute_task
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.constants import ADMIN_USERNAME
 
 
 def _skip_if_sqlite() -> None:

@@ -1,4 +1,3 @@
-
 import {
   CategoricalAirbnb,
   CategoricalEcharts,

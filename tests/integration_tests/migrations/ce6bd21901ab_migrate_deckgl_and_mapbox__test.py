@@ -5,8 +5,7 @@ import pytest
 from zobi.utils import json
 
 migrate_deckgl_and_mapbox = import_module(
-    "zobi.migrations.versions."
-    "2026-03-02_00-00_ce6bd21901ab_migrate_deckgl_and_mapbox",
+    "zobi.migrations.versions.2026-03-02_00-00_ce6bd21901ab_migrate_deckgl_and_mapbox",
 )
 
 Slice = migrate_deckgl_and_mapbox.Slice

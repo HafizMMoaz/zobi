@@ -1,5 +1,3 @@
-
-
 import getTextDimension, { GetTextDimensionInput } from './getTextDimension';
 import { Dimension } from './types';
 

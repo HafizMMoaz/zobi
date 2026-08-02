@@ -1,4 +1,3 @@
-
 export default {
   1: {
     allow_ctas: false,

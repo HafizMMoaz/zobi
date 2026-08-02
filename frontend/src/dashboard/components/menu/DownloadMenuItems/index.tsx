@@ -1,11 +1,7 @@
 import { SyntheticEvent } from 'react';
 import { logging } from '@zobi.dev/extension-api/utils';
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  FeatureFlag,
-  isFeatureEnabled,
-  ZobiClient,
-} from '@zobi.dev/core';
+import { FeatureFlag, isFeatureEnabled, ZobiClient } from '@zobi.dev/core';
 import { MenuItem } from '@zobi.dev/core/components/Menu';
 import { parse as parseContentDisposition } from 'content-disposition';
 import { useDownloadScreenshot } from 'src/dashboard/hooks/useDownloadScreenshot';

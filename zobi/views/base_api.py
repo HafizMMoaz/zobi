@@ -30,9 +30,9 @@ from zobi.models.dashboard import Dashboard
 from zobi.models.slice import Slice
 from zobi.schemas import error_payload_content
 from zobi.sql_lab import Query as SqllabQuery
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils.core import get_user_id, time_function
 from zobi.views.error_handling import handle_api_exception
+from zobi.zobi_typing import FlaskResponse
 
 logger = logging.getLogger(__name__)
 get_related_schema = {
@@ -133,9 +133,7 @@ def validate_feature_flags(
 
     def decorate(f: Callable[..., Response]) -> Callable[..., Response]:
         @functools.wraps(f)
-        def wrapper(
-            self: BaseZobiModelRestApi, *args: Any, **kwargs: Any
-        ) -> Response:
+        def wrapper(self: BaseZobiModelRestApi, *args: Any, **kwargs: Any) -> Response:
             if not all(is_feature_enabled(flag) for flag in feature_flags):
                 return self.response_404()
             return f(self, *args, **kwargs)

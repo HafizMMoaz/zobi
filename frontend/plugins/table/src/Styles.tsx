@@ -1,4 +1,3 @@
-
 import { css, styled } from '@zobi.dev/extension-api/theme';
 
 export default styled.div`

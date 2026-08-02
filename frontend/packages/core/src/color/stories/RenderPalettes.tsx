@@ -1,5 +1,3 @@
-
-
 /* eslint react/prop-types: 'off' */
 import './color-styles.css';
 

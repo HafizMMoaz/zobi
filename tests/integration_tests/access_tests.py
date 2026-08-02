@@ -51,12 +51,10 @@ ROLE_ALL_PERM_DATA = {
 }
 
 EXTEND_ROLE_REQUEST = (
-    "/zobi/approve?datasource_type={}&datasource_id={}&"
-    "created_by={}&role_to_extend={}"
+    "/zobi/approve?datasource_type={}&datasource_id={}&created_by={}&role_to_extend={}"
 )
 GRANT_ROLE_REQUEST = (
-    "/zobi/approve?datasource_type={}&datasource_id={}&"
-    "created_by={}&role_to_grant={}"
+    "/zobi/approve?datasource_type={}&datasource_id={}&created_by={}&role_to_grant={}"
 )
 TEST_ROLE_1 = "test_role1"
 TEST_ROLE_2 = "test_role2"

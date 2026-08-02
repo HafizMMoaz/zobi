@@ -1,8 +1,8 @@
-
 from unittest.mock import Mock, patch
 
 import pytest
 
+from tests.conftest import with_config
 from zobi.commands.theme.exceptions import (
     SystemThemeProtectedError,
     ThemeNotFoundError,
@@ -10,7 +10,6 @@ from zobi.commands.theme.exceptions import (
 from zobi.commands.theme.seed import SeedSystemThemesCommand
 from zobi.commands.theme.update import UpdateThemeCommand
 from zobi.models.core import Theme
-from tests.conftest import with_config
 
 
 class TestUpdateThemeCommand:

@@ -1,4 +1,3 @@
-
 import { render, screen } from 'spec/helpers/testing-library';
 import { GenericLink } from '.';
 
@@ -19,9 +18,7 @@ test('navigates to internal URL', () => {
 
 test('navigates to external URL', () => {
   render(
-    <GenericLink to="https://zobi.dev/">
-      Link to external website
-    </GenericLink>,
+    <GenericLink to="https://zobi.dev/">Link to external website</GenericLink>,
     { useRouter: true },
   );
   const externalLink = screen.getByTestId('external-link');
@@ -29,12 +26,9 @@ test('navigates to external URL', () => {
 });
 
 test('navigates to external URL without host', () => {
-  render(
-    <GenericLink to="zobi.dev/">
-      Link to external website
-    </GenericLink>,
-    { useRouter: true },
-  );
+  render(<GenericLink to="zobi.dev/">Link to external website</GenericLink>, {
+    useRouter: true,
+  });
   const externalLink = screen.getByTestId('external-link');
   expect(externalLink).toHaveAttribute('href', '//zobi.dev/');
 });

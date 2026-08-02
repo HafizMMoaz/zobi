@@ -2,11 +2,6 @@ from operator import and_
 
 import pytest
 
-from zobi import db
-from zobi.daos.tag import TagDAO
-from zobi.models.dashboard import Dashboard
-from zobi.models.slice import Slice
-from zobi.tags.models import ObjectType, Tag, TaggedObject
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.constants import ADMIN_USERNAME
 from tests.integration_tests.fixtures.tags import (
@@ -17,6 +12,11 @@ from tests.integration_tests.fixtures.world_bank_dashboard import (
     load_world_bank_data,  # noqa: F401
 )
 from tests.integration_tests.tags.api_tests import TAGS_FIXTURE_COUNT
+from zobi import db
+from zobi.daos.tag import TagDAO
+from zobi.models.dashboard import Dashboard
+from zobi.models.slice import Slice
+from zobi.tags.models import ObjectType, Tag, TaggedObject
 
 
 class TestTagsDAO(ZobiTestCase):

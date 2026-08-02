@@ -1,5 +1,3 @@
-
-
 import Registry, { RegistryConfig } from './Registry';
 
 interface RegistryWithDefaultKeyConfig extends RegistryConfig {

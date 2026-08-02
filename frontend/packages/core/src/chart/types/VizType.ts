@@ -1,4 +1,3 @@
-
 export enum VizType {
   Area = 'echarts_area',
   Bar = 'echarts_timeseries_bar',

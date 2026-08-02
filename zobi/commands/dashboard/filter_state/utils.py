@@ -1,4 +1,3 @@
-
 from zobi.commands.dashboard.exceptions import (
     DashboardAccessDeniedError,
     DashboardNotFoundError,

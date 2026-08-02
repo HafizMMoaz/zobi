@@ -1,4 +1,3 @@
-
 """
 Utilities for handling OAuth2 errors in MCP tools.
 """

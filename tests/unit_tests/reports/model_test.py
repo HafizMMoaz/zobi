@@ -1,4 +1,3 @@
-
 from zobi.reports.models import ReportSchedule
 
 

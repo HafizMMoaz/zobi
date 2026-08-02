@@ -1,9 +1,4 @@
-
-import {
-  ChartProps,
-  convertKeysToCamelCase,
-  DataRecord,
-} from '@zobi.dev/core';
+import { ChartProps, convertKeysToCamelCase, DataRecord } from '@zobi.dev/core';
 import { isObject } from 'lodash';
 import {
   LocationConfigMapping,
@@ -35,7 +30,7 @@ export const getGeojsonColumns = (columns: string[]) =>
       return [...prev];
     }
     return [...prev, idx];
-  }, []);
+  }, [] as number[]);
 
 /**
  * Create a column name ignoring provided indices.

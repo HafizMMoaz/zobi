@@ -1,4 +1,3 @@
-
 import { PostProcessingProphet, getXAxisLabel } from '@zobi.dev/core';
 import { PostProcessingFactory } from './types';
 

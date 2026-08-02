@@ -449,7 +449,11 @@ const echart_options: SharedControlConfig<'JSEditorControl'> = {
   validators: [],
 };
 
-const sharedControls: Record<string, SharedControlConfig<any>> = {
+// The second parameter defaults to `SelectOption`, but entries here carry
+// other option shapes (`ColumnMeta`, `SelectDefaultOption`). Their
+// `optionRenderer`/`valueRenderer` take that narrower option, and parameters
+// are contravariant, so the option type is left open too.
+const sharedControls: Record<string, SharedControlConfig<any, any>> = {
   metrics: dndAdhocMetricsControl,
   metric: dndAdhocMetricControl,
   datasource: datasourceControl,

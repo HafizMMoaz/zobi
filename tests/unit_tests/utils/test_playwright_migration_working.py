@@ -1,4 +1,3 @@
-
 """
 Working tests for Playwright migration functionality.
 These tests demonstrate the core functionality works correctly.

@@ -1,4 +1,3 @@
-
 export const PROPORTION = {
   METRIC_NAME: 0.125,
   KICKER: 0.1,

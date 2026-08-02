@@ -1,4 +1,3 @@
-
 from flask import Flask
 
 from zobi.async_events.async_query_manager import AsyncQueryManager

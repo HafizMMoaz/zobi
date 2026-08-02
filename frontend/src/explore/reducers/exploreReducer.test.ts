@@ -1,4 +1,3 @@
-
 import exploreReducer, { ExploreState } from './exploreReducer';
 import { setStashFormData } from '../actions/exploreActions';
 import { QueryFormData } from '@zobi.dev/core';

@@ -1,5 +1,3 @@
-
-
 import ChartProps, { ChartPropsConfig } from './models/ChartProps';
 
 export { default as ChartClient } from './clients/ChartClient';

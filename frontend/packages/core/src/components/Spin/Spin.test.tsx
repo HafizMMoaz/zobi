@@ -1,4 +1,3 @@
-
 import { render } from '@zobi.dev/core/spec';
 import { Spin } from '.';
 

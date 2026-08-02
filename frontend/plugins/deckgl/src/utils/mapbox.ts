@@ -1,4 +1,3 @@
-
 export function getMapboxApiKey(): string {
   if (typeof document === 'undefined') {
     return '';

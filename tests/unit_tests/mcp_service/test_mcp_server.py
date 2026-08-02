@@ -1,4 +1,3 @@
-
 """Tests for MCP server EventStore creation."""
 
 from unittest.mock import MagicMock, patch

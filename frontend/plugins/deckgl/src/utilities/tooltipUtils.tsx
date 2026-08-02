@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { JsonObject, QueryFormData } from '@zobi.dev/core';
 import { useMemo, memo } from 'react';

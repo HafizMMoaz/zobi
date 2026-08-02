@@ -1,4 +1,3 @@
-
 """
 Tests for screenshot cache bug fixes:
 1. Cache only saved when image generation succeeds

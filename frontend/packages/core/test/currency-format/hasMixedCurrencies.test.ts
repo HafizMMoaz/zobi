@@ -1,4 +1,3 @@
-
 import { hasMixedCurrencies } from '../../src/currency-format/CurrencyFormatter';
 
 test('hasMixedCurrencies detects mixed vs single currency', () => {

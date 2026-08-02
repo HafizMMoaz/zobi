@@ -1,5 +1,5 @@
-from zobi.utils import json
 from tests.conftest import with_config
+from zobi.utils import json
 
 
 @with_config({"ZOBI_WEBSERVER_DOMAINS": ["a", "b"]})

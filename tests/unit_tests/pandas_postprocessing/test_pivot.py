@@ -1,13 +1,12 @@
-
 import numpy as np
 import pandas as pd
 import pytest
 from pandas import DataFrame, to_datetime
 
-from zobi.exceptions import InvalidPostProcessingError
-from zobi.utils.pandas_postprocessing import flatten, pivot
 from tests.unit_tests.fixtures.dataframes import categories_df
 from tests.unit_tests.pandas_postprocessing.utils import AGGREGATES_SINGLE
+from zobi.exceptions import InvalidPostProcessingError
+from zobi.utils.pandas_postprocessing import flatten, pivot
 
 
 def test_pivot_without_columns():

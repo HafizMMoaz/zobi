@@ -1,8 +1,5 @@
 import memoizeOne from 'memoize-one';
-import {
-  DatasourceType,
-  getChartControlPanelRegistry,
-} from '@zobi.dev/core';
+import { DatasourceType, getChartControlPanelRegistry } from '@zobi.dev/core';
 import {
   ControlPanelConfig,
   ControlPanelSectionConfig,

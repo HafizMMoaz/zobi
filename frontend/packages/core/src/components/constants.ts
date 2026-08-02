@@ -1,4 +1,3 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 
 export const Constants = {

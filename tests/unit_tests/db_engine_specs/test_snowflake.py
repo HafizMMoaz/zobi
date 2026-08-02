@@ -1,4 +1,3 @@
-
 # pylint: disable=import-outside-toplevel
 
 from datetime import datetime
@@ -9,10 +8,10 @@ import pytest
 from pytest_mock import MockerFixture
 from sqlalchemy.engine.url import make_url
 
-from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
-from zobi.utils import json
 from tests.unit_tests.db_engine_specs.utils import assert_convert_dttm
 from tests.unit_tests.fixtures.common import dttm  # noqa: F401
+from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
+from zobi.utils import json
 
 
 @pytest.mark.parametrize(

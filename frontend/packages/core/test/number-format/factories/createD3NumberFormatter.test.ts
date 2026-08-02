@@ -1,5 +1,3 @@
-
-
 import { createD3NumberFormatter } from '@zobi.dev/core';
 
 describe('createD3NumberFormatter(config)', () => {

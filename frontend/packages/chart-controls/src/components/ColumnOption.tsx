@@ -1,10 +1,6 @@
 import { useState, ReactNode, useLayoutEffect, RefObject } from 'react';
 import { css, styled, ZobiTheme } from '@zobi.dev/extension-api/theme';
-import {
-  SafeMarkdown,
-  Tooltip,
-  InfoTooltip,
-} from '@zobi.dev/core/components';
+import { SafeMarkdown, Tooltip, InfoTooltip } from '@zobi.dev/core/components';
 import { ColumnTypeLabel } from './ColumnTypeLabel/ColumnTypeLabel';
 import CertifiedIconWithTooltip from './CertifiedIconWithTooltip';
 import { ColumnMeta } from '../types';

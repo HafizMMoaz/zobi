@@ -1,9 +1,11 @@
-
 from __future__ import annotations
 
 import pytest
 from flask.ctx import AppContext
 
+from tests.integration_tests.conftest import only_postgresql
+from tests.integration_tests.test_app import app
+from tests.unit_tests.fixtures.common import create_csv_file
 from zobi import db, security_manager
 from zobi.commands.database.exceptions import (
     DatabaseNotFoundError,
@@ -17,9 +19,6 @@ from zobi.models.core import Database
 from zobi.utils import json
 from zobi.utils.core import override_user
 from zobi.utils.database import get_or_create_db
-from tests.integration_tests.conftest import only_postgresql
-from tests.integration_tests.test_app import app
-from tests.unit_tests.fixtures.common import create_csv_file
 
 CSV_UPLOAD_DATABASE = "csv_explore_db"
 CSV_UPLOAD_TABLE = "csv_upload"

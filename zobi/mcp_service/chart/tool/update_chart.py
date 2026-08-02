@@ -1,4 +1,3 @@
-
 """
 MCP tool: update_chart
 """
@@ -401,9 +400,7 @@ async def update_chart(  # noqa: C901
                 command = UpdateChartCommand(chart.id, payload_or_error)
                 updated_chart = command.run()
             saved = True
-            explore_url = (
-                f"{get_zobi_base_url()}/explore/?slice_id={updated_chart.id}"
-            )
+            explore_url = f"{get_zobi_base_url()}/explore/?slice_id={updated_chart.id}"
         else:
             preview_or_error = _build_preview_form_data(request, chart, parsed_config)
             if isinstance(preview_or_error, GenerateChartResponse):
@@ -525,9 +522,7 @@ async def update_chart(  # noqa: C901
             "form_data_key": form_data_key,
             "api_endpoints": {
                 "data": f"{get_zobi_base_url()}/api/v1/chart/{chart_id}/data/",
-                "export": (
-                    f"{get_zobi_base_url()}/api/v1/chart/{chart_id}/export/"
-                ),
+                "export": (f"{get_zobi_base_url()}/api/v1/chart/{chart_id}/export/"),
             },
             "performance": performance.model_dump() if performance else None,
             "accessibility": accessibility.model_dump() if accessibility else None,

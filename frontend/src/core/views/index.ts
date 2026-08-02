@@ -1,4 +1,3 @@
-
 /**
  * @fileoverview Standalone views registry implementation.
  *

@@ -1,4 +1,3 @@
-
 """
 Utilities for building MCP tool responses with explicit omission metadata.
 

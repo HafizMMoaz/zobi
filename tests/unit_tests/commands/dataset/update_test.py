@@ -1,10 +1,10 @@
-
 from typing import Any, cast
 
 import pytest
 from marshmallow import ValidationError
 from pytest_mock import MockerFixture
 
+from tests.unit_tests.conftest import with_feature_flags
 from zobi.commands.dataset.exceptions import (
     DatabaseNotFoundValidationError,
     DatasetExistsValidationError,
@@ -23,7 +23,6 @@ from zobi.commands.exceptions import OwnersNotFoundValidationError
 from zobi.datasets.schemas import FolderSchema
 from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
 from zobi.exceptions import ZobiSecurityException
-from tests.unit_tests.conftest import with_feature_flags
 
 
 def test_update_dataset_not_found(mocker: MockerFixture) -> None:

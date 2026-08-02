@@ -1,9 +1,4 @@
-
-
-import {
-  NumberFormatter,
-  createSiAtMostNDigitFormatter,
-} from '@zobi.dev/core';
+import { NumberFormatter, createSiAtMostNDigitFormatter } from '@zobi.dev/core';
 
 describe('createSiAtMostNDigitFormatter({ n })', () => {
   test('creates an instance of NumberFormatter', () => {

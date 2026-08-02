@@ -19,7 +19,6 @@ from zobi.exceptions import (
 )
 from zobi.extensions import event_logger
 from zobi.sql.parse import sanitize_clause, transpile_to_dialect
-from zobi.zobi_typing import Column, Metric, OrderBy, QueryObjectDict
 from zobi.utils import json, pandas_postprocessing
 from zobi.utils.cache_keys import add_impersonation_cache_key_if_needed
 from zobi.utils.core import (
@@ -32,6 +31,7 @@ from zobi.utils.core import (
 )
 from zobi.utils.hashing import hash_from_dict
 from zobi.utils.json import json_int_dttm_ser
+from zobi.zobi_typing import Column, Metric, OrderBy, QueryObjectDict
 
 if TYPE_CHECKING:
     from zobi.connectors.sqla.models import BaseDatasource

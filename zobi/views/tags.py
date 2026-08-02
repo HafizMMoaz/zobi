@@ -1,4 +1,3 @@
-
 import logging
 
 from flask_appbuilder import expose
@@ -8,10 +7,10 @@ from flask_appbuilder.security.decorators import has_access, has_access_api
 from werkzeug.exceptions import NotFound
 
 from zobi import db, is_feature_enabled
-from zobi.zobi_typing import FlaskResponse
 from zobi.tags.models import Tag
 from zobi.utils import json
 from zobi.views.base import ZobiModelView
+from zobi.zobi_typing import FlaskResponse
 
 from .base import BaseZobiView, json_success
 

@@ -1,4 +1,3 @@
-
 """
 Unit tests for get_chart_preview MCP tool
 """
@@ -900,9 +899,7 @@ class TestChartPreviewSanitization:
         assert result.content.html_content == sanitize_for_llm_context(
             "<div>Revenue by region</div>"
         )
-        assert (
-            result.content.preview_url == "/zobi/explore/?slice_id=6&standalone=1"
-        )
+        assert result.content.preview_url == "/zobi/explore/?slice_id=6&standalone=1"
         assert result.explore_url == "/explore/?slice_id=6"
 
     @pytest.mark.asyncio

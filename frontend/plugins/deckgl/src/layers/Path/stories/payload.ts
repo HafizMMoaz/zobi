@@ -1,5 +1,3 @@
-
-
 // Placeholder payload data for Path chart stories
 export default function payload(_theme: unknown) {
   return {

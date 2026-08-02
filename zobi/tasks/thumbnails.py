@@ -1,4 +1,3 @@
-
 """Utility functions used across Zobi"""
 
 import logging

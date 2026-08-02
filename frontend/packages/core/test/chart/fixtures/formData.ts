@@ -1,5 +1,3 @@
-
-
 /* eslint sort-keys: 'off' */
 /** The form data defined here is based on default visualizations packaged with Zobi */
 import { TimeGranularity, VizType } from '@zobi.dev/core';

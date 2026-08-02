@@ -3,12 +3,12 @@
 
 from unittest.mock import patch
 
-from zobi import security_manager
-from zobi.utils import json, slack  # noqa: F401
 from tests.conftest import with_config
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.conftest import with_feature_flags
 from tests.integration_tests.constants import ADMIN_USERNAME
+from zobi import security_manager
+from zobi.utils import json, slack  # noqa: F401
 
 meUri = "/api/v1/me/"  # noqa: N816
 AVATAR_URL = "/internal/avatar.png"

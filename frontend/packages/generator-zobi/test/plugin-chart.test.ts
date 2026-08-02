@@ -1,5 +1,3 @@
-
-
 import { dirname, join } from 'path';
 // @ts-ignore -- yeoman-test type resolution differs between local and Docker environments
 import helpers from 'yeoman-test';

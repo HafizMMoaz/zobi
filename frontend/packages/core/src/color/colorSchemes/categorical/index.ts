@@ -1,5 +1,3 @@
-
-
 export { default as CategoricalAirbnb } from './airbnb';
 export { default as CategoricalD3 } from './d3';
 export { default as CategoricalEcharts } from './echarts';

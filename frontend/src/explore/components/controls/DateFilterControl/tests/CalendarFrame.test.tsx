@@ -1,4 +1,3 @@
-
 import { render, screen, fireEvent } from 'spec/helpers/testing-library';
 import { CalendarFrame } from '../components/CalendarFrame';
 import { PreviousCalendarWeek, PreviousCalendarQuarter } from '../types';

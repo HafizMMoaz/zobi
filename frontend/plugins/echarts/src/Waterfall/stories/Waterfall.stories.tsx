@@ -1,4 +1,3 @@
-
 import {
   SuperChart,
   VizType,

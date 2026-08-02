@@ -1,4 +1,3 @@
-
 # pylint: disable=invalid-name, disallowed-name
 
 import base64
@@ -10,7 +9,6 @@ import pytest
 from freezegun import freeze_time
 from pytest_mock import MockerFixture
 
-from zobi.zobi_typing import OAuth2ClientConfig
 from zobi.utils.oauth2 import (
     decode_oauth2_state,
     encode_oauth2_state,
@@ -20,6 +18,7 @@ from zobi.utils.oauth2 import (
     get_oauth2_redirect_uri,
     refresh_oauth2_token,
 )
+from zobi.zobi_typing import OAuth2ClientConfig
 
 DUMMY_OAUTH2_CONFIG = cast(OAuth2ClientConfig, {})
 

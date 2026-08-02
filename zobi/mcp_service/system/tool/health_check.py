@@ -1,4 +1,3 @@
-
 """Simple health check tool for testing MCP service."""
 
 import datetime

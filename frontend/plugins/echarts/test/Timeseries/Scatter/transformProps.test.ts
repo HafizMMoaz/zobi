@@ -1,4 +1,3 @@
-
 import { ChartProps, SMART_DATE_ID } from '@zobi.dev/core';
 import transformProps from '../../../src/Timeseries/transformProps';
 import { DEFAULT_FORM_DATA } from '../../../src/Timeseries/constants';

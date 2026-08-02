@@ -121,8 +121,6 @@ try:
     import zobi_config_docker
     from zobi_config_docker import *  # noqa: F403
 
-    logger.info(
-        "Loaded your Docker configuration at [%s]", zobi_config_docker.__file__
-    )
+    logger.info("Loaded your Docker configuration at [%s]", zobi_config_docker.__file__)
 except ImportError:
     logger.info("Using default Docker config...")

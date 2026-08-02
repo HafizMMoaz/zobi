@@ -755,10 +755,14 @@ export default function transformProps(
           .map(entry => entry.name || '')
           .concat(extractAnnotationLabels(annotationLayers));
 
-  const sortedLegendData = [...legendData].sort((a: string, b: string) => {
+  const sortedLegendData = [...legendData].sort((a, b) => {
     if (!legendSort) return 0;
-    return legendSort === 'asc' ? a.localeCompare(b) : b.localeCompare(a);
+    const [labelA, labelB] = [String(a), String(b)];
+    return legendSort === 'asc'
+      ? labelA.localeCompare(labelB)
+      : labelB.localeCompare(labelA);
   });
+
   const colorByPrimaryAxisLegendData = legendData.map(name => ({
     name,
     icon: 'roundRect',

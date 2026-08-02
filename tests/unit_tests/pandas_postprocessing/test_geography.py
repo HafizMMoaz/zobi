@@ -1,10 +1,10 @@
+from tests.unit_tests.fixtures.dataframes import lonlat_df
+from tests.unit_tests.pandas_postprocessing.utils import round_floats, series_to_list
 from zobi.utils.pandas_postprocessing import (
     geodetic_parse,
     geohash_decode,
     geohash_encode,
 )
-from tests.unit_tests.fixtures.dataframes import lonlat_df
-from tests.unit_tests.pandas_postprocessing.utils import round_floats, series_to_list
 
 
 def test_geohash_decode():

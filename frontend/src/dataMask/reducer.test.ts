@@ -1,4 +1,3 @@
-
 import reducer, { getInitialDataMask } from './reducer';
 import {
   SET_DATA_MASK_FOR_FILTER_CHANGES_COMPLETE,

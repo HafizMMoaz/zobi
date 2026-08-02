@@ -1,4 +1,3 @@
-
 import { ThemeProvider } from '@zobi.dev/extension-api/theme';
 import querystring from 'query-string';
 import { BrowserRouter as Router } from 'react-router-dom';

@@ -1,5 +1,3 @@
-
-
 import { Registry, makeSingleton } from '../..';
 import { ChartControlPanel } from '../models/ChartControlPanel';
 

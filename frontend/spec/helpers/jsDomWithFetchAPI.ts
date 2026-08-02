@@ -1,4 +1,3 @@
-
 import JSDOMEnvironment from 'jest-environment-jsdom';
 
 // jest-environment-jsdom 30 bundles jsdom 26, which marks window.location as

@@ -1,4 +1,3 @@
-
 """
 Chart prompts for visualization guidance
 """

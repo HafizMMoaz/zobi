@@ -1,5 +1,3 @@
-
-
 export default function stringifyTimeInput(
   value: Date | number | string | undefined | null,
   fn: (time: Date) => string,

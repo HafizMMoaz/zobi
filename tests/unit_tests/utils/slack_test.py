@@ -1,4 +1,3 @@
-
 import pytest
 
 from zobi.utils.slack import get_channels_with_search, SlackChannelTypes

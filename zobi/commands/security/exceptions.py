@@ -1,4 +1,3 @@
-
 from flask_babel import lazy_gettext as _
 
 from zobi.commands.exceptions import CommandException, DeleteFailedError

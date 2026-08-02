@@ -1,5 +1,3 @@
-
-
 export default [
   {
     ds: -157766400000,

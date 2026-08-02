@@ -1,4 +1,3 @@
-
 import type { EChartsCoreOption } from 'echarts/core';
 import type { CustomEChartOptions } from './eChartOptionsSchema';
 

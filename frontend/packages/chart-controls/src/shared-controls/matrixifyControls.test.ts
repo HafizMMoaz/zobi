@@ -1,4 +1,3 @@
-
 import { isMatrixifyVisible } from './matrixifyControls';
 import type { ControlStateMapping } from '../types';
 

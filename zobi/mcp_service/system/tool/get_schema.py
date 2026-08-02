@@ -1,4 +1,3 @@
-
 """
 Unified schema discovery tool for MCP service.
 

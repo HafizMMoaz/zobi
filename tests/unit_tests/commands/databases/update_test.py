@@ -1,14 +1,13 @@
-
 from unittest.mock import MagicMock
 
 from pytest_mock import MockerFixture
 
+from tests.conftest import with_config
+from tests.unit_tests.commands.databases.conftest import oauth2_client_info
 from zobi import db
 from zobi.commands.database.update import UpdateDatabaseCommand
 from zobi.extensions import security_manager
 from zobi.utils import json
-from tests.conftest import with_config
-from tests.unit_tests.commands.databases.conftest import oauth2_client_info
 
 
 def test_update_with_catalog(

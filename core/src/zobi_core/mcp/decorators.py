@@ -22,9 +22,7 @@ from typing import Any, Callable, TypeVar
 
 try:
     from mcp.types import ToolAnnotations
-except (
-    ImportError
-):  # MCP extras may not be installed in core-only environments
+except ImportError:  # MCP extras may not be installed in core-only environments
     ToolAnnotations = dict
 
 # Type variable for decorated functions

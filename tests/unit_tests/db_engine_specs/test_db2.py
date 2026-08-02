@@ -1,4 +1,3 @@
-
 import pytest  # noqa: F401
 from pytest_mock import MockerFixture
 from sqlglot import parse_one

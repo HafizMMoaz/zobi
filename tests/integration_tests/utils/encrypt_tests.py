@@ -5,6 +5,7 @@ from sqlalchemy import String, TypeDecorator
 from sqlalchemy_utils import EncryptedType
 from sqlalchemy_utils.types.encrypted.encrypted_type import StringEncryptedType
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi.extensions import encrypted_field_factory
 from zobi.utils.encrypt import (
     AbstractEncryptedFieldAdapter,
@@ -12,7 +13,6 @@ from zobi.utils.encrypt import (
     SecretsMigrator,
     SQLAlchemyUtilsAdapter,
 )
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class CustomEncFieldAdapter(AbstractEncryptedFieldAdapter):

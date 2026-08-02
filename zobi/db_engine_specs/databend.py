@@ -319,9 +319,7 @@ class DatabendConnectEngineSpec(BasicParametersMixin, DatabendEngineSpec):
         raise ValueError("Unrecognized Databend interface")
 
     @classmethod
-    def validate_parameters(
-        cls, properties: BasicPropertiesType
-    ) -> list[ZobiError]:
+    def validate_parameters(cls, properties: BasicPropertiesType) -> list[ZobiError]:
         # The newest versions of zobi send a "properties" object with a
         # parameters key, instead of just the parameters, so we hack to be compatible
         parameters = properties.get("parameters", properties)

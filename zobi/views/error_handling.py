@@ -25,10 +25,10 @@ from zobi.exceptions import (
     ZobiException,
     ZobiSecurityException,
 )
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils import core as utils, json
 from zobi.utils.log import get_logger_from_status
 from zobi.views.utils import redirect_to_login
+from zobi.zobi_typing import FlaskResponse
 
 if typing.TYPE_CHECKING:
     from zobi.views.base import BaseZobiView

@@ -1,4 +1,3 @@
-
 """
 Tests for the get_chart_data request schema and chart type fallback handling.
 """
@@ -1171,9 +1170,7 @@ def mock_auth():
     from contextlib import contextmanager
     from unittest.mock import Mock, patch
 
-    _gcd_module = importlib.import_module(
-        "zobi.mcp_service.chart.tool.get_chart_data"
-    )
+    _gcd_module = importlib.import_module("zobi.mcp_service.chart.tool.get_chart_data")
 
     @contextmanager
     def _noop_log_context(*_args: Any, **_kwargs: Any) -> Any:

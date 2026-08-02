@@ -1,4 +1,3 @@
-
 import { render, screen, userEvent } from 'spec/helpers/testing-library';
 import { FilterBarOrientation } from 'src/dashboard/types';
 import FilterDivider from './FilterDivider';

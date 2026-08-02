@@ -29,15 +29,15 @@ from zobi.models.core import Database
 from zobi.models.dashboard import Dashboard
 from zobi.models.slice import Slice
 from zobi.models.sql_lab import Query
+from zobi.utils import json
+from zobi.utils.core import DatasourceType
+from zobi.utils.decorators import stats_timing
+from zobi.viz import BaseViz
 from zobi.zobi_typing import (
     ExplorableData,
     FlaskResponse,
     FormData,
 )
-from zobi.utils import json
-from zobi.utils.core import DatasourceType
-from zobi.utils.decorators import stats_timing
-from zobi.viz import BaseViz
 
 logger = logging.getLogger(__name__)
 stats_logger = app.config["STATS_LOGGER"]

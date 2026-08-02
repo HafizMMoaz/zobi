@@ -1,9 +1,4 @@
-
-import {
-  QueryFormMetric,
-  getMetricLabel,
-  SqlaFormData,
-} from '@zobi.dev/core';
+import { QueryFormMetric, getMetricLabel, SqlaFormData } from '@zobi.dev/core';
 
 export interface MetricColumnFilterParams {
   colname: string;

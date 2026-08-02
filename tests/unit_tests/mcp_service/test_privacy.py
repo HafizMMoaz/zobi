@@ -1,4 +1,3 @@
-
 """Tests for MCP privacy helpers."""
 
 import pytest

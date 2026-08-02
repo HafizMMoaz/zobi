@@ -1,5 +1,3 @@
-
-
 import { Registry, makeSingleton, OverwritePolicy } from '../..';
 import { TransformProps } from '../types/TransformFunction';
 

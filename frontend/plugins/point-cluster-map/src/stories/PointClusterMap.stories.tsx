@@ -1,4 +1,3 @@
-
 /* eslint-disable sort-keys, no-magic-numbers */
 import { SuperChart } from '@zobi.dev/core';
 import { useTheme } from '@zobi.dev/extension-api/theme';

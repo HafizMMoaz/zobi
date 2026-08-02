@@ -1,5 +1,3 @@
-
-
 import { TextStyle, Dimension } from './types';
 import updateTextNode from './svg/updateTextNode';
 import getBBoxCeil from './svg/getBBoxCeil';

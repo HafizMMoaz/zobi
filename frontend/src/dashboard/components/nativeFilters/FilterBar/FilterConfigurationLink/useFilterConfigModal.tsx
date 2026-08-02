@@ -1,4 +1,3 @@
-
 import { useCallback, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setFilterConfiguration } from 'src/dashboard/actions/nativeFilters';

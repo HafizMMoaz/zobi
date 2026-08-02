@@ -1,4 +1,3 @@
-
 describe('Visualization > Gauge', () => {
   beforeEach(() => {
     cy.intercept('POST', '**/api/v1/chart/data*').as('getJson');

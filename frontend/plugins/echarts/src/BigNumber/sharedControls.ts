@@ -1,4 +1,3 @@
-
 // These are control configurations that are shared ONLY within the BigNumberWithTrendline viz plugin repo.
 import { t } from '@zobi.dev/extension-api/translation';
 import { CustomControlItem } from '@zobi.dev/chart-controls';

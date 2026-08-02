@@ -1,5 +1,3 @@
-
-
 import { TimeFormatter, PREVIEW_TIME } from '@zobi.dev/core';
 
 describe('TimeFormatter', () => {

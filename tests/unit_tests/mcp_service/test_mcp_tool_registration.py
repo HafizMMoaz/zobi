@@ -1,4 +1,3 @@
-
 """Test MCP app imports and tool/prompt registration."""
 
 import asyncio

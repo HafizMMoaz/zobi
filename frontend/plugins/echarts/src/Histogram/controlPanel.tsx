@@ -1,9 +1,5 @@
 import { t } from '@zobi.dev/extension-api/translation';
-import {
-  validateInteger,
-  validateNonEmpty,
-  withLabel,
-} from '@zobi.dev/core';
+import { validateInteger, validateNonEmpty, withLabel } from '@zobi.dev/core';
 import { GenericDataType } from '@zobi.dev/extension-api/common';
 import {
   ControlPanelConfig,

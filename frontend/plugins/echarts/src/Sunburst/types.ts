@@ -1,4 +1,3 @@
-
 import {
   ChartDataResponseResult,
   ChartProps,

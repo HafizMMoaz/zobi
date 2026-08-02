@@ -1,4 +1,3 @@
-
 import { TableTab } from 'src/views/CRUD/types';
 import { DashboardContextForExplore } from 'src/types/DashboardContextForExplore';
 

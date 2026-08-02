@@ -1,4 +1,3 @@
-
 """Privacy helpers for MCP user-directory and data-model metadata."""
 
 from __future__ import annotations

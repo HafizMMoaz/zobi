@@ -1,5 +1,3 @@
-
-
 import { render } from '@testing-library/react';
 import '@testing-library/jest-dom';
 import { ChartFrame } from '@zobi.dev/core';

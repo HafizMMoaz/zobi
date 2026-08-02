@@ -1,4 +1,3 @@
-
 /**
  * Safely parses a value to a numeric type
  * @param value - The value to parse (string, number, or null)

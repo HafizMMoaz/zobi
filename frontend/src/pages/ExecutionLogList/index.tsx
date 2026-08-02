@@ -1,10 +1,6 @@
-
 import { t } from '@zobi.dev/extension-api/translation';
 import { css, styled } from '@zobi.dev/extension-api/theme';
-import {
-  extendedDayjs as dayjs,
-  fDuration,
-} from '@zobi.dev/core/utils/dates';
+import { extendedDayjs as dayjs, fDuration } from '@zobi.dev/core/utils/dates';
 import { useEffect, useMemo } from 'react';
 import { Link, useParams } from 'react-router-dom';
 import { Label, Tooltip } from '@zobi.dev/core/components';

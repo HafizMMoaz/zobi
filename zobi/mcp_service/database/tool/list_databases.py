@@ -1,4 +1,3 @@
-
 """
 List databases FastMCP tool (Advanced with metadata cache control)
 

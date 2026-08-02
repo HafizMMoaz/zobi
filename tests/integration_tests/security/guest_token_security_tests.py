@@ -5,15 +5,6 @@ from unittest.mock import Mock, patch
 import pytest
 from flask import g
 
-from zobi import db, security_manager
-from zobi.connectors.sqla.models import SqlaTable
-from zobi.daos.dashboard import EmbeddedDashboardDAO
-from zobi.exceptions import ZobiSecurityException
-from zobi.models.dashboard import Dashboard
-from zobi.security.guest_token import GuestTokenResourceType
-from zobi.utils import json
-from zobi.utils.core import get_example_default_schema
-from zobi.utils.database import get_example_database
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.fixtures.birth_names_dashboard import (
     load_birth_names_dashboard_with_slices_class_scope,  # noqa: F401
@@ -24,6 +15,15 @@ from tests.integration_tests.fixtures.world_bank_dashboard import (
     load_world_bank_dashboard_with_slices_class_scope,  # noqa: F401
     load_world_bank_data,  # noqa: F401
 )
+from zobi import db, security_manager
+from zobi.connectors.sqla.models import SqlaTable
+from zobi.daos.dashboard import EmbeddedDashboardDAO
+from zobi.exceptions import ZobiSecurityException
+from zobi.models.dashboard import Dashboard
+from zobi.security.guest_token import GuestTokenResourceType
+from zobi.utils import json
+from zobi.utils.core import get_example_default_schema
+from zobi.utils.database import get_example_database
 
 
 @patch.dict(

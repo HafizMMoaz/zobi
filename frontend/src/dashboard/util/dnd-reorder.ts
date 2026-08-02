@@ -1,4 +1,3 @@
-
 import { TABS_TYPE } from './componentTypes';
 import { DROP_LEFT, DROP_RIGHT } from './getDropPosition';
 

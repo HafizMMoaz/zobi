@@ -1,4 +1,3 @@
-
 """Tests for Big Number chart type support in MCP service."""
 
 import pytest

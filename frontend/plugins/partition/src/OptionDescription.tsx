@@ -1,4 +1,3 @@
-
 import PropTypes from 'prop-types';
 
 import { ColumnMeta } from '@zobi.dev/chart-controls';

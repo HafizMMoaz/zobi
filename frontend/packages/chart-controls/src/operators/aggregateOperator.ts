@@ -1,4 +1,3 @@
-
 import {
   getMetricLabel,
   ensureIsArray,

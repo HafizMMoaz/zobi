@@ -1,4 +1,3 @@
-
 import { validateNumber } from '@zobi.dev/core';
 
 export function parseAxisBound(

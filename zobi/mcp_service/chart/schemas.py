@@ -1,4 +1,3 @@
-
 """
 Pydantic schemas for chart-related responses
 """

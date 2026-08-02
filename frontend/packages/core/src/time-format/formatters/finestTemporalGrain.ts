@@ -1,5 +1,3 @@
-
-
 import { utcFormat, timeFormat } from 'd3-time-format';
 import { utcUtils, localTimeUtils } from '../utils/d3Time';
 import TimeFormatter from '../TimeFormatter';

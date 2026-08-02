@@ -1,4 +1,3 @@
-
 import { alterForComparison, formatValueHandler, getRowsFromDiffs } from '.';
 import { RowType } from '../types';
 

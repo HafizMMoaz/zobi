@@ -1,4 +1,3 @@
-
 // @fontsource/* v5.1+ doesn't play nice with eslint-import plugin v2.31+
 /* eslint-disable import/extensions */
 import '@fontsource/inter/200.css';

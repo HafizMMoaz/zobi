@@ -1,4 +1,3 @@
-
 import { FC, useCallback, useEffect, useMemo, useState } from 'react';
 import { NativeFilterScope } from '@zobi.dev/core';
 import { styled } from '@zobi.dev/extension-api/theme';

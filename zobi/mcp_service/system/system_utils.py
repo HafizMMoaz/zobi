@@ -1,4 +1,3 @@
-
 """
 System-level utility functions for MCP service.
 

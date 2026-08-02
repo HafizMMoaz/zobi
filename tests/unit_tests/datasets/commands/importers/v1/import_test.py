@@ -13,6 +13,9 @@ from flask_appbuilder.security.sqla.models import Role, User
 from pytest_mock import MockerFixture
 from sqlalchemy.orm.session import Session
 
+from tests.integration_tests.fixtures.importexport import (
+    dataset_config as dataset_fixture,
+)
 from zobi import db, security_manager
 from zobi.commands.dataset.exceptions import (
     DatasetAccessDeniedError,
@@ -28,9 +31,6 @@ from zobi.datasets.schemas import ImportV1DatasetSchema
 from zobi.models.core import Database
 from zobi.utils import json
 from zobi.utils.core import override_user
-from tests.integration_tests.fixtures.importexport import (
-    dataset_config as dataset_fixture,
-)
 
 
 def test_import_dataset(mocker: MockerFixture, session: Session) -> None:

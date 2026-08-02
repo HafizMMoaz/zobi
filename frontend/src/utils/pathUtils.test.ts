@@ -1,4 +1,3 @@
-
 afterEach(() => {
   // Clean up the DOM
   document.body.innerHTML = '';
@@ -136,9 +135,7 @@ test('makeUrl should handle URLs with anchors', async () => {
   await import('./getBootstrapData');
   const { makeUrl } = await import('./pathUtils');
 
-  expect(makeUrl('/dashboard/123#anchor')).toBe(
-    '/zobi/dashboard/123#anchor',
-  );
+  expect(makeUrl('/dashboard/123#anchor')).toBe('/zobi/dashboard/123#anchor');
 });
 
 // Representative URLs used across the absolute-URL passthrough tests below.

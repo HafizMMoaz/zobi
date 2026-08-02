@@ -10,6 +10,7 @@ from flask import current_app
 from pandas.api.types import is_datetime64_dtype
 from pytest_mock import MockerFixture
 
+from tests.conftest import with_config
 from zobi.exceptions import ZobiException
 from zobi.utils.core import (
     cast_to_boolean,
@@ -36,7 +37,6 @@ from zobi.utils.core import (
     sanitize_svg_content,
     sanitize_url,
 )
-from tests.conftest import with_config
 
 ADHOC_FILTER: QueryObjectFilterClause = {
     "col": "foo",

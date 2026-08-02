@@ -1,4 +1,3 @@
-
 """
 Tests for transpile_to_dialect function in zobi/sql/parse.py
 """

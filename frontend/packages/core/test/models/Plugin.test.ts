@@ -1,5 +1,3 @@
-
-
 import { Plugin } from '@zobi.dev/core';
 
 describe('Plugin', () => {

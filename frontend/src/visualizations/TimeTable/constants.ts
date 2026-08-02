@@ -1,4 +1,3 @@
-
 import { ZobiTheme } from '@zobi.dev/extension-api/theme';
 
 export const getAccessibleColorBounds = (theme: ZobiTheme): string[] => [

@@ -1,4 +1,3 @@
-
 """
 Tests for SQLExecutor.
 
@@ -723,9 +722,7 @@ def test_execute_async_creates_query(
 
     mock_db_session.add.side_effect = set_query_id
 
-    mock_celery_task = mocker.patch(
-        "zobi.sql.execution.celery_task.execute_sql_task"
-    )
+    mock_celery_task = mocker.patch("zobi.sql.execution.celery_task.execute_sql_task")
 
     result = database.execute_async("SELECT * FROM users")
 
@@ -744,9 +741,7 @@ def test_execute_async_with_options(
         current_app.config, {"SQL_QUERY_MUTATOR": None, "SQLLAB_TIMEOUT": 30}
     )
 
-    mock_celery_task = mocker.patch(
-        "zobi.sql.execution.celery_task.execute_sql_task"
-    )
+    mock_celery_task = mocker.patch("zobi.sql.execution.celery_task.execute_sql_task")
 
     options = QueryOptions(catalog="analytics", schema="reports")
     result = database.execute_async("SELECT * FROM sales", options=options)
@@ -1025,9 +1020,7 @@ def test_execute_async_dry_run_returns_transformed_sql(
     )
 
     # Mock Celery task - should NOT be called
-    mock_celery_task = mocker.patch(
-        "zobi.sql.execution.celery_task.execute_sql_task"
-    )
+    mock_celery_task = mocker.patch("zobi.sql.execution.celery_task.execute_sql_task")
 
     options = QueryOptions(dry_run=True)
     result = database.execute_async("SELECT * FROM users", options=options)
@@ -1060,9 +1053,7 @@ def test_execute_async_cached_result_returns_immediately(
     mocker.patch.object(SQLExecutor, "_get_from_cache", return_value=cached_result)
 
     # Mock Celery task - should NOT be called
-    mock_celery_task = mocker.patch(
-        "zobi.sql.execution.celery_task.execute_sql_task"
-    )
+    mock_celery_task = mocker.patch("zobi.sql.execution.celery_task.execute_sql_task")
 
     result = database.execute_async("SELECT * FROM users")
 
@@ -1840,9 +1831,7 @@ def test_execute_async_celery_submission_error(
     )
 
     # Mock Celery task to raise exception
-    mock_celery_task = mocker.patch(
-        "zobi.sql.execution.celery_task.execute_sql_task"
-    )
+    mock_celery_task = mocker.patch("zobi.sql.execution.celery_task.execute_sql_task")
     mock_celery_task.delay.side_effect = Exception("Celery connection failed")
 
     with pytest.raises(Exception, match="Celery connection failed"):

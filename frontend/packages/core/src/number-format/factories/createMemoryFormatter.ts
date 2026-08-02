@@ -1,5 +1,3 @@
-
-
 import NumberFormatter from '../NumberFormatter';
 import { NumberFormatFunction } from '../types';
 

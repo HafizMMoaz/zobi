@@ -1,5 +1,3 @@
-
-
 import prettyMilliseconds, { Options } from 'pretty-ms';
 import NumberFormatter from '../NumberFormatter';
 

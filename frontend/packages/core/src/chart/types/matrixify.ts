@@ -1,4 +1,3 @@
-
 import { AdhocMetric } from '../../query';
 
 /**

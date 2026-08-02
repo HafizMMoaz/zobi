@@ -1,4 +1,3 @@
-
 import { useCallback, useEffect, useMemo, useState } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { useListViewResource } from 'src/views/CRUD/hooks';

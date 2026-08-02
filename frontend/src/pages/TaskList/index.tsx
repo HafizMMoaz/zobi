@@ -1,9 +1,4 @@
-
-import {
-  FeatureFlag,
-  isFeatureEnabled,
-  ZobiClient,
-} from '@zobi.dev/core';
+import { FeatureFlag, isFeatureEnabled, ZobiClient } from '@zobi.dev/core';
 import { useTheme } from '@zobi.dev/extension-api/theme';
 import { t } from '@zobi.dev/extension-api/translation';
 import { useMemo, useCallback, useState } from 'react';

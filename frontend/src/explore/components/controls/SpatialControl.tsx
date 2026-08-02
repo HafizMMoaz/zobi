@@ -1,11 +1,5 @@
 import { Component, type ReactNode } from 'react';
-import {
-  Row,
-  Col,
-  Checkbox,
-  Label,
-  Popover,
-} from '@zobi.dev/core/components';
+import { Row, Col, Checkbox, Label, Popover } from '@zobi.dev/core/components';
 import { t } from '@zobi.dev/extension-api/translation';
 
 import PopoverSection from '@zobi.dev/core/components/PopoverSection';

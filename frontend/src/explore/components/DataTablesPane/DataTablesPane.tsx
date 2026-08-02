@@ -1,4 +1,3 @@
-
 import { useCallback, useEffect, useMemo, useState, MouseEvent } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { isFeatureEnabled, FeatureFlag } from '@zobi.dev/core';

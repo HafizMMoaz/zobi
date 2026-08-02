@@ -1,4 +1,3 @@
-
 import { ThemeObject } from './types';
 
 // eslint-disable-next-line no-restricted-globals -- TODO: Migrate from describe blocks

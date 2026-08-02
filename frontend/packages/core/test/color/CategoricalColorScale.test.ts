@@ -1,5 +1,3 @@
-
-
 import { ScaleOrdinal } from 'd3-scale';
 import {
   CategoricalColorScale,
