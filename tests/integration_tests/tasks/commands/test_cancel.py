@@ -1,10 +1,10 @@
-
 from unittest.mock import patch
 from uuid import UUID, uuid4
 
 import pytest
 from zobi_core.tasks.types import TaskScope, TaskStatus
 
+from tests.integration_tests.test_app import app
 from zobi import db
 from zobi.commands.tasks.cancel import CancelTaskCommand
 from zobi.commands.tasks.exceptions import (
@@ -15,7 +15,6 @@ from zobi.commands.tasks.exceptions import (
 )
 from zobi.daos.tasks import TaskDAO
 from zobi.utils.core import override_user
-from tests.integration_tests.test_app import app
 
 
 def test_cancel_pending_task_aborts(app_context, get_user) -> None:

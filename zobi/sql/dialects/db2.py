@@ -1,4 +1,3 @@
-
 """
 IBM DB2 dialect.
 

@@ -1,4 +1,3 @@
-
 """
 Unit tests for MCP service schema utilities.
 """

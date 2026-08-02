@@ -1,6 +1,8 @@
-
 import pytest
 
+from tests.integration_tests.fixtures.tabbed_dashboard import (
+    tabbed_dashboard,  # noqa: F401
+)
 from zobi import db
 from zobi.commands.report.create import CreateReportScheduleCommand
 from zobi.commands.report.exceptions import ReportScheduleInvalidError
@@ -9,9 +11,6 @@ from zobi.reports.models import (
     ReportCreationMethod,
     ReportRecipientType,
     ReportScheduleType,
-)
-from tests.integration_tests.fixtures.tabbed_dashboard import (
-    tabbed_dashboard,  # noqa: F401
 )
 
 DASHBOARD_REPORT_SCHEDULE_DEFAULTS = {

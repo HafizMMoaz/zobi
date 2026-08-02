@@ -102,8 +102,7 @@ class TestSqlLab(ZobiTestCase):
             }
         else:
             assert (
-                data["errors"][0]["error_type"]
-                == ZobiErrorType.GENERIC_DB_ENGINE_ERROR
+                data["errors"][0]["error_type"] == ZobiErrorType.GENERIC_DB_ENGINE_ERROR
             )
             assert data["errors"][0]["level"] == ErrorLevel.ERROR
             assert data["errors"][0]["extra"] == {
@@ -127,9 +126,7 @@ class TestSqlLab(ZobiTestCase):
         self.login(ADMIN_USERNAME)
 
         data = self.run_sql("DELETE FROM birth_names", "1")
-        assert (
-            data["errors"][0]["error_type"] == ZobiErrorType.DML_NOT_ALLOWED_ERROR
-        )
+        assert data["errors"][0]["error_type"] == ZobiErrorType.DML_NOT_ALLOWED_ERROR
 
     @parameterized.expand([CTASMethod.TABLE, CTASMethod.VIEW])
     @pytest.mark.skip(

@@ -1,13 +1,12 @@
-
 from unittest.mock import patch
 
 import yaml
 from freezegun import freeze_time
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi import security_manager
 from zobi.commands.database.export import ExportDatabasesCommand
 from zobi.utils.database import get_example_database
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class TestExportModelsCommand(ZobiTestCase):

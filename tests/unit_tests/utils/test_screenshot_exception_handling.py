@@ -1,4 +1,3 @@
-
 """
 Tests for screenshot exception handling in API endpoints.
 """

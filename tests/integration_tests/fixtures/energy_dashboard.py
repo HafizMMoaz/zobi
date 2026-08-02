@@ -4,13 +4,13 @@ import pandas as pd
 import pytest
 from sqlalchemy import column, Float, String
 
+from tests.integration_tests.dashboard_utils import create_slice, create_table_metadata
+from tests.integration_tests.test_app import app
 from zobi import db
 from zobi.connectors.sqla.models import SqlaTable, SqlMetric
 from zobi.models.slice import Slice
 from zobi.utils.core import get_example_default_schema
 from zobi.utils.database import get_example_database
-from tests.integration_tests.dashboard_utils import create_slice, create_table_metadata
-from tests.integration_tests.test_app import app
 
 misc_dash_slices: set[str] = set()
 

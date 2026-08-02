@@ -180,11 +180,7 @@ def extension_with_versions():
                 project["license"] = ext_license
             pyproject = {
                 "project": project,
-                "tool": {
-                    "zobi_extensions": {
-                        "build": {"include": ["src/**/*.py"]}
-                    }
-                },
+                "tool": {"zobi_extensions": {"build": {"include": ["src/**/*.py"]}}},
             }
             (backend_dir / "pyproject.toml").write_text(tomli_w.dumps(pyproject))
 

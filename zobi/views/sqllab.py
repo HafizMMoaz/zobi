@@ -8,8 +8,8 @@ from flask_appbuilder.security.decorators import has_access
 
 from zobi import event_logger
 from zobi.constants import MODEL_API_RW_METHOD_PERMISSION_MAP
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils import json
+from zobi.zobi_typing import FlaskResponse
 
 from .base import BaseZobiView
 

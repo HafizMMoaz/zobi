@@ -1,4 +1,3 @@
-
 """
 Generate explore link MCP tool
 

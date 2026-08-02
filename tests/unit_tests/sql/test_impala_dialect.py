@@ -1,4 +1,3 @@
-
 """Tests for Impala dialect support in sqlglot."""
 
 from sqlglot import Dialects

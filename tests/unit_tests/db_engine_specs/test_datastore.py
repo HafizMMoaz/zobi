@@ -1,4 +1,3 @@
-
 # pylint: disable=line-too-long, import-outside-toplevel, protected-access, invalid-name
 
 from __future__ import annotations
@@ -14,15 +13,15 @@ from sqlalchemy.sql import sqltypes
 pytest.importorskip("sqlalchemy_datastore")
 from sqlalchemy_datastore import CloudDatastoreDialect  # noqa: E402
 
+from tests.unit_tests.db_engine_specs.utils import assert_convert_dttm
+from tests.unit_tests.fixtures.common import dttm  # noqa: F401
 from zobi.db_engine_specs.datastore import (
     DatastoreEngineSpec,
     DatastoreParametersType,
 )
 from zobi.sql.parse import Table
-from zobi.zobi_typing import ResultSetColumnType
 from zobi.utils import json
-from tests.unit_tests.db_engine_specs.utils import assert_convert_dttm
-from tests.unit_tests.fixtures.common import dttm  # noqa: F401
+from zobi.zobi_typing import ResultSetColumnType
 
 
 def test_get_fields() -> None:
@@ -471,9 +470,7 @@ def test_get_client_passes_database_from_url(mocker: MockerFixture) -> None:
     from the engine URL through to ``datastore.Client``.
     """
 
-    mock_client_cls = mocker.patch(
-        "zobi.db_engine_specs.datastore.datastore.Client"
-    )
+    mock_client_cls = mocker.patch("zobi.db_engine_specs.datastore.datastore.Client")
     mocker.patch(
         "zobi.db_engine_specs.datastore.service_account"
         ".Credentials.from_service_account_info",
@@ -496,9 +493,7 @@ def test_get_client_passes_none_when_no_database(mocker: MockerFixture) -> None:
     has no ``database`` query parameter.
     """
 
-    mock_client_cls = mocker.patch(
-        "zobi.db_engine_specs.datastore.datastore.Client"
-    )
+    mock_client_cls = mocker.patch("zobi.db_engine_specs.datastore.datastore.Client")
     mocker.patch(
         "zobi.db_engine_specs.datastore.service_account"
         ".Credentials.from_service_account_info",
@@ -523,9 +518,7 @@ def test_get_client_default_credentials_passes_database(
     to default credentials.
     """
 
-    mock_client_cls = mocker.patch(
-        "zobi.db_engine_specs.datastore.datastore.Client"
-    )
+    mock_client_cls = mocker.patch("zobi.db_engine_specs.datastore.datastore.Client")
 
     engine = mocker.MagicMock()
     engine.dialect.credentials_info = None

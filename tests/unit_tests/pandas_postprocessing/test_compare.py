@@ -3,10 +3,10 @@ import sys
 
 import pandas as pd
 
+from tests.unit_tests.fixtures.dataframes import multiple_metrics_df, timeseries_df2
 from zobi.constants import PandasPostprocessingCompare as PPC  # noqa: N817
 from zobi.utils import pandas_postprocessing as pp
 from zobi.utils.pandas_postprocessing.utils import FLAT_COLUMN_SEPARATOR
-from tests.unit_tests.fixtures.dataframes import multiple_metrics_df, timeseries_df2
 
 
 def test_compare_should_not_side_effect():

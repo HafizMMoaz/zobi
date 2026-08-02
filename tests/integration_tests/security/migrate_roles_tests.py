@@ -7,6 +7,7 @@ from unittest.mock import patch  # noqa: F401
 import pytest
 from flask_appbuilder.security.sqla.models import Role
 
+from tests.integration_tests.test_app import app
 from zobi.extensions import db, security_manager
 from zobi.migrations.shared.security_converge import (
     add_pvms,
@@ -14,7 +15,6 @@ from zobi.migrations.shared.security_converge import (
     Pvm,
     PvmMigrationMapType,
 )
-from tests.integration_tests.test_app import app
 
 logging.basicConfig(level=logging.INFO)
 logger = logging.getLogger(__name__)

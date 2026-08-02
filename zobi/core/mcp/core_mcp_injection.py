@@ -1,4 +1,3 @@
-
 """
 MCP dependency injection implementation.
 

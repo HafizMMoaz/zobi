@@ -1,10 +1,11 @@
-
 from contextlib import contextmanager
 from typing import Any, Optional
 from uuid import uuid4
 
 from flask_appbuilder.security.sqla.models import User
 
+from tests.integration_tests.test_app import app  # noqa: F401
+from tests.integration_tests.utils import read_fixture
 from zobi import db, security_manager
 from zobi.key_value.models import KeyValueEntry
 from zobi.models.core import Database
@@ -21,8 +22,6 @@ from zobi.reports.models import (
 )
 from zobi.utils import json
 from zobi.utils.core import override_user
-from tests.integration_tests.test_app import app  # noqa: F401
-from tests.integration_tests.utils import read_fixture
 
 TEST_ID = str(uuid4())
 CSV_FILE = read_fixture("trends.csv")

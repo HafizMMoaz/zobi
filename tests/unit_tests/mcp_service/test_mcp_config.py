@@ -1,4 +1,3 @@
-
 """Tests for MCP service configuration and branding."""
 
 from unittest.mock import MagicMock, patch

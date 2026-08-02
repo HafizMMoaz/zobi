@@ -2,6 +2,7 @@ from copy import deepcopy
 
 import pytest
 
+from tests.unit_tests.fixtures.datasets import get_dataset_mock
 from zobi.utils.core import (
     AdhocColumn,
     AdhocMetric,
@@ -15,7 +16,6 @@ from zobi.utils.core import (
     get_time_filter_status,
     is_adhoc_metric,
 )
-from tests.unit_tests.fixtures.datasets import get_dataset_mock
 
 STR_METRIC = "my_metric"
 SIMPLE_SUM_ADHOC_METRIC: AdhocMetric = {

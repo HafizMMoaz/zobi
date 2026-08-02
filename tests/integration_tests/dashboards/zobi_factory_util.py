@@ -4,6 +4,11 @@ from typing import Optional
 from flask_appbuilder import Model
 from flask_appbuilder.security.sqla.models import User
 
+from tests.integration_tests.dashboards.dashboard_test_utils import (
+    random_slug,
+    random_str,
+    random_title,
+)
 from zobi import db
 from zobi.connectors.sqla.models import SqlaTable, sqlatable_user
 from zobi.models.core import Database
@@ -14,11 +19,6 @@ from zobi.models.dashboard import (
     DashboardRoles,
 )
 from zobi.models.slice import Slice, slice_user
-from tests.integration_tests.dashboards.dashboard_test_utils import (
-    random_slug,
-    random_str,
-    random_title,
-)
 
 logger = logging.getLogger(__name__)
 

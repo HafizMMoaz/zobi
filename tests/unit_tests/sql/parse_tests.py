@@ -5,6 +5,7 @@ import pytest
 from pytest_mock import MockerFixture
 from sqlglot import Dialects, exp, parse_one
 
+from tests.integration_tests.conftest import with_feature_flags
 from zobi.exceptions import QueryClauseValidationException, ZobiParseError
 from zobi.jinja_context import JinjaTemplateProcessor
 from zobi.sql.parse import (
@@ -25,7 +26,6 @@ from zobi.sql.parse import (
     Table,
     tokenize_kql,
 )
-from tests.integration_tests.conftest import with_feature_flags
 
 
 def test_table() -> None:

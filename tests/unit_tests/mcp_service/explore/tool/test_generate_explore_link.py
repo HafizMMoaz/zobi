@@ -1,4 +1,3 @@
-
 """
 Comprehensive unit tests for MCP generate_explore_link tool
 """
@@ -116,9 +115,7 @@ class TestGenerateExploreLink:
     """Comprehensive tests for generate_explore_link MCP tool."""
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_table_explore_link_minimal(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -146,9 +143,7 @@ class TestGenerateExploreLink:
             mock_create_form_data.assert_called_once()
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_table_explore_link_with_features(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -186,9 +181,7 @@ class TestGenerateExploreLink:
             mock_create_form_data.assert_called_once()
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_ag_grid_table_explore_link_label(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -213,9 +206,7 @@ class TestGenerateExploreLink:
             assert result.data["chart_type_label"] == "interactive table chart"
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_line_chart_explore_link(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -253,9 +244,7 @@ class TestGenerateExploreLink:
             mock_create_form_data.assert_called_once()
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_bar_chart_explore_link(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -287,9 +276,7 @@ class TestGenerateExploreLink:
             mock_create_form_data.assert_called_once()
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_area_chart_explore_link(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -324,9 +311,7 @@ class TestGenerateExploreLink:
             mock_create_form_data.assert_called_once()
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_scatter_chart_explore_link(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -359,9 +344,7 @@ class TestGenerateExploreLink:
             mock_create_form_data.assert_called_once()
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_explore_link_cache_failure_fallback(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -390,9 +373,7 @@ class TestGenerateExploreLink:
             )
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_explore_link_database_lock_fallback(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -426,9 +407,7 @@ class TestGenerateExploreLink:
             )
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_explore_link_with_many_columns(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -463,9 +442,7 @@ class TestGenerateExploreLink:
             mock_create_form_data.assert_called_once()
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_explore_link_with_many_filters(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -506,9 +483,7 @@ class TestGenerateExploreLink:
             mock_create_form_data.assert_called_once()
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_explore_link_url_format_consistency(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -561,9 +536,7 @@ class TestGenerateExploreLink:
                 assert result.data["error"] is None
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_explore_link_dataset_id_types(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -592,9 +565,7 @@ class TestGenerateExploreLink:
                 )
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_explore_link_complex_configuration(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -637,9 +608,7 @@ class TestGenerateExploreLink:
             mock_create_form_data.assert_called_once()
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_fallback_url_different_datasets(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -711,9 +680,7 @@ class TestGenerateExploreLink:
             explore_module.map_config_to_form_data = original_func
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_explore_link_returns_form_data_key(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -737,9 +704,7 @@ class TestGenerateExploreLink:
             assert "form_data_key=extracted_form_key_xyz" in result.data["url"]
 
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_generate_explore_link_returns_form_data(
         self, mock_create_form_data, mock_find_dataset, mcp_server
@@ -879,9 +844,7 @@ class TestGenerateExploreLinkColumnNormalization:
         "zobi.mcp_service.chart.validation.dataset_validator.DatasetValidator._get_dataset_context"
     )
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_xy_chart_x_axis_normalized_in_form_data(
         self,
@@ -926,9 +889,7 @@ class TestGenerateExploreLinkColumnNormalization:
         "zobi.mcp_service.chart.validation.dataset_validator.DatasetValidator._get_dataset_context"
     )
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_filter_column_normalized_in_form_data(
         self,
@@ -985,9 +946,7 @@ class TestGenerateExploreLinkColumnNormalization:
         "zobi.mcp_service.chart.validation.dataset_validator.DatasetValidator._get_dataset_context"
     )
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_normalization_fallback_when_dataset_not_found(
         self,
@@ -1032,9 +991,7 @@ class TestGenerateExploreLinkValidation:
 
     @patch.object(generate_explore_link_module, "validate_and_compile")
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_validation_failure_returns_structured_error(
         self,
@@ -1089,9 +1046,7 @@ class TestGenerateExploreLinkValidation:
         generate_explore_link_module, "has_dataset_access", return_value=False
     )
     @patch("zobi.daos.dataset.DatasetDAO.find_by_id")
-    @patch(
-        "zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run"
-    )
+    @patch("zobi.mcp_service.commands.create_form_data.MCPCreateFormDataCommand.run")
     @pytest.mark.asyncio
     async def test_dataset_access_denied_short_circuits(
         self,

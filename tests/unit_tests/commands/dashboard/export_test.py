@@ -131,9 +131,7 @@ def test_export_yields_dataset_files_for_display_controls():
             "zobi.commands.dashboard.export.ExportDatasetsCommand",
             return_value=mock_datasets_cmd,
         ) as mock_datasets_cls,
-        patch(
-            "zobi.commands.dashboard.export.ExportChartsCommand"
-        ) as mock_charts_cls,
+        patch("zobi.commands.dashboard.export.ExportChartsCommand") as mock_charts_cls,
         patch(
             "zobi.commands.dashboard.export.feature_flag_manager.is_feature_enabled",
             return_value=False,

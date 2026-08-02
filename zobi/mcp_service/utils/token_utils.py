@@ -1,4 +1,3 @@
-
 """
 Token counting and response size utilities for MCP service.
 

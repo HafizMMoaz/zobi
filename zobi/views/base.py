@@ -43,7 +43,6 @@ from zobi.db_engine_specs.gsheets import GSheetsEngineSpec
 from zobi.extensions import cache_manager
 from zobi.models.core import Theme as ThemeModel
 from zobi.reports.models import ReportRecipientType
-from zobi.zobi_typing import FlaskResponse
 from zobi.themes.types import Theme, ThemeMode
 from zobi.themes.utils import (
     is_valid_theme,
@@ -52,6 +51,7 @@ from zobi.utils import core as utils, json
 from zobi.utils.filters import get_dataset_access_filters
 from zobi.utils.version import get_version_metadata
 from zobi.views.error_handling import json_error_response
+from zobi.zobi_typing import FlaskResponse
 
 from .utils import bootstrap_user_data, get_config_value
 

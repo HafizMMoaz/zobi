@@ -1,7 +1,7 @@
 from typing import Any
 
-from zobi.migrations.shared.migrate_viz import MigrateHeatmapChart
 from tests.unit_tests.migrations.viz.utils import migrate_and_assert
+from zobi.migrations.shared.migrate_viz import MigrateHeatmapChart
 
 SOURCE_FORM_DATA: dict[str, Any] = {
     "datasource": "1__table",

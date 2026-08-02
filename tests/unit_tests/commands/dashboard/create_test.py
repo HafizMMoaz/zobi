@@ -4,9 +4,9 @@ import pytest
 from flask_appbuilder.security.sqla.models import Role, User
 from pytest_mock import MockerFixture
 
+from tests.unit_tests.fixtures.common import admin_user, after_each  # noqa: F401
 from zobi.commands.dashboard.create import CreateDashboardCommand
 from zobi.extensions import security_manager
-from tests.unit_tests.fixtures.common import admin_user, after_each  # noqa: F401
 
 
 def test_validate_custom_role_class(

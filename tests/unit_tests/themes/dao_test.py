@@ -1,4 +1,3 @@
-
 from unittest.mock import Mock, patch
 
 from zobi.daos.theme import ThemeDAO

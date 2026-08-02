@@ -1,4 +1,3 @@
-
 """
 Unified schema validation for chart configurations.
 Consolidates pre-validation, schema validation, and error enhancement.

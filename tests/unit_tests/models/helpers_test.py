@@ -1,4 +1,3 @@
-
 # pylint: disable=import-outside-toplevel
 
 from __future__ import annotations
@@ -14,8 +13,8 @@ from sqlalchemy.orm.session import Session
 from sqlalchemy.pool import StaticPool
 from sqlalchemy.sql.elements import ColumnElement
 
-from zobi.zobi_typing import AdhocColumn
 from zobi.utils.core import GenericDataType
+from zobi.zobi_typing import AdhocColumn
 
 if TYPE_CHECKING:
     from zobi.jinja_context import BaseTemplateProcessor

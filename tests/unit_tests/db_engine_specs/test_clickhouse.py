@@ -1,4 +1,3 @@
-
 from datetime import datetime
 from typing import Any, Optional
 from unittest.mock import Mock
@@ -18,12 +17,12 @@ from sqlalchemy.types import (
 from urllib3.connection import HTTPConnection
 from urllib3.exceptions import NewConnectionError
 
-from zobi.utils.core import GenericDataType
 from tests.unit_tests.db_engine_specs.utils import (
     assert_column_spec,
     assert_convert_dttm,
 )
 from tests.unit_tests.fixtures.common import dttm  # noqa: F401
+from zobi.utils.core import GenericDataType
 
 
 @pytest.mark.parametrize(

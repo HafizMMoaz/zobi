@@ -1,4 +1,3 @@
-
 """
 MCP tool: get_chart_info
 """

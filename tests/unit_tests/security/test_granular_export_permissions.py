@@ -1,4 +1,3 @@
-
 from unittest.mock import MagicMock, patch
 
 from zobi.security.manager import ZobiSecurityManager
@@ -36,12 +35,8 @@ def test_sqllab_extra_permission_views_include_export_perms() -> None:
 
 def test_gamma_excluded_pvms_excludes_export_data_and_image() -> None:
     """Verify GAMMA_EXCLUDED_PVMS excludes can_export_data and can_export_image."""
-    assert ("can_export_data", "Zobi") in (
-        ZobiSecurityManager.GAMMA_EXCLUDED_PVMS
-    )
-    assert ("can_export_image", "Zobi") in (
-        ZobiSecurityManager.GAMMA_EXCLUDED_PVMS
-    )
+    assert ("can_export_data", "Zobi") in (ZobiSecurityManager.GAMMA_EXCLUDED_PVMS)
+    assert ("can_export_image", "Zobi") in (ZobiSecurityManager.GAMMA_EXCLUDED_PVMS)
 
 
 def test_gamma_excluded_pvms_allows_copy_clipboard() -> None:

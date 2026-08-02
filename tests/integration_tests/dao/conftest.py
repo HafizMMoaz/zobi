@@ -1,4 +1,3 @@
-
 """
 Fixtures for DAO integration tests.
 
@@ -23,8 +22,8 @@ from sqlalchemy import create_engine
 from sqlalchemy.orm import Session, sessionmaker
 from sqlalchemy.pool import StaticPool
 
-from zobi.extensions import db
 from tests.integration_tests.test_app import app as zobi_app
+from zobi.extensions import db
 
 
 @pytest.fixture(scope="module", autouse=True)

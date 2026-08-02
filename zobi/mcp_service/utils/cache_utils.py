@@ -1,4 +1,3 @@
-
 """
 Cache utilities for MCP tools.
 

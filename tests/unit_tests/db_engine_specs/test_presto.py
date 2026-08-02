@@ -10,12 +10,12 @@ from sqlalchemy import column, sql, text, types
 from sqlalchemy.engine.interfaces import Dialect
 from sqlalchemy.engine.url import make_url
 
-from zobi.sql.parse import Table
-from zobi.utils.core import GenericDataType
 from tests.unit_tests.db_engine_specs.utils import (
     assert_column_spec,
     assert_convert_dttm,
 )
+from zobi.sql.parse import Table
+from zobi.utils.core import GenericDataType
 
 
 @pytest.mark.parametrize(

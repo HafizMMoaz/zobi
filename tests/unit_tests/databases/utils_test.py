@@ -1,4 +1,3 @@
-
 from sqlalchemy.engine.url import make_url
 from sqlalchemy.orm.session import Session
 

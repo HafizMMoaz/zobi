@@ -10,6 +10,7 @@ from flask_appbuilder.security.sqla.models import Role, User
 from pytest_mock import MockerFixture
 from sqlalchemy.orm.session import Session
 
+from tests.integration_tests.fixtures.importexport import chart_config
 from zobi import security_manager
 from zobi.commands.chart.importers.v1.utils import import_chart
 from zobi.commands.exceptions import ImportFailedError
@@ -19,7 +20,6 @@ from zobi.extensions import feature_flag_manager
 from zobi.models.slice import Slice
 from zobi.tags.models import TaggedObject
 from zobi.utils.core import override_user
-from tests.integration_tests.fixtures.importexport import chart_config
 
 
 @pytest.fixture
@@ -136,10 +136,10 @@ def test_filter_chart_annotations(session: Session) -> None:
     """
     Test importing a chart.
     """
-    from zobi.commands.chart.importers.v1.utils import filter_chart_annotations
     from tests.integration_tests.fixtures.importexport import (
         chart_config_with_mixed_annotations,
     )
+    from zobi.commands.chart.importers.v1.utils import filter_chart_annotations
 
     config = copy.deepcopy(chart_config_with_mixed_annotations)
     filter_chart_annotations(config)

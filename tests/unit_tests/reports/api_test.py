@@ -3,8 +3,8 @@ from unittest.mock import patch
 
 import rison
 
-from zobi.exceptions import ZobiException
 from tests.unit_tests.conftest import with_feature_flags
+from zobi.exceptions import ZobiException
 
 
 @with_feature_flags(ALERT_REPORTS=True)

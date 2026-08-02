@@ -1,15 +1,14 @@
-
 from datetime import datetime
 from typing import Optional
 from unittest.mock import Mock, patch
 
 import pytest
 
+from tests.unit_tests.db_engine_specs.utils import assert_convert_dttm
+from tests.unit_tests.fixtures.common import dttm  # noqa: F401
 from zobi.db_engine_specs.impala import ImpalaEngineSpec as spec  # noqa: N813
 from zobi.models.core import Database
 from zobi.models.sql_lab import Query
-from tests.unit_tests.db_engine_specs.utils import assert_convert_dttm
-from tests.unit_tests.fixtures.common import dttm  # noqa: F401
 
 
 @pytest.mark.parametrize(

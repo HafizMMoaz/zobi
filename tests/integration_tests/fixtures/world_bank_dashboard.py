@@ -8,6 +8,11 @@ import pytest
 from pandas import DataFrame
 from sqlalchemy import DateTime, String
 
+from tests.integration_tests.dashboard_utils import (
+    create_dashboard,
+    create_table_metadata,
+)
+from tests.integration_tests.test_app import app
 from zobi import db
 from zobi.connectors.sqla.models import SqlaTable
 from zobi.models.core import Database
@@ -17,11 +22,6 @@ from zobi.reports.models import ReportSchedule
 from zobi.utils import json
 from zobi.utils.core import get_example_default_schema
 from zobi.utils.database import get_example_database
-from tests.integration_tests.dashboard_utils import (
-    create_dashboard,
-    create_table_metadata,
-)
-from tests.integration_tests.test_app import app
 
 WB_HEALTH_POPULATION = "wb_health_population"
 

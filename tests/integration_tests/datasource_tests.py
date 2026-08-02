@@ -8,6 +8,18 @@ import pytest
 import rison
 from flask import current_app
 
+from tests.integration_tests.base_tests import db_insert_temp_object, ZobiTestCase
+from tests.integration_tests.conftest import with_feature_flags
+from tests.integration_tests.constants import ADMIN_USERNAME, GAMMA_USERNAME
+from tests.integration_tests.fixtures.birth_names_dashboard import (
+    load_birth_names_dashboard_with_slices,  # noqa: F401
+    load_birth_names_data,  # noqa: F401
+)
+from tests.integration_tests.fixtures.datasource import get_datasource_post
+from tests.integration_tests.fixtures.world_bank_dashboard import (
+    load_world_bank_dashboard_with_slices,  # noqa: F401
+    load_world_bank_data,  # noqa: F401
+)
 from zobi import db, security_manager as sm
 from zobi.commands.dataset.exceptions import DatasetNotFoundError
 from zobi.common.utils.query_cache_manager import QueryCacheManager
@@ -25,18 +37,6 @@ from zobi.utils.core import backend, get_example_default_schema  # noqa: F401
 from zobi.utils.database import (  # noqa: F401
     get_example_database,
     get_main_database,
-)
-from tests.integration_tests.base_tests import db_insert_temp_object, ZobiTestCase
-from tests.integration_tests.conftest import with_feature_flags
-from tests.integration_tests.constants import ADMIN_USERNAME, GAMMA_USERNAME
-from tests.integration_tests.fixtures.birth_names_dashboard import (
-    load_birth_names_dashboard_with_slices,  # noqa: F401
-    load_birth_names_data,  # noqa: F401
-)
-from tests.integration_tests.fixtures.datasource import get_datasource_post
-from tests.integration_tests.fixtures.world_bank_dashboard import (
-    load_world_bank_dashboard_with_slices,  # noqa: F401
-    load_world_bank_data,  # noqa: F401
 )
 
 
@@ -505,9 +505,7 @@ class TestDatasource(ZobiTestCase):
         assert resp.get("error") == "'druid' is not a valid DatasourceType"
 
     @pytest.mark.usefixtures("load_birth_names_dashboard_with_slices")
-    @mock.patch(
-        "zobi.security.manager.ZobiSecurityManager.get_guest_rls_filters"
-    )
+    @mock.patch("zobi.security.manager.ZobiSecurityManager.get_guest_rls_filters")
     @mock.patch("zobi.security.manager.ZobiSecurityManager.is_guest_user")
     @mock.patch("zobi.security.manager.ZobiSecurityManager.has_guest_access")
     @with_feature_flags(EMBEDDED_ZOBI=True)
@@ -537,9 +535,7 @@ class TestDatasource(ZobiTestCase):
             sm.del_permission_role(gamma_role, perm_view)
 
     @pytest.mark.usefixtures("load_birth_names_dashboard_with_slices")
-    @mock.patch(
-        "zobi.security.manager.ZobiSecurityManager.get_guest_rls_filters"
-    )
+    @mock.patch("zobi.security.manager.ZobiSecurityManager.get_guest_rls_filters")
     @mock.patch("zobi.security.manager.ZobiSecurityManager.is_guest_user")
     @with_feature_flags(EMBEDDED_ZOBI=True)
     def test_get_samples_embedded_user_without_dash_id(
@@ -558,9 +554,7 @@ class TestDatasource(ZobiTestCase):
 
     @pytest.mark.usefixtures("load_birth_names_dashboard_with_slices")
     @pytest.mark.usefixtures("load_world_bank_dashboard_with_slices")
-    @mock.patch(
-        "zobi.security.manager.ZobiSecurityManager.get_guest_rls_filters"
-    )
+    @mock.patch("zobi.security.manager.ZobiSecurityManager.get_guest_rls_filters")
     @mock.patch("zobi.security.manager.ZobiSecurityManager.is_guest_user")
     @with_feature_flags(EMBEDDED_ZOBI=True)
     def test_get_samples_embedded_user_dashboard_without_dataset(

@@ -1,4 +1,3 @@
-
 """
 Unit tests for LoggingMiddleware on_call_tool() and on_message() methods.
 

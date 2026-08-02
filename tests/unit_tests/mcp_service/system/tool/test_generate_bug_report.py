@@ -1,4 +1,3 @@
-
 """Tests for the generate_bug_report MCP tool."""
 
 import importlib
@@ -15,9 +14,7 @@ from zobi.utils import json
 # through `from ...tool import generate_bug_report` would resolve to the
 # re-exported function in tool/__init__.py, not the submodule, and break
 # attribute patching — same pitfall called out in test_get_current_user.py.
-gbr_module = importlib.import_module(
-    "zobi.mcp_service.system.tool.generate_bug_report"
-)
+gbr_module = importlib.import_module("zobi.mcp_service.system.tool.generate_bug_report")
 
 
 @pytest.fixture

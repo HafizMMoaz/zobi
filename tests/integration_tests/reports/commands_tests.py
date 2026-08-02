@@ -21,6 +21,27 @@ from slack_sdk.errors import (
 )
 from sqlalchemy.sql import func
 
+from tests.integration_tests.fixtures.birth_names_dashboard import (
+    load_birth_names_dashboard_with_slices,  # noqa: F401
+    load_birth_names_data,  # noqa: F401
+)
+from tests.integration_tests.fixtures.tabbed_dashboard import (
+    tabbed_dashboard,  # noqa: F401
+)
+from tests.integration_tests.fixtures.world_bank_dashboard import (
+    load_world_bank_dashboard_with_slices_module_scope,  # noqa: F401
+    load_world_bank_data,  # noqa: F401
+)
+from tests.integration_tests.reports.utils import (
+    cleanup_report_schedule,
+    create_report_notification,
+    CSV_FILE,
+    DEFAULT_OWNER_EMAIL,
+    reset_key_values,
+    SCREENSHOT_FILE,
+    TEST_ID,
+)
+from tests.integration_tests.test_app import app
 from zobi import db
 from zobi.commands.report.exceptions import (
     AlertQueryError,
@@ -63,27 +84,6 @@ from zobi.reports.notifications.exceptions import (
 from zobi.tasks.types import ExecutorType
 from zobi.utils import json
 from zobi.utils.database import get_example_database
-from tests.integration_tests.fixtures.birth_names_dashboard import (
-    load_birth_names_dashboard_with_slices,  # noqa: F401
-    load_birth_names_data,  # noqa: F401
-)
-from tests.integration_tests.fixtures.tabbed_dashboard import (
-    tabbed_dashboard,  # noqa: F401
-)
-from tests.integration_tests.fixtures.world_bank_dashboard import (
-    load_world_bank_dashboard_with_slices_module_scope,  # noqa: F401
-    load_world_bank_data,  # noqa: F401
-)
-from tests.integration_tests.reports.utils import (
-    cleanup_report_schedule,
-    create_report_notification,
-    CSV_FILE,
-    DEFAULT_OWNER_EMAIL,
-    reset_key_values,
-    SCREENSHOT_FILE,
-    TEST_ID,
-)
-from tests.integration_tests.test_app import app
 
 pytestmark = pytest.mark.usefixtures(
     "load_world_bank_dashboard_with_slices_module_scope"

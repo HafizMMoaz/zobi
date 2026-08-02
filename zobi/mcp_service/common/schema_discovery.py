@@ -1,4 +1,3 @@
-
 """
 Schema discovery models for MCP tools.
 

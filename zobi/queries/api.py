@@ -24,7 +24,6 @@ from zobi.queries.schemas import (
     QuerySchema,
     StopQuerySchema,
 )
-from zobi.zobi_typing import FlaskResponse
 from zobi.views.base_api import (
     BaseZobiModelRestApi,
     RelatedFieldFilter,
@@ -32,6 +31,7 @@ from zobi.views.base_api import (
     statsd_metrics,
 )
 from zobi.views.filters import BaseFilterRelatedUsers, FilterRelatedOwners
+from zobi.zobi_typing import FlaskResponse
 
 logger = logging.getLogger(__name__)
 

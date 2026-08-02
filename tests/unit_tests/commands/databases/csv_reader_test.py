@@ -6,9 +6,9 @@ import pandas as pd
 import pytest
 from werkzeug.datastructures import FileStorage
 
+from tests.unit_tests.fixtures.common import create_csv_file
 from zobi.commands.database.exceptions import DatabaseUploadFailed
 from zobi.commands.database.uploaders.csv_reader import CSVReader, CSVReaderOptions
-from tests.unit_tests.fixtures.common import create_csv_file
 
 CSV_DATA = [
     ["Name", "Age", "City", "Birth"],
@@ -1350,9 +1350,7 @@ def test_csv_reader_chunk_concatenation_error_logging():
     csv_reader = CSVReader(options=CSVReaderOptions())
 
     # Mock pd.concat to raise an exception
-    with patch(
-        "zobi.commands.database.uploaders.csv_reader.pd.concat"
-    ) as mock_concat:
+    with patch("zobi.commands.database.uploaders.csv_reader.pd.concat") as mock_concat:
         mock_concat.side_effect = ValueError(
             "Cannot concatenate chunks with different dtypes"
         )
@@ -1379,9 +1377,7 @@ def test_csv_reader_chunk_concatenation_error_warning(caplog):
     csv_reader = CSVReader(options=CSVReaderOptions())
 
     # Mock pd.concat to raise an exception
-    with patch(
-        "zobi.commands.database.uploaders.csv_reader.pd.concat"
-    ) as mock_concat:
+    with patch("zobi.commands.database.uploaders.csv_reader.pd.concat") as mock_concat:
         mock_concat.side_effect = ValueError(
             "Cannot concatenate chunks with different dtypes"
         )

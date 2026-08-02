@@ -1,5 +1,3 @@
-
-
 from zobi.themes.api import ThemeRestApi
 
 

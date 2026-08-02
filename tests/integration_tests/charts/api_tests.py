@@ -1,4 +1,3 @@
-
 import uuid
 from io import BytesIO
 from unittest import mock
@@ -12,17 +11,6 @@ from parameterized import parameterized
 from sqlalchemy import and_
 from sqlalchemy.sql import func
 
-from zobi.commands.chart.data.get_data_command import ChartDataCommand
-from zobi.commands.chart.exceptions import ChartDataQueryFailedError
-from zobi.connectors.sqla.models import SqlaTable
-from zobi.extensions import cache_manager, db, security_manager
-from zobi.models.core import Database, FavStar, FavStarClassName
-from zobi.models.dashboard import Dashboard
-from zobi.models.slice import Slice
-from zobi.reports.models import ReportSchedule, ReportScheduleType
-from zobi.tags.models import ObjectType, Tag, TaggedObject, TagType
-from zobi.utils import json
-from zobi.utils.core import get_example_default_schema
 from tests.integration_tests.base_api_tests import ApiOwnersTestCaseMixin
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.constants import (
@@ -58,6 +46,17 @@ from tests.integration_tests.fixtures.world_bank_dashboard import (
 from tests.integration_tests.insert_chart_mixin import InsertChartMixin
 from tests.integration_tests.test_app import app
 from tests.integration_tests.utils.get_dashboards import get_dashboards_ids
+from zobi.commands.chart.data.get_data_command import ChartDataCommand
+from zobi.commands.chart.exceptions import ChartDataQueryFailedError
+from zobi.connectors.sqla.models import SqlaTable
+from zobi.extensions import cache_manager, db, security_manager
+from zobi.models.core import Database, FavStar, FavStarClassName
+from zobi.models.dashboard import Dashboard
+from zobi.models.slice import Slice
+from zobi.reports.models import ReportSchedule, ReportScheduleType
+from zobi.tags.models import ObjectType, Tag, TaggedObject, TagType
+from zobi.utils import json
+from zobi.utils.core import get_example_default_schema
 
 CHARTS_FIXTURE_COUNT = 10
 

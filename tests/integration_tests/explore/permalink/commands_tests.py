@@ -1,9 +1,9 @@
-
 from unittest.mock import patch
 
 import pytest
 from flask import current_app
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi import db, security_manager
 from zobi.commands.explore.permalink.create import CreateExplorePermalinkCommand
 from zobi.commands.explore.permalink.get import GetExplorePermalinkCommand
@@ -12,7 +12,6 @@ from zobi.models.slice import Slice
 from zobi.models.sql_lab import Query
 from zobi.utils.core import DatasourceType, get_example_default_schema
 from zobi.utils.database import get_example_database
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class TestCreatePermalinkDataCommand(ZobiTestCase):

@@ -1,4 +1,3 @@
-
 """
 Chart resources for valid ChartConfig examples and templates
 """

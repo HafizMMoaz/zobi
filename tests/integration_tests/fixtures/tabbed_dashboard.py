@@ -1,11 +1,10 @@
-
 import pytest
 
+from tests.integration_tests.dashboards.zobi_factory_util import create_dashboard
 from zobi import db
 from zobi.models.dashboard import Dashboard
 from zobi.utils import json
 from zobi.utils.core import shortid
-from tests.integration_tests.dashboards.zobi_factory_util import create_dashboard
 
 
 @pytest.fixture

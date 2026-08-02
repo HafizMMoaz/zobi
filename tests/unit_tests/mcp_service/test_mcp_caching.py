@@ -1,4 +1,3 @@
-
 """Tests for MCP response caching middleware."""
 
 from unittest.mock import MagicMock, patch

@@ -7,6 +7,7 @@ import freezegun
 import pytest
 from dateutil.relativedelta import relativedelta
 
+from tests.unit_tests.conftest import with_feature_flags
 from zobi.commands.chart.exceptions import (
     TimeRangeAmbiguousError,
     TimeRangeParseFailError,
@@ -20,7 +21,6 @@ from zobi.utils.date_parser import (
     parse_human_timedelta,
     parse_past_timedelta,
 )
-from tests.unit_tests.conftest import with_feature_flags
 
 
 def mock_parse_human_datetime(s: str) -> Optional[datetime]:  # noqa: C901

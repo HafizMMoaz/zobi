@@ -1,4 +1,3 @@
-
 """find_users MCP tool: resolve a person's name to user IDs for filtering."""
 
 import logging

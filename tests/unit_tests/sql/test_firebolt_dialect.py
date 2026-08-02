@@ -1,4 +1,3 @@
-
 """Tests for Firebolt dialect support in sqlglot."""
 
 from zobi.sql.parse import SQLScript

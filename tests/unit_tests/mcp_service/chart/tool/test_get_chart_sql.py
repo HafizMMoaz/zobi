@@ -1,4 +1,3 @@
-
 """
 Unit tests for get_chart_sql MCP tool
 """
@@ -403,9 +402,7 @@ class TestBuildQueryContextFromFormData:
             "filters": [{"col": "city", "op": "==", "val": "NYC"}],
         }
 
-        with patch(
-            "zobi.common.chart_data.ChartDataResultType"
-        ) as mock_result_type:
+        with patch("zobi.common.chart_data.ChartDataResultType") as mock_result_type:
             mock_result_type.QUERY = "QUERY"
             _build_query_context_from_form_data(form_data, chart=None)
 
@@ -440,9 +437,7 @@ class TestBuildQueryContextFromFormData:
             "groupby": ["product"],
         }
 
-        with patch(
-            "zobi.common.chart_data.ChartDataResultType"
-        ) as mock_result_type:
+        with patch("zobi.common.chart_data.ChartDataResultType") as mock_result_type:
             mock_result_type.QUERY = "QUERY"
             _build_query_context_from_form_data(form_data, chart=None)
 

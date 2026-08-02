@@ -1,4 +1,3 @@
-
 """Tests for MCP storage factory."""
 
 from unittest.mock import MagicMock, patch

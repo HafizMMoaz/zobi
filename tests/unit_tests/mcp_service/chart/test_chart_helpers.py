@@ -1,4 +1,3 @@
-
 from unittest.mock import MagicMock, patch
 
 from zobi.mcp_service.chart.chart_helpers import (

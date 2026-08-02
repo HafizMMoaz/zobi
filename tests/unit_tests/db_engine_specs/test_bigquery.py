@@ -1,4 +1,3 @@
-
 # pylint: disable=line-too-long, import-outside-toplevel, protected-access, invalid-name
 
 from datetime import datetime
@@ -12,11 +11,11 @@ from sqlalchemy.engine.url import make_url
 from sqlalchemy.sql import sqltypes
 from sqlalchemy_bigquery import BigQueryDialect
 
-from zobi.sql.parse import Table
-from zobi.zobi_typing import ResultSetColumnType
-from zobi.utils import json
 from tests.unit_tests.db_engine_specs.utils import assert_convert_dttm
 from tests.unit_tests.fixtures.common import dttm  # noqa: F401
+from zobi.sql.parse import Table
+from zobi.utils import json
+from zobi.zobi_typing import ResultSetColumnType
 
 
 def test_get_fields() -> None:

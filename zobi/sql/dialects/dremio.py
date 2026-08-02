@@ -1,4 +1,3 @@
-
 from sqlglot import exp, generator, parser
 from sqlglot.dialects.dialect import Dialect, rename_func
 

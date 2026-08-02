@@ -256,9 +256,7 @@ class TestTimeoutTrigger:
         with (
             patch("zobi.tasks.context.current_app") as mock_current_app,
             patch("zobi.daos.tasks.TaskDAO") as mock_dao,
-            patch(
-                "zobi.commands.tasks.update.UpdateTaskCommand"
-            ) as mock_update_cmd,
+            patch("zobi.commands.tasks.update.UpdateTaskCommand") as mock_update_cmd,
             patch("zobi.tasks.manager.cache_manager") as mock_cache_manager,
         ):
             # Disable Redis by making distributed_coordination return None

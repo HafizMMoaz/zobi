@@ -1,4 +1,3 @@
-
 """Tests for the query_dataset MCP tool."""
 
 from __future__ import annotations

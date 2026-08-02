@@ -1,4 +1,3 @@
-
 US_STATES = [
     "AL",
     "AK",

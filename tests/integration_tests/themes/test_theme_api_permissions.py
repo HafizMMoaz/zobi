@@ -2,12 +2,12 @@
 
 import uuid
 
-from zobi import db
-from zobi.models.core import Theme
-from zobi.utils import json
 from tests.conftest import with_config
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.constants import ADMIN_USERNAME, GAMMA_USERNAME
+from zobi import db
+from zobi.models.core import Theme
+from zobi.utils import json
 
 
 class TestThemeAPIPermissions(ZobiTestCase):

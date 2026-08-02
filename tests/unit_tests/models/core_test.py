@@ -1,4 +1,3 @@
-
 # pylint: disable=import-outside-toplevel
 from datetime import datetime
 from typing import Any, Callable
@@ -18,13 +17,13 @@ from sqlalchemy.engine.url import make_url
 from sqlalchemy.orm.session import Session
 from sqlalchemy.sql import Select
 
+from tests.unit_tests.conftest import with_feature_flags
 from zobi.connectors.sqla.models import SqlaTable, TableColumn
 from zobi.errors import ZobiErrorType
 from zobi.exceptions import OAuth2Error, OAuth2RedirectError
 from zobi.models.core import Database
 from zobi.sql.parse import LimitMethod, Table
 from zobi.utils import json
-from tests.unit_tests.conftest import with_feature_flags
 
 # sample config for OAuth2 tests
 oauth2_client_info = {

@@ -140,9 +140,7 @@ def test_df_to_sql_if_exists_fail(mock_g):
 
 
 @mock.patch("zobi.db_engine_specs.hive.g", spec={})
-@unittest.skipUnless(
-    ZobiTestCase.is_module_installed("thrift"), "thrift not installed"
-)
+@unittest.skipUnless(ZobiTestCase.is_module_installed("thrift"), "thrift not installed")
 def test_df_to_sql_if_exists_fail_with_schema(mock_g):
     mock_g.user = True
     mock_database = mock.MagicMock()
@@ -158,9 +156,7 @@ def test_df_to_sql_if_exists_fail_with_schema(mock_g):
 
 @mock.patch("zobi.db_engine_specs.hive.g", spec={})
 @mock.patch("zobi.db_engine_specs.hive.upload_to_s3")
-@unittest.skipUnless(
-    ZobiTestCase.is_module_installed("boto3"), "boto3 not installed"
-)
+@unittest.skipUnless(ZobiTestCase.is_module_installed("boto3"), "boto3 not installed")
 def test_df_to_sql_if_exists_replace(mock_upload_to_s3, mock_g):
     config = app.config.copy()
     app.config["CSV_TO_HIVE_UPLOAD_DIRECTORY_FUNC"]: lambda *args: ""  # noqa: F722
@@ -230,9 +226,7 @@ def test_s3_upload_prefix(schema: str, upload_prefix: str) -> None:
     )
 
 
-@unittest.skipUnless(
-    ZobiTestCase.is_module_installed("boto3"), "boto3 not installed"
-)
+@unittest.skipUnless(ZobiTestCase.is_module_installed("boto3"), "boto3 not installed")
 def test_upload_to_s3_no_bucket_path():
     with app.app_context():
         with pytest.raises(
@@ -242,9 +236,7 @@ def test_upload_to_s3_no_bucket_path():
             upload_to_s3("filename", "prefix", Table("table"))
 
 
-@unittest.skipUnless(
-    ZobiTestCase.is_module_installed("boto3"), "boto3 not installed"
-)
+@unittest.skipUnless(ZobiTestCase.is_module_installed("boto3"), "boto3 not installed")
 @mock.patch("boto3.client")
 def test_upload_to_s3_client_error(client):
     config = app.config.copy()
@@ -262,9 +254,7 @@ def test_upload_to_s3_client_error(client):
     app.config = config
 
 
-@unittest.skipUnless(
-    ZobiTestCase.is_module_installed("boto3"), "boto3 not installed"
-)
+@unittest.skipUnless(ZobiTestCase.is_module_installed("boto3"), "boto3 not installed")
 @mock.patch("boto3.client")
 def test_upload_to_s3_success(client):
     config = app.config.copy()
@@ -278,9 +268,7 @@ def test_upload_to_s3_success(client):
     app.config = config
 
 
-@unittest.skipUnless(
-    ZobiTestCase.is_module_installed("thrift"), "thrift not installed"
-)
+@unittest.skipUnless(ZobiTestCase.is_module_installed("thrift"), "thrift not installed")
 def test_fetch_data_query_error():
     from TCLIService import ttypes
 
@@ -292,9 +280,7 @@ def test_fetch_data_query_error():
         HiveEngineSpec.fetch_data(cursor)
 
 
-@unittest.skipUnless(
-    ZobiTestCase.is_module_installed("thrift"), "thrift not installed"
-)
+@unittest.skipUnless(ZobiTestCase.is_module_installed("thrift"), "thrift not installed")
 @mock.patch("zobi.db_engine_specs.base.BaseEngineSpec.fetch_data")
 def test_fetch_data_programming_error(fetch_data_mock):
     from pyhive.exc import ProgrammingError
@@ -304,9 +290,7 @@ def test_fetch_data_programming_error(fetch_data_mock):
     assert HiveEngineSpec.fetch_data(cursor) == []
 
 
-@unittest.skipUnless(
-    ZobiTestCase.is_module_installed("thrift"), "thrift not installed"
-)
+@unittest.skipUnless(ZobiTestCase.is_module_installed("thrift"), "thrift not installed")
 @mock.patch("zobi.db_engine_specs.base.BaseEngineSpec.fetch_data")
 def test_fetch_data_success(fetch_data_mock):
     return_value = ["a", "b"]

@@ -1,4 +1,3 @@
-
 """Tests for find_users MCP tool and its filter contract."""
 
 import importlib
@@ -18,9 +17,7 @@ from zobi.utils import json
 # package). The package attribute is the function, so dotted-string patches
 # like ``zobi.mcp_service.system.tool.find_users.db`` can resolve to the
 # function in some import orderings and fail with AttributeError.
-find_users_module = importlib.import_module(
-    "zobi.mcp_service.system.tool.find_users"
-)
+find_users_module = importlib.import_module("zobi.mcp_service.system.tool.find_users")
 
 
 @pytest.fixture

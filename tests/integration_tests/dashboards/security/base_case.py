@@ -2,8 +2,8 @@ from typing import Optional
 
 from flask import Response
 
-from zobi.models.dashboard import Dashboard
 from tests.integration_tests.dashboards.base_case import DashboardTestCase
+from zobi.models.dashboard import Dashboard
 
 
 class BaseTestDashboardSecurity(DashboardTestCase):

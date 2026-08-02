@@ -1,4 +1,3 @@
-
 """
 MCP service test configuration.
 

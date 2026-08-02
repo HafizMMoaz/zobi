@@ -1,4 +1,3 @@
-
 """
 System resources for providing instance configuration and stats.
 

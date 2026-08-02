@@ -76,12 +76,7 @@ def version(verbose: bool) -> None:
     """Prints the current version number"""
 
     print(Fore.BLUE + "-=" * 15)
-    print(
-        Fore.YELLOW
-        + "Zobi "
-        + Fore.CYAN
-        + f"{current_app.config['VERSION_STRING']}"
-    )
+    print(Fore.YELLOW + "Zobi " + Fore.CYAN + f"{current_app.config['VERSION_STRING']}")
     print(Fore.BLUE + "-=" * 15)
     if verbose:
         print("[DB] : " + f"{db.engine}")

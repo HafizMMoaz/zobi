@@ -1,4 +1,3 @@
-
 """Screenshot and WebDriver infrastructure for MCP service."""
 
 from .pooled_screenshot import (

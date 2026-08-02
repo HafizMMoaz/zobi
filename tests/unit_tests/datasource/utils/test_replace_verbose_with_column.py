@@ -1,4 +1,3 @@
-
 import pytest
 
 from zobi.views.datasource.utils import replace_verbose_with_column

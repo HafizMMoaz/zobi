@@ -1,4 +1,3 @@
-
 import pandas as pd
 from flask_babel import gettext as __
 

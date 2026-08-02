@@ -1,4 +1,3 @@
-
 # pylint: disable=unused-argument, too-many-lines
 
 from __future__ import annotations

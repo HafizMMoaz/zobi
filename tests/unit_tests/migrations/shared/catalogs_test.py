@@ -1,4 +1,3 @@
-
 import json  # noqa: TID251
 
 import pytest

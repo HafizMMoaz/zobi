@@ -1,4 +1,3 @@
-
 """
 Shared constants for MCP dashboard tools.
 

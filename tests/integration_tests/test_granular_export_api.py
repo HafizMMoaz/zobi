@@ -10,7 +10,6 @@ from unittest.mock import patch
 import pytest
 import rison
 
-from zobi.security import ZobiSecurityManager
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.conftest import with_feature_flags
 from tests.integration_tests.constants import ADMIN_USERNAME
@@ -18,6 +17,7 @@ from tests.integration_tests.fixtures.birth_names_dashboard import (
     load_birth_names_dashboard_with_slices,  # noqa: F401
     load_birth_names_data,  # noqa: F401
 )
+from zobi.security import ZobiSecurityManager
 
 
 def _deny_can_export_image(perm: str, view: str) -> bool:

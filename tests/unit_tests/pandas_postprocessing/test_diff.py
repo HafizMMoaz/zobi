@@ -1,9 +1,9 @@
 import pytest
 
-from zobi.exceptions import InvalidPostProcessingError
-from zobi.utils.pandas_postprocessing import diff
 from tests.unit_tests.fixtures.dataframes import timeseries_df, timeseries_df2
 from tests.unit_tests.pandas_postprocessing.utils import series_to_list
+from zobi.exceptions import InvalidPostProcessingError
+from zobi.utils.pandas_postprocessing import diff
 
 
 def test_diff():

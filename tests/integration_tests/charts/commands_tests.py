@@ -6,6 +6,22 @@ import pytest
 import yaml
 from flask import g  # noqa: F401
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.fixtures.birth_names_dashboard import (
+    load_birth_names_dashboard_with_slices,  # noqa: F401
+    load_birth_names_data,  # noqa: F401
+)
+from tests.integration_tests.fixtures.energy_dashboard import (
+    load_energy_table_data,  # noqa: F401
+    load_energy_table_with_slice,  # noqa: F401
+)
+from tests.integration_tests.fixtures.importexport import (
+    chart_config,
+    chart_metadata_config,
+    database_config,
+    database_metadata_config,
+    dataset_config,
+)
 from zobi import db, security_manager
 from zobi.commands.chart.create import CreateChartCommand
 from zobi.commands.chart.exceptions import (
@@ -26,22 +42,6 @@ from zobi.models.core import Database
 from zobi.models.slice import Slice
 from zobi.utils import json
 from zobi.utils.core import override_user
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.fixtures.birth_names_dashboard import (
-    load_birth_names_dashboard_with_slices,  # noqa: F401
-    load_birth_names_data,  # noqa: F401
-)
-from tests.integration_tests.fixtures.energy_dashboard import (
-    load_energy_table_data,  # noqa: F401
-    load_energy_table_with_slice,  # noqa: F401
-)
-from tests.integration_tests.fixtures.importexport import (
-    chart_config,
-    chart_metadata_config,
-    database_config,
-    database_metadata_config,
-    dataset_config,
-)
 
 
 class TestExportChartsCommand(ZobiTestCase):

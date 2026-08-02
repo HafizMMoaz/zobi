@@ -448,9 +448,7 @@ class ClickHouseConnectEngineSpec(BasicParametersMixin, ClickHouseEngineSpec):
         )
 
     @classmethod
-    def validate_parameters(
-        cls, properties: BasicPropertiesType
-    ) -> list[ZobiError]:
+    def validate_parameters(cls, properties: BasicPropertiesType) -> list[ZobiError]:
         # pylint: disable=import-outside-toplevel, import-error
         from clickhouse_connect.driver import default_port
 

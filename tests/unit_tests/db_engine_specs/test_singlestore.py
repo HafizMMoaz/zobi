@@ -1,4 +1,3 @@
-
 from datetime import datetime
 from typing import Any, Optional
 from unittest.mock import MagicMock, Mock
@@ -8,14 +7,14 @@ import pytest
 from sqlalchemy import types
 from sqlalchemy.engine import make_url
 
-from zobi.db_engine_specs.singlestore import SingleStoreSpec
-from zobi.models.sql_lab import Query
-from zobi.utils.core import GenericDataType
 from tests.unit_tests.db_engine_specs.utils import (
     assert_column_spec,
     assert_convert_dttm,
 )
 from tests.unit_tests.fixtures.common import dttm  # noqa: F401
+from zobi.db_engine_specs.singlestore import SingleStoreSpec
+from zobi.models.sql_lab import Query
+from zobi.utils.core import GenericDataType
 
 
 @pytest.mark.parametrize(

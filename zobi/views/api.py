@@ -15,11 +15,11 @@ from zobi.commands.chart.exceptions import (
 )
 from zobi.legacy import update_time_range
 from zobi.models.slice import Slice
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils import json
 from zobi.utils.date_parser import get_since_until
 from zobi.views.base import api, BaseZobiView
 from zobi.views.error_handling import handle_api_exception
+from zobi.zobi_typing import FlaskResponse
 
 if TYPE_CHECKING:
     from zobi.common.query_context_factory import QueryContextFactory

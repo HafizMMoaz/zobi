@@ -7,12 +7,12 @@ import numpy as np
 import pytest
 from werkzeug.datastructures import FileStorage
 
+from tests.unit_tests.fixtures.common import create_columnar_file
 from zobi.commands.database.exceptions import DatabaseUploadFailed
 from zobi.commands.database.uploaders.columnar_reader import (
     ColumnarReader,
     ColumnarReaderOptions,
 )
-from tests.unit_tests.fixtures.common import create_columnar_file
 
 COLUMNAR_DATA: dict[str, list[Any]] = {
     "Name": ["name1", "name2", "name3"],

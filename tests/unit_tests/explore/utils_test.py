@@ -22,9 +22,7 @@ query_find_by_id = "zobi.daos.query.QueryDAO.find_by_id"
 chart_find_by_id = "zobi.daos.chart.ChartDAO.find_by_id"
 is_admin = "zobi.security.ZobiSecurityManager.is_admin"
 is_owner = "zobi.security.ZobiSecurityManager.is_owner"
-can_access_datasource = (
-    "zobi.security.ZobiSecurityManager.can_access_datasource"
-)
+can_access_datasource = "zobi.security.ZobiSecurityManager.can_access_datasource"
 can_access = "zobi.security.ZobiSecurityManager.can_access"
 raise_for_access = "zobi.security.ZobiSecurityManager.raise_for_access"
 query_datasources_by_name = (

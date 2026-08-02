@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 from sqlglot import exp, generator, parser, tokens

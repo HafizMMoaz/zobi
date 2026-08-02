@@ -62,10 +62,6 @@ from zobi.models.core import Database
 from zobi.models.dashboard import Dashboard
 from zobi.models.slice import Slice
 from zobi.models.user_attributes import UserAttribute
-from zobi.zobi_typing import (
-    ExplorableData,
-    FlaskResponse,
-)
 from zobi.tasks.utils import get_current_user
 from zobi.utils import core as utils, json
 from zobi.utils.cache import etag_cache
@@ -101,6 +97,10 @@ from zobi.views.utils import (
     sanitize_datasource_data,
 )
 from zobi.viz import BaseViz
+from zobi.zobi_typing import (
+    ExplorableData,
+    FlaskResponse,
+)
 
 logger = logging.getLogger(__name__)
 
@@ -511,9 +511,7 @@ class Zobi(BaseZobiView):
         slice_add_perm = security_manager.can_access("can_write", "Chart")
         slice_overwrite_perm = security_manager.is_owner(slc) if slc else False
         if is_feature_enabled("GRANULAR_EXPORT_CONTROLS"):
-            slice_download_perm = security_manager.can_access(
-                "can_export_data", "Zobi"
-            )
+            slice_download_perm = security_manager.can_access("can_export_data", "Zobi")
         else:
             slice_download_perm = security_manager.can_access("can_csv", "Zobi")
 

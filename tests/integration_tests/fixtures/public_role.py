@@ -1,8 +1,8 @@
 import pytest
 from flask.ctx import AppContext
 
-from zobi.extensions import db, security_manager
 from tests.integration_tests.test_app import app
+from zobi.extensions import db, security_manager
 
 
 @pytest.fixture

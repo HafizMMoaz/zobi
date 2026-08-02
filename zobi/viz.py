@@ -41,13 +41,6 @@ from zobi.exceptions import (
 from zobi.extensions import cache_manager, security_manager
 from zobi.models.helpers import QueryResult
 from zobi.sql.parse import sanitize_clause
-from zobi.zobi_typing import (
-    Column,
-    Metric,
-    QueryObjectDict,
-    VizData,
-    VizPayload,
-)
 from zobi.utils import core as utils, csv, json
 from zobi.utils.cache import set_and_log_cache
 from zobi.utils.cache_keys import add_impersonation_cache_key_if_needed
@@ -68,6 +61,13 @@ from zobi.utils.hashing import hash_from_str
 from zobi.utils.pandas_postprocessing.utils import (
     escape_separator,
     FLAT_COLUMN_SEPARATOR,
+)
+from zobi.zobi_typing import (
+    Column,
+    Metric,
+    QueryObjectDict,
+    VizData,
+    VizPayload,
 )
 
 if TYPE_CHECKING:

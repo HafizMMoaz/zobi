@@ -6,14 +6,14 @@ from typing import Generator
 import rison
 from zobi_core.tasks.types import TaskStatus
 
-from zobi import db
-from zobi.models.tasks import Task
-from zobi.utils import json
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.constants import (
     ADMIN_USERNAME,
     GAMMA_USERNAME,
 )
+from zobi import db
+from zobi.models.tasks import Task
+from zobi.utils import json
 
 
 class TestTaskApi(ZobiTestCase):

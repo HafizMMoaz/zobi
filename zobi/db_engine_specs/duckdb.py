@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import re
@@ -129,9 +128,7 @@ class DuckDBParametersMixin:
         }
 
     @classmethod
-    def validate_parameters(
-        cls, properties: DuckDBPropertiesType
-    ) -> list[ZobiError]:
+    def validate_parameters(cls, properties: DuckDBPropertiesType) -> list[ZobiError]:
         """
         Validates any number of parameters, for progressive validation.
         """

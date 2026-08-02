@@ -3,8 +3,8 @@ from unittest.mock import Mock
 
 from pytest import fixture  # noqa: PT013
 
-from zobi.common.query_object_factory import QueryObjectFactory
 from tests.common.query_context_generator import QueryContextGenerator
+from zobi.common.query_object_factory import QueryObjectFactory
 
 
 def create_app_config() -> dict[str, Any]:

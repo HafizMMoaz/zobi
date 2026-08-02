@@ -1,4 +1,3 @@
-
 QUERY_FORMAT = "?q={}"
 
 DASHBOARDS_API_URL = "api/v1/dashboard/"

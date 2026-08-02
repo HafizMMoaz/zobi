@@ -1,4 +1,3 @@
-
 """Tests for MCP schema discovery helpers."""
 
 from zobi.mcp_service.common.schema_discovery import (

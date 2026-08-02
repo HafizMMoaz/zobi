@@ -1,4 +1,3 @@
-
 """Regression tests for validation-pipeline error surfacing.
 
 Previously, when ``parse_chart_config`` raised a Pydantic ValueError inside

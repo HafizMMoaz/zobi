@@ -47,10 +47,10 @@ from zobi.extensions.context import extension_context
 from zobi.security import ZobiSecurityManager
 from zobi.semantic_layers.labels import database_connections_menu_label
 from zobi.sql.parse import SQLGLOT_DIALECTS
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils.core import is_test, pessimistic_connection_handling
 from zobi.utils.decorators import transaction
 from zobi.utils.log import DBEventLogger, get_event_logger_from_cfg_value
+from zobi.zobi_typing import FlaskResponse
 
 if TYPE_CHECKING:
     from zobi.app import ZobiApp
@@ -492,8 +492,7 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
             category_label=_("Security"),
             icon="fa-list-ol",
             menu_cond=lambda: (
-                self.config["FAB_ADD_SECURITY_VIEWS"]
-                and self.config["ZOBI_LOG_VIEW"]
+                self.config["FAB_ADD_SECURITY_VIEWS"] and self.config["ZOBI_LOG_VIEW"]
             ),
         )
         appbuilder.add_api(SecurityRestApi)
@@ -635,11 +634,7 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
             logger.warning(bottom_banner)
 
         if self.config["SECRET_KEY"] == CHANGE_ME_SECRET_KEY:
-            if (
-                self.zobi_app.debug
-                or self.zobi_app.config["TESTING"]
-                or is_test()
-            ):
+            if self.zobi_app.debug or self.zobi_app.config["TESTING"] or is_test():
                 logger.warning("Debug mode identified with default secret key")
                 log_default_secret_key_warning()
                 return

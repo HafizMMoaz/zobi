@@ -1,4 +1,3 @@
-
 # ATTENTION: If you change any constants, make sure to also change utils/common.js
 
 # string to use when None values *need* to be converted to/from strings

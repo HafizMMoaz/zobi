@@ -1,8 +1,8 @@
 from flask_appbuilder import expose, has_access
 
 from zobi.constants import MODEL_VIEW_RW_METHOD_PERMISSION_MAP
-from zobi.zobi_typing import FlaskResponse
 from zobi.views.base import BaseZobiView
+from zobi.zobi_typing import FlaskResponse
 
 
 class TaskModelView(BaseZobiView):

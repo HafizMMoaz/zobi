@@ -1,4 +1,3 @@
-
 from typing import Any, Optional
 
 import pytest
@@ -6,6 +5,7 @@ from pytest_mock import MockerFixture
 from sqlalchemy import JSON, types
 from sqlalchemy.engine.url import make_url
 
+from tests.unit_tests.db_engine_specs.utils import assert_column_spec
 from zobi.db_engine_specs.starrocks import (
     ARRAY,
     BITMAP,
@@ -18,7 +18,6 @@ from zobi.db_engine_specs.starrocks import (
     TINYINT,
 )
 from zobi.utils.core import GenericDataType
-from tests.unit_tests.db_engine_specs.utils import assert_column_spec
 
 
 @pytest.mark.parametrize(

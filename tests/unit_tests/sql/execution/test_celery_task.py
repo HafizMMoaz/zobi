@@ -1,4 +1,3 @@
-
 """Tests for celery_task.py - async SQL execution via Celery."""
 
 from typing import Any
@@ -83,9 +82,7 @@ def test_handle_query_error_sets_end_time(
     from zobi.sql.execution.celery_task import _handle_query_error
 
     mocker.patch("zobi.sql.execution.celery_task.db.session")
-    mocker.patch(
-        "zobi.sql.execution.celery_task.now_as_float", return_value=99999.0
-    )
+    mocker.patch("zobi.sql.execution.celery_task.now_as_float", return_value=99999.0)
 
     # end_time is None
     mock_query.end_time = None
@@ -347,9 +344,7 @@ def test_finalize_successful_query_msgpack_no_stats(
     from zobi.sql.parse import SQLScript
 
     mocker.patch("zobi.results_backend_use_msgpack", True)
-    mocker.patch(
-        "zobi.sql.execution.celery_task.has_app_context", return_value=False
-    )
+    mocker.patch("zobi.sql.execution.celery_task.has_app_context", return_value=False)
     mock_buffer = MagicMock()
     mock_buffer.to_pybytes.return_value = b"arrow_data"
     mocker.patch(
@@ -430,9 +425,7 @@ def test_store_results_in_backend_success(
 
     mock_results_backend = MagicMock()
     mock_results_backend.set.return_value = True
-    mocker.patch(
-        "zobi.sql.execution.celery_task.results_backend", mock_results_backend
-    )
+    mocker.patch("zobi.sql.execution.celery_task.results_backend", mock_results_backend)
     mocker.patch("zobi.results_backend_use_msgpack", False)
     mocker.patch(
         "zobi.sql.execution.celery_task.zlib_compress", return_value=b"compressed"
@@ -457,9 +450,7 @@ def test_store_results_in_backend_with_size_check(
 
     mock_results_backend = MagicMock()
     mock_results_backend.set.return_value = True
-    mocker.patch(
-        "zobi.sql.execution.celery_task.results_backend", mock_results_backend
-    )
+    mocker.patch("zobi.sql.execution.celery_task.results_backend", mock_results_backend)
     mocker.patch("zobi.results_backend_use_msgpack", False)
     mocker.patch(
         "zobi.sql.execution.celery_task.zlib_compress", return_value=b"compressed"
@@ -507,9 +498,7 @@ def test_store_results_in_backend_default_cache_timeout(
 
     mock_results_backend = MagicMock()
     mock_results_backend.set.return_value = True
-    mocker.patch(
-        "zobi.sql.execution.celery_task.results_backend", mock_results_backend
-    )
+    mocker.patch("zobi.sql.execution.celery_task.results_backend", mock_results_backend)
     mocker.patch("zobi.results_backend_use_msgpack", False)
     mocker.patch(
         "zobi.sql.execution.celery_task.zlib_compress", return_value=b"compressed"
@@ -536,9 +525,7 @@ def test_store_results_in_backend_write_failure(
 
     mock_results_backend = MagicMock()
     mock_results_backend.set.return_value = False
-    mocker.patch(
-        "zobi.sql.execution.celery_task.results_backend", mock_results_backend
-    )
+    mocker.patch("zobi.sql.execution.celery_task.results_backend", mock_results_backend)
     mocker.patch("zobi.results_backend_use_msgpack", False)
     mocker.patch(
         "zobi.sql.execution.celery_task.zlib_compress", return_value=b"compressed"
@@ -696,9 +683,7 @@ def test_execute_sql_task_success(
     mock_query.database = mock_database
     mock_query.status = QueryStatusEnum.PENDING
 
-    mocker.patch(
-        "zobi.sql.execution.celery_task._get_query", return_value=mock_query
-    )
+    mocker.patch("zobi.sql.execution.celery_task._get_query", return_value=mock_query)
     # execute_sql_with_cursor returns (exec_sql, result_set, time, rowcount)
     mocker.patch(
         "zobi.sql.execution.celery_task.execute_sql_with_cursor",
@@ -734,9 +719,7 @@ def test_execute_sql_task_with_start_time(
 
     mock_query.database = mock_database
 
-    mocker.patch(
-        "zobi.sql.execution.celery_task._get_query", return_value=mock_query
-    )
+    mocker.patch("zobi.sql.execution.celery_task._get_query", return_value=mock_query)
     # execute_sql_with_cursor returns (exec_sql, result_set, time, rowcount)
     mocker.patch(
         "zobi.sql.execution.celery_task.execute_sql_with_cursor",
@@ -774,9 +757,7 @@ def test_execute_sql_task_with_cancel_query_id(
     mock_query.database = mock_database
     mock_database.db_engine_spec.get_cancel_query_id.return_value = "cancel_123"
 
-    mocker.patch(
-        "zobi.sql.execution.celery_task._get_query", return_value=mock_query
-    )
+    mocker.patch("zobi.sql.execution.celery_task._get_query", return_value=mock_query)
     # execute_sql_with_cursor returns (exec_sql, result_set, time, rowcount)
     mocker.patch(
         "zobi.sql.execution.celery_task.execute_sql_with_cursor",
@@ -811,9 +792,7 @@ def test_execute_sql_task_stopped(
 
     mock_query.database = mock_database
 
-    mocker.patch(
-        "zobi.sql.execution.celery_task._get_query", return_value=mock_query
-    )
+    mocker.patch("zobi.sql.execution.celery_task._get_query", return_value=mock_query)
     # Empty list indicates stopped (check_stopped_fn returned True mid-execution)
     mocker.patch(
         "zobi.sql.execution.celery_task.execute_sql_with_cursor",
@@ -845,9 +824,7 @@ def test_execute_sql_task_with_mutation(
     mock_query.database = mock_database
     mock_query.select_as_cta = True  # Trigger mutation commit
 
-    mocker.patch(
-        "zobi.sql.execution.celery_task._get_query", return_value=mock_query
-    )
+    mocker.patch("zobi.sql.execution.celery_task._get_query", return_value=mock_query)
     # execute_sql_with_cursor returns (exec_sql, result_set, time, rowcount)
     mocker.patch(
         "zobi.sql.execution.celery_task.execute_sql_with_cursor",
@@ -880,9 +857,7 @@ def test_execute_sql_task_with_results_backend(
 
     mock_query.database = mock_database
 
-    mocker.patch(
-        "zobi.sql.execution.celery_task._get_query", return_value=mock_query
-    )
+    mocker.patch("zobi.sql.execution.celery_task._get_query", return_value=mock_query)
     # execute_sql_with_cursor returns (exec_sql, result_set, time, rowcount)
     mocker.patch(
         "zobi.sql.execution.celery_task.execute_sql_with_cursor",
@@ -891,13 +866,9 @@ def test_execute_sql_task_with_results_backend(
 
     mock_results_backend = MagicMock()
     mock_results_backend.set.return_value = True
-    mocker.patch(
-        "zobi.sql.execution.celery_task.results_backend", mock_results_backend
-    )
+    mocker.patch("zobi.sql.execution.celery_task.results_backend", mock_results_backend)
     mocker.patch("zobi.results_backend_use_msgpack", False)
-    mocker.patch(
-        "zobi.sql.execution.celery_task.zlib_compress", return_value=b"data"
-    )
+    mocker.patch("zobi.sql.execution.celery_task.zlib_compress", return_value=b"data")
     mocker.patch("zobi.sql.execution.celery_task.db.session")
     mocker.patch("zobi.dataframe.df_to_records", return_value=[])
     mocker.patch("zobi.sql.execution.celery_task.security_manager")
@@ -925,9 +896,7 @@ def test_execute_sql_task_timeout(
 
     mock_query.database = mock_database
 
-    mocker.patch(
-        "zobi.sql.execution.celery_task._get_query", return_value=mock_query
-    )
+    mocker.patch("zobi.sql.execution.celery_task._get_query", return_value=mock_query)
     mocker.patch(
         "zobi.sql.execution.celery_task.execute_sql_with_cursor",
         side_effect=SoftTimeLimitExceeded(),
@@ -958,9 +927,7 @@ def test_execute_sql_task_unhandled_exception(
     from zobi.sql.execution.celery_task import execute_sql_task
 
     # Mock _get_query to succeed first time (for override_user), then return mock_query
-    mocker.patch(
-        "zobi.sql.execution.celery_task._get_query", return_value=mock_query
-    )
+    mocker.patch("zobi.sql.execution.celery_task._get_query", return_value=mock_query)
     mocker.patch(
         "zobi.sql.execution.celery_task._execute_sql_statements",
         side_effect=Exception("Unexpected error"),
@@ -987,9 +954,7 @@ def test_execute_sql_task_success_final_commit(
     mock_query.database = mock_database
     mock_query.status = QueryStatusEnum.RUNNING  # Will be changed to SUCCESS
 
-    mocker.patch(
-        "zobi.sql.execution.celery_task._get_query", return_value=mock_query
-    )
+    mocker.patch("zobi.sql.execution.celery_task._get_query", return_value=mock_query)
     # execute_sql_with_cursor returns (exec_sql, result_set, time, rowcount)
     mocker.patch(
         "zobi.sql.execution.celery_task.execute_sql_with_cursor",
@@ -1026,9 +991,7 @@ def test_execute_sql_task_with_failed_status_before_final_commit(
 
     mock_query.database = mock_database
 
-    mocker.patch(
-        "zobi.sql.execution.celery_task._get_query", return_value=mock_query
-    )
+    mocker.patch("zobi.sql.execution.celery_task._get_query", return_value=mock_query)
     # execute_sql_with_cursor returns (exec_sql, result_set, time, rowcount)
     mocker.patch(
         "zobi.sql.execution.celery_task.execute_sql_with_cursor",

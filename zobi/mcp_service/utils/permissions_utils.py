@@ -1,4 +1,3 @@
-
 """
 Field-level permissions utilities for MCP service.
 Provides functionality to filter sensitive data based on user permissions.

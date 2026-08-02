@@ -1,4 +1,3 @@
-
 # pylint: disable=invalid-name, import-outside-toplevel, unused-argument
 
 from io import BytesIO

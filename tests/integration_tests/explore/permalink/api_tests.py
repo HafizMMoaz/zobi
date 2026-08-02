@@ -5,6 +5,11 @@ from uuid import uuid3
 import pytest
 from sqlalchemy.orm import Session  # noqa: F401
 
+from tests.integration_tests.fixtures.world_bank_dashboard import (
+    load_world_bank_dashboard_with_slices,  # noqa: F401
+    load_world_bank_data,  # noqa: F401
+)
+from tests.integration_tests.test_app import app  # noqa: F401
 from zobi import db
 from zobi.explore.permalink.schemas import ExplorePermalinkSchema
 from zobi.key_value.models import KeyValueEntry
@@ -13,11 +18,6 @@ from zobi.key_value.utils import decode_permalink_id, encode_permalink_key
 from zobi.models.slice import Slice
 from zobi.utils import json
 from zobi.utils.core import DatasourceType
-from tests.integration_tests.fixtures.world_bank_dashboard import (
-    load_world_bank_dashboard_with_slices,  # noqa: F401
-    load_world_bank_data,  # noqa: F401
-)
-from tests.integration_tests.test_app import app  # noqa: F401
 
 
 @pytest.fixture

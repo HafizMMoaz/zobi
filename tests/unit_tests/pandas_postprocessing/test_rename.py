@@ -1,9 +1,9 @@
 import pandas as pd
 import pytest
 
+from tests.unit_tests.fixtures.dataframes import categories_df
 from zobi.exceptions import InvalidPostProcessingError
 from zobi.utils import pandas_postprocessing as pp
-from tests.unit_tests.fixtures.dataframes import categories_df
 
 
 def test_rename_should_not_side_effect():

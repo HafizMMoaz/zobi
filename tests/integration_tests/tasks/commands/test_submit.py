@@ -1,5 +1,3 @@
-
-
 import pytest
 from zobi_core.tasks.types import TaskStatus
 

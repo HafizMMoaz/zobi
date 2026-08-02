@@ -10,9 +10,9 @@ import pyarrow as pa
 from numpy.typing import NDArray
 
 from zobi.db_engine_specs import BaseEngineSpec
-from zobi.zobi_typing import DbapiDescription, DbapiResult, ResultSetColumnType
 from zobi.utils import core as utils, json
 from zobi.utils.core import GenericDataType
+from zobi.zobi_typing import DbapiDescription, DbapiResult, ResultSetColumnType
 
 logger = logging.getLogger(__name__)
 

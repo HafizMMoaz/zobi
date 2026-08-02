@@ -12,8 +12,8 @@ from zobi.daos.chart import ChartDAO
 from zobi.daos.datasource import DatasourceDAO
 from zobi.explorables.base import Explorable
 from zobi.models.slice import Slice
-from zobi.zobi_typing import Column
 from zobi.utils.core import DatasourceDict, DatasourceType, is_adhoc_column
+from zobi.zobi_typing import Column
 
 
 def create_query_object_factory() -> QueryObjectFactory:

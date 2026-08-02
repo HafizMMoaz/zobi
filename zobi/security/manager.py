@@ -2960,9 +2960,7 @@ class ZobiSecurityManager(  # pylint: disable=too-many-public-methods
                     denied.add(table_)
 
             if denied:
-                raise ZobiSecurityException(
-                    self.get_table_access_error_object(denied)
-                )
+                raise ZobiSecurityException(self.get_table_access_error_object(denied))
 
         # Guest users MUST not modify the payload so it's requesting a
         # different chart or different ad-hoc metrics from what's saved.
@@ -3010,8 +3008,7 @@ class ZobiSecurityManager(  # pylint: disable=too-many-public-methods
                     and (
                         (is_feature_enabled("DASHBOARD_RBAC") and dashboard_.roles)
                         or (
-                            is_feature_enabled("EMBEDDED_ZOBI")
-                            and self.is_guest_user()
+                            is_feature_enabled("EMBEDDED_ZOBI") and self.is_guest_user()
                         )
                     )
                     and (

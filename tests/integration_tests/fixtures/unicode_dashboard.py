@@ -2,18 +2,18 @@ import pandas as pd
 import pytest
 from sqlalchemy import String
 
-from zobi import db
-from zobi.connectors.sqla.models import SqlaTable
-from zobi.models.dashboard import Dashboard
-from zobi.models.slice import Slice
-from zobi.utils.core import get_example_default_schema
-from zobi.utils.database import get_example_database
 from tests.integration_tests.dashboard_utils import (
     create_dashboard,
     create_slice,
     create_table_metadata,
 )
 from tests.integration_tests.test_app import app
+from zobi import db
+from zobi.connectors.sqla.models import SqlaTable
+from zobi.models.dashboard import Dashboard
+from zobi.models.slice import Slice
+from zobi.utils.core import get_example_default_schema
+from zobi.utils.database import get_example_database
 
 UNICODE_TBL_NAME = "unicode_test"
 

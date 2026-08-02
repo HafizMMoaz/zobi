@@ -30,11 +30,11 @@ SUPPORT_DATETIME_TYPE = "support_datetime_type"
 if TYPE_CHECKING:
     from sqlalchemy.engine import Engine
 
-    from zobi.connectors.sqla.models import Database
     from tests.example_data.data_loading.base_data_loader import DataLoader
     from tests.example_data.data_loading.pandas.pandas_data_loader import (
         TableToDfConvertor,
     )
+    from zobi.connectors.sqla.models import Database
 
 pytest_plugins = "tests.fixtures"
 

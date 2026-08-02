@@ -1,4 +1,3 @@
-
 """
 Get database info FastMCP tool
 

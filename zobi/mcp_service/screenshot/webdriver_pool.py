@@ -1,4 +1,3 @@
-
 """
 WebDriver connection pooling for improved screenshot performance
 """

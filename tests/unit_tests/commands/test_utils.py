@@ -1,5 +1,3 @@
-
-
 from unittest.mock import call, MagicMock, patch
 
 import pytest

@@ -16,10 +16,10 @@ def test_import_database(mocker: MockerFixture, session: Session) -> None:
     """
     Test importing a database.
     """
+    from tests.integration_tests.fixtures.importexport import database_config
     from zobi import security_manager
     from zobi.commands.database.importers.v1.utils import import_database
     from zobi.models.core import Database
-    from tests.integration_tests.fixtures.importexport import database_config
 
     mocker.patch.object(security_manager, "can_access", return_value=True)
     mocker.patch("zobi.commands.database.importers.v1.utils.add_permissions")
@@ -58,10 +58,10 @@ def test_import_database_no_creds(mocker: MockerFixture, session: Session) -> No
     """
     Test importing a database.
     """
+    from tests.integration_tests.fixtures.importexport import database_config_no_creds
     from zobi import security_manager
     from zobi.commands.database.importers.v1.utils import import_database
     from zobi.models.core import Database
-    from tests.integration_tests.fixtures.importexport import database_config_no_creds
 
     mocker.patch.object(security_manager, "can_access", return_value=True)
 
@@ -82,10 +82,10 @@ def test_import_database_sqlite_invalid(
     """
     Test importing a database.
     """
+    from tests.integration_tests.fixtures.importexport import database_config_sqlite
     from zobi import security_manager
     from zobi.commands.database.importers.v1.utils import import_database
     from zobi.models.core import Database
-    from tests.integration_tests.fixtures.importexport import database_config_sqlite
 
     current_app.config["PREVENT_UNSAFE_DB_CONNECTIONS"] = True
     mocker.patch.object(security_manager, "can_access", return_value=True)
@@ -115,9 +115,9 @@ def test_import_database_sqlite_allowed_with_ignore_permissions(
     key fix from PR #37577 that allows example loading to work in CI/showtime
     environments where PREVENT_UNSAFE_DB_CONNECTIONS is enabled.
     """
+    from tests.integration_tests.fixtures.importexport import database_config_sqlite
     from zobi.commands.database.importers.v1.utils import import_database
     from zobi.models.core import Database
-    from tests.integration_tests.fixtures.importexport import database_config_sqlite
 
     mocker.patch.dict(current_app.config, {"PREVENT_UNSAFE_DB_CONNECTIONS": True})
     mocker.patch("zobi.commands.database.importers.v1.utils.add_permissions")
@@ -144,10 +144,10 @@ def test_import_database_managed_externally(
     """
     Test importing a database that is managed externally.
     """
+    from tests.integration_tests.fixtures.importexport import database_config
     from zobi import security_manager
     from zobi.commands.database.importers.v1.utils import import_database
     from zobi.models.core import Database
-    from tests.integration_tests.fixtures.importexport import database_config
 
     mocker.patch.object(security_manager, "can_access", return_value=True)
     mocker.patch("zobi.commands.database.importers.v1.utils.add_permissions")
@@ -171,10 +171,10 @@ def test_import_database_without_permission(
     """
     Test importing a database when a user doesn't have permissions to create.
     """
+    from tests.integration_tests.fixtures.importexport import database_config
     from zobi import security_manager
     from zobi.commands.database.importers.v1.utils import import_database
     from zobi.models.core import Database
-    from tests.integration_tests.fixtures.importexport import database_config
 
     mocker.patch.object(security_manager, "can_access", return_value=False)
 
@@ -195,10 +195,10 @@ def test_import_database_with_version(mocker: MockerFixture, session: Session) -
     """
     Test importing a database with a version set.
     """
+    from tests.integration_tests.fixtures.importexport import database_config
     from zobi import security_manager
     from zobi.commands.database.importers.v1.utils import import_database
     from zobi.models.core import Database
-    from tests.integration_tests.fixtures.importexport import database_config
 
     mocker.patch.object(security_manager, "can_access", return_value=True)
     mocker.patch("zobi.commands.database.importers.v1.utils.add_permissions")
@@ -219,10 +219,10 @@ def test_import_database_with_user_impersonation(
     """
     Test importing a database that is managed externally.
     """
+    from tests.integration_tests.fixtures.importexport import database_config
     from zobi import security_manager
     from zobi.commands.database.importers.v1.utils import import_database
     from zobi.models.core import Database
-    from tests.integration_tests.fixtures.importexport import database_config
 
     mocker.patch.object(security_manager, "can_access", return_value=True)
     mocker.patch("zobi.commands.database.importers.v1.utils.add_permissions")
@@ -246,12 +246,12 @@ def test_import_database_with_masked_encrypted_extra_new_db(
     When no existing DB matches the UUID, the masked_encrypted_extra value
     should be stored as-is in encrypted_extra.
     """
-    from zobi import security_manager
-    from zobi.commands.database.importers.v1.utils import import_database
-    from zobi.models.core import Database
     from tests.integration_tests.fixtures.importexport import (
         database_config_with_masked_encrypted_extra,
     )
+    from zobi import security_manager
+    from zobi.commands.database.importers.v1.utils import import_database
+    from zobi.models.core import Database
 
     mocker.patch.object(security_manager, "can_access", return_value=True)
     mocker.patch("zobi.commands.database.importers.v1.utils.add_permissions")
@@ -284,13 +284,13 @@ def test_import_database_with_masked_encrypted_extra_existing_db(
     an existing DB has the real values, reveal_sensitive should restore
     the original values from the existing DB's encrypted_extra.
     """
+    from tests.integration_tests.fixtures.importexport import (
+        database_config_with_masked_encrypted_extra,
+    )
     from zobi import security_manager
     from zobi.commands.database.importers.v1.utils import import_database
     from zobi.constants import PASSWORD_MASK
     from zobi.models.core import Database
-    from tests.integration_tests.fixtures.importexport import (
-        database_config_with_masked_encrypted_extra,
-    )
 
     mocker.patch.object(security_manager, "can_access", return_value=True)
     mocker.patch("zobi.commands.database.importers.v1.utils.add_permissions")
@@ -333,11 +333,11 @@ def test_import_database_oauth2_redirect_is_nonfatal(
     Test that an OAuth2RedirectError from add_permissions is logged
     and does not prevent the import from succeeding.
     """
+    from tests.integration_tests.fixtures.importexport import database_config
     from zobi import security_manager
     from zobi.commands.database.importers.v1.utils import import_database
     from zobi.exceptions import OAuth2RedirectError
     from zobi.models.core import Database
-    from tests.integration_tests.fixtures.importexport import database_config
 
     mocker.patch.object(security_manager, "can_access", return_value=True)
     mock_add_perms = mocker.patch(

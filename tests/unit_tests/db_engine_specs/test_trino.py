@@ -21,6 +21,11 @@ from trino.sqlalchemy import datatype
 from trino.sqlalchemy.dialect import TrinoDialect
 
 import zobi.config
+from tests.unit_tests.db_engine_specs.utils import (
+    assert_column_spec,
+    assert_convert_dttm,
+)
+from tests.unit_tests.fixtures.common import dttm  # noqa: F401
 from zobi.constants import QUERY_CANCEL_KEY, QUERY_EARLY_CANCEL_KEY
 from zobi.db_engine_specs.exceptions import (
     ZobiDBAPIConnectionError,
@@ -29,19 +34,14 @@ from zobi.db_engine_specs.exceptions import (
     ZobiDBAPIProgrammingError,
 )
 from zobi.sql.parse import Table
+from zobi.utils import json
+from zobi.utils.core import GenericDataType
 from zobi.zobi_typing import (
     OAuth2ClientConfig,
     ResultSetColumnType,
     SQLAColumnType,
     SQLType,
 )
-from zobi.utils import json
-from zobi.utils.core import GenericDataType
-from tests.unit_tests.db_engine_specs.utils import (
-    assert_column_spec,
-    assert_convert_dttm,
-)
-from tests.unit_tests.fixtures.common import dttm  # noqa: F401
 
 
 def _assert_columns_equal(actual_cols, expected_cols) -> None:

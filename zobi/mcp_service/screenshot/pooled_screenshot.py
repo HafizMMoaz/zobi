@@ -1,4 +1,3 @@
-
 """
 Pooled screenshot implementations for improved performance
 """

@@ -1,8 +1,8 @@
 import pytest  # noqa: F401
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi.extensions import cache_manager
 from zobi.utils.core import backend, DatasourceType  # noqa: F401
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class UtilsCacheManagerTests(ZobiTestCase):

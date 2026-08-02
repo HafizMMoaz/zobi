@@ -1,4 +1,3 @@
-
 """
 Dataset-specific validation for chart configurations.
 Validates that referenced columns exist in the dataset schema.

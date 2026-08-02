@@ -1,4 +1,3 @@
-
 """
 Get instance high-level information FastMCP tool using configurable
 InstanceInfoCore for flexible, extensible metrics calculation.

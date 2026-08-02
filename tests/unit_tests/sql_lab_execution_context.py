@@ -2,11 +2,11 @@
 
 import pytest
 
+from tests.unit_tests.conftest import with_feature_flags
 from zobi.sqllab.sqllab_execution_context import (
     CreateTableAsSelect,
     SqlJsonExecutionContext,
 )
-from tests.unit_tests.conftest import with_feature_flags
 
 
 @pytest.fixture

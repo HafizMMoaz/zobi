@@ -1,4 +1,3 @@
-
 """
 View that handles external-link redirects with a warning page.
 
@@ -14,9 +13,9 @@ from flask import abort, redirect, request
 from flask_appbuilder import expose
 
 from zobi import is_feature_enabled
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils.link_redirect import is_safe_redirect_url
 from zobi.views.base import BaseZobiView
+from zobi.zobi_typing import FlaskResponse
 
 logger = logging.getLogger(__name__)
 

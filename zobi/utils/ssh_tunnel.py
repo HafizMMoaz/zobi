@@ -1,4 +1,3 @@
-
 from typing import Any
 
 from zobi.constants import PASSWORD_MASK

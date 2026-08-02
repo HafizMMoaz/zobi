@@ -4,13 +4,6 @@ from unittest.mock import patch
 import yaml
 from flask import g
 
-from zobi import db
-from zobi.commands.exceptions import CommandInvalidError
-from zobi.commands.importers.v1.assets import ImportAssetsCommand
-from zobi.commands.importers.v1.utils import is_valid_config
-from zobi.models.dashboard import Dashboard
-from zobi.models.slice import Slice
-from zobi.utils import json
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.fixtures.importexport import (
     chart_config,
@@ -18,6 +11,13 @@ from tests.integration_tests.fixtures.importexport import (
     database_config,
     dataset_config,
 )
+from zobi import db
+from zobi.commands.exceptions import CommandInvalidError
+from zobi.commands.importers.v1.assets import ImportAssetsCommand
+from zobi.commands.importers.v1.utils import is_valid_config
+from zobi.models.dashboard import Dashboard
+from zobi.models.slice import Slice
+from zobi.utils import json
 
 metadata_config = {
     "version": "1.0.0",

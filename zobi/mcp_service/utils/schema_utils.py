@@ -1,4 +1,3 @@
-
 """
 Generic utilities for flexible schema input handling in MCP tools.
 

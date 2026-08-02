@@ -10,6 +10,7 @@ from flask_appbuilder.security.sqla.models import Role, User
 from pytest_mock import MockerFixture
 from sqlalchemy.orm.session import Session
 
+from tests.integration_tests.fixtures.importexport import dashboard_config
 from zobi import security_manager
 from zobi.commands.dashboard.importers.v1.utils import import_dashboard
 from zobi.commands.exceptions import ImportFailedError
@@ -18,7 +19,6 @@ from zobi.extensions import feature_flag_manager
 from zobi.models.dashboard import Dashboard
 from zobi.tags.models import TaggedObject
 from zobi.utils.core import override_user
-from tests.integration_tests.fixtures.importexport import dashboard_config
 
 
 @pytest.fixture

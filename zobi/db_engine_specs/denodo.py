@@ -89,9 +89,7 @@ class DenodoEngineSpec(BaseEngineSpec, BasicParametersMixin):
         "P1Y": "TRUNC({col},'YEAR')",
     }
 
-    custom_errors: dict[
-        re.Pattern[str], tuple[str, ZobiErrorType, dict[str, Any]]
-    ] = {
+    custom_errors: dict[re.Pattern[str], tuple[str, ZobiErrorType, dict[str, Any]]] = {
         _ErrorPatterns.CONN_INVALID_USER_PWD_REGEX: (
             "Incorrect username or password.",
             ZobiErrorType.CONNECTION_INVALID_USERNAME_ERROR,

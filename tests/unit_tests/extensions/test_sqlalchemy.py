@@ -10,11 +10,11 @@ from sqlalchemy.engine import create_engine
 from sqlalchemy.exc import ProgrammingError
 from sqlalchemy.orm.session import Session
 
+from tests.conftest import with_config
+from tests.unit_tests.conftest import with_feature_flags
 from zobi import db
 from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
 from zobi.exceptions import ZobiSecurityException
-from tests.conftest import with_config
-from tests.unit_tests.conftest import with_feature_flags
 
 if TYPE_CHECKING:
     from zobi.models.core import Database

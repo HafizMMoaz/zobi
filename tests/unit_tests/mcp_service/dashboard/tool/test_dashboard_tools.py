@@ -1,4 +1,3 @@
-
 """
 Unit tests for MCP dashboard tools (list_dashboards, get_dashboard_info)
 """
@@ -1172,9 +1171,7 @@ async def test_list_dashboards_sanitizes_dashboard_descriptions_and_filter_text(
         ]
         assert dashboard_payload["slug"] == "quarterly-dashboard"
         assert dashboard_payload["uuid"] == "uuid-quarterly-3"
-        assert dashboard_payload["url"].endswith(
-            "/zobi/dashboard/quarterly-dashboard/"
-        )
+        assert dashboard_payload["url"].endswith("/zobi/dashboard/quarterly-dashboard/")
 
         assert "uuid" in data["columns_requested"]
         assert "slug" in data["columns_requested"]

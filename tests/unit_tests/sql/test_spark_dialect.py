@@ -1,4 +1,3 @@
-
 """Tests for Spark dialect support in sqlglot.
 
 Verifies that a spark:// SQLAlchemy connection resolves to SparkEngineSpec,

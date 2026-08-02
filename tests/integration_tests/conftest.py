@@ -12,11 +12,11 @@ from flask.ctx import AppContext
 from flask_appbuilder.security.sqla import models as ab_models
 from sqlalchemy.engine import Engine
 
+from tests.integration_tests.test_app import app, login
 from zobi import db, security_manager
 from zobi.extensions import feature_flag_manager
 from zobi.utils.database import get_example_database, remove_database
 from zobi.utils.json import json_dumps_w_dates
-from tests.integration_tests.test_app import app, login
 
 if TYPE_CHECKING:
     from flask.testing import FlaskClient

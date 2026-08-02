@@ -214,9 +214,7 @@ def copy_backend_files(cwd: Path) -> None:
     # Read build config from pyproject.toml
     pyproject = read_toml(backend_dir / "pyproject.toml")
     assert pyproject
-    build_config = (
-        pyproject.get("tool", {}).get("zobi_extensions", {}).get("build", {})
-    )
+    build_config = pyproject.get("tool", {}).get("zobi_extensions", {}).get("build", {})
     include_patterns = build_config.get("include", [])
     exclude_patterns = build_config.get("exclude", [])
 
@@ -314,9 +312,7 @@ def validate() -> None:
             sys.exit(1)
 
         build_config = (
-            pyproject.get("tool", {})
-            .get("zobi_extensions", {})
-            .get("build", {})
+            pyproject.get("tool", {}).get("zobi_extensions", {}).get("build", {})
         )
         if not build_config.get("include"):
             click.secho(
@@ -772,9 +768,7 @@ def prompt_for_extension_info(
 @click.option(
     "--version", "version_opt", default=None, help="Initial version (default: 0.1.0)"
 )
-@click.option(
-    "--license", "license_opt", default=None, help="License (default: MIT)"
-)
+@click.option("--license", "license_opt", default=None, help="License (default: MIT)")
 @click.option(
     "--frontend/--no-frontend", "frontend_opt", default=None, help="Include frontend"
 )

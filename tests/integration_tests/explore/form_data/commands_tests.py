@@ -1,9 +1,9 @@
-
 from unittest.mock import patch
 
 import pytest
 from flask import current_app
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi import db, security_manager
 from zobi.commands.exceptions import DatasourceTypeInvalidError
 from zobi.commands.explore.form_data.create import CreateFormDataCommand
@@ -17,7 +17,6 @@ from zobi.models.sql_lab import Query
 from zobi.utils import json
 from zobi.utils.core import DatasourceType, get_example_default_schema
 from zobi.utils.database import get_example_database
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class TestCreateFormDataCommand(ZobiTestCase):

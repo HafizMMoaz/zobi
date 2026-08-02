@@ -1,4 +1,3 @@
-
 """Unit tests for ASCII charts: trend analysis, NaN/null handling,
 and boolean skipping."""
 

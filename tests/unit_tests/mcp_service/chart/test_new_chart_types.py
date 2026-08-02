@@ -1,4 +1,3 @@
-
 """
 Unit tests for new MCP chart types: pie, pivot_table, mixed_timeseries.
 

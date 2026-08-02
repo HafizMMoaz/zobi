@@ -1,4 +1,3 @@
-
 """Dashboard resources for Zobi MCP service"""
 
 # Import resource modules here when created

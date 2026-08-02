@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 from zobi.db_engine_specs.base import DatabaseCategory

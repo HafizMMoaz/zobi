@@ -379,9 +379,7 @@ class TestSqlLabApi(ZobiTestCase):
         assert resp_data.get("status") == "success"
         assert rv.status_code == 200
 
-    @mock.patch(
-        "tests.integration_tests.zobi_test_custom_template_processors.datetime"
-    )
+    @mock.patch("tests.integration_tests.zobi_test_custom_template_processors.datetime")
     @mock.patch("zobi.sqllab.api.get_sql_results")
     def test_execute_custom_templated(self, sql_lab_mock, mock_dt) -> None:
         mock_dt.utcnow = mock.Mock(return_value=datetime.datetime(1970, 1, 1))

@@ -1,4 +1,3 @@
-
 """
 MySQL ANSI dialect for Apache Pinot.
 

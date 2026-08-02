@@ -6,6 +6,7 @@ import pytest
 from flask import current_app
 from flask_babel import gettext as __
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi import db, sql_lab
 from zobi.commands.sql_lab import estimate, export, results
 from zobi.common.db_query_status import QueryStatus
@@ -23,7 +24,6 @@ from zobi.sqllab.schemas import EstimateQueryCostSchema
 from zobi.utils import core as utils
 from zobi.utils.core import override_user
 from zobi.utils.database import get_example_database
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class TestQueryEstimationCommand(ZobiTestCase):
@@ -37,10 +37,7 @@ class TestQueryEstimationCommand(ZobiTestCase):
             mock_zobi_db.session.query().get.return_value = None
             with pytest.raises(ZobiErrorException) as ex_info:
                 command.validate()
-            assert (
-                ex_info.value.error.error_type
-                == ZobiErrorType.RESULTS_BACKEND_ERROR
-            )
+            assert ex_info.value.error.error_type == ZobiErrorType.RESULTS_BACKEND_ERROR
 
     @patch("zobi.tasks.scheduler.is_feature_enabled")
     def test_run_timeout(self, is_feature_enabled) -> None:
@@ -69,9 +66,7 @@ class TestQueryEstimationCommand(ZobiTestCase):
             mock_zobi_db.session.query().get.return_value = db_mock
             with pytest.raises(ZobiErrorException) as ex_info:
                 command.run()
-            assert (
-                ex_info.value.error.error_type == ZobiErrorType.SQLLAB_TIMEOUT_ERROR
-            )
+            assert ex_info.value.error.error_type == ZobiErrorType.SQLLAB_TIMEOUT_ERROR
             assert ex_info.value.error.message == __(
                 "The query estimation was killed after %(sqllab_timeout)s seconds. It might "  # noqa: E501
                 "be too complex, or the database might be under heavy load.",
@@ -326,10 +321,7 @@ class TestSqlExecutionResultsCommand(ZobiTestCase):
             with pytest.raises(ZobiErrorException) as ex_info:  # noqa: PT012
                 command = results.SqlExecutionResultsCommand("test_other", 1000)
                 command.run()
-            assert (
-                ex_info.value.error.error_type
-                == ZobiErrorType.RESULTS_BACKEND_ERROR
-            )
+            assert ex_info.value.error.error_type == ZobiErrorType.RESULTS_BACKEND_ERROR
 
     @pytest.mark.usefixtures("create_database_and_query")
     @patch("zobi.commands.sql_lab.results.results_backend_use_msgpack", False)

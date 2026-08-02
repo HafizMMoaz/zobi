@@ -10,9 +10,7 @@ from jinja2 import Environment, FileSystemLoader
 @pytest.fixture
 def templates_dir():
     """Get the templates directory path."""
-    return (
-        Path(__file__).parent.parent / "src" / "zobi_extensions_cli" / "templates"
-    )
+    return Path(__file__).parent.parent / "src" / "zobi_extensions_cli" / "templates"
 
 
 @pytest.fixture

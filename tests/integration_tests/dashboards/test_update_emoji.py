@@ -1,10 +1,10 @@
 """Tests that emoji characters in position_json are persisted correctly via PUT."""
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.constants import ADMIN_USERNAME
 from zobi import db
 from zobi.models.dashboard import Dashboard
 from zobi.utils import json
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.constants import ADMIN_USERNAME
 
 # position_json payload containing a 4-byte emoji in a MARKDOWN component,
 # matching the real-world payload that triggered the truncation bug

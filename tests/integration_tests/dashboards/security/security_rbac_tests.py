@@ -5,10 +5,6 @@ from unittest.mock import patch  # noqa: F401
 
 import pytest
 
-from zobi.commands.dashboard.exceptions import DashboardForbiddenError
-from zobi.daos.dashboard import DashboardDAO
-from zobi.utils import json
-from zobi.utils.core import backend, override_user
 from tests.integration_tests.conftest import with_feature_flags
 from tests.integration_tests.constants import (
     ADMIN_USERNAME,
@@ -37,6 +33,10 @@ from tests.integration_tests.fixtures.world_bank_dashboard import (
     load_world_bank_dashboard_with_slices,  # noqa: F401
     load_world_bank_data,  # noqa: F401
 )
+from zobi.commands.dashboard.exceptions import DashboardForbiddenError
+from zobi.daos.dashboard import DashboardDAO
+from zobi.utils import json
+from zobi.utils.core import backend, override_user
 
 CHART_DATA_URI = "api/v1/chart/data"
 

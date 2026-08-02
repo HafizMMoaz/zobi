@@ -1,4 +1,3 @@
-
 """
 WebDriver pool configuration defaults for Zobi MCP service
 """

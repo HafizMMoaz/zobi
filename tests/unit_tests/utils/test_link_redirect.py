@@ -1,4 +1,3 @@
-
 import pytest
 from flask import Flask
 
@@ -10,9 +9,7 @@ def app():
     """Minimal Flask app with the config keys used by link_redirect."""
     application = Flask(__name__)
     application.config["WEBDRIVER_BASEURL"] = "http://zobi.example.com"
-    application.config["WEBDRIVER_BASEURL_USER_FRIENDLY"] = (
-        "https://zobi.example.com"
-    )
+    application.config["WEBDRIVER_BASEURL_USER_FRIENDLY"] = "https://zobi.example.com"
     application.config["ALERT_REPORTS_ENABLE_LINK_REDIRECT"] = True
     with application.app_context():
         yield application

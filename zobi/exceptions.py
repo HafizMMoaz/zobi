@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 from collections import defaultdict
@@ -93,9 +92,7 @@ class ZobiErrorFromParamsException(ZobiErrorException):
 class ZobiErrorsException(ZobiException):
     """Exceptions with multiple ZobiErrorType associated with them"""
 
-    def __init__(
-        self, errors: list[ZobiError], status: Optional[int] = None
-    ) -> None:
+    def __init__(self, errors: list[ZobiError], status: Optional[int] = None) -> None:
         super().__init__(str(errors))
         self.errors = errors
         if status is not None:

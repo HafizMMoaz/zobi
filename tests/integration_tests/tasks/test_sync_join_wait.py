@@ -1,4 +1,3 @@
-
 """Integration tests for sync join-and-wait functionality in GTF."""
 
 import time

@@ -1,4 +1,3 @@
-
 """
 Shared error sanitization utilities for MCP service.
 

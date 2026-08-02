@@ -1,4 +1,3 @@
-
 """
 Extension Context Management - provides ambient context during extension loading.
 

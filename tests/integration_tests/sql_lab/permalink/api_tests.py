@@ -5,13 +5,13 @@ from uuid import uuid3
 
 import pytest
 
+from tests.integration_tests.constants import (
+    GAMMA_SQLLAB_USERNAME,
+)
 from zobi import db
 from zobi.key_value.models import KeyValueEntry
 from zobi.key_value.types import KeyValueResource
 from zobi.key_value.utils import decode_permalink_id
-from tests.integration_tests.constants import (
-    GAMMA_SQLLAB_USERNAME,
-)
 
 
 @pytest.fixture

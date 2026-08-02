@@ -1,4 +1,3 @@
-
 from .birth_names_dashboard import (
     load_birth_names_dashboard_with_slices,  # noqa: F401
     load_birth_names_dashboard_with_slices_module_scope,  # noqa: F401

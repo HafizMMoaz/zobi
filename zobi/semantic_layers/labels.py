@@ -1,4 +1,3 @@
-
 """
 Label helpers for SEMANTIC_LAYERS feature flag.
 

@@ -5,11 +5,11 @@ from typing import Any, Optional
 
 from sqlalchemy import func
 
+from tests.integration_tests.dashboards.consts import DEFAULT_DASHBOARD_SLUG_TO_TEST
 from zobi import appbuilder, db, security_manager
 from zobi.connectors.sqla.models import SqlaTable
 from zobi.models.dashboard import Dashboard
 from zobi.models.slice import Slice
-from tests.integration_tests.dashboards.consts import DEFAULT_DASHBOARD_SLUG_TO_TEST
 
 logger = logging.getLogger(__name__)
 

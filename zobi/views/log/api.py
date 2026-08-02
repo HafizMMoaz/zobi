@@ -11,7 +11,6 @@ from zobi import event_logger, security_manager
 from zobi.constants import MODEL_API_RW_METHOD_PERMISSION_MAP
 from zobi.daos.log import LogDAO
 from zobi.exceptions import ZobiSecurityException
-from zobi.zobi_typing import FlaskResponse
 from zobi.views.base_api import BaseZobiModelRestApi, statsd_metrics
 from zobi.views.log import LogMixin
 from zobi.views.log.schemas import (
@@ -20,6 +19,7 @@ from zobi.views.log.schemas import (
     RecentActivityResponseSchema,
     RecentActivitySchema,
 )
+from zobi.zobi_typing import FlaskResponse
 
 
 class LogRestApi(LogMixin, BaseZobiModelRestApi):

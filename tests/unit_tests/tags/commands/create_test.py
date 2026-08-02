@@ -63,9 +63,7 @@ def test_create_command_success(session_with_data: Session, mocker: MockerFixtur
     chart = db.session.query(Slice).first()
     dashboard = db.session.query(Dashboard).first()
 
-    mocker.patch(
-        "zobi.security.ZobiSecurityManager.is_admin", return_value=True
-    )
+    mocker.patch("zobi.security.ZobiSecurityManager.is_admin", return_value=True)
     mocker.patch("zobi.daos.chart.ChartDAO.find_by_id", return_value=chart)
     mocker.patch("zobi.daos.query.SavedQueryDAO.find_by_id", return_value=query)
 
@@ -106,9 +104,7 @@ def test_create_command_success_clear(
     chart = db.session.query(Slice).first()
     dashboard = db.session.query(Dashboard).first()
 
-    mocker.patch(
-        "zobi.security.ZobiSecurityManager.is_admin", return_value=True
-    )
+    mocker.patch("zobi.security.ZobiSecurityManager.is_admin", return_value=True)
     mocker.patch("zobi.daos.chart.ChartDAO.find_by_id", return_value=chart)
     mocker.patch("zobi.daos.query.SavedQueryDAO.find_by_id", return_value=query)
 

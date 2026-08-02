@@ -1,4 +1,3 @@
-
 import logging
 
 from flask_appbuilder import expose
@@ -7,9 +6,9 @@ from flask_appbuilder.security.decorators import has_access
 
 from zobi import is_feature_enabled
 from zobi.constants import RouteMethod
-from zobi.zobi_typing import FlaskResponse
 from zobi.tags.models import Tag
 from zobi.views.base import ZobiModelView
+from zobi.zobi_typing import FlaskResponse
 
 logger = logging.getLogger(__name__)
 

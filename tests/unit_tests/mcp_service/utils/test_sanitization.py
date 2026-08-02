@@ -1,4 +1,3 @@
-
 import pytest
 
 from zobi.mcp_service.chart.schemas import ChartError

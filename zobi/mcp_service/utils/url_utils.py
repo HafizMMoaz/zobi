@@ -1,4 +1,3 @@
-
 """
 URL utilities for MCP service
 """

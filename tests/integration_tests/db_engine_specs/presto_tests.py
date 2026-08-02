@@ -9,11 +9,11 @@ from sqlalchemy import types  # noqa: F401
 from sqlalchemy.exc import NoSuchTableError
 from sqlalchemy.sql import select
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi.db_engine_specs.presto import PrestoEngineSpec
 from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
 from zobi.sql.parse import Table
 from zobi.utils.database import get_example_database
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class TestPrestoDbEngineSpec(ZobiTestCase):

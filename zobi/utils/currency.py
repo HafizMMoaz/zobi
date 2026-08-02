@@ -10,8 +10,8 @@ from zobi.common.db_query_status import QueryStatus
 
 if TYPE_CHECKING:
     from zobi.explorables.base import Explorable
-    from zobi.zobi_typing import QueryObjectDict
     from zobi.utils.core import QueryObjectFilterClause
+    from zobi.zobi_typing import QueryObjectDict
 
 logger = logging.getLogger(__name__)
 

@@ -5,11 +5,11 @@ import numpy as np
 import pandas as pd
 from sqlalchemy.types import NVARCHAR
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.test_app import app
 from zobi.db_engine_specs.redshift import RedshiftEngineSpec
 from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
 from zobi.sql.parse import Table
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.test_app import app
 
 
 class TestRedshiftDbEngineSpec(ZobiTestCase):

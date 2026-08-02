@@ -10,14 +10,14 @@ from sqlalchemy.dialects.mssql import DATE, NTEXT, NVARCHAR, TEXT, VARCHAR
 from sqlalchemy.sql import select
 from sqlalchemy.types import String, TypeEngine, UnicodeText
 
-from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
-from zobi.models.sql_types.mssql_sql_types import GUID
-from zobi.utils.core import GenericDataType
 from tests.unit_tests.db_engine_specs.utils import (
     assert_column_spec,
     assert_convert_dttm,
 )
 from tests.unit_tests.fixtures.common import dttm  # noqa: F401
+from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
+from zobi.models.sql_types.mssql_sql_types import GUID
+from zobi.utils.core import GenericDataType
 
 
 @pytest.mark.parametrize(

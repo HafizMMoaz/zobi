@@ -1,4 +1,3 @@
-
 from flask_appbuilder.models.sqla.interface import SQLAInterface
 from pytest_mock import MockerFixture
 from sqlalchemy import create_engine

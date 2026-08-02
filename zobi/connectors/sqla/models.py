@@ -89,6 +89,8 @@ from zobi.models.helpers import (
 from zobi.models.slice import Slice
 from zobi.models.sql_types.base import CurrencyType
 from zobi.sql.parse import Table
+from zobi.utils import core as utils, json
+from zobi.utils.backports import StrEnum
 from zobi.zobi_typing import (
     AdhocColumn,
     AdhocMetric,
@@ -99,8 +101,6 @@ from zobi.zobi_typing import (
     QueryObjectDict,
     ResultSetColumnType,
 )
-from zobi.utils import core as utils, json
-from zobi.utils.backports import StrEnum
 
 config = current_app.config  # Backward compatibility for tests
 metadata = Model.metadata  # pylint: disable=no-member

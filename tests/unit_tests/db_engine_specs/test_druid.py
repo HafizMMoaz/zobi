@@ -57,8 +57,8 @@ def test_timegrain_expressions(time_grain: str, expected_result: str) -> None:
 
 
 def test_extras_without_ssl() -> None:
-    from zobi.db_engine_specs.druid import DruidEngineSpec
     from tests.integration_tests.fixtures.database import default_db_extra
+    from zobi.db_engine_specs.druid import DruidEngineSpec
 
     database = mock.Mock()
     database.extra = default_db_extra
@@ -68,9 +68,9 @@ def test_extras_without_ssl() -> None:
 
 
 def test_extras_with_ssl() -> None:
-    from zobi.db_engine_specs.druid import DruidEngineSpec
     from tests.integration_tests.fixtures.certificates import ssl_certificate
     from tests.integration_tests.fixtures.database import default_db_extra
+    from zobi.db_engine_specs.druid import DruidEngineSpec
 
     database = mock.Mock()
     database.extra = default_db_extra

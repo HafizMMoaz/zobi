@@ -21,13 +21,13 @@ from zobi.exceptions import ZobiException
 from zobi.explore.exceptions import WrongEndpointError
 from zobi.explore.permalink.exceptions import ExplorePermalinkGetFailedError
 from zobi.extensions import security_manager
-from zobi.zobi_typing import ExplorableData
 from zobi.utils import core as utils, json
 from zobi.views.utils import (
     get_datasource_info,
     get_form_data,
     sanitize_datasource_data,
 )
+from zobi.zobi_typing import ExplorableData
 
 logger = logging.getLogger(__name__)
 

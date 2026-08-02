@@ -1,4 +1,3 @@
-
 """
 MCP tool: update_chart_preview
 """

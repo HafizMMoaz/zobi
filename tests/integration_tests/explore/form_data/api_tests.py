@@ -4,6 +4,11 @@ import pytest
 from flask_appbuilder.security.sqla.models import User
 from sqlalchemy.orm import Session  # noqa: F401
 
+from tests.integration_tests.fixtures.world_bank_dashboard import (
+    load_world_bank_dashboard_with_slices,  # noqa: F401
+    load_world_bank_data,  # noqa: F401
+)
+from tests.integration_tests.test_app import app
 from zobi import db
 from zobi.commands.dataset.exceptions import DatasetAccessDeniedError
 from zobi.commands.explore.form_data.state import TemporaryExploreState
@@ -12,11 +17,6 @@ from zobi.extensions import cache_manager
 from zobi.models.slice import Slice
 from zobi.utils import json
 from zobi.utils.core import DatasourceType
-from tests.integration_tests.fixtures.world_bank_dashboard import (
-    load_world_bank_dashboard_with_slices,  # noqa: F401
-    load_world_bank_data,  # noqa: F401
-)
-from tests.integration_tests.test_app import app
 
 KEY = "test-key"
 INITIAL_FORM_DATA = json.dumps({"test": "initial value"})

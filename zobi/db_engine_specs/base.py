@@ -60,13 +60,6 @@ from zobi.sql.parse import (
     SQLStatement,
     Table,
 )
-from zobi.zobi_typing import (
-    OAuth2ClientConfig,
-    OAuth2State,
-    OAuth2TokenResponse,
-    ResultSetColumnType,
-    SQLAColumnType,
-)
 from zobi.utils import core as utils, json
 from zobi.utils.core import ColumnSpec, GenericDataType, QuerySource
 from zobi.utils.hashing import hash_from_str
@@ -77,6 +70,13 @@ from zobi.utils.oauth2 import (
     generate_code_challenge,
     generate_code_verifier,
     get_oauth2_redirect_uri,
+)
+from zobi.zobi_typing import (
+    OAuth2ClientConfig,
+    OAuth2State,
+    OAuth2TokenResponse,
+    ResultSetColumnType,
+    SQLAColumnType,
 )
 
 if TYPE_CHECKING:
@@ -525,9 +525,7 @@ class BaseEngineSpec:  # pylint: disable=too-many-public-methods
     type_probe_needs_row: bool = False
     try_remove_schema_from_table_name = True  # pylint: disable=invalid-name
     run_multiple_statements_as_one = False
-    custom_errors: dict[
-        Pattern[str], tuple[str, ZobiErrorType, dict[str, Any]]
-    ] = {}
+    custom_errors: dict[Pattern[str], tuple[str, ZobiErrorType, dict[str, Any]]] = {}
 
     # JSONPath fields in `encrypted_extra` that should be masked when the database is
     # edited. Can be a set of paths (labels will default to the path) or a dict mapping
@@ -2679,9 +2677,7 @@ class BasicParametersMixin:
         }
 
     @classmethod
-    def validate_parameters(
-        cls, properties: BasicPropertiesType
-    ) -> list[ZobiError]:
+    def validate_parameters(cls, properties: BasicPropertiesType) -> list[ZobiError]:
         """
         Validates any number of parameters, for progressive validation.
 

@@ -1,4 +1,3 @@
-
 """
 Unified Contribution Processing System
 

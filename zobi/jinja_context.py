@@ -30,7 +30,6 @@ from zobi.exceptions import (
 )
 from zobi.extensions import feature_flag_manager
 from zobi.sql.parse import Table
-from zobi.zobi_typing import Column, QueryObjectDict
 from zobi.utils import json
 from zobi.utils.core import (
     AdhocFilterClause,
@@ -41,6 +40,7 @@ from zobi.utils.core import (
     get_username,
     merge_extra_filters,
 )
+from zobi.zobi_typing import Column, QueryObjectDict
 
 if TYPE_CHECKING:
     from zobi.connectors.sqla.models import SqlaTable

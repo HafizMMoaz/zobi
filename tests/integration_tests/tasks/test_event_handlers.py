@@ -12,6 +12,8 @@ from typing import Any
 
 from zobi_core.tasks.types import TaskScope, TaskStatus
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.constants import ADMIN_USERNAME
 from zobi.commands.tasks.cancel import CancelTaskCommand
 from zobi.daos.tasks import TaskDAO
 from zobi.extensions import db
@@ -20,8 +22,6 @@ from zobi.tasks.ambient_context import get_context
 from zobi.tasks.context import TaskContext
 from zobi.tasks.registry import TaskRegistry
 from zobi.tasks.scheduler import execute_task
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.constants import ADMIN_USERNAME
 
 # Module-level state to track handler calls across test executions
 # (Since decorated functions are defined at module level)

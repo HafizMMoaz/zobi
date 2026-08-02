@@ -1,4 +1,3 @@
-
 from tests.conftest import with_config
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.conftest import with_feature_flags

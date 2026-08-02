@@ -1,4 +1,3 @@
-
 """
 Helper function to extract row data from MCP responses.
 

@@ -3,9 +3,9 @@ import unittest
 from sqlalchemy.dialects import mysql
 from sqlalchemy.dialects.mysql import DATE, NVARCHAR, TEXT, VARCHAR
 
+from tests.integration_tests.base_tests import ZobiTestCase
 from zobi.db_engine_specs.mysql import MySQLEngineSpec
 from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
-from tests.integration_tests.base_tests import ZobiTestCase
 
 
 class TestMySQLEngineSpecsDbEngineSpec(ZobiTestCase):

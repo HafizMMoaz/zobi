@@ -1,4 +1,3 @@
-
 """
 Unit tests for execute_sql MCP tool
 

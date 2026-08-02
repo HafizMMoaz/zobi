@@ -1,4 +1,3 @@
-
 """
 Unit tests for MCP chart schema validation.
 """

@@ -1,4 +1,3 @@
-
 """
 FastMCP app factory and initialization for the MCP service.
 This file provides a configurable factory function to create FastMCP instances

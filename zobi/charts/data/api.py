@@ -478,9 +478,7 @@ class ChartDataRestApi(ChartRestApi):
         if result_format in ChartDataResultFormat.table_like():
             # Verify user has permission to export file
             if is_feature_enabled("GRANULAR_EXPORT_CONTROLS"):
-                has_export_perm = security_manager.can_access(
-                    "can_export_data", "Zobi"
-                )
+                has_export_perm = security_manager.can_access("can_export_data", "Zobi")
             else:
                 has_export_perm = security_manager.can_access("can_csv", "Zobi")
             if not has_export_perm:

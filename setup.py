@@ -50,9 +50,7 @@ setup(
             "postgres = sqlalchemy.dialects.postgresql:dialect",
             "zobi = zobi.extensions.metadb:ZobiAPSWDialect",
         ],
-        "shillelagh.adapter": [
-            "zobi=zobi.extensions.metadb:ZobiShillelaghAdapter"
-        ],
+        "shillelagh.adapter": ["zobi=zobi.extensions.metadb:ZobiShillelaghAdapter"],
     },
     download_url="https://www.zobi.dev/dist/" + version_string,
 )

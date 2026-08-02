@@ -1,4 +1,3 @@
-
 openapi_spec_methods_override = {
     "get": {"get": {"summary": "Get a report schedule log"}},
     "get_list": {

@@ -1,16 +1,15 @@
-
 from datetime import datetime
 from typing import Any, Optional, Union
 
 import pytest
 from sqlalchemy import types
 
-from zobi.utils.core import GenericDataType
 from tests.unit_tests.db_engine_specs.utils import (
     assert_column_spec,
     assert_convert_dttm,
 )
 from tests.unit_tests.fixtures.common import dttm  # noqa: F401
+from zobi.utils.core import GenericDataType
 
 
 def test_epoch_to_dttm() -> None:

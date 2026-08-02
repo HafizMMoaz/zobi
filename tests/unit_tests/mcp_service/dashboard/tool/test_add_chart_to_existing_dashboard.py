@@ -1,4 +1,3 @@
-
 """
 Unit tests for add_chart_to_existing_dashboard MCP tool.
 

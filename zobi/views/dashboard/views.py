@@ -12,7 +12,6 @@ from flask_login import AnonymousUserMixin, login_user
 from zobi import db, event_logger, is_feature_enabled
 from zobi.constants import MODEL_VIEW_RW_METHOD_PERMISSION_MAP, RouteMethod
 from zobi.models.dashboard import Dashboard as DashboardModel
-from zobi.zobi_typing import FlaskResponse
 from zobi.views.base import (
     BaseZobiView,
     common_bootstrap_payload,
@@ -20,6 +19,7 @@ from zobi.views.base import (
     ZobiModelView,
 )
 from zobi.views.dashboard.mixin import DashboardMixin
+from zobi.zobi_typing import FlaskResponse
 
 
 class DashboardModelView(DashboardMixin, ZobiModelView, DeleteMixin):  # pylint: disable=too-many-ancestors

@@ -1,4 +1,3 @@
-
 """System tools for MCP service."""
 
 from .find_users import find_users

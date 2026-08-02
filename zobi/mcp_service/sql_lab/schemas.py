@@ -1,4 +1,3 @@
-
 """Schemas for SQL Lab MCP tools."""
 
 from typing import Any, Dict

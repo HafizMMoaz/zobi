@@ -1,4 +1,3 @@
-
 """
 MCP tool: generate_dashboard
 
@@ -380,9 +379,7 @@ def generate_dashboard(  # noqa: C901
                     "Database rollback failed during dashboard re-fetch error handling",
                     exc_info=True,
                 )
-            dashboard_url = (
-                f"{get_zobi_base_url()}/zobi/dashboard/{dashboard.id}/"
-            )
+            dashboard_url = f"{get_zobi_base_url()}/zobi/dashboard/{dashboard.id}/"
             return GenerateDashboardResponse(
                 dashboard=DashboardInfo(
                     id=dashboard.id,

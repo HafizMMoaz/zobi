@@ -1,4 +1,3 @@
-
 from zobi.commands.semantic_layer.exceptions import (
     SemanticLayerCreateFailedError,
     SemanticLayerDeleteFailedError,

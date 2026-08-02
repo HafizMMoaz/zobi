@@ -1,4 +1,3 @@
-
 """
 Preview utilities for chart generation without saving.
 

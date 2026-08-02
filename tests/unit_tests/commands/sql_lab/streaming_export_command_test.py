@@ -1,4 +1,3 @@
-
 """Unit tests for SQL Lab Streaming CSV Export Command."""
 
 from unittest.mock import MagicMock, Mock, patch
@@ -23,9 +22,7 @@ def _setup_sqllab_mocks(
     mock_db_base.session.return_value.__enter__.return_value = mock_session
     mock_session.merge.return_value = mock_query.database
 
-    mock_db_sqllab = mocker.patch(
-        "zobi.commands.sql_lab.streaming_export_command.db"
-    )
+    mock_db_sqllab = mocker.patch("zobi.commands.sql_lab.streaming_export_command.db")
     mock_query_result = mock_db_sqllab.session.query.return_value.filter_by.return_value
     mock_query_result.one_or_none.return_value = mock_query
 
@@ -108,9 +105,7 @@ def test_validate_access_denied(mock_db, mock_query):
     with pytest.raises(ZobiErrorException) as exc_info:
         command.validate()
 
-    assert (
-        exc_info.value.error.error_type == ZobiErrorType.QUERY_SECURITY_ACCESS_ERROR
-    )
+    assert exc_info.value.error.error_type == ZobiErrorType.QUERY_SECURITY_ACCESS_ERROR
     assert exc_info.value.status == 403
 
 
@@ -379,9 +374,7 @@ def test_error_handling_yields_error_marker(mocker, mock_query):
     mock_db_base.session.return_value.__enter__.return_value = mock_session
     mock_session.merge.side_effect = Exception("Database connection failed")
 
-    mock_db_sqllab = mocker.patch(
-        "zobi.commands.sql_lab.streaming_export_command.db"
-    )
+    mock_db_sqllab = mocker.patch("zobi.commands.sql_lab.streaming_export_command.db")
     mock_query_result = mock_db_sqllab.session.query.return_value.filter_by.return_value
     mock_query_result.one_or_none.return_value = mock_query
 

@@ -1,4 +1,3 @@
-
 """
 SQL Executor implementation for Database.execute() and execute_async().
 

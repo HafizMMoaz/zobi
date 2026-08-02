@@ -1,4 +1,3 @@
-
 from unittest.mock import MagicMock
 
 from flask_appbuilder.models.sqla.interface import SQLAInterface

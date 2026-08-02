@@ -4,8 +4,8 @@ from typing import Any, Callable, Optional, TypedDict, Union
 from sqlalchemy import Column
 from sqlalchemy.sql.expression import BinaryExpression
 
-from zobi.zobi_typing import FilterValues
 from zobi.utils.core import FilterOperator, FilterStringOperators
+from zobi.zobi_typing import FilterValues
 
 
 class AdvancedDataTypeRequest(TypedDict):

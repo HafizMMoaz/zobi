@@ -1,4 +1,3 @@
-
 """
 Tests for the list_charts request schema
 """
@@ -23,9 +22,7 @@ from zobi.mcp_service.privacy import (
 )
 from zobi.utils import json
 
-list_charts_module = importlib.import_module(
-    "zobi.mcp_service.chart.tool.list_charts"
-)
+list_charts_module = importlib.import_module("zobi.mcp_service.chart.tool.list_charts")
 
 
 @pytest.fixture

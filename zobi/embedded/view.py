@@ -7,9 +7,9 @@ from flask_wtf.csrf import same_origin
 
 from zobi import event_logger, is_feature_enabled
 from zobi.daos.dashboard import EmbeddedDashboardDAO
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils import json
 from zobi.views.base import BaseZobiView, common_bootstrap_payload
+from zobi.zobi_typing import FlaskResponse
 
 
 class EmbeddedView(BaseZobiView):

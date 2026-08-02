@@ -1,8 +1,8 @@
 import pytest
 
+from tests.unit_tests.fixtures.dataframes import timeseries_df
 from zobi.exceptions import InvalidPostProcessingError
 from zobi.utils.pandas_postprocessing.select import select
-from tests.unit_tests.fixtures.dataframes import timeseries_df
 
 
 def test_select():

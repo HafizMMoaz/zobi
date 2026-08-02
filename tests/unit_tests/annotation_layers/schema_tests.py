@@ -1,6 +1,12 @@
 import pytest
 from marshmallow.exceptions import ValidationError
 
+from tests.unit_tests.annotation_layers.fixtures import (
+    END_DTTM,
+    END_STR,
+    START_DTTM,
+    START_STR,
+)
 from zobi.annotation_layers.annotations.schemas import (
     AnnotationPostSchema,
     AnnotationPutSchema,
@@ -8,12 +14,6 @@ from zobi.annotation_layers.annotations.schemas import (
 from zobi.annotation_layers.schemas import (
     AnnotationLayerPostSchema,
     AnnotationLayerPutSchema,
-)
-from tests.unit_tests.annotation_layers.fixtures import (
-    END_DTTM,
-    END_STR,
-    START_DTTM,
-    START_STR,
 )
 
 

@@ -14,9 +14,9 @@ from zobi.exceptions import CacheLoadError
 from zobi.extensions import cache_manager
 from zobi.models.helpers import QueryResult
 from zobi.stats_logger import BaseStatsLogger
-from zobi.zobi_typing import Column
 from zobi.utils.cache import set_and_log_cache
 from zobi.utils.core import error_msg_from_exception, get_stacktrace
+from zobi.zobi_typing import Column
 
 logger = logging.getLogger(__name__)
 

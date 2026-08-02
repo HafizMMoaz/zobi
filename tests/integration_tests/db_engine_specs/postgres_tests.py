@@ -5,15 +5,15 @@ from flask.ctx import AppContext
 from sqlalchemy import column, literal_column
 from sqlalchemy.dialects import postgresql
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.fixtures.certificates import ssl_certificate
+from tests.integration_tests.fixtures.database import default_db_extra
 from zobi.db_engine_specs import load_engine_specs
 from zobi.db_engine_specs.postgres import PostgresEngineSpec
 from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
 from zobi.models.sql_lab import Query
 from zobi.utils.core import backend
 from zobi.utils.database import get_example_database
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.fixtures.certificates import ssl_certificate
-from tests.integration_tests.fixtures.database import default_db_extra
 
 
 class TestPostgresDbEngineSpec(ZobiTestCase):

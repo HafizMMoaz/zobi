@@ -4,8 +4,8 @@ from flask_appbuilder.security.decorators import has_access
 
 from zobi.constants import MODEL_VIEW_RW_METHOD_PERMISSION_MAP, RouteMethod
 from zobi.models import core as models
-from zobi.zobi_typing import FlaskResponse
 from zobi.views.base import DeleteMixin, ZobiModelView
+from zobi.zobi_typing import FlaskResponse
 
 
 class ThemeModelView(  # pylint: disable=too-many-ancestors

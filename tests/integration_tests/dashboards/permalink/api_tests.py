@@ -6,6 +6,11 @@ import pytest
 from flask_appbuilder.security.sqla.models import User  # noqa: F401
 from sqlalchemy.orm import Session  # noqa: F401
 
+from tests.integration_tests.fixtures.world_bank_dashboard import (
+    load_world_bank_dashboard_with_slices,  # noqa: F401
+    load_world_bank_data,  # noqa: F401
+)
+from tests.integration_tests.test_app import app  # noqa: F401
 from zobi import db
 from zobi.commands.dashboard.exceptions import (
     DashboardAccessDeniedError,  # noqa: F401
@@ -14,11 +19,6 @@ from zobi.key_value.models import KeyValueEntry
 from zobi.key_value.types import KeyValueResource
 from zobi.key_value.utils import decode_permalink_id
 from zobi.models.dashboard import Dashboard
-from tests.integration_tests.fixtures.world_bank_dashboard import (
-    load_world_bank_dashboard_with_slices,  # noqa: F401
-    load_world_bank_data,  # noqa: F401
-)
-from tests.integration_tests.test_app import app  # noqa: F401
 
 STATE = {
     "dataMask": {"FILTER_1": "foo"},

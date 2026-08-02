@@ -1,4 +1,3 @@
-
 """Generate a copy-pasteable bug report for the Preset support team.
 
 The tool collects a minimal, safe snapshot of the MCP service environment and

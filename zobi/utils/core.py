@@ -81,6 +81,11 @@ from zobi.exceptions import (
     ZobiTimeoutException,
 )
 from zobi.sql.parse import sanitize_clause
+from zobi.utils.backports import StrEnum
+from zobi.utils.database import get_example_database
+from zobi.utils.date_parser import parse_human_timedelta
+from zobi.utils.hashing import hash_from_dict, hash_from_str
+from zobi.utils.pandas import detect_datetime_format
 from zobi.zobi_typing import (
     AdhocColumn,
     AdhocMetric,
@@ -91,11 +96,6 @@ from zobi.zobi_typing import (
     FormData,
     Metric,
 )
-from zobi.utils.backports import StrEnum
-from zobi.utils.database import get_example_database
-from zobi.utils.date_parser import parse_human_timedelta
-from zobi.utils.hashing import hash_from_dict, hash_from_str
-from zobi.utils.pandas import detect_datetime_format
 
 if TYPE_CHECKING:
     from zobi.explorables.base import ColumnMetadata, Explorable

@@ -2,8 +2,8 @@ import pytest
 from flask.ctx import AppContext
 from flask_appbuilder.security.sqla.models import Role, User
 
-from zobi import db, security_manager
 from tests.integration_tests.constants import GAMMA_SQLLAB_NO_DATA_USERNAME
+from zobi import db, security_manager
 
 
 def create_role_with_permissions(role_name: str, permissions: list[tuple[str, str]]):

@@ -16,15 +16,6 @@ from sqlalchemy.exc import SQLAlchemyError
 from sqlalchemy.orm import joinedload
 from sqlalchemy.sql import func
 
-from zobi.commands.dataset.exceptions import DatasetCreateFailedError
-from zobi.connectors.sqla.models import SqlaTable, SqlMetric, TableColumn
-from zobi.extensions import db, security_manager
-from zobi.models.core import Database
-from zobi.models.slice import Slice
-from zobi.utils import json
-from zobi.utils.core import backend, get_example_default_schema
-from zobi.utils.database import get_example_database, get_main_database
-from zobi.utils.dict_import_export import export_to_dict
 from tests.integration_tests.base_tests import ZobiTestCase
 from tests.integration_tests.conftest import (  # noqa: F401
     CTAS_SCHEMA_NAME,
@@ -48,6 +39,15 @@ from tests.integration_tests.fixtures.importexport import (
     dataset_config,
     dataset_ui_export,
 )
+from zobi.commands.dataset.exceptions import DatasetCreateFailedError
+from zobi.connectors.sqla.models import SqlaTable, SqlMetric, TableColumn
+from zobi.extensions import db, security_manager
+from zobi.models.core import Database
+from zobi.models.slice import Slice
+from zobi.utils import json
+from zobi.utils.core import backend, get_example_default_schema
+from zobi.utils.database import get_example_database, get_main_database
+from zobi.utils.dict_import_export import export_to_dict
 
 
 class TestDatasetApi(ZobiTestCase):

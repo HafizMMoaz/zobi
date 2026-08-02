@@ -1,4 +1,3 @@
-
 from typing import Any
 from unittest.mock import MagicMock
 
@@ -153,8 +152,7 @@ def _stub_validate_deps(mocker: MockerFixture) -> None:
     mocker.patch.object(CreateReportScheduleCommand, "validate_chart_dashboard")
     mocker.patch.object(CreateReportScheduleCommand, "_validate_report_extra")
     mocker.patch(
-        "zobi.commands.report.create.ReportScheduleDAO"
-        ".validate_unique_creation_method",
+        "zobi.commands.report.create.ReportScheduleDAO.validate_unique_creation_method",
         return_value=True,
     )
     mocker.patch.object(CreateReportScheduleCommand, "populate_owners", return_value=[])

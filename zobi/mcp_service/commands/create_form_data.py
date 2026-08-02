@@ -1,4 +1,3 @@
-
 """
 MCP-specific form data command that extends the base CreateFormDataCommand
 """

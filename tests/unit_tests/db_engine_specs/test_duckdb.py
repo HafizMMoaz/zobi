@@ -1,15 +1,14 @@
-
 from datetime import datetime
 from typing import Optional
 
 import pytest
 from pytest_mock import MockerFixture
 
-from zobi.utils import json
-from zobi.utils.core import GenericDataType
 from tests.conftest import with_config
 from tests.unit_tests.db_engine_specs.utils import assert_convert_dttm
 from tests.unit_tests.fixtures.common import dttm  # noqa: F401
+from zobi.utils import json
+from zobi.utils.core import GenericDataType
 
 
 @pytest.mark.parametrize(
@@ -51,9 +50,7 @@ def test_get_extra_params(mocker: MockerFixture) -> None:
     )
     assert DuckDBEngineSpec.get_extra_params(database) == {
         "engine_params": {
-            "connect_args": {
-                "config": {"custom_user_agent": "zobi/1.0.0 my-app"}
-            }
+            "connect_args": {"config": {"custom_user_agent": "zobi/1.0.0 my-app"}}
         }
     }
 

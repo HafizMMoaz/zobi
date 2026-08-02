@@ -1,4 +1,3 @@
-
 import logging
 from collections.abc import Generator
 from typing import Any, Callable, Optional

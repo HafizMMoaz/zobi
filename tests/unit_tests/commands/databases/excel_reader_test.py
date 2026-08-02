@@ -8,12 +8,12 @@ import xlsxwriter
 from werkzeug.datastructures import FileStorage
 from xlsxwriter.workbook import Worksheet
 
+from tests.unit_tests.fixtures.common import create_excel_file
 from zobi.commands.database.exceptions import DatabaseUploadFailed
 from zobi.commands.database.uploaders.excel_reader import (
     ExcelReader,
     ExcelReaderOptions,
 )
-from tests.unit_tests.fixtures.common import create_excel_file
 
 EXCEL_DATA: dict[str, list[Any]] = {
     "Name": ["name1", "name2", "name3"],

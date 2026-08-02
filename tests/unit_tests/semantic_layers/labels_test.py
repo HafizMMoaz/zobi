@@ -1,4 +1,3 @@
-
 from unittest.mock import patch
 
 from zobi.semantic_layers import labels

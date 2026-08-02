@@ -1,4 +1,3 @@
-
 """
 Runtime validation module for chart configurations.
 Validates performance, compatibility, and user experience issues.

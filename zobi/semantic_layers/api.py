@@ -52,7 +52,6 @@ from zobi.semantic_layers.schemas import (
     SemanticViewPostSchema,
     SemanticViewPutSchema,
 )
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils import json
 from zobi.views.base_api import (
     BaseZobiApi,
@@ -60,6 +59,7 @@ from zobi.views.base_api import (
     requires_json,
     statsd_metrics,
 )
+from zobi.zobi_typing import FlaskResponse
 
 logger = logging.getLogger(__name__)
 

@@ -1,4 +1,3 @@
-
 from __future__ import annotations
 
 import logging
@@ -33,9 +32,9 @@ from zobi.errors import ZobiError, ZobiErrorType
 from zobi.exceptions import ZobiException
 from zobi.models.core import Database
 from zobi.sql.parse import LimitMethod, Table
-from zobi.zobi_typing import ResultSetColumnType
 from zobi.utils import json
 from zobi.utils.hashing import hash_from_str
+from zobi.zobi_typing import ResultSetColumnType
 
 logger = logging.getLogger(__name__)
 

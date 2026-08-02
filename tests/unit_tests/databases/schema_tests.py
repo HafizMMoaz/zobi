@@ -1,4 +1,3 @@
-
 # pylint: disable=import-outside-toplevel, invalid-name, unused-argument, redefined-outer-name
 
 from typing import TYPE_CHECKING

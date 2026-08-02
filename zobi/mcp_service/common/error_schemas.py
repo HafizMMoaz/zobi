@@ -1,4 +1,3 @@
-
 """
 Enhanced error schemas for MCP chart generation with contextual information
 """

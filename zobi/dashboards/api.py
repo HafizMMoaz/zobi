@@ -272,9 +272,7 @@ class DashboardRestApi(CustomTagsOptimizationMixin, BaseZobiModelRestApi):
     @merge_response_func(
         BaseZobiModelRestApi.merge_list_columns, API_LIST_COLUMNS_RIS_KEY
     )
-    @merge_response_func(
-        BaseZobiModelRestApi.merge_list_title, API_LIST_TITLE_RIS_KEY
-    )
+    @merge_response_func(BaseZobiModelRestApi.merge_list_title, API_LIST_TITLE_RIS_KEY)
     @event_logger.log_this_with_context(
         action=lambda self, *args, **kwargs: f"{self.__class__.__name__}.get_list",
         log_to_statsd=False,

@@ -7,8 +7,6 @@ from flask import (
     escape,  # noqa: F401
 )
 
-from zobi.daos.dashboard import DashboardDAO
-from zobi.utils import json
 from tests.integration_tests.constants import ADMIN_USERNAME, GAMMA_USERNAME
 from tests.integration_tests.dashboards.base_case import DashboardTestCase
 from tests.integration_tests.dashboards.consts import *  # noqa: F403
@@ -18,6 +16,8 @@ from tests.integration_tests.fixtures.energy_dashboard import (
     load_energy_table_data,  # noqa: F401
     load_energy_table_with_slice,  # noqa: F401
 )
+from zobi.daos.dashboard import DashboardDAO
+from zobi.utils import json
 
 
 class TestDashboardDatasetSecurity(DashboardTestCase):

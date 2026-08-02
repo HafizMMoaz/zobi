@@ -9,6 +9,14 @@ import pytest
 from flask_testing import LiveServerTestCase
 from sqlalchemy.sql import func
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.conftest import with_feature_flags
+from tests.integration_tests.constants import ADMIN_USERNAME, ALPHA_USERNAME
+from tests.integration_tests.fixtures.birth_names_dashboard import (
+    load_birth_names_dashboard_with_slices,  # noqa: F401
+    load_birth_names_data,  # noqa: F401
+)
+from tests.integration_tests.test_app import app
 from zobi import db, is_feature_enabled, security_manager
 from zobi.extensions import machine_auth_provider_factory
 from zobi.models.dashboard import Dashboard
@@ -22,14 +30,6 @@ from zobi.utils.screenshots import (
 )
 from zobi.utils.urls import get_url_path
 from zobi.utils.webdriver import WebDriverSelenium
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.conftest import with_feature_flags
-from tests.integration_tests.constants import ADMIN_USERNAME, ALPHA_USERNAME
-from tests.integration_tests.fixtures.birth_names_dashboard import (
-    load_birth_names_dashboard_with_slices,  # noqa: F401
-    load_birth_names_data,  # noqa: F401
-)
-from tests.integration_tests.test_app import app
 
 CHART_URL = "/api/v1/chart/"
 DASHBOARD_URL = "/api/v1/dashboard/"

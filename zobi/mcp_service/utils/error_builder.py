@@ -1,4 +1,3 @@
-
 """
 Unified error builder for chart operations.
 Consolidates error handling logic from multiple files.

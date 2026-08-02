@@ -100,15 +100,14 @@ from zobi.exceptions import (
     DatabaseNotFoundException,
     InvalidPayloadSchemaError,
     OAuth2RedirectError,
+    TableNotFoundException,
     ZobiErrorsException,
     ZobiException,
     ZobiSecurityException,
-    TableNotFoundException,
 )
 from zobi.extensions import security_manager
 from zobi.models.core import Database
 from zobi.sql.parse import Table
-from zobi.zobi_typing import FlaskResponse
 from zobi.utils import json
 from zobi.utils.core import (
     error_msg_from_exception,
@@ -127,6 +126,7 @@ from zobi.views.base_api import (
 )
 from zobi.views.error_handling import handle_api_exception, json_error_response
 from zobi.views.filters import BaseFilterRelatedUsers, FilterRelatedOwners
+from zobi.zobi_typing import FlaskResponse
 
 logger = logging.getLogger(__name__)
 

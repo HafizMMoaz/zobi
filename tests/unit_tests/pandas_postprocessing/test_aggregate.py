@@ -1,6 +1,6 @@
-from zobi.utils.pandas_postprocessing import aggregate
 from tests.unit_tests.fixtures.dataframes import categories_df
 from tests.unit_tests.pandas_postprocessing.utils import series_to_list
+from zobi.utils.pandas_postprocessing import aggregate
 
 
 def test_aggregate():

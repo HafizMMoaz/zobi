@@ -1,4 +1,3 @@
-
 import copy
 import time
 import unittest
@@ -13,32 +12,12 @@ import pytest
 from flask import g, Response
 from flask.ctx import AppContext
 
-from zobi.charts.data.api import ChartDataRestApi
-from zobi.commands.chart.data.get_data_command import ChartDataCommand
-from zobi.common.chart_data import ChartDataResultFormat, ChartDataResultType
-from zobi.connectors.sqla.models import SqlaTable, TableColumn
-from zobi.constants import CACHE_DISABLED_TIMEOUT
-from zobi.errors import ZobiErrorType
-from zobi.extensions import async_query_manager_factory, db
-from zobi.models.annotations import AnnotationLayer
-from zobi.models.slice import Slice
-from zobi.models.sql_lab import Query
-from zobi.zobi_typing import AdhocColumn
-from zobi.utils import json
-from zobi.utils.core import (
-    AdhocMetricExpressionType,
-    AnnotationType,
-    backend,
-    ExtraFiltersReasonType,
-    get_example_default_schema,
-)
-from zobi.utils.database import get_example_database, get_main_database
 from tests.common.query_context_generator import ANNOTATION_LAYERS
 from tests.conftest import with_config
 from tests.integration_tests.annotation_layers.fixtures import (
     create_annotation_layers,  # noqa: F401
 )
-from tests.integration_tests.base_tests import ZobiTestCase, test_client
+from tests.integration_tests.base_tests import test_client, ZobiTestCase
 from tests.integration_tests.conftest import with_feature_flags
 from tests.integration_tests.constants import (
     ADMIN_USERNAME,
@@ -55,6 +34,26 @@ from tests.integration_tests.fixtures.energy_dashboard import (
 )
 from tests.integration_tests.fixtures.query_context import get_query_context
 from tests.integration_tests.test_app import app  # noqa: F811
+from zobi.charts.data.api import ChartDataRestApi
+from zobi.commands.chart.data.get_data_command import ChartDataCommand
+from zobi.common.chart_data import ChartDataResultFormat, ChartDataResultType
+from zobi.connectors.sqla.models import SqlaTable, TableColumn
+from zobi.constants import CACHE_DISABLED_TIMEOUT
+from zobi.errors import ZobiErrorType
+from zobi.extensions import async_query_manager_factory, db
+from zobi.models.annotations import AnnotationLayer
+from zobi.models.slice import Slice
+from zobi.models.sql_lab import Query
+from zobi.utils import json
+from zobi.utils.core import (
+    AdhocMetricExpressionType,
+    AnnotationType,
+    backend,
+    ExtraFiltersReasonType,
+    get_example_default_schema,
+)
+from zobi.utils.database import get_example_database, get_main_database
+from zobi.zobi_typing import AdhocColumn
 
 CHART_DATA_URI = "api/v1/chart/data"
 CHARTS_FIXTURE_COUNT = 10

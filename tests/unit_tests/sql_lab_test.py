@@ -9,6 +9,8 @@ import pytest
 from freezegun import freeze_time
 from pytest_mock import MockerFixture
 
+from tests.conftest import with_config
+from tests.unit_tests.models.core_test import oauth2_client_info
 from zobi.common.db_query_status import QueryStatus
 from zobi.db_engine_specs.postgres import PostgresEngineSpec
 from zobi.errors import ErrorLevel, ZobiErrorType
@@ -21,8 +23,6 @@ from zobi.sql_lab import (
     get_sql_results,
 )
 from zobi.utils.rls import apply_rls, get_predicates_for_table
-from tests.conftest import with_config
-from tests.unit_tests.models.core_test import oauth2_client_info
 
 
 def test_execute_query(mocker: MockerFixture, app: None) -> None:
@@ -88,9 +88,7 @@ def test_execute_sql_statement_exceeds_payload_limit(
     def mock_serialize_payload(payload, use_msgpack):
         return "serialized_payload"
 
-    mocker.patch(
-        "zobi.sql_lab._serialize_payload", side_effect=mock_serialize_payload
-    )
+    mocker.patch("zobi.sql_lab._serialize_payload", side_effect=mock_serialize_payload)
 
     # Mock db.session.refresh to avoid AttributeError during session refresh
     mocker.patch("zobi.sql_lab.db.session.refresh", return_value=None)
@@ -147,9 +145,7 @@ def test_execute_sql_statement_within_payload_limit(mocker: MockerFixture, app) 
     def mock_serialize_payload(payload, use_msgpack):
         return "serialized_payload"
 
-    mocker.patch(
-        "zobi.sql_lab._serialize_payload", side_effect=mock_serialize_payload
-    )
+    mocker.patch("zobi.sql_lab._serialize_payload", side_effect=mock_serialize_payload)
 
     # Mock db.session.refresh to avoid AttributeError during session refresh
     mocker.patch("zobi.sql_lab.db.session.refresh", return_value=None)

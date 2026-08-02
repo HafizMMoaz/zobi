@@ -162,8 +162,7 @@ def test_run_sync_query_dont_exist(test_client, ctas_method):
         }
     else:
         assert (
-            result["errors"][0]["error_type"]
-            == ZobiErrorType.GENERIC_DB_ENGINE_ERROR
+            result["errors"][0]["error_type"] == ZobiErrorType.GENERIC_DB_ENGINE_ERROR
         )
         assert result["errors"][0]["level"] == ErrorLevel.ERROR
         assert result["errors"][0]["extra"] == {

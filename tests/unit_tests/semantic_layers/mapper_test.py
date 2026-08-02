@@ -1,4 +1,3 @@
-
 from datetime import date, datetime, time, timezone
 from typing import Any
 from unittest.mock import MagicMock
@@ -47,8 +46,8 @@ from zobi.semantic_layers.mapper import (
     ValidatedQueryObject,
     ValidatedQueryObjectFilterClause,
 )
-from zobi.zobi_typing import AdhocColumn
 from zobi.utils.core import FilterOperator
+from zobi.zobi_typing import AdhocColumn
 
 # Alias for convenience
 Feature = SemanticViewFeature

@@ -1,4 +1,3 @@
-
 """
 Metadata completeness linter for DB engine specs.
 

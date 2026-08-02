@@ -1,4 +1,3 @@
-
 from parameterized import parameterized
 
 from zobi.commands.database.test_connection import get_log_connection_action

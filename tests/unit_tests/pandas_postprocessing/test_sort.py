@@ -1,10 +1,10 @@
 import pytest
 from dateutil.parser import parse
 
-from zobi.exceptions import InvalidPostProcessingError
-from zobi.utils.pandas_postprocessing import sort
 from tests.unit_tests.fixtures.dataframes import categories_df, timeseries_df
 from tests.unit_tests.pandas_postprocessing.utils import series_to_list
+from zobi.exceptions import InvalidPostProcessingError
+from zobi.utils.pandas_postprocessing import sort
 
 
 def test_sort():

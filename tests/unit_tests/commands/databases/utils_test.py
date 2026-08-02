@@ -13,13 +13,13 @@ from flask_appbuilder.security.sqla.models import (
 from pytest_mock import MockerFixture
 from sqlalchemy.orm import Session
 
+from tests.conftest import with_config
 from zobi.commands.database.utils import (
     add_perm,
     add_pvm,
     add_vm,
     ping,
 )
-from tests.conftest import with_config
 
 
 @pytest.fixture

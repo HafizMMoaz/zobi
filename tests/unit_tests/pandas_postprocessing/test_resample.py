@@ -3,13 +3,13 @@ import pandas as pd
 import pytest
 from pandas import to_datetime
 
-from zobi.exceptions import InvalidPostProcessingError
-from zobi.utils import pandas_postprocessing as pp
 from tests.unit_tests.fixtures.dataframes import (
     categories_df,
     timeseries_df,
     timeseries_with_gap_df,
 )
+from zobi.exceptions import InvalidPostProcessingError
+from zobi.utils import pandas_postprocessing as pp
 
 
 def test_resample_should_not_side_effect():

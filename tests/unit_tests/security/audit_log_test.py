@@ -1,4 +1,3 @@
-
 from unittest.mock import MagicMock, patch
 
 from flask_appbuilder.security.sqla.models import Group, Role, User

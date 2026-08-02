@@ -1,4 +1,3 @@
-
 """Tests for current_user in get_instance_info and user-directory filtering."""
 
 import importlib
@@ -27,9 +26,7 @@ from zobi.mcp_service.system.schemas import InstanceInfo, UserInfo
 from zobi.mcp_service.system.tool.get_schema import get_schema
 from zobi.utils import json
 
-get_schema_module = importlib.import_module(
-    "zobi.mcp_service.system.tool.get_schema"
-)
+get_schema_module = importlib.import_module("zobi.mcp_service.system.tool.get_schema")
 
 
 def _result_text(result: CallToolResult) -> str:

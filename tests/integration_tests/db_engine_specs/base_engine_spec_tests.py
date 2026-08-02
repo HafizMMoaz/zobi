@@ -3,6 +3,8 @@ from unittest import mock
 
 import pytest
 
+from tests.integration_tests.base_tests import ZobiTestCase
+from tests.integration_tests.test_app import app
 from zobi.connectors.sqla.models import TableColumn
 from zobi.db_engine_specs import load_engine_specs
 from zobi.db_engine_specs.base import (
@@ -15,8 +17,6 @@ from zobi.db_engine_specs.sqlite import SqliteEngineSpec
 from zobi.errors import ErrorLevel, ZobiError, ZobiErrorType
 from zobi.sql.parse import Table
 from zobi.utils.database import get_example_database
-from tests.integration_tests.base_tests import ZobiTestCase
-from tests.integration_tests.test_app import app
 
 from ..fixtures.birth_names_dashboard import (  # noqa: TID252
     load_birth_names_dashboard_with_slices,  # noqa: F401
