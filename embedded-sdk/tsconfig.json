@@ -13,8 +13,7 @@
     // output
     "outDir": "./dist",
     "emitDeclarationOnly": true,
-    "declaration": true,
-    "ignoreDeprecations": "6.0"
+    "declaration": true
   },
 
   "include": [
