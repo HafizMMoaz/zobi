@@ -65,7 +65,7 @@ jobs:
         if: github.event_name == 'workflow_dispatch'
         run: |
           set -euo pipefail
-          npm version "${{ inputs.version }}" --no-git-tag-version --workspace @zobi.dev/switchboard
+          npm version "${{ inputs.version }}" --no-git-tag-version --allow-same-version --workspace @zobi.dev/switchboard
 
       - name: Build
         run: |
