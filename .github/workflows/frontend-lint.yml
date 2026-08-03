@@ -105,3 +105,29 @@ jobs:
       # it cannot gate CI until those are worked through.
       - name: Build and type check packages and plugins
         run: npm run plugins:build
+
+  lint-complete:
+    name: frontend lint complete
+    runs-on: ubuntu-24.04
+    needs: [changes, lint, format, types]
+    # always() is required: without it this job is skipped whenever any
+    # dependency skips, and a required check that never reports blocks merges.
+    if: always()
+    # This job inspects needs results only and does no checkout, so it must
+    # not inherit the workflow-level 'working-directory: frontend' default.
+    defaults:
+      run:
+        working-directory: .
+    steps:
+      - name: Fail if any frontend lint job failed
+        run: |
+          set -euo pipefail
+          if ${{ contains(needs.*.result, 'failure') }}; then
+            echo "::error::a frontend lint job failed"
+            exit 1
+          fi
+          if ${{ contains(needs.*.result, 'cancelled') }}; then
+            echo "::error::a frontend lint job was cancelled"
+            exit 1
+          fi
+          echo "frontend lint jobs passed or were skipped"
