@@ -113,6 +113,11 @@ jobs:
     # always() is required: without it this job is skipped whenever any
     # dependency skips, and a required check that never reports blocks merges.
     if: always()
+    # This job inspects needs results only and does no checkout, so it must
+    # not inherit the workflow-level 'working-directory: frontend' default.
+    defaults:
+      run:
+        working-directory: .
     steps:
       - name: Fail if any frontend lint job failed
         run: |
