@@ -7,13 +7,7 @@ on:
   push:
     branches:
       - main
-    paths:
-      - 'frontend/**'
-      - '.github/workflows/frontend-lint.yml'
   pull_request:
-    paths:
-      - 'frontend/**'
-      - '.github/workflows/frontend-lint.yml'
   workflow_dispatch:
 
 concurrency:
@@ -28,9 +22,25 @@ defaults:
     working-directory: frontend
 
 jobs:
+  changes:
+    name: Detect frontend changes (lint)
+    runs-on: ubuntu-24.04
+    outputs:
+      frontend: ${{ steps.filter.outputs.frontend }}
+    steps:
+      - uses: actions/checkout@v4
+      - uses: dorny/paths-filter@v3
+        id: filter
+        with:
+          filters: |
+            frontend:
+              - 'frontend/**'
+
   lint:
     name: oxlint + custom rules
     runs-on: ubuntu-24.04
+    needs: changes
+    if: needs.changes.outputs.frontend == 'true'
     steps:
       - uses: actions/checkout@v4
 
@@ -52,6 +62,8 @@ jobs:
   format:
     name: prettier
     runs-on: ubuntu-24.04
+    needs: changes
+    if: needs.changes.outputs.frontend == 'true'
     steps:
       - uses: actions/checkout@v4
 
@@ -70,6 +82,8 @@ jobs:
   types:
     name: tsc
     runs-on: ubuntu-24.04
+    needs: changes
+    if: needs.changes.outputs.frontend == 'true'
     steps:
       - uses: actions/checkout@v4
 
