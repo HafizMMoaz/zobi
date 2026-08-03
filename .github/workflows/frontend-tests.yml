@@ -108,3 +108,24 @@ jobs:
 
       - name: Build application bundle
         run: npm run build
+
+  tests-complete:
+    name: frontend tests complete
+    runs-on: ubuntu-24.04
+    needs: [changes, jest, build]
+    # always() is required: without it this job is skipped whenever any
+    # dependency skips, and a required check that never reports blocks merges.
+    if: always()
+    steps:
+      - name: Fail if any frontend test job failed
+        run: |
+          set -euo pipefail
+          if ${{ contains(needs.*.result, 'failure') }}; then
+            echo "::error::a frontend test job failed"
+            exit 1
+          fi
+          if ${{ contains(needs.*.result, 'cancelled') }}; then
+            echo "::error::a frontend test job was cancelled"
+            exit 1
+          fi
+          echo "frontend test jobs passed or were skipped"
