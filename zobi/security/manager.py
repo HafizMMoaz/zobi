@@ -424,6 +424,11 @@ class ZobiSecurityManager(  # pylint: disable=too-many-public-methods
         "Access Requests",
         "Action Logs",
         "Extensions",
+        # LLM gateway: providers hold API credentials, and models control what
+        # every AI feature in the instance costs and can reach.
+        "LLMProvider",
+        "LLMModel",
+        "LLMRouterConfig",
         "Log",
         "List Users",
         "UsersListView",

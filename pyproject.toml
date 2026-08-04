@@ -50,6 +50,8 @@ dependencies = [
     "humanize",
     "isodate",
     "jsonpath-ng>=1.6.1, <2",
+    # Unified client for every LLM provider, backing the AI Models gateway
+    "litellm>=1.81.0, <2.0.0",
     "Mako>=1.2.2",
     "markdown>=3.0",
     # marshmallow>=4 has issues: https://github.com/HafizMMoaz/zobi/issues/33162

@@ -566,6 +566,10 @@ DEFAULT_FEATURE_FLAGS: dict[str, bool] = {
     # Enable Zobi extensions for custom functionality without modifying core
     # @lifecycle: development
     "ENABLE_EXTENSIONS": False,
+    # Enable the LLM gateway: connect model providers under Manage > AI Models
+    # and call them through zobi.llm.service
+    # @lifecycle: development
+    "ZOBI_AI": False,
     # Enable Matrixify feature for matrix-style chart layouts
     # @lifecycle: development
     "MATRIXIFY": False,
