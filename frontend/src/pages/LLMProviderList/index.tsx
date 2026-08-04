@@ -26,6 +26,7 @@ import {
   fetchProviders,
   fetchProviderSpecs,
 } from 'src/features/llm/api';
+import { CHECK_LOGS_HINT, describeApiError } from 'src/features/llm/errors';
 import {
   LLMModelObject,
   LLMProviderObject,
@@ -143,8 +144,13 @@ function LLMProviderList({
       await deleteProvider(providerToDelete.id);
       addSuccessToast(t('Provider deleted'));
       refresh();
-    } catch {
-      addDangerToast(t('There was an issue deleting the provider.'));
+    } catch (error) {
+      addDangerToast(
+        await describeApiError(
+          error,
+          t('Could not delete the provider. %s', CHECK_LOGS_HINT),
+        ),
+      );
     } finally {
       setProviderToDelete(null);
     }
@@ -156,13 +162,16 @@ function LLMProviderList({
       await deleteModel(modelToDelete.id);
       addSuccessToast(t('Model deleted'));
       refresh();
-    } catch {
-      // The API refuses to delete the last model behind a routed alias, so
-      // point at the fix rather than reporting a generic failure.
+    } catch (error) {
+      // The API refuses to delete the last model behind a routed alias and
+      // says so in its 422 body, so prefer that message over the generic one.
       addDangerToast(
-        t(
-          'Could not delete this model. If routing points at its alias, ' +
-            'update the routing settings first.',
+        await describeApiError(
+          error,
+          t(
+            'Could not delete this model. If routing points at its alias, ' +
+              'update the routing settings first.',
+          ),
         ),
       );
     } finally {

@@ -13,6 +13,7 @@ import {
 import { Typography } from '@zobi.dev/core/components/Typography';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { createProvider, testProviderConnection, updateProvider } from './api';
+import { CHECK_LOGS_HINT, describeApiError } from './errors';
 import { LLMProviderObject, ProviderSpec } from './types';
 
 const ProviderGrid = styled.div`
@@ -173,11 +174,17 @@ const ProviderModal: FunctionComponent<ProviderModalProps> = ({
       }
       onSaved();
       onHide();
-    } catch {
+    } catch (error) {
+      // Surface what the server actually said. A fixed string here once hid a
+      // 500 from an encrypted-column type mismatch, which could only be found
+      // in the container logs.
       addDangerToast(
-        isEdit
-          ? t('There was an issue updating the provider.')
-          : t('There was an issue creating the provider.'),
+        await describeApiError(
+          error,
+          isEdit
+            ? t('Could not update the provider. %s', CHECK_LOGS_HINT)
+            : t('Could not create the provider. %s', CHECK_LOGS_HINT),
+        ),
       );
     } finally {
       setSaving(false);
