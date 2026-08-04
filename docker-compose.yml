@@ -10,8 +10,17 @@
 # - Set ZOBI_LOG_LEVEL=debug in docker/.env-local for detailed ZOBI logs
 # -----------------------------------------------------------------------
 x-zobi-user: &zobi-user root
+x-zobi-env: &zobi-env
+  # zobi/config.py loads ZOBI_CONFIG_PATH when it is set, and otherwise falls back
+  # to `import zobi_config` from the PYTHONPATH. ./docker/pythonpath_dev is already
+  # bind-mounted at /app/docker/pythonpath_dev below, so adding it here is all a
+  # fresh clone needs to pick up docker/pythonpath_dev/zobi_config.py - no
+  # docker/.env-local required. It also makes the git-ignored
+  # docker/pythonpath_dev/zobi_config_docker.py override importable.
+  # /app/pythonpath is the image default (see Dockerfile) and stays first so that
+  # anything mounted there still wins.
+  PYTHONPATH: /app/pythonpath:/app/docker/pythonpath_dev
 x-zobi-volumes: &zobi-volumes
-  # /app/pythonpath_docker will be appended to the PYTHONPATH in the final container
   - ./docker:/app/docker
   - ./zobi:/app/zobi
   - ./core:/app/core
@@ -78,6 +87,8 @@ services:
     build:
       <<: *common-build
     command: ["/app/docker/docker-bootstrap.sh", "app"]
+    environment:
+      <<: *zobi-env
     restart: unless-stopped
     ports:
       - ${ZOBI_PORT:-8088}:8088
@@ -127,6 +138,8 @@ services:
     build:
       <<: *common-build
     command: ["/app/docker/docker-init.sh"]
+    environment:
+      <<: *zobi-env
     env_file:
       - path: docker/.env # default
         required: true
@@ -153,6 +166,7 @@ services:
         DEV_MODE: "true"
         BUILD_TRANSLATIONS: ${BUILD_TRANSLATIONS:-false}
     environment:
+      <<: *zobi-env
       # set this to false if you have perf issues running the npm i; npm run dev in-docker
       # if you do so, you have to run this manually on the host, which should perform better!
       BUILD_ZOBI_FRONTEND_IN_DOCKER: true
@@ -182,6 +196,7 @@ services:
       - path: docker/.env-local # optional override
         required: false
     environment:
+      <<: *zobi-env
       CELERYD_CONCURRENCY: 2
     restart: unless-stopped
     depends_on:
@@ -201,6 +216,8 @@ services:
     build:
       <<: *common-build
     command: ["/app/docker/docker-bootstrap.sh", "beat"]
+    environment:
+      <<: *zobi-env
     env_file:
       - path: docker/.env # default
         required: true
@@ -226,6 +243,7 @@ services:
     profiles:
       - optional
     environment:
+      <<: *zobi-env
       DATABASE_HOST: localhost
       DATABASE_DB: test
       REDIS_CELERY_DB: 2
