@@ -1,0 +1,177 @@
+# -----------------------------------------------------------------------
+# Production-oriented compose stack.
+#
+# docker-compose.yml is a development stack and says so on its second line.
+# This file is the counterpart: it builds the `lean` image, runs gunicorn
+# instead of the Flask development server, mounts no source code, and does
+# not run the webpack dev server at all.
+#
+# Before the first start:
+#   1. cp docker/.env-prod.example docker/.env-prod
+#   2. Fill in every value marked REQUIRED. ZOBI_SECRET_KEY especially:
+#      it encrypts every stored credential, including LLM provider API keys.
+#   3. docker compose -f docker-compose.prod.yml up -d --build
+#
+# See docs/deployment/docker-production.md for the full walkthrough,
+# including what this stack deliberately does not do.
+# -----------------------------------------------------------------------
+
+x-zobi-build: &zobi-build
+  context: .
+  # `lean` installs only requirements/base.txt, compiles the app and drops to
+  # the non-root `zobi` user. `dev` additionally carries dev dependencies and
+  # runs as root.
+  target: lean
+  args:
+    # This is load-bearing. Dockerfile only runs `npm run build` when DEV_MODE
+    # is "false"; the built bundle is then copied into the image that `lean`
+    # inherits from. Setting it to "true" here would produce an image that
+    # starts cleanly and serves a blank page.
+    DEV_MODE: "false"
+    BUILD_TRANSLATIONS: ${BUILD_TRANSLATIONS:-false}
+    INCLUDE_CHROMIUM: ${INCLUDE_CHROMIUM:-true}
+
+x-zobi-env: &zobi-env
+  env_file:
+    - path: docker/.env-prod
+      required: true
+  environment:
+    # Load the production config explicitly rather than relying on PYTHONPATH
+    # discovery, so this stack cannot accidentally pick up a development file.
+    ZOBI_CONFIG_PATH: /app/pythonpath/zobi_config.py
+    # Suppresses the editable reinstall that docker-bootstrap.sh performs on
+    # every start when DEV_MODE is true.
+    DEV_MODE: "false"
+
+x-zobi-volumes: &zobi-volumes
+  # Read-only, and the only thing from the repo that enters the containers.
+  # No source is mounted: the image is the unit of deployment.
+  - ./docker/pythonpath_prod/zobi_config.py:/app/pythonpath/zobi_config.py:ro
+  - zobi_home:/app/zobi_home
+
+x-zobi-depends: &zobi-depends
+  db:
+    condition: service_healthy
+  redis:
+    condition: service_healthy
+
+services:
+  db:
+    image: postgres:17
+    restart: unless-stopped
+    env_file:
+      - path: docker/.env-prod
+        required: true
+    volumes:
+      - db_home:/var/lib/postgresql/data
+    # Deliberately no `ports:`. The database is reachable only from the
+    # compose network. Use `docker compose exec db psql` for maintenance
+    # rather than exposing 5432 to the host.
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U $${POSTGRES_USER} -d $${POSTGRES_DB}"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+      start_period: 20s
+
+  redis:
+    image: redis:7
+    restart: unless-stopped
+    # Redis holds cached query results and the Celery broker. Not exposed.
+    command:
+      [
+        "sh",
+        "-c",
+        'if [ -n "$$REDIS_PASSWORD" ]; then exec redis-server --requirepass "$$REDIS_PASSWORD" --save 60 1; else exec redis-server --save 60 1; fi',
+      ]
+    env_file:
+      - path: docker/.env-prod
+        required: true
+    volumes:
+      - redis_home:/data
+    healthcheck:
+      test: ["CMD-SHELL", "redis-cli ping | grep -q PONG"]
+      interval: 10s
+      timeout: 5s
+      retries: 10
+
+  # One-shot: runs migrations, creates the admin user if absent, and seeds
+  # roles and permissions. Everything else waits for it to finish cleanly.
+  zobi-init:
+    build: *zobi-build
+    <<: *zobi-env
+    command: ["/app/docker/docker-init.sh"]
+    volumes: *zobi-volumes
+    depends_on: *zobi-depends
+    # A one-shot job must not be restarted, or it loops forever.
+    restart: "no"
+
+  zobi-app:
+    build: *zobi-build
+    <<: *zobi-env
+    # Runs docker/entrypoints/run-server.sh, the gunicorn invocation that
+    # already ships with the repo. Tune it with the SERVER_* and GUNICORN_*
+    # variables in docker/.env-prod.
+    command: ["/app/docker/docker-bootstrap.sh", "app-gunicorn"]
+    restart: unless-stopped
+    ports:
+      # Bound to loopback: put a TLS-terminating reverse proxy in front of
+      # this. Change to "${ZOBI_PORT:-8088}:8088" only if something else is
+      # already terminating TLS and filtering traffic.
+      - "127.0.0.1:${ZOBI_PORT:-8088}:8088"
+    volumes: *zobi-volumes
+    depends_on:
+      <<: *zobi-depends
+      zobi-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "curl -f http://localhost:8088/health || exit 1"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 60s
+
+  # Executes alerts, reports, thumbnails and async SQL Lab queries.
+  zobi-worker:
+    build: *zobi-build
+    <<: *zobi-env
+    command: ["/app/docker/docker-bootstrap.sh", "worker"]
+    restart: unless-stopped
+    volumes: *zobi-volumes
+    depends_on:
+      <<: *zobi-depends
+      zobi-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "celery -A zobi.tasks.celery_app:app inspect ping -d celery@$$HOSTNAME"]
+      interval: 60s
+      timeout: 30s
+      retries: 3
+      start_period: 60s
+
+  # Schedules the work the worker executes. Without beat, nothing fires on
+  # a schedule: no alerts, no reports, no cache warm-up.
+  zobi-worker-beat:
+    build: *zobi-build
+    <<: *zobi-env
+    command: ["/app/docker/docker-bootstrap.sh", "beat"]
+    restart: unless-stopped
+    volumes: *zobi-volumes
+    depends_on:
+      <<: *zobi-depends
+      zobi-init:
+        condition: service_completed_successfully
+    healthcheck:
+      test: ["CMD-SHELL", "test -f /tmp/celerybeat.pid"]
+      interval: 60s
+      timeout: 10s
+      retries: 3
+      start_period: 30s
+
+volumes:
+  db_home:
+    external: false
+  redis_home:
+    external: false
+  zobi_home:
+    external: false
