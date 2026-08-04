@@ -17,6 +17,7 @@ import {
 import { Typography } from '@zobi.dev/core/components/Typography';
 import withToasts from 'src/components/MessageToasts/withToasts';
 import { createModel, fetchProviderModels, updateModel } from './api';
+import { CHECK_LOGS_HINT, describeApiError } from './errors';
 import { LLMModelObject, LLMProviderObject, ProviderSpec } from './types';
 
 const HelpText = styled(Typography.Paragraph)`
@@ -62,6 +63,25 @@ const CAPABILITIES: {
   },
 ];
 
+/**
+ * Turn a vendor model id into a usable alias.
+ *
+ * Vendor ids are often namespaced ("anthropic/claude-opus-4",
+ * "accounts/fireworks/models/llama-v3"), and the trailing segment is the part
+ * an operator recognises. Lowercased and stripped of characters that would
+ * make the alias awkward to type in routing settings.
+ */
+export function deriveAlias(modelString: string): string {
+  const lastSegment = modelString.split('/').pop() ?? modelString;
+  return (
+    lastSegment
+      .toLowerCase()
+      .replace(/[^a-z0-9.-]+/g, '-')
+      .replace(/-+/g, '-')
+      .replace(/^-|-$/g, '') || lastSegment
+  );
+}
+
 interface ModelModalProps {
   addDangerToast: (msg: string) => void;
   addSuccessToast: (msg: string) => void;
@@ -89,7 +109,10 @@ const ModelModal: FunctionComponent<ModelModalProps> = ({
 
   const [providerId, setProviderId] = useState<number | null>(null);
   const [alias, setAlias] = useState('');
-  const [modelString, setModelString] = useState('');
+  // A list even when editing, so one code path covers both modes. Edit mode
+  // holds exactly one entry.
+  const [modelStrings, setModelStrings] = useState<string[]>([]);
+  const [catalogueLoading, setCatalogueLoading] = useState(false);
   const [capabilities, setCapabilities] = useState<Record<string, boolean>>({
     supports_chat: true,
     supports_transcription: false,
@@ -117,7 +140,7 @@ const ModelModal: FunctionComponent<ModelModalProps> = ({
     if (model) {
       setProviderId(model.provider_id);
       setAlias(model.alias);
-      setModelString(model.model_string);
+      setModelStrings([model.model_string]);
       setCapabilities({
         supports_chat: Boolean(model.supports_chat),
         supports_transcription: Boolean(model.supports_transcription),
@@ -135,7 +158,7 @@ const ModelModal: FunctionComponent<ModelModalProps> = ({
     } else {
       setProviderId(defaultProviderId ?? null);
       setAlias('');
-      setModelString('');
+      setModelStrings([]);
       setCapabilities({
         supports_chat: true,
         supports_transcription: false,
@@ -158,49 +181,80 @@ const ModelModal: FunctionComponent<ModelModalProps> = ({
     // model string stays free-text.
     if (!show || !providerId || !spec?.supports_model_listing) {
       setCatalogue([]);
+      setCatalogueLoading(false);
       return;
     }
+    setCatalogueLoading(true);
     fetchProviderModels(providerId)
       .then(setCatalogue)
-      .catch(() => setCatalogue([]));
+      .catch(() => setCatalogue([]))
+      .finally(() => setCatalogueLoading(false));
   }, [show, providerId, spec]);
 
   const hasCapability = Object.values(capabilities).some(Boolean);
+  const isSingle = modelStrings.length === 1;
   const canSave =
     Boolean(providerId) &&
-    Boolean(alias) &&
-    Boolean(modelString) &&
+    modelStrings.length > 0 &&
+    // An alias is only typed by hand when there is exactly one model; for a
+    // multi-select each alias is derived from its model name.
+    (!isSingle || Boolean(alias)) &&
     hasCapability &&
     !saving;
+
+  const sharedFields = () => ({
+    provider_id: providerId as number,
+    ...capabilities,
+    ...limits,
+    budget_duration: budgetDuration || null,
+    is_active: isActive,
+  });
 
   const handleSave = async () => {
     if (!canSave || !providerId) return;
     setSaving(true);
-    const payload: Partial<LLMModelObject> = {
-      provider_id: providerId,
-      alias,
-      model_string: modelString,
-      ...capabilities,
-      ...limits,
-      budget_duration: budgetDuration || null,
-      is_active: isActive,
-    };
     try {
       if (isEdit && model?.id) {
-        await updateModel(model.id, payload);
+        await updateModel(model.id, {
+          ...sharedFields(),
+          alias,
+          model_string: modelStrings[0],
+        });
         addSuccessToast(t('Model updated'));
       } else {
-        await createModel(payload);
-        addSuccessToast(t('Model created'));
+        // Created sequentially rather than in parallel: the alias uniqueness
+        // and provider checks run per request, and a partial failure is much
+        // easier to reason about when the order is deterministic.
+        const created: string[] = [];
+        for (const candidate of modelStrings) {
+          // eslint-disable-next-line no-await-in-loop
+          await createModel({
+            ...sharedFields(),
+            alias: isSingle ? alias : deriveAlias(candidate),
+            model_string: candidate,
+          });
+          created.push(candidate);
+        }
+        addSuccessToast(
+          created.length === 1
+            ? t('Model created')
+            : t('%s models created', created.length),
+        );
       }
       onSaved();
       onHide();
-    } catch {
+    } catch (error) {
       addDangerToast(
-        isEdit
-          ? t('There was an issue updating the model.')
-          : t('There was an issue creating the model.'),
+        await describeApiError(
+          error,
+          isEdit
+            ? t('Could not update the model. %s', CHECK_LOGS_HINT)
+            : t('Could not create the model. %s', CHECK_LOGS_HINT),
+        ),
       );
+      // Some of a multi-select may already have been created, so refresh the
+      // list even on failure rather than leaving the page showing stale state.
+      onSaved();
     } finally {
       setSaving(false);
     }
@@ -237,50 +291,89 @@ const ModelModal: FunctionComponent<ModelModalProps> = ({
           />
         </Form.Item>
 
-        <Form.Item label={t('Model')} required>
-          {catalogue.length ? (
+        <Form.Item
+          label={isEdit ? t('Model') : t('Models')}
+          required
+          extra={
+            catalogueLoading
+              ? t('Loading models from the provider...')
+              : undefined
+          }
+        >
+          {isEdit || !catalogue.length ? (
+            // Editing targets exactly one deployment, and a provider with no
+            // catalogue cannot offer a list, so both fall back to free text.
             <AutoComplete
-              value={modelString}
-              onChange={value => setModelString(value as string)}
+              value={modelStrings[0] ?? ''}
+              onChange={value =>
+                setModelStrings(value ? [value as string] : [])
+              }
               options={catalogue.map(id => ({ value: id }))}
               filterOption={(input, option) =>
                 String(option?.value ?? '')
                   .toLowerCase()
                   .includes(input.toLowerCase())
               }
-              placeholder={t('Search or type a model name')}
+              placeholder={
+                catalogue.length
+                  ? t('Search or type a model name')
+                  : t('e.g. %s', `${spec?.model_prefix ?? ''}model-name`)
+              }
             />
           ) : (
-            <Input
-              value={modelString}
-              onChange={event => setModelString(event.target.value)}
-              placeholder={t(
-                'e.g. %s',
-                `${spec?.model_prefix ?? ''}model-name`,
-              )}
+            <Select
+              mode="multiple"
+              value={modelStrings}
+              onChange={value => setModelStrings(value as string[])}
+              options={catalogue.map(id => ({ value: id, label: id }))}
+              placeholder={t('Select one or more models')}
+              allowClear
             />
           )}
           <HelpText>
-            {spec?.model_prefix
-              ? t(
-                  'The %s prefix is added automatically if you leave it off.',
-                  spec.model_prefix,
-                )
-              : t('Enter the full LiteLLM model string.')}
+            {isEdit || !catalogue.length
+              ? spec?.model_prefix
+                ? t(
+                    'The %s prefix is added automatically if you leave it off.',
+                    spec.model_prefix,
+                  )
+                : t('Enter the full LiteLLM model string.')
+              : t(
+                  'Fetched from the provider. Pick as many as you want: each ' +
+                    'becomes its own model, sharing the settings below.',
+                )}
           </HelpText>
         </Form.Item>
 
-        <Form.Item label={t('Alias')} required>
-          <Input
-            value={alias}
-            onChange={event => setAlias(event.target.value)}
-            placeholder={t('e.g. default-chat')}
-          />
+        <Form.Item label={t('Alias')} required={isSingle}>
+          {isSingle ? (
+            <Input
+              value={alias}
+              onChange={event => setAlias(event.target.value)}
+              placeholder={t('e.g. default-chat')}
+            />
+          ) : (
+            // With several models selected a single alias would silently pool
+            // them all behind one name, so show the derived aliases instead of
+            // letting the operator discover that later.
+            <Space direction="vertical" size={0}>
+              {modelStrings.map(candidate => (
+                <Typography.Text key={candidate} code>
+                  {deriveAlias(candidate)}
+                </Typography.Text>
+              ))}
+            </Space>
+          )}
           <HelpText>
-            {t(
-              'The name Zobi refers to this model by. Give two models the same ' +
-                'alias to load balance between them.',
-            )}
+            {isSingle
+              ? t(
+                  'The name Zobi refers to this model by. Give two models the ' +
+                    'same alias to load balance between them.',
+                )
+              : t(
+                  'One alias per model, derived from its name. Edit any of ' +
+                    'them afterwards, or reuse an alias to load balance.',
+                )}
           </HelpText>
         </Form.Item>
 

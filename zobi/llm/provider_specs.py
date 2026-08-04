@@ -116,6 +116,7 @@ PROVIDER_SPECS: dict[str, ProviderSpec] = {
         ),
         ProviderSpec(
             key="anthropic",
+            supports_model_listing=True,
             label="Anthropic",
             model_prefix="anthropic/",
             description=str(_("Claude models direct from Anthropic")),
@@ -133,6 +134,7 @@ PROVIDER_SPECS: dict[str, ProviderSpec] = {
         ),
         ProviderSpec(
             key="gemini",
+            supports_model_listing=True,
             label="Google Gemini",
             model_prefix="gemini/",
             description=str(_("Gemini via Google AI Studio API keys")),
@@ -248,6 +250,7 @@ PROVIDER_SPECS: dict[str, ProviderSpec] = {
         ),
         ProviderSpec(
             key="groq",
+            supports_model_listing=True,
             label="Groq",
             model_prefix="groq/",
             description=str(_("Low-latency inference on Groq hardware")),
@@ -256,6 +259,7 @@ PROVIDER_SPECS: dict[str, ProviderSpec] = {
         ),
         ProviderSpec(
             key="mistral",
+            supports_model_listing=True,
             label="Mistral AI",
             model_prefix="mistral/",
             description=str(_("Mistral and Mixtral models")),
@@ -264,6 +268,7 @@ PROVIDER_SPECS: dict[str, ProviderSpec] = {
         ),
         ProviderSpec(
             key="deepseek",
+            supports_model_listing=True,
             label="DeepSeek",
             model_prefix="deepseek/",
             description=str(_("DeepSeek chat and reasoning models")),
@@ -272,6 +277,7 @@ PROVIDER_SPECS: dict[str, ProviderSpec] = {
         ),
         ProviderSpec(
             key="xai",
+            supports_model_listing=True,
             label="xAI",
             model_prefix="xai/",
             description=str(_("Grok models from xAI")),
@@ -280,6 +286,7 @@ PROVIDER_SPECS: dict[str, ProviderSpec] = {
         ),
         ProviderSpec(
             key="together_ai",
+            supports_model_listing=True,
             label="Together AI",
             model_prefix="together_ai/",
             description=str(_("Open models hosted by Together")),
@@ -288,6 +295,7 @@ PROVIDER_SPECS: dict[str, ProviderSpec] = {
         ),
         ProviderSpec(
             key="fireworks_ai",
+            supports_model_listing=True,
             label="Fireworks AI",
             model_prefix="fireworks_ai/",
             description=str(_("Open models hosted by Fireworks")),
