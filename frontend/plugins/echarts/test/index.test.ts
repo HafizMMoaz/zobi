@@ -46,7 +46,10 @@ test('@zobi.dev/echarts exists', () => {
 });
 
 test('@zobi.dev/plugin-echarts-parsemethod-validation', () => {
-  const plugins: EchartsChartPlugin[] = [
+  // Each plugin binds its own form-data and chart-props types, and ChartPlugin
+  // is invariant in both, so this heterogeneous list cannot share a narrower
+  // element type. The assertion below only reads metadata.
+  const plugins: EchartsChartPlugin<any, any>[] = [
     new EchartsBoxPlotChartPlugin().configure({
       key: VizType.BoxPlot,
     }),

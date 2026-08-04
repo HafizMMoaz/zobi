@@ -70,7 +70,8 @@ export class ThemeController {
 
   private onChangeCallbacks: Set<(theme: Theme) => void> = new Set();
 
-  private mediaQuery: MediaQueryList;
+  // Only assigned when the environment supports matchMedia; guarded on read.
+  private mediaQuery?: MediaQueryList;
 
   private crudThemeId: string | null = null;
 

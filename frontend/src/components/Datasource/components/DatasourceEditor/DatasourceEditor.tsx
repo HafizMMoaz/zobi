@@ -1111,7 +1111,7 @@ class DatasourceEditor extends PureComponent<
       this.onDatasourcePropChange('sql', response.json.result);
       this.props.addSuccessToast(t('SQL was formatted'));
     } catch (error) {
-      if (error.name === 'AbortError') return;
+      if ((error as Error).name === 'AbortError') return;
 
       const { error: clientError, statusText } =
         await getClientErrorObject(error);
@@ -1178,7 +1178,7 @@ class DatasourceEditor extends PureComponent<
       this.onDatasourcePropChange('sql', response.json.result);
       this.props.addSuccessToast(t('SQL was formatted'));
     } catch (error) {
-      if (error.name === 'AbortError') return;
+      if ((error as Error).name === 'AbortError') return;
 
       const { error: clientError, statusText } =
         await getClientErrorObject(error);
@@ -1232,7 +1232,7 @@ class DatasourceEditor extends PureComponent<
       this.props.addSuccessToast(t('Metadata has been synced'));
       this.setState({ metadataLoading: false });
     } catch (error) {
-      if (error.name === 'AbortError') {
+      if ((error as Error).name === 'AbortError') {
         // Only update state if still mounted (abort may happen during unmount)
         if (this.isComponentMounted) {
           this.setState({ metadataLoading: false });
@@ -1342,7 +1342,7 @@ class DatasourceEditor extends PureComponent<
       };
     } catch (error) {
       // Rethrow AbortError so callers can handle gracefully
-      if (error.name === 'AbortError') throw error;
+      if ((error as Error).name === 'AbortError') throw error;
 
       const { error: clientError, statusText } =
         await getClientErrorObject(error);

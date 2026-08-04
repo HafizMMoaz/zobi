@@ -767,7 +767,7 @@ const rendererData: RendererData[] = [
   },
 ];
 
-export const CellRenderers: StoryFn = (args: TableProps<object>) => (
+export const CellRenderers: StoryFn<TableProps<RendererData>> = args => (
   <Table {...args} />
 );
 

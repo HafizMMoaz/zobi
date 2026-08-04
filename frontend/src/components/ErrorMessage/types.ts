@@ -10,7 +10,12 @@ export type ErrorMessageComponentProps<ExtraType = Record<string, any> | null> =
     closable?: boolean;
   };
 
-export type ErrorMessageComponent = ComponentType<ErrorMessageComponentProps>;
+// Each component in the registry narrows `error.extra` to the shape its own
+// error type carries, so the registry cannot pin a single extra type. Widening
+// here keeps registration heterogeneous; the components themselves stay precise.
+export type ErrorMessageComponent<ExtraType = any> = ComponentType<
+  ErrorMessageComponentProps<ExtraType>
+>;
 
 export interface ErrorAlertProps {
   errorType?: string; // Strong text on the first line

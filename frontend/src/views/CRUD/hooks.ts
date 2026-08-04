@@ -824,8 +824,10 @@ export function useDatabaseValidation() {
         setHasValidated(true);
         return [];
       } catch (error) {
-        if (typeof error.json === 'function') {
-          return error.json().then(({ errors = [] }) => {
+        // The rejected value is Response-like when the API returned a body.
+        const errorResponse = error as { json?: () => Promise<JsonObject> };
+        if (typeof errorResponse.json === 'function') {
+          return errorResponse.json().then(({ errors = [] }) => {
             const parsedErrors = errors
               .filter((err: { error_type: string }) => {
                 const allowed = [

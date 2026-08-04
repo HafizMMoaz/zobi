@@ -267,7 +267,9 @@ window.addEventListener('message', function embeddedPageInitializer(event) {
           return { success: true, message: 'Theme applied' };
         } catch (error) {
           logging.error('Failed to apply theme config:', error);
-          throw new Error(`Failed to apply theme config: ${error.message}`);
+          throw new Error(
+            `Failed to apply theme config: ${(error as Error).message}`,
+          );
         }
       },
     );
@@ -295,7 +297,7 @@ window.addEventListener('message', function embeddedPageInitializer(event) {
           themeController.setThemeMode(themeMode);
           return { success: true, message: `Theme mode set to ${mode}` };
         } catch (error) {
-          logging.debug('Theme mode not changed:', error.message);
+          logging.debug('Theme mode not changed:', (error as Error).message);
           return {
             success: false,
             message: `Theme locked to current mode`,

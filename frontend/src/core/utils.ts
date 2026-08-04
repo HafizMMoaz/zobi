@@ -3,10 +3,10 @@ import { AnyAction } from 'redux';
 import { listenerMiddleware, RootState, store } from 'src/views/store';
 import { AnyListenerPredicate } from '@reduxjs/toolkit';
 
-export function createActionListener<V>(
+export function createActionListener<V, A extends AnyAction = AnyAction>(
   predicate: AnyListenerPredicate<RootState>,
   listener: (v: V) => void,
-  valueParser: (action: AnyAction, state: RootState) => V | null | undefined,
+  valueParser: (action: A, state: RootState) => V | null | undefined,
   thisArgs?: any,
 ): core.Disposable {
   const boundListener = thisArgs ? listener.bind(thisArgs) : listener;
@@ -15,7 +15,9 @@ export function createActionListener<V>(
     predicate,
     effect: (action: AnyAction) => {
       const state = store.getState();
-      const value = valueParser(action, state);
+      // `predicate` is what guarantees the action matches `A`; the two are
+      // paired by the caller and TypeScript cannot relate them on its own.
+      const value = valueParser(action as A, state);
       // Skip calling listener if valueParser returns null/undefined
       if (value != null) {
         boundListener(value);

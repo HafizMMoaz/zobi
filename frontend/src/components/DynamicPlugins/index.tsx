@@ -143,9 +143,9 @@ export const DynamicPluginProvider: FC<{ children?: ReactNode }> = ({
           } catch (err) {
             logging.error(
               `Failed to load plugin ${plugin.key} with the following error:`,
-              err.stack,
+              (err as Error).stack,
             );
-            error = err;
+            error = err as Error;
           }
           dispatch({
             type: 'complete',
@@ -155,7 +155,10 @@ export const DynamicPluginProvider: FC<{ children?: ReactNode }> = ({
         }),
       );
     } catch (error) {
-      logging.error('Failed to load dynamic plugins', error.stack || error);
+      logging.error(
+        'Failed to load dynamic plugins',
+        (error as Error).stack || error,
+      );
     }
   }
 

@@ -193,33 +193,35 @@ export const LayerConfigsPopoverContent: FC<
     }
   };
 
-  const onLayerTitleChange = (fieldValue: string) => {
+  // ControlFormItem's value type is determined by its `controlType` at runtime,
+  // so its onChange hands back a JsonValue regardless of the control rendered.
+  const onLayerTitleChange = (fieldValue: JsonValue) => {
     onFieldValueChange(fieldValue, 'title');
   };
 
-  const onLayerUrlChange = (fieldValue: string) => {
+  const onLayerUrlChange = (fieldValue: JsonValue) => {
     onFieldValueChange(fieldValue, 'url');
   };
 
-  const onLayersParamChange = (fieldValue: string) => {
+  const onLayersParamChange = (fieldValue: JsonValue) => {
     onFieldValueChange(fieldValue, 'layersParam');
   };
 
-  const onTypeNameChange = (fieldValue: string) => {
+  const onTypeNameChange = (fieldValue: JsonValue) => {
     onFieldValueChange(fieldValue, 'typeName');
   };
 
-  const onWmsVersionChange = (fieldValue: string) => {
+  const onWmsVersionChange = (fieldValue: JsonValue) => {
     onFieldValueChange(fieldValue, 'version');
-    setWmsVersion(fieldValue);
+    setWmsVersion(fieldValue as string);
   };
 
-  const onWfsVersionChange = (fieldValue: string) => {
+  const onWfsVersionChange = (fieldValue: JsonValue) => {
     onFieldValueChange(fieldValue, 'version');
-    setWfsVersion(fieldValue);
+    setWfsVersion(fieldValue as string);
   };
 
-  const onMaxFeaturesChange = (fieldValue: number) => {
+  const onMaxFeaturesChange = (fieldValue: JsonValue) => {
     onFieldValueChange(fieldValue, 'maxFeatures');
   };
 
@@ -227,7 +229,7 @@ export const LayerConfigsPopoverContent: FC<
     onFieldValueChange(fieldValue, 'style');
   };
 
-  const onAttributionChange = (fieldValue: string) => {
+  const onAttributionChange = (fieldValue: JsonValue) => {
     onFieldValueChange(fieldValue, 'attribution');
   };
 
@@ -382,7 +384,10 @@ export const LayerConfigsPopoverContent: FC<
                     value={currentLayerConf.type}
                     defaultValue={currentLayerConf.type}
                     name="type"
-                    onChange={onLayerTypeChange}
+                    // Constrained to the three literals by `options` above.
+                    onChange={value =>
+                      onLayerTypeChange(value as LayerConf['type'])
+                    }
                   />
                   {isWmsLayerConf(currentLayerConf) && (
                     <StyledControlFormItem

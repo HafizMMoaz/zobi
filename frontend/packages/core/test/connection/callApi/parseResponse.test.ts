@@ -94,7 +94,7 @@ describe('parseResponse()', () => {
   test('throws if parseMethod is not null|json|text', async () => {
     expect.assertions(1);
 
-    let error;
+    let error: any;
     try {
       await parseResponse(
         callApi({ url: mockNoParseUrl, method: 'GET' }),

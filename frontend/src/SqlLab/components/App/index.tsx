@@ -97,7 +97,7 @@ interface AppState {
 }
 
 class App extends PureComponent<AppProps, AppState> {
-  hasLoggedLocalStorageUsage: boolean;
+  hasLoggedLocalStorageUsage = false;
 
   private boundOnHashChanged: () => void;
 
