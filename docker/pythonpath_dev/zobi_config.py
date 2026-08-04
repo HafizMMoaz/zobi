@@ -88,6 +88,7 @@ FEATURE_FLAGS = {
     "DATASET_FOLDERS": True,
     "ENABLE_EXTENSIONS": True,
     "SEMANTIC_LAYERS": True,
+    "ZOBI_AI": True,
 }
 EXTENSIONS_PATH = "/app/docker/extensions"
 ALERT_REPORTS_NOTIFICATION_DRY_RUN = True
