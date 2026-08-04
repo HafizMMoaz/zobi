@@ -113,6 +113,16 @@ docker/*local*
 docker/websocket/config.json
 docker-compose.override.yml
 
+# Production secrets. docker/.env-prod.example is the tracked template; the
+# filled-in copy holds ZOBI_SECRET_KEY and database passwords and must never
+# be committed.
+docker/.env-prod
+
+# docker/.env holds development placeholders only and is required:true by
+# docker-compose.yml, so a fresh clone cannot start the dev stack without it.
+# The broad `.env` rule above would otherwise exclude it.
+!docker/.env
+
 .temp_cache
 
 # Jest test report
