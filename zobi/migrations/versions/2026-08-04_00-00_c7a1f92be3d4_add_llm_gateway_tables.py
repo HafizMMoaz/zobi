@@ -13,6 +13,7 @@ from sqlalchemy import (
     DateTime,
     Float,
     Integer,
+    LargeBinary,
     String,
     Text,
 )
@@ -53,8 +54,13 @@ def upgrade():
         Column("name", String(250), nullable=False, unique=True),
         Column("provider_key", String(100), nullable=False),
         Column("params", Text, nullable=True),
-        # Ciphertext, so Text regardless of the plaintext length.
-        Column("encrypted_params", Text, nullable=True),
+        # LargeBinary (bytea on Postgres), matching what encrypted_field_factory
+        # produces in the ORM: EncryptedType stores ciphertext as bytes. Text
+        # here would appear to work on SQLite, whose type affinity round-trips a
+        # str, and then fail on every read under Postgres with
+        # "TypeError: string argument without an encoding". Zobi already hit
+        # this on dbs.encrypted_extra, fixed in c2acd2cf3df2.
+        Column("encrypted_params", LargeBinary, nullable=True),
         Column("is_active", Boolean, nullable=False, server_default="1"),
         Column("last_tested_at", DateTime, nullable=True),
         Column("last_test_error", Text, nullable=True),
