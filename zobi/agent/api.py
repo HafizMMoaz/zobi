@@ -30,7 +30,7 @@ from zobi.extensions import db, event_logger
 from zobi.models.chat import ChatMessage, Conversation
 from zobi.utils.core import get_user_id
 from zobi.utils.decorators import transaction
-from zobi.views.base_api import statsd_metrics
+from zobi.views.base_api import BaseZobiApiMixin, statsd_metrics
 
 logger = logging.getLogger(__name__)
 
@@ -91,8 +91,12 @@ def _persist(
     return message
 
 
-class ZobiAgentRestApi(BaseApi):
-    """Conversations and the streaming turn endpoint."""
+class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
+    """Conversations and the streaming turn endpoint.
+
+    The mixin supplies the statsd plumbing that ``@statsd_metrics`` expects;
+    plain ``BaseApi`` has none, and every decorated route 500s without it.
+    """
 
     resource_name = "zobi_agent"
     allow_browser_login = True
