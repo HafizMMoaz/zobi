@@ -56,6 +56,8 @@ export enum FeatureFlag {
   EnableDashboardDownloadWebDriverScreenshot = 'ENABLE_DASHBOARD_DOWNLOAD_WEBDRIVER_SCREENSHOT',
   TableV2TimeComparisonEnabled = 'TABLE_V2_TIME_COMPARISON_ENABLED',
   AgGridTableEnabled = 'AG_GRID_TABLE_ENABLED',
+  /** Zobi AI: the LLM gateway, the agent, and Manage > AI Models. */
+  ZobiAi = 'ZOBI_AI',
 }
 
 export type ScheduleQueriesProps = {

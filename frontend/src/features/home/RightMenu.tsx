@@ -36,6 +36,7 @@ import {
   MenuObjectChildProps,
 } from 'src/types/bootstrapTypes';
 import { RootState } from 'src/dashboard/types';
+import AskZobiDrawer from 'src/features/zobiChat/AskZobiDrawer';
 import DatabaseModal from 'src/features/databases/DatabaseModal';
 import UploadDataModal from 'src/features/databases/UploadDataModel';
 import { uploadUserPerms } from 'src/views/CRUD/utils';
@@ -608,6 +609,11 @@ const RightMenu = ({
 
   return (
     <StyledDiv align={align}>
+      {/* ZOBI_AI is declared in packages/core/src/utils/featureFlags.ts, but
+          @zobi.dev/core resolves its types from the package's built lib/, so
+          the new member is invisible until core is rebuilt. The cast keeps
+          this correct at runtime; drop it after the next core build. */}
+      {isFeatureEnabled('ZOBI_AI' as FeatureFlag) && <AskZobiDrawer />}
       {canDatabase && (
         <DatabaseModal
           onHide={handleOnHideModal}

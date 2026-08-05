@@ -50,6 +50,10 @@ const ThemeList = lazy(
   () => import(/* webpackChunkName: "ThemeList" */ 'src/pages/ThemeList'),
 );
 
+const ZobiChat = lazy(
+  () => import(/* webpackChunkName: "ZobiChat" */ 'src/pages/ZobiChat'),
+);
+
 const LLMProviderList = lazy(
   () =>
     import(
@@ -250,6 +254,10 @@ export const routes: Routes = [
   {
     path: '/llm/list/',
     Component: LLMProviderList,
+  },
+  {
+    path: '/zobi/chat/',
+    Component: ZobiChat,
   },
   {
     path: '/annotationlayer/list/',
