@@ -158,6 +158,7 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         from zobi.explore.form_data.api import ExploreFormDataRestApi
         from zobi.explore.permalink.api import ExplorePermalinkRestApi
         from zobi.extensions.view import ExtensionsView
+        from zobi.agent.api import ZobiAgentRestApi
         from zobi.importexport.api import ImportExportRestApi
         from zobi.llm.api import (
             LLMModelRestApi,
@@ -209,6 +210,7 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
             TableModelView,
         )
         from zobi.views.llm import LLMProviderModelView
+        from zobi.views.zobi_chat import ZobiChatView
         from zobi.views.sqllab import SqllabView
         from zobi.views.tags import TagModelView, TagView
         from zobi.views.tasks import TaskModelView
@@ -257,6 +259,7 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_api(LLMProviderRestApi)
         appbuilder.add_api(LLMModelRestApi)
         appbuilder.add_api(LLMRouterConfigRestApi)
+        appbuilder.add_api(ZobiAgentRestApi)
         appbuilder.add_api(QueryRestApi)
         appbuilder.add_api(ReportScheduleRestApi)
         appbuilder.add_api(ReportExecutionLogRestApi)
@@ -395,6 +398,15 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
             category_label=_("Manage"),
             category_icon="",
             menu_cond=lambda: feature_flag_manager.is_feature_enabled("CSS_TEMPLATES"),
+        )
+        appbuilder.add_view(
+            ZobiChatView,
+            "Zobi",
+            href="/zobi/chat/",
+            label=_("Zobi"),
+            icon="fa-robot",
+            category="",
+            menu_cond=lambda: feature_flag_manager.is_feature_enabled("ZOBI_AI"),
         )
         appbuilder.add_view(
             LLMProviderModelView,
