@@ -58,8 +58,7 @@ def process(raw: bytes, filename: str) -> dict[str, Any]:
         from PIL import Image, UnidentifiedImageError
     except ImportError as ex:  # pragma: no cover - Pillow is a hard dependency
         raise ProcessorError(
-            "Image attachments cannot be read: the 'Pillow' package is not "
-            "installed."
+            "Image attachments cannot be read: the 'Pillow' package is not installed."
         ) from ex
 
     try:
@@ -76,7 +75,9 @@ def process(raw: bytes, filename: str) -> dict[str, Any]:
         ) from ex
     except Exception as ex:
         logger.info("Could not read attached image: %s", type(ex).__name__)
-        raise ProcessorError("This image file could not be read; it may be corrupt.") from ex
+        raise ProcessorError(
+            "This image file could not be read; it may be corrupt."
+        ) from ex
 
     if width <= 0 or height <= 0:
         raise ProcessorError("This image reports invalid dimensions.")

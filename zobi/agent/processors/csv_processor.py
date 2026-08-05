@@ -23,7 +23,6 @@ from __future__ import annotations
 import codecs
 import csv
 import io
-import json
 import logging
 import os
 import re
@@ -33,6 +32,7 @@ from typing import Any
 import pandas as pd
 
 from zobi.agent.processors import ProcessorError
+from zobi.utils import json
 
 logger = logging.getLogger(__name__)
 
@@ -127,7 +127,9 @@ def _sniff_delimiter(sample_text: str, filename: str) -> str:
         return "\t"
 
     try:
-        dialect = csv.Sniffer().sniff(sample_text, delimiters="".join(DELIMITER_CANDIDATES))
+        dialect = csv.Sniffer().sniff(
+            sample_text, delimiters="".join(DELIMITER_CANDIDATES)
+        )
     except csv.Error:
         pass
     else:
@@ -250,17 +252,17 @@ def _read_dataframe(
 
     try:
         return pd.read_csv(io.BytesIO(data), **kwargs)
-    except UnicodeDecodeError:
+    except UnicodeDecodeError as ex:
         for fallback in ENCODING_FALLBACKS:
             if fallback == encoding:
                 continue
             try:
-                return pd.read_csv(
-                    io.BytesIO(data), **{**kwargs, "encoding": fallback}
-                )
+                return pd.read_csv(io.BytesIO(data), **{**kwargs, "encoding": fallback})
             except (UnicodeDecodeError, ValueError, pd.errors.ParserError):
                 continue
-        raise ProcessorError("Could not decode this CSV with any known encoding.")
+        raise ProcessorError(
+            "Could not decode this CSV with any known encoding."
+        ) from ex
     except pd.errors.EmptyDataError as ex:
         raise ProcessorError("This CSV file contains no data.") from ex
     except (ValueError, pd.errors.ParserError) as ex:
@@ -316,7 +318,10 @@ def _build_preview(df: pd.DataFrame) -> list[dict[str, Any]]:
         records = json.loads(head.to_json(orient="records", date_format="iso"))
     except (ValueError, TypeError):  # pragma: no cover - duplicate/odd columns
         records = [
-            {str(key): (None if pd.isna(value) else str(value)) for key, value in row.items()}
+            {
+                str(key): (None if pd.isna(value) else str(value))
+                for key, value in row.items()
+            }
             for row in head.to_dict(orient="records")
         ]
 
@@ -340,7 +345,11 @@ def _summarize(
     shown = ", ".join(f"{column['name']} ({column['type']})" for column in columns[:20])
     if len(columns) > 20:
         shown += f", ... (+{len(columns) - 20} more)"
-    rows = f"~{row_count:,} rows (estimated)" if row_count_is_estimate else f"{row_count:,} rows"
+    rows = (
+        f"~{row_count:,} rows (estimated)"
+        if row_count_is_estimate
+        else f"{row_count:,} rows"
+    )
     parts = [
         f"CSV file '{filename}' with {len(columns)}"
         f"{'+' if columns_truncated else ''} columns and {rows}.",

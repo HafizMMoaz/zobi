@@ -52,16 +52,8 @@ def _load_pypdf() -> Any:
     return pypdf
 
 
-def process(raw: bytes, filename: str) -> dict[str, Any]:
-    """Describe a PDF attachment and extract its text.
-
-    :returns: ``kind``, ``summary``, ``page_count``, ``pages_scanned``,
-        ``text`` (capped at ``MAX_TEXT_CHARS``), ``truncated``, ``encrypted``,
-        ``byte_size``.
-    :raises ProcessorError: if the file is empty, not a PDF, too large,
-        encrypted with a password, unreadable, or if no PDF library is
-        installed.
-    """
+def _reject_unusable(raw: bytes) -> None:
+    """Fail fast on input that is not worth handing to a PDF library."""
     if not raw:
         raise ProcessorError("This PDF file is empty.")
     if not raw[:1024].lstrip().startswith(PDF_MAGIC):
@@ -72,13 +64,21 @@ def process(raw: bytes, filename: str) -> dict[str, Any]:
             "will not be processed."
         )
 
+
+def _open_reader(raw: bytes) -> tuple[Any, bool, int]:
+    """Open a PDF, handling encryption, and report its page count.
+
+    :returns: ``(reader, encrypted, page_count)``
+    """
     pypdf = _load_pypdf()
 
     try:
         reader = pypdf.PdfReader(io.BytesIO(raw), strict=False)
     except Exception as ex:
         logger.info("Could not open attached PDF: %s", type(ex).__name__)
-        raise ProcessorError("This PDF file could not be read; it may be corrupt.") from ex
+        raise ProcessorError(
+            "This PDF file could not be read; it may be corrupt."
+        ) from ex
 
     encrypted = bool(getattr(reader, "is_encrypted", False))
     if encrypted:
@@ -94,10 +94,28 @@ def process(raw: bytes, filename: str) -> dict[str, Any]:
     try:
         page_count = len(reader.pages)
     except Exception as ex:
-        raise ProcessorError("This PDF file could not be read; it may be corrupt.") from ex
+        raise ProcessorError(
+            "This PDF file could not be read; it may be corrupt."
+        ) from ex
 
     if page_count == 0:
         raise ProcessorError("This PDF contains no pages.")
+
+    return reader, encrypted, page_count
+
+
+def process(raw: bytes, filename: str) -> dict[str, Any]:
+    """Describe a PDF attachment and extract its text.
+
+    :returns: ``kind``, ``summary``, ``page_count``, ``pages_scanned``,
+        ``text`` (capped at ``MAX_TEXT_CHARS``), ``truncated``, ``encrypted``,
+        ``byte_size``.
+    :raises ProcessorError: if the file is empty, not a PDF, too large,
+        encrypted with a password, unreadable, or if no PDF library is
+        installed.
+    """
+    _reject_unusable(raw)
+    reader, encrypted, page_count = _open_reader(raw)
 
     chunks: list[str] = []
     total = 0

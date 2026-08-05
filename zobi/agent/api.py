@@ -27,7 +27,7 @@ from zobi.agent.permissions import (
 from zobi.agent.runtime import AgentTurn, TurnEvent
 from zobi.agent.tools import call_tool, find_tool, list_tools
 from zobi.extensions import db, event_logger
-from zobi.models.chat import ChatMessage, Conversation
+from zobi.models.chat import ChatAttachment, ChatMessage, Conversation
 from zobi.utils.core import get_user_id
 from zobi.utils.decorators import transaction
 from zobi.views.base_api import BaseZobiApiMixin, statsd_metrics
@@ -71,6 +71,19 @@ def _owned(conversation_id: int) -> Conversation | None:
         )
         .first()
     )
+
+
+def _attachment_payload(attachment: ChatAttachment) -> dict[str, Any]:
+    """Shape an attachment for the chat UI.
+
+    Lifts ``summary`` out of the processor's ``extract`` blob to the top level.
+    The UI shows one line per file and should not have to know that a CSV's
+    summary lives in a different place from a PDF's; the full extract stays
+    available for anything that wants the detail.
+    """
+    payload = attachment.to_dict()
+    payload["summary"] = (payload.get("extract") or {}).get("summary")
+    return payload
 
 
 def _history(conversation: Conversation) -> list[dict[str, Any]]:
@@ -562,3 +575,191 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
         pending.content = output
         pending.extra = None
         return self.response(200, result={"ok": ok, "output": output[:4000]})
+
+    @expose("/conversation/<int:pk>/attachment", methods=("POST",))
+    @protect()
+    @safe
+    @statsd_metrics
+    @transaction()
+    def upload_attachment(self, pk: int) -> Response:
+        """Attach a file to a conversation.
+
+        Stores the bytes, then extracts a structured summary so the model has
+        something to reason about. Extraction failures do not fail the upload:
+        the row is kept with status "failed" and its error, because telling the
+        user "this PDF is password protected" is more useful than losing the
+        file and showing nothing.
+        ---
+        post:
+          summary: Upload a chat attachment
+          parameters:
+          - in: path
+            schema:
+              type: integer
+            name: pk
+          responses:
+            201:
+              description: Attachment stored
+              content:
+                application/json:
+                  schema:
+                    type: object
+            400:
+              $ref: '#/components/responses/400'
+            404:
+              $ref: '#/components/responses/404'
+        """
+        from zobi.agent import attachments as store  # noqa: PLC0415
+        from zobi.agent.processors import (  # noqa: PLC0415
+            process_attachment,
+            ProcessorError,
+        )
+
+        conversation = _owned(pk)
+        if not conversation:
+            return self.response_404()
+
+        upload = request.files.get("file")
+        if upload is None:
+            return self.response_400(message="No file was supplied.")
+
+        try:
+            attachment = store.save_upload(pk, upload)
+        except store.AttachmentTooLargeError as ex:
+            return self.response(413, message=str(ex))
+        except store.AttachmentError as ex:
+            return self.response_400(message=str(ex))
+
+        try:
+            extract = process_attachment(
+                store.load_bytes(attachment), attachment.filename
+            )
+            store.mark_ready(attachment, extract)
+        except ProcessorError as ex:
+            store.mark_failed(attachment, str(ex))
+        except Exception as ex:  # noqa: BLE001  # pylint: disable=broad-except
+            # Type only: a processor error message can quote file content.
+            logger.warning(
+                "Attachment %s could not be processed: %s",
+                attachment.uuid,
+                type(ex).__name__,
+            )
+            store.mark_failed(attachment, "This file could not be processed.")
+
+        return self.response(201, result=_attachment_payload(attachment))
+
+    @expose("/attachment/<int:pk>", methods=("DELETE",))
+    @protect()
+    @safe
+    @statsd_metrics
+    @transaction()
+    def delete_attachment(self, pk: int) -> Response:
+        """Remove an attachment and its stored bytes.
+        ---
+        delete:
+          summary: Delete a chat attachment
+          parameters:
+          - in: path
+            schema:
+              type: integer
+            name: pk
+          responses:
+            200:
+              description: Attachment deleted
+              content:
+                application/json:
+                  schema:
+                    type: object
+            404:
+              $ref: '#/components/responses/404'
+        """
+        from zobi.agent import attachments as store  # noqa: PLC0415
+
+        # Joined to conversations so ownership is checked in the query: an
+        # attachment id alone must never be enough to delete someone's file.
+        attachment = (
+            db.session.query(ChatAttachment)
+            .join(Conversation, ChatAttachment.conversation_id == Conversation.id)
+            .filter(
+                ChatAttachment.id == pk,
+                Conversation.user_id == get_user_id(),
+            )
+            .first()
+        )
+        if attachment is None:
+            return self.response_404()
+
+        store.delete_attachment(attachment)
+        return self.response(200, message="OK")
+
+    @expose("/transcribe", methods=("POST",))
+    @protect()
+    @safe
+    @statsd_metrics
+    def transcribe(self) -> Response:
+        """Turn recorded audio into text.
+
+        Returns 503 rather than 500 when nothing can serve the request, since
+        "no transcription model is configured" is an operator action, not a
+        bug, and the UI shows the message verbatim.
+        ---
+        post:
+          summary: Transcribe recorded audio
+          responses:
+            200:
+              description: Transcribed text
+              content:
+                application/json:
+                  schema:
+                    type: object
+            400:
+              $ref: '#/components/responses/400'
+            503:
+              description: No transcription backend is available
+              content:
+                application/json:
+                  schema:
+                    type: object
+        """
+        from zobi.agent.voice import (  # noqa: PLC0415
+            transcribe_audio,
+            TranscriptionError,
+        )
+
+        upload = request.files.get("audio")
+        if upload is None:
+            return self.response_400(message="No audio was supplied.")
+
+        try:
+            result = transcribe_audio(
+                upload.read(),
+                upload.filename or "recording.webm",
+                language=request.form.get("language") or None,
+            )
+        except TranscriptionError as ex:
+            return self.response(503, message=str(ex))
+
+        return self.response(200, result=result)
+
+    @expose("/transcribe/status", methods=("GET",))
+    @protect()
+    @safe
+    @statsd_metrics
+    def transcribe_status(self) -> Response:
+        """Report whether transcription can work, so the UI can hide the mic.
+
+        Cheap by contract: loads no model weights and makes no network call.
+        ---
+        get:
+          summary: Check transcription availability
+          responses:
+            200:
+              description: Availability
+              content:
+                application/json:
+                  schema:
+                    type: object
+        """
+        from zobi.agent.voice import transcription_available  # noqa: PLC0415
+
+        return self.response(200, result=transcription_available())

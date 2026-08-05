@@ -99,7 +99,9 @@ def _fallback_statements(text: str) -> list[str]:
     Crude on purpose: it is only used to *describe* an unparseable file, and
     the result is always reported with ``parsed=False``.
     """
-    return [part.strip() for part in _COMMENTS.sub(" ", text).split(";") if part.strip()]
+    return [
+        part.strip() for part in _COMMENTS.sub(" ", text).split(";") if part.strip()
+    ]
 
 
 def _classify(keyword: str, is_select: bool) -> str:
