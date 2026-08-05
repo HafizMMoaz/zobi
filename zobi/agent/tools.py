@@ -99,16 +99,44 @@ async def _collect_tools() -> list[AgentTool]:
     return collected
 
 
+def _native_as_agent_tools() -> list[AgentTool]:
+    """Native tools, described the same way MCP tools are."""
+    from zobi.agent.native_tools import registry  # noqa: PLC0415
+
+    return [
+        AgentTool(
+            name=tool.name,
+            description=tool.description,
+            parameters=tool.parameters,
+            risk=tool.risk,
+            title=tool.title,
+        )
+        for tool in registry().values()
+    ]
+
+
 def list_tools(mode: AgentMode) -> list[AgentTool]:
-    """Tools to advertise to the model for this conversation's mode."""
+    """Tools to advertise to the model for this conversation's mode.
+
+    Merges the MCP server's tools with the in-process native ones. Both are
+    filtered by the same risk rules, so a native tool is gated exactly like an
+    MCP tool of equivalent risk.
+    """
     allowed = offerable_risks(mode)
+
     try:
         tools = _run(_collect_tools())
     except Exception as ex:  # noqa: BLE001  # pylint: disable=broad-except
-        # A conversation without tools is degraded but still useful, so this
-        # must not take the whole turn down.
+        # A conversation without MCP tools is degraded but still useful, and
+        # the native ones may still work, so carry on with an empty list.
         logger.exception("Could not list MCP tools: %s", type(ex).__name__)
-        return []
+        tools = []
+
+    try:
+        tools = tools + _native_as_agent_tools()
+    except Exception as ex:  # noqa: BLE001  # pylint: disable=broad-except
+        logger.exception("Could not list native tools: %s", type(ex).__name__)
+
     return [tool for tool in tools if tool.risk in allowed]
 
 
@@ -146,6 +174,15 @@ def call_tool(name: str, arguments: dict[str, Any]) -> tuple[bool, str]:
     """
     if not getattr(g, "user", None):
         return False, "No authenticated user in context; refusing to run tools."
+
+    from zobi.agent.native_tools import (  # noqa: PLC0415
+        get as get_native,
+        run as run_native,
+    )
+
+    # Native tools run in-process; only MCP names go over the client.
+    if get_native(name) is not None:
+        return run_native(name, arguments)
 
     try:
         return True, _invoke_sync(name, arguments)

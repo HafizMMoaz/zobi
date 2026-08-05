@@ -155,3 +155,104 @@ class ChatMessage(AuditMixinNullable, Model):
             "extra": self.extra_dict,
             "created_on": self.created_on.isoformat() if self.created_on else None,
         }
+
+
+class ChatAttachment(AuditMixinNullable, Model):
+    """A file a user attached to a conversation.
+
+    The row is created when the bytes are uploaded, which happens *before* the
+    message that references them is sent, so ``message_id`` starts NULL and is
+    filled in when the message is created. Processing (parsing a CSV, reading a
+    PDF) happens after the upload responds, hence the ``status`` field: the row
+    outlives a failed extraction so the UI can explain what went wrong.
+
+    The bytes themselves live on disk, not here. ``zobi.agent.attachments``
+    owns that side and is the only thing that should build ``storage_path``.
+    """
+
+    __tablename__ = "zobi_chat_attachments"
+
+    id = Column(Integer, primary_key=True)
+    uuid = Column(
+        UUIDType(binary=True), nullable=False, unique=True, default=uuid_module.uuid4
+    )
+
+    conversation_id = Column(
+        Integer,
+        ForeignKey("zobi_conversations.id", ondelete="CASCADE"),
+        nullable=False,
+        index=True,
+    )
+
+    #: NULL until the message that carries this attachment is written. On
+    #: delete the link is cleared rather than cascaded: dropping a single
+    #: message must not silently orphan a file on disk, and deleting the
+    #: conversation already removes the attachment through its own FK.
+    message_id = Column(
+        Integer,
+        ForeignKey("zobi_chat_messages.id", ondelete="SET NULL"),
+        nullable=True,
+        index=True,
+    )
+
+    #: The name the browser sent. A display label only; it never reaches the
+    #: filesystem, which is keyed by ``uuid``.
+    filename = Column(String(255), nullable=False)
+    #: The content type the client claimed. Kept for display and debugging;
+    #: ``kind`` is what the rest of the system trusts.
+    content_type = Column(String(255), nullable=True)
+    size_bytes = Column(Integer, nullable=False)
+
+    #: "csv" | "sql" | "pdf" | "image" | "other", sniffed from the leading
+    #: bytes rather than taken from the filename or the declared MIME type.
+    kind = Column(String(20), nullable=False)
+
+    #: Absolute path to the stored bytes. Derived from ``uuid``, never from
+    #: anything the client supplied.
+    storage_path = Column(String(1024), nullable=False)
+
+    #: "pending" | "ready" | "failed"
+    status = Column(String(20), nullable=False, default="pending")
+    #: Why extraction failed, in terms a user can act on. Never file content.
+    error = Column(Text, nullable=True)
+
+    #: JSON: whatever the processor made of the file, eg detected columns and
+    #: row count for a CSV, or extracted text for a PDF.
+    extract = Column(Text, nullable=True)
+
+    conversation = relationship("Conversation")
+
+    def __repr__(self) -> str:
+        return f"<ChatAttachment {self.id} {self.kind} {self.status}>"
+
+    @property
+    def extract_dict(self) -> dict[str, Any]:
+        if not self.extract:
+            return {}
+        try:
+            value = json.loads(self.extract)
+        except (json.JSONDecodeError, TypeError):
+            return {}
+        return value if isinstance(value, dict) else {}
+
+    def to_dict(self) -> dict[str, Any]:
+        """The attachment as the chat UI needs it.
+
+        ``storage_path`` is deliberately absent: it is a server-side detail,
+        and publishing the layout of the attachment directory helps nobody who
+        is allowed to read the file anyway.
+        """
+        return {
+            "id": self.id,
+            "uuid": str(self.uuid),
+            "conversation_id": self.conversation_id,
+            "message_id": self.message_id,
+            "filename": self.filename,
+            "content_type": self.content_type,
+            "size_bytes": self.size_bytes,
+            "kind": self.kind,
+            "status": self.status,
+            "error": self.error,
+            "extract": self.extract_dict,
+            "created_on": self.created_on.isoformat() if self.created_on else None,
+        }

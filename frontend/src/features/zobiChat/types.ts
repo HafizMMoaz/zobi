@@ -60,6 +60,57 @@ export type ToolActivity = {
   output?: string;
 };
 
+/** How the backend classified an uploaded file. Mirrors the attachment API. */
+export type AttachmentKind = 'csv' | 'sql' | 'pdf' | 'image' | 'other';
+
+/**
+ * Server-side lifecycle of an attachment.
+ *
+ * `pending` means the bytes have landed but the file has not been parsed or
+ * summarised yet, so a chip can stay on screen while that work happens.
+ */
+export type AttachmentStatus = 'pending' | 'ready' | 'failed';
+
+/** An attachment row as returned by the attachment endpoints. */
+export type Attachment = {
+  id: number;
+  uuid: string;
+  filename: string;
+  kind: AttachmentKind;
+  status: AttachmentStatus;
+  size_bytes: number;
+  summary: string | null;
+  error: string | null;
+};
+
+/**
+ * One chip in the composer.
+ *
+ * A file is shown the instant it is chosen, well before the server has given
+ * it an id, so the row is keyed by a client-generated `localId` and carries
+ * the server row only once the upload returns. `error` covers the failures
+ * that never reach the server at all, such as a file that is too large.
+ */
+export type AttachmentItem = {
+  localId: string;
+  filename: string;
+  sizeBytes: number;
+  kind: AttachmentKind;
+  /** Bytes sent so far, 0-100, while the upload is in flight. */
+  progress: number;
+  /** The server row, once the upload has produced one. */
+  attachment: Attachment | null;
+  /** A client-side or transport failure, shown in place of the summary. */
+  error: string | null;
+};
+
+/** Result of transcribing a recorded clip. */
+export type Transcription = {
+  text: string;
+  language: string | null;
+  backend: string;
+};
+
 /**
  * Events the backend pushes over SSE during a turn.
  *

@@ -1,4 +1,6 @@
 import {
+  ClipboardEvent,
+  DragEvent,
   FunctionComponent,
   useCallback,
   useEffect,
@@ -26,6 +28,13 @@ import {
   streamMessage,
   updateConversation,
 } from './api';
+import {
+  AttachButton,
+  AttachmentList,
+  carriesFiles,
+  useAttachments,
+} from './Attachments';
+import VoiceInput from './VoiceInput';
 import {
   AgentMode,
   ChatMessage,
@@ -116,13 +125,16 @@ const ApprovalCard = styled.div`
   `}
 `;
 
-const Composer = styled.div`
-  ${({ theme }) => css`
+const Composer = styled.div<{ dropping: boolean }>`
+  ${({ theme, dropping }) => css`
     border-top: 1px solid ${theme.colorBorderSecondary};
     padding: ${theme.sizeUnit * 3}px;
     display: flex;
     flex-direction: column;
     gap: ${theme.sizeUnit * 2}px;
+    background: ${dropping ? theme.colorPrimaryBg : 'transparent'};
+    outline: ${dropping ? `2px dashed ${theme.colorPrimaryBorder}` : 'none'};
+    outline-offset: -${theme.sizeUnit}px;
   `}
 `;
 
@@ -163,9 +175,42 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
   const [modes, setModes] = useState<ModeOption[]>([]);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
+  const [dropping, setDropping] = useState(false);
 
   const abortRef = useRef<(() => void) | null>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
+
+  // Attaching a file and sending a message both need a conversation, and
+  // either can be the first to want one. These refs let the two paths share a
+  // single creation, without waiting for a state update to land.
+  const idRef = useRef<number | null>(conversationId);
+  const creatingRef = useRef<Promise<number> | null>(null);
+
+  // dragenter/dragleave also fire for every child element the pointer crosses,
+  // so the highlight is driven by a depth count rather than the last event.
+  const dragDepth = useRef(0);
+
+  const ensureConversation = useCallback((): Promise<number> => {
+    if (idRef.current) return Promise.resolve(idRef.current);
+    if (!creatingRef.current) {
+      creatingRef.current = createConversation(mode)
+        .then(created => {
+          idRef.current = created.id;
+          setId(created.id);
+          onConversationStarted?.(created.id);
+          return created.id;
+        })
+        .catch(reason => {
+          // Clear the cached promise so the next attempt can retry rather
+          // than replaying this failure forever.
+          creatingRef.current = null;
+          throw reason;
+        });
+    }
+    return creatingRef.current;
+  }, [mode, onConversationStarted]);
+
+  const attachments = useAttachments(ensureConversation);
 
   useEffect(() => {
     fetchModes()
@@ -173,8 +218,15 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
       .catch(() => setModes([]));
   }, []);
 
+  const { clear: clearAttachments } = attachments;
+
   useEffect(() => {
     setId(conversationId);
+    idRef.current = conversationId;
+    creatingRef.current = null;
+    // Chips belong to the conversation they were uploaded against, so they
+    // must not follow the user into a different one.
+    clearAttachments();
     if (!conversationId) {
       setMessages([]);
       return;
@@ -185,7 +237,7 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
         setMode(detail.mode);
       })
       .catch(() => setError(t('Could not load this conversation.')));
-  }, [conversationId]);
+  }, [conversationId, clearAttachments]);
 
   // Follow the newest content as it streams in.
   useEffect(() => {
@@ -261,23 +313,28 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
       setMessages(current => [...current, { role: 'user', content: text }]);
       setDraft('');
 
-      let target = id;
+      // Read the ids before clearing: the chips are the user's record of what
+      // this message carried, and they go once the turn is under way.
+      const attachmentIds = attachments.ids;
+
+      let target: number;
       try {
-        if (!target) {
-          const created = await createConversation(mode);
-          target = created.id;
-          setId(target);
-          onConversationStarted?.(target);
-        }
+        target = await ensureConversation();
       } catch {
         setError(t('Could not start a conversation.'));
         setBusy(false);
         return;
       }
 
+      attachments.clear();
+
       abortRef.current = streamMessage(
         target,
-        { content: text, mode },
+        {
+          content: text,
+          mode,
+          ...(attachmentIds.length ? { attachment_ids: attachmentIds } : {}),
+        },
         handleEvent,
         message => {
           setError(message);
@@ -285,7 +342,7 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
         },
       );
     },
-    [busy, id, mode, handleEvent, onConversationStarted],
+    [busy, mode, handleEvent, ensureConversation, attachments],
   );
 
   const decide = useCallback(
@@ -342,6 +399,61 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
       if (id) updateConversation(id, { mode: next }).catch(() => undefined);
     },
     [id],
+  );
+
+  /**
+   * Put a transcript in the draft instead of sending it.
+   *
+   * Speech recognition mangles column names and numbers often enough that
+   * auto-sending would mostly produce turns the user has to correct afterwards.
+   */
+  const insertTranscript = useCallback((text: string) => {
+    setDraft(current => (current.trim() ? `${current.trim()} ${text}` : text));
+  }, []);
+
+  const { addFiles } = attachments;
+
+  const handleDragEnter = useCallback((event: DragEvent<HTMLDivElement>) => {
+    if (!carriesFiles(event.dataTransfer)) return;
+    dragDepth.current += 1;
+    setDropping(true);
+  }, []);
+
+  const handleDragOver = useCallback((event: DragEvent<HTMLDivElement>) => {
+    if (!carriesFiles(event.dataTransfer)) return;
+    // Without this the browser treats the drop as navigation and replaces the
+    // page with the file.
+    event.preventDefault();
+    event.dataTransfer.dropEffect = 'copy';
+  }, []);
+
+  const handleDragLeave = useCallback((event: DragEvent<HTMLDivElement>) => {
+    if (!carriesFiles(event.dataTransfer)) return;
+    dragDepth.current = Math.max(0, dragDepth.current - 1);
+    if (!dragDepth.current) setDropping(false);
+  }, []);
+
+  const handleDrop = useCallback(
+    (event: DragEvent<HTMLDivElement>) => {
+      if (!carriesFiles(event.dataTransfer)) return;
+      event.preventDefault();
+      dragDepth.current = 0;
+      setDropping(false);
+      addFiles(event.dataTransfer.files);
+    },
+    [addFiles],
+  );
+
+  const handlePaste = useCallback(
+    (event: ClipboardEvent<HTMLDivElement>) => {
+      const files = Array.from(event.clipboardData?.files ?? []);
+      if (!files.length) return;
+      // A screenshot on the clipboard should become an attachment rather than
+      // dropping its filename into the draft.
+      event.preventDefault();
+      addFiles(files);
+    },
+    [addFiles],
   );
 
   return (
@@ -420,7 +532,14 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
         )}
       </Scroller>
 
-      <Composer>
+      <Composer
+        dropping={dropping}
+        onDragEnter={handleDragEnter}
+        onDragOver={handleDragOver}
+        onDragLeave={handleDragLeave}
+        onDrop={handleDrop}
+        onPaste={handlePaste}
+      >
         <Space>
           <Select
             value={mode}
@@ -435,7 +554,12 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
             {modes.find(option => option.value === mode)?.description}
           </Typography.Text>
         </Space>
+        <AttachmentList
+          items={attachments.items}
+          onRemove={attachments.removeItem}
+        />
         <ComposerRow>
+          <AttachButton onFiles={attachments.addFiles} disabled={busy} />
           <Input.TextArea
             value={draft}
             onChange={event => setDraft(event.target.value)}
@@ -450,6 +574,11 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
             autoSize={{ minRows: 1, maxRows: 6 }}
             disabled={busy}
           />
+          <VoiceInput
+            onTranscript={insertTranscript}
+            onError={setError}
+            disabled={busy}
+          />
           {busy ? (
             <Button
               onClick={() => {
@@ -462,7 +591,12 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
           ) : (
             <Button
               buttonStyle="primary"
-              disabled={!draft.trim()}
+              disabled={!draft.trim() || attachments.uploading}
+              tooltip={
+                attachments.uploading
+                  ? t('Waiting for attachments to finish uploading')
+                  : undefined
+              }
               onClick={() => send(draft)}
             >
               {t('Send')}
