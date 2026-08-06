@@ -18,9 +18,15 @@ import {
   datasetsLabelLower,
 } from 'src/features/semanticLayers/label';
 
+type DatasetOption = { label: string | ReactNode; value: number };
+
 interface DatasetSelectProps {
-  onChange: (value: { label: string | ReactNode; value: number }) => void;
-  value?: { label: string | ReactNode; value: number };
+  // The second parameter is the whole option row, which carries table_name and
+  // the rest of the dataset alongside the label and value the first one holds.
+  // Declared because callers rely on it; it used to arrive only because
+  // JavaScript ignores a handler's declared arity.
+  onChange: (value: DatasetOption, option?: Dataset & DatasetOption) => void;
+  value?: DatasetOption;
   excludeDatasetIds?: number[];
 }
 
@@ -91,7 +97,9 @@ const DatasetSelect = ({
       ariaLabel={datasetLabel()}
       value={value}
       options={loadDatasetOptionsCallback}
-      onChange={value => onChange(value as { label: ReactNode; value: number })}
+      onChange={(value, option) =>
+        onChange(value as DatasetOption, option as Dataset & DatasetOption)
+      }
       optionFilterProps={['table_name']}
       notFoundContent={t('No compatible %s found', datasetsLabelLower())}
       placeholder={t('Select a %s', datasetLabelLower())}
