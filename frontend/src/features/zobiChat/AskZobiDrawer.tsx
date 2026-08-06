@@ -19,7 +19,7 @@ const TriggerButton = styled(Button)`
 `;
 
 /**
- * The "Ask Zobi" entry point that sits in the navigation bar.
+ * The "Ask AI" entry point that sits in the navigation bar.
  *
  * A drawer rather than a route so the conversation opens over whatever the
  * user is already looking at: asking about a dashboard should not mean
@@ -34,10 +34,10 @@ const AskZobiDrawer: FunctionComponent = () => {
   return (
     <>
       <TriggerButton buttonStyle="tertiary" onClick={() => setOpen(true)}>
-        <Icons.CommentOutlined /> {t('Ask Zobi')}
+        <Icons.CommentOutlined /> {t('Ask AI')}
       </TriggerButton>
       <Drawer
-        title={t('Zobi')}
+        title={t('AI')}
         placement="right"
         width={480}
         open={open}

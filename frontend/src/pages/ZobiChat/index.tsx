@@ -94,7 +94,7 @@ function ZobiChatPage() {
   return (
     <>
       <SubMenu
-        name={t('Zobi')}
+        name={t('AI')}
         buttons={[
           {
             name: (

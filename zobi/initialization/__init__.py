@@ -401,9 +401,12 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         )
         appbuilder.add_view(
             ZobiChatView,
+            # The name is the permission key ("menu access on Zobi") that roles
+            # are already granted; only the label is user-facing, so the rename
+            # to "AI" stays here and does not need a security re-sync.
             "Zobi",
             href="/zobi/chat/",
-            label=_("Zobi"),
+            label=_("AI"),
             icon="fa-robot",
             category="",
             menu_cond=lambda: feature_flag_manager.is_feature_enabled("ZOBI_AI"),
