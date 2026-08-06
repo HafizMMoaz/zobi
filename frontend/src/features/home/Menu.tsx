@@ -191,6 +191,7 @@ export function Menu({
     Datasets = '/tablemodelview',
     SqlLab = '/sqllab',
     SavedQueries = '/savedqueryview',
+    Chat = '/zobi/chat',
   }
 
   const defaultTabSelection: string[] = [];
@@ -210,6 +211,9 @@ export function Menu({
         break;
       case path.startsWith(Paths.SqlLab) || path.startsWith(Paths.SavedQueries):
         setActiveTabs(['SQL']);
+        break;
+      case path.startsWith(Paths.Chat):
+        setActiveTabs(['AI']);
         break;
       default:
         setActiveTabs(defaultTabSelection);
