@@ -94,3 +94,46 @@ test('a query matching nothing shows an empty state', () => {
 
   expect(screen.getByText('No matching tools')).toBeInTheDocument();
 });
+
+test('a shrinking tool list keeps the highlight in range for an unchanged query', () => {
+  const onSelect = jest.fn();
+  const FULL_TOOLS: AgentToolSummary[] = [
+    { name: 'a', title: 'Tool A', risk: 'read', description: 'a' },
+    { name: 'b', title: 'Tool B', risk: 'read', description: 'b' },
+    { name: 'c', title: 'Tool C', risk: 'read', description: 'c' },
+    { name: 'd', title: 'Tool D', risk: 'read', description: 'd' },
+    { name: 'e', title: 'Tool E', risk: 'read', description: 'e' },
+  ];
+  const SHORT_TOOLS = FULL_TOOLS.slice(0, 2);
+
+  const { rerender } = render(
+    <SlashPalette
+      tools={FULL_TOOLS}
+      query=""
+      open
+      onSelect={onSelect}
+      onDismiss={jest.fn()}
+    />,
+  );
+
+  // Move the highlight to index 3, which will not survive the shrink below.
+  fireEvent.keyDown(document, { key: 'ArrowDown' });
+  fireEvent.keyDown(document, { key: 'ArrowDown' });
+  fireEvent.keyDown(document, { key: 'ArrowDown' });
+
+  // The query is unchanged; only the tool list (e.g. after a mode switch)
+  // shrinks out from under the highlight.
+  rerender(
+    <SlashPalette
+      tools={SHORT_TOOLS}
+      query=""
+      open
+      onSelect={onSelect}
+      onDismiss={jest.fn()}
+    />,
+  );
+
+  fireEvent.keyDown(document, { key: 'Enter' });
+
+  expect(onSelect).toHaveBeenCalledWith(expect.objectContaining({ name: 'b' }));
+});

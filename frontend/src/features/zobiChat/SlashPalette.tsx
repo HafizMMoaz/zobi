@@ -79,8 +79,15 @@ const SlashPalette: FunctionComponent<SlashPaletteProps> = ({
     );
   }, [tools, query]);
 
-  // A shorter list can leave the highlight past the end.
+  // A new query starts the highlight back at the top.
   useEffect(() => setActive(0), [query]);
+
+  // The tool list can shrink out from under an unchanged query, e.g. a mode
+  // switch that narrows which tools are available. Clamp rather than reset
+  // so the highlight keeps its position instead of jumping back to the top.
+  useEffect(() => {
+    setActive(current => Math.min(current, Math.max(matches.length - 1, 0)));
+  }, [matches.length]);
 
   useEffect(() => {
     if (!open) return undefined;
