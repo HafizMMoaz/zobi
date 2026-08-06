@@ -525,4 +525,3 @@ def test_results_declare_kind_and_summary(raw: bytes, filename: str) -> None:
     assert isinstance(result["kind"], str)
     assert isinstance(result["summary"], str)
     assert result["summary"]
-
