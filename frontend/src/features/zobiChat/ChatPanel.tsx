@@ -22,6 +22,7 @@ import { Icons } from '@zobi.dev/core/components/Icons';
 import { Typography } from '@zobi.dev/core/components/Typography';
 import {
   createConversation,
+  fetchChatModels,
   fetchConversation,
   fetchModes,
   fetchTools,
@@ -35,12 +36,14 @@ import {
   carriesFiles,
   useAttachments,
 } from './Attachments';
+import ModelPicker from './ModelPicker';
 import SlashPalette from './SlashPalette';
 import VoiceInput from './VoiceInput';
 import {
   AgentMode,
   AgentToolSummary,
   ChatMessage,
+  ChatModel,
   ModeOption,
   PendingApproval,
   ToolActivity,
@@ -218,6 +221,11 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
   const [dropping, setDropping] = useState(false);
   const [tools, setTools] = useState<AgentToolSummary[]>([]);
   const [pinnedTool, setPinnedTool] = useState<AgentToolSummary | null>(null);
+  const [models, setModels] = useState<ChatModel[]>([]);
+  // The thread's persisted model, mirrored from the conversation row.
+  const [threadModel, setThreadModel] = useState<string | null>(null);
+  // Applies to the next send only, then reverts to the thread's.
+  const [onceModel, setOnceModel] = useState<string | null>(null);
 
   const abortRef = useRef<(() => void) | null>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -270,6 +278,12 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
       .catch(() => setModes([]));
   }, []);
 
+  useEffect(() => {
+    fetchChatModels()
+      .then(setModels)
+      .catch(() => setModels([]));
+  }, []);
+
   // The offer depends on the mode, so refetch whenever it changes. A failure
   // leaves the list empty: the palette degrades to an empty state and typing
   // still works.
@@ -298,12 +312,14 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
     clearAttachments();
     if (!conversationId) {
       setMessages([]);
+      setThreadModel(null);
       return;
     }
     fetchConversation(conversationId)
       .then(detail => {
         setMessages(detail.messages);
         setMode(detail.mode);
+        setThreadModel(detail.model_alias);
       })
       .catch(() => setError(t('Could not load this conversation.')));
   }, [conversationId, clearAttachments]);
@@ -403,6 +419,7 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
         {
           content: text,
           mode,
+          model_alias: onceModel,
           force_tool: pinnedTool?.name ?? null,
           ...(attachmentIds.length ? { attachment_ids: attachmentIds } : {}),
         },
@@ -412,8 +429,19 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
           setBusy(false);
         },
       );
+      // The override applies to this send only; the next one falls back to
+      // the thread's model until the picker is used again.
+      setOnceModel(null);
     },
-    [busy, mode, handleEvent, ensureConversation, attachments, pinnedTool],
+    [
+      busy,
+      mode,
+      handleEvent,
+      ensureConversation,
+      attachments,
+      pinnedTool,
+      onceModel,
+    ],
   );
 
   const decide = useCallback(
@@ -633,6 +661,31 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
             css={{ minWidth: 180 }}
           />
           {modeHint && <ModeHint>{modeHint}</ModeHint>}
+          <ModelPicker
+            models={models}
+            value={threadModel}
+            label={t('Model')}
+            disabled={busy}
+            onChange={alias => {
+              setThreadModel(alias);
+              // Unlike mode, the model alias has nowhere to ride along on the
+              // conversation's own creation call, so picking one before the
+              // first send has to bring the conversation into being itself
+              // rather than waiting for `send` to do it.
+              ensureConversation()
+                .then(convId =>
+                  updateConversation(convId, { model_alias: alias }),
+                )
+                .catch(() => undefined);
+            }}
+          />
+          <ModelPicker
+            models={models}
+            value={onceModel}
+            label={t('This message only')}
+            disabled={busy}
+            onChange={setOnceModel}
+          />
         </Space>
         <AttachmentList
           items={attachments.items}

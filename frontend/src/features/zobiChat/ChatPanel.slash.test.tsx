@@ -183,3 +183,64 @@ test('changing the mode while the palette is open keeps the highlight in range',
   const options = screen.getAllByRole('option');
   expect(options[1]).toHaveAttribute('aria-selected', 'true');
 });
+
+test('the thread picker persists and the once picker does not', async () => {
+  mockedApi.fetchChatModels.mockResolvedValue([
+    { alias: 'fast', is_default: false },
+    { alias: 'gpt-4o', is_default: true },
+  ]);
+  render(<ChatPanel />);
+
+  await userEvent.click(await screen.findByRole('combobox', { name: 'Model' }));
+  await userEvent.click(await screen.findByRole('option', { name: 'fast' }));
+
+  await waitFor(() =>
+    expect(mockedApi.updateConversation).toHaveBeenCalledWith(
+      expect.anything(),
+      { model_alias: 'fast' },
+    ),
+  );
+
+  mockedApi.updateConversation.mockClear();
+
+  // Querying by role rather than text: the Model dropdown just closed but
+  // stays mounted (hidden) in the DOM, and a plain text query would match its
+  // leftover "gpt-4o (default)" option as well as the freshly opened one.
+  // getByRole excludes it because antd marks the closed popup hidden via CSS.
+  await userEvent.click(
+    screen.getByRole('combobox', { name: 'This message only' }),
+  );
+  await userEvent.click(
+    await screen.findByRole('option', { name: 'gpt-4o (default)' }),
+  );
+
+  expect(mockedApi.updateConversation).not.toHaveBeenCalled();
+});
+
+test('the once override is sent and then reverts', async () => {
+  mockedApi.fetchChatModels.mockResolvedValue([
+    { alias: 'fast', is_default: false },
+  ]);
+  render(<ChatPanel />);
+
+  await userEvent.click(
+    await screen.findByRole('combobox', { name: 'This message only' }),
+  );
+  await userEvent.click(await screen.findByRole('option', { name: 'fast' }));
+  await userEvent.type(await screen.findByRole('textbox'), 'hello');
+  await userEvent.click(screen.getByLabelText('Send'));
+
+  await waitFor(() =>
+    expect(mockedApi.streamMessage).toHaveBeenCalledWith(
+      expect.anything(),
+      expect.objectContaining({ model_alias: 'fast' }),
+      expect.anything(),
+      expect.anything(),
+    ),
+  );
+  await waitFor(() =>
+    expect(
+      screen.getByRole('combobox', { name: 'This message only' }),
+    ).toHaveValue(''),
+  );
+});
