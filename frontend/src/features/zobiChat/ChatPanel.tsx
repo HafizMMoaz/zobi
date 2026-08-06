@@ -143,6 +143,34 @@ const ComposerRow = styled.div`
     display: flex;
     gap: ${theme.sizeUnit * 2}px;
     align-items: flex-end;
+
+    /*
+     * Attach, mic and send are rendered by three separate components but read
+     * as one control group, so the row owns their geometry rather than each
+     * component guessing at it. antd sizes a button to its own content, which
+     * is why send grew once it became primary and why the icons did not line
+     * up. Pinning to controlHeight is what the text input uses, so the whole
+     * row ends up on the same square grid.
+     */
+    button {
+      flex: none;
+      width: ${theme.controlHeight}px;
+      min-width: ${theme.controlHeight}px;
+      height: ${theme.controlHeight}px;
+      padding: 0;
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      border-radius: ${theme.borderRadius}px;
+    }
+  `}
+`;
+
+const ModeHint = styled.span`
+  ${({ theme }) => css`
+    font-size: ${theme.fontSizeXS}px;
+    line-height: ${theme.lineHeightSM};
+    color: ${theme.colorPrimary};
   `}
 `;
 
@@ -151,6 +179,14 @@ const RISK_COLOR: Record<string, string> = {
   write: 'blue',
   destructive: 'red',
 };
+
+/**
+ * How long a mode's description stays up after the user switches modes.
+ *
+ * The description is a confirmation of what just changed, not a standing label,
+ * so it clears itself rather than permanently occupying a row of the composer.
+ */
+const MODE_HINT_MS = 4000;
 
 interface ChatPanelProps {
   /** Existing conversation to open; omit to start a new one on first send. */
@@ -173,12 +209,23 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
   const [approval, setApproval] = useState<PendingApproval | null>(null);
   const [mode, setMode] = useState<AgentMode>('manual');
   const [modes, setModes] = useState<ModeOption[]>([]);
+  const [modeHint, setModeHint] = useState<string | null>(null);
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [dropping, setDropping] = useState(false);
 
   const abortRef = useRef<(() => void) | null>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
+  const hintTimerRef = useRef<number | null>(null);
+
+  // Drop the pending hint timer on unmount so it cannot fire into a component
+  // that is already gone.
+  useEffect(
+    () => () => {
+      if (hintTimerRef.current) window.clearTimeout(hintTimerRef.current);
+    },
+    [],
+  );
 
   // Attaching a file and sending a message both need a conversation, and
   // either can be the first to want one. These refs let the two paths share a
@@ -396,9 +443,20 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
   const changeMode = useCallback(
     (next: AgentMode) => {
       setMode(next);
+      // Surface the new mode's description just long enough to be read. Only a
+      // deliberate switch triggers it, so the mode pushed by an external sync
+      // does not flash a hint the user did not ask for.
+      setModeHint(
+        modes.find(option => option.value === next)?.description ?? null,
+      );
+      if (hintTimerRef.current) window.clearTimeout(hintTimerRef.current);
+      hintTimerRef.current = window.setTimeout(
+        () => setModeHint(null),
+        MODE_HINT_MS,
+      );
       if (id) updateConversation(id, { mode: next }).catch(() => undefined);
     },
-    [id],
+    [id, modes],
   );
 
   /**
@@ -550,9 +608,7 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
             }))}
             css={{ minWidth: 180 }}
           />
-          <Typography.Text type="secondary">
-            {modes.find(option => option.value === mode)?.description}
-          </Typography.Text>
+          {modeHint && <ModeHint>{modeHint}</ModeHint>}
         </Space>
         <AttachmentList
           items={attachments.items}
@@ -581,26 +637,27 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
           />
           {busy ? (
             <Button
+              aria-label={t('Stop')}
+              tooltip={t('Stop generating')}
+              icon={<Icons.StopOutlined />}
               onClick={() => {
                 abortRef.current?.();
                 setBusy(false);
               }}
-            >
-              {t('Stop')}
-            </Button>
+            />
           ) : (
             <Button
               buttonStyle="primary"
               disabled={!draft.trim() || attachments.uploading}
+              aria-label={t('Send')}
               tooltip={
                 attachments.uploading
                   ? t('Waiting for attachments to finish uploading')
-                  : undefined
+                  : t('Send')
               }
+              icon={<Icons.SendOutlined />}
               onClick={() => send(draft)}
-            >
-              {t('Send')}
-            </Button>
+            />
           )}
         </ComposerRow>
       </Composer>

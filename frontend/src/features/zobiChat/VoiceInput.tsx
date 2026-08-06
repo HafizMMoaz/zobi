@@ -383,7 +383,7 @@ const VoiceInput: FunctionComponent<VoiceInputProps> = ({
         disabled={disabled}
         aria-label={t('Record a voice message')}
         tooltip={failure ?? t('Record a voice message')}
-        icon={failure ? <Icons.WarningOutlined /> : <Icons.CircleSolid />}
+        icon={failure ? <Icons.WarningOutlined /> : <Icons.AudioOutlined />}
         onClick={start}
       />
     </Wrapper>
