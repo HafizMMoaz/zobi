@@ -176,9 +176,20 @@ services:
       zobi: "http://zobi:8088"
       # Webpack dev server must bind to 0.0.0.0 to be accessible from outside the container
       WEBPACK_DEVSERVER_HOST: "0.0.0.0"
+      # Cap the webpack dev server's V8 heap. Node sizes its default heap from
+      # the memory it can see, which is the whole Docker VM, so it will happily
+      # grow past what is left once Postgres, Redis, the app and the Celery
+      # workers have taken their share - and then the VM OOM-kills it. Keep this
+      # comfortably below (VM memory - the other services) and raise it only if
+      # builds start failing with "JavaScript heap out of memory".
+      ZOBI_NODE_HEAP_MB: "${ZOBI_NODE_HEAP_MB:-3072}"
     ports:
       - "127.0.0.1:${NODE_PORT:-9000}:9000"  # exposing the dynamic webpack dev server
     command: ["/app/docker/docker-frontend.sh"]
+    # Without this, an OOM kill leaves the frontend silently dead: the backend
+    # keeps serving, so the only symptom is a browser that stops picking up
+    # changes. Every other long-running service here restarts the same way.
+    restart: unless-stopped
     env_file:
       - path: docker/.env # default
         required: true
