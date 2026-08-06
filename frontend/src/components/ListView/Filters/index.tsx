@@ -3,7 +3,7 @@ import {
   forwardRef,
   useImperativeHandle,
   useMemo,
-  RefObject,
+  ForwardedRef,
 } from 'react';
 
 import { withTheme } from '@zobi.dev/extension-api/theme';
@@ -28,7 +28,7 @@ interface UIFiltersProps {
 
 function UIFilters(
   { filters, internalFilters = [], updateFilterValue }: UIFiltersProps,
-  ref: RefObject<{ clearFilters: () => void }>,
+  ref: ForwardedRef<{ clearFilters: () => void }>,
 ) {
   const filterRefs = useMemo(
     () =>

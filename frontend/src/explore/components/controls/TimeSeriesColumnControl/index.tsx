@@ -243,7 +243,7 @@ export default class TimeSeriesColumnControl extends Component<
           <Select
             ariaLabel={t('Type')}
             value={this.state.colType || undefined}
-            onChange={this.onSelectChange.bind(this, 'colType')}
+            onChange={value => this.onSelectChange('colType', value as string)}
             options={colTypeOptions}
           />,
         )}
@@ -256,7 +256,9 @@ export default class TimeSeriesColumnControl extends Component<
             <Select
               ariaLabel={t('Chart Type')}
               value={this.state.sparkType || undefined}
-              onChange={this.onSelectChange.bind(this, 'sparkType')}
+              onChange={value =>
+                this.onSelectChange('sparkType', value as string)
+              }
               options={sparkTypeOptions}
             />,
           )}
@@ -314,7 +316,9 @@ export default class TimeSeriesColumnControl extends Component<
             <Select
               ariaLabel={t('Type')}
               value={this.state.comparisonType || undefined}
-              onChange={this.onSelectChange.bind(this, 'comparisonType')}
+              onChange={value =>
+                this.onSelectChange('comparisonType', value as string)
+              }
               options={comparisonTypeOptions}
             />,
           )}

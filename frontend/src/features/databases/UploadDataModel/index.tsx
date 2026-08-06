@@ -682,7 +682,11 @@ const UploadDataModal: FunctionComponent<UploadDataModalProps> = ({
                         <AsyncSelect
                           ariaLabel={t('Select a database')}
                           options={loadDatabaseOptions}
-                          onChange={onChangeDatabase}
+                          onChange={value =>
+                            onChangeDatabase(
+                              value as { value: number; label: string },
+                            )
+                          }
                           allowClear
                           placeholder={t(
                             'Select a database to upload the file to',
@@ -697,7 +701,11 @@ const UploadDataModal: FunctionComponent<UploadDataModalProps> = ({
                         <AsyncSelect
                           ariaLabel={t('Select a schema')}
                           options={loadSchemaOptions}
-                          onChange={onChangeSchema}
+                          onChange={value =>
+                            onChangeSchema(
+                              value as { value: string; label: string },
+                            )
+                          }
                           allowClear
                           placeholder={t(
                             'Select a schema if the database supports this',
@@ -740,7 +748,9 @@ const UploadDataModal: FunctionComponent<UploadDataModalProps> = ({
                           <Select
                             ariaLabel={t('Choose a delimiter')}
                             options={delimiterOptions}
-                            onChange={onChangeDelimiter}
+                            onChange={value =>
+                              onChangeDelimiter(value as string)
+                            }
                             allowNewOptions
                           />
                         </StyledFormItemWithTip>
@@ -757,7 +767,9 @@ const UploadDataModal: FunctionComponent<UploadDataModalProps> = ({
                           <Select
                             ariaLabel={t('Choose sheet name')}
                             options={sheetNamesToOptions()}
-                            onChange={onSheetNameChange}
+                            onChange={value =>
+                              onSheetNameChange(value as string)
+                            }
                             allowNewOptions
                             placeholder={t(
                               'Select a sheet name from the uploaded file',

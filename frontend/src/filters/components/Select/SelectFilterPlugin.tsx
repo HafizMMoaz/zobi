@@ -552,7 +552,7 @@ export default function PluginFilterSelect(props: PluginFilterSelectProps) {
                 { value: 'true', label: t('is not') },
                 { value: 'false', label: t('is') },
               ]}
-              onChange={handleExclusionToggle}
+              onChange={value => handleExclusionToggle(value as string)}
             />
           )}
           {isLikeOperator ? (

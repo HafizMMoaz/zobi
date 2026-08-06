@@ -399,7 +399,7 @@ export const FormattingPopoverContent = ({
               <Select
                 ariaLabel={t('Select column name')}
                 options={getColumnOptions()}
-                onChange={(value: string | undefined) => {
+                onChange={value => {
                   handleAllColumnChange(value as string);
                 }}
               />
@@ -422,8 +422,8 @@ export const FormattingPopoverContent = ({
               <Select
                 ariaLabel={t('Select object name')}
                 options={formattingOptions}
-                onChange={(value: ObjectFormattingEnum) => {
-                  handleObjectChange(value);
+                onChange={value => {
+                  handleObjectChange(value as ObjectFormattingEnum);
                 }}
               />
             </FormItem>

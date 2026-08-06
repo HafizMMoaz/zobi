@@ -304,7 +304,7 @@ export default function MatrixifyDimensionControl(
               validationErrors={validationErrors}
             />
           }
-          onChange={handleDimensionChange}
+          onChange={value => handleDimensionChange(value as string)}
           options={dimensionOptions.map(([val, label]) => ({
             value: val,
             label,
@@ -331,7 +331,7 @@ export default function MatrixifyDimensionControl(
               />
             }
             mode="multiple"
-            onChange={handleValuesChange}
+            onChange={value => handleValuesChange(value as any[])}
             options={valueOptions}
             placeholder={t('Select values')}
             loading={loadingValues}

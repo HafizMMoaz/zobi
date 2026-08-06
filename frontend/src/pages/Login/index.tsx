@@ -147,7 +147,7 @@ export default function Login() {
         {authType === AuthType.AuthOID && (
           <Flex justify="center" vertical gap="middle">
             <Form layout="vertical" requiredMark="optional" form={form}>
-              {providers.map((provider: OIDProvider) => (
+              {providers.map(provider => (
                 <Form.Item<LoginForm>>
                   <Button
                     href={buildProviderLoginUrl(provider.name)}
@@ -166,7 +166,7 @@ export default function Login() {
           authType === AuthType.AuthSAML) && (
           <Flex justify="center" gap={0} vertical>
             <Form layout="vertical" requiredMark="optional" form={form}>
-              {providers.map((provider: OAuthProvider) => (
+              {providers.map(provider => (
                 <Form.Item<LoginForm>>
                   <Button
                     href={buildProviderLoginUrl(provider.name)}

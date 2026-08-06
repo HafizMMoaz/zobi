@@ -92,7 +92,7 @@ export default function AdhocFilterEditPopoverSqlTabContent({
             ariaLabel={t('Select column')}
             placeholder={t('choose WHERE or HAVING...')}
             value={adhocFilter.clause}
-            onChange={onSqlExpressionClauseChange}
+            onChange={value => onSqlExpressionClauseChange(value as string)}
           />
         </div>
         <span className="filter-edit-clause-info">

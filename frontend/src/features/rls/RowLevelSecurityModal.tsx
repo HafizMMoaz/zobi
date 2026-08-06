@@ -358,7 +358,7 @@ function RowLevelSecurityModal(props: RowLevelSecurityModalProps) {
                 name="filter_type"
                 ariaLabel={t('Filter Type')}
                 placeholder={t('Filter Type')}
-                onChange={onFilterChange}
+                onChange={value => onFilterChange(value as string)}
                 value={currentRule?.filter_type}
                 options={FILTER_OPTIONS}
                 data-test="rule-filter-type-test"
@@ -378,7 +378,7 @@ function RowLevelSecurityModal(props: RowLevelSecurityModalProps) {
               <AsyncSelect
                 ariaLabel={t('Tables')}
                 mode="multiple"
-                onChange={onTablesChange}
+                onChange={value => onTablesChange(value as SelectValue[])}
                 value={(currentRule?.tables as SelectValue[]) || []}
                 options={loadTableOptions}
               />
@@ -400,7 +400,7 @@ function RowLevelSecurityModal(props: RowLevelSecurityModalProps) {
               <AsyncSelect
                 ariaLabel={t('Roles')}
                 mode="multiple"
-                onChange={onRolesChange}
+                onChange={value => onRolesChange(value as SelectValue[])}
                 value={(currentRule?.roles as SelectValue[]) || []}
                 options={loadRoleOptions}
               />

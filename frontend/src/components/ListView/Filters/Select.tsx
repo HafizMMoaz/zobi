@@ -3,7 +3,7 @@ import {
   useMemo,
   forwardRef,
   useImperativeHandle,
-  type RefObject,
+  type ForwardedRef,
 } from 'react';
 
 import { t } from '@zobi.dev/extension-api/translation';
@@ -36,7 +36,7 @@ function SelectFilter(
     loading = false,
     dropdownStyle,
   }: SelectFilterProps,
-  ref: RefObject<FilterHandler>,
+  ref: ForwardedRef<FilterHandler>,
 ) {
   const [selectedOption, setSelectedOption] = useState(initialValue);
 
@@ -105,7 +105,9 @@ function SelectFilter(
           allowClear
           ariaLabel={typeof Header === 'string' ? Header : name || t('Filter')}
           data-test="filters-select"
-          onChange={onChange}
+          onChange={(value, option) =>
+            onChange(value as SelectOption, option as SelectOption)
+          }
           onClear={onClear}
           options={fetchAndFormatSelects}
           optionFilterProps={optionFilterProps}
@@ -120,7 +122,9 @@ function SelectFilter(
           ariaLabel={typeof Header === 'string' ? Header : name || t('Filter')}
           data-test="filters-select"
           labelInValue
-          onChange={onChange}
+          onChange={(value, option) =>
+            onChange(value as SelectOption, option as SelectOption)
+          }
           onClear={onClear}
           options={selects}
           placeholder={placeholder}

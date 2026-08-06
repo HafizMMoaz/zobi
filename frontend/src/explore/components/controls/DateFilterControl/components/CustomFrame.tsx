@@ -113,7 +113,7 @@ export function CustomFrame(props: FrameComponentProps) {
               ariaLabel={t('Start (inclusive)')}
               options={SINCE_MODE_OPTIONS}
               value={sinceMode}
-              onChange={(value: string) => onChange('sinceMode', value)}
+              onChange={value => onChange('sinceMode', value as string)}
             />
             {sinceMode === 'specific' && (
               <Row>
@@ -154,7 +154,7 @@ export function CustomFrame(props: FrameComponentProps) {
                     ariaLabel={t('Relative period')}
                     options={SINCE_GRAIN_OPTIONS}
                     value={sinceGrain}
-                    onChange={(value: string) => onChange('sinceGrain', value)}
+                    onChange={value => onChange('sinceGrain', value as string)}
                   />
                 </Col>
               </Row>
@@ -172,7 +172,7 @@ export function CustomFrame(props: FrameComponentProps) {
               ariaLabel={t('End (exclusive)')}
               options={UNTIL_MODE_OPTIONS}
               value={untilMode}
-              onChange={(value: string) => onChange('untilMode', value)}
+              onChange={value => onChange('untilMode', value as string)}
             />
             {untilMode === 'specific' && (
               <Row>
@@ -212,7 +212,7 @@ export function CustomFrame(props: FrameComponentProps) {
                     ariaLabel={t('Relative period')}
                     options={UNTIL_GRAIN_OPTIONS}
                     value={untilGrain}
-                    onChange={(value: string) => onChange('untilGrain', value)}
+                    onChange={value => onChange('untilGrain', value as string)}
                   />
                 </Col>
               </Row>

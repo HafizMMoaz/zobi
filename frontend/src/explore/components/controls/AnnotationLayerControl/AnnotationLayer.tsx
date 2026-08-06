@@ -681,7 +681,7 @@ class AnnotationLayer extends PureComponent<
           header={this.renderChartHeader(label, description, value)}
           options={this.fetchOptions}
           value={value || null}
-          onChange={this.handleSelectValue}
+          onChange={value => this.handleSelectValue(value as SelectOption)}
           notFoundContent={<NotFoundContent />}
         />
       );
@@ -1074,7 +1074,7 @@ class AnnotationLayer extends PureComponent<
                 clearable={false}
                 options={supportedAnnotationTypes}
                 value={annotationType}
-                onChange={this.handleAnnotationType}
+                onChange={value => this.handleAnnotationType(value as string)}
               />
               {supportedSourceTypes.length > 0 && (
                 <SelectControl
@@ -1086,7 +1086,9 @@ class AnnotationLayer extends PureComponent<
                   options={supportedSourceTypes}
                   notFoundContent={<NotFoundContent />}
                   value={sourceType}
-                  onChange={this.handleAnnotationSourceType}
+                  onChange={value =>
+                    this.handleAnnotationSourceType(value as string)
+                  }
                   validationErrors={!sourceType ? [t('Mandatory')] : []}
                 />
               )}

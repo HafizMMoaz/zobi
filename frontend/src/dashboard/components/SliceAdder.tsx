@@ -381,7 +381,7 @@ class SliceAdder extends Component<SliceAdderProps, SliceAdderState> {
           <StyledSelect
             id="slice-adder-sortby"
             value={this.state.sortBy}
-            onChange={this.handleSelect}
+            onChange={value => this.handleSelect(value as keyof Slice)}
             options={Object.entries(KEYS_TO_SORT).map(([key, label]) => ({
               label: t('Sort by %s', label),
               value: key,

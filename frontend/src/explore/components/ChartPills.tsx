@@ -1,4 +1,4 @@
-import { forwardRef, RefObject } from 'react';
+import { forwardRef, ForwardedRef } from 'react';
 import { QueryData, VizType } from '@zobi.dev/core';
 import { css, ZobiTheme } from '@zobi.dev/extension-api/theme';
 import { CachedLabel, type LabelType, Timer } from '@zobi.dev/core/components';
@@ -40,7 +40,7 @@ export const ChartPills = forwardRef(
       hideRowCount = false,
       formData,
     }: ChartPillsProps,
-    ref: RefObject<HTMLDivElement>,
+    ref: ForwardedRef<HTMLDivElement>,
   ) => {
     const isLoading = chartStatus === 'loading';
     const firstQueryResponse = queriesResponse?.[0];

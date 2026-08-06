@@ -91,7 +91,7 @@ const DatasetSelect = ({
       ariaLabel={datasetLabel()}
       value={value}
       options={loadDatasetOptionsCallback}
-      onChange={onChange}
+      onChange={value => onChange(value as { label: ReactNode; value: number })}
       optionFilterProps={['table_name']}
       notFoundContent={t('No compatible %s found', datasetsLabelLower())}
       placeholder={t('Select a %s', datasetLabelLower())}

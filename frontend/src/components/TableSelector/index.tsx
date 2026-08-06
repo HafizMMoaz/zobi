@@ -297,8 +297,8 @@ const TableSelector: FunctionComponent<TableSelectorProps> = ({
         labelInValue
         loading={loadingTables}
         name="select-table"
-        onChange={(options: TableOption | TableOption[]) =>
-          internalTableChange(options)
+        onChange={value =>
+          internalTableChange(value as TableOption | TableOption[])
         }
         options={tableOptions}
         placeholder={t('Select table or type to search tables')}

@@ -115,10 +115,10 @@ function PropertiesModal({
   });
 
   const tagsAsSelectValues = useMemo(() => {
-    const selectTags = tags.map((tag: { id: number; name: string }) => ({
-      value: tag.id,
-      label: tag.name,
-    }));
+    const selectTags = tags.map(tag => {
+      const { id, name } = tag as { id: number; name: string };
+      return { value: id, label: name };
+    });
     return selectTags;
   }, [tags.length]);
 
@@ -401,7 +401,11 @@ function PropertiesModal({
                       mode="multiple"
                       value={tagsAsSelectValues}
                       options={loadTags}
-                      onChange={handleChangeTags}
+                      onChange={value =>
+                        handleChangeTags(
+                          value as { label: string; value: number }[],
+                        )
+                      }
                       onClear={handleClearTags}
                       allowClear
                     />

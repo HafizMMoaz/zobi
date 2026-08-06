@@ -439,7 +439,11 @@ export const NotificationMethod: FunctionComponent<NotificationMethodProps> = ({
               ariaLabel={t('Delivery method')}
               data-test="select-delivery-method"
               labelInValue
-              onChange={onMethodChange}
+              onChange={value =>
+                onMethodChange(
+                  value as { label: string; value: NotificationMethodOption },
+                )
+              }
               placeholder={t('Select Delivery Method')}
               options={methodOptions}
               showSearch
@@ -533,7 +537,11 @@ export const NotificationMethod: FunctionComponent<NotificationMethodProps> = ({
                         name="recipients"
                         value={slackRecipients}
                         options={slackOptions}
-                        onChange={onSlackRecipientsChange}
+                        onChange={value =>
+                          onSlackRecipientsChange(
+                            value as { label: string; value: string }[],
+                          )
+                        }
                         allowClear
                         data-test="recipients"
                         loading={isSlackChannelsLoading}

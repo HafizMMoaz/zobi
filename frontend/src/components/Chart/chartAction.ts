@@ -7,6 +7,7 @@ import {
   getClientErrorObject,
   QueryFormData,
   JsonObject,
+  JsonResponse,
   QueryData,
   AnnotationLayer,
   DataMask,
@@ -419,14 +420,18 @@ const legacyChartDataRequest = async (
 
   return ZobiClient.post(
     querySettings as Parameters<typeof ZobiClient.post>[0],
-  ).then(({ json, response }: { json: JsonObject; response: Response }) =>
+  ).then(result => {
+    // post() is declared to resolve any parse method's shape, but this request
+    // always asks for a JSON one (getQuerySettings falls back to 'json-bigint'),
+    // so the response carries a parsed body.
+    const { json, response } = result as JsonResponse;
     // Make the legacy endpoint return a payload that corresponds to the
     // V1 chart data endpoint response signature.
-    ({
+    return {
       response,
       json: { result: [json] },
-    }),
-  );
+    };
+  });
 };
 
 const v1ChartDataRequest = async (

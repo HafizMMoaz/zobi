@@ -1,4 +1,4 @@
-import { forwardRef, RefObject, MouseEvent } from 'react';
+import { forwardRef, ForwardedRef, MouseEvent } from 'react';
 import { Button } from '@zobi.dev/core/components';
 import { ErrorAlert } from 'src/components';
 import { styled } from '@zobi.dev/extension-api/theme';
@@ -32,7 +32,7 @@ export const ExploreAlert = forwardRef(
       type = 'info',
       className = '',
     }: ControlPanelAlertProps,
-    ref: RefObject<HTMLDivElement>,
+    ref: ForwardedRef<HTMLDivElement>,
   ) => (
     <ErrorAlert
       errorType={title}

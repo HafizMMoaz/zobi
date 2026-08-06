@@ -75,15 +75,16 @@ export default function PluginFilterTimeColumn(
     );
   }
 
-  const options = timeColumns.map(
-    (row: { column_name: string; verbose_name: string | null }) => {
-      const { column_name: columnName, verbose_name: verboseName } = row;
-      return {
-        label: verboseName ?? columnName,
-        value: columnName,
-      };
-    },
-  );
+  const options = timeColumns.map(row => {
+    const { column_name: columnName, verbose_name: verboseName } = row as {
+      column_name: string;
+      verbose_name: string | null;
+    };
+    return {
+      label: verboseName ?? columnName,
+      value: columnName,
+    };
+  });
 
   return (
     <FilterPluginStyle height={height} width={width}>

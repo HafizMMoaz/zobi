@@ -1,8 +1,8 @@
 // Test comment for pre-commit
 import {
+  ForwardedRef,
   forwardRef,
   ReactNode,
-  RefObject,
   useCallback,
   useImperativeHandle,
   useMemo,
@@ -74,7 +74,7 @@ const ChartContextMenu = (
     displayedItems = ContextMenuItem.All,
     additionalConfig,
   }: ChartContextMenuProps,
-  ref: RefObject<ChartContextMenuRef>,
+  ref: ForwardedRef<ChartContextMenuRef>,
 ) => {
   const dispatch = useDispatch();
   const theme = useTheme();

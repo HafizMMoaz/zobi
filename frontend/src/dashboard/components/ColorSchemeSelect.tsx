@@ -167,7 +167,7 @@ const ColorSchemeSelect = ({
         `}
         aria-label={t('Select color scheme')}
         allowClear={clearable}
-        onChange={onChange}
+        onChange={value => onChange(value as string)}
         placeholder={t('Select scheme')}
         value={currentScheme}
         showSearch

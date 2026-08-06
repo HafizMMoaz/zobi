@@ -661,7 +661,11 @@ class SaveModal extends Component<SaveModalProps, SaveModalState> {
             allowNewOptions
             ariaLabel={t('Select a dashboard')}
             options={this.loadDashboards}
-            onChange={this.onDashboardChange}
+            onChange={value =>
+              this.onDashboardChange(
+                value as { label: string; value: string | number } | undefined,
+              )
+            }
             value={this.state.dashboard}
             placeholder={
               <div>

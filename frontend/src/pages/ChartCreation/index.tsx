@@ -325,7 +325,11 @@ export class ChartCreation extends PureComponent<
                   autoFocus
                   ariaLabel={datasetLabel()}
                   name="select-datasource"
-                  onChange={this.changeDatasource}
+                  onChange={value =>
+                    this.changeDatasource(
+                      value as { label: ReactNode; value: string },
+                    )
+                  }
                   options={this.loadDatasources}
                   optionFilterProps={['id', 'table_name']}
                   placeholder={t('Choose a %s', datasetLabelLower())}

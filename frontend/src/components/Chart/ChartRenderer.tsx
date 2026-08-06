@@ -330,7 +330,9 @@ class ChartRenderer extends Component<ChartRendererProps, ChartRendererState> {
 
   handleRenderFailure(
     error: Error,
-    info: { componentStack: string } | null,
+    // Optional because SuperChart's onRenderFailure supplies only the error.
+    // React error boundaries pass a second argument, hence the parameter.
+    info?: { componentStack: string } | null,
   ): void {
     const { actions, chartId } = this.props;
     logging.warn(error);

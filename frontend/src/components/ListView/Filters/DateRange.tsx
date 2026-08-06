@@ -3,7 +3,7 @@ import {
   useMemo,
   forwardRef,
   useImperativeHandle,
-  RefObject,
+  ForwardedRef,
 } from 'react';
 
 import { t } from '@zobi.dev/extension-api/translation';
@@ -35,7 +35,7 @@ function DateRangeFilter(
     onSubmit,
     dateFilterValueType = 'unix',
   }: DateRangeFilterProps,
-  ref: RefObject<FilterHandler>,
+  ref: ForwardedRef<FilterHandler>,
 ) {
   const [value, setValue] = useState<ValueState | null>(initialValue ?? null);
   const dayjsValue = useMemo((): [Dayjs, Dayjs] | null => {

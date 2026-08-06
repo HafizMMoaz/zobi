@@ -167,7 +167,7 @@ export default function DeckglLayerVisibilityCustomizationPlugin(
               mode="multiple"
               oneLine
               value={hiddenLayers}
-              onChange={handleLayerChange}
+              onChange={value => handleLayerChange(value as number[])}
               options={selectOptions}
               placeholder={t('Select layers to hide')}
               allowClear

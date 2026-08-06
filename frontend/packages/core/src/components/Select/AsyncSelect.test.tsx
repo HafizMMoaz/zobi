@@ -7,7 +7,7 @@ import {
   waitFor,
   within,
 } from '@zobi.dev/core/spec';
-import { AsyncSelect } from '.';
+import { AsyncSelect, type LabeledValue } from '.';
 
 const ARIA_LABEL = 'Test';
 const NEW_OPTION = 'Kyle';
@@ -38,6 +38,9 @@ const OPTIONS = [
   { label: 'Cher', value: 22, gender: 'Female' },
   { label: 'Her', value: 23, gender: 'Male' },
 ].sort((option1, option2) => option1.label.localeCompare(option2.label));
+// The fixture carries a `gender` field that the public `LabeledValue` contract
+// does not model, so tests that read it have to narrow explicitly.
+type TestOption = (typeof OPTIONS)[0];
 const NULL_OPTION = { label: '<NULL>', value: null } as unknown as {
   label: string;
   value: number;
@@ -201,10 +204,12 @@ test('sort the options by label if no sort comparator is provided', async () => 
 });
 
 test('sort the options using a custom sort comparator', async () => {
-  const sortComparator = (
-    option1: (typeof OPTIONS)[0],
-    option2: (typeof OPTIONS)[0],
-  ) => option1.gender.localeCompare(option2.gender);
+  // Must accept `LabeledValue`: AsyncSelect may hand this comparator any
+  // option, not just fixture options. Sorts by the fixture's `gender` field.
+  const sortComparator = (option1: LabeledValue, option2: LabeledValue) =>
+    (option1 as TestOption).gender.localeCompare(
+      (option2 as TestOption).gender,
+    );
   render(<AsyncSelect {...defaultProps} sortComparator={sortComparator} />);
   await open();
   const options = await findAllSelectOptions();

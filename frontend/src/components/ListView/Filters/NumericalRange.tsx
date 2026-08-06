@@ -1,4 +1,4 @@
-import { useState, forwardRef, useImperativeHandle, RefObject } from 'react';
+import { useState, forwardRef, useImperativeHandle, ForwardedRef } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { styled } from '@zobi.dev/extension-api/theme';
 import { InputNumber } from '@zobi.dev/core/components/Input';
@@ -39,7 +39,7 @@ interface NumericalRangeFilterProps extends BaseFilter {
 
 function NumericalRangeFilter(
   { Header, initialValue, onSubmit }: NumericalRangeFilterProps,
-  ref: RefObject<FilterHandler>,
+  ref: ForwardedRef<FilterHandler>,
 ) {
   const [value, setValue] = useState<[number | null, number | null]>(
     initialValue ?? [null, null],

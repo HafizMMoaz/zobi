@@ -206,7 +206,7 @@ const StylingSection = ({
           >
             <Select
               data-test="dashboard-css-template-select"
-              onChange={handleTemplateSelect}
+              onChange={value => handleTemplateSelect(value as string)}
               options={cssTemplates.map(template => ({
                 value: template.template_name,
                 label: template.template_name,
