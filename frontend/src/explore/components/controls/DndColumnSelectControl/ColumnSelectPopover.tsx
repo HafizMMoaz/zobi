@@ -398,7 +398,9 @@ const ColumnSelectPopover = ({
                           <StyledSelect
                             ariaLabel={savedExpressionsLabel}
                             value={selectedCalculatedColumn?.column_name}
-                            onChange={onCalculatedColumnChange}
+                            onChange={value =>
+                              onCalculatedColumnChange(value as string)
+                            }
                             allowClear
                             autoFocus={!selectedCalculatedColumn}
                             placeholder={t(
@@ -519,7 +521,7 @@ const ColumnSelectPopover = ({
                         selectedSimpleColumn?.column_name ||
                         selectedMetric?.metric_name
                       }
-                      onChange={onSimpleItemChange}
+                      onChange={value => onSimpleItemChange(value as string)}
                       allowClear
                       autoFocus={!selectedSimpleColumn && !selectedMetric}
                       placeholder={t(

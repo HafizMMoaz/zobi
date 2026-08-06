@@ -9,9 +9,23 @@ Docker is an easy way to get started with Zobi.
 
 ## Configuration
 
-The `/app/pythonpath` folder is mounted from [`./docker/pythonpath_dev`](./pythonpath_dev)
-which contains a base configuration [`./docker/pythonpath_dev/zobi_config.py`](./pythonpath_dev/zobi_config.py)
-intended for use with local development.
+The base configuration intended for local development lives in
+[`./docker/pythonpath_dev/zobi_config.py`](./pythonpath_dev/zobi_config.py). That folder is
+bind-mounted into the containers at `/app/docker/pythonpath_dev`, and `docker-compose.yml`
+puts it on the containers' `PYTHONPATH`. Zobi's own [`zobi/config.py`](../zobi/config.py)
+ends with an `import zobi_config` fallback, so the file is picked up automatically. A fresh
+clone therefore gets the compose Postgres, Celery and feature-flag settings with no setup
+step.
+
+If you would rather point Zobi at a config file explicitly, set `ZOBI_CONFIG_PATH` to its
+absolute path inside the container (for example in `./docker/.env-local`):
+
+```bash
+ZOBI_CONFIG_PATH=/app/docker/pythonpath_dev/zobi_config.py
+```
+
+`ZOBI_CONFIG_PATH` takes precedence over the `PYTHONPATH` lookup when it is set. Both routes
+load the same file, so it is purely a matter of preference.
 
 ### Local overrides
 
@@ -23,6 +37,8 @@ To override environment variables locally, create a `./docker/.env-local` file (
 
 In order to override configuration settings locally, simply make a copy of [`./docker/pythonpath_dev/zobi_config_local.example`](./pythonpath_dev/zobi_config_local.example)
 into `./docker/pythonpath_dev/zobi_config_docker.py` (git-ignored) and fill in your overrides.
+`zobi_config.py` imports `zobi_config_docker` at the end if it is importable, which it is
+because `./docker/pythonpath_dev` is on the containers' `PYTHONPATH`.
 
 #### WebSocket Configuration
 

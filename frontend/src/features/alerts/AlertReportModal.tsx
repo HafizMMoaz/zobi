@@ -2137,7 +2137,9 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
                         }[]) || []
                       }
                       options={loadOwnerOptions}
-                      onChange={onOwnersChange}
+                      onChange={value =>
+                        onOwnersChange(value as Array<SelectValue>)
+                      }
                       data-test="owners-select"
                       optionFilterProps={OWNER_OPTION_FILTER_PROPS}
                     />
@@ -2205,7 +2207,9 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
                                   : undefined
                               }
                               options={loadSourceOptions}
-                              onChange={onSourceChange}
+                              onChange={value =>
+                                onSourceChange(value as Array<SelectValue>)
+                              }
                             />
                           </div>
                         </StyledInputContainer>
@@ -2245,7 +2249,9 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
                             <div className="input-container">
                               <Select
                                 ariaLabel={t('Condition')}
-                                onChange={onConditionChange}
+                                onChange={value =>
+                                  onConditionChange(value as Operator)
+                                }
                                 placeholder={t('Condition')}
                                 value={
                                   currentAlert?.validator_config_json?.op ||
@@ -2311,7 +2317,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
                     </div>
                     <Select
                       ariaLabel={t('Select content type')}
-                      onChange={onContentTypeChange}
+                      onChange={value => onContentTypeChange(value as string)}
                       value={contentType}
                       options={CONTENT_TYPE_OPTIONS}
                       placeholder={t('Select content type')}
@@ -2338,7 +2344,9 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
                               : undefined
                           }
                           options={loadChartOptions}
-                          onChange={onChartChange}
+                          onChange={value =>
+                            onChartChange(value as SelectValue)
+                          }
                           placeholder={t('Select chart to use')}
                         />
                       </>
@@ -2361,7 +2369,9 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
                               : undefined
                           }
                           options={loadDashboardOptions}
-                          onChange={onDashboardChange}
+                          onChange={value =>
+                            onDashboardChange(value as SelectValue)
+                          }
                           placeholder={t('Select dashboard to use')}
                         />
                       </>
@@ -2381,7 +2391,7 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
                         </div>
                         <Select
                           ariaLabel={t('Select format')}
-                          onChange={onFormatChange}
+                          onChange={value => onFormatChange(value as string)}
                           value={reportFormat}
                           options={
                             contentType === ContentType.Dashboard
@@ -2603,7 +2613,9 @@ const AlertReportModal: FunctionComponent<AlertReportModalProps> = ({
                       <Select
                         ariaLabel={t('Log retention')}
                         placeholder={t('Log retention')}
-                        onChange={onLogRetentionChange}
+                        onChange={value =>
+                          onLogRetentionChange(value as number)
+                        }
                         value={currentAlert?.log_retention}
                         options={RETENTION_OPTIONS}
                         sortComparator={propertyComparator('value')}

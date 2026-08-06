@@ -29,7 +29,10 @@ export const formatValueHandler = (
     if (!value.length) return '[]';
 
     return value
-      .map((v: FilterItemType): string => {
+      .map((entry): string => {
+        // The surrounding controlsMap check establishes that this branch only
+        // sees adhoc filters, which the array's own element union cannot say.
+        const v = entry as FilterItemType;
         const filterVal: string | string[] | undefined =
           v.comparator && v.comparator.constructor === Array
             ? `[${v.comparator.join(', ')}]`
@@ -45,16 +48,17 @@ export const formatValueHandler = (
     return `Min: ${value[0]}, Max: ${value[1]}`;
 
   if (controlsMap[key]?.type === 'CollectionControl' && Array.isArray(value))
-    return value
-      .map((v: FilterItemType): string => safeStringify(v))
-      .join(', ');
+    return value.map((v): string => safeStringify(v)).join(', ');
 
   if (
     controlsMap[key]?.type === 'MetricsControl' &&
     value.constructor === Array
   ) {
     const formattedValue: (string | FilterItemType)[] = value.map(
-      (v: FilterItemType): string | FilterItemType => v?.label ?? v,
+      (entry): string | FilterItemType => {
+        const v = entry as FilterItemType;
+        return v?.label ?? v;
+      },
     );
     return formattedValue.length ? formattedValue.join(', ') : '[]';
   }

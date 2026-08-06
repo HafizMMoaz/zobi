@@ -4,6 +4,7 @@ import {
   DataMaskState,
   DataMaskStateWithId,
   DataMaskWithId,
+  Divider,
   Filter,
   Filters,
 } from '@zobi.dev/core';
@@ -26,7 +27,9 @@ export const useFilters = () => {
   return useMemo(
     () =>
       filterConfiguration.reduce(
-        (acc, filter: Filter) => ({
+        // FilterConfiguration is Array<Filter | Divider>, so the accumulator
+        // must accept dividers too, not just filters.
+        (acc, filter: Filter | Divider) => ({
           ...acc,
           [filter.id]: {
             ...filter,

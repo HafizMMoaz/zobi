@@ -1,4 +1,4 @@
-import { forwardRef, MouseEvent, ReactNode, RefObject } from 'react';
+import { forwardRef, MouseEvent, ReactNode, ForwardedRef } from 'react';
 
 import { t } from '@zobi.dev/extension-api/translation';
 import { css, styled } from '@zobi.dev/extension-api/theme';
@@ -60,7 +60,7 @@ const LabelContainer = styled.div<{
 `;
 
 export const DateLabel = forwardRef(
-  (props: DateLabelProps, ref: RefObject<HTMLSpanElement>) => (
+  (props: DateLabelProps, ref: ForwardedRef<HTMLSpanElement>) => (
     <LabelContainer {...props} tabIndex={0} role="button">
       <span
         id={`date-label-${props.name}`}

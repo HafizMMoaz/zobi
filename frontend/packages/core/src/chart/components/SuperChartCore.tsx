@@ -53,7 +53,11 @@ export type Props = {
   overrideTransformProps?: TransformProps;
   postTransformProps?: PostTransformProps;
   onRenderSuccess?: HandlerFunction;
-  onRenderFailure?: HandlerFunction;
+  // Narrower than HandlerFunction on purpose: createLoadableRenderer invokes
+  // this with the render error and nothing else, and both StatefulChart and
+  // createLoadableRenderer already describe it this way. Leaving it as
+  // (...args: unknown[]) forced every caller to accept unknown and re-narrow.
+  onRenderFailure?: (error: Error) => void;
 };
 
 export interface SuperChartCoreRef {

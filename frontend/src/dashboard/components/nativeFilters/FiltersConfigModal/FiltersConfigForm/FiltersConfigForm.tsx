@@ -29,7 +29,7 @@ import {
   useMemo,
   useRef,
   useState,
-  RefObject,
+  ForwardedRef,
   memo,
 } from 'react';
 import rison from 'rison';
@@ -285,7 +285,7 @@ const FiltersConfigForm = (
     getDependencySuggestion,
     isActive,
   }: FiltersConfigFormProps,
-  ref: RefObject<FiltersConfigFormHandle>,
+  ref: ForwardedRef<FiltersConfigFormHandle>,
 ) => {
   const theme = useTheme();
   const isChartCustomization = itemType === 'chartCustomization';
@@ -1328,7 +1328,9 @@ const FiltersConfigForm = (
                                               datasetDetails.time_grain_sqla,
                                             )}
                                             sortComparator={() => 0}
-                                            onChange={(values: string[]) => {
+                                            onChange={rawValues => {
+                                              const values =
+                                                rawValues as string[];
                                               setNativeFilterFieldValues(
                                                 form,
                                                 filterId,

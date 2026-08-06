@@ -2,7 +2,7 @@ import {
   forwardRef,
   useImperativeHandle,
   useState,
-  RefObject,
+  ForwardedRef,
   ChangeEvent,
 } from 'react';
 
@@ -36,7 +36,7 @@ function SearchFilter(
     onSubmit,
     autoComplete = 'off',
   }: SearchHeaderProps,
-  ref: RefObject<FilterHandler>,
+  ref: ForwardedRef<FilterHandler>,
 ) {
   const theme = useTheme();
   const [value, setValue] = useState(initialValue || '');

@@ -547,7 +547,7 @@ describe('callApi()', () => {
 
   test('invalid json for postPayload should thrown error', async () => {
     expect.assertions(2);
-    let error;
+    let error: any;
     try {
       await callApi({
         url: mockPostUrl,

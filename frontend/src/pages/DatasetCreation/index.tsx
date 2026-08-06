@@ -13,14 +13,10 @@ import {
 } from 'src/features/datasets/AddDataset/types';
 import DatasetLayout from 'src/features/datasets/DatasetLayout';
 
-type Schema = {
-  schema: string;
-};
-
 export function datasetReducer(
-  state: DatasetObject | null,
+  state: Partial<DatasetObject> | null,
   action: DSReducerActionType,
-): Partial<DatasetObject> | Schema | null {
+): Partial<DatasetObject> | null {
   const trimmedState = {
     ...state,
   };

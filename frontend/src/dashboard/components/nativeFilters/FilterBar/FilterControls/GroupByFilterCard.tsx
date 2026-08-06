@@ -567,7 +567,7 @@ const GroupByFilterCard: FC<GroupByFilterCardProps> = ({
               autoClearSearchValue
               placeholder={t('Search columns...')}
               value={currentValue}
-              onChange={handleColumnChange}
+              onChange={value => handleColumnChange(value as string | string[])}
               options={columnOptions}
               showSearch
               mode={canSelectMultiple ? 'multiple' : undefined}
@@ -596,7 +596,7 @@ const GroupByFilterCard: FC<GroupByFilterCardProps> = ({
             autoClearSearchValue
             placeholder={t('Search columns...')}
             value={currentValue}
-            onChange={handleColumnChange}
+            onChange={value => handleColumnChange(value as string | string[])}
             options={columnOptions}
             showSearch
             mode={canSelectMultiple ? 'multiple' : undefined}

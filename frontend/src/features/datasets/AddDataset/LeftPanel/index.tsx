@@ -1,4 +1,4 @@
-import { useEffect, SetStateAction, Dispatch, useCallback } from 'react';
+import { useEffect, Dispatch, useCallback } from 'react';
 import { t } from '@zobi.dev/extension-api/translation';
 import { styled } from '@zobi.dev/extension-api/theme';
 import TableSelector, { TableOption } from 'src/components/TableSelector';
@@ -9,13 +9,16 @@ import { LocalStorageKeys, getItem } from 'src/utils/localStorageHelpers';
 import {
   DatasetActionType,
   DatasetObject,
+  DSReducerActionType,
 } from 'src/features/datasets/AddDataset/types';
 import { Table } from 'src/hooks/apiResources';
 import { Typography } from '@zobi.dev/core/components/Typography';
 import { ensureAppRoot } from 'src/utils/pathUtils';
 
 interface LeftPanelProps {
-  setDataset: Dispatch<SetStateAction<object>>;
+  // This is a reducer dispatch, not a setState setter: every call site passes a
+  // DSReducerActionType. Matches the Header component's prop.
+  setDataset: Dispatch<DSReducerActionType>;
   dataset?: Partial<DatasetObject> | null;
   datasetNames?: (string | null | undefined)[] | undefined;
 }
@@ -110,7 +113,14 @@ export default function LeftPanel({
 
   const setDatabase = useCallback(
     (db: Partial<DatabaseObject>) => {
-      setDataset({ type: DatasetActionType.SelectDatabase, payload: { db } });
+      // TableSelector yields a Partial<DatabaseObject>, while DatasetObject
+      // declares `db` as a complete DatabaseObject & { owners: [number] }.
+      // Only `db.id` is read downstream, so the declared shape is stricter than
+      // what this flow actually needs.
+      setDataset({
+        type: DatasetActionType.SelectDatabase,
+        payload: { db: db as DatasetObject['db'] },
+      });
     },
     [setDataset],
   );

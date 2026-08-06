@@ -75,10 +75,10 @@ const AccessSection = ({
 
   const tagsAsSelectValues = useMemo(
     () =>
-      tags.map((tag: { id: number; name: string }) => ({
-        value: tag.id,
-        label: tag.name,
-      })),
+      tags.map(tag => {
+        const { id, name } = tag as { id: number; name: string };
+        return { value: id, label: name };
+      }),
     [tags],
   );
 
@@ -97,7 +97,12 @@ const AccessSection = ({
           ariaLabel={t('Owners')}
           disabled={isLoading}
           mode="multiple"
-          onChange={onChangeOwners}
+          onChange={(value, option) =>
+            onChangeOwners(
+              value as { value: number; label: string }[],
+              option as Record<string, unknown>[],
+            )
+          }
           options={(input, page, pageSize) =>
             loadAccessOptions('owners', input, page, pageSize)
           }
@@ -122,7 +127,9 @@ const AccessSection = ({
             ariaLabel={t('Roles')}
             disabled={isLoading}
             mode="multiple"
-            onChange={onChangeRoles}
+            onChange={value =>
+              onChangeRoles(value as { value: number; label: string }[])
+            }
             options={(input, page, pageSize) =>
               loadAccessOptions('roles', input, page, pageSize)
             }
@@ -147,7 +154,9 @@ const AccessSection = ({
             mode="multiple"
             value={tagsAsSelectValues}
             options={loadTags}
-            onChange={onChangeTags}
+            onChange={value =>
+              onChangeTags(value as { label: string; value: number }[])
+            }
             onClear={onClearTags}
             allowClear
             showSearch

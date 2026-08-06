@@ -52,8 +52,13 @@ export const validateForm = async (
       formValues = (await form.validateFields()) as NativeFiltersForm;
     } catch (error) {
       // In Jest tests in chain of tests, Ant generate `outOfDate` error so need to catch it here
-      if (!error?.errorFields?.length && error?.outOfDate) {
-        formValues = error.values;
+      const formError = error as {
+        errorFields?: unknown[];
+        outOfDate?: boolean;
+        values?: NativeFiltersForm;
+      };
+      if (!formError.errorFields?.length && formError.outOfDate) {
+        formValues = formError.values as NativeFiltersForm;
       } else {
         throw error;
       }
@@ -62,11 +67,13 @@ export const validateForm = async (
   } catch (error) {
     logging.warn('Filter configuration failed:', error);
 
-    if (!error.errorFields?.length) return null; // not a validation error
-
     // the name is in array format since the fields are nested
     type ErrorFields = { name: ['filters', string, string] }[];
-    const errorFields = error.errorFields as ErrorFields;
+    // antd rejects validateFields with an object carrying `errorFields`.
+    const { errorFields } = error as { errorFields?: ErrorFields };
+
+    if (!errorFields?.length) return null; // not a validation error
+
     // filter id is the second item in the field name
     if (!errorFields.some(field => field.name[1] === currentFilterId)) {
       // switch to the first tab that had a validation error

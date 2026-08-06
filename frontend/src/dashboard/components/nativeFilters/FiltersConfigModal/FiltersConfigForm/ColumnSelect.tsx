@@ -117,7 +117,7 @@ export function ColumnSelect({
       value={mode === 'multiple' ? value || [] : value}
       ariaLabel={t('Column select')}
       loading={loading}
-      onChange={onChange}
+      onChange={value => onChange?.(value as string)}
       options={options}
       placeholder={t('Select a column')}
       notFoundContent={t('No compatible columns found')}

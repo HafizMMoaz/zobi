@@ -90,7 +90,8 @@ export default class WithPopoverMenu extends PureComponent<
   WithPopoverMenuProps,
   WithPopoverMenuState
 > {
-  container: ShouldFocusContainer;
+  // Assigned by the `setRef` ref callback on mount, before any handler runs.
+  container!: ShouldFocusContainer;
 
   menuRef: HTMLDivElement | null;
 

@@ -143,11 +143,16 @@ export function parseErrorJson(responseJson: JsonObject): ClientErrorObject {
 }
 
 export function getClientErrorObject(
-  response: ZobiClientResponse | TimeoutError | { response: Response } | string,
+  maybeResponse: unknown,
 ): Promise<ClientErrorObject> {
   // takes a ZobiClientResponse as input, attempts to read response as Json
   // if possible, and returns a Promise that resolves to a plain object with
   // error key and text value.
+  //
+  // The parameter is `unknown` because callers routinely pass a `catch`
+  // binding. Every branch below guards by shape and the final fallback handles
+  // values outside ErrorType, so it is narrowed once here.
+  const response = maybeResponse as ErrorType;
   return new Promise(resolve => {
     if (typeof response === 'string') {
       resolve({ error: parseStringResponse(response) });

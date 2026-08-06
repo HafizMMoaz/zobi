@@ -3,17 +3,36 @@
 
 set -eo pipefail
 
+# Re-install a package that is already baked into the image, in editable mode.
+#
+# --no-build-isolation is always passed: without it, PEP 517 builds a throwaway
+# env from build-system.requires, which means a PyPI round trip for
+# setuptools/wheel on *every* container start, even though setuptools is already
+# in /app/.venv and --no-deps is in play. A few seconds of DNS trouble was enough
+# to fail the whole stack.
+#
+# If the install still fails (a dependency genuinely needs fetching and the
+# network is down), fall back to the uv cache that ships in the image rather than
+# taking the stack down with us.
+uv_install_editable() {
+    if uv pip install --no-build-isolation "$@"; then
+        return 0
+    fi
+    echo "WARNING: '$*' failed; retrying against the local uv cache (--offline)" >&2
+    uv pip install --no-build-isolation --offline "$@"
+}
+
 # Make python interactive
 if [ "$DEV_MODE" == "true" ]; then
     if [ "$(whoami)" = "root" ] && command -v uv > /dev/null 2>&1; then
       # Always ensure core is available
       echo "Installing core in editable mode"
-      uv pip install --no-deps -e /app/core
+      uv_install_editable --no-deps -e /app/core
 
       # Only reinstall the main app for non-worker processes
       if [ "$1" != "worker" ] && [ "$1" != "beat" ]; then
         echo "Reinstalling the app in editable mode"
-        uv pip install -e .
+        uv_install_editable -e .
       fi
     fi
 fi
@@ -32,7 +51,7 @@ if [[ "$DATABASE_DIALECT" == postgres* ]] && [ "$(whoami)" = "root" ] && [ "$1" 
     echo "Installing postgres requirements"
     if command -v uv > /dev/null 2>&1; then
         # Use uv in newer images
-        uv pip install -e .[postgres]
+        uv_install_editable -e .[postgres]
     else
         # Use pip in older images
         pip install -e .[postgres]

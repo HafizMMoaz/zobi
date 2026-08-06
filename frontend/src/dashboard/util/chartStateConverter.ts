@@ -12,12 +12,14 @@ import type {
  * without polluting the dashboard code with viz-type-specific logic.
  */
 class ChartStateConverterRegistry {
-  private converters = new Map<string, ChartStateConverter>();
+  // Each converter narrows the chart state to the shape its own viz type emits,
+  // so the registry cannot pin a single state type across all of them.
+  private converters = new Map<string, ChartStateConverter<any>>();
 
   /**
    * Register a state converter for a specific viz type
    */
-  register(vizType: string, converter: ChartStateConverter): void {
+  register(vizType: string, converter: ChartStateConverter<any>): void {
     this.converters.set(vizType, converter);
   }
 
@@ -81,7 +83,7 @@ const registry = new ChartStateConverterRegistry();
  */
 export function registerChartStateConverter(
   vizType: string,
-  converter: ChartStateConverter,
+  converter: ChartStateConverter<any>,
 ): void {
   registry.register(vizType, converter);
 }

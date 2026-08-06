@@ -260,7 +260,7 @@ export default function DateFilterLabel(props: DateFilterControlProps) {
         ariaLabel={t('Range type')}
         options={FRAME_OPTIONS}
         value={frame}
-        onChange={onChangeFrame}
+        onChange={value => onChangeFrame(value as FrameType)}
       />
       {frame !== 'No filter' && <Divider />}
       {frame === 'Common' && (

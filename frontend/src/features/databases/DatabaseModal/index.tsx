@@ -1118,7 +1118,7 @@ const DatabaseModal: FunctionComponent<DatabaseModalProps> = ({
       </FormLabel>
       <Select
         className="available-select"
-        onChange={setDatabaseModel}
+        onChange={value => setDatabaseModel(value as string)}
         placeholder={t('Choose a database...')}
         options={[
           ...(availableDbs?.databases || []).map(

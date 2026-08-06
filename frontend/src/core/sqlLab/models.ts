@@ -77,7 +77,8 @@ export class QueryContext implements sqlLabType.QueryContext {
 
   private templateParams: string;
 
-  private parsedParams: Record<string, any>;
+  // Populated lazily by the `templateParameters` accessor, not the constructor.
+  private parsedParams?: Record<string, any>;
 
   constructor(
     clientId: string,

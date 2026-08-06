@@ -299,7 +299,7 @@ const ColorSchemeControl = ({
         aria-label={t('Select color scheme')}
         allowClear={clearable}
         disabled={hasDashboardScheme || hasSharedLabelsColor}
-        onChange={handleOnChange}
+        onChange={value => handleOnChange(value as string)}
         placeholder={t('Select scheme')}
         value={currentScheme}
         showSearch

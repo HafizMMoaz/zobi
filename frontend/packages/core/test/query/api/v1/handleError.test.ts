@@ -17,7 +17,7 @@ async function testHandleError(
     } else {
       expect(typedError).toEqual(expect.objectContaining(expected));
     }
-    return error;
+    return typedError;
   }
   return new ZobiApiError({ message: 'Where is the error?' });
 }

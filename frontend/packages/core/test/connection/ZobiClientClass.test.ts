@@ -570,7 +570,7 @@ describe('ZobiClientClass', () => {
     test('should redirect', async () => {
       const client = new ZobiClientClass({});
 
-      let error;
+      let error: any;
       try {
         await client.request({ url: mockRequestUrl, method: 'GET' });
       } catch (err) {
@@ -597,7 +597,7 @@ describe('ZobiClientClass', () => {
         search: '?next=something',
       } as unknown as Location);
 
-      let error;
+      let error: any;
       try {
         await client.request({ url: mockRequestUrl, method: 'GET' });
       } catch (err) {
@@ -610,7 +610,7 @@ describe('ZobiClientClass', () => {
     test('does nothing if instructed to ignoreUnauthorized', async () => {
       const client = new ZobiClientClass({});
 
-      let error;
+      let error: any;
       try {
         await client.request({
           url: mockRequestUrl,
@@ -630,7 +630,7 @@ describe('ZobiClientClass', () => {
       const unauthorizedHandler = jest.fn();
       const client = new ZobiClientClass({ unauthorizedHandler });
 
-      let error;
+      let error: any;
       try {
         await client.request({
           url: mockRequestUrl,

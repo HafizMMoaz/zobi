@@ -72,8 +72,8 @@ export const AlertReportCronScheduler: FC<AlertReportCronSchedulerProps> = ({
           <Select
             ariaLabel={t('Schedule type')}
             placeholder={t('Schedule type')}
-            onChange={(e: ScheduleType) => {
-              setScheduleFormat(e);
+            onChange={value => {
+              setScheduleFormat(value as ScheduleType);
             }}
             value={scheduleFormat}
             options={SCHEDULE_TYPE_OPTIONS}

@@ -10,12 +10,13 @@ const glob = require('glob');
 
 const ROOT = path.resolve(__dirname, '..');
 
-// Directories to check for storybook coverage
-const PLUGIN_PATTERNS = [
-  'plugins/plugin-chart-*/src',
-  'plugins/legacy-plugin-chart-*/src',
-  'plugins/legacy-preset-chart-*/src',
-];
+// Directories to check for storybook coverage.
+//
+// Zobi's plugin directories are bare names (`plugins/echarts`), not the
+// upstream `plugin-chart-*` / `legacy-*-chart-*` prefixes. A prefixed pattern
+// matches nothing here, which makes this check pass without inspecting a
+// single plugin.
+const PLUGIN_PATTERNS = ['plugins/*/src'];
 
 const CORE_COMPONENT_PATTERNS = ['packages/core/src/components/*'];
 

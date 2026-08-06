@@ -50,6 +50,17 @@ const ThemeList = lazy(
   () => import(/* webpackChunkName: "ThemeList" */ 'src/pages/ThemeList'),
 );
 
+const ZobiChat = lazy(
+  () => import(/* webpackChunkName: "ZobiChat" */ 'src/pages/ZobiChat'),
+);
+
+const LLMProviderList = lazy(
+  () =>
+    import(
+      /* webpackChunkName: "LLMProviderList" */ 'src/pages/LLMProviderList'
+    ),
+);
+
 const DashboardList = lazy(
   () =>
     import(/* webpackChunkName: "DashboardList" */ 'src/pages/DashboardList'),
@@ -239,6 +250,14 @@ export const routes: Routes = [
   {
     path: '/theme/list/',
     Component: ThemeList,
+  },
+  {
+    path: '/llm/list/',
+    Component: LLMProviderList,
+  },
+  {
+    path: '/zobi/chat/',
+    Component: ZobiChat,
   },
   {
     path: '/annotationlayer/list/',

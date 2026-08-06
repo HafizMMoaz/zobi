@@ -144,9 +144,9 @@ export default class SpatialControl extends Component<
         onFocus={() => {
           this.setType(type);
         }}
-        onChange={(value: string) => {
+        onChange={value => {
           this.setState(
-            { [name]: value } as unknown as SpatialControlState,
+            { [name]: value as string } as unknown as SpatialControlState,
             this.onChange,
           );
         }}

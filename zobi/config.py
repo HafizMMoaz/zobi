@@ -340,7 +340,7 @@ AUTH_RATE_LIMIT = "5 per second"
 APP_NAME = "Zobi"
 
 # Specify the App icon
-APP_ICON = "/static/assets/images/logo-horiz.svg"
+APP_ICON = "/static/assets/images/zobi.svg"
 
 # Specify where clicking the logo would take the user'
 # Default value of None will take you to '/zobi/welcome'
@@ -566,6 +566,10 @@ DEFAULT_FEATURE_FLAGS: dict[str, bool] = {
     # Enable Zobi extensions for custom functionality without modifying core
     # @lifecycle: development
     "ENABLE_EXTENSIONS": False,
+    # Enable the LLM gateway: connect model providers under Manage > AI Models
+    # and call them through zobi.llm.service
+    # @lifecycle: development
+    "ZOBI_AI": False,
     # Enable Matrixify feature for matrix-style chart layouts
     # @lifecycle: development
     "MATRIXIFY": False,

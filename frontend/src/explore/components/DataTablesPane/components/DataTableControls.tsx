@@ -86,7 +86,7 @@ export const TableControls = ({
         {onRowLimitChange && (
           <Select
             value={rowLimit}
-            onChange={onRowLimitChange}
+            onChange={value => onRowLimitChange(value as number)}
             options={rowLimitOptions ?? []}
             css={css`
               min-width: 110px;

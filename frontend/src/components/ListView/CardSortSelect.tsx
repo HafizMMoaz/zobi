@@ -64,7 +64,9 @@ export const CardSortSelect = ({
         ariaLabel={t('Sort')}
         header={<FormLabel>{t('Sort')}</FormLabel>}
         labelInValue
-        onChange={handleOnChange}
+        onChange={value =>
+          handleOnChange(value as { label: string; value: string })
+        }
         options={formattedOptions}
         showSearch
         value={value}

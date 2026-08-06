@@ -25,7 +25,7 @@ import { isCurrentUserBot } from 'src/utils/isBot';
 import { ChartSource } from 'src/types/ChartSource';
 import { ResourceStatus } from 'src/hooks/apiResources/apiResources';
 import { Dispatch } from 'redux';
-import ChartRenderer from './ChartRenderer';
+import ChartRenderer, { type ChartRendererProps } from './ChartRenderer';
 import { ChartErrorMessage } from './ChartErrorMessage';
 import { getChartRequiredFieldsMissingMessage } from '../../utils/getChartRequiredFieldsMissingMessage';
 
@@ -77,17 +77,11 @@ export interface ChartProps {
 }
 
 export type Actions = {
-  logEvent(
-    LOG_ACTIONS_RENDER_CHART: string,
-    arg1: {
-      slice_id: number;
-      has_err: boolean;
-      error_details: string;
-      start_offset: number;
-      ts: number;
-      duration: number;
-    },
-  ): Dispatch;
+  // This same actions object is handed straight to ChartRenderer, which logs
+  // both a success event (viz_type, no error fields) and a failure event (error
+  // fields, no viz_type). Borrowing the renderer's signature keeps the two
+  // descriptions of one action creator from drifting apart again.
+  logEvent: ChartRendererProps['actions']['logEvent'];
   chartRenderingFailed(
     arg0: string,
     chartId: number,

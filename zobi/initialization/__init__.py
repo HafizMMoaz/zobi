@@ -136,6 +136,7 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         #
         # pylint: disable=import-outside-toplevel,too-many-locals,too-many-statements
         from zobi.advanced_data_type.api import AdvancedDataTypeRestApi
+        from zobi.agent.api import ZobiAgentRestApi
         from zobi.annotation_layers.annotations.api import AnnotationRestApi
         from zobi.annotation_layers.api import AnnotationLayerRestApi
         from zobi.async_events.api import AsyncEventsRestApi
@@ -159,6 +160,11 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         from zobi.explore.permalink.api import ExplorePermalinkRestApi
         from zobi.extensions.view import ExtensionsView
         from zobi.importexport.api import ImportExportRestApi
+        from zobi.llm.api import (
+            LLMModelRestApi,
+            LLMProviderRestApi,
+            LLMRouterConfigRestApi,
+        )
         from zobi.queries.api import QueryRestApi
         from zobi.queries.saved_queries.api import SavedQueryRestApi
         from zobi.reports.api import ReportScheduleRestApi
@@ -190,6 +196,7 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         from zobi.views.error_handling import set_app_error_handlers
         from zobi.views.explore import ExplorePermalinkView, ExploreView
         from zobi.views.groups import GroupsListView
+        from zobi.views.llm import LLMProviderModelView
         from zobi.views.log.api import LogRestApi
         from zobi.views.logs import ActionLogView
         from zobi.views.redirect import RedirectView
@@ -211,6 +218,7 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         from zobi.views.user_registrations import UserRegistrationsView
         from zobi.views.users.api import CurrentUserRestApi, UserRestApi
         from zobi.views.users_list import UsersListView
+        from zobi.views.zobi_chat import ZobiChatView
 
         set_app_error_handlers(self.zobi_app)
         self.register_request_handlers()
@@ -248,6 +256,10 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         appbuilder.add_api(ExploreFormDataRestApi)
         appbuilder.add_api(ExplorePermalinkRestApi)
         appbuilder.add_api(ImportExportRestApi)
+        appbuilder.add_api(LLMProviderRestApi)
+        appbuilder.add_api(LLMModelRestApi)
+        appbuilder.add_api(LLMRouterConfigRestApi)
+        appbuilder.add_api(ZobiAgentRestApi)
         appbuilder.add_api(QueryRestApi)
         appbuilder.add_api(ReportScheduleRestApi)
         appbuilder.add_api(ReportExecutionLogRestApi)
@@ -386,6 +398,29 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
             category_label=_("Manage"),
             category_icon="",
             menu_cond=lambda: feature_flag_manager.is_feature_enabled("CSS_TEMPLATES"),
+        )
+        appbuilder.add_view(
+            ZobiChatView,
+            # The name is the permission key ("menu access on Zobi") that roles
+            # are already granted; only the label is user-facing, so the rename
+            # to "AI" stays here and does not need a security re-sync.
+            "Zobi",
+            href="/zobi/chat/",
+            label=_("AI"),
+            icon="fa-robot",
+            category="",
+            menu_cond=lambda: feature_flag_manager.is_feature_enabled("ZOBI_AI"),
+        )
+        appbuilder.add_view(
+            LLMProviderModelView,
+            "AI Models",
+            href="/llm/list/",
+            label=_("AI Models"),
+            icon="fa-robot",
+            category="Manage",
+            category_label=_("Manage"),
+            category_icon="",
+            menu_cond=lambda: feature_flag_manager.is_feature_enabled("ZOBI_AI"),
         )
         appbuilder.add_view(
             ThemeModelView,

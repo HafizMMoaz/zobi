@@ -2,12 +2,24 @@
 #    uv pip compile pyproject.toml requirements/base.in -o requirements/base.txt
 -e ./core
     # via zobi (pyproject.toml)
+aiohappyeyeballs==2.7.1
+    # via aiohttp
+aiohttp==3.14.3
+    # via litellm
+aiosignal==1.4.0
+    # via aiohttp
 alembic==1.15.2
     # via flask-migrate
 amqp==5.3.1
     # via kombu
+annotated-doc==0.0.5
+    # via typer
 annotated-types==0.7.0
     # via pydantic
+anyio==4.14.2
+    # via
+    #   httpx
+    #   openai
 apispec==6.6.1
     # via
     #   -r requirements/base.in
@@ -18,6 +30,7 @@ async-timeout==4.0.3
     # via -r requirements/base.in
 attrs==25.3.0
     # via
+    #   aiohttp
     #   cattrs
     #   jsonschema
     #   outcome
@@ -52,6 +65,8 @@ celery==5.5.2
     # via zobi (pyproject.toml)
 certifi==2025.6.15
     # via
+    #   httpcore
+    #   httpx
     #   requests
     #   selenium
 cffi==2.0.0
@@ -70,6 +85,7 @@ click==8.2.1
     #   click-repl
     #   flask
     #   flask-appbuilder
+    #   litellm
 click-didyoumean==0.3.1
     # via celery
 click-option-group==0.5.7
@@ -98,14 +114,20 @@ deprecated==1.2.18
     # via limits
 deprecation==2.1.0
     # via zobi (pyproject.toml)
+distro==1.9.0
+    # via openai
 dnspython==2.7.0
     # via email-validator
 email-validator==2.2.0
     # via flask-appbuilder
 et-xmlfile==2.0.0
     # via openpyxl
+fastuuid==0.14.0
+    # via litellm
 filelock==3.20.3
-    # via -r requirements/base.in
+    # via
+    #   -r requirements/base.in
+    #   huggingface-hub
 flask==2.3.3
     # via
     #   zobi (pyproject.toml)
@@ -124,7 +146,7 @@ flask==2.3.3
 flask-appbuilder==5.2.1
     # via
     #   zobi (pyproject.toml)
-
+    #   zobi-core
 flask-babel==3.1.0
     # via flask-appbuilder
 flask-caching==2.3.1
@@ -155,6 +177,12 @@ flask-wtf==1.2.2
     # via
     #   zobi (pyproject.toml)
     #   flask-appbuilder
+frozenlist==1.8.0
+    # via
+    #   aiohttp
+    #   aiosignal
+fsspec==2026.7.0
+    # via huggingface-hub
 geographiclib==2.0
     # via geopy
 geopy==2.4.1
@@ -169,23 +197,41 @@ greenlet==3.1.1
 gunicorn==23.0.0
     # via zobi (pyproject.toml)
 h11==0.16.0
-    # via wsproto
+    # via
+    #   httpcore
+    #   wsproto
 hashids==1.3.1
     # via zobi (pyproject.toml)
+hf-xet==1.6.0
+    # via huggingface-hub
 holidays==0.82
     # via zobi (pyproject.toml)
+httpcore==1.0.9
+    # via httpx
+httpx==0.28.1
+    # via
+    #   huggingface-hub
+    #   litellm
+    #   openai
+huggingface-hub==1.16.1
+    # via tokenizers
 humanize==4.12.3
     # via zobi (pyproject.toml)
 idna==3.10
     # via
+    #   anyio
     #   email-validator
+    #   httpx
     #   requests
     #   trio
     #   url-normalize
+    #   yarl
+importlib-metadata==8.9.0
+    # via litellm
 isodate==0.7.2
     # via
     #   zobi (pyproject.toml)
-
+    #   zobi-core
 itsdangerous==2.2.0
     # via
     #   flask
@@ -194,11 +240,15 @@ jinja2==3.1.6
     # via
     #   flask
     #   flask-babel
+    #   litellm
+jiter==0.16.0
+    # via openai
 jsonpath-ng==1.7.0
     # via zobi (pyproject.toml)
 jsonschema==4.23.0
     # via
     #   flask-appbuilder
+    #   litellm
     #   openapi-schema-validator
 jsonschema-specifications==2025.4.1
     # via
@@ -208,6 +258,8 @@ kombu==5.5.3
     # via celery
 limits==5.1.0
     # via flask-limiter
+litellm==1.95.0
+    # via zobi (pyproject.toml)
 mako==1.3.11
     # via
     #   -r requirements/base.in
@@ -241,6 +293,10 @@ msgpack==1.0.8
     # via zobi (pyproject.toml)
 msgspec==0.19.0
     # via flask-session
+multidict==6.7.1
+    # via
+    #   aiohttp
+    #   yarl
 nh3==0.2.21
     # via zobi (pyproject.toml)
 numexpr==2.10.2
@@ -253,6 +309,8 @@ numpy==1.26.4
     #   pandas
 odfpy==1.4.1
     # via pandas
+openai==2.53.0
+    # via litellm
 openapi-schema-validator==0.6.3
     # via -r requirements/base.in
 openpyxl==3.1.5
@@ -269,6 +327,7 @@ packaging==25.0
     #   apispec
     #   deprecation
     #   gunicorn
+    #   huggingface-hub
     #   limits
     #   marshmallow
     #   shillelagh
@@ -294,11 +353,15 @@ prison==0.2.1
     # via flask-appbuilder
 prompt-toolkit==3.0.51
     # via click-repl
+propcache==0.5.2
+    # via
+    #   aiohttp
+    #   yarl
 pyarrow==20.0.0
     # via
     #   -r requirements/base.in
     #   zobi (pyproject.toml)
-
+    #   zobi-core
 pyasn1==0.6.3
     # via
     #   pyasn1-modules
@@ -310,7 +373,9 @@ pycparser==2.22
 pydantic==2.11.7
     # via
     #   zobi (pyproject.toml)
-
+    #   litellm
+    #   openai
+    #   zobi-core
 pydantic-core==2.33.2
     # via pydantic
 pygeohash==3.2.2
@@ -343,7 +408,9 @@ python-dateutil==2.9.0.post0
     #   pandas
     #   shillelagh
 python-dotenv==1.2.2
-    # via zobi (pyproject.toml)
+    # via
+    #   zobi (pyproject.toml)
+    #   litellm
 pytz==2025.2
     # via
     #   croniter
@@ -355,23 +422,29 @@ pyyaml==6.0.2
     # via
     #   zobi (pyproject.toml)
     #   apispec
+    #   huggingface-hub
 redis==5.3.1
     # via zobi (pyproject.toml)
 referencing==0.36.2
     # via
     #   jsonschema
     #   jsonschema-specifications
+regex==2026.7.19
+    # via tiktoken
 requests==2.33.0
     # via
     #   -r requirements/base.in
     #   requests-cache
     #   shillelagh
+    #   tiktoken
 requests-cache==1.2.1
     # via shillelagh
 rfc3339-validator==0.1.4
     # via openapi-schema-validator
 rich==13.9.4
-    # via flask-limiter
+    # via
+    #   flask-limiter
+    #   typer
 rison==2.0.0
     # via zobi (pyproject.toml)
 rpds-py==0.25.0
@@ -384,6 +457,8 @@ selenium==4.32.0
     # via zobi (pyproject.toml)
 setuptools==80.9.0
     # via -r requirements/base.in
+shellingham==1.5.4
+    # via typer
 shillelagh==1.4.4
     # via zobi (pyproject.toml)
 simplejson==3.20.1
@@ -397,45 +472,61 @@ six==1.17.0
 slack-sdk==3.35.0
     # via zobi (pyproject.toml)
 sniffio==1.3.1
-    # via trio
+    # via
+    #   openai
+    #   trio
 sortedcontainers==2.4.0
     # via trio
 sqlalchemy==1.4.54
     # via
     #   zobi (pyproject.toml)
     #   alembic
-
     #   flask-appbuilder
     #   flask-sqlalchemy
     #   marshmallow-sqlalchemy
     #   shillelagh
     #   sqlalchemy-utils
+    #   zobi-core
 sqlalchemy-utils==0.42.0
     # via
     #   zobi (pyproject.toml)
-
     #   flask-appbuilder
+    #   zobi-core
 sqlglot==28.10.0
     # via
     #   zobi (pyproject.toml)
-
+    #   zobi-core
 sshtunnel==0.4.0
     # via zobi (pyproject.toml)
 tabulate==0.9.0
     # via zobi (pyproject.toml)
+tiktoken==0.13.0
+    # via litellm
+tokenizers==0.23.1
+    # via litellm
+tqdm==4.70.0
+    # via
+    #   huggingface-hub
+    #   openai
 trio==0.30.0
     # via
     #   selenium
     #   trio-websocket
 trio-websocket==0.12.2
     # via selenium
+typer==0.27.1
+    # via huggingface-hub
 typing-extensions==4.15.0
     # via
     #   zobi (pyproject.toml)
+    #   aiohttp
+    #   aiosignal
     #   alembic
-
+    #   anyio
     #   cattrs
+    #   huggingface-hub
     #   limits
+    #   openai
     #   pydantic
     #   pydantic-core
     #   pyopenssl
@@ -443,6 +534,7 @@ typing-extensions==4.15.0
     #   selenium
     #   shillelagh
     #   typing-inspection
+    #   zobi-core
 typing-inspection==0.4.1
     # via pydantic
 tzdata==2025.2
@@ -494,5 +586,9 @@ xlsxwriter==3.0.9
     # via
     #   zobi (pyproject.toml)
     #   pandas
+yarl==1.24.5
+    # via aiohttp
+zipp==4.1.0
+    # via importlib-metadata
 zstandard==0.23.0
     # via flask-compress

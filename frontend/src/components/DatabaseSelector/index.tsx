@@ -459,7 +459,12 @@ export function DatabaseSelector({
             data-test="select-database"
             lazyLoading={false}
             notFoundContent={emptyState}
-            onChange={changeDatabase}
+            onChange={(value, option) =>
+              changeDatabase(
+                value as { label: string; value: number },
+                option as DatabaseValue,
+              )
+            }
             value={currentDb}
             placeholder={t(
               'Select %s or type to search %s',

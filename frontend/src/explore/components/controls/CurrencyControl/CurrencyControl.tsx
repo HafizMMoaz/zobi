@@ -157,8 +157,11 @@ export const CurrencyControl = ({
           ariaLabel={t('Currency prefix or suffix')}
           options={CURRENCY_SYMBOL_POSITION_OPTIONS}
           placeholder={t('Prefix or suffix')}
-          onChange={(symbolPosition: string) => {
-            onChange({ ...normalizedCurrency, symbolPosition });
+          onChange={value => {
+            onChange({
+              ...normalizedCurrency,
+              symbolPosition: value as string,
+            });
           }}
           onClear={() =>
             onChange({ ...normalizedCurrency, symbolPosition: undefined })
@@ -171,8 +174,8 @@ export const CurrencyControl = ({
           ariaLabel={t('Currency symbol')}
           options={currenciesOptions}
           placeholder={t('Currency')}
-          onChange={(symbol: string) => {
-            onChange({ ...normalizedCurrency, symbol });
+          onChange={value => {
+            onChange({ ...normalizedCurrency, symbol: value as string });
           }}
           onClear={() => onChange({ ...normalizedCurrency, symbol: undefined })}
           value={normalizedCurrency?.symbol}

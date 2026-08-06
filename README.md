@@ -4,19 +4,11 @@
 [![Latest Release](https://img.shields.io/github/v/release/HafizMMoaz/zobi?sort=semver)](https://github.com/HafizMMoaz/zobi/releases/latest)
 [![GitHub Stars](https://img.shields.io/github/stars/HafizMMoaz/zobi?style=social)](https://github.com/HafizMMoaz/zobi/stargazers)
 
-<picture width="500">
-  <source
-    width="600"
-    media="(prefers-color-scheme: dark)"
-    src="https://raw.githubusercontent.com/HafizMMoaz/zobi/main/zobi-branding/logo-horiz.svg"
-    alt="Zobi logo (dark)"
-  />
-  <img
-    width="600"
-    src="https://raw.githubusercontent.com/HafizMMoaz/zobi/main/zobi-branding/logo-horiz.svg"
-    alt="Zobi logo (light)"
-  />
-</picture>
+<img
+  width="400"
+  src="https://raw.githubusercontent.com/HafizMMoaz/zobi/main/zobi.svg"
+  alt="Zobi logo"
+/>
 
 A modern, enterprise-ready business intelligence web application.
 
