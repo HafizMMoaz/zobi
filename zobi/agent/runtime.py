@@ -143,9 +143,11 @@ class AgentTurn:
         messages: list[dict[str, Any]],
         mode: AgentMode,
         model_alias: str | None = None,
+        force_tool: str | None = None,
     ):
         self.mode = mode
         self.model_alias = model_alias
+        self.force_tool = force_tool
         self.messages = messages
         self.tools = list_tools(mode)
         self._tools_by_name = {tool.name: tool for tool in self.tools}
@@ -156,6 +158,24 @@ class AgentTurn:
 
     def _model_payload(self) -> list[dict[str, Any]]:
         return [{"role": "system", "content": SYSTEM_PROMPT}, *self.messages]
+
+    def _tool_choice(self) -> dict[str, Any]:
+        """The tool_choice kwarg for this step, if any.
+
+        Only the first step is pinned. Keeping it pinned across the loop would
+        compel the tool on every step, so the model would never get a step in
+        which to write a closing answer and the turn would always run to
+        MAX_TOOL_ITERATIONS.
+
+        Consumed by setting force_tool to None, which is why this is a method
+        with a side effect rather than a property.
+        """
+        if not self.force_tool:
+            return {}
+
+        name = self.force_tool
+        self.force_tool = None
+        return {"tool_choice": {"type": "function", "function": {"name": name}}}
 
     def _stream_once(self) -> Iterator[TurnEvent]:
         """Call the model once, yielding token events as text arrives.
@@ -177,6 +197,7 @@ class AgentTurn:
                 alias=self.model_alias,
                 stream=True,
                 tools=[tool.to_openai_schema() for tool in self.tools] or None,
+                **self._tool_choice(),
             )
         except Exception as ex:  # noqa: BLE001  # pylint: disable=broad-except
             logger.exception("Model call failed: %s", type(ex).__name__)
@@ -197,6 +218,20 @@ class AgentTurn:
 
     def run(self) -> Iterator[TurnEvent]:
         """Execute the turn, yielding events as they occur."""
+        if self.force_tool and self.force_tool not in self._tools_by_name:
+            # The mode may have been lowered between the palette being drawn
+            # and this message being sent, which withdraws higher-risk tools.
+            yield TurnEvent(
+                "error",
+                {
+                    "message": (
+                        f"'{self.force_tool}' is not available in this "
+                        "conversation's current mode."
+                    )
+                },
+            )
+            return
+
         for _step in range(MAX_TOOL_ITERATIONS):
             yield from self._stream_once()
             if self._failed:

@@ -47,6 +47,11 @@ class MessageSchema(Schema):
         validate=OneOf([mode.value for mode in AgentMode]), load_default=None
     )
     model_alias = fields.String(allow_none=True, load_default=None)
+    # Names one tool to pin for this turn's first model call. Not persisted:
+    # it describes one message, not the conversation.
+    force_tool = fields.String(
+        allow_none=True, load_default=None, validate=Length(1, 128)
+    )
 
 
 class ApprovalSchema(Schema):
@@ -491,6 +496,7 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
         history = _history(conversation)
         mode = parse_mode(conversation.mode)
         alias = conversation.model_alias
+        force_tool = item.get("force_tool")
         conversation_id = conversation.id
         # Not @transaction(): that decorator commits when the view returns, and
         # this view returns as soon as the streaming Response is constructed,
@@ -508,7 +514,7 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
         def generate() -> Any:
             with app.app_context():
                 g.user = user
-                turn = AgentTurn(history, mode, alias)
+                turn = AgentTurn(history, mode, alias, force_tool=force_tool)
                 try:
                     for event in turn.run():
                         yield event.to_sse()
