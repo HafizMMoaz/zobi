@@ -27,7 +27,9 @@ from zobi.agent.permissions import (
 from zobi.agent.runtime import AgentTurn, TurnEvent
 from zobi.agent.tools import call_tool, find_tool, list_tools
 from zobi.extensions import db, event_logger
+from zobi.llm.service import NoModelForCapabilityError, resolve_alias
 from zobi.models.chat import ChatAttachment, ChatMessage, Conversation
+from zobi.models.llm import LLMModel, LLMProvider
 from zobi.utils.core import get_user_id
 from zobi.utils.decorators import transaction
 from zobi.views.base_api import BaseZobiApiMixin, statsd_metrics
@@ -88,6 +90,28 @@ def _attachment_payload(attachment: ChatAttachment) -> dict[str, Any]:
 
 def _history(conversation: Conversation) -> list[dict[str, Any]]:
     return [message.to_model_message() for message in conversation.messages]
+
+
+def chat_aliases() -> list[str]:
+    """Every distinct alias that can currently serve a chat completion.
+
+    Distinct aliases rather than model rows: LLMModel.alias is deliberately not
+    unique, because LiteLLM load balances across every deployment sharing a
+    model_name. Picking an alias is picking a pool, not a deployment.
+    """
+    rows = (
+        db.session.query(LLMModel.alias)
+        .join(LLMProvider)
+        .filter(
+            LLMModel.is_active.is_(True),
+            LLMProvider.is_active.is_(True),
+            LLMModel.supports_chat.is_(True),
+        )
+        .distinct()
+        .order_by(LLMModel.alias)
+        .all()
+    )
+    return [row[0] for row in rows]
 
 
 def _persist(
@@ -181,6 +205,42 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
                     "description": tool.description[:300],
                 }
                 for tool in list_tools(mode)
+            ],
+        )
+
+    @expose("/models/", methods=("GET",))
+    @protect()
+    @safe
+    @statsd_metrics
+    def models(self) -> Response:
+        """List the models a conversation may be pointed at.
+
+        Served here rather than from the gateway's own API because those routes
+        are part of the Manage screen: choosing a model in chat must not require
+        permission to administer providers.
+        ---
+        get:
+          summary: List selectable chat models
+          responses:
+            200:
+              description: Aliases that can serve a chat completion
+              content:
+                application/json:
+                  schema:
+                    type: object
+        """
+        aliases = chat_aliases()
+        try:
+            default = resolve_alias("chat")
+        except NoModelForCapabilityError:
+            # Nothing is configured yet. An empty picker is the right answer,
+            # not a 500.
+            default = None
+
+        return self.response(
+            200,
+            result=[
+                {"alias": alias, "is_default": alias == default} for alias in aliases
             ],
         )
 
