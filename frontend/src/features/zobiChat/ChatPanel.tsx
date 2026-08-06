@@ -24,6 +24,7 @@ import {
   createConversation,
   fetchConversation,
   fetchModes,
+  fetchTools,
   respondToApproval,
   streamMessage,
   updateConversation,
@@ -34,9 +35,11 @@ import {
   carriesFiles,
   useAttachments,
 } from './Attachments';
+import SlashPalette from './SlashPalette';
 import VoiceInput from './VoiceInput';
 import {
   AgentMode,
+  AgentToolSummary,
   ChatMessage,
   ModeOption,
   PendingApproval,
@@ -213,6 +216,8 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [dropping, setDropping] = useState(false);
+  const [tools, setTools] = useState<AgentToolSummary[]>([]);
+  const [pinnedTool, setPinnedTool] = useState<AgentToolSummary | null>(null);
 
   const abortRef = useRef<(() => void) | null>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -264,6 +269,23 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
       .then(setModes)
       .catch(() => setModes([]));
   }, []);
+
+  // The offer depends on the mode, so refetch whenever it changes. A failure
+  // leaves the list empty: the palette degrades to an empty state and typing
+  // still works.
+  useEffect(() => {
+    fetchTools(mode)
+      .then(setTools)
+      .catch(() => setTools([]));
+  }, [mode]);
+
+  /**
+   * The palette is open while the draft is a bare "/name" with no space yet.
+   * A space means the user has moved on to writing the request itself.
+   */
+  const slashQuery =
+    draft.startsWith('/') && !draft.includes(' ') ? draft.slice(1) : null;
+  const paletteOpen = slashQuery !== null;
 
   const { clear: clearAttachments } = attachments;
 
@@ -374,12 +396,14 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
       }
 
       attachments.clear();
+      setPinnedTool(null);
 
       abortRef.current = streamMessage(
         target,
         {
           content: text,
           mode,
+          force_tool: pinnedTool?.name ?? null,
           ...(attachmentIds.length ? { attachment_ids: attachmentIds } : {}),
         },
         handleEvent,
@@ -389,7 +413,7 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
         },
       );
     },
-    [busy, mode, handleEvent, ensureConversation, attachments],
+    [busy, mode, handleEvent, ensureConversation, attachments, pinnedTool],
   );
 
   const decide = useCallback(
@@ -614,6 +638,27 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
           items={attachments.items}
           onRemove={attachments.removeItem}
         />
+        <SlashPalette
+          tools={tools}
+          query={slashQuery ?? ''}
+          open={paletteOpen}
+          onSelect={tool => {
+            setPinnedTool(tool);
+            setDraft('');
+          }}
+          onDismiss={() => setDraft('')}
+        />
+        {pinnedTool && (
+          <Tag
+            closable
+            closeIcon={
+              <Icons.CloseOutlined aria-label={t('Remove pinned tool')} />
+            }
+            onClose={() => setPinnedTool(null)}
+          >
+            {pinnedTool.title}
+          </Tag>
+        )}
         <ComposerRow>
           <AttachButton onFiles={attachments.addFiles} disabled={busy} />
           <Input.TextArea
