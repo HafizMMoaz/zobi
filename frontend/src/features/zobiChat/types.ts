@@ -9,6 +9,25 @@ export type ModeOption = {
 
 export type ToolRisk = 'read' | 'write' | 'destructive';
 
+/** One tool as listed by GET /tools/, for the slash palette. */
+export type AgentToolSummary = {
+  name: string;
+  title: string;
+  risk: ToolRisk;
+  description: string;
+};
+
+/**
+ * One selectable model, as listed by GET /models/.
+ *
+ * `alias` names a pool rather than a deployment: the gateway load balances
+ * across every model row sharing an alias.
+ */
+export type ChatModel = {
+  alias: string;
+  is_default: boolean;
+};
+
 export type ToolCall = {
   id: string;
   type: string;

@@ -1,7 +1,9 @@
 import { ZobiClient } from '@zobi.dev/core';
 import {
   AgentMode,
+  AgentToolSummary,
   Attachment,
+  ChatModel,
   Conversation,
   ConversationDetail,
   ModeOption,
@@ -27,6 +29,16 @@ const getCsrfToken = (): Promise<string | undefined> =>
 
 export const fetchModes = (): Promise<ModeOption[]> =>
   ZobiClient.get({ endpoint: `${BASE}/modes/` }).then(
+    ({ json }) => json.result,
+  );
+
+export const fetchTools = (mode: AgentMode): Promise<AgentToolSummary[]> =>
+  ZobiClient.get({ endpoint: `${BASE}/tools/?mode=${mode}` }).then(
+    ({ json }) => json.result,
+  );
+
+export const fetchChatModels = (): Promise<ChatModel[]> =>
+  ZobiClient.get({ endpoint: `${BASE}/models/` }).then(
     ({ json }) => json.result,
   );
 
@@ -92,6 +104,7 @@ export function streamMessage(
     content: string;
     mode?: AgentMode;
     model_alias?: string | null;
+    force_tool?: string | null;
     attachment_ids?: number[];
   },
   onEvent: (event: StreamEvent) => void,
