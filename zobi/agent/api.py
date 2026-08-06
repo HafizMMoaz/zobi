@@ -485,8 +485,6 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
 
         if item.get("mode"):
             conversation.mode = item["mode"]
-        if item.get("model_alias") is not None:
-            conversation.model_alias = item["model_alias"]
 
         _persist(conversation, "user", item["content"])
         if not conversation.title:
@@ -495,7 +493,11 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
 
         history = _history(conversation)
         mode = parse_mode(conversation.mode)
-        alias = conversation.model_alias
+        # An alias on the message overrides for this turn only. Writing it to
+        # the row would make every send sticky and leave the one-off override
+        # indistinguishable from the thread's default; PUT /conversation/<pk>
+        # is what changes that.
+        alias = item.get("model_alias") or conversation.model_alias
         force_tool = item.get("force_tool")
         conversation_id = conversation.id
         # Not @transaction(): that decorator commits when the view returns, and
