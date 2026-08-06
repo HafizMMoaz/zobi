@@ -665,6 +665,17 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
             value={draft}
             onChange={event => setDraft(event.target.value)}
             onPressEnter={event => {
+              // While the palette is open, Enter picks the highlighted tool
+              // via SlashPalette's own document-level listener. That listener
+              // sits below this handler in the bubble order (React dispatches
+              // synthetic events from the root container, which is above the
+              // textarea but below document), so without this guard Enter
+              // would send the literal "/name" text before the palette ever
+              // gets a chance to select it.
+              if (paletteOpen) {
+                event.preventDefault();
+                return;
+              }
               // Enter sends; Shift+Enter inserts a newline.
               if (!event.shiftKey) {
                 event.preventDefault();
@@ -693,7 +704,10 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
           ) : (
             <Button
               buttonStyle="primary"
-              disabled={!draft.trim() || attachments.uploading}
+              // Also disabled while the palette is open: a click here should
+              // not be able to send the literal "/name" text either, for the
+              // same reason Enter is guarded above.
+              disabled={!draft.trim() || attachments.uploading || paletteOpen}
               aria-label={t('Send')}
               tooltip={
                 attachments.uploading

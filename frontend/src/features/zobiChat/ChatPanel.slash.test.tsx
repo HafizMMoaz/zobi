@@ -1,4 +1,10 @@
-import { render, screen, waitFor } from 'spec/helpers/testing-library';
+import {
+  render,
+  screen,
+  waitFor,
+  fireEvent,
+  selectOption,
+} from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
 import ChatPanel from './ChatPanel';
 import * as api from './api';
@@ -88,4 +94,92 @@ test('the chip can be dismissed without sending', async () => {
   await userEvent.click(screen.getByLabelText('Remove pinned tool'));
 
   expect(screen.queryByLabelText('Remove pinned tool')).not.toBeInTheDocument();
+});
+
+test('pressing Enter while the palette is open selects the tool instead of sending it as a message', async () => {
+  // The mock is not reset between tests in this file, and an earlier test
+  // already sent a message; clear its call history so a stray leftover call
+  // cannot masquerade as this test's own bug.
+  mockedApi.streamMessage.mockClear();
+  render(<ChatPanel />);
+  const input = await screen.findByRole('textbox');
+
+  await userEvent.type(input, '/list');
+  await screen.findByText('List datasets');
+
+  // Fired on the input itself, not on document: the bug this guards against
+  // is a race in the bubble order between the composer's own Enter handler
+  // and SlashPalette's document-level listener, so the event has to travel
+  // that same real path to prove the fix.
+  fireEvent.keyDown(input, { key: 'Enter' });
+
+  expect(
+    await screen.findByLabelText('Remove pinned tool'),
+  ).toBeInTheDocument();
+  expect(input).toHaveValue('');
+  expect(mockedApi.streamMessage).not.toHaveBeenCalled();
+});
+
+test('changing the mode while the palette is open keeps the highlight in range', async () => {
+  mockedApi.fetchModes.mockResolvedValue([
+    { value: 'manual', label: 'Ask before changes', description: '' },
+    { value: 'auto', label: 'Auto', description: '' },
+  ]);
+  mockedApi.fetchTools.mockImplementation(mode =>
+    Promise.resolve(
+      mode === 'auto'
+        ? [
+            {
+              name: 'list_datasets',
+              title: 'List datasets',
+              risk: 'read' as const,
+              description: '',
+            },
+            {
+              name: 'run_query',
+              title: 'Run query',
+              risk: 'write' as const,
+              description: '',
+            },
+          ]
+        : [
+            {
+              name: 'list_datasets',
+              title: 'List datasets',
+              risk: 'read' as const,
+              description: '',
+            },
+            {
+              name: 'run_query',
+              title: 'Run query',
+              risk: 'write' as const,
+              description: '',
+            },
+            {
+              name: 'build_chart',
+              title: 'Build chart',
+              risk: 'write' as const,
+              description: '',
+            },
+          ],
+    ),
+  );
+
+  render(<ChatPanel />);
+  const input = await screen.findByRole('textbox');
+
+  await userEvent.type(input, '/');
+  await screen.findByText('Build chart');
+
+  // Move the highlight to the third (last) row of the manual-mode list.
+  fireEvent.keyDown(document, { key: 'ArrowDown' });
+  fireEvent.keyDown(document, { key: 'ArrowDown' });
+
+  // Switching mode refetches tools; the auto-mode list only has two entries,
+  // so the highlight at index 2 would point past the end unless it clamps.
+  await selectOption('Auto');
+  await waitFor(() => expect(screen.getAllByRole('option')).toHaveLength(2));
+
+  const options = screen.getAllByRole('option');
+  expect(options[1]).toHaveAttribute('aria-selected', 'true');
 });
