@@ -432,7 +432,12 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
         mode = parse_mode(conversation.mode)
         alias = conversation.model_alias
         conversation_id = conversation.id
-        db.session.commit()
+        # Not @transaction(): that decorator commits when the view returns, and
+        # this view returns as soon as the streaming Response is constructed,
+        # while the turn itself is still to run. The user's message has to be
+        # durable before then, and the transaction must not stay open for the
+        # lifetime of the stream.
+        db.session.commit()  # pylint: disable=consider-using-transaction
 
         # The generator runs after the view returns, so anything it needs from
         # the request context has to be captured now. `g.user` in particular:
@@ -452,7 +457,9 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
                     logger.exception("Agent turn failed: %s", type(ex).__name__)
                     yield TurnEvent("error", {"message": str(ex)}).to_sse()
                 finally:
-                    db.session.commit()
+                    # Runs after the view has returned, so no view-level
+                    # decorator is still in scope to commit this.
+                    db.session.commit()  # pylint: disable=consider-using-transaction
 
         return Response(
             stream_with_context(generate()),

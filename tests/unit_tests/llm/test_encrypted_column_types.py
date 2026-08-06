@@ -24,6 +24,7 @@ migration ``c2acd2cf3df2_alter_type_of_dbs_encrypted_extra``, which converts
 """
 
 from pathlib import Path
+from typing import Any
 
 import pytest
 from sqlalchemy import LargeBinary
@@ -39,9 +40,11 @@ MIGRATION_FILENAME = "2026-08-04_00-00_c7a1f92be3d4_add_llm_gateway_tables.py"
 
 @pytest.mark.parametrize("model,column_name", ENCRYPTED_COLUMNS)
 def test_encrypted_columns_are_backed_by_large_binary(
-    model: type, column_name: str, app_context: None
+    model: Any, column_name: str, app_context: None
 ) -> None:
     """The ORM stores ciphertext as binary, so the database column must be too."""
+    # Any rather than type: __table__ is attached by SQLAlchemy's declarative
+    # machinery, so it is not visible on the plain `type` of a model class.
     column_type = model.__table__.c[column_name].type
 
     assert hasattr(column_type, "impl"), (

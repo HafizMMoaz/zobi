@@ -136,6 +136,7 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         #
         # pylint: disable=import-outside-toplevel,too-many-locals,too-many-statements
         from zobi.advanced_data_type.api import AdvancedDataTypeRestApi
+        from zobi.agent.api import ZobiAgentRestApi
         from zobi.annotation_layers.annotations.api import AnnotationRestApi
         from zobi.annotation_layers.api import AnnotationLayerRestApi
         from zobi.async_events.api import AsyncEventsRestApi
@@ -158,7 +159,6 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         from zobi.explore.form_data.api import ExploreFormDataRestApi
         from zobi.explore.permalink.api import ExplorePermalinkRestApi
         from zobi.extensions.view import ExtensionsView
-        from zobi.agent.api import ZobiAgentRestApi
         from zobi.importexport.api import ImportExportRestApi
         from zobi.llm.api import (
             LLMModelRestApi,
@@ -196,6 +196,7 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         from zobi.views.error_handling import set_app_error_handlers
         from zobi.views.explore import ExplorePermalinkView, ExploreView
         from zobi.views.groups import GroupsListView
+        from zobi.views.llm import LLMProviderModelView
         from zobi.views.log.api import LogRestApi
         from zobi.views.logs import ActionLogView
         from zobi.views.redirect import RedirectView
@@ -209,8 +210,6 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
             RowLevelSecurityView,
             TableModelView,
         )
-        from zobi.views.llm import LLMProviderModelView
-        from zobi.views.zobi_chat import ZobiChatView
         from zobi.views.sqllab import SqllabView
         from zobi.views.tags import TagModelView, TagView
         from zobi.views.tasks import TaskModelView
@@ -219,6 +218,7 @@ class ZobiAppInitializer:  # pylint: disable=too-many-public-methods
         from zobi.views.user_registrations import UserRegistrationsView
         from zobi.views.users.api import CurrentUserRestApi, UserRestApi
         from zobi.views.users_list import UsersListView
+        from zobi.views.zobi_chat import ZobiChatView
 
         set_app_error_handlers(self.zobi_app)
         self.register_request_handlers()

@@ -181,9 +181,12 @@ def process(raw: bytes, filename: str) -> dict[str, Any]:  # noqa: C901
         all_select = False
         fallback = _fallback_statements(text)
         statements_seen = len(fallback)
-        for statement in fallback[:MAX_STATEMENTS]:
+        # Named apart from the parsed loop above: that one yields sqlglot
+        # expressions, these are raw strings, and sharing one name would give
+        # the variable two types.
+        for raw_statement in fallback[:MAX_STATEMENTS]:
             statements_classified += 1
-            keyword = _leading_keyword(statement)
+            keyword = _leading_keyword(raw_statement)
             statement_types[keyword] += 1
             if keyword in DDL_KEYWORDS:
                 has_ddl = True

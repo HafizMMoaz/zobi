@@ -170,6 +170,7 @@ def test_test_credentials_reports_failures_instead_of_raising(
     ok, error = service.test_credentials("openai", {"api_key": "no"}, "gpt-4o")
 
     assert ok is False
+    assert error is not None
     assert "bad key" in error
 
 

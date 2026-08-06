@@ -4,20 +4,23 @@ from __future__ import annotations
 
 import importlib.util
 import io
-import json
+from typing import Any
 
 import pytest
 
 from zobi.agent.processors import (
-    ProcessorError,
+    csv_processor,
+    image_processor,
     kind_for_filename,
+    pdf_processor,
     process_attachment,
+    ProcessorError,
+    sql_processor,
 )
-from zobi.agent.processors import csv_processor, image_processor, pdf_processor
-from zobi.agent.processors import sql_processor
+from zobi.utils import json
 
 
-def _json_roundtrip(payload: dict) -> dict:
+def _json_roundtrip(payload: dict[str, Any]) -> dict[str, Any]:
     """Every processor result must survive JSON serialization."""
     return json.loads(json.dumps(payload))
 
@@ -201,10 +204,10 @@ def test_csv_reuses_zobi_csv_reader(monkeypatch: pytest.MonkeyPatch) -> None:
     module = csv_processor._csv_reader_module()
     assert module is not None, "Zobi's CSVReader could not be imported"
 
-    calls: list[dict] = []
+    calls: list[dict[str, Any]] = []
     original = module.CSVReader._read_csv
 
-    def spy(file, kwargs):  # type: ignore[no-untyped-def]
+    def spy(file: Any, kwargs: dict[str, Any]) -> Any:
         calls.append(dict(kwargs))
         return original(file, kwargs)
 
@@ -520,5 +523,6 @@ def test_results_declare_kind_and_summary(raw: bytes, filename: str) -> None:
     result = process_attachment(raw, filename)
 
     assert isinstance(result["kind"], str)
-    assert isinstance(result["summary"], str) and result["summary"]
+    assert isinstance(result["summary"], str)
+    assert result["summary"]
 

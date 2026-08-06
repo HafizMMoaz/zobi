@@ -127,6 +127,7 @@ def test_secret_survives_a_save_that_does_not_retype_it(
 
     assert response.status_code == 200
     provider = LLMProviderDAO.find_by_id(provider_id)
+    assert provider is not None
     assert provider.encrypted_params_dict["api_key"] == "sk-real-secret-value"
     assert provider.params_dict["api_base"] == "https://proxy.internal/v1"
 

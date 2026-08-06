@@ -53,11 +53,12 @@ def register(tool: NativeTool) -> NativeTool:
 
 
 def registry() -> dict[str, NativeTool]:
-    """Every registered native tool, keyed by name."""
-    # Importing for side effects: each module registers on import. Done lazily
-    # so importing this module does not drag in the database layer.
-    from zobi.agent import attachment_tools  # noqa: F401, PLC0415
+    """Every registered native tool, keyed by name.
 
+    Modules defining tools call ``register`` at import time, so each one has to
+    be imported here before the registry is read. None exist yet, which is why
+    there is nothing to import: the registry is empty until the first is added.
+    """
     return dict(_REGISTRY)
 
 

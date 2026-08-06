@@ -250,6 +250,18 @@ def _import_openai_whisper() -> Any | None:
     return whisper
 
 
+def _require(module: Any | None, package: str) -> Any:
+    """Narrow a lazily imported module to non-None.
+
+    The status checks refuse an engine whose package is missing, so a None here
+    means one was selected anyway. Saying which package is absent beats the
+    AttributeError that using it would otherwise raise.
+    """
+    if module is None:
+        raise TranscriptionError(f"{package} is not installed")
+    return module
+
+
 def _faster_whisper_status(settings: _LocalSettings) -> tuple[bool, str]:
     """Can faster-whisper serve a request right now, without a download?
 
@@ -340,7 +352,7 @@ def _local_status(settings: _LocalSettings) -> tuple[str | None, str]:
 def _build_model(settings: _LocalSettings) -> Any:
     """Instantiate one engine. Slow, so only ever called under the lock."""
     if settings.engine == _FASTER_WHISPER:
-        module = _import_faster_whisper()
+        module = _require(_import_faster_whisper(), "faster-whisper")
         return module.WhisperModel(
             settings.model,
             device=settings.device,
@@ -349,7 +361,7 @@ def _build_model(settings: _LocalSettings) -> Any:
             local_files_only=not settings.allow_download,
         )
 
-    module = _import_openai_whisper()
+    module = _require(_import_openai_whisper(), "openai-whisper")
     return module.load_model(
         settings.model,
         device=settings.device,
@@ -419,7 +431,7 @@ def _run_openai_whisper(
 ) -> dict[str, Any]:
     import tempfile  # noqa: PLC0415
 
-    module = _import_openai_whisper()
+    module = _require(_import_openai_whisper(), "openai-whisper")
     # load_audio takes a path because it hands the file to ffmpeg.
     with tempfile.NamedTemporaryFile(suffix=f".{ext}") as handle:
         handle.write(raw)

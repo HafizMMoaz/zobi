@@ -5,6 +5,8 @@ mistake here is a credential-disclosure bug rather than a cosmetic one. These
 tests pin the classification for each credential shape LiteLLM uses.
 """
 
+from typing import Any
+
 import pytest
 
 from zobi.llm.provider_specs import (
@@ -77,8 +79,8 @@ def test_unknown_provider_raises_typed_error() -> None:
 )
 def test_split_params_classifies_each_credential_shape(
     provider_key: str,
-    params: dict,
-    expected_secret_keys: set,
+    params: dict[str, Any],
+    expected_secret_keys: set[str],
 ) -> None:
     """Each provider family stores exactly its own secrets, and nothing more."""
     plain, secret = split_params(provider_key, params)
