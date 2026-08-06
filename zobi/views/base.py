@@ -111,6 +111,10 @@ FRONTEND_CONF_KEYS = (
 
 logger = logging.getLogger(__name__)
 
+# Filename of the stock APP_ICON. Seeing anything else in the configured icon
+# means a deployer has rebranded, which is what the navbar watermark marks.
+DEFAULT_APP_ICON_NAME = "zobi.svg"
+
 
 def get_error_msg() -> str:
     if app.config.get("SHOW_STACKTRACE"):
@@ -275,7 +279,7 @@ def menu_data(user: User) -> dict[str, Any]:
         "environment_tag": get_environment_tag(),
         "navbar_right": {
             # show the watermark if the default app icon has been overridden
-            "show_watermark": ("logo-horiz" not in appbuilder.app_icon),
+            "show_watermark": (DEFAULT_APP_ICON_NAME not in appbuilder.app_icon),
             "bug_report_url": app.config["BUG_REPORT_URL"],
             "bug_report_icon": app.config["BUG_REPORT_ICON"],
             "bug_report_text": app.config["BUG_REPORT_TEXT"],

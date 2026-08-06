@@ -63,6 +63,10 @@ zobi/static/assets/*
 # Source images (logos, favicon) are checked in; only build output is ignored
 !zobi/static/assets/images/
 !zobi/static/assets/images/**
+# The blanket negation above also re-includes macOS cruft, which the top-level
+# .DS_Store rule can no longer catch (last matching pattern wins).
+zobi/static/assets/images/**/.DS_Store
+zobi/static/assets/images/.DS_Store
 zobi/static/uploads/*
 !zobi/static/uploads/.gitkeep
 yarn-error.log

@@ -340,7 +340,7 @@ AUTH_RATE_LIMIT = "5 per second"
 APP_NAME = "Zobi"
 
 # Specify the App icon
-APP_ICON = "/static/assets/images/logo-horiz.svg"
+APP_ICON = "/static/assets/images/zobi.svg"
 
 # Specify where clicking the logo would take the user'
 # Default value of None will take you to '/zobi/welcome'
