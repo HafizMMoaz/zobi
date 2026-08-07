@@ -14,7 +14,6 @@ import {
   Button,
   Input,
   SafeMarkdown,
-  Select,
   Space,
   Tag,
 } from '@zobi.dev/core/components';
@@ -36,7 +35,7 @@ import {
   carriesFiles,
   useAttachments,
 } from './Attachments';
-import ModelPicker from './ModelPicker';
+import ComposerSwitcher from './ComposerSwitcher';
 import SlashPalette from './SlashPalette';
 import VoiceInput from './VoiceInput';
 import {
@@ -133,14 +132,29 @@ const ApprovalCard = styled.div`
 
 const Composer = styled.div<{ dropping: boolean }>`
   ${({ theme, dropping }) => css`
-    border-top: 1px solid ${theme.colorBorderSecondary};
+    margin: ${theme.sizeUnit * 3}px;
+    margin-top: 0;
     padding: ${theme.sizeUnit * 3}px;
     display: flex;
     flex-direction: column;
     gap: ${theme.sizeUnit * 2}px;
-    background: ${dropping ? theme.colorPrimaryBg : 'transparent'};
+    border: 1px solid
+      ${dropping ? theme.colorPrimaryBorder : theme.colorBorderSecondary};
+    border-radius: ${theme.borderRadiusLG}px;
+    background: ${dropping ? theme.colorPrimaryBg : theme.colorBgContainer};
     outline: ${dropping ? `2px dashed ${theme.colorPrimaryBorder}` : 'none'};
     outline-offset: -${theme.sizeUnit}px;
+
+    /*
+     * The textarea reads as this card's own surface rather than a boxed
+     * control nested inside it - the card supplies the one visible boundary.
+     */
+    textarea {
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      background: transparent;
+    }
   `}
 `;
 
@@ -151,12 +165,12 @@ const ComposerRow = styled.div`
     align-items: flex-end;
 
     /*
-     * Attach, mic and send are rendered by three separate components but read
-     * as one control group, so the row owns their geometry rather than each
-     * component guessing at it. antd sizes a button to its own content, which
-     * is why send grew once it became primary and why the icons did not line
-     * up. Pinning to controlHeight is what the text input uses, so the whole
-     * row ends up on the same square grid.
+     * Attach, slash toggle, mic and send are rendered by separate components
+     * but read as one control group, so the row owns their geometry rather
+     * than each component guessing at it. antd sizes a button to its own
+     * content, which is why send grew once it became primary and why the
+     * icons did not line up. Pinning to controlHeight is what the text input
+     * uses, so the whole row ends up on the same square grid.
      */
     button {
       flex: none;
@@ -651,31 +665,22 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
         onPaste={handlePaste}
       >
         <Space>
-          <Select
-            value={mode}
-            onChange={value => changeMode(value as AgentMode)}
-            options={modes.map(option => ({
-              value: option.value,
-              label: option.label,
-            }))}
-            css={{ minWidth: 180 }}
-          />
-          {modeHint && <ModeHint>{modeHint}</ModeHint>}
-          <ModelPicker
+          <ComposerSwitcher
+            modes={modes}
+            mode={mode}
+            onModeChange={value => changeMode(value)}
             models={models}
-            value={threadModel}
-            label={t('Model')}
-            disabled={busy}
-            onChange={alias => {
+            threadModel={threadModel}
+            onThreadModelChange={alias => {
               setThreadModel(alias);
               // Unlike mode, the model alias has nowhere to ride along on the
               // conversation's own creation call, so picking one before the
               // first send has to bring the conversation into being itself
               // rather than waiting for `send` to do it.
               //
-              // The picker above already shows `alias` regardless of outcome,
-              // so a failure here has to be surfaced explicitly - otherwise
-              // the dropdown keeps showing a choice that never reached the
+              // The trigger above already shows `alias` regardless of
+              // outcome, so a failure here has to be surfaced explicitly -
+              // otherwise it keeps showing a choice that never reached the
               // backend.
               ensureConversation()
                 .then(convId =>
@@ -683,14 +688,11 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
                 )
                 .catch(() => setError(t('Could not save your model choice.')));
             }}
-          />
-          <ModelPicker
-            models={models}
-            value={onceModel}
-            label={t('This message only')}
+            onceModel={onceModel}
+            onOnceModelChange={setOnceModel}
             disabled={busy}
-            onChange={setOnceModel}
           />
+          {modeHint && <ModeHint>{modeHint}</ModeHint>}
         </Space>
         <AttachmentList
           items={attachments.items}
@@ -719,6 +721,16 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
         )}
         <ComposerRow>
           <AttachButton onFiles={attachments.addFiles} disabled={busy} />
+          <Button
+            buttonStyle="tertiary"
+            aria-label={t('Tools')}
+            aria-pressed={paletteOpen}
+            tooltip={t('Choose a tool')}
+            disabled={busy}
+            onClick={() => setDraft(paletteOpen ? '' : '/')}
+          >
+            /
+          </Button>
           <Input.TextArea
             value={draft}
             onChange={event => setDraft(event.target.value)}

@@ -3,11 +3,22 @@ import {
   screen,
   waitFor,
   fireEvent,
-  selectOption,
+  within,
 } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
 import ChatPanel from './ChatPanel';
 import * as api from './api';
+
+const SWITCHER_NAME = 'Switch mode and model';
+
+/** Opens the mode/model switcher and clicks an item in one of its sections. */
+async function pickFromSwitcher(sectionName: string, itemText: string) {
+  await userEvent.click(
+    await screen.findByRole('button', { name: SWITCHER_NAME }),
+  );
+  const group = await screen.findByRole('group', { name: sectionName });
+  await userEvent.click(within(group).getByText(itemText));
+}
 
 jest.mock('./api');
 
@@ -177,7 +188,7 @@ test('changing the mode while the palette is open keeps the highlight in range',
 
   // Switching mode refetches tools; the auto-mode list only has two entries,
   // so the highlight at index 2 would point past the end unless it clamps.
-  await selectOption('Auto');
+  await pickFromSwitcher('Mode', 'Auto');
   await waitFor(() => expect(screen.getAllByRole('option')).toHaveLength(2));
 
   const options = screen.getAllByRole('option');
@@ -191,8 +202,7 @@ test('the thread picker persists and the once picker does not', async () => {
   ]);
   render(<ChatPanel />);
 
-  await userEvent.click(await screen.findByRole('combobox', { name: 'Model' }));
-  await userEvent.click(await screen.findByRole('option', { name: 'fast' }));
+  await pickFromSwitcher('Model', 'fast');
 
   await waitFor(() =>
     expect(mockedApi.updateConversation).toHaveBeenCalledWith(
@@ -203,16 +213,7 @@ test('the thread picker persists and the once picker does not', async () => {
 
   mockedApi.updateConversation.mockClear();
 
-  // Querying by role rather than text: the Model dropdown just closed but
-  // stays mounted (hidden) in the DOM, and a plain text query would match its
-  // leftover "gpt-4o (default)" option as well as the freshly opened one.
-  // getByRole excludes it because antd marks the closed popup hidden via CSS.
-  await userEvent.click(
-    screen.getByRole('combobox', { name: 'This message only' }),
-  );
-  await userEvent.click(
-    await screen.findByRole('option', { name: 'gpt-4o (default)' }),
-  );
+  await pickFromSwitcher('This message only', 'gpt-4o (default)');
 
   expect(mockedApi.updateConversation).not.toHaveBeenCalled();
 });
@@ -225,8 +226,7 @@ test('a failed thread-model save surfaces an error instead of pretending it pers
   mockedApi.updateConversation.mockRejectedValue(new Error('network down'));
   render(<ChatPanel />);
 
-  await userEvent.click(await screen.findByRole('combobox', { name: 'Model' }));
-  await userEvent.click(await screen.findByRole('option', { name: 'fast' }));
+  await pickFromSwitcher('Model', 'fast');
 
   expect(await screen.findByRole('alert')).toHaveTextContent(
     'Could not save your model choice.',
@@ -239,10 +239,7 @@ test('the once override is sent and then reverts', async () => {
   ]);
   render(<ChatPanel />);
 
-  await userEvent.click(
-    await screen.findByRole('combobox', { name: 'This message only' }),
-  );
-  await userEvent.click(await screen.findByRole('option', { name: 'fast' }));
+  await pickFromSwitcher('This message only', 'fast');
   await userEvent.type(await screen.findByRole('textbox'), 'hello');
   await userEvent.click(screen.getByLabelText('Send'));
 
@@ -256,7 +253,7 @@ test('the once override is sent and then reverts', async () => {
   );
   await waitFor(() =>
     expect(
-      screen.getByRole('combobox', { name: 'This message only' }),
-    ).toHaveValue(''),
+      screen.getByRole('button', { name: SWITCHER_NAME }),
+    ).toHaveTextContent('Default'),
   );
 });
