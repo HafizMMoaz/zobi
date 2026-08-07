@@ -217,6 +217,22 @@ test('the thread picker persists and the once picker does not', async () => {
   expect(mockedApi.updateConversation).not.toHaveBeenCalled();
 });
 
+test('a failed thread-model save surfaces an error instead of pretending it persisted', async () => {
+  mockedApi.fetchChatModels.mockResolvedValue([
+    { alias: 'fast', is_default: false },
+    { alias: 'gpt-4o', is_default: true },
+  ]);
+  mockedApi.updateConversation.mockRejectedValue(new Error('network down'));
+  render(<ChatPanel />);
+
+  await userEvent.click(await screen.findByRole('combobox', { name: 'Model' }));
+  await userEvent.click(await screen.findByRole('option', { name: 'fast' }));
+
+  expect(await screen.findByRole('alert')).toHaveTextContent(
+    'Could not save your model choice.',
+  );
+});
+
 test('the once override is sent and then reverts', async () => {
   mockedApi.fetchChatModels.mockResolvedValue([
     { alias: 'fast', is_default: false },

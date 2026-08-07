@@ -672,11 +672,16 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
               // conversation's own creation call, so picking one before the
               // first send has to bring the conversation into being itself
               // rather than waiting for `send` to do it.
+              //
+              // The picker above already shows `alias` regardless of outcome,
+              // so a failure here has to be surfaced explicitly - otherwise
+              // the dropdown keeps showing a choice that never reached the
+              // backend.
               ensureConversation()
                 .then(convId =>
                   updateConversation(convId, { model_alias: alias }),
                 )
-                .catch(() => undefined);
+                .catch(() => setError(t('Could not save your model choice.')));
             }}
           />
           <ModelPicker
