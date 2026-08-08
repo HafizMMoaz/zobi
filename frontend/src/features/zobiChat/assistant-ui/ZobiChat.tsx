@@ -17,6 +17,7 @@ import {
 } from '../types';
 import ComposerSwitcher from '../ComposerSwitcher';
 import SlashPalette from '../SlashPalette';
+import VoiceInput from '../VoiceInput';
 import { createAttachmentAdapter } from './attachmentAdapter';
 import { useZobiChatRuntime } from './runtime';
 import Thread from './Thread';
@@ -129,6 +130,17 @@ const ZobiChat: FunctionComponent<ZobiChatProps> = ({
             onOnceModelChange={setOnceModel}
           />
         }
+        composerActions={(draft, setDraft) => (
+          <VoiceInput
+            // Appends rather than replaces: speech recognition misreads
+            // names and numbers, so the user needs to be able to dictate a
+            // correction alongside whatever they already typed.
+            onTranscript={text =>
+              setDraft(draft.trim() ? `${draft.trim()} ${text}` : text)
+            }
+            onError={setError}
+          />
+        )}
         composerSlashPalette={(draft, setDraft) => {
           // The palette is open while the draft is a bare "/name" with no
           // space yet; a space means the user has moved on to writing the

@@ -59,3 +59,58 @@ test('typing "/" opens the slash palette and selecting a tool fills the composer
 
   expect(input).toHaveValue('/list_tables ');
 });
+
+/**
+ * Minimal fakes for the two browser recording APIs `VoiceInput` drives.
+ * Nothing in this repo's jsdom setup stubs `getUserMedia`/`MediaRecorder`
+ * yet, so this test provides its own: `start()` delivers one data chunk and
+ * stops asynchronously (a real `setTimeout`, not React state) so it lands
+ * after `VoiceInput`'s own `setState('recording')` rather than racing it.
+ */
+class FakeMediaRecorder {
+  static isTypeSupported = (): boolean => true;
+
+  ondataavailable: ((event: { data: Blob }) => void) | null = null;
+  onstop: (() => void) | null = null;
+  onerror: (() => void) | null = null;
+  state: 'inactive' | 'recording' = 'inactive';
+  mimeType = 'audio/webm';
+
+  start(): void {
+    this.state = 'recording';
+    setTimeout(() => {
+      this.ondataavailable?.({ data: new Blob(['audio']) });
+      this.state = 'inactive';
+      this.onstop?.();
+    }, 0);
+  }
+
+  stop(): void {
+    this.state = 'inactive';
+    this.onstop?.();
+  }
+}
+
+test('a completed voice transcription is appended to the composer text', async () => {
+  (api.fetchModes as jest.Mock).mockResolvedValue([]);
+  (api.fetchChatModels as jest.Mock).mockResolvedValue([]);
+  (api.fetchTools as jest.Mock).mockResolvedValue([]);
+  (api.transcribeAudio as jest.Mock).mockResolvedValue({
+    text: 'show me sales',
+    language: 'en',
+    backend: 'whisper',
+  });
+
+  Object.defineProperty(window.navigator, 'mediaDevices', {
+    configurable: true,
+    value: { getUserMedia: jest.fn().mockResolvedValue({ getTracks: () => [] }) },
+  });
+  window.MediaRecorder = FakeMediaRecorder as unknown as typeof MediaRecorder;
+
+  render(<ZobiChat conversationId={null} />);
+
+  await userEvent.click(screen.getByRole('button', { name: /record a voice message/i }));
+  // VoiceInput's own recording UI is out of scope here; this only asserts the
+  // transcription lands in the composer once it resolves.
+  expect(await screen.findByDisplayValue('show me sales')).toBeInTheDocument();
+});

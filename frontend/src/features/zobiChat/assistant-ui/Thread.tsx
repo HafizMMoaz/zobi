@@ -31,8 +31,17 @@ export type ThreadProps = {
   welcomeSuggestions?: { label: string; prompt: string }[];
   /** Rendered above the composer input, e.g. the model/mode switcher. */
   composerToolbar?: React.ReactNode;
-  /** Rendered in the composer's action row, e.g. attach/voice buttons. */
-  composerActions?: React.ReactNode;
+  /**
+   * Rendered in the composer's action row, e.g. voice input. Takes the same
+   * draft/setDraft bridge as `composerSlashPalette`, for the same reason: an
+   * action that needs to write into the composer (voice transcription
+   * appending its text) has to go through `unstable_useComposerInput`'s
+   * `setText`, not a prop this component could pass down on its own.
+   */
+  composerActions?: (
+    draft: string,
+    setDraft: (text: string) => void,
+  ) => React.ReactNode;
   /**
    * Rendered above the composer input with live access to its draft text and
    * a setter, e.g. the slash-command palette. `ComposerPrimitive.Input`'s
@@ -89,7 +98,7 @@ const Thread: FC<ThreadProps> = ({
             placeholder="Send a message..."
             className="aui:min-h-11 aui:flex-1 aui:resize-none aui:rounded-xl aui:border aui:px-3 aui:py-2"
           />
-          {composerActions}
+          {composerActions?.(draft, setDraft)}
           <ComposerPrimitive.Send className="aui:rounded-full aui:bg-blue-600 aui:px-4 aui:py-2 aui:text-white" />
         </div>
       </ComposerPrimitive.Root>
