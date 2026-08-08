@@ -1,4 +1,4 @@
-import { render, screen, within } from 'spec/helpers/testing-library';
+import { act, render, screen, waitFor, within } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
 import * as api from '../api';
 import ZobiChat from './ZobiChat';
@@ -9,6 +9,14 @@ jest.mock('../api');
 // the tool list on mount, so it needs a default resolved value here.
 beforeEach(() => {
   (api.fetchTools as jest.Mock).mockResolvedValue([]);
+});
+
+// jsdom has no layout engine, so it doesn't implement Element.scrollTo; the
+// thread viewport's autoscroll effect calls it on every new message, which
+// throws as an unhandled rejection inside jsdom's rAF loop and fails
+// whichever test happens to still be running when that callback fires.
+beforeAll(() => {
+  window.HTMLElement.prototype.scrollTo = jest.fn();
 });
 
 test('creates a conversation on first send and reports it back', async () => {
@@ -79,4 +87,44 @@ test('switching the model persists it and applies to the next send', async () =>
   // `fast` was set as the thread model (persisted), not a once-only override,
   // so model_alias on the send body is null and the thread's model was PUT.
   expect(api.updateConversation).toHaveBeenCalledWith(9, { model_alias: 'fast' });
+});
+
+test('an approval_required event renders ApprovalTool, and approving resumes the turn', async () => {
+  let onEvent!: (event: unknown) => void;
+  (api.fetchModes as jest.Mock).mockResolvedValue([]);
+  (api.fetchChatModels as jest.Mock).mockResolvedValue([]);
+  (api.streamMessage as jest.Mock).mockImplementation((_id, _body, cb) => {
+    onEvent = cb;
+    return () => {};
+  });
+  (api.respondToApproval as jest.Mock).mockResolvedValue({ ok: true, output: 'done' });
+  (api.createConversation as jest.Mock).mockResolvedValue({ id: 3, uuid: 'u' });
+
+  render(<ZobiChat conversationId={null} />);
+  await userEvent.type(screen.getByPlaceholderText('Send a message...'), 'drop orders{enter}');
+  // `createConversation` resolves asynchronously, so `streamMessage` (and
+  // therefore `onEvent`) is only wired up a tick after `userEvent.type`
+  // settles - wait for it rather than racing it.
+  await waitFor(() => expect(api.streamMessage).toHaveBeenCalled());
+
+  act(() => {
+    onEvent({
+      type: 'approval_required',
+      id: 'call-9',
+      name: 'drop_table',
+      title: 'Drop table',
+      risk: 'destructive',
+      description: 'Deletes a table permanently.',
+      arguments: { table: 'orders' },
+    });
+  });
+
+  await userEvent.click(await screen.findByRole('button', { name: 'Approve' }));
+
+  expect(api.respondToApproval).toHaveBeenCalledWith(3, {
+    tool_call_id: 'call-9',
+    tool_name: 'drop_table',
+    arguments: { table: 'orders' },
+    approved: true,
+  });
 });

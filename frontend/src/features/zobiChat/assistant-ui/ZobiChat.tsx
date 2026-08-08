@@ -1,5 +1,9 @@
-import { FunctionComponent, useEffect, useRef, useState } from 'react';
-import { AssistantRuntimeProvider } from '@assistant-ui/react';
+import { FC, FunctionComponent, useEffect, useRef, useState } from 'react';
+import {
+  AssistantRuntimeProvider,
+  ToolCallMessagePartComponent,
+  useAssistantTool,
+} from '@assistant-ui/react';
 import {
   createConversation,
   fetchChatModels,
@@ -21,6 +25,65 @@ import VoiceInput from '../VoiceInput';
 import { createAttachmentAdapter } from './attachmentAdapter';
 import { useZobiChatRuntime } from './runtime';
 import Thread from './Thread';
+import ApprovalTool, { ApprovalToolArgs } from './ApprovalTool';
+
+/**
+ * Adapts `ApprovalTool` to `ToolCallMessagePartComponent`.
+ *
+ * `MessagePartState` (the base every tool-call render prop type is built on)
+ * folds in every part variant's *default*-generic shape, so the `args` field
+ * assistant-ui hands a `render` component is typed as `ReadonlyJSONObject &
+ * ApprovalToolArgs`, not plain `ApprovalToolArgs` - passing `ApprovalTool`
+ * (a `React.FC`, whose `propTypes` member is checked structurally) straight
+ * through as `render` fails type-checking against that wider type. A plain
+ * function has no `propTypes` to check, so re-narrowing through one here
+ * (rather than loosening `ApprovalTool`'s own prop types) sidesteps it
+ * without weakening the component the tests exercise directly.
+ */
+const renderApprovalTool: ToolCallMessagePartComponent<
+  ApprovalToolArgs,
+  { approved: boolean }
+> = ({ args, result, addResult }) => (
+  <ApprovalTool args={args} result={result} addResult={addResult} />
+);
+
+/**
+ * Registers `request_approval` against the assistant-ui model context, with
+ * `renderApprovalTool` as its renderer.
+ *
+ * `useAssistantTool` needs `AssistantRuntimeProvider`'s context, so this has
+ * to be a child of that provider rather than inline in `ZobiChat` itself
+ * (whose own render runs before its returned provider element mounts).
+ *
+ * `type: 'human'` (rather than `execute: humanTool()`, as `@assistant-ui`'s
+ * docs show) is deliberate: `humanTool()` has no runtime implementation - a
+ * `"use generative"` build step is what turns it into a `type: 'human'` tool
+ * definition, and this project has no such build step, so calling it throws.
+ * Authoring the `type: 'human'` shape directly is what that compiler would
+ * have produced anyway, and there is nothing here for `execute` to do: the
+ * backend, not this tool, decides the outcome (`runtime.ts`'s
+ * `onAddToolResult` forwards `addResult`'s payload to `respondToApproval`).
+ */
+const ApprovalToolRegistration: FC = () => {
+  useAssistantTool({
+    toolName: 'request_approval',
+    type: 'human',
+    description: 'Requests human approval before a risky action proceeds.',
+    parameters: {
+      type: 'object',
+      properties: {
+        name: { type: 'string' },
+        title: { type: 'string' },
+        risk: { type: 'string' },
+        description: { type: 'string' },
+        arguments: { type: 'object' },
+      },
+      required: ['name', 'title', 'risk', 'description', 'arguments'],
+    },
+    render: renderApprovalTool,
+  });
+  return null;
+};
 
 export type ZobiChatProps = {
   /** Existing conversation to open; omit to start a new one on first send. */
@@ -108,6 +171,7 @@ const ZobiChat: FunctionComponent<ZobiChatProps> = ({
 
   return (
     <AssistantRuntimeProvider runtime={runtime}>
+      <ApprovalToolRegistration />
       {header}
       {error && <div role="alert">{error}</div>}
       <Thread
