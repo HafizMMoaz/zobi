@@ -13,7 +13,11 @@ jest.mock('src/features/zobiChat/api');
  */
 jest.mock('src/features/home/SubMenu', () => ({
   __esModule: true,
-  default: ({ buttons = [] }: { buttons?: { name: unknown; onClick: () => void }[] }) => (
+  default: ({
+    buttons = [],
+  }: {
+    buttons?: { name: unknown; onClick: () => void }[];
+  }) => (
     <div>
       {buttons.map((button, index) => (
         <button key={index} type="button" onClick={button.onClick}>
@@ -46,7 +50,10 @@ beforeEach(() => {
  */
 test('keeps streaming the first answer after the new conversation gets its id', async () => {
   let onEvent!: (event: unknown) => void;
-  (api.createConversation as jest.Mock).mockResolvedValue({ id: 42, uuid: 'u' });
+  (api.createConversation as jest.Mock).mockResolvedValue({
+    id: 42,
+    uuid: 'u',
+  });
   (api.streamMessage as jest.Mock).mockImplementation((_id, _body, cb) => {
     onEvent = cb;
     return () => {};
@@ -78,7 +85,13 @@ test('switching to another thread loads it and drops the previous stream', async
   const abort = jest.fn();
   let onEvent!: (event: unknown) => void;
   (api.fetchConversations as jest.Mock).mockResolvedValue([
-    { id: 8, uuid: 'u8', title: 'Older chat', mode: 'manual', model_alias: null },
+    {
+      id: 8,
+      uuid: 'u8',
+      title: 'Older chat',
+      mode: 'manual',
+      model_alias: null,
+    },
   ]);
   (api.fetchConversation as jest.Mock).mockResolvedValue({
     id: 8,
@@ -88,7 +101,10 @@ test('switching to another thread loads it and drops the previous stream', async
     model_alias: null,
     messages: [{ role: 'assistant', content: 'Welcome back' }],
   });
-  (api.createConversation as jest.Mock).mockResolvedValue({ id: 42, uuid: 'u' });
+  (api.createConversation as jest.Mock).mockResolvedValue({
+    id: 42,
+    uuid: 'u',
+  });
   (api.streamMessage as jest.Mock).mockImplementation((_id, _body, cb) => {
     onEvent = cb;
     return abort;
@@ -114,7 +130,10 @@ test('switching to another thread loads it and drops the previous stream', async
 
 test('"New chat" clears the transcript even though the id is unchanged', async () => {
   let onEvent!: (event: unknown) => void;
-  (api.createConversation as jest.Mock).mockResolvedValue({ id: 42, uuid: 'u' });
+  (api.createConversation as jest.Mock).mockResolvedValue({
+    id: 42,
+    uuid: 'u',
+  });
   (api.streamMessage as jest.Mock).mockImplementation((_id, _body, cb) => {
     onEvent = cb;
     return () => {};

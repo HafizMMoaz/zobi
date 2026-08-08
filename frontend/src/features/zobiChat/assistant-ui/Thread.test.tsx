@@ -1,6 +1,9 @@
 import { render, screen, waitFor } from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
-import { AssistantRuntimeProvider, useExternalStoreRuntime } from '@assistant-ui/react';
+import {
+  AssistantRuntimeProvider,
+  useExternalStoreRuntime,
+} from '@assistant-ui/react';
 import { useState } from 'react';
 import * as api from '../api';
 import Thread from './Thread';
@@ -58,7 +61,10 @@ test('an assistant answer is rendered through the Markdown pipeline', async () =
   render(
     <Harness
       seed={[
-        { role: 'user', content: [{ type: 'text', text: 'raw **user** text' }] },
+        {
+          role: 'user',
+          content: [{ type: 'text', text: 'raw **user** text' }],
+        },
         {
           role: 'assistant',
           content: [{ type: 'text', text: '**bold** and `code`' }],
@@ -137,7 +143,12 @@ test('typing "/" opens the slash palette and selecting a tool fills the composer
   (api.fetchModes as jest.Mock).mockResolvedValue([]);
   (api.fetchChatModels as jest.Mock).mockResolvedValue([]);
   (api.fetchTools as jest.Mock).mockResolvedValue([
-    { name: 'list_tables', title: 'List tables', risk: 'read', description: 'Lists tables.' },
+    {
+      name: 'list_tables',
+      title: 'List tables',
+      risk: 'read',
+      description: 'Lists tables.',
+    },
   ]);
 
   render(<ZobiChat conversationId={null} />);
@@ -194,13 +205,17 @@ test('a completed voice transcription is appended to the composer text', async (
 
   Object.defineProperty(window.navigator, 'mediaDevices', {
     configurable: true,
-    value: { getUserMedia: jest.fn().mockResolvedValue({ getTracks: () => [] }) },
+    value: {
+      getUserMedia: jest.fn().mockResolvedValue({ getTracks: () => [] }),
+    },
   });
   window.MediaRecorder = FakeMediaRecorder as unknown as typeof MediaRecorder;
 
   render(<ZobiChat conversationId={null} />);
 
-  await userEvent.click(screen.getByRole('button', { name: /record a voice message/i }));
+  await userEvent.click(
+    screen.getByRole('button', { name: /record a voice message/i }),
+  );
   // VoiceInput's own recording UI is out of scope here; this only asserts the
   // transcription lands in the composer once it resolves.
   expect(await screen.findByDisplayValue('show me sales')).toBeInTheDocument();
@@ -215,9 +230,8 @@ test('a completed voice transcription is appended to the composer text', async (
 async function attachFile(file: File) {
   await userEvent.click(screen.getByRole('button', { name: 'Attach a file' }));
   // eslint-disable-next-line testing-library/no-node-access
-  const input = document.body.querySelector<HTMLInputElement>(
-    'input[type="file"]',
-  )!;
+  const input =
+    document.body.querySelector<HTMLInputElement>('input[type="file"]')!;
   await userEvent.upload(input, file);
 }
 
@@ -225,20 +239,25 @@ test('a file attached in the composer is listed, removable, and sent', async () 
   (api.fetchModes as jest.Mock).mockResolvedValue([]);
   (api.fetchChatModels as jest.Mock).mockResolvedValue([]);
   (api.fetchTools as jest.Mock).mockResolvedValue([]);
-  (api.createConversation as jest.Mock).mockResolvedValue({ id: 11, uuid: 'u' });
-  (api.uploadAttachment as jest.Mock).mockImplementation((_id, _file, handlers) => {
-    handlers.onDone({
-      id: 5,
-      uuid: 'u',
-      filename: 'data.csv',
-      kind: 'csv',
-      status: 'ready',
-      size_bytes: 3,
-      summary: null,
-      error: null,
-    });
-    return () => {};
+  (api.createConversation as jest.Mock).mockResolvedValue({
+    id: 11,
+    uuid: 'u',
   });
+  (api.uploadAttachment as jest.Mock).mockImplementation(
+    (_id, _file, handlers) => {
+      handlers.onDone({
+        id: 5,
+        uuid: 'u',
+        filename: 'data.csv',
+        kind: 'csv',
+        status: 'ready',
+        size_bytes: 3,
+        summary: null,
+        error: null,
+      });
+      return () => {};
+    },
+  );
   (api.deleteAttachment as jest.Mock).mockResolvedValue({});
   (api.streamMessage as jest.Mock).mockImplementation(() => () => {});
 
@@ -275,20 +294,25 @@ test('removing an attachment takes it off the composer and off the server', asyn
   (api.fetchModes as jest.Mock).mockResolvedValue([]);
   (api.fetchChatModels as jest.Mock).mockResolvedValue([]);
   (api.fetchTools as jest.Mock).mockResolvedValue([]);
-  (api.createConversation as jest.Mock).mockResolvedValue({ id: 12, uuid: 'u' });
-  (api.uploadAttachment as jest.Mock).mockImplementation((_id, _file, handlers) => {
-    handlers.onDone({
-      id: 8,
-      uuid: 'u',
-      filename: 'notes.pdf',
-      kind: 'pdf',
-      status: 'ready',
-      size_bytes: 3,
-      summary: null,
-      error: null,
-    });
-    return () => {};
+  (api.createConversation as jest.Mock).mockResolvedValue({
+    id: 12,
+    uuid: 'u',
   });
+  (api.uploadAttachment as jest.Mock).mockImplementation(
+    (_id, _file, handlers) => {
+      handlers.onDone({
+        id: 8,
+        uuid: 'u',
+        filename: 'notes.pdf',
+        kind: 'pdf',
+        status: 'ready',
+        size_bytes: 3,
+        summary: null,
+        error: null,
+      });
+      return () => {};
+    },
+  );
   (api.deleteAttachment as jest.Mock).mockResolvedValue({});
 
   render(<ZobiChat conversationId={null} />);

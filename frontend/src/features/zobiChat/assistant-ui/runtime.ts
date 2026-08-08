@@ -205,7 +205,10 @@ export function useZobiChatRuntime({
           { ...last, content: [...parts, { type: 'text', text }] },
         ];
       }
-      return [...current, { role: 'assistant', content: [{ type: 'text', text }] }];
+      return [
+        ...current,
+        { role: 'assistant', content: [{ type: 'text', text }] },
+      ];
     });
   }, []);
 
@@ -326,7 +329,8 @@ export function useZobiChatRuntime({
         { role: 'user', content: [{ type: 'text', text }] },
       ]);
 
-      const targetId = conversationIdRef.current ?? (await onConversationStarted());
+      const targetId =
+        conversationIdRef.current ?? (await onConversationStarted());
       conversationIdRef.current = targetId;
 
       const attachmentIds = message.attachments?.map(a => Number(a.id));

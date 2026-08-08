@@ -57,5 +57,7 @@ test('shows the outcome once a result exists, with no buttons', () => {
     />,
   );
   expect(screen.getByText(/approved/i)).toBeInTheDocument();
-  expect(screen.queryByRole('button', { name: 'Approve' })).not.toBeInTheDocument();
+  expect(
+    screen.queryByRole('button', { name: 'Approve' }),
+  ).not.toBeInTheDocument();
 });

@@ -1,4 +1,10 @@
-import { act, render, screen, waitFor, within } from 'spec/helpers/testing-library';
+import {
+  act,
+  render,
+  screen,
+  waitFor,
+  within,
+} from 'spec/helpers/testing-library';
 import userEvent from '@testing-library/user-event';
 import * as api from '../api';
 import ZobiChat from './ZobiChat';
@@ -23,15 +29,28 @@ beforeAll(() => {
 });
 
 test('creates a conversation on first send and reports it back', async () => {
-  (api.createConversation as jest.Mock).mockResolvedValue({ id: 42, uuid: 'u' });
+  (api.createConversation as jest.Mock).mockResolvedValue({
+    id: 42,
+    uuid: 'u',
+  });
   (api.fetchModes as jest.Mock).mockResolvedValue([]);
   (api.fetchChatModels as jest.Mock).mockResolvedValue([]);
-  (api.streamMessage as jest.Mock).mockImplementation((_id, _body, _onEvent, _onError) => () => {});
+  (api.streamMessage as jest.Mock).mockImplementation(
+    (_id, _body, _onEvent, _onError) => () => {},
+  );
 
   const onConversationStarted = jest.fn();
-  render(<ZobiChat conversationId={null} onConversationStarted={onConversationStarted} />);
+  render(
+    <ZobiChat
+      conversationId={null}
+      onConversationStarted={onConversationStarted}
+    />,
+  );
 
-  await userEvent.type(screen.getByPlaceholderText('Send a message...'), 'hi{enter}');
+  await userEvent.type(
+    screen.getByPlaceholderText('Send a message...'),
+    'hi{enter}',
+  );
 
   expect(api.createConversation).toHaveBeenCalledWith('manual');
   expect(onConversationStarted).toHaveBeenCalledWith(42);
@@ -79,7 +98,10 @@ test('switching the model persists it and applies to the next send', async () =>
     within(modelGroup).getByRole('menuitemradio', { name: 'fast' }),
   );
 
-  await userEvent.type(screen.getByPlaceholderText('Send a message...'), 'hi{enter}');
+  await userEvent.type(
+    screen.getByPlaceholderText('Send a message...'),
+    'hi{enter}',
+  );
 
   expect(api.streamMessage).toHaveBeenCalledWith(
     9,
@@ -89,7 +111,9 @@ test('switching the model persists it and applies to the next send', async () =>
   );
   // `fast` was set as the thread model (persisted), not a once-only override,
   // so model_alias on the send body is null and the thread's model was PUT.
-  expect(api.updateConversation).toHaveBeenCalledWith(9, { model_alias: 'fast' });
+  expect(api.updateConversation).toHaveBeenCalledWith(9, {
+    model_alias: 'fast',
+  });
 });
 
 test('an approval_required event renders ApprovalTool, and approving resumes the turn', async () => {
@@ -100,11 +124,17 @@ test('an approval_required event renders ApprovalTool, and approving resumes the
     onEvent = cb;
     return () => {};
   });
-  (api.respondToApproval as jest.Mock).mockResolvedValue({ ok: true, output: 'done' });
+  (api.respondToApproval as jest.Mock).mockResolvedValue({
+    ok: true,
+    output: 'done',
+  });
   (api.createConversation as jest.Mock).mockResolvedValue({ id: 3, uuid: 'u' });
 
   render(<ZobiChat conversationId={null} />);
-  await userEvent.type(screen.getByPlaceholderText('Send a message...'), 'drop orders{enter}');
+  await userEvent.type(
+    screen.getByPlaceholderText('Send a message...'),
+    'drop orders{enter}',
+  );
   // `createConversation` resolves asynchronously, so `streamMessage` (and
   // therefore `onEvent`) is only wired up a tick after `userEvent.type`
   // settles - wait for it rather than racing it.
@@ -144,7 +174,10 @@ test('a failed approval POST reports the failure and does not resume the turn', 
   (api.createConversation as jest.Mock).mockResolvedValue({ id: 4, uuid: 'u' });
 
   render(<ZobiChat conversationId={null} />);
-  await userEvent.type(screen.getByPlaceholderText('Send a message...'), 'drop orders{enter}');
+  await userEvent.type(
+    screen.getByPlaceholderText('Send a message...'),
+    'drop orders{enter}',
+  );
   await waitFor(() => expect(api.streamMessage).toHaveBeenCalled());
 
   act(() => {
@@ -168,14 +201,18 @@ test('a failed approval POST reports the failure and does not resume the turn', 
   // the backend refused to record had been approved.
   expect(api.streamMessage).toHaveBeenCalledTimes(1);
   // The decision is offered again rather than being silently swallowed.
-  expect(await screen.findByRole('button', { name: 'Approve' })).toBeInTheDocument();
+  expect(
+    await screen.findByRole('button', { name: 'Approve' }),
+  ).toBeInTheDocument();
 });
 
 test('a failed createConversation is reported and does not lock later sends', async () => {
   (api.fetchModes as jest.Mock).mockResolvedValue([]);
   (api.fetchChatModels as jest.Mock).mockResolvedValue([]);
   (api.streamMessage as jest.Mock).mockImplementation(() => () => {});
-  (api.createConversation as jest.Mock).mockRejectedValueOnce(new Error('boom'));
+  (api.createConversation as jest.Mock).mockRejectedValueOnce(
+    new Error('boom'),
+  );
 
   render(<ZobiChat conversationId={null} />);
   const input = screen.getByPlaceholderText('Send a message...');
@@ -188,7 +225,10 @@ test('a failed createConversation is reported and does not lock later sends', as
 
   // The rejected promise must not be cached: a second attempt has to reach the
   // API again rather than re-awaiting the failure forever.
-  (api.createConversation as jest.Mock).mockResolvedValue({ id: 21, uuid: 'u' });
+  (api.createConversation as jest.Mock).mockResolvedValue({
+    id: 21,
+    uuid: 'u',
+  });
   await userEvent.type(input, 'hi again{enter}');
 
   await waitFor(() =>

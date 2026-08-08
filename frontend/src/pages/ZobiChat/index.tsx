@@ -55,7 +55,8 @@ const ThreadButton = styled.button<{ selected: boolean }>`
     padding: ${theme.sizeUnit * 2}px;
     background: ${selected ? theme.colorPrimaryBg : 'transparent'};
     color: ${theme.colorText};
-    transition: background-color ${theme.motionDurationMid} ${theme.motionEaseInOut};
+    transition: background-color ${theme.motionDurationMid}
+      ${theme.motionEaseInOut};
 
     &:hover {
       background: ${selected ? theme.colorPrimaryBg : theme.colorBgTextHover};

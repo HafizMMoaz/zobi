@@ -6,7 +6,9 @@ import type {
 import { deleteAttachment, uploadAttachment } from '../api';
 import { Attachment } from '../types';
 
-type ZobiPendingAttachment = PendingAttachment & { serverAttachment: Attachment | null };
+type ZobiPendingAttachment = PendingAttachment & {
+  serverAttachment: Attachment | null;
+};
 
 /**
  * Bridges assistant-ui's `AttachmentAdapter` to the existing upload API.
@@ -26,12 +28,14 @@ export function createAttachmentAdapter(
 
     async add({ file }): Promise<ZobiPendingAttachment> {
       const conversationId = await ensureConversation();
-      const serverAttachment = await new Promise<Attachment>((resolve, reject) => {
-        uploadAttachment(conversationId, file, {
-          onDone: resolve,
-          onError: reject,
-        });
-      });
+      const serverAttachment = await new Promise<Attachment>(
+        (resolve, reject) => {
+          uploadAttachment(conversationId, file, {
+            onDone: resolve,
+            onError: reject,
+          });
+        },
+      );
 
       return {
         id: String(serverAttachment.id),

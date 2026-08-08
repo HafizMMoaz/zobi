@@ -13,20 +13,21 @@ const stubAttachmentAdapter = {
   remove: jest.fn(),
 };
 
-function setup(overrides: Partial<Parameters<typeof useZobiChatRuntime>[0]> = {}) {
+function setup(
+  overrides: Partial<Parameters<typeof useZobiChatRuntime>[0]> = {},
+) {
   const onConversationStarted = jest.fn().mockResolvedValue(1);
   const onError = jest.fn();
-  const { result } = renderHook(
-    () =>
-      useZobiChatRuntime({
-        conversationId: 1,
-        mode: 'manual',
-        initialMessages: [],
-        onConversationStarted,
-        onError,
-        attachments: stubAttachmentAdapter,
-        ...overrides,
-      }),
+  const { result } = renderHook(() =>
+    useZobiChatRuntime({
+      conversationId: 1,
+      mode: 'manual',
+      initialMessages: [],
+      onConversationStarted,
+      onError,
+      attachments: stubAttachmentAdapter,
+      ...overrides,
+    }),
   );
   return { result, onConversationStarted, onError };
 }
@@ -96,11 +97,21 @@ test('turns tool_start/tool_result events into a tool-call part', async () => {
   });
   let last = result.current.thread.getState().messages.at(-1)!;
   expect(last.content).toContainEqual(
-    expect.objectContaining({ type: 'tool-call', toolCallId: 'call-1', toolName: 'list_tables' }),
+    expect.objectContaining({
+      type: 'tool-call',
+      toolCallId: 'call-1',
+      toolName: 'list_tables',
+    }),
   );
 
   act(() => {
-    onEvent({ type: 'tool_result', id: 'call-1', name: 'list_tables', ok: true, output: 'orders, users' });
+    onEvent({
+      type: 'tool_result',
+      id: 'call-1',
+      name: 'list_tables',
+      ok: true,
+      output: 'orders, users',
+    });
   });
   last = result.current.thread.getState().messages.at(-1)!;
   expect(last.content).toContainEqual(
@@ -141,7 +152,10 @@ test('approval_required stops the run and surfaces a request_approval tool-call'
   expect(result.current.thread.getState().isRunning).toBe(false);
   const last = result.current.thread.getState().messages.at(-1)!;
   expect(last.content).toContainEqual(
-    expect.objectContaining({ toolCallId: 'call-2', toolName: 'request_approval' }),
+    expect.objectContaining({
+      toolCallId: 'call-2',
+      toolName: 'request_approval',
+    }),
   );
 });
 

@@ -5,19 +5,21 @@ import * as api from '../api';
 jest.mock('../api');
 
 test('add() starts the upload and send() resolves once it completes', async () => {
-  (api.uploadAttachment as jest.Mock).mockImplementation((_id, _file, handlers) => {
-    handlers.onDone({
-      id: 5,
-      uuid: 'u',
-      filename: 'data.csv',
-      kind: 'csv',
-      status: 'ready',
-      size_bytes: 100,
-      summary: null,
-      error: null,
-    });
-    return () => {};
-  });
+  (api.uploadAttachment as jest.Mock).mockImplementation(
+    (_id, _file, handlers) => {
+      handlers.onDone({
+        id: 5,
+        uuid: 'u',
+        filename: 'data.csv',
+        kind: 'csv',
+        status: 'ready',
+        size_bytes: 100,
+        summary: null,
+        error: null,
+      });
+      return () => {};
+    },
+  );
 
   const ensureConversation = jest.fn().mockResolvedValue(1);
   const adapter = createAttachmentAdapter(ensureConversation);
