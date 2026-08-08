@@ -1,11 +1,20 @@
-@import "tailwindcss" prefix(aui);
+@layer theme, base, components, utilities;
+@import "tailwindcss/theme.css" layer(theme) prefix(aui);
+@import "tailwindcss/utilities.css" layer(utilities) prefix(aui);
 
 /*
- * Every root component under assistant-ui/ renders inside an element
- * carrying this class, so Tailwind's preflight reset and utilities are
- * confined to the chat surface and cannot bleed into Ant Design/Emotion
- * elsewhere in the app.
+ * Preflight is intentionally NOT imported here (no tailwindcss/preflight.css
+ * import). Preflight's reset targets bare, unscoped selectors (*, a, button,
+ * table, h1-h6, ...) - Tailwind v4's prefix() namespaces generated utility
+ * classes and theme custom properties, but NOT preflight's selectors, so
+ * importing preflight would reset margins/borders/typography app-wide and
+ * leak into Ant Design/Emotion elsewhere, the opposite of what this file is
+ * for. Only the one reset assistant-ui's components actually rely on is
+ * hand-scoped instead, explicitly confined to this subtree.
  */
-.aui-scope {
-  all: revert;
+.aui-scope,
+.aui-scope *,
+.aui-scope *::before,
+.aui-scope *::after {
+  box-sizing: border-box;
 }
