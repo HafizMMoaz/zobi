@@ -1,14 +1,12 @@
-# Zobi
-
-[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
-[![Latest Release](https://img.shields.io/github/v/release/HafizMMoaz/zobi?sort=semver)](https://github.com/HafizMMoaz/zobi/releases/latest)
-[![GitHub Stars](https://img.shields.io/github/stars/HafizMMoaz/zobi?style=social)](https://github.com/HafizMMoaz/zobi/stargazers)
-
 <img
   width="400"
   src="https://raw.githubusercontent.com/HafizMMoaz/zobi/main/zobi.svg"
   alt="Zobi logo"
 />
+
+[![License](https://img.shields.io/badge/License-MIT-blue.svg)](LICENSE.txt)
+[![Latest Release](https://img.shields.io/github/v/release/HafizMMoaz/zobi?sort=semver)](https://github.com/HafizMMoaz/zobi/releases/latest)
+[![GitHub Stars](https://img.shields.io/github/stars/HafizMMoaz/zobi?style=social)](https://github.com/HafizMMoaz/zobi/stargazers)
 
 A modern, enterprise-ready business intelligence web application.
 
@@ -44,6 +42,141 @@ cd frontend
 npm install
 npm run dev
 ```
+
+## Make Commands
+
+| Command | Description |
+| --- | --- |
+| `make install` | Full local dev setup: installs backend deps, creates an admin user, runs DB migrations, seeds roles/permissions, loads example data, installs pre-commit hooks, and installs frontend packages |
+| `make zobi` | Backend half of `install` (deps, admin user, migrations, roles/permissions, example data, frontend packages) |
+| `make update` | Update an existing dev environment (`update-py` + `update-js`) |
+| `make update-py` | Reinstall backend deps, reinstall Zobi in editable mode, run DB migrations, re-seed roles/permissions |
+| `make update-js` | Reinstall frontend packages (`npm ci`) |
+| `make venv` | Create a local Python virtualenv (requires Python 3.10 or 3.11) |
+| `make activate` | Activate the local virtualenv |
+| `make pre-commit` | Install pre-commit dependencies and hooks |
+| `make format` | Format both Python and JS/TS (`py-format` + `js-format`) |
+| `make py-format` | Run Black via pre-commit |
+| `make js-format` | Run Prettier on the frontend |
+| `make flask-app` | Run the Flask dev server on port 8088 with auto-reload |
+| `make node-app` | Run the frontend dev server |
+| `make build-cypress` | Build an instrumented frontend bundle and install Cypress deps |
+| `make open-cypress` | Open the Cypress test runner (pass `port=<port>` to target a specific instance) |
+| `make report-celery-worker` | Start the Celery worker (alerts/reports) |
+| `make report-celery-beat` | Start the Celery beat scheduler |
+| `make admin-user` | Create an admin user interactively |
+| `make up` | Start the Docker Compose stack with auto-assigned ports |
+| `make up-detached` | Start the stack in detached mode |
+| `make rebuild` | Rebuild images (picking up Dockerfile/dependency changes), then start |
+| `make rebuild-nocache` | Rebuild images from scratch, ignoring layer cache, then start |
+| `make down` | Stop the stack |
+| `make logs` | Tail stack logs |
+| `make ps` | List running stack containers |
+| `make nuke` | Tear down the stack |
+| `make ports` | Show assigned ports for the stack |
+| `make open` | Open the app in a browser |
+
+## Environment Variables
+
+Docker Compose reads these from `docker/.env` (development) or `docker/.env-prod`
+(production, copy from [`docker/.env-prod.example`](docker/.env-prod.example)).
+
+### Database (Postgres)
+
+| Variable | Description |
+| --- | --- |
+| `DATABASE_DIALECT` | SQLAlchemy dialect, e.g. `postgresql+psycopg2` |
+| `DATABASE_HOST` / `DATABASE_PORT` | Metadata database host and port |
+| `DATABASE_DB` / `DATABASE_USER` / `DATABASE_PASSWORD` | Metadata database credentials |
+| `POSTGRES_DB` / `POSTGRES_USER` / `POSTGRES_PASSWORD` | Consumed by the postgres image itself; keep in step with the `DATABASE_*` values |
+| `DATABASE_POOL_SIZE` | SQLAlchemy connection pool size |
+| `DATABASE_MAX_OVERFLOW` | Extra connections allowed beyond the pool size |
+| `DATABASE_POOL_RECYCLE` | Seconds before a pooled connection is recycled |
+| `EXAMPLES_HOST` / `EXAMPLES_PORT` / `EXAMPLES_DB` / `EXAMPLES_USER` / `EXAMPLES_PASSWORD` | Example dataset database (dev only) |
+
+### Redis
+
+| Variable | Description |
+| --- | --- |
+| `REDIS_HOST` / `REDIS_PORT` | Redis connection |
+| `REDIS_PASSWORD` | Leave empty to run without auth (fine on an unpublished network) |
+| `REDIS_CELERY_DB` | Redis DB index for the Celery broker |
+| `REDIS_RESULTS_DB` | Redis DB index for Celery task results |
+| `REDIS_CACHE_DB` | Redis DB index for the app cache |
+
+### Core / security
+
+| Variable | Description |
+| --- | --- |
+| `ZOBI_SECRET_KEY` | Encrypts every stored credential (DB passwords, `encrypted_extra`, OAuth tokens, LLM provider keys). Generate with `openssl rand -base64 42`; back it up, since losing it makes encrypted data unreadable |
+| `ADMIN_PASSWORD` | Bootstrap password for the `admin` user created by `zobi-init` |
+| `ZOBI_ENV` | `development` or `production` |
+| `FLASK_DEBUG` | Enables Flask's debugger/reloader; never `true` in production |
+| `ZOBI_LOAD_EXAMPLES` | Loads sample datasets into the metadata DB; never `yes` in production |
+| `ZOBI_LOG_LEVEL` | App log level, e.g. `INFO` |
+| `ZOBI_PORT` | Host port the app listens on |
+
+### Reverse proxy and cookies
+
+| Variable | Description |
+| --- | --- |
+| `ZOBI_ENABLE_PROXY_FIX` | Trust `X-Forwarded-*` headers; only enable behind a proxy you control |
+| `ZOBI_SESSION_COOKIE_SECURE` | Requires real HTTPS in front; disable only when testing over plain HTTP |
+| `ZOBI_PUBLIC_URL` | Public URL used in report/alert emails |
+| `ZOBI_INTERNAL_URL` | Internal URL the headless browser uses to render screenshots |
+
+### Feature flags
+
+| Variable | Description |
+| --- | --- |
+| `ZOBI_FEATURE_ZOBI_AI` | Enables the LLM gateway and the Manage > AI Models settings screen |
+| `ZOBI_FEATURE_ALERT_REPORTS` | Enables alerts and scheduled reports |
+| `ZOBI_FEATURE_DASHBOARD_RBAC` | Enables dashboard-level role-based access control |
+| `ZOBI_FEATURE_EMBEDDED_ZOBI` | Enables embedded analytics |
+| `ZOBI_FEATURE_ENABLE_EXTENSIONS` | Enables the extension system |
+| `ZOBI_FEATURE_SEMANTIC_LAYERS` | Enables semantic layers |
+
+### Alerts and reports (SMTP)
+
+| Variable | Description |
+| --- | --- |
+| `ALERT_REPORTS_DRY_RUN` | Logs notifications instead of sending them |
+| `SMTP_HOST` / `SMTP_PORT` | SMTP server |
+| `SMTP_STARTTLS` / `SMTP_SSL` | SMTP transport security |
+| `SMTP_USER` / `SMTP_PASSWORD` | SMTP credentials |
+| `SMTP_MAIL_FROM` | From address for outgoing alert/report emails |
+
+### Gunicorn (production server)
+
+| Variable | Description |
+| --- | --- |
+| `SERVER_WORKER_AMOUNT` | Worker count; a common starting point is `(2 x CPU cores) + 1` |
+| `SERVER_WORKER_CLASS` | Gunicorn worker class, e.g. `gthread` |
+| `SERVER_THREADS_AMOUNT` | Threads per worker |
+| `GUNICORN_TIMEOUT` | Request timeout in seconds |
+| `GUNICORN_KEEPALIVE` | Keep-alive timeout in seconds |
+| `GUNICORN_LOGLEVEL` | Gunicorn log level |
+| `WORKER_MAX_REQUESTS` | Requests before a worker recycles, to bound slow memory leaks |
+| `WORKER_MAX_REQUESTS_JITTER` | Randomizes recycling so workers don't all restart at once |
+
+### Image build options
+
+| Variable | Description |
+| --- | --- |
+| `ZOBI_BUILD_TARGET` | Docker build target, e.g. `dev` |
+| `DEV_MODE` | Enables development-mode build behavior |
+| `INCLUDE_CHROMIUM` / `INCLUDE_FIREFOX` | Bundle a headless browser for report/alert screenshots |
+| `BUILD_TRANSLATIONS` | Compile translation files during the image build |
+
+### Multi-instance dev ports (`.envrc`, via direnv)
+
+Copy [`.envrc.example`](.envrc.example) to `.envrc` and run `direnv allow` to
+auto-assign free ports when running multiple instances side by side.
+
+| Variable | Description |
+| --- | --- |
+| `COMPOSE_PROJECT_NAME` | Derived from the directory name, so each checkout gets its own Compose project |
+| `NGINX_PORT` / `ZOBI_PORT` / `NODE_PORT` / `WEBSOCKET_PORT` / `CYPRESS_PORT` / `DATABASE_PORT` / `REDIS_PORT` | First free port found for each service, starting from its default |
 
 ## Architecture
 
