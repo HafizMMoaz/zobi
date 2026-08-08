@@ -6,6 +6,13 @@ jest.mock('../api');
 
 const mockStreamMessage = api.streamMessage as jest.Mock;
 
+const stubAttachmentAdapter = {
+  accept: '',
+  add: jest.fn(),
+  send: jest.fn(),
+  remove: jest.fn(),
+};
+
 function setup(overrides: Partial<Parameters<typeof useZobiChatRuntime>[0]> = {}) {
   const onConversationStarted = jest.fn().mockResolvedValue(1);
   const onError = jest.fn();
@@ -17,6 +24,7 @@ function setup(overrides: Partial<Parameters<typeof useZobiChatRuntime>[0]> = {}
         initialMessages: [],
         onConversationStarted,
         onError,
+        attachments: stubAttachmentAdapter,
         ...overrides,
       }),
   );
@@ -135,4 +143,47 @@ test('approval_required stops the run and surfaces a request_approval tool-call'
   expect(last.content).toContainEqual(
     expect.objectContaining({ toolCallId: 'call-2', toolName: 'request_approval' }),
   );
+});
+
+test('a send with completed attachments includes their ids in the stream body', async () => {
+  mockStreamMessage.mockImplementation(() => () => {});
+  const { result } = setup();
+
+  await act(async () => {
+    await result.current.thread.append({
+      role: 'user',
+      content: [{ type: 'text', text: 'summarise this' }],
+      attachments: [
+        {
+          id: '5',
+          type: 'document',
+          name: 'data.csv',
+          content: [],
+          status: { type: 'complete' },
+        },
+      ],
+    });
+  });
+
+  expect(mockStreamMessage).toHaveBeenCalledWith(
+    1,
+    expect.objectContaining({ content: 'summarise this', attachment_ids: [5] }),
+    expect.any(Function),
+    expect.any(Function),
+  );
+});
+
+test('a send with no attachments omits attachment_ids from the stream body', async () => {
+  mockStreamMessage.mockImplementation(() => () => {});
+  const { result } = setup();
+
+  await act(async () => {
+    await result.current.thread.append({
+      role: 'user',
+      content: [{ type: 'text', text: 'hi' }],
+    });
+  });
+
+  const [, body] = mockStreamMessage.mock.calls.at(-1)!;
+  expect(body).not.toHaveProperty('attachment_ids');
 });

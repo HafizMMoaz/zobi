@@ -17,6 +17,7 @@ import {
 } from '../types';
 import ComposerSwitcher from '../ComposerSwitcher';
 import SlashPalette from '../SlashPalette';
+import { createAttachmentAdapter } from './attachmentAdapter';
 import { useZobiChatRuntime } from './runtime';
 import Thread from './Thread';
 
@@ -101,6 +102,7 @@ const ZobiChat: FunctionComponent<ZobiChatProps> = ({
     onConversationStarted: ensureConversation,
     onSent: () => setOnceModel(null),
     onError: setError,
+    attachments: createAttachmentAdapter(ensureConversation),
   });
 
   return (

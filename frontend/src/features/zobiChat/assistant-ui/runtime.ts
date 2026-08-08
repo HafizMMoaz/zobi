@@ -1,6 +1,7 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   AppendMessage,
+  AttachmentAdapter,
   ThreadMessageLike,
   useExternalStoreRuntime,
 } from '@assistant-ui/react';
@@ -57,6 +58,7 @@ export type UseZobiChatRuntimeOptions = {
   /** Called once a send has been issued, so the caller can clear `onceModel`. */
   onSent?: () => void;
   onError: (message: string) => void;
+  attachments: AttachmentAdapter;
 };
 
 /**
@@ -75,6 +77,7 @@ export function useZobiChatRuntime({
   onConversationStarted,
   onSent,
   onError,
+  attachments,
 }: UseZobiChatRuntimeOptions) {
   const [messages, setMessages] = useState<ZobiThreadMessage[]>(() =>
     initialMessages.map(toThreadMessage),
@@ -230,7 +233,14 @@ export function useZobiChatRuntime({
       const targetId = conversationIdRef.current ?? (await onConversationStarted());
       conversationIdRef.current = targetId;
 
-      runTurn(targetId, { content: text, mode, model_alias: onceModel });
+      const attachmentIds = message.attachments?.map(a => Number(a.id));
+
+      runTurn(targetId, {
+        content: text,
+        mode,
+        model_alias: onceModel,
+        ...(attachmentIds?.length ? { attachment_ids: attachmentIds } : {}),
+      });
       // The override applies to this send only; the caller resets it so the
       // next one falls back to the thread's model until the picker is used
       // again.
@@ -295,6 +305,7 @@ export function useZobiChatRuntime({
     onNew,
     onCancel,
     onAddToolResult,
+    adapters: { attachments },
     // ZobiThreadMessage's content is a narrower, stricter view of the same
     // shape ThreadMessageLike's content union accepts (e.g. `args` here is
     // Record<string, unknown> rather than ReadonlyJSONObject) - safe at
