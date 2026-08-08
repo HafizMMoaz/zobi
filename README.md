@@ -96,27 +96,27 @@ tool - and the signed-in user's own permissions - already allow:
  User message
       │
       ▼
-┌────────────────┐   POST /turn (SSE)   ┌────────────────┐
+┌─────────────────┐   POST /turn (SSE)   ┌─────────────────┐
 │    Chat UI      │─────────────────────▶│  zobi/agent     │
 │ (assistant-ui)  │◀─────────────────────│  runtime.py     │
-└────────────────┘     token stream      └────────┬────────┘
-                                                    │ chat_completion()
-                                                    ▼
-                                           ┌─────────────────┐
+└─────────────────┘     token stream     └────────┬────────┘
+                                                  │ chat_completion()
+                                                  ▼
+                                           ┌──────────────────┐
                                            │     zobi/llm     │
                                            │  LiteLLM router  │──▶ OpenAI · Anthropic · Bedrock · …
                                            └────────┬─────────┘     (16 provider presets)
                                                     │ model requests a tool
                                                     ▼
-                                           ┌─────────────────┐
+                                           ┌──────────────────┐
                                            │ zobi/agent/tools │  classify: read / write / destructive
                                            └────────┬─────────┘
                                                     │ fastmcp.Client, acting as flask.g.user
                                                     ▼
-                                           ┌─────────────────┐
+                                           ┌──────────────────┐
                                            │   MCP server     │  runs under the caller's own RBAC
                                            │  (mcp_service)   │  charts · dashboards · datasets · SQL
-                                           └─────────────────┘
+                                           └──────────────────┘
 ```
 
 ## Getting Started
