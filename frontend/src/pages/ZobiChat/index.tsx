@@ -5,7 +5,7 @@ import { Button, Loading } from '@zobi.dev/core/components';
 import { Icons } from '@zobi.dev/core/components/Icons';
 import { Typography } from '@zobi.dev/core/components/Typography';
 import SubMenu from 'src/features/home/SubMenu';
-import ChatPanel from 'src/features/zobiChat/ChatPanel';
+import ZobiChat from 'src/features/zobiChat/assistant-ui/ZobiChat';
 import {
   deleteConversation,
   fetchConversations,
@@ -140,7 +140,7 @@ function ZobiChatPage() {
           ))}
         </Sidebar>
 
-        <ChatPanel
+        <ZobiChat
           // Remounts on switch so no state leaks between conversations.
           key={selected ?? 'new'}
           conversationId={selected}

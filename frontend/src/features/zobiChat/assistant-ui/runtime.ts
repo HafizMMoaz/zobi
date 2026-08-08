@@ -1,4 +1,4 @@
-import { useCallback, useRef, useState } from 'react';
+import { useCallback, useEffect, useRef, useState } from 'react';
 import {
   AppendMessage,
   ThreadMessageLike,
@@ -76,6 +76,24 @@ export function useZobiChatRuntime({
   const [isRunning, setIsRunning] = useState(false);
   const abortRef = useRef<(() => void) | null>(null);
   const conversationIdRef = useRef<number | null>(conversationId);
+  // Tracks which conversation's history has already been applied, so a
+  // non-empty `initialMessages` is seeded in at most once per conversation.
+  const appliedInitialMessagesForRef = useRef<number | null>(null);
+
+  // `initialMessages` often arrives after mount - a caller loading an existing
+  // conversation fetches its history asynchronously and only then has
+  // messages to seed - so the lazy useState initializer above (which only
+  // ever runs once) is not enough on its own to pick it up. Gating on
+  // `conversationId` (rather than re-applying on every `initialMessages`
+  // identity change) keeps this from fighting an in-progress turn's own
+  // `setMessages` calls, and from looping if a caller passes a fresh but
+  // still-empty array on every render.
+  useEffect(() => {
+    if (!initialMessages.length) return;
+    if (appliedInitialMessagesForRef.current === conversationId) return;
+    appliedInitialMessagesForRef.current = conversationId;
+    setMessages(initialMessages.map(toThreadMessage));
+  }, [conversationId, initialMessages]);
 
   const appendAssistantText = useCallback((text: string) => {
     setMessages(current => {
