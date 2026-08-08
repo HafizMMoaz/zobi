@@ -1,4 +1,5 @@
 import { FC } from 'react';
+import { t } from '@zobi.dev/extension-api/translation';
 
 export type ToolActivityProps = {
   toolName: string;
@@ -16,10 +17,10 @@ const ToolActivity: FC<ToolActivityProps> = ({ toolName, args, result }) => (
   <div className="aui:my-2 aui:rounded-lg aui:border aui:p-3 aui:text-sm">
     <div className="aui:flex aui:items-center aui:justify-between">
       <span className="aui:font-medium">{toolName}</span>
-      {!result && <span className="aui:text-gray-500">Running…</span>}
+      {!result && <span className="aui:text-gray-500">{t('Running…')}</span>}
       {result && (
         <span className={result.ok ? 'aui:text-green-600' : 'aui:text-red-600'}>
-          {result.ok ? 'Done' : 'Failed'}
+          {result.ok ? t('Done') : t('Failed')}
         </span>
       )}
     </div>

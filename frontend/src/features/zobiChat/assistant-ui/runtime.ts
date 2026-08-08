@@ -1,4 +1,5 @@
 import { useCallback, useEffect, useRef, useState } from 'react';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   AppendMessage,
   AttachmentAdapter,
@@ -40,12 +41,87 @@ type ZobiThreadMessage = {
   content: ZobiMessagePart[];
 };
 
-const toThreadMessage = (message: ChatMessage): ZobiThreadMessage => ({
-  role: message.role === 'tool' ? 'assistant' : message.role,
-  content: message.content ? [{ type: 'text', text: message.content }] : [],
-});
-
 const APPROVAL_TOOL_NAME = 'request_approval';
+
+/**
+ * OpenAI-style tool call arguments arrive as a JSON string. A malformed one
+ * would otherwise take the whole transcript down, so it degrades to an empty
+ * object and the raw text is kept in `argsText` for display.
+ */
+const parseToolArgs = (raw: string): Record<string, unknown> => {
+  try {
+    const parsed = JSON.parse(raw);
+    return parsed && typeof parsed === 'object'
+      ? (parsed as Record<string, unknown>)
+      : {};
+  } catch {
+    return {};
+  }
+};
+
+/**
+ * Converts a persisted transcript into the same message/part shape a live turn
+ * builds, so a reopened conversation renders its tool calls through
+ * `ToolActivity`/`ApprovalTool` rather than as raw JSON text.
+ *
+ * This has to be a whole-array pass rather than a per-message map: the backend
+ * stores a tool call and its output as two rows (an assistant row carrying
+ * `tool_calls`, then a `role: 'tool'` row carrying the output and the
+ * `tool_call_id` it belongs to), whereas assistant-ui wants one tool-call part
+ * holding both.
+ */
+export const toThreadMessages = (
+  messages: ChatMessage[],
+): ZobiThreadMessage[] => {
+  const result: ZobiThreadMessage[] = [];
+  const partsById = new Map<string, ZobiToolCallPart>();
+
+  messages.forEach(message => {
+    if (message.role === 'tool') {
+      const part = message.tool_call_id
+        ? partsById.get(message.tool_call_id)
+        : undefined;
+      if (part) {
+        // A row still waiting on the user carries no outcome yet, so leaving
+        // `result` unset keeps it rendering as in-flight rather than "Done".
+        if (!message.extra?.awaiting_approval) {
+          part.result = {
+            ok: message.extra?.ok !== false,
+            output: message.content ?? '',
+          };
+        }
+        return;
+      }
+      // No matching call (a truncated history, say). Keep the output visible
+      // rather than dropping it.
+      if (message.content) {
+        result.push({
+          role: 'assistant',
+          content: [{ type: 'text', text: message.content }],
+        });
+      }
+      return;
+    }
+
+    const content: ZobiMessagePart[] = [];
+    if (message.content) content.push({ type: 'text', text: message.content });
+    message.tool_calls?.forEach(call => {
+      const part: ZobiToolCallPart = {
+        type: 'tool-call',
+        toolCallId: call.id,
+        toolName: call.function.name,
+        args: parseToolArgs(call.function.arguments),
+        argsText: call.function.arguments,
+      };
+      partsById.set(call.id, part);
+      content.push(part);
+    });
+
+    result.push({ role: message.role, content });
+  });
+
+  return result;
+};
 
 export type UseZobiChatRuntimeOptions = {
   conversationId: number | null;
@@ -68,6 +144,9 @@ export type UseZobiChatRuntimeOptions = {
  * One assistant ThreadMessageLike accumulates the whole turn: its text part
  * grows with each `token`, and each `tool_start` appends a tool-call part
  * that `tool_result` (or an approval decision) later fills in with `result`.
+ *
+ * Loaded history takes a separate path (`toThreadMessages`), since it arrives
+ * as persisted rows rather than events, but is converted into the same parts.
  */
 export function useZobiChatRuntime({
   conversationId,
@@ -80,7 +159,7 @@ export function useZobiChatRuntime({
   attachments,
 }: UseZobiChatRuntimeOptions) {
   const [messages, setMessages] = useState<ZobiThreadMessage[]>(() =>
-    initialMessages.map(toThreadMessage),
+    toThreadMessages(initialMessages),
   );
   const [isRunning, setIsRunning] = useState(false);
   const abortRef = useRef<(() => void) | null>(null);
@@ -101,8 +180,13 @@ export function useZobiChatRuntime({
     if (!initialMessages.length) return;
     if (appliedInitialMessagesForRef.current === conversationId) return;
     appliedInitialMessagesForRef.current = conversationId;
-    setMessages(initialMessages.map(toThreadMessage));
+    setMessages(toThreadMessages(initialMessages));
   }, [conversationId, initialMessages]);
+
+  // A conversation switch unmounts this hook while its stream may still be
+  // open; without this the SSE connection would run to completion with nobody
+  // listening.
+  useEffect(() => () => abortRef.current?.(), []);
 
   const appendAssistantText = useCallback((text: string) => {
     setMessages(current => {
@@ -221,10 +305,22 @@ export function useZobiChatRuntime({
 
   const onNew = useCallback(
     async (message: AppendMessage) => {
-      if (message.content.length !== 1 || message.content[0]?.type !== 'text') {
+      // An attachment-only send is legitimate: assistant-ui's composer builds
+      // `content: []` when the draft is empty but files are attached. Anything
+      // richer than a single text part is not something this protocol carries.
+      if (
+        message.content.length > 1 ||
+        message.content.some(part => part.type !== 'text')
+      ) {
         throw new Error('Only text messages are supported');
       }
-      const text = message.content[0].text;
+      const first = message.content[0];
+      // The turn endpoint requires a non-empty body, so a file-only send needs
+      // a prompt of its own rather than an empty string.
+      const text =
+        first?.type === 'text' && first.text
+          ? first.text
+          : t('Please take a look at the attached files.');
       setMessages(current => [
         ...current,
         { role: 'user', content: [{ type: 'text', text }] },
@@ -286,16 +382,24 @@ export function useZobiChatRuntime({
         tool_name: approvalArgs.name,
         arguments: approvalArgs.arguments,
         approved,
-      }).finally(() => {
-        runTurn(targetId, {
-          content: approved
-            ? 'I approved that action. Please continue.'
-            : 'I declined that action. Please suggest something else.',
-          mode,
+      })
+        // Only continue once the backend has actually recorded the decision.
+        // Resuming from a failed POST would tell the model an action it never
+        // ran was approved - the worst possible answer for a destructive call.
+        .then(() => {
+          runTurn(targetId, {
+            content: approved
+              ? t('I approved that action. Please continue.')
+              : t('I declined that action. Please suggest something else.'),
+            mode,
+          });
+        })
+        .catch(() => {
+          upsertToolCall(toolCallId, { result: undefined });
+          onError(t('Could not record your decision.'));
         });
-      });
     },
-    [messages, mode, runTurn, upsertToolCall],
+    [messages, mode, onError, runTurn, upsertToolCall],
   );
 
   return useExternalStoreRuntime<ZobiThreadMessage>({

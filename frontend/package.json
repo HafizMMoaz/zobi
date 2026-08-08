@@ -96,7 +96,6 @@
   ],
   "dependencies": {
     "@assistant-ui/react": "^0.15.9",
-    "@assistant-ui/react-markdown": "^0.14.9",
     "@deck.gl/aggregation-layers": "~9.2.5",
     "@deck.gl/core": "~9.2.5",
     "@deck.gl/extensions": "~9.2.5",

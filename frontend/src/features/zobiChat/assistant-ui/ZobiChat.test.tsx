@@ -8,6 +8,9 @@ jest.mock('../api');
 // None of these tests exercise the slash palette, but ZobiChat always fetches
 // the tool list on mount, so it needs a default resolved value here.
 beforeEach(() => {
+  // Several tests below count calls (e.g. "the turn was not resumed"), so the
+  // call log must not carry over between them.
+  jest.clearAllMocks();
   (api.fetchTools as jest.Mock).mockResolvedValue([]);
 });
 
@@ -127,4 +130,124 @@ test('an approval_required event renders ApprovalTool, and approving resumes the
     arguments: { table: 'orders' },
     approved: true,
   });
+});
+
+test('a failed approval POST reports the failure and does not resume the turn', async () => {
+  let onEvent!: (event: unknown) => void;
+  (api.fetchModes as jest.Mock).mockResolvedValue([]);
+  (api.fetchChatModels as jest.Mock).mockResolvedValue([]);
+  (api.streamMessage as jest.Mock).mockImplementation((_id, _body, cb) => {
+    onEvent = cb;
+    return () => {};
+  });
+  (api.respondToApproval as jest.Mock).mockRejectedValue(new Error('offline'));
+  (api.createConversation as jest.Mock).mockResolvedValue({ id: 4, uuid: 'u' });
+
+  render(<ZobiChat conversationId={null} />);
+  await userEvent.type(screen.getByPlaceholderText('Send a message...'), 'drop orders{enter}');
+  await waitFor(() => expect(api.streamMessage).toHaveBeenCalled());
+
+  act(() => {
+    onEvent({
+      type: 'approval_required',
+      id: 'call-9',
+      name: 'drop_table',
+      title: 'Drop table',
+      risk: 'destructive',
+      description: 'Deletes a table permanently.',
+      arguments: { table: 'orders' },
+    });
+  });
+
+  await userEvent.click(await screen.findByRole('button', { name: 'Approve' }));
+
+  expect(await screen.findByRole('alert')).toHaveTextContent(
+    'Could not record your decision.',
+  );
+  // Only the original turn was streamed: the model was never told an action
+  // the backend refused to record had been approved.
+  expect(api.streamMessage).toHaveBeenCalledTimes(1);
+  // The decision is offered again rather than being silently swallowed.
+  expect(await screen.findByRole('button', { name: 'Approve' })).toBeInTheDocument();
+});
+
+test('a failed createConversation is reported and does not lock later sends', async () => {
+  (api.fetchModes as jest.Mock).mockResolvedValue([]);
+  (api.fetchChatModels as jest.Mock).mockResolvedValue([]);
+  (api.streamMessage as jest.Mock).mockImplementation(() => () => {});
+  (api.createConversation as jest.Mock).mockRejectedValueOnce(new Error('boom'));
+
+  render(<ZobiChat conversationId={null} />);
+  const input = screen.getByPlaceholderText('Send a message...');
+  await userEvent.type(input, 'hi{enter}');
+
+  expect(await screen.findByRole('alert')).toHaveTextContent(
+    'Could not start a conversation.',
+  );
+  expect(api.streamMessage).not.toHaveBeenCalled();
+
+  // The rejected promise must not be cached: a second attempt has to reach the
+  // API again rather than re-awaiting the failure forever.
+  (api.createConversation as jest.Mock).mockResolvedValue({ id: 21, uuid: 'u' });
+  await userEvent.type(input, 'hi again{enter}');
+
+  await waitFor(() =>
+    expect(api.streamMessage).toHaveBeenCalledWith(
+      21,
+      expect.objectContaining({ content: 'hi again' }),
+      expect.any(Function),
+      expect.any(Function),
+    ),
+  );
+});
+
+test('a conversation that cannot be loaded shows an error rather than a blank thread', async () => {
+  (api.fetchModes as jest.Mock).mockResolvedValue([]);
+  (api.fetchChatModels as jest.Mock).mockResolvedValue([]);
+  (api.fetchConversation as jest.Mock).mockRejectedValue(new Error('404'));
+
+  render(<ZobiChat conversationId={99} />);
+
+  expect(await screen.findByRole('alert')).toHaveTextContent(
+    'Could not load this conversation.',
+  );
+});
+
+test('history containing a tool call renders it as tool activity', async () => {
+  (api.fetchModes as jest.Mock).mockResolvedValue([]);
+  (api.fetchChatModels as jest.Mock).mockResolvedValue([]);
+  (api.fetchConversation as jest.Mock).mockResolvedValue({
+    id: 7,
+    uuid: 'u',
+    title: null,
+    mode: 'manual',
+    model_alias: null,
+    messages: [
+      { role: 'user', content: 'which tables are there?' },
+      {
+        role: 'assistant',
+        content: '',
+        tool_calls: [
+          {
+            id: 'call-1',
+            type: 'function',
+            function: { name: 'list_tables', arguments: '{}' },
+          },
+        ],
+      },
+      {
+        role: 'tool',
+        content: 'orders, users',
+        tool_call_id: 'call-1',
+        tool_name: 'list_tables',
+        extra: { ok: true },
+      },
+    ],
+  });
+
+  render(<ZobiChat conversationId={7} />);
+
+  expect(await screen.findByText('list_tables')).toBeInTheDocument();
+  expect(screen.getByText('Done')).toBeInTheDocument();
+  expect(screen.getByText('orders, users')).toBeInTheDocument();
 });

@@ -187,3 +187,132 @@ test('a send with no attachments omits attachment_ids from the stream body', asy
   const [, body] = mockStreamMessage.mock.calls.at(-1)!;
   expect(body).not.toHaveProperty('attachment_ids');
 });
+
+test('a file-only send is accepted rather than rejected as unsupported', async () => {
+  mockStreamMessage.mockImplementation(() => () => {});
+  const { result } = setup();
+
+  await act(async () => {
+    await result.current.thread.append({
+      role: 'user',
+      // What assistant-ui's composer builds when the draft is empty but a
+      // file is attached.
+      content: [],
+      attachments: [
+        {
+          id: '7',
+          type: 'document',
+          name: 'data.csv',
+          content: [],
+          status: { type: 'complete' },
+        },
+      ],
+    });
+  });
+
+  const [, body] = mockStreamMessage.mock.calls.at(-1)!;
+  expect(body.content).toBeTruthy();
+  expect(body.attachment_ids).toEqual([7]);
+});
+
+test('historical tool calls become tool-call parts, not raw text', () => {
+  const { result } = setup({
+    initialMessages: [
+      { role: 'user', content: 'which tables are there?' },
+      {
+        role: 'assistant',
+        content: 'Let me check.',
+        tool_calls: [
+          {
+            id: 'call-1',
+            type: 'function',
+            function: { name: 'list_tables', arguments: '{"schema":"public"}' },
+          },
+        ],
+      },
+      {
+        role: 'tool',
+        content: 'orders, users',
+        tool_call_id: 'call-1',
+        tool_name: 'list_tables',
+        extra: { ok: true },
+      },
+    ],
+  });
+
+  const [, assistant] = result.current.thread.getState().messages;
+  expect(assistant.content).toEqual([
+    { type: 'text', text: 'Let me check.' },
+    expect.objectContaining({
+      type: 'tool-call',
+      toolCallId: 'call-1',
+      toolName: 'list_tables',
+      args: { schema: 'public' },
+      result: { ok: true, output: 'orders, users' },
+    }),
+  ]);
+  // The `tool` row was folded into the call above rather than becoming its own
+  // assistant bubble.
+  expect(result.current.thread.getState().messages).toHaveLength(2);
+});
+
+test('a failed historical tool call keeps its failure', () => {
+  const { result } = setup({
+    initialMessages: [
+      {
+        role: 'assistant',
+        content: null,
+        tool_calls: [
+          {
+            id: 'call-2',
+            type: 'function',
+            // Malformed arguments must not take the transcript down with them.
+            function: { name: 'run_query', arguments: 'not json' },
+          },
+        ],
+      },
+      {
+        role: 'tool',
+        content: 'syntax error',
+        tool_call_id: 'call-2',
+        extra: { ok: false },
+      },
+    ],
+  });
+
+  const [assistant] = result.current.thread.getState().messages;
+  expect(assistant.content).toEqual([
+    expect.objectContaining({
+      toolName: 'run_query',
+      args: {},
+      argsText: 'not json',
+      result: { ok: false, output: 'syntax error' },
+    }),
+  ]);
+});
+
+test('unmounting aborts an in-flight stream', async () => {
+  const abort = jest.fn();
+  mockStreamMessage.mockImplementation(() => abort);
+  const onConversationStarted = jest.fn().mockResolvedValue(1);
+  const { result, unmount } = renderHook(() =>
+    useZobiChatRuntime({
+      conversationId: 1,
+      mode: 'manual',
+      initialMessages: [],
+      onConversationStarted,
+      onError: jest.fn(),
+      attachments: stubAttachmentAdapter,
+    }),
+  );
+
+  await act(async () => {
+    await result.current.thread.append({
+      role: 'user',
+      content: [{ type: 'text', text: 'hello' }],
+    });
+  });
+
+  unmount();
+  expect(abort).toHaveBeenCalled();
+});

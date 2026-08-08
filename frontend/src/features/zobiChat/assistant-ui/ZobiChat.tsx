@@ -1,4 +1,5 @@
 import { FC, FunctionComponent, useEffect, useRef, useState } from 'react';
+import { t } from '@zobi.dev/extension-api/translation';
 import {
   AssistantRuntimeProvider,
   ToolCallMessagePartComponent,
@@ -110,6 +111,11 @@ const ZobiChat: FunctionComponent<ZobiChatProps> = ({
   const [error, setError] = useState<string | null>(null);
   const idRef = useRef<number | null>(conversationId);
   const creatingRef = useRef<Promise<number> | null>(null);
+  // Which conversation's history has already been applied to this instance.
+  // `undefined` means "none yet", which is why this cannot be folded into
+  // `idRef` (that one starts out mirroring the prop, so it would suppress the
+  // very first load).
+  const loadedIdRef = useRef<number | null | undefined>(undefined);
 
   useEffect(() => {
     fetchModes()
@@ -132,28 +138,46 @@ const ZobiChat: FunctionComponent<ZobiChatProps> = ({
       .catch(() => setTools([]));
   }, [mode]);
 
+  // A conversation created mid-turn arrives here as a null -> <id> change of
+  // the `conversationId` prop on this same (no longer remounted) instance.
+  // `ensureConversation` has already claimed that id below, so re-fetching it
+  // would replace the transcript being streamed right now with the server's
+  // not-yet-written history.
   useEffect(() => {
+    if (loadedIdRef.current === conversationId) return;
+    loadedIdRef.current = conversationId;
     idRef.current = conversationId;
     if (!conversationId) {
       setInitialMessages([]);
       setThreadModel(null);
       return;
     }
-    fetchConversation(conversationId).then(detail => {
-      setInitialMessages(detail.messages);
-      setMode(detail.mode);
-      setThreadModel(detail.model_alias);
-    });
+    fetchConversation(conversationId)
+      .then(detail => {
+        setInitialMessages(detail.messages);
+        setMode(detail.mode);
+        setThreadModel(detail.model_alias);
+      })
+      .catch(() => setError(t('Could not load this conversation.')));
   }, [conversationId]);
 
   const ensureConversation = () => {
     if (idRef.current) return Promise.resolve(idRef.current);
     if (!creatingRef.current) {
-      creatingRef.current = createConversation(mode).then(created => {
-        idRef.current = created.id;
-        onConversationStarted?.(created.id);
-        return created.id;
-      });
+      creatingRef.current = createConversation(mode)
+        .then(created => {
+          idRef.current = created.id;
+          loadedIdRef.current = created.id;
+          onConversationStarted?.(created.id);
+          return created.id;
+        })
+        // Without this every later send would re-await the same rejected
+        // promise, locking the chat for good after one failed create.
+        .catch(err => {
+          creatingRef.current = null;
+          setError(t('Could not start a conversation.'));
+          throw err;
+        });
     }
     return creatingRef.current;
   };
@@ -181,14 +205,23 @@ const ZobiChat: FunctionComponent<ZobiChatProps> = ({
             mode={mode}
             onModeChange={next => {
               setMode(next);
-              if (idRef.current) updateConversation(idRef.current, { mode: next });
+              if (idRef.current)
+                updateConversation(idRef.current, { mode: next }).catch(() =>
+                  setError(t('Could not save your mode choice.')),
+                );
             }}
             models={models}
             threadModel={threadModel}
-            onThreadModelChange={async alias => {
+            onThreadModelChange={alias => {
               setThreadModel(alias);
-              const id = idRef.current ?? (await ensureConversation());
-              updateConversation(id, { model_alias: alias });
+              // Persisting the choice needs a conversation to exist, so a
+              // failed create surfaces here too rather than going unhandled.
+              (idRef.current
+                ? Promise.resolve(idRef.current)
+                : ensureConversation()
+              )
+                .then(id => updateConversation(id, { model_alias: alias }))
+                .catch(() => setError(t('Could not save your model choice.')));
             }}
             onceModel={onceModel}
             onOnceModelChange={setOnceModel}
