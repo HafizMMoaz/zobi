@@ -8,8 +8,8 @@ import ZobiChat from './ZobiChat';
 
 jest.mock('../api');
 
-function Harness() {
-  const [messages, setMessages] = useState<readonly any[]>([]);
+function Harness({ seed = [] }: { seed?: readonly any[] }) {
+  const [messages, setMessages] = useState<readonly any[]>(seed);
   const runtime = useExternalStoreRuntime({
     messages,
     setMessages,
@@ -40,6 +40,64 @@ test('sends a typed message and renders the reply', async () => {
 test('shows welcome suggestions before any message is sent', () => {
   render(<Harness />);
   expect(screen.getByText('Weather')).toBeInTheDocument();
+});
+
+/**
+ * These two cover the registration point rather than `ToolActivity` itself:
+ * a tool-call part whose name was never registered as a tool (every Zobi tool
+ * is backend-executed, so none are) has to reach `components.tools.Fallback`
+ * on `MessagePrimitive.Parts`, and `request_approval` has to be filtered out
+ * there so Task 10's dedicated renderer owns it.
+ */
+test('an unregistered tool call renders through the fallback renderer', async () => {
+  render(
+    <Harness
+      seed={[
+        {
+          role: 'assistant',
+          content: [
+            {
+              type: 'tool-call',
+              toolCallId: 'call-1',
+              toolName: 'run_query',
+              args: { sql: 'select 1' },
+              argsText: '{"sql":"select 1"}',
+              result: { ok: true, output: '1 row' },
+            },
+          ],
+        },
+      ]}
+    />,
+  );
+
+  expect(await screen.findByText('run_query')).toBeInTheDocument();
+  expect(screen.getByText('Done')).toBeInTheDocument();
+  expect(screen.getByText('1 row')).toBeInTheDocument();
+});
+
+test('a request_approval tool call is left to its own renderer', async () => {
+  render(
+    <Harness
+      seed={[
+        {
+          role: 'assistant',
+          content: [
+            { type: 'text', text: 'thinking' },
+            {
+              type: 'tool-call',
+              toolCallId: 'call-2',
+              toolName: 'request_approval',
+              args: { name: 'drop_table' },
+              argsText: '',
+            },
+          ],
+        },
+      ]}
+    />,
+  );
+
+  expect(await screen.findByText('thinking')).toBeInTheDocument();
+  expect(screen.queryByText('request_approval')).not.toBeInTheDocument();
 });
 
 test('typing "/" opens the slash palette and selecting a tool fills the composer', async () => {

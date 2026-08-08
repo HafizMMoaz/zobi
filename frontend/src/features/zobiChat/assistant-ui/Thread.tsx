@@ -3,8 +3,10 @@ import {
   ComposerPrimitive,
   MessagePrimitive,
   ThreadPrimitive,
+  ToolCallMessagePartProps,
   unstable_useComposerInput,
 } from '@assistant-ui/react';
+import ToolActivity from './ToolActivity';
 import './styles.css';
 
 const DEFAULT_SUGGESTIONS = [
@@ -21,9 +23,38 @@ const UserMessage: FC = () => (
   </MessagePrimitive.Root>
 );
 
+/** Task 10 gives approval requests their own renderer; see ToolFallback. */
+const APPROVAL_TOOL_NAME = 'request_approval';
+
+/**
+ * Renderer for every tool call that has no tool registered under its name.
+ *
+ * Zobi's tools are executed by the backend and streamed in by `runtime.ts`,
+ * so their names are only known at runtime and their `result` is already
+ * populated by the time the part first renders - there is nothing to register
+ * a toolkit entry (or a client-side `execute`) against. assistant-ui routes
+ * exactly this case through `components.tools.Fallback` on
+ * `MessagePrimitive.Parts`, which it consults whenever
+ * `tools.by_name[toolName]` and the runtime's registered tool UIs both miss.
+ */
+const ToolFallback: FC<ToolCallMessagePartProps> = ({
+  toolName,
+  args,
+  result,
+}) => {
+  if (toolName === APPROVAL_TOOL_NAME) return null;
+  return (
+    <ToolActivity
+      toolName={toolName}
+      args={(args ?? {}) as Record<string, unknown>}
+      result={result as { ok: boolean; output?: string } | undefined}
+    />
+  );
+};
+
 const AssistantMessage: FC = () => (
   <MessagePrimitive.Root className="aui:max-w-[80%] aui:rounded-2xl aui:bg-gray-100 aui:px-4 aui:py-2 aui:text-gray-900">
-    <MessagePrimitive.Parts />
+    <MessagePrimitive.Parts components={{ tools: { Fallback: ToolFallback } }} />
   </MessagePrimitive.Root>
 );
 
