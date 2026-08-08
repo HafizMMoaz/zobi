@@ -49,9 +49,13 @@ const APPROVAL_TOOL_NAME = 'request_approval';
 export type UseZobiChatRuntimeOptions = {
   conversationId: number | null;
   mode: AgentMode;
+  /** Applies to the next send only; the caller resets it via `onSent`. */
+  onceModel?: string | null;
   initialMessages: ChatMessage[];
   /** Creates a conversation on first send if one does not exist yet. */
   onConversationStarted: () => Promise<number>;
+  /** Called once a send has been issued, so the caller can clear `onceModel`. */
+  onSent?: () => void;
   onError: (message: string) => void;
 };
 
@@ -66,8 +70,10 @@ export type UseZobiChatRuntimeOptions = {
 export function useZobiChatRuntime({
   conversationId,
   mode,
+  onceModel = null,
   initialMessages,
   onConversationStarted,
+  onSent,
   onError,
 }: UseZobiChatRuntimeOptions) {
   const [messages, setMessages] = useState<ZobiThreadMessage[]>(() =>
@@ -224,9 +230,13 @@ export function useZobiChatRuntime({
       const targetId = conversationIdRef.current ?? (await onConversationStarted());
       conversationIdRef.current = targetId;
 
-      runTurn(targetId, { content: text, mode });
+      runTurn(targetId, { content: text, mode, model_alias: onceModel });
+      // The override applies to this send only; the caller resets it so the
+      // next one falls back to the thread's model until the picker is used
+      // again.
+      onSent?.();
     },
-    [mode, onConversationStarted, runTurn],
+    [mode, onceModel, onConversationStarted, onSent, runTurn],
   );
 
   const onCancel = useCallback(async () => {
