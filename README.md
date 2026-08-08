@@ -14,12 +14,110 @@ A modern, enterprise-ready business intelligence web application.
 
 ## Features
 
-- **Rich Visualization**: Create interactive charts, dashboards, and data stories
-- **SQL IDE**: Write and execute SQL queries with a powerful editor
+- **Rich Visualization**: Create interactive charts, dashboards, and data stories from 40+ chart types
+- **SQL IDE**: Write and execute SQL queries against any connected database with a powerful editor
+- **AI Assistant**: A chat assistant that reads and builds on your data by calling the same tools every other integration uses, with adjustable autonomy - see [AI Assistant](#ai-assistant) below
 - **Semantic Layer**: Define metrics and dimensions for self-service analytics
-- **Role-Based Access Control**: Fine-grained permissions for teams
+- **Role-Based Access Control**: Fine-grained permissions for teams, down to individual dashboards
+- **Alerts & Reports**: Schedule charts and dashboards for delivery by email
 - **Embedded Analytics**: Embed charts and dashboards into your applications
 - **Extensible Plugin System**: Build custom visualizations and integrations
+
+## How It Works
+
+A request from the browser lands on nginx, which routes it to the Flask app for
+everything page- and API-related, or to the websocket server for live updates.
+The app reads and writes its own metadata (users, charts, dashboards, saved
+queries) in Postgres, and separately connects out to whatever databases you've
+added as data sources. Redis is both the cache and the Celery broker; the
+Celery worker and beat scheduler run alerts and scheduled reports on top of it.
+
+```text
+ ┌──────────┐      HTTPS      ┌───────────┐
+ │ Browser  ├────────────────▶│   nginx   │
+ └──────────┘                 └─────┬─────┘
+                                    │
+                     ┌──────────────┴──────────────┐
+                     ▼                             ▼
+             ┌───────────────┐              ┌───────────────┐
+             │  zobi (app)   │              │   websocket   │
+             │ Flask + SQLA  │              │    server     │
+             └───┬───────┬───┘              └───────────────┘
+                 │       │
+     ┌───────────┘       └───────────┐
+     ▼                               ▼
+┌───────────────┐             ┌───────────────┐
+│ db (Postgres) │             │     redis     │
+│ metadata store│             │ cache · broker│
+└───────────────┘             └───────┬───────┘
+                                      │
+                        ┌─────────────┴─────────────┐
+                        ▼                           ▼
+                ┌───────────────┐            ┌─────────────────┐
+                │  zobi-worker  │            │ zobi-worker-beat│
+                │   (Celery)    │            │  (Celery beat)  │
+                │ alerts/reports│            │    schedules    │
+                └───────────────┘            └─────────────────┘
+```
+
+## AI Assistant
+
+Gated behind the `ZOBI_FEATURE_ZOBI_AI` flag (off by default). Once enabled,
+**Manage > AI Models** connects an LLM through a LiteLLM-backed gateway
+(`zobi/llm/`) - 16 provider presets (OpenAI, Anthropic, Azure, Bedrock, Vertex,
+Ollama, and more), with credentials encrypted at rest and routed with load
+balancing and fallbacks.
+
+The chat assistant (`zobi/agent/`) doesn't get its own, separate set of
+capabilities. It calls the same in-process MCP server (`zobi/mcp_service/`)
+that every other automated integration uses, so it can only ever do what a
+tool - and the signed-in user's own permissions - already allow:
+
+1. The user's message goes to the model, along with the tools it's currently
+   allowed to call.
+2. When the model asks for a tool, Zobi runs it against the MCP server via
+   `fastmcp.Client`, acting as the requesting user (`flask.g.user`) - so the
+   call is bound by that user's own RBAC, not the assistant's.
+3. Each tool declares whether it's read-only, a write, or destructive, which
+   is what decides whether it runs immediately or waits for approval.
+4. The reply streams back over SSE token by token, with tool calls appearing
+   inline as they run - up to 8 tool round trips per turn.
+
+**How much it can do without asking:**
+
+| Mode | Reads | Creates | Changes / deletes |
+| --- | --- | --- | --- |
+| Read only | auto | not offered | not offered |
+| Ask before changes (default) | auto | asks first | asks first |
+| Auto | auto | auto | asks first |
+| Full access | auto | auto | auto |
+
+```text
+ User message
+      │
+      ▼
+┌────────────────┐   POST /turn (SSE)   ┌────────────────┐
+│    Chat UI      │─────────────────────▶│  zobi/agent     │
+│ (assistant-ui)  │◀─────────────────────│  runtime.py     │
+└────────────────┘     token stream      └────────┬────────┘
+                                                    │ chat_completion()
+                                                    ▼
+                                           ┌─────────────────┐
+                                           │     zobi/llm     │
+                                           │  LiteLLM router  │──▶ OpenAI · Anthropic · Bedrock · …
+                                           └────────┬─────────┘     (16 provider presets)
+                                                    │ model requests a tool
+                                                    ▼
+                                           ┌─────────────────┐
+                                           │ zobi/agent/tools │  classify: read / write / destructive
+                                           └────────┬─────────┘
+                                                    │ fastmcp.Client, acting as flask.g.user
+                                                    ▼
+                                           ┌─────────────────┐
+                                           │   MCP server     │  runs under the caller's own RBAC
+                                           │  (mcp_service)   │  charts · dashboards · datasets · SQL
+                                           └─────────────────┘
+```
 
 ## Getting Started
 
@@ -31,15 +129,20 @@ cd zobi
 docker compose up
 ```
 
-### Installation
+### Installation from source
+
+Zobi isn't published to PyPI yet, so install it in editable mode from a clone
+(`make install` does all of this, plus DB setup and an admin user - see
+[Make Commands](#make-commands)):
 
 ```bash
 # Backend
-pip install zobi
+pip install -r requirements/development.txt
+pip install -e .
 
 # Frontend
 cd frontend
-npm install
+npm ci
 npm run dev
 ```
 
@@ -180,7 +283,7 @@ auto-assign free ports when running multiple instances side by side.
 
 ## Architecture
 
-```
+```text
 zobi/
 ├── zobi/                    # Python backend (Flask, SQLAlchemy)
 │   ├── views/api/              # REST API endpoints
