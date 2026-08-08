@@ -27,7 +27,9 @@ from zobi.agent.permissions import (
 from zobi.agent.runtime import AgentTurn, TurnEvent
 from zobi.agent.tools import call_tool, find_tool, list_tools
 from zobi.extensions import db, event_logger
+from zobi.llm.service import NoModelForCapabilityError, resolve_alias
 from zobi.models.chat import ChatAttachment, ChatMessage, Conversation
+from zobi.models.llm import LLMModel, LLMProvider
 from zobi.utils.core import get_user_id
 from zobi.utils.decorators import transaction
 from zobi.views.base_api import BaseZobiApiMixin, statsd_metrics
@@ -45,6 +47,11 @@ class MessageSchema(Schema):
         validate=OneOf([mode.value for mode in AgentMode]), load_default=None
     )
     model_alias = fields.String(allow_none=True, load_default=None)
+    # Names one tool to pin for this turn's first model call. Not persisted:
+    # it describes one message, not the conversation.
+    force_tool = fields.String(
+        allow_none=True, load_default=None, validate=Length(1, 128)
+    )
 
 
 class ApprovalSchema(Schema):
@@ -88,6 +95,28 @@ def _attachment_payload(attachment: ChatAttachment) -> dict[str, Any]:
 
 def _history(conversation: Conversation) -> list[dict[str, Any]]:
     return [message.to_model_message() for message in conversation.messages]
+
+
+def chat_aliases() -> list[str]:
+    """Every distinct alias that can currently serve a chat completion.
+
+    Distinct aliases rather than model rows: LLMModel.alias is deliberately not
+    unique, because LiteLLM load balances across every deployment sharing a
+    model_name. Picking an alias is picking a pool, not a deployment.
+    """
+    rows = (
+        db.session.query(LLMModel.alias)
+        .join(LLMProvider)
+        .filter(
+            LLMModel.is_active.is_(True),
+            LLMProvider.is_active.is_(True),
+            LLMModel.supports_chat.is_(True),
+        )
+        .distinct()
+        .order_by(LLMModel.alias)
+        .all()
+    )
+    return [row[0] for row in rows]
 
 
 def _persist(
@@ -181,6 +210,42 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
                     "description": tool.description[:300],
                 }
                 for tool in list_tools(mode)
+            ],
+        )
+
+    @expose("/models/", methods=("GET",))
+    @protect()
+    @safe
+    @statsd_metrics
+    def models(self) -> Response:
+        """List the models a conversation may be pointed at.
+
+        Served here rather than from the gateway's own API because those routes
+        are part of the Manage screen: choosing a model in chat must not require
+        permission to administer providers.
+        ---
+        get:
+          summary: List selectable chat models
+          responses:
+            200:
+              description: Aliases that can serve a chat completion
+              content:
+                application/json:
+                  schema:
+                    type: object
+        """
+        aliases = chat_aliases()
+        try:
+            default = resolve_alias("chat")
+        except NoModelForCapabilityError:
+            # Nothing is configured yet. An empty picker is the right answer,
+            # not a 500.
+            default = None
+
+        return self.response(
+            200,
+            result=[
+                {"alias": alias, "is_default": alias == default} for alias in aliases
             ],
         )
 
@@ -420,8 +485,6 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
 
         if item.get("mode"):
             conversation.mode = item["mode"]
-        if item.get("model_alias") is not None:
-            conversation.model_alias = item["model_alias"]
 
         _persist(conversation, "user", item["content"])
         if not conversation.title:
@@ -430,7 +493,12 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
 
         history = _history(conversation)
         mode = parse_mode(conversation.mode)
-        alias = conversation.model_alias
+        # An alias on the message overrides for this turn only. Writing it to
+        # the row would make every send sticky and leave the one-off override
+        # indistinguishable from the thread's default; PUT /conversation/<pk>
+        # is what changes that.
+        alias = item.get("model_alias") or conversation.model_alias
+        force_tool = item.get("force_tool")
         conversation_id = conversation.id
         # Not @transaction(): that decorator commits when the view returns, and
         # this view returns as soon as the streaming Response is constructed,
@@ -448,7 +516,7 @@ class ZobiAgentRestApi(BaseZobiApiMixin, BaseApi):
         def generate() -> Any:
             with app.app_context():
                 g.user = user
-                turn = AgentTurn(history, mode, alias)
+                turn = AgentTurn(history, mode, alias, force_tool=force_tool)
                 try:
                     for event in turn.run():
                         yield event.to_sse()

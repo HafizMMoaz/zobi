@@ -14,7 +14,6 @@ import {
   Button,
   Input,
   SafeMarkdown,
-  Select,
   Space,
   Tag,
 } from '@zobi.dev/core/components';
@@ -22,8 +21,10 @@ import { Icons } from '@zobi.dev/core/components/Icons';
 import { Typography } from '@zobi.dev/core/components/Typography';
 import {
   createConversation,
+  fetchChatModels,
   fetchConversation,
   fetchModes,
+  fetchTools,
   respondToApproval,
   streamMessage,
   updateConversation,
@@ -34,10 +35,14 @@ import {
   carriesFiles,
   useAttachments,
 } from './Attachments';
+import ComposerSwitcher from './ComposerSwitcher';
+import SlashPalette from './SlashPalette';
 import VoiceInput from './VoiceInput';
 import {
   AgentMode,
+  AgentToolSummary,
   ChatMessage,
+  ChatModel,
   ModeOption,
   PendingApproval,
   ToolActivity,
@@ -127,14 +132,29 @@ const ApprovalCard = styled.div`
 
 const Composer = styled.div<{ dropping: boolean }>`
   ${({ theme, dropping }) => css`
-    border-top: 1px solid ${theme.colorBorderSecondary};
+    margin: ${theme.sizeUnit * 3}px;
+    margin-top: 0;
     padding: ${theme.sizeUnit * 3}px;
     display: flex;
     flex-direction: column;
     gap: ${theme.sizeUnit * 2}px;
-    background: ${dropping ? theme.colorPrimaryBg : 'transparent'};
+    border: 1px solid
+      ${dropping ? theme.colorPrimaryBorder : theme.colorBorderSecondary};
+    border-radius: ${theme.borderRadiusLG}px;
+    background: ${dropping ? theme.colorPrimaryBg : theme.colorBgContainer};
     outline: ${dropping ? `2px dashed ${theme.colorPrimaryBorder}` : 'none'};
     outline-offset: -${theme.sizeUnit}px;
+
+    /*
+     * The textarea reads as this card's own surface rather than a boxed
+     * control nested inside it - the card supplies the one visible boundary.
+     */
+    textarea {
+      border: 0;
+      box-shadow: none;
+      padding: 0;
+      background: transparent;
+    }
   `}
 `;
 
@@ -145,12 +165,12 @@ const ComposerRow = styled.div`
     align-items: flex-end;
 
     /*
-     * Attach, mic and send are rendered by three separate components but read
-     * as one control group, so the row owns their geometry rather than each
-     * component guessing at it. antd sizes a button to its own content, which
-     * is why send grew once it became primary and why the icons did not line
-     * up. Pinning to controlHeight is what the text input uses, so the whole
-     * row ends up on the same square grid.
+     * Attach, slash toggle, mic and send are rendered by separate components
+     * but read as one control group, so the row owns their geometry rather
+     * than each component guessing at it. antd sizes a button to its own
+     * content, which is why send grew once it became primary and why the
+     * icons did not line up. Pinning to controlHeight is what the text input
+     * uses, so the whole row ends up on the same square grid.
      */
     button {
       flex: none;
@@ -213,6 +233,13 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
   const [busy, setBusy] = useState(false);
   const [error, setError] = useState<string | null>(null);
   const [dropping, setDropping] = useState(false);
+  const [tools, setTools] = useState<AgentToolSummary[]>([]);
+  const [pinnedTool, setPinnedTool] = useState<AgentToolSummary | null>(null);
+  const [models, setModels] = useState<ChatModel[]>([]);
+  // The thread's persisted model, mirrored from the conversation row.
+  const [threadModel, setThreadModel] = useState<string | null>(null);
+  // Applies to the next send only, then reverts to the thread's.
+  const [onceModel, setOnceModel] = useState<string | null>(null);
 
   const abortRef = useRef<(() => void) | null>(null);
   const scrollerRef = useRef<HTMLDivElement>(null);
@@ -265,6 +292,29 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
       .catch(() => setModes([]));
   }, []);
 
+  useEffect(() => {
+    fetchChatModels()
+      .then(setModels)
+      .catch(() => setModels([]));
+  }, []);
+
+  // The offer depends on the mode, so refetch whenever it changes. A failure
+  // leaves the list empty: the palette degrades to an empty state and typing
+  // still works.
+  useEffect(() => {
+    fetchTools(mode)
+      .then(setTools)
+      .catch(() => setTools([]));
+  }, [mode]);
+
+  /**
+   * The palette is open while the draft is a bare "/name" with no space yet.
+   * A space means the user has moved on to writing the request itself.
+   */
+  const slashQuery =
+    draft.startsWith('/') && !draft.includes(' ') ? draft.slice(1) : null;
+  const paletteOpen = slashQuery !== null;
+
   const { clear: clearAttachments } = attachments;
 
   useEffect(() => {
@@ -276,12 +326,14 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
     clearAttachments();
     if (!conversationId) {
       setMessages([]);
+      setThreadModel(null);
       return;
     }
     fetchConversation(conversationId)
       .then(detail => {
         setMessages(detail.messages);
         setMode(detail.mode);
+        setThreadModel(detail.model_alias);
       })
       .catch(() => setError(t('Could not load this conversation.')));
   }, [conversationId, clearAttachments]);
@@ -374,12 +426,15 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
       }
 
       attachments.clear();
+      setPinnedTool(null);
 
       abortRef.current = streamMessage(
         target,
         {
           content: text,
           mode,
+          model_alias: onceModel,
+          force_tool: pinnedTool?.name ?? null,
           ...(attachmentIds.length ? { attachment_ids: attachmentIds } : {}),
         },
         handleEvent,
@@ -388,8 +443,19 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
           setBusy(false);
         },
       );
+      // The override applies to this send only; the next one falls back to
+      // the thread's model until the picker is used again.
+      setOnceModel(null);
     },
-    [busy, mode, handleEvent, ensureConversation, attachments],
+    [
+      busy,
+      mode,
+      handleEvent,
+      ensureConversation,
+      attachments,
+      pinnedTool,
+      onceModel,
+    ],
   );
 
   const decide = useCallback(
@@ -599,14 +665,32 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
         onPaste={handlePaste}
       >
         <Space>
-          <Select
-            value={mode}
-            onChange={value => changeMode(value as AgentMode)}
-            options={modes.map(option => ({
-              value: option.value,
-              label: option.label,
-            }))}
-            css={{ minWidth: 180 }}
+          <ComposerSwitcher
+            modes={modes}
+            mode={mode}
+            onModeChange={value => changeMode(value)}
+            models={models}
+            threadModel={threadModel}
+            onThreadModelChange={alias => {
+              setThreadModel(alias);
+              // Unlike mode, the model alias has nowhere to ride along on the
+              // conversation's own creation call, so picking one before the
+              // first send has to bring the conversation into being itself
+              // rather than waiting for `send` to do it.
+              //
+              // The trigger above already shows `alias` regardless of
+              // outcome, so a failure here has to be surfaced explicitly -
+              // otherwise it keeps showing a choice that never reached the
+              // backend.
+              ensureConversation()
+                .then(convId =>
+                  updateConversation(convId, { model_alias: alias }),
+                )
+                .catch(() => setError(t('Could not save your model choice.')));
+            }}
+            onceModel={onceModel}
+            onOnceModelChange={setOnceModel}
+            disabled={busy}
           />
           {modeHint && <ModeHint>{modeHint}</ModeHint>}
         </Space>
@@ -614,12 +698,54 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
           items={attachments.items}
           onRemove={attachments.removeItem}
         />
+        <SlashPalette
+          tools={tools}
+          query={slashQuery ?? ''}
+          open={paletteOpen}
+          onSelect={tool => {
+            setPinnedTool(tool);
+            setDraft('');
+          }}
+          onDismiss={() => setDraft('')}
+        />
+        {pinnedTool && (
+          <Tag
+            closable
+            closeIcon={
+              <Icons.CloseOutlined aria-label={t('Remove pinned tool')} />
+            }
+            onClose={() => setPinnedTool(null)}
+          >
+            {pinnedTool.title}
+          </Tag>
+        )}
         <ComposerRow>
           <AttachButton onFiles={attachments.addFiles} disabled={busy} />
+          <Button
+            buttonStyle="tertiary"
+            aria-label={t('Tools')}
+            aria-pressed={paletteOpen}
+            tooltip={t('Choose a tool')}
+            disabled={busy}
+            onClick={() => setDraft(paletteOpen ? '' : '/')}
+          >
+            /
+          </Button>
           <Input.TextArea
             value={draft}
             onChange={event => setDraft(event.target.value)}
             onPressEnter={event => {
+              // While the palette is open, Enter picks the highlighted tool
+              // via SlashPalette's own document-level listener. That listener
+              // sits below this handler in the bubble order (React dispatches
+              // synthetic events from the root container, which is above the
+              // textarea but below document), so without this guard Enter
+              // would send the literal "/name" text before the palette ever
+              // gets a chance to select it.
+              if (paletteOpen) {
+                event.preventDefault();
+                return;
+              }
               // Enter sends; Shift+Enter inserts a newline.
               if (!event.shiftKey) {
                 event.preventDefault();
@@ -648,7 +774,10 @@ const ChatPanel: FunctionComponent<ChatPanelProps> = ({
           ) : (
             <Button
               buttonStyle="primary"
-              disabled={!draft.trim() || attachments.uploading}
+              // Also disabled while the palette is open: a click here should
+              // not be able to send the literal "/name" text either, for the
+              // same reason Enter is guarded above.
+              disabled={!draft.trim() || attachments.uploading || paletteOpen}
               aria-label={t('Send')}
               tooltip={
                 attachments.uploading
