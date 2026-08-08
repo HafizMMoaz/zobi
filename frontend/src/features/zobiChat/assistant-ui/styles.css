@@ -1,0 +1,11 @@
+@import "tailwindcss" prefix(aui);
+
+/*
+ * Every root component under assistant-ui/ renders inside an element
+ * carrying this class, so Tailwind's preflight reset and utilities are
+ * confined to the chat surface and cannot bleed into Ant Design/Emotion
+ * elsewhere in the app.
+ */
+.aui-scope {
+  all: revert;
+}
