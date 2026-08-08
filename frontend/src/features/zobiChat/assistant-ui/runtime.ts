@@ -7,7 +7,39 @@ import {
 import { respondToApproval, streamMessage } from '../api';
 import { AgentMode, ChatMessage, StreamEvent } from '../types';
 
-const toThreadMessage = (message: ChatMessage): ThreadMessageLike => ({
+/** A message part representing a chunk of streamed assistant text. */
+type ZobiTextPart = { type: 'text'; text: string };
+
+/**
+ * One tool invocation, from the moment it starts until its result (or an
+ * approval decision) arrives. `request_approval` calls reuse this same shape,
+ * with the approval's own name/title/risk/description/arguments nested under
+ * `args` (see the `approval_required` branch in `runTurn` below).
+ */
+export type ZobiToolCallPart = {
+  type: 'tool-call';
+  toolCallId: string;
+  toolName: string;
+  args: Record<string, unknown>;
+  argsText: string;
+  result?: { ok: boolean; output?: string; approved?: boolean };
+};
+
+type ZobiMessagePart = ZobiTextPart | ZobiToolCallPart;
+
+/**
+ * This hook's own message shape: a `ThreadMessageLike` whose `content` is
+ * always our narrow part union, never assistant-ui's broader (and partly
+ * string-typed) one. Keeping state in this shape lets every handler below
+ * treat `content` as a plain array with no extra narrowing; `convertMessage`
+ * is the one place that bridges out to `ThreadMessageLike` for the runtime.
+ */
+type ZobiThreadMessage = {
+  role: 'user' | 'assistant' | 'system';
+  content: ZobiMessagePart[];
+};
+
+const toThreadMessage = (message: ChatMessage): ZobiThreadMessage => ({
   role: message.role === 'tool' ? 'assistant' : message.role,
   content: message.content ? [{ type: 'text', text: message.content }] : [],
 });
@@ -38,7 +70,7 @@ export function useZobiChatRuntime({
   onConversationStarted,
   onError,
 }: UseZobiChatRuntimeOptions) {
-  const [messages, setMessages] = useState<ThreadMessageLike[]>(() =>
+  const [messages, setMessages] = useState<ZobiThreadMessage[]>(() =>
     initialMessages.map(toThreadMessage),
   );
   const [isRunning, setIsRunning] = useState(false);
@@ -50,8 +82,10 @@ export function useZobiChatRuntime({
       const last = current[current.length - 1];
       if (last?.role === 'assistant') {
         const parts = last.content.slice();
-        const textPart = parts.find(part => part.type === 'text');
-        if (textPart && textPart.type === 'text') {
+        const textPart = parts.find(
+          (part): part is ZobiTextPart => part.type === 'text',
+        );
+        if (textPart) {
           textPart.text += text;
           return [...current.slice(0, -1), { ...last, content: parts }];
         }
@@ -65,15 +99,17 @@ export function useZobiChatRuntime({
   }, []);
 
   const upsertToolCall = useCallback(
-    (toolCallId: string, patch: Partial<Record<string, unknown>>) => {
+    (toolCallId: string, patch: Partial<ZobiToolCallPart>) => {
       setMessages(current => {
         const last = current[current.length - 1];
-        const newPart = {
-          type: 'tool-call' as const,
+        const newPart: ZobiToolCallPart = {
+          type: 'tool-call',
           toolCallId,
+          // Guaranteed by every call site that can create a fresh entry
+          // (tool_start, approval_required): both always pass toolName.
           toolName: patch.toolName as string,
-          args: (patch.args as Record<string, unknown>) ?? {},
-          argsText: JSON.stringify(patch.args ?? {}),
+          args: patch.args ?? {},
+          argsText: patch.argsText ?? JSON.stringify(patch.args ?? {}),
           ...patch,
         };
         // A tool call can be the first event of a turn, arriving before any
@@ -89,7 +125,9 @@ export function useZobiChatRuntime({
         if (index === -1) {
           parts.push(newPart);
         } else {
-          parts[index] = { ...parts[index], ...patch };
+          // findIndex's predicate above already confirmed this slot holds a
+          // tool-call part, so the merge below stays within ZobiToolCallPart.
+          parts[index] = { ...parts[index], ...patch } as ZobiToolCallPart;
         }
         return [...current.slice(0, -1), { ...last, content: parts }];
       });
@@ -173,7 +211,7 @@ export function useZobiChatRuntime({
     [mode, onConversationStarted, runTurn],
   );
 
-  const onCancel = useCallback(() => {
+  const onCancel = useCallback(async () => {
     abortRef.current?.();
     setIsRunning(false);
   }, []);
@@ -184,19 +222,31 @@ export function useZobiChatRuntime({
       const targetId = conversationIdRef.current;
       if (!targetId) return;
 
-      upsertToolCall(toolCallId, { result });
+      upsertToolCall(toolCallId, {
+        result: result as ZobiToolCallPart['result'],
+      });
 
       const part = messages
         .flatMap(m => m.content)
-        .find(p => p.type === 'tool-call' && p.toolCallId === toolCallId) as
-        | { args: { name: string; arguments: Record<string, unknown> } }
-        | undefined;
+        .find(
+          (p): p is ZobiToolCallPart =>
+            p.type === 'tool-call' && p.toolCallId === toolCallId,
+        );
       if (!part) return;
+
+      // `part.args` is Record<string, unknown> at the type level, but for a
+      // request_approval part (the only kind onAddToolResult ever settles)
+      // it was built with exactly this shape in the approval_required branch
+      // above.
+      const approvalArgs = part.args as {
+        name: string;
+        arguments: Record<string, unknown>;
+      };
 
       respondToApproval(targetId, {
         tool_call_id: toolCallId,
-        tool_name: part.args.name,
-        arguments: part.args.arguments,
+        tool_name: approvalArgs.name,
+        arguments: approvalArgs.arguments,
         approved,
       }).finally(() => {
         runTurn(targetId, {
@@ -210,13 +260,21 @@ export function useZobiChatRuntime({
     [messages, mode, runTurn, upsertToolCall],
   );
 
-  return useExternalStoreRuntime({
+  return useExternalStoreRuntime<ZobiThreadMessage>({
     messages,
-    setMessages,
+    setMessages: newMessages => setMessages([...newMessages]),
     isRunning,
     onNew,
     onCancel,
     onAddToolResult,
-    convertMessage: (message: ThreadMessageLike) => message,
+    // ZobiThreadMessage's content is a narrower, stricter view of the same
+    // shape ThreadMessageLike's content union accepts (e.g. `args` here is
+    // Record<string, unknown> rather than ReadonlyJSONObject) - safe at
+    // runtime since every part we build only ever holds JSON-safe values,
+    // but not nominally identical, hence the bridge cast.
+    convertMessage: (message: ZobiThreadMessage): ThreadMessageLike => ({
+      role: message.role,
+      content: message.content as unknown as ThreadMessageLike['content'],
+    }),
   });
 }
