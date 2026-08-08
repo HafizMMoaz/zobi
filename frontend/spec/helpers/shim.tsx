@@ -36,6 +36,10 @@ g.window.performance ??= { now: () => new Date().getTime() };
 g.window.Worker ??= Worker;
 g.window.IntersectionObserver ??= IntersectionObserver;
 g.window.ResizeObserver ??= ResizeObserver;
+// jsdom doesn't implement scroll methods; @assistant-ui/react's auto-scroll
+// calls these on the viewport element as messages stream in.
+Element.prototype.scrollTo ??= () => {};
+Element.prototype.scrollIntoView ??= () => {};
 g.window.featureFlags ??= {};
 g.URL.createObjectURL ??= () => '';
 g.caches = new CacheStorage();
