@@ -5,6 +5,12 @@ import ZobiChat from './ZobiChat';
 
 jest.mock('../api');
 
+// None of these tests exercise the slash palette, but ZobiChat always fetches
+// the tool list on mount, so it needs a default resolved value here.
+beforeEach(() => {
+  (api.fetchTools as jest.Mock).mockResolvedValue([]);
+});
+
 test('creates a conversation on first send and reports it back', async () => {
   (api.createConversation as jest.Mock).mockResolvedValue({ id: 42, uuid: 'u' });
   (api.fetchModes as jest.Mock).mockResolvedValue([]);

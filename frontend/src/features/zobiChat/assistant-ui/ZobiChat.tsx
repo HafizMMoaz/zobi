@@ -5,10 +5,18 @@ import {
   fetchChatModels,
   fetchConversation,
   fetchModes,
+  fetchTools,
   updateConversation,
 } from '../api';
-import { AgentMode, ChatMessage, ChatModel, ModeOption } from '../types';
+import {
+  AgentMode,
+  AgentToolSummary,
+  ChatMessage,
+  ChatModel,
+  ModeOption,
+} from '../types';
 import ComposerSwitcher from '../ComposerSwitcher';
+import SlashPalette from '../SlashPalette';
 import { useZobiChatRuntime } from './runtime';
 import Thread from './Thread';
 
@@ -28,6 +36,7 @@ const ZobiChat: FunctionComponent<ZobiChatProps> = ({
   const [mode, setMode] = useState<AgentMode>('manual');
   const [modes, setModes] = useState<ModeOption[]>([]);
   const [models, setModels] = useState<ChatModel[]>([]);
+  const [tools, setTools] = useState<AgentToolSummary[]>([]);
   // The thread's persisted model, mirrored from the conversation row.
   const [threadModel, setThreadModel] = useState<string | null>(null);
   // Applies to the next send only, then reverts to the thread's.
@@ -48,6 +57,15 @@ const ZobiChat: FunctionComponent<ZobiChatProps> = ({
       .then(setModels)
       .catch(() => setModels([]));
   }, []);
+
+  // The offer depends on the mode, so refetch whenever it changes. A failure
+  // leaves the list empty: the palette degrades to an empty state and typing
+  // still works.
+  useEffect(() => {
+    fetchTools(mode)
+      .then(setTools)
+      .catch(() => setTools([]));
+  }, [mode]);
 
   useEffect(() => {
     idRef.current = conversationId;
@@ -109,6 +127,24 @@ const ZobiChat: FunctionComponent<ZobiChatProps> = ({
             onOnceModelChange={setOnceModel}
           />
         }
+        composerSlashPalette={(draft, setDraft) => {
+          // The palette is open while the draft is a bare "/name" with no
+          // space yet; a space means the user has moved on to writing the
+          // request itself.
+          const slashQuery =
+            draft.startsWith('/') && !draft.includes(' ')
+              ? draft.slice(1)
+              : null;
+          return (
+            <SlashPalette
+              tools={tools}
+              query={slashQuery ?? ''}
+              open={slashQuery !== null}
+              onSelect={tool => setDraft(`/${tool.name} `)}
+              onDismiss={() => setDraft('')}
+            />
+          );
+        }}
       />
     </AssistantRuntimeProvider>
   );
