@@ -5,7 +5,7 @@ import { Button, Loading } from '@zobi.dev/core/components';
 import { Icons } from '@zobi.dev/core/components/Icons';
 import { Typography } from '@zobi.dev/core/components/Typography';
 import SubMenu from 'src/features/home/SubMenu';
-import ChatPanel from 'src/features/zobiChat/ChatPanel';
+import ZobiChat from 'src/features/zobiChat/assistant-ui/ZobiChat';
 import {
   deleteConversation,
   fetchConversations,
@@ -55,6 +55,8 @@ const ThreadButton = styled.button<{ selected: boolean }>`
     padding: ${theme.sizeUnit * 2}px;
     background: ${selected ? theme.colorPrimaryBg : 'transparent'};
     color: ${theme.colorText};
+    transition: background-color ${theme.motionDurationMid}
+      ${theme.motionEaseInOut};
 
     &:hover {
       background: ${selected ? theme.colorPrimaryBg : theme.colorBgTextHover};
@@ -72,6 +74,12 @@ function ZobiChatPage() {
   const [conversations, setConversations] = useState<Conversation[]>([]);
   const [selected, setSelected] = useState<number | null>(null);
   const [loading, setLoading] = useState(true);
+  // Drives ZobiChat's remount. Deliberately not derived from `selected`: a new
+  // conversation acquires its server id mid-turn (ZobiChat reports it back via
+  // onConversationStarted while the SSE stream is still open), and keying the
+  // child on `selected` would tear down the streaming instance at that moment
+  // and lose the rest of the answer. Only an explicit thread switch bumps this.
+  const [mountKey, setMountKey] = useState(0);
 
   const refresh = useCallback(async () => {
     try {
@@ -85,9 +93,15 @@ function ZobiChatPage() {
     refresh();
   }, [refresh]);
 
+  /** Switches threads, remounting the chat so no state leaks between them. */
+  const selectConversation = (id: number | null) => {
+    setSelected(id);
+    setMountKey(key => key + 1);
+  };
+
   const handleDelete = async (id: number) => {
     await deleteConversation(id).catch(() => undefined);
-    if (selected === id) setSelected(null);
+    if (selected === id) selectConversation(null);
     refresh();
   };
 
@@ -103,7 +117,7 @@ function ZobiChatPage() {
               </>
             ),
             buttonStyle: 'primary',
-            onClick: () => setSelected(null),
+            onClick: () => selectConversation(null),
           },
         ]}
       />
@@ -120,7 +134,7 @@ function ZobiChatPage() {
               key={conversation.id}
               type="button"
               selected={selected === conversation.id}
-              onClick={() => setSelected(conversation.id)}
+              onClick={() => selectConversation(conversation.id)}
             >
               <span className="thread-title">
                 {conversation.title || t('Untitled')}
@@ -140,11 +154,12 @@ function ZobiChatPage() {
           ))}
         </Sidebar>
 
-        <ChatPanel
-          // Remounts on switch so no state leaks between conversations.
-          key={selected ?? 'new'}
+        <ZobiChat
+          key={mountKey}
           conversationId={selected}
           onConversationStarted={id => {
+            // Highlights the new thread in the sidebar. No remount here - the
+            // turn that created this conversation is still streaming.
             setSelected(id);
             refresh();
           }}

@@ -3,7 +3,7 @@ import { t } from '@zobi.dev/extension-api/translation';
 import { css, styled } from '@zobi.dev/extension-api/theme';
 import { Button, Drawer } from '@zobi.dev/core/components';
 import { Icons } from '@zobi.dev/core/components/Icons';
-import ChatPanel from './ChatPanel';
+import ZobiChat from './assistant-ui/ZobiChat';
 
 const DrawerBody = styled.div`
   height: 100%;
@@ -45,7 +45,7 @@ const AskZobiDrawer: FunctionComponent = () => {
         destroyOnClose
         styles={{ body: { padding: 0, height: '100%' } }}
       >
-        <DrawerBody>{open && <ChatPanel />}</DrawerBody>
+        <DrawerBody>{open && <ZobiChat />}</DrawerBody>
       </Drawer>
     </>
   );

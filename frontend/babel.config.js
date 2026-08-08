@@ -33,6 +33,12 @@ module.exports = {
     ['@babel/plugin-transform-optional-chaining', { loose: true }],
     ['@babel/plugin-transform-private-methods', { loose: true }],
     ['@babel/plugin-transform-nullish-coalescing-operator', { loose: true }],
+    // Required alongside plugin-transform-class-properties above: once that
+    // plugin is active, Babel refuses to leave a `static {}` block
+    // untransformed even on targets that support it natively. node_modules
+    // like @radix-ui/react-collection ship static class blocks, so this is
+    // needed for any code path that imports @assistant-ui/react in Jest.
+    '@babel/plugin-transform-class-static-block',
     ['@babel/plugin-transform-runtime', { corejs: 3 }],
     [
       '@emotion/babel-plugin',

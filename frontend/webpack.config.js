@@ -518,6 +518,7 @@ const config = {
       {
         test: /\.css$/,
         include: [APP_DIR, /(packages|plugins)\/[^/]+\/src/],
+        exclude: /zobiChat\/assistant-ui\/styles\.css$/,
 
         use: [
           isDevMode
@@ -534,6 +535,21 @@ const config = {
               sourceMap: !isDevMode,
             },
           },
+        ],
+      },
+      {
+        test: /zobiChat\/assistant-ui\/styles\.css$/,
+        use: [
+          isDevMode
+            ? 'style-loader'
+            : {
+                loader: MiniCssExtractPlugin.loader,
+                options: {
+                  publicPath: MINI_CSS_EXTRACT_PUBLICPATH,
+                },
+              },
+          { loader: 'css-loader', options: { sourceMap: !isDevMode } },
+          'postcss-loader',
         ],
       },
       /* for css linking images (and viz plugin thumbnails) */
