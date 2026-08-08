@@ -137,6 +137,8 @@ zobi/static/stats/statistics.html
 CLAUDE.local.md
 PROJECT.md
 .aider*
+# Superpowers plans/specs are working notes, not shipped docs; keep them local
+docs/superpowers/
 .claude_rc*
 .claude/
 .cursor/
