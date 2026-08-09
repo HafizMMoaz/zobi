@@ -23,6 +23,12 @@ A modern, enterprise-ready business intelligence web application.
 - **Embedded Analytics**: Embed charts and dashboards into your applications
 - **Extensible Plugin System**: Build custom visualizations and integrations
 
+<img
+  width="400"
+  src="https://raw.githubusercontent.com/HafizMMoaz/zobi/main/zobi_meta.png"
+  alt="Dashboard"
+/>
+
 ## How It Works
 
 A request from the browser lands on nginx, which routes it to the Flask app for
