@@ -24,7 +24,7 @@ A modern, enterprise-ready business intelligence web application.
 - **Extensible Plugin System**: Build custom visualizations and integrations
 
 <img
-  width="400"
+  width="800"
   src="https://raw.githubusercontent.com/HafizMMoaz/zobi/main/zobi_meta.png"
   alt="Dashboard"
 />
